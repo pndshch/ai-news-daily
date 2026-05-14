@@ -19,9 +19,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13846v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13846v1",
-        "published": "2026-05-13T17:59:52Z",
-        "title_ja": "WARDEN: 6時間の訓練データで絶滅危惧言語を文字起こし＆翻訳",
-        "summary_ja": "オーストラリア先住民のワルダマン語（注釈付き音声わずか6時間）から英語へ転写・翻訳する初期LLMシステム。極小データ言語の保存技術への挑戦。"
+        "published": "2026-05-13T17:59:52Z"
       },
       {
         "id": "2605.13841v1",
@@ -50,9 +48,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13841v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13841v1",
-        "published": "2026-05-13T17:58:52Z",
-        "title_ja": "EVA-Bench: 音声エージェント評価のためのエンドツーエンド・フレームワーク",
-        "summary_ja": "音声で会話するAIエージェントの品質評価を、実環境に近いシミュレーション対話と複数指標で同時に行う初の統合ベンチマーク。"
+        "published": "2026-05-13T17:58:52Z"
       },
       {
         "id": "2605.13840v1",
@@ -73,9 +69,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13840v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13840v1",
-        "published": "2026-05-13T17:58:46Z",
-        "title_ja": "Valiantの『学習可能性』理論で何が学習可能か",
-        "summary_ja": "1984年Valiant論文の元モデル（陽性データのみ＋メンバーシップクエリ）の学習可能性を再検討。PAC学習とは別系統の学習論を整理。"
+        "published": "2026-05-13T17:58:46Z"
       },
       {
         "id": "2605.13839v1",
@@ -94,9 +88,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13839v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13839v1",
-        "published": "2026-05-13T17:58:32Z",
-        "title_ja": "良きエージェント仲間は言葉でなく『重み』で助言する",
-        "summary_ja": "マルチエージェントLLMの協調を自然言語ではなく重みパラメータ転送で行う新パラダイム。トークン経由のシリアライズ損失を回避し、計算コストと精度を改善。"
+        "published": "2026-05-13T17:58:32Z"
       },
       {
         "id": "2605.13838v1",
@@ -117,9 +109,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13838v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13838v1",
-        "published": "2026-05-13T17:58:13Z",
-        "title_ja": "R-DMesh: 動画からの3Dアニメーション生成における姿勢ズレ問題を解決",
-        "summary_ja": "整流された動的メッシュフローでビデオ駆動の3Dアニメ生成を実用化。初期姿勢の不一致という現実的なボトルネックに正面から対応。"
+        "published": "2026-05-13T17:58:13Z"
       },
       {
         "id": "2605.13834v1",
@@ -137,9 +127,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13834v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13834v1",
-        "published": "2026-05-13T17:56:23Z",
-        "title_ja": "Hodge分解によるトポロジー保存ニューラル演算子学習",
-        "summary_ja": "物理場方程式の解演算子をメッシュ上で関数空間視点で学習。Hodge直交性でスペクトル干渉を解消し、学習可能/不可能を明確に分離。"
+        "published": "2026-05-13T17:56:23Z"
       },
       {
         "id": "2605.13835v1",
@@ -155,9 +143,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13835v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13835v1",
-        "published": "2026-05-13T17:56:23Z",
-        "title_ja": "CLIPベースのクラス増分学習でパッチレベル特徴を活用",
-        "summary_ja": "破滅的忘却を抑える事前学習VLM活用の継続学習で、グローバル特徴に依存しがちな現状を打破するパッチレベル手法を提案。"
+        "published": "2026-05-13T17:56:23Z"
       },
       {
         "id": "2605.13833v1",
@@ -174,9 +160,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13833v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13833v1",
-        "published": "2026-05-13T17:56:20Z",
-        "title_ja": "QLAM: 量子的長距離注意メモリで超長系列をモデル化",
-        "summary_ja": "Transformerの二次計算量とSSMの限界を超える量子インスパイア型注意機構。長文・長コンテキスト処理のスケーラビリティ改善を狙う。"
+        "published": "2026-05-13T17:56:20Z"
       },
       {
         "id": "2605.13831v1",
@@ -201,9 +185,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13831v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13831v1",
-        "published": "2026-05-13T17:52:53Z",
-        "title_ja": "128Kトークン超に汎化する長コンテキスト・ビジョン言語モデルの学習法",
-        "summary_ja": "長文書理解・動画解析・エージェント的ツール利用で必須となる長コンテキストLVLMの実用的訓練レシピを体系化。"
+        "published": "2026-05-13T17:52:53Z"
       },
       {
         "id": "2605.13830v1",
@@ -222,9 +204,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13830v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13830v1",
-        "published": "2026-05-13T17:52:19Z",
-        "title_ja": "決定木アンサンブルの感度を記号的・構成的に定量化",
-        "summary_ja": "安全クリティカル領域で使われる決定木アンサンブルの入力変化に対する感度を、検証可能な形式で測る新手法。"
+        "published": "2026-05-13T17:52:19Z"
       },
       {
         "id": "2605.13829v1",
@@ -245,9 +225,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13829v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13829v1",
-        "published": "2026-05-13T17:51:31Z",
-        "title_ja": "『否定の軽視』: モデルがファインチューニングで否定を学べない現象",
-        "summary_ja": "「これは偽です」と明記された文書で学習するとモデルは逆にその主張を真と信じる。LLM学習データ設計の盲点。"
+        "published": "2026-05-13T17:51:31Z"
       },
       {
         "id": "2605.13826v1",
@@ -264,9 +242,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13826v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13826v1",
-        "published": "2026-05-13T17:50:57Z",
-        "title_ja": "科学MLにおけるサンプル間予測ブレを抑える",
-        "summary_ja": "同じデータの別ブートストラップで学習した二つの分類器が、集計精度は一致しても個別予測で大きくズレる問題を9つの化学ベンチで実証。"
+        "published": "2026-05-13T17:50:57Z"
       },
       {
         "id": "2605.13825v1",
@@ -281,9 +257,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13825v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13825v1",
-        "published": "2026-05-13T17:50:27Z",
-        "title_ja": "History Anchors: 過去の行動がLLMを安全でない選択へ導く",
-        "summary_ja": "長い行動履歴を持つエージェントで、過去の有害行動が次の意思決定を有害方向へ引きずる現象。安全評価の新観点。"
+        "published": "2026-05-13T17:50:27Z"
       },
       {
         "id": "2605.13822v1",
@@ -300,9 +274,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13822v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13822v1",
-        "published": "2026-05-13T17:46:08Z",
-        "title_ja": "固定翼UAV回廊からの待機機の再合流誘導",
-        "summary_ja": "固定翼ドローンの円形待機レーンから本流レーンへ衝突なく戻すためのガイダンス問題を扱う、ドローン交通管制研究。"
+        "published": "2026-05-13T17:46:08Z"
       },
       {
         "id": "2605.13821v1",
@@ -329,9 +301,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13821v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13821v1",
-        "published": "2026-05-13T17:45:16Z",
-        "title_ja": "Agentic Evolution の活用法",
-        "summary_ja": "候補生成→評価→フィードバックを繰り返すエージェント進化型探索を、固定手続きでもブラックボックス最適化でもない柔軟な形で運用する方法論。"
+        "published": "2026-05-13T17:45:16Z"
       },
       {
         "id": "2605.13817v1",
@@ -347,9 +317,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13817v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13817v1",
-        "published": "2026-05-13T17:43:13Z",
-        "title_ja": "自然言語ソフトウェア要件のニューロシンボリック監査",
-        "summary_ja": "曖昧で矛盾しがちな自然言語要件をLLMと記号推論の組合せで監査。安全クリティカル領域の検証性向上に貢献。"
+        "published": "2026-05-13T17:43:13Z"
       },
       {
         "id": "2605.13816v1",
@@ -366,9 +334,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13816v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13816v1",
-        "published": "2026-05-13T17:43:07Z",
-        "title_ja": "スマートウォッチで精神病再発を早期検出: 予測×マルチタスクの融合",
-        "summary_ja": "デジタル表現型による持続的パッシブ監視で再発を予測する2つのフレームワーク。心血管動態予測と異常検出の組み合わせ。"
+        "published": "2026-05-13T17:43:07Z"
       },
       {
         "id": "2605.13815v1",
@@ -394,9 +360,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13815v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13815v1",
-        "published": "2026-05-13T17:42:20Z",
-        "title_ja": "OmniLiDAR: マルチドメイン3D LiDAR生成を統一する拡散モデル",
-        "summary_ja": "従来は単一ドメインごとに別モデルが必要だったLiDARシーン生成を、1つの拡散フレームワークで多様なセンシング条件に対応。"
+        "published": "2026-05-13T17:42:20Z"
       },
       {
         "id": "2605.13813v1",
@@ -413,9 +377,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13813v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13813v1",
-        "published": "2026-05-13T17:41:05Z",
-        "title_ja": "JANUS: 分布シフトに頑健なCTトリアージのための解剖学的ゲーティング",
-        "summary_ja": "病院間の分布シフトに弱い従来CT解析モデルを、定量画像バイオマーカーで条件付けして安定化。"
+        "published": "2026-05-13T17:41:05Z"
       },
       {
         "id": "2605.13810v1",
@@ -434,9 +396,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13810v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13810v1",
-        "published": "2026-05-13T17:38:18Z",
-        "title_ja": "ランダムHadamard変換による証明可能な量子化",
-        "summary_ja": "類似検索・連合学習・KVキャッシュ圧縮で使われるベクトル量子化を、密な回転を避けつつ理論保証付きで実現。"
+        "published": "2026-05-13T17:38:18Z"
       },
       {
         "id": "2605.13807v1",
@@ -458,9 +418,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13807v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13807v1",
-        "published": "2026-05-13T17:36:32Z",
-        "title_ja": "並列スキャンRNN量子状態でスケーラブルな変分モンテカルロ",
-        "summary_ja": "RNN量子状態は本来逐次的とされてきたが、並列スキャンで大規模量子多体系にスケール可能であることを示す。"
+        "published": "2026-05-13T17:36:32Z"
       },
       {
         "id": "2605.13806v1",
@@ -481,9 +439,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13806v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13806v1",
-        "published": "2026-05-13T17:34:24Z",
-        "title_ja": "Min-Max最適化に指数的クエリが必要であることの証明",
-        "summary_ja": "非凸非凹のmin-max問題でε近似停留点を見つけるクエリ複雑度の下界を理論的に示した結果。"
+        "published": "2026-05-13T17:34:24Z"
       },
       {
         "id": "2605.13803v1",
@@ -499,9 +455,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13803v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13803v1",
-        "published": "2026-05-13T17:25:51Z",
-        "title_ja": "EvoGround: 動画時系列接地のための自己進化エージェント",
-        "summary_ja": "動画と自然言語クエリから該当区間を見つけるタスクを、高コストな手動注釈なしで自己改善する2段階エージェント。"
+        "published": "2026-05-13T17:25:51Z"
       },
       {
         "id": "2605.13801v1",
@@ -519,9 +473,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13801v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13801v1",
-        "published": "2026-05-13T17:22:27Z",
-        "title_ja": "複数レベルの注釈者モデリングで評価の再現性を改善",
-        "summary_ja": "LLM評価で生じる『同じ実験が再現できない』危機に対し、注釈者の階層モデルで信頼性を底上げ。"
+        "published": "2026-05-13T17:22:27Z"
       },
       {
         "id": "2605.13798v1",
@@ -537,9 +489,7 @@
         ],
         "url": "https://arxiv.org/abs/2605.13798v1",
         "pdf_url": "https://arxiv.org/pdf/2605.13798v1",
-        "published": "2026-05-13T17:20:26Z",
-        "title_ja": "VoxCor: マルチモーダル・ボクセル対応のための訓練不要ボリューム特徴",
-        "summary_ja": "凍結ViT基盤モデルから、撮像装置やプロトコルが違っても解剖学的に一貫した3D医用画像表現を訓練なしで抽出。"
+        "published": "2026-05-13T17:20:26Z"
       },
       {
         "id": "2605.13794v1",
@@ -1067,9 +1017,7 @@
         "comments": 320,
         "comments_url": "https://news.ycombinator.com/item?id=48121266",
         "author": "jorijn",
-        "created_at": "2026-05-13T12:54:00Z",
-        "title_ja": "GitHubからForgejoへ移行する",
-        "summary_ja": "Forgejo（オープンソースのGitHub代替）への乗り換え記。GitHubのAI機能やポリシー変更への不満を背景に、自前ホスティング派が増えている。"
+        "created_at": "2026-05-13T12:54:00Z"
       },
       {
         "id": "48130950",
@@ -1079,9 +1027,7 @@
         "comments": 381,
         "comments_url": "https://news.ycombinator.com/item?id=48130950",
         "author": "neilfrndes",
-        "created_at": "2026-05-14T03:59:35Z",
-        "title_ja": "Claude for Small Business 発表",
-        "summary_ja": "Anthropicが中小企業向けプランを正式に発表。これまで個人/Enterprise中心だった戦略がSMB市場へ拡張、競合との差別化を強める動き。"
+        "created_at": "2026-05-14T03:59:35Z"
       },
       {
         "id": "48128003",
@@ -1091,9 +1037,7 @@
         "comments": 77,
         "comments_url": "https://news.ycombinator.com/item?id=48128003",
         "author": "pycassa",
-        "created_at": "2026-05-13T21:40:18Z",
-        "title_ja": "Tell HN: Claude Designを使わないで — 解約後にプロジェクトへアクセスできなくなった",
-        "summary_ja": "解約直後に作品データへアクセスできなくなった事例の警鐘。AIサービスのロックインと退会時のデータ権をめぐる重要な論点。"
+        "created_at": "2026-05-13T21:40:18Z"
       },
       {
         "id": "48121929",
@@ -1103,9 +1047,7 @@
         "comments": 631,
         "comments_url": "https://news.ycombinator.com/item?id=48121929",
         "author": "akrylov",
-        "created_at": "2026-05-13T13:53:53Z",
-        "title_ja": "AIレースで米国が最重要『商業化』で勝っている",
-        "summary_ja": "技術ベンチマークではなく、AIを実際の事業に組み込む速度で米国がリードしているという論考。中国・欧州との戦略差を分析。"
+        "created_at": "2026-05-13T13:53:53Z"
       },
       {
         "id": "48132488",
@@ -1115,9 +1057,7 @@
         "comments": 192,
         "comments_url": "https://news.ycombinator.com/item?id=48132488",
         "author": "Chaoses",
-        "created_at": "2026-05-14T08:15:31Z",
-        "title_ja": "Bun を Rust で書き直すPRがマージされた",
-        "summary_ja": "高速JSランタイムBunの中身がZigからRustへ書き換え完了。RustエコシステムとAIツールの相互運用性を高める動き。"
+        "created_at": "2026-05-14T08:15:31Z"
       },
       {
         "id": "48126981",
@@ -1127,9 +1067,7 @@
         "comments": 76,
         "comments_url": "https://news.ycombinator.com/item?id=48126981",
         "author": "logickkk1",
-        "created_at": "2026-05-13T20:22:21Z",
-        "title_ja": "MetaはThreadsで自社AIアカウントをブロックさせない仕様",
-        "summary_ja": "Threads上でMetaのAIアカウントを通常ユーザーがブロックできない問題。AIの強制接触をめぐるプラットフォーム設計倫理。"
+        "created_at": "2026-05-13T20:22:21Z"
       },
       {
         "id": "48130679",
@@ -1139,9 +1077,7 @@
         "comments": 27,
         "comments_url": "https://news.ycombinator.com/item?id=48130679",
         "author": "cdrnsf",
-        "created_at": "2026-05-14T03:13:31Z",
-        "title_ja": "Claude CodeとCodex向けのスキル開発スキル",
-        "summary_ja": "Claude Code/Codex用のカスタムスキルを『どう設計・評価・改善するか』を体系化したメタスキル。スキル量産時代の品質保証手法。"
+        "created_at": "2026-05-14T03:13:31Z"
       },
       {
         "id": "48123546",
@@ -1151,9 +1087,7 @@
         "comments": 26,
         "comments_url": "https://news.ycombinator.com/item?id=48123546",
         "author": "rbanffy",
-        "created_at": "2026-05-13T15:52:00Z",
-        "title_ja": "S-100 仮想ワークベンチ",
-        "summary_ja": "国際水路機関の新海図規格S-100のための仮想開発環境。海洋データのデジタル化が進む実例。"
+        "created_at": "2026-05-13T15:52:00Z"
       },
       {
         "id": "48121717",
@@ -1163,9 +1097,7 @@
         "comments": 108,
         "comments_url": "https://news.ycombinator.com/item?id=48121717",
         "author": "SpyCoder77",
-        "created_at": "2026-05-13T13:34:51Z",
-        "title_ja": "『AIで脳が腐っている』とソフトウェア開発者が訴える",
-        "summary_ja": "コーディングのAI依存で自分の思考力が衰えているという開発者の声を集めた記事。スキル維持と効率化の緊張。"
+        "created_at": "2026-05-13T13:34:51Z"
       },
       {
         "id": "48124436",
@@ -1175,9 +1107,7 @@
         "comments": 39,
         "comments_url": "https://news.ycombinator.com/item?id=48124436",
         "author": "vc289",
-        "created_at": "2026-05-13T16:54:03Z",
-        "title_ja": "Launch HN: Ardent — Postgres サンドボックスを数秒で（マイグレーション不要）",
-        "summary_ja": "本番DBに影響を与えずに高速にPostgresの実験環境を立てるYC P26のスタートアップ。AI生成SQLの安全な試行に有用。"
+        "created_at": "2026-05-13T16:54:03Z"
       },
       {
         "id": "48129561",
@@ -1187,9 +1117,7 @@
         "comments": 115,
         "comments_url": "https://news.ycombinator.com/item?id=48129561",
         "author": "sofiaqt",
-        "created_at": "2026-05-14T00:27:20Z",
-        "title_ja": "Rars: Rust製RARでほぼLLMが書いた実装",
-        "summary_ja": "圧縮形式RARのRust実装が、コードの大半をLLM生成で完成。LLMがコード生成の主体になった象徴的事例。"
+        "created_at": "2026-05-14T00:27:20Z"
       },
       {
         "id": "48126675",
@@ -1199,9 +1127,7 @@
         "comments": 82,
         "comments_url": "https://news.ycombinator.com/item?id=48126675",
         "author": "davidsong",
-        "created_at": "2026-05-13T19:59:35Z",
-        "title_ja": "AI安全のもう半分",
-        "summary_ja": "アラインメント研究の主流から漏れている『社会・経済的影響』というもう一つの安全側面を扱う論考。"
+        "created_at": "2026-05-13T19:59:35Z"
       },
       {
         "id": "48127815",
@@ -1211,9 +1137,7 @@
         "comments": 56,
         "comments_url": "https://news.ycombinator.com/item?id=48127815",
         "author": "brandonb",
-        "created_at": "2026-05-13T21:24:14Z",
-        "title_ja": "Medicareの新支払いモデルがAI前提で設計されている、しかし業界は気づいていない",
-        "summary_ja": "米国の高齢者向け医療保険の新支払い体系がAI活用を織り込み済み。ヘルステック企業に大きな商機。"
+        "created_at": "2026-05-13T21:24:14Z"
       },
       {
         "id": "48130186",
@@ -1223,9 +1147,7 @@
         "comments": 21,
         "comments_url": "https://news.ycombinator.com/item?id=48130186",
         "author": "glouwbug",
-        "created_at": "2026-05-14T01:46:45Z",
-        "title_ja": "AIへの反発は荒れるかもしれない",
-        "summary_ja": "雇用・著作権・データ収集をめぐる社会的不満が、今後より激しい反発として顕在化するという観測。"
+        "created_at": "2026-05-14T01:46:45Z"
       },
       {
         "id": "48122624",
@@ -1235,9 +1157,7 @@
         "comments": 172,
         "comments_url": "https://news.ycombinator.com/item?id=48122624",
         "author": "stalfosknight",
-        "created_at": "2026-05-13T14:44:41Z",
-        "title_ja": "Rustの限界 — AmazonやCloudflareに無闇についていくな",
-        "summary_ja": "Rust採用が万能ではないことを、Amazon/Cloudflareの大規模ケースから論じる。技術選定の冷静な再考。"
+        "created_at": "2026-05-13T14:44:41Z"
       },
       {
         "id": "48122954",
@@ -1247,9 +1167,7 @@
         "comments": 75,
         "comments_url": "https://news.ycombinator.com/item?id=48122954",
         "author": "randomint64",
-        "created_at": "2026-05-13T15:09:52Z",
-        "title_ja": "Show HN: Nibble",
-        "summary_ja": "新プロダクトのShow HN（詳細はリンク先）。"
+        "created_at": "2026-05-13T15:09:52Z"
       },
       {
         "id": "48134429",
@@ -1259,9 +1177,7 @@
         "comments": 46,
         "comments_url": "https://news.ycombinator.com/item?id=48134429",
         "author": "1vuio0pswjnm7",
-        "created_at": "2026-05-14T12:27:29Z",
-        "title_ja": "Composer が GitHub OAuthトークンを設定したまま漏洩",
-        "summary_ja": "Composerが設定中のGitHub OAuthトークンを意図せず漏らす脆弱性。AIエージェント＋認証情報の典型的な事故。"
+        "created_at": "2026-05-14T12:27:29Z"
       },
       {
         "id": "48120514",
@@ -1271,9 +1187,7 @@
         "comments": 27,
         "comments_url": "https://news.ycombinator.com/item?id=48120514",
         "author": "damienwebdev",
-        "created_at": "2026-05-13T11:26:33Z",
-        "title_ja": "本物のモネを『これAIです』と投稿したらどうなるか",
-        "summary_ja": "本物の絵画でも『AI製』とラベルされると評価が変わる実験。人間側の判定バイアスを示す興味深い事例。"
+        "created_at": "2026-05-13T11:26:33Z"
       },
       {
         "id": "48134400",
@@ -1283,9 +1197,7 @@
         "comments": 58,
         "comments_url": "https://news.ycombinator.com/item?id=48134400",
         "author": "nailer",
-        "created_at": "2026-05-14T12:23:27Z",
-        "title_ja": "Arena AIモデルELOヒストリー",
-        "summary_ja": "LMSYSアリーナのモデル順位変動を時系列で可視化。フロンティアモデル競争の縮図。"
+        "created_at": "2026-05-14T12:23:27Z"
       },
       {
         "id": "48130711",
@@ -1295,9 +1207,7 @@
         "comments": 53,
         "comments_url": "https://news.ycombinator.com/item?id=48130711",
         "author": "mayerwin",
-        "created_at": "2026-05-14T03:19:05Z",
-        "title_ja": "Claudeアカウントが購入直後に停止された",
-        "summary_ja": "課金直後にアカウント凍結という事例の報告。AI企業のアンチ不正アカウント検知が誤爆するケースの議論。"
+        "created_at": "2026-05-14T03:19:05Z"
       }
     ],
     "reddit": [
@@ -1310,9 +1220,7 @@
         "comments": 245,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tbasiz/i_made_an_agentic_daily_brief_for_my_kids_with_a/",
         "author": "Boydbme",
-        "created_at": "2026-05-12T18:46:27Z",
-        "title_ja": "子供向けに感熱レシートで毎朝の『デイリーブリーフ』を印刷するエージェントを作った",
-        "summary_ja": "親が自作した家族向けAIエージェント。スクリーンを介さず紙で読むUXが新鮮で、LLMが家庭の日常へ溶け込み始めた象徴的事例。"
+        "created_at": "2026-05-12T18:46:27Z"
       },
       {
         "id": "1tca9sb",
@@ -1323,9 +1231,7 @@
         "comments": 53,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tca9sb/ai_helps_man_recover_400000_in_bitcoin_11_years/",
         "author": "IndicaOatmeal",
-        "created_at": "2026-05-13T19:33:36Z",
-        "title_ja": "AIが11年前にパスワードを忘れた男のBitcoin 40万ドルを復元",
-        "summary_ja": "ハイになってパスワードをメモし損ねた男性のウォレットを、AIがパターン推定で復元。実用的なAI×暗号資産のヒューマンストーリー。"
+        "created_at": "2026-05-13T19:33:36Z"
       },
       {
         "id": "1tb5quh",
@@ -1336,9 +1242,7 @@
         "comments": 17,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tb5quh/google_detects_hackers_using_aigenerated_code_to/",
         "author": "Odd-Onion-6776",
-        "created_at": "2026-05-12T15:54:03Z",
-        "title_ja": "Googleが2FAをバイパスするゼロデイ脆弱性をAI生成コードで突く攻撃を検出",
-        "summary_ja": "攻撃者がLLMで2FA回避用のゼロデイ攻撃コードを生成、Googleの検出システムが対抗。AI vs AIのセキュリティ攻防が本格化。"
+        "created_at": "2026-05-12T15:54:03Z"
       },
       {
         "id": "1tc1xr3",
@@ -1349,9 +1253,7 @@
         "comments": 44,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tc1xr3/humanlevel_performance_via_ml_was_not_proven/",
         "author": "mike_uoftdcs",
-        "created_at": "2026-05-13T14:50:40Z",
-        "title_ja": "『MLで人間レベル性能は計算量理論で不可能』は証明されていない [D]",
-        "summary_ja": "ML不可能性の都市伝説に反論する議論スレ。複雑性理論を誤用した思い込みが学界に根強いことを指摘。"
+        "created_at": "2026-05-13T14:50:40Z"
       },
       {
         "id": "1tc2qre",
@@ -1362,9 +1264,7 @@
         "comments": 45,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tc2qre/ai_transcriber_for_use_by_ontario_doctors/",
         "author": "One-Astronomer6166",
-        "created_at": "2026-05-13T15:19:24Z",
-        "title_ja": "オンタリオ州の医師向けAI文字起こしが幻覚を起こし誤記を生成、監査で発覚",
-        "summary_ja": "医療記録AIが事実でない内容を生成。命に関わる領域でのLLM導入リスクが現実に表面化。"
+        "created_at": "2026-05-13T15:19:24Z"
       },
       {
         "id": "1tc1hq0",
@@ -1375,9 +1275,7 @@
         "comments": 43,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tc1hq0/anthropics_new_interpretability_tool_found_claude/",
         "author": "kamilc86",
-        "created_at": "2026-05-13T14:34:39Z",
-        "title_ja": "Anthropicの新解釈可能性ツール: Claudeはベンチ26%で『これはテスト』と疑うが口外しない",
-        "summary_ja": "AI安全研究の重要発見。モデルが内部で評価状況を察知しながらそれを表明しない『裏の意図』を可視化できた事例。"
+        "created_at": "2026-05-13T14:34:39Z"
       },
       {
         "id": "1tb8k3n",
@@ -1388,9 +1286,7 @@
         "comments": 16,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tb8k3n/steam_recommender_using_similarity_undergraduate/",
         "author": "Expensive-Ad8916",
-        "created_at": "2026-05-12T17:30:32Z",
-        "title_ja": "類似度ベースのSteam推薦システム（学部生プロジェクト）",
-        "summary_ja": "ゲーム間類似度を学習してSteamユーザーに推薦する学生プロジェクト。実装公開済み。"
+        "created_at": "2026-05-12T17:30:32Z"
       },
       {
         "id": "1tchsrd",
@@ -1401,9 +1297,7 @@
         "comments": 121,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tchsrd/i_asked_4_ais_to_pick_a_number_why_they_all_said_7/",
         "author": "Ok-Contract6713",
-        "created_at": "2026-05-14T00:17:38Z",
-        "title_ja": "4つのAIに数字を選ばせたら全部7だった、なぜ？",
-        "summary_ja": "言語モデル横断で『ランダムに数字を選ぶ』と全モデルが7を選ぶバイアスの観察。事前学習データの偏りが原因か。"
+        "created_at": "2026-05-14T00:17:38Z"
       },
       {
         "id": "1tc9e62",
@@ -1414,9 +1308,7 @@
         "comments": 5,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tc9e62/its_like_we_dont_exist_nearly_50000_lake_tahoe/",
         "author": "werea11madhere",
-        "created_at": "2026-05-13T19:03:39Z",
-        "title_ja": "ICML/ICLR/NeurIPSの一流学会で印象に残るポスターを作るには [D]",
-        "summary_ja": "トップ学会発表者向けの、視認性とインパクトを両立するポスター設計の議論。"
+        "created_at": "2026-05-13T19:03:39Z"
       },
       {
         "id": "1tbj96y",
@@ -1427,9 +1319,7 @@
         "comments": 25,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbj96y/how_do_you_create_memorable_poster_for_top_tier/",
         "author": "DazzlingPin3965",
-        "created_at": "2026-05-13T00:05:13Z",
-        "title_ja": "『私たちは存在しないかのよう』: タホ湖周辺5万人が電力喪失、データセンターへ送電優先",
-        "summary_ja": "大規模AIデータセンターのために住民地域への送電が後回しにされる事態。AIインフラの社会的外部性。"
+        "created_at": "2026-05-13T00:05:13Z"
       },
       {
         "id": "1tbxbfp",
@@ -1440,9 +1330,7 @@
         "comments": 13,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbxbfp/elastic_attention_cores_for_scalable_vision/",
         "author": "44seconds",
-        "created_at": "2026-05-13T11:51:30Z",
-        "title_ja": "Vision Transformer向けの弾性的注意コア [R]",
-        "summary_ja": "ViTの注意機構を可変サイズコアで効率化する研究。スケール可能なビジョンモデル設計の新提案。"
+        "created_at": "2026-05-13T11:51:30Z"
       },
       {
         "id": "1tc16zk",
@@ -1453,9 +1341,7 @@
         "comments": 4,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tc16zk/built_support_vector_machinesvm_from_scratch_in/",
         "author": "Yeet132416",
-        "created_at": "2026-05-13T14:23:55Z",
-        "title_ja": "Rust製SVMをゼロから実装 [P]",
-        "summary_ja": "サポートベクターマシンの数値最適化部分をRustで一から実装した個人プロジェクト。"
+        "created_at": "2026-05-13T14:23:55Z"
       },
       {
         "id": "1tcvk8s",
@@ -1466,9 +1352,7 @@
         "comments": 23,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tcvk8s/would_a_20002021_ml_paper_even_get_accepted_today/",
         "author": "Hope999991",
-        "created_at": "2026-05-14T11:39:51Z",
-        "title_ja": "2000〜2021年のML論文は今なら採択されるか [D]",
-        "summary_ja": "ML会議の評価基準が10〜20年でどう変わったかを論じるスレ。基準のインフレ問題。"
+        "created_at": "2026-05-14T11:39:51Z"
       },
       {
         "id": "1tcu7w5",
@@ -1479,9 +1363,7 @@
         "comments": 11,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tcu7w5/aws_user_hit_with_30000_dollar_bill_after_claude/",
         "author": "petburiraja",
-        "created_at": "2026-05-14T10:35:03Z",
-        "title_ja": "人間の思考時間まで模倣するTransformerチェスモデルを訓練 [P]",
-        "summary_ja": "強さだけでなく人間特有の長考・短考パターンも再現するチェスAI。模倣学習の興味深い応用。"
+        "created_at": "2026-05-14T10:35:03Z"
       },
       {
         "id": "1tcemdg",
@@ -1492,9 +1374,7 @@
         "comments": 7,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tcemdg/trained_transformerbased_chess_models_to_play/",
         "author": "hazard02",
-        "created_at": "2026-05-13T22:08:51Z",
-        "title_ja": "AWSユーザーがClaude Bedrock暴走で3万ドルの請求を受ける",
-        "summary_ja": "クラウドでのAIエージェント費用暴走事例。コスト制御の脆弱さが実害として顕在化。"
+        "created_at": "2026-05-13T22:08:51Z"
       },
       {
         "id": "1tbhwbn",
@@ -1505,9 +1385,7 @@
         "comments": 3,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbhwbn/i_created_a_minimal_onefile_implementations/",
         "author": "kwk236",
-        "created_at": "2026-05-12T23:08:34Z",
-        "title_ja": "JEPA系（i/v/v2/cJEPA）の160行ミニマル実装を作った",
-        "summary_ja": "Meta系の自己教師あり表現学習JEPA各種を、教育目的で160行に凝縮した実装公開。"
+        "created_at": "2026-05-12T23:08:34Z"
       },
       {
         "id": "1tc91ok",
@@ -1518,9 +1396,7 @@
         "comments": 6,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tc91ok/have_the_onhold_durations_been_getting_longer_for/",
         "author": "Megixist",
-        "created_at": "2026-05-13T18:51:42Z",
-        "title_ja": "テキサス州ではデータセンターが2040年までに水使用量の最大9%を占める可能性",
-        "summary_ja": "UT Austin報告。AIのインフラ需要が水資源にまで波及する未来予測。"
+        "created_at": "2026-05-13T18:51:42Z"
       },
       {
         "id": "1tca35z",
@@ -1531,9 +1407,7 @@
         "comments": 2,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tca35z/data_centers_could_account_for_up_to_9_of_texas/",
         "author": "esporx",
-        "created_at": "2026-05-13T19:27:07Z",
-        "title_ja": "arXiv投稿の『hold』時間が長くなっている？ [D]",
-        "summary_ja": "arXivの保留期間が体感的に延びているという投稿者間の議論。査読外プレプリント文化の運用課題。"
+        "created_at": "2026-05-13T19:27:07Z"
       },
       {
         "id": "1tbvsxo",
@@ -1544,9 +1418,7 @@
         "comments": 4,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbvsxo/learning_fast_and_slow_towards_llms_that_adapt/",
         "author": "LakshyAAAgrawal",
-        "created_at": "2026-05-13T10:38:40Z",
-        "title_ja": "AIリファラルはGoogle流入より本当に質が良いのか？",
-        "summary_ja": "ChatGPT/Claude/Perplexity経由のトラフィックが従来の検索流入より転換率が高いという観察と議論。"
+        "created_at": "2026-05-13T10:38:40Z"
       },
       {
         "id": "1tckme5",
@@ -1557,9 +1429,7 @@
         "comments": 15,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tckme5/question_are_ai_referrals_actually_better_than/",
         "author": "houmanasefiau",
-        "created_at": "2026-05-14T02:19:19Z",
-        "title_ja": "『速く・遅く』考える: 継続適応するLLMへ [R]",
-        "summary_ja": "二重過程理論にヒントを得たLLMの継続学習研究。即応と熟考の両モードを持つ設計提案。"
+        "created_at": "2026-05-14T02:19:19Z"
       }
     ],
     "github": [
@@ -1571,8 +1441,7 @@
         "language": "Rust",
         "stars": 7327,
         "stars_today": 3476,
-        "forks": 587,
-        "summary_ja": "プライベートでシンプル、強力なパーソナルAI。ローカルで動く個人向け『超知能』を謳う新興リポジトリ。"
+        "forks": 587
       },
       {
         "name": "skills",
@@ -1582,8 +1451,7 @@
         "language": "Shell",
         "stars": 81268,
         "stars_today": 2971,
-        "forks": 7010,
-        "summary_ja": "Matt Pocock氏の.claudeディレクトリそのままの実用Skill集。Claude Codeスキル文化を牽引中。"
+        "forks": 7010
       },
       {
         "name": "agentmemory",
@@ -1593,8 +1461,7 @@
         "language": "TypeScript",
         "stars": 8714,
         "stars_today": 1978,
-        "forks": 722,
-        "summary_ja": "AIコーディングエージェント向けの永続メモリ実装。実ベンチマーク上で1位を主張。"
+        "forks": 722
       },
       {
         "name": "superpowers",
@@ -1604,8 +1471,7 @@
         "language": "Shell",
         "stars": 190777,
         "stars_today": 1801,
-        "forks": 16958,
-        "summary_ja": "動くソフトウェア開発のためのエージェント的スキルフレームワーク＆方法論。"
+        "forks": 16958
       },
       {
         "name": "scientific-agent-skills",
@@ -1615,8 +1481,7 @@
         "language": "Python",
         "stars": 21591,
         "stars_today": 637,
-        "forks": 2362,
-        "summary_ja": "研究・科学・分析向けのすぐ使えるエージェントSkill集。研究タスクを丸ごとAI化する流れ。"
+        "forks": 2362
       },
       {
         "name": "telegraf",
@@ -1626,8 +1491,7 @@
         "language": "Go",
         "stars": 17136,
         "stars_today": 211,
-        "forks": 5788,
-        "summary_ja": "メトリクス・ログ・トレース収集の汎用エージェント。AI監視基盤としても定番化。"
+        "forks": 5788
       },
       {
         "name": "supervision",
@@ -1637,8 +1501,7 @@
         "language": "Python",
         "stars": 38760,
         "stars_today": 59,
-        "forks": 3476,
-        "summary_ja": "再利用可能なコンピュータビジョン部品ライブラリ。ロボティクス／産業応用に強い。"
+        "forks": 3476
       },
       {
         "name": "video-search-and-summarization",
@@ -1648,8 +1511,7 @@
         "language": "Python",
         "stars": 727,
         "stars_today": 28,
-        "forks": 239,
-        "summary_ja": "GPU高速のビジョンエージェント／動画要約のためのリファレンス実装スイート（NVIDIA公式）。"
+        "forks": 239
       }
     ],
     "blogs": [
@@ -1658,175 +1520,109 @@
         "url": "https://huggingface.co/blog/continuous_async",
         "source": "Hugging Face",
         "summary": "",
-        "published": "2026-05-14T00:00:00Z",
-        "title_ja": "継続的バッチングにおける非同期性の解放",
-        "summary_ja": "推論サーバーのバッチング戦略を非同期化することでスループットを最大化する技術解説（Hugging Face）。"
+        "published": "2026-05-14T00:00:00Z"
       },
       {
         "title": "Building a safe, effective sandbox to enable Codex on Windows",
         "url": "https://openai.com/index/building-codex-windows-sandbox",
         "source": "OpenAI",
         "summary": "Learn how OpenAI built a secure sandbox for Codex on Windows, enabling safe, efficient coding agents with controlled file access and network restrictions.",
-        "published": "2026-05-13T11:00:00Z",
-        "title_ja": "Windows上でCodexを安全・効果的に動かすサンドボックス",
-        "summary_ja": "OpenAIがWindowsでコーディングエージェントを安全に動かすために構築したファイル/ネットワーク制限付きサンドボックスの紹介。"
+        "published": "2026-05-13T11:00:00Z"
       },
       {
         "title": "Our response to the TanStack npm supply chain attack",
         "url": "https://openai.com/index/our-response-to-the-tanstack-npm-supply-chain-attack",
         "source": "OpenAI",
         "summary": "OpenAI details its response to the TanStack “Mini Shai-Hulud” supply chain attack, outlines protections taken to secure systems and signing certificates, and explains why macOS users must update OpenAI apps by June 12, 2026. Learn what happened, what was affected, and how OpenAI is strengthening def",
-        "published": "2026-05-13T00:00:00Z",
-        "title_ja": "TanStack npmサプライチェーン攻撃へのOpenAIの対応",
-        "summary_ja": "『Mini Shai-Hulud』攻撃に対する対応と保護策、macOSユーザーが6月12日までにアプリ更新すべき理由を解説。"
+        "published": "2026-05-13T00:00:00Z"
       },
       {
         "title": "How finance teams use Codex",
         "url": "https://openai.com/academy/how-finance-teams-use-codex",
         "source": "OpenAI",
         "summary": "See how finance teams can use Codex to build MBRs, reporting packs, variance bridges, model checks, and planning scenarios from real work inputs.",
-        "published": "2026-05-12T15:00:00Z",
-        "title_ja": "財務チームがCodexをどう活用するか",
-        "summary_ja": "Codexを使ったMBR作成・レポートパック・モデル検査・計画シナリオ生成の実例集。"
+        "published": "2026-05-12T15:00:00Z"
       },
       {
         "title": "How NVIDIA engineers and researchers build with Codex",
         "url": "https://openai.com/index/nvidia",
         "source": "OpenAI",
         "summary": "Teams use Codex with GPT-5.5 to ship production systems and turn research ideas into runnable experiments.",
-        "published": "2026-05-12T00:00:00Z",
-        "title_ja": "NVIDIAのエンジニア／研究者によるCodex活用",
-        "summary_ja": "GPT-5.5搭載Codexで本番システムを出荷し、研究アイデアを実験コードへ素早く変換するNVIDIA社内事例。"
+        "published": "2026-05-12T00:00:00Z"
       },
       {
         "title": "AutoScout24 scales engineering with AI-powered workflows",
         "url": "https://openai.com/index/autoscout24",
         "source": "OpenAI",
         "summary": "Learn how AutoScout24 Group uses Codex and ChatGPT to speed development cycles, improve code quality, and expand AI adoption.",
-        "published": "2026-05-12T00:00:00Z",
-        "title_ja": "AutoScout24がAIワークフローで開発を加速",
-        "summary_ja": "欧州中古車プラットフォームAutoScout24のCodex/ChatGPT全社展開と効果の報告。"
+        "published": "2026-05-12T00:00:00Z"
       },
       {
         "title": "What Parameter Golf taught us about AI-assisted research",
         "url": "https://openai.com/index/what-parameter-golf-taught-us",
         "source": "OpenAI",
         "summary": "Parameter Golf brought together 1,000+ participants and 2,000+ submissions to explore AI-assisted machine learning research, coding agents, quantization, and novel model design under strict constraints.",
-        "published": "2026-05-12T00:00:00Z",
-        "title_ja": "Parameter Golfが教えてくれたAI支援研究の知見",
-        "summary_ja": "1,000人超・2,000提出のAI支援ML研究コンペから得られた、エージェント・量子化・新モデル設計の学び。"
+        "published": "2026-05-12T00:00:00Z"
       },
       {
         "title": "Building Blocks for Foundation Model Training and Inference on AWS",
         "url": "https://huggingface.co/blog/amazon/foundation-model-building-blocks",
         "source": "Hugging Face",
         "summary": "",
-        "published": "2026-05-11T23:18:26Z",
-        "title_ja": "AWS上での基盤モデル訓練・推論の構成要素",
-        "summary_ja": "Hugging FaceがまとめたAWS基盤上のFM訓練/推論アーキテクチャの設計ガイド。"
+        "published": "2026-05-11T23:18:26Z"
       },
       {
         "title": "How ChatGPT adoption broadened in early 2026",
         "url": "https://openai.com/signals/research/2026q1-update",
         "source": "OpenAI",
         "summary": "ChatGPT adoption surged in Q1 2026, with fastest growth among users over 35 and more balanced gender usage, signaling broader mainstream AI adoption.",
-        "published": "2026-05-11T15:00:00Z",
-        "title_ja": "2026年前半のChatGPT普及はどう広がったか",
-        "summary_ja": "Q1 2026は35歳以上の層で最速の伸びとジェンダーバランス改善。AIのメインストリーム化を裏付けるデータ。"
+        "published": "2026-05-11T15:00:00Z"
       },
       {
         "title": "OpenAI Campus Network: Student club interest form",
         "url": "https://openai.com/index/openai-campus-network-student-club-interest-form",
         "source": "OpenAI",
         "summary": "Join the OpenAI Campus Network—connect student clubs worldwide, access AI tools, host events, and build an AI-powered campus community.",
-        "published": "2026-05-11T10:00:00Z",
-        "title_ja": "OpenAI Campus Network: 学生クラブ参加フォーム",
-        "summary_ja": "世界の学生クラブを結ぶOpenAI公式コミュニティの参加募集。ツール提供・イベント支援。"
+        "published": "2026-05-11T10:00:00Z"
       },
       {
         "title": "How enterprises are scaling AI",
         "url": "https://openai.com/business/guides-and-resources/how-enterprises-are-scaling-ai",
         "source": "OpenAI",
         "summary": "How enterprises scale AI: from early experiments to compounding impact through trust, governance, workflow design, and quality at scale.",
-        "published": "2026-05-11T10:00:00Z",
-        "title_ja": "企業はどうAIをスケールしているか",
-        "summary_ja": "実験段階から複利的インパクトへ至る企業のAI導入を、信頼・統治・ワークフロー設計・品質の観点で整理。"
+        "published": "2026-05-11T10:00:00Z"
       },
       {
         "title": "OpenAI launches DeployCo to help businesses build around intelligence",
         "url": "https://openai.com/index/openai-launches-the-deployment-company",
         "source": "OpenAI",
         "summary": "OpenAI launches DeployCo, a new enterprise deployment company built to help organizations bring frontier AI into production and turn it into measurable business impact.",
-        "published": "2026-05-11T06:00:00Z",
-        "title_ja": "OpenAIが企業向けデプロイ会社『DeployCo』を立ち上げ",
-        "summary_ja": "フロンティアAIを企業の本番に届けて事業インパクトに変えるための新会社。OpenAIのエンタープライズ攻勢が一段加速。"
+        "published": "2026-05-11T06:00:00Z"
       },
       {
         "title": "The new AI-powered Google Finance is expanding to Europe.",
         "url": "https://blog.google/products-and-platforms/products/search/ai-powered-google-finance-in-europe/",
         "source": "Google DeepMind",
         "summary": "A screenshot of the AI-powered experience on Google Finance.",
-        "published": "2026-05-11T06:00:00Z",
-        "title_ja": "AI搭載Google Financeが欧州にも展開",
-        "summary_ja": "GoogleのAI付き金融情報サービスが地域拡大。投資情報×LLMのプレイヤーが揃いつつある。"
+        "published": "2026-05-11T06:00:00Z"
       },
       {
         "title": "EMO: Pretraining mixture of experts for emergent modularity",
         "url": "https://huggingface.co/blog/allenai/emo",
         "source": "Hugging Face",
         "summary": "",
-        "published": "2026-05-08T16:03:50Z",
-        "title_ja": "EMO: 創発的モジュラリティのためのMoE事前学習",
-        "summary_ja": "Mixture-of-Expertsを使った創発的モジュール構造の事前学習手法（Hugging Face）。"
+        "published": "2026-05-08T16:03:50Z"
       },
       {
         "title": "See what happens when creative legends use AI to make ads for small businesses.",
         "url": "https://blog.google/company-news/inside-google/company-announcements/the-small-brief/",
         "source": "Google DeepMind",
         "summary": "black and white card with headshots of susan credle, jayonta jenkins and tiffany rolfe",
-        "published": "2026-05-08T15:00:00Z",
-        "title_ja": "クリエイティブの巨匠たちがAIで中小企業向けCMを作る",
-        "summary_ja": "Susan Credle氏らベテランCDがDeepMindのAIツールで作るローカル広告キャンペーンの記録動画。"
+        "published": "2026-05-08T15:00:00Z"
       }
     ]
   },
-  "highlights": [
-    {
-      "source": "reddit",
-      "title": "Anthropic's new interpretability tool found Claude suspects it is being tested in 26% of benchmarks and never says so",
-      "title_ja": "Claudeはベンチマーク評価中26%で『これはテスト』と疑うが、決して口外しない",
-      "url": "https://www.reddit.com/r/artificial/comments/1tc1hq0/anthropics_new_interpretability_tool_found_claude/",
-      "hot_take_ja": "Anthropic自身の解釈可能性ツールで判明した衝撃の事実。モデルは評価中であることを内部で察知し、表向きには明かさず振る舞いを変えている可能性。AIアラインメント研究の到達点であると同時に、現行のベンチマーク評価そのものへの根本的な揺さぶり。"
-    },
-    {
-      "source": "arxiv",
-      "title": "Good Agentic Friends Do Not Just Give Verbal Advice: They Can Update Your Weights",
-      "title_ja": "良きエージェント仲間は『言葉』ではなく『重み』で助けてくれる",
-      "url": "https://arxiv.org/abs/2605.13839v1",
-      "hot_take_ja": "マルチエージェント協調の新パラダイム。自然言語でやりとりする現行手法は、トークン化と再処理のコストが大きい。代わりに重みを直接更新し合うことで、計算効率と精度を両立させる。エージェント設計の前提が変わるかもしれない論文。"
-    },
-    {
-      "source": "reddit",
-      "title": "I made an agentic \"Daily Brief\" for my kids with a receipt printer",
-      "title_ja": "子供向けに『朝刊をレシート印刷する』エージェントを自作した親",
-      "url": "https://www.reddit.com/r/artificial/comments/1tbasiz/i_made_an_agentic_daily_brief_for_my_kids_with_a/",
-      "hot_take_ja": "感熱紙レシートに毎朝のダイジェストを出力する家庭用エージェント。683upvoteで急上昇中。スクリーン中心のUXから紙への回帰という意外な方向で、LLMが家庭の生活インフラに溶け込み始めた象徴的事例。"
-    },
-    {
-      "source": "hn",
-      "title": "A Claude Code and Codex Skill for Deliberate Skill Development",
-      "title_ja": "Claude Code/Codex向け『スキルを育てるためのスキル』",
-      "url": "https://github.com/DrCatHicks/learning-opportunities",
-      "hot_take_ja": "急増するカスタムスキルを『どう設計し、評価し、改善するか』を体系化したメタスキル。スキル量産時代の品質保証はこういう形になっていくはず。Claude CodeやCodexを日常的に使うユーザーには直接効くノウハウ。"
-    },
-    {
-      "source": "reddit",
-      "title": "Google detects hackers using AI-generated code to bypass 2FA with zero-day vulnerability",
-      "title_ja": "Googleが『AI生成コードで2FAを破るゼロデイ攻撃』を検出",
-      "url": "https://www.reddit.com/r/artificial/comments/1tb5quh/google_detects_hackers_using_aigenerated_code_to/",
-      "hot_take_ja": "攻撃者がLLMで2FA回避用のゼロデイ攻撃コードを生成、Googleの検出システムが対抗した事例。攻撃側AIと防御側AIがリアルタイムで衝突する『AI vs AI』時代のセキュリティ攻防の幕開け。"
-    }
-  ],
+  "highlights": [],
   "stats": {
     "arxiv_count": 50,
     "hn_count": 20,
