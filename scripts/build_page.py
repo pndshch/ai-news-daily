@@ -38,12 +38,19 @@ def build():
         print("No data files found. Run fetch_all.py first.")
         return
 
-    template = (ROOT / TEMPLATE_FILE).read_text(encoding="utf-8")
     news_json = json.dumps(archive, ensure_ascii=False)
-    output = template.replace("/* __NEWS_DATA__ */ null", news_json)
 
+    template = (ROOT / TEMPLATE_FILE).read_text(encoding="utf-8")
+    output = template.replace("/* __NEWS_DATA__ */ null", news_json)
     (ROOT / OUTPUT_FILE).write_text(output, encoding="utf-8")
     print(f"Built index.html with {len(archive)} day(s)")
+
+    hl_template_path = ROOT / "template_highlight.html"
+    if hl_template_path.exists():
+        hl_template = hl_template_path.read_text(encoding="utf-8")
+        hl_output = hl_template.replace("/* __NEWS_DATA__ */ null", news_json)
+        (ROOT / "highlight.html").write_text(hl_output, encoding="utf-8")
+        print("Built highlight.html")
 
     for f in data_dir.glob("*.json"):
         if f.name.startswith("raw-"):

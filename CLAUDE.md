@@ -32,6 +32,12 @@ Add a `highlights` array (3-5 items, can be 0 if nothing impressive today).
 Each highlight needs:
 - `source`, `title`, `title_ja`, `url`
 - `hot_take_ja` — 2-3 sentences explaining why this matters, written so it could be material for an X tweet. Have a clear angle/perspective, not just a translation.
+- `detail_ja` — 6-10 sentence deep-dive in Japanese: what the finding/event is, how it works, what's surprising, what the implications are. Accurate and educational.
+- `detail_en` — same content in English.
+- `key_points_ja` — array of 4-6 short Japanese bullet points (~30 chars each).
+- `key_points_en` — array of 4-6 short English bullet points.
+
+These power the per-highlight detail page (`highlight.html?d=DATE&i=INDEX`). The card on the index page links there; the detail page shows the longer bilingual explanation plus buttons back to the original source.
 
 **Selection criteria**: subjective, impact-focused. Look for items that are:
 - Surprising or counter-intuitive
@@ -49,7 +55,7 @@ The pattern: write a Python script (`scripts/enrich_today.py`) that reads the ra
 ```
 python3 scripts/build_page.py
 ```
-This injects `data/*.json` (excluding `raw-*.json`) into `template.html` and writes `index.html`.
+This injects `data/*.json` (excluding `raw-*.json`) into both `template.html` and `template_highlight.html`, writing `index.html` (main feed) and `highlight.html` (per-highlight detail page).
 
 ### 7. Commit and push
 ```
@@ -62,9 +68,10 @@ GitHub Pages serves `index.html` from main automatically.
 
 ## File map
 
-- `template.html` — page HTML/CSS/JS (don't edit per-day; only when changing design)
+- `template.html` — main feed HTML/CSS/JS (don't edit per-day; only when changing design)
+- `template_highlight.html` — per-highlight detail page template
 - `scripts/fetch_all.py` — fetches from all 5 sources, writes raw JSON
-- `scripts/build_page.py` — injects enriched JSON into template
+- `scripts/build_page.py` — injects enriched JSON into both templates
 - `scripts/enrich_today.py` — example enrichment script (overwrite each day)
 - `data/YYYY-MM-DD.json` — enriched daily data (kept 14 days)
 - `data/raw-YYYY-MM-DD.json` — raw pre-enrichment data (transient)
