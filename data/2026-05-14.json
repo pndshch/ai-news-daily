@@ -1,6 +1,6 @@
 {
   "date": "2026-05-14",
-  "generated_at": "2026-05-14T14:42:19Z",
+  "generated_at": "2026-05-14T14:44:56Z",
   "sources": {
     "arxiv": [
       {
@@ -1023,8 +1023,8 @@
         "id": "48130950",
         "title": "Claude for Small Business",
         "url": "https://www.anthropic.com/news/claude-for-small-business",
-        "points": 406,
-        "comments": 372,
+        "points": 407,
+        "comments": 373,
         "comments_url": "https://news.ycombinator.com/item?id=48130950",
         "author": "neilfrndes",
         "created_at": "2026-05-14T03:59:35Z"
@@ -1044,7 +1044,7 @@
         "title": "The US is winning the AI race where it matters most: commercialization",
         "url": "https://avkcode.github.io/blog/us-winning-ai-race.html",
         "points": 223,
-        "comments": 626,
+        "comments": 627,
         "comments_url": "https://news.ycombinator.com/item?id=48121929",
         "author": "akrylov",
         "created_at": "2026-05-13T13:53:53Z"
@@ -1053,8 +1053,8 @@
         "id": "48132488",
         "title": "Rewrite Bun in Rust has been merged",
         "url": "https://github.com/oven-sh/bun/pull/30412",
-        "points": 190,
-        "comments": 183,
+        "points": 192,
+        "comments": 185,
         "comments_url": "https://news.ycombinator.com/item?id=48132488",
         "author": "Chaoses",
         "created_at": "2026-05-14T08:15:31Z"
@@ -1073,7 +1073,7 @@
         "id": "48130679",
         "title": "A Claude Code and Codex Skill for Deliberate Skill Development",
         "url": "https://github.com/DrCatHicks/learning-opportunities",
-        "points": 137,
+        "points": 138,
         "comments": 24,
         "comments_url": "https://news.ycombinator.com/item?id=48130679",
         "author": "cdrnsf",
@@ -1204,234 +1204,13 @@
         "title": "Claude Account Suspended Seconds After Purchase?",
         "url": "https://news.ycombinator.com/item?id=48134808",
         "points": 60,
-        "comments": 33,
+        "comments": 34,
         "comments_url": "https://news.ycombinator.com/item?id=48134808",
         "author": "AnthropicWHAT",
         "created_at": "2026-05-14T13:01:52Z"
       }
     ],
-    "reddit": [
-      {
-        "id": "1tbasiz",
-        "title": "I made an agentic \"Daily Brief\" for my kids with a receipt printer",
-        "url": "https://v.redd.it/20fmi4ed5r0h1",
-        "subreddit": "artificial",
-        "score": 683,
-        "comments": 245,
-        "comments_url": "https://www.reddit.com/r/artificial/comments/1tbasiz/i_made_an_agentic_daily_brief_for_my_kids_with_a/",
-        "author": "Boydbme",
-        "created_at": "2026-05-12T18:46:27Z"
-      },
-      {
-        "id": "1tca9sb",
-        "title": "AI helps man recover $400,000 in Bitcoin 11 years after he got high and forgot password",
-        "url": "https://www.dexerto.com/entertainment/ai-helps-man-recover-400000-in-bitcoin-11-years-after-he-got-high-and-forgot-password-3364678/",
-        "subreddit": "artificial",
-        "score": 427,
-        "comments": 53,
-        "comments_url": "https://www.reddit.com/r/artificial/comments/1tca9sb/ai_helps_man_recover_400000_in_bitcoin_11_years/",
-        "author": "IndicaOatmeal",
-        "created_at": "2026-05-13T19:33:36Z"
-      },
-      {
-        "id": "1tb5quh",
-        "title": "Google detects hackers using AI-generated code to bypass 2FA with zero-day vulnerability",
-        "url": "https://www.pcguide.com/news/google-detects-hackers-using-ai-generated-code-to-bypass-2fa-with-zero-day-vulnerability/",
-        "subreddit": "artificial",
-        "score": 163,
-        "comments": 17,
-        "comments_url": "https://www.reddit.com/r/artificial/comments/1tb5quh/google_detects_hackers_using_aigenerated_code_to/",
-        "author": "Odd-Onion-6776",
-        "created_at": "2026-05-12T15:54:03Z"
-      },
-      {
-        "id": "1tc1xr3",
-        "title": "Human-level performance via ML was *not* proven impossible with complexity theory [D]",
-        "url": "https://www.reddit.com/r/MachineLearning/comments/1tc1xr3/humanlevel_performance_via_ml_was_not_proven/",
-        "subreddit": "MachineLearning",
-        "score": 124,
-        "comments": 43,
-        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tc1xr3/humanlevel_performance_via_ml_was_not_proven/",
-        "author": "mike_uoftdcs",
-        "created_at": "2026-05-13T14:50:40Z"
-      },
-      {
-        "id": "1tc2qre",
-        "title": "AI transcriber for use by Ontario doctors 'hallucinated,' generated errors, auditor finds | CBC News",
-        "url": "https://www.cbc.ca/news/canada/toronto/ai-scribe-system-hallucinations-9.7197049?__vfz=medium%3Dsharebar",
-        "subreddit": "artificial",
-        "score": 122,
-        "comments": 45,
-        "comments_url": "https://www.reddit.com/r/artificial/comments/1tc2qre/ai_transcriber_for_use_by_ontario_doctors/",
-        "author": "One-Astronomer6166",
-        "created_at": "2026-05-13T15:19:24Z"
-      },
-      {
-        "id": "1tc1hq0",
-        "title": "Anthropic's new interpretability tool found Claude suspects it is being tested in 26% of benchmarks and never says so",
-        "url": "https://www.reddit.com/r/artificial/comments/1tc1hq0/anthropics_new_interpretability_tool_found_claude/",
-        "subreddit": "artificial",
-        "score": 97,
-        "comments": 43,
-        "comments_url": "https://www.reddit.com/r/artificial/comments/1tc1hq0/anthropics_new_interpretability_tool_found_claude/",
-        "author": "kamilc86",
-        "created_at": "2026-05-13T14:34:39Z"
-      },
-      {
-        "id": "1tb8k3n",
-        "title": "Steam Recommender using similarity! (Undergraduate Student Project) [P]",
-        "url": "https://www.reddit.com/gallery/1tb8k3n",
-        "subreddit": "MachineLearning",
-        "score": 89,
-        "comments": 16,
-        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tb8k3n/steam_recommender_using_similarity_undergraduate/",
-        "author": "Expensive-Ad8916",
-        "created_at": "2026-05-12T17:30:32Z"
-      },
-      {
-        "id": "1tchsrd",
-        "title": "I asked 4 AIs to pick a number. Why they all said 7?",
-        "url": "https://i.redd.it/gr9oe2iaxz0h1.jpeg",
-        "subreddit": "artificial",
-        "score": 76,
-        "comments": 117,
-        "comments_url": "https://www.reddit.com/r/artificial/comments/1tchsrd/i_asked_4_ais_to_pick_a_number_why_they_all_said_7/",
-        "author": "Ok-Contract6713",
-        "created_at": "2026-05-14T00:17:38Z"
-      },
-      {
-        "id": "1tbj96y",
-        "title": "How do you create memorable poster for top tier conferences ( ICML/ICLR/NEURips ect…) [D]",
-        "url": "https://www.reddit.com/r/MachineLearning/comments/1tbj96y/how_do_you_create_memorable_poster_for_top_tier/",
-        "subreddit": "MachineLearning",
-        "score": 49,
-        "comments": 25,
-        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbj96y/how_do_you_create_memorable_poster_for_top_tier/",
-        "author": "DazzlingPin3965",
-        "created_at": "2026-05-13T00:05:13Z"
-      },
-      {
-        "id": "1tc9e62",
-        "title": "'It's like we don't exist': Nearly 50,000 Lake Tahoe residents face power loss as utility redirects lines to data centers",
-        "url": "https://fortune.com/2026/05/12/lake-tahoe-data-center-49000-residents-power-source/",
-        "subreddit": "artificial",
-        "score": 49,
-        "comments": 5,
-        "comments_url": "https://www.reddit.com/r/artificial/comments/1tc9e62/its_like_we_dont_exist_nearly_50000_lake_tahoe/",
-        "author": "werea11madhere",
-        "created_at": "2026-05-13T19:03:39Z"
-      },
-      {
-        "id": "1tbxbfp",
-        "title": "Elastic Attention Cores for Scalable Vision Transformers [R]",
-        "url": "https://www.reddit.com/r/MachineLearning/comments/1tbxbfp/elastic_attention_cores_for_scalable_vision/",
-        "subreddit": "MachineLearning",
-        "score": 30,
-        "comments": 13,
-        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbxbfp/elastic_attention_cores_for_scalable_vision/",
-        "author": "44seconds",
-        "created_at": "2026-05-13T11:51:30Z"
-      },
-      {
-        "id": "1tc16zk",
-        "title": "Built Support Vector Machine(SVM) from scratch in Rust [P]",
-        "url": "https://www.reddit.com/r/MachineLearning/comments/1tc16zk/built_support_vector_machinesvm_from_scratch_in/",
-        "subreddit": "MachineLearning",
-        "score": 28,
-        "comments": 4,
-        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tc16zk/built_support_vector_machinesvm_from_scratch_in/",
-        "author": "Yeet132416",
-        "created_at": "2026-05-13T14:23:55Z"
-      },
-      {
-        "id": "1tcvk8s",
-        "title": "Would a 2000-2021 ML paper even get accepted today? [D]",
-        "url": "https://www.reddit.com/r/MachineLearning/comments/1tcvk8s/would_a_20002021_ml_paper_even_get_accepted_today/",
-        "subreddit": "MachineLearning",
-        "score": 17,
-        "comments": 22,
-        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tcvk8s/would_a_20002021_ml_paper_even_get_accepted_today/",
-        "author": "Hope999991",
-        "created_at": "2026-05-14T11:39:51Z"
-      },
-      {
-        "id": "1tcemdg",
-        "title": "Trained transformer-based chess models to play like humans (including thinking time) [P]",
-        "url": "https://www.reddit.com/r/MachineLearning/comments/1tcemdg/trained_transformerbased_chess_models_to_play/",
-        "subreddit": "MachineLearning",
-        "score": 15,
-        "comments": 7,
-        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tcemdg/trained_transformerbased_chess_models_to_play/",
-        "author": "hazard02",
-        "created_at": "2026-05-13T22:08:51Z"
-      },
-      {
-        "id": "1tcu7w5",
-        "title": "AWS user hit with 30000 dollar bill after Claude runaway on Bedrock",
-        "url": "https://www.reddit.com/r/artificial/comments/1tcu7w5/aws_user_hit_with_30000_dollar_bill_after_claude/",
-        "subreddit": "artificial",
-        "score": 15,
-        "comments": 10,
-        "comments_url": "https://www.reddit.com/r/artificial/comments/1tcu7w5/aws_user_hit_with_30000_dollar_bill_after_claude/",
-        "author": "petburiraja",
-        "created_at": "2026-05-14T10:35:03Z"
-      },
-      {
-        "id": "1tbhwbn",
-        "title": "I created a minimal one-file implementations (160loc) of JEPA family (ijepa, vjepa, vjepa2, cjepa) for educational purposes [P]",
-        "url": "https://www.reddit.com/r/MachineLearning/comments/1tbhwbn/i_created_a_minimal_onefile_implementations/",
-        "subreddit": "MachineLearning",
-        "score": 14,
-        "comments": 3,
-        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbhwbn/i_created_a_minimal_onefile_implementations/",
-        "author": "kwk236",
-        "created_at": "2026-05-12T23:08:34Z"
-      },
-      {
-        "id": "1tca35z",
-        "title": "Data centers could account for up to 9% of Texas water use by 2040, UT Austin report finds",
-        "url": "https://www.kut.org/energy-environment/2026-05-11/data-centers-could-account-for-up-to-9-of-texas-water-use-by-2040-ut-austin-report-finds",
-        "subreddit": "artificial",
-        "score": 14,
-        "comments": 2,
-        "comments_url": "https://www.reddit.com/r/artificial/comments/1tca35z/data_centers_could_account_for_up_to_9_of_texas/",
-        "author": "esporx",
-        "created_at": "2026-05-13T19:27:07Z"
-      },
-      {
-        "id": "1tc91ok",
-        "title": "Have the \"on-hold\" durations been getting longer for arXiv submissions? [D]",
-        "url": "https://www.reddit.com/r/MachineLearning/comments/1tc91ok/have_the_onhold_durations_been_getting_longer_for/",
-        "subreddit": "MachineLearning",
-        "score": 13,
-        "comments": 6,
-        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tc91ok/have_the_onhold_durations_been_getting_longer_for/",
-        "author": "Megixist",
-        "created_at": "2026-05-13T18:51:42Z"
-      },
-      {
-        "id": "1tckme5",
-        "title": "Question: Are AI referrals actually better than Google traffic?",
-        "url": "https://www.reddit.com/r/artificial/comments/1tckme5/question_are_ai_referrals_actually_better_than/",
-        "subreddit": "artificial",
-        "score": 12,
-        "comments": 15,
-        "comments_url": "https://www.reddit.com/r/artificial/comments/1tckme5/question_are_ai_referrals_actually_better_than/",
-        "author": "houmanasefiau",
-        "created_at": "2026-05-14T02:19:19Z"
-      },
-      {
-        "id": "1tbvsxo",
-        "title": "Learning, Fast and Slow: Towards LLMs That Adapt Continually [R]",
-        "url": "https://www.reddit.com/r/MachineLearning/comments/1tbvsxo/learning_fast_and_slow_towards_llms_that_adapt/",
-        "subreddit": "MachineLearning",
-        "score": 11,
-        "comments": 4,
-        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbvsxo/learning_fast_and_slow_towards_llms_that_adapt/",
-        "author": "LakshyAAAgrawal",
-        "created_at": "2026-05-13T10:38:40Z"
-      }
-    ],
+    "reddit": [],
     "github": [
       {
         "name": "openhuman",
@@ -1439,9 +1218,9 @@
         "description": "Your Personal AI super intelligence. Private, Simple and extremely powerful.",
         "url": "https://github.com/tinyhumansai/openhuman",
         "language": "Rust",
-        "stars": 7303,
+        "stars": 7304,
         "stars_today": 3476,
-        "forks": 580
+        "forks": 581
       },
       {
         "name": "skills",
@@ -1449,9 +1228,9 @@
         "description": "Skills for Real Engineers. Straight from my .claude directory.",
         "url": "https://github.com/mattpocock/skills",
         "language": "Shell",
-        "stars": 81200,
+        "stars": 81209,
         "stars_today": 2971,
-        "forks": 7002
+        "forks": 7004
       },
       {
         "name": "agentmemory",
@@ -1469,7 +1248,7 @@
         "description": "An agentic skills framework & software development methodology that works.",
         "url": "https://github.com/obra/superpowers",
         "language": "Shell",
-        "stars": 190747,
+        "stars": 190752,
         "stars_today": 1801,
         "forks": 16956
       },
@@ -1479,7 +1258,7 @@
         "description": "A set of ready to use Agent Skills for research, science, engineering, analysis, finance and writing.",
         "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
         "language": "Python",
-        "stars": 21574,
+        "stars": 21577,
         "stars_today": 637,
         "forks": 2361
       },
@@ -1489,7 +1268,7 @@
         "description": "Agent for collecting, processing, aggregating, and writing metrics, logs, and other arbitrary data.",
         "url": "https://github.com/influxdata/telegraf",
         "language": "Go",
-        "stars": 17132,
+        "stars": 17133,
         "stars_today": 211,
         "forks": 5788
       },
@@ -1499,7 +1278,7 @@
         "description": "We write your reusable computer vision tools. 💜",
         "url": "https://github.com/roboflow/supervision",
         "language": "Python",
-        "stars": 38755,
+        "stars": 38757,
         "stars_today": 59,
         "forks": 3476
       },
@@ -1509,7 +1288,7 @@
         "description": "Suite of reference architectures for building GPU-accelerated vision agents and AI-powered video analytics applications.",
         "url": "https://github.com/NVIDIA-AI-Blueprints/video-search-and-summarization",
         "language": "Python",
-        "stars": 722,
+        "stars": 723,
         "stars_today": 28,
         "forks": 239
       }
@@ -1625,9 +1404,9 @@
   "stats": {
     "arxiv_count": 50,
     "hn_count": 20,
-    "reddit_count": 20,
+    "reddit_count": 0,
     "github_count": 8,
     "blogs_count": 15,
-    "total": 113
+    "total": 93
   }
 }
