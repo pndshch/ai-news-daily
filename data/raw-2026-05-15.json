@@ -1,6 +1,6 @@
 {
-  "date": "2026-05-14",
-  "generated_at": "2026-05-14T15:01:23Z",
+  "date": "2026-05-15",
+  "generated_at": "2026-05-14T15:31:33Z",
   "sources": {
     "arxiv": [
       {
@@ -1014,7 +1014,7 @@
         "title": "Leaving GitHub for Forgejo",
         "url": "https://jorijn.com/en/blog/leaving-github-for-forgejo/",
         "points": 605,
-        "comments": 320,
+        "comments": 322,
         "comments_url": "https://news.ycombinator.com/item?id=48121266",
         "author": "jorijn",
         "created_at": "2026-05-13T12:54:00Z"
@@ -1023,8 +1023,8 @@
         "id": "48130950",
         "title": "Claude for Small Business",
         "url": "https://www.anthropic.com/news/claude-for-small-business",
-        "points": 416,
-        "comments": 381,
+        "points": 432,
+        "comments": 396,
         "comments_url": "https://news.ycombinator.com/item?id=48130950",
         "author": "neilfrndes",
         "created_at": "2026-05-14T03:59:35Z"
@@ -1033,7 +1033,7 @@
         "id": "48128003",
         "title": "Tell HN: Dont use Claude Design, lost access to my projects after unsubscribing",
         "url": "https://news.ycombinator.com/item?id=48128003",
-        "points": 276,
+        "points": 277,
         "comments": 77,
         "comments_url": "https://news.ycombinator.com/item?id=48128003",
         "author": "pycassa",
@@ -1043,8 +1043,8 @@
         "id": "48121929",
         "title": "The US is winning the AI race where it matters most: commercialization",
         "url": "https://avkcode.github.io/blog/us-winning-ai-race.html",
-        "points": 226,
-        "comments": 631,
+        "points": 227,
+        "comments": 633,
         "comments_url": "https://news.ycombinator.com/item?id=48121929",
         "author": "akrylov",
         "created_at": "2026-05-13T13:53:53Z"
@@ -1053,8 +1053,8 @@
         "id": "48132488",
         "title": "Rewrite Bun in Rust has been merged",
         "url": "https://github.com/oven-sh/bun/pull/30412",
-        "points": 197,
-        "comments": 192,
+        "points": 203,
+        "comments": 201,
         "comments_url": "https://news.ycombinator.com/item?id=48132488",
         "author": "Chaoses",
         "created_at": "2026-05-14T08:15:31Z"
@@ -1064,7 +1064,7 @@
         "title": "Meta won't let you block its AI account on Threads",
         "url": "https://www.theverge.com/tech/929091/meta-ai-threads-account-block",
         "points": 184,
-        "comments": 76,
+        "comments": 77,
         "comments_url": "https://news.ycombinator.com/item?id=48126981",
         "author": "logickkk1",
         "created_at": "2026-05-13T20:22:21Z"
@@ -1073,8 +1073,8 @@
         "id": "48130679",
         "title": "A Claude Code and Codex Skill for Deliberate Skill Development",
         "url": "https://github.com/DrCatHicks/learning-opportunities",
-        "points": 141,
-        "comments": 27,
+        "points": 153,
+        "comments": 29,
         "comments_url": "https://news.ycombinator.com/item?id=48130679",
         "author": "cdrnsf",
         "created_at": "2026-05-14T03:13:31Z"
@@ -1104,7 +1104,7 @@
         "title": "Launch HN: Ardent (YC P26) – Postgres sandboxes in seconds with zero migration",
         "url": "https://www.tryardent.com/",
         "points": 94,
-        "comments": 39,
+        "comments": 43,
         "comments_url": "https://news.ycombinator.com/item?id=48124436",
         "author": "vc289",
         "created_at": "2026-05-13T16:54:03Z"
@@ -1113,8 +1113,8 @@
         "id": "48129561",
         "title": "The other half of AI safety",
         "url": "https://personalaisafety.com/p/the-other-half-of-ai-safety",
-        "points": 91,
-        "comments": 115,
+        "points": 92,
+        "comments": 116,
         "comments_url": "https://news.ycombinator.com/item?id=48129561",
         "author": "sofiaqt",
         "created_at": "2026-05-14T00:27:20Z"
@@ -1130,6 +1130,36 @@
         "created_at": "2026-05-13T19:59:35Z"
       },
       {
+        "id": "48135782",
+        "title": "Meta's New Reality: Record High Profits. Record Low Morale",
+        "url": "https://www.wired.com/story/meta-layoffs-bad-vibes-mark-zuckerberg-ai/",
+        "points": 87,
+        "comments": 79,
+        "comments_url": "https://news.ycombinator.com/item?id=48135782",
+        "author": "rustoo",
+        "created_at": "2026-05-14T14:17:12Z"
+      },
+      {
+        "id": "48134429",
+        "title": "Sam Altman's Business Dealings Under GOP Scrutiny Ahead of OpenAI's IPO",
+        "url": "https://www.wsj.com/tech/ai/sam-altmans-business-dealings-under-gop-scrutiny-ahead-of-openais-ipo-52c1cc4d",
+        "points": 87,
+        "comments": 66,
+        "comments_url": "https://news.ycombinator.com/item?id=48134429",
+        "author": "1vuio0pswjnm7",
+        "created_at": "2026-05-14T12:27:29Z"
+      },
+      {
+        "id": "48130186",
+        "title": "Show HN: Nibble",
+        "url": "https://github.com/glouw/nibble",
+        "points": 85,
+        "comments": 22,
+        "comments_url": "https://news.ycombinator.com/item?id=48130186",
+        "author": "glouwbug",
+        "created_at": "2026-05-14T01:46:45Z"
+      },
+      {
         "id": "48127815",
         "title": "Medicare's new payment model is built for AI. Most of the tech world has no idea",
         "url": "https://techcrunch.com/2026/05/12/medicares-new-payment-model-is-built-for-ai-and-most-of-the-tech-world-has-no-idea/",
@@ -1140,14 +1170,14 @@
         "created_at": "2026-05-13T21:24:14Z"
       },
       {
-        "id": "48130186",
-        "title": "Show HN: Nibble",
-        "url": "https://github.com/glouw/nibble",
-        "points": 79,
-        "comments": 21,
-        "comments_url": "https://news.ycombinator.com/item?id=48130186",
-        "author": "glouwbug",
-        "created_at": "2026-05-14T01:46:45Z"
+        "id": "48122954",
+        "title": "The limits of Rust, or why you should probably not follow Amazon and Cloudflare",
+        "url": "https://kerkour.com/the-limits-of-rust",
+        "points": 78,
+        "comments": 76,
+        "comments_url": "https://news.ycombinator.com/item?id=48122954",
+        "author": "randomint64",
+        "created_at": "2026-05-13T15:09:52Z"
       },
       {
         "id": "48122624",
@@ -1160,50 +1190,20 @@
         "created_at": "2026-05-13T14:44:41Z"
       },
       {
-        "id": "48122954",
-        "title": "The limits of Rust, or why you should probably not follow Amazon and Cloudflare",
-        "url": "https://kerkour.com/the-limits-of-rust",
-        "points": 76,
-        "comments": 75,
-        "comments_url": "https://news.ycombinator.com/item?id=48122954",
-        "author": "randomint64",
-        "created_at": "2026-05-13T15:09:52Z"
-      },
-      {
-        "id": "48134429",
-        "title": "Sam Altman's Business Dealings Under GOP Scrutiny Ahead of OpenAI's IPO",
-        "url": "https://www.wsj.com/tech/ai/sam-altmans-business-dealings-under-gop-scrutiny-ahead-of-openais-ipo-52c1cc4d",
-        "points": 70,
-        "comments": 46,
-        "comments_url": "https://news.ycombinator.com/item?id=48134429",
-        "author": "1vuio0pswjnm7",
-        "created_at": "2026-05-14T12:27:29Z"
-      },
-      {
         "id": "48120514",
         "title": "Composer leaks contents of tokens configured as GitHub OAuth tokens",
         "url": "https://github.com/composer/composer/security/advisories/GHSA-f9f8-rm49-7jv2",
-        "points": 68,
+        "points": 69,
         "comments": 27,
         "comments_url": "https://news.ycombinator.com/item?id=48120514",
         "author": "damienwebdev",
         "created_at": "2026-05-13T11:26:33Z"
       },
       {
-        "id": "48134400",
-        "title": "What happens when you post a real Monet and say it's AI?",
-        "url": "https://twitter.com/jediwolf/status/2054776716770320631",
-        "points": 66,
-        "comments": 58,
-        "comments_url": "https://news.ycombinator.com/item?id=48134400",
-        "author": "nailer",
-        "created_at": "2026-05-14T12:23:27Z"
-      },
-      {
         "id": "48130711",
         "title": "Arena AI Model ELO History",
         "url": "https://mayerwin.github.io/AI-Arena-History/",
-        "points": 66,
+        "points": 67,
         "comments": 53,
         "comments_url": "https://news.ycombinator.com/item?id=48130711",
         "author": "mayerwin",
@@ -1216,7 +1216,7 @@
         "title": "I made an agentic \"Daily Brief\" for my kids with a receipt printer",
         "url": "https://v.redd.it/20fmi4ed5r0h1",
         "subreddit": "artificial",
-        "score": 682,
+        "score": 688,
         "comments": 245,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tbasiz/i_made_an_agentic_daily_brief_for_my_kids_with_a/",
         "author": "Boydbme",
@@ -1227,7 +1227,7 @@
         "title": "AI helps man recover $400,000 in Bitcoin 11 years after he got high and forgot password",
         "url": "https://www.dexerto.com/entertainment/ai-helps-man-recover-400000-in-bitcoin-11-years-after-he-got-high-and-forgot-password-3364678/",
         "subreddit": "artificial",
-        "score": 433,
+        "score": 440,
         "comments": 53,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tca9sb/ai_helps_man_recover_400000_in_bitcoin_11_years/",
         "author": "IndicaOatmeal",
@@ -1249,7 +1249,7 @@
         "title": "Human-level performance via ML was *not* proven impossible with complexity theory [D]",
         "url": "https://www.reddit.com/r/MachineLearning/comments/1tc1xr3/humanlevel_performance_via_ml_was_not_proven/",
         "subreddit": "MachineLearning",
-        "score": 126,
+        "score": 124,
         "comments": 44,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tc1xr3/humanlevel_performance_via_ml_was_not_proven/",
         "author": "mike_uoftdcs",
@@ -1260,7 +1260,7 @@
         "title": "AI transcriber for use by Ontario doctors 'hallucinated,' generated errors, auditor finds | CBC News",
         "url": "https://www.cbc.ca/news/canada/toronto/ai-scribe-system-hallucinations-9.7197049?__vfz=medium%3Dsharebar",
         "subreddit": "artificial",
-        "score": 121,
+        "score": 124,
         "comments": 45,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tc2qre/ai_transcriber_for_use_by_ontario_doctors/",
         "author": "One-Astronomer6166",
@@ -1272,7 +1272,7 @@
         "url": "https://www.reddit.com/r/artificial/comments/1tc1hq0/anthropics_new_interpretability_tool_found_claude/",
         "subreddit": "artificial",
         "score": 100,
-        "comments": 43,
+        "comments": 44,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tc1hq0/anthropics_new_interpretability_tool_found_claude/",
         "author": "kamilc86",
         "created_at": "2026-05-13T14:34:39Z"
@@ -1282,7 +1282,7 @@
         "title": "Steam Recommender using similarity! (Undergraduate Student Project) [P]",
         "url": "https://www.reddit.com/gallery/1tb8k3n",
         "subreddit": "MachineLearning",
-        "score": 86,
+        "score": 91,
         "comments": 16,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tb8k3n/steam_recommender_using_similarity_undergraduate/",
         "author": "Expensive-Ad8916",
@@ -1293,8 +1293,8 @@
         "title": "I asked 4 AIs to pick a number. Why they all said 7?",
         "url": "https://i.redd.it/gr9oe2iaxz0h1.jpeg",
         "subreddit": "artificial",
-        "score": 76,
-        "comments": 121,
+        "score": 74,
+        "comments": 126,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tchsrd/i_asked_4_ais_to_pick_a_number_why_they_all_said_7/",
         "author": "Ok-Contract6713",
         "created_at": "2026-05-14T00:17:38Z"
@@ -1304,8 +1304,8 @@
         "title": "'It's like we don't exist': Nearly 50,000 Lake Tahoe residents face power loss as utility redirects lines to data centers",
         "url": "https://fortune.com/2026/05/12/lake-tahoe-data-center-49000-residents-power-source/",
         "subreddit": "artificial",
-        "score": 50,
-        "comments": 5,
+        "score": 53,
+        "comments": 6,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tc9e62/its_like_we_dont_exist_nearly_50000_lake_tahoe/",
         "author": "werea11madhere",
         "created_at": "2026-05-13T19:03:39Z"
@@ -1315,7 +1315,7 @@
         "title": "How do you create memorable poster for top tier conferences ( ICML/ICLR/NEURips ect…) [D]",
         "url": "https://www.reddit.com/r/MachineLearning/comments/1tbj96y/how_do_you_create_memorable_poster_for_top_tier/",
         "subreddit": "MachineLearning",
-        "score": 49,
+        "score": 47,
         "comments": 25,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbj96y/how_do_you_create_memorable_poster_for_top_tier/",
         "author": "DazzlingPin3965",
@@ -1326,7 +1326,7 @@
         "title": "Elastic Attention Cores for Scalable Vision Transformers [R]",
         "url": "https://www.reddit.com/r/MachineLearning/comments/1tbxbfp/elastic_attention_cores_for_scalable_vision/",
         "subreddit": "MachineLearning",
-        "score": 32,
+        "score": 35,
         "comments": 13,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbxbfp/elastic_attention_cores_for_scalable_vision/",
         "author": "44seconds",
@@ -1337,33 +1337,44 @@
         "title": "Built Support Vector Machine(SVM) from scratch in Rust [P]",
         "url": "https://www.reddit.com/r/MachineLearning/comments/1tc16zk/built_support_vector_machinesvm_from_scratch_in/",
         "subreddit": "MachineLearning",
-        "score": 30,
+        "score": 32,
         "comments": 4,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tc16zk/built_support_vector_machinesvm_from_scratch_in/",
         "author": "Yeet132416",
         "created_at": "2026-05-13T14:23:55Z"
       },
       {
+        "id": "1tcu7w5",
+        "title": "AWS user hit with 30000 dollar bill after Claude runaway on Bedrock",
+        "url": "https://www.reddit.com/r/artificial/comments/1tcu7w5/aws_user_hit_with_30000_dollar_bill_after_claude/",
+        "subreddit": "artificial",
+        "score": 20,
+        "comments": 12,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tcu7w5/aws_user_hit_with_30000_dollar_bill_after_claude/",
+        "author": "petburiraja",
+        "created_at": "2026-05-14T10:35:03Z"
+      },
+      {
         "id": "1tcvk8s",
         "title": "Would a 2000-2021 ML paper even get accepted today? [D]",
         "url": "https://www.reddit.com/r/MachineLearning/comments/1tcvk8s/would_a_20002021_ml_paper_even_get_accepted_today/",
         "subreddit": "MachineLearning",
-        "score": 19,
-        "comments": 23,
+        "score": 17,
+        "comments": 28,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tcvk8s/would_a_20002021_ml_paper_even_get_accepted_today/",
         "author": "Hope999991",
         "created_at": "2026-05-14T11:39:51Z"
       },
       {
-        "id": "1tcu7w5",
-        "title": "AWS user hit with 30000 dollar bill after Claude runaway on Bedrock",
-        "url": "https://www.reddit.com/r/artificial/comments/1tcu7w5/aws_user_hit_with_30000_dollar_bill_after_claude/",
-        "subreddit": "artificial",
+        "id": "1tbhwbn",
+        "title": "I created a minimal one-file implementations (160loc) of JEPA family (ijepa, vjepa, vjepa2, cjepa) for educational purposes [P]",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1tbhwbn/i_created_a_minimal_onefile_implementations/",
+        "subreddit": "MachineLearning",
         "score": 17,
-        "comments": 11,
-        "comments_url": "https://www.reddit.com/r/artificial/comments/1tcu7w5/aws_user_hit_with_30000_dollar_bill_after_claude/",
-        "author": "petburiraja",
-        "created_at": "2026-05-14T10:35:03Z"
+        "comments": 3,
+        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbhwbn/i_created_a_minimal_onefile_implementations/",
+        "author": "kwk236",
+        "created_at": "2026-05-12T23:08:34Z"
       },
       {
         "id": "1tcemdg",
@@ -1375,17 +1386,6 @@
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tcemdg/trained_transformerbased_chess_models_to_play/",
         "author": "hazard02",
         "created_at": "2026-05-13T22:08:51Z"
-      },
-      {
-        "id": "1tbhwbn",
-        "title": "I created a minimal one-file implementations (160loc) of JEPA family (ijepa, vjepa, vjepa2, cjepa) for educational purposes [P]",
-        "url": "https://www.reddit.com/r/MachineLearning/comments/1tbhwbn/i_created_a_minimal_onefile_implementations/",
-        "subreddit": "MachineLearning",
-        "score": 15,
-        "comments": 3,
-        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbhwbn/i_created_a_minimal_onefile_implementations/",
-        "author": "kwk236",
-        "created_at": "2026-05-12T23:08:34Z"
       },
       {
         "id": "1tc91ok",
@@ -1414,7 +1414,7 @@
         "title": "Learning, Fast and Slow: Towards LLMs That Adapt Continually [R]",
         "url": "https://www.reddit.com/r/MachineLearning/comments/1tbvsxo/learning_fast_and_slow_towards_llms_that_adapt/",
         "subreddit": "MachineLearning",
-        "score": 11,
+        "score": 12,
         "comments": 4,
         "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tbvsxo/learning_fast_and_slow_towards_llms_that_adapt/",
         "author": "LakshyAAAgrawal",
@@ -1425,7 +1425,7 @@
         "title": "Question: Are AI referrals actually better than Google traffic?",
         "url": "https://www.reddit.com/r/artificial/comments/1tckme5/question_are_ai_referrals_actually_better_than/",
         "subreddit": "artificial",
-        "score": 10,
+        "score": 12,
         "comments": 15,
         "comments_url": "https://www.reddit.com/r/artificial/comments/1tckme5/question_are_ai_referrals_actually_better_than/",
         "author": "houmanasefiau",
@@ -1439,9 +1439,9 @@
         "description": "Your Personal AI super intelligence. Private, Simple and extremely powerful.",
         "url": "https://github.com/tinyhumansai/openhuman",
         "language": "Rust",
-        "stars": 7327,
+        "stars": 7365,
         "stars_today": 3476,
-        "forks": 587
+        "forks": 591
       },
       {
         "name": "skills",
@@ -1449,9 +1449,9 @@
         "description": "Skills for Real Engineers. Straight from my .claude directory.",
         "url": "https://github.com/mattpocock/skills",
         "language": "Shell",
-        "stars": 81268,
+        "stars": 81349,
         "stars_today": 2971,
-        "forks": 7010
+        "forks": 7018
       },
       {
         "name": "agentmemory",
@@ -1459,9 +1459,9 @@
         "description": "#1 Persistent memory for AI coding agents based on real-world benchmarks",
         "url": "https://github.com/rohitg00/agentmemory",
         "language": "TypeScript",
-        "stars": 8714,
+        "stars": 8740,
         "stars_today": 1978,
-        "forks": 722
+        "forks": 725
       },
       {
         "name": "superpowers",
@@ -1469,9 +1469,9 @@
         "description": "An agentic skills framework & software development methodology that works.",
         "url": "https://github.com/obra/superpowers",
         "language": "Shell",
-        "stars": 190777,
+        "stars": 190817,
         "stars_today": 1801,
-        "forks": 16958
+        "forks": 16963
       },
       {
         "name": "scientific-agent-skills",
@@ -1479,9 +1479,9 @@
         "description": "A set of ready to use Agent Skills for research, science, engineering, analysis, finance and writing.",
         "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
         "language": "Python",
-        "stars": 21591,
+        "stars": 21609,
         "stars_today": 637,
-        "forks": 2362
+        "forks": 2363
       },
       {
         "name": "telegraf",
@@ -1489,9 +1489,9 @@
         "description": "Agent for collecting, processing, aggregating, and writing metrics, logs, and other arbitrary data.",
         "url": "https://github.com/influxdata/telegraf",
         "language": "Go",
-        "stars": 17136,
+        "stars": 17140,
         "stars_today": 211,
-        "forks": 5788
+        "forks": 5789
       },
       {
         "name": "supervision",
@@ -1499,7 +1499,7 @@
         "description": "We write your reusable computer vision tools. 💜",
         "url": "https://github.com/roboflow/supervision",
         "language": "Python",
-        "stars": 38760,
+        "stars": 38769,
         "stars_today": 59,
         "forks": 3476
       },
@@ -1509,7 +1509,7 @@
         "description": "Suite of reference architectures for building GPU-accelerated vision agents and AI-powered video analytics applications.",
         "url": "https://github.com/NVIDIA-AI-Blueprints/video-search-and-summarization",
         "language": "Python",
-        "stars": 727,
+        "stars": 731,
         "stars_today": 28,
         "forks": 239
       }
