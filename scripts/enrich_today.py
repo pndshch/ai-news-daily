@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Enrichment for 2026-05-20 (fresh page).
+"""Enrichment for 2026-05-21 (fresh page).
 
 arXiv set is fully new (50 items, all translated below).
 HN/Reddit/GitHub/blogs reuse prior Japanese translations for overlapping
-URLs (from data/2026-05-19.json) and translate new items inline.
+URLs (from data/2026-05-20.json) and translate new items inline.
 Five fresh highlights are selected for the day.
 """
 import json
 from pathlib import Path
 
-DATE = "2026-05-20"
-PREV = "2026-05-19"
+DATE = "2026-05-21"
+PREV = "2026-05-20"
 ROOT = Path(__file__).resolve().parent.parent
 SRC_RAW = ROOT / "data" / f"raw-{DATE}.json"
 SRC_PREV = ROOT / "data" / f"{PREV}.json"
@@ -29,277 +29,343 @@ for src in ("hn", "reddit", "github", "blogs"):
 
 # ─── arXiv translations (id → title_ja, summary_ja) ───
 arxiv_map = {
-    "2605.20185v1": (
-        "PiG-Avatar: 階層的ニューラルフィールド誘導ガウシアンアバター",
-        "既存のガウシアンアバターは体テンプレート表面にジオメトリを乗せるため、衣服など体から離れた非剛体形状を捉えにくい。パラメトリック体モデルを運動伝達のみに使い、連続ニューラルフィールドが支配する正準ボリューム空間にガウシアンを固定して表現とテンプレートを分離する。"),
-    "2605.20183v1": (
-        "MSAVBench: マルチショット音声・動画生成の包括的・信頼性ある評価へ",
-        "動画生成が単一ショットから複数ショットの音声付き物語へ進む中、最先端モデルの評価手法が追いついていない。複数ショット音声動画生成を体系的に評価する初の包括ベンチマークと適応型ハイブリッド評価枠組みを提案する。"),
-    "2605.20182v1": (
-        "思考の原子: マイクロステートによる汎用EEG表現学習",
-        "脳波(EEG)を時系列信号として扱う従来法に対し、脳活動の微小時間スケールの構成要素である「マイクロステート」に着目。汎用マイクロステートトークナイザを構築し、BCI向けの転移可能な表現を学習する。"),
-    "2605.20179v1": (
-        "TIDE: I/O考慮のエキスパートオフロードによる高効率・無損失なMoE拡散LLM推論",
-        "拡散型LLM(dLLM)はMoE化でスケールするが、リソース制約デバイスへの展開が課題。I/Oを考慮したエキスパートのオフロードで、無損失かつ効率的な推論を実現する。"),
-    "2605.20177v1": (
-        "見ることから考えることへ: 知覚と推論の分離がVLMの事後学習を改善",
-        "VLMの視覚タスク性能は推論力よりも視覚知覚の不足に律速されると指摘。視覚知覚・視覚推論・テキスト推論の3段階に分けて学習し、知覚を独立に鍛えることで改善する。"),
-    "2605.20176v1": (
-        "ClinSeekAgent: エージェント的臨床推論のためのマルチモーダル証拠探索の自動化",
-        "既存研究は証拠が整理済みで手渡される前提だが、現実の臨床は能動的な証拠探索を要する。多様な情報源からマルチモーダル証拠を能動取得・計画・統合するエージェント枠組み。"),
-    "2605.20174v1": (
-        "画像改ざん箇所特定の多軸分析",
-        "生成AIで説得力のある画像改ざんが容易になり、誤情報拡散の脅威が増している。ドメイン・品質・種類・サイズの4観点で改ざん検出を評価するベンチマークAUDITSを提案する。"),
-    "2605.20173v1": (
-        "本番LLMエージェントの実行時アーキテクチャパターンの選定と合成の方法論",
-        "LLMの確率的出力と決定的システムの境界を「確率-決定境界(SDB)」と名付け、提案者・検証者・コミット・拒否信号の4要素契約として定式化。本番エージェント実行時設計の中核プリミティブと位置づける。"),
-    "2605.20172v1": (
-        "解集合プログラミングによる長期送電網計画",
-        "送電網の長期計画は位相的・組合せ的な不変条件を満たしつつ、十年単位の改修を扱う必要がある。Answer Set Programmingで供給継続性とサービス品質を保つ計画問題を定式化する。"),
-    "2605.20170v1": (
-        "KoRe: 大規模言語モデルのためのコンパクトな知識表現",
-        "LLMは世界知識をパラメータ内に暗黙符号化するため不透明で更新困難・幻覚を招きやすい。編集容易な知識グラフの利点を取り込んだコンパクトな知識表現を提案する。"),
-    "2605.20167v1": (
-        "HaorFloodAlert: バングラデシュ湿地の72時間洪水予測のための季節除去ML集成",
-        "バングラデシュのハオール湿地の鉄砲水は予兆なく稲作を壊滅させるが、河川型向けの既存システムでは捉えられない。気温という季節的な「ズル」を除いた機械学習集成で、72時間先の洪水確率を予測する。"),
-    "2605.20165v1": (
-        "CaMo: 視覚言語モデルのカメラ運動に基づく評価と訓練",
-        "VLMは空間QAで高得点だが、空間知能の鍵であるカメラ運動の理解を欠くと指摘。シーン意味とカメラ運動を明示的に語らせる評価枠組み「空間ナラティブスコア(SNS)」を提案する。"),
-    "2605.20164v1": (
-        "ルーブリックは等しく教えない: RLVRのためのポリシー考慮型ルーブリック報酬",
-        "ルーブリック報酬は基準ごとの人間が割り当てた重要度を使うが、最適化信号としての現在の有用性とは別物。両者を切り分けるポリシー考慮型の重み付けを提案する。"),
-    "2605.20159v1": (
-        "航空宇宙SiC/SiC複合材のX線CTにおける欠陥検出の解釈可能なコンピュータビジョン",
-        "航空宇宙複合材のX線CT検査は専門家の目視に依存し合否判断の追跡性が乏しい。プロトタイプ層を加えたp-ResNet-50で、高精度と事例ベースの説明を両立する。"),
-    "2605.20158v1": (
-        "大規模視覚言語モデルの胸部X線推論における視覚的帰属の再考",
-        "医療用LVLMの説明(視覚的帰属)が本当にモデルの判断根拠を反映しているかは未検証。胸部X線推論を対象に、説明の忠実性を検証する手法を構築する。"),
-    "2605.20157v1": (
-        "SAGE: 不正検知の確信的負例収集のためのスケーラブルな自動ゲーティング集成",
-        "音楽ストリーミングの再生水増し詐欺は、熱心なファンや睡眠音楽セッションなど正当な利用と紛らわしい。反実仮想を意識した負例収集で、確信度の高い正常例を選別する。"),
-    "2605.20151v1": (
-        "構造化された相互学習でモデル崩壊はいつ起きるか",
-        "生成AIの普及で、モデルが互いの合成出力を学習し合う環境が生まれた。学習データが対象母集団から外れ、モデル間の学習が相関する条件下で、モデル崩壊がいつ起きるかを理論的に解析する。"),
-    "2605.20150v1": (
-        "TideGS: コア外最適化による10億超の3Dガウシアンスプラッティングのスケーラブル学習",
-        "10億規模の3DGS学習は本質的にメモリ律速。GPUメモリを永続パラメータ表でなく可視ガウシアンの作業集合キャッシュとして使い、コア外最適化で大規模化する。"),
-    "2605.20149v1": (
-        "やり取りを減らす: 構造化プロンプトの比較研究",
-        "曖昧なプロンプトは低品質回答と追加のやり取りを生む。生プロンプト・チェックリスト改良・明確化質問の3条件を、ChatGPT・Claude・Grokで4タスク種にわたり比較する。"),
-    "2605.20147v1": (
-        "PixVerve: 大規模高品質データセットによる100MPネイティブ超高解像度画像生成",
-        "超高解像度(UHR)画像生成は高解像度コンテンツの希少性と複雑さが壁。9.5万件のオープンなUHRデータセットを構築し、100メガピクセル級のネイティブ生成を実現する。"),
-    "2605.20145v1": (
-        "ベイズ最適化のためのガウス過程の目的指向な下側裾キャリブレーション",
-        "ベイズ最適化のEIなど採択基準は予測分布の下側裾に依存し、その誤較正が探索-活用バランスを歪める。最小化目的に合わせ下側裾を較正する手法を研究する。"),
-    "2605.20138v1": (
-        "宇宙機の衝突回避のためのハミルトン-ヤコビ到達可能性解析",
-        "同一円軌道上の2衛星の衝突回避を、ハミルトン-ヤコビ到達可能性の枠組みで定式化。FCCの軌道基準に沿う最小離隔を不安全な状態集合として扱う。"),
-    "2605.20134v1": (
-        "TrajTok: 軌跡表現学習のための適応的空間トークン化",
-        "生のGPS軌跡は連続・ノイズ・不規則サンプリングで扱いにくい。GPS点の空間分布から多解像度の六角セル分割を学習し、転移可能な軌跡埋め込みを得る。"),
-    "2605.20132v1": (
-        "FiLark: 分散音響センシングのためのストリーミング優先ソフトウェア枠組み",
-        "分散音響センシング(DAS)はバッチ処理を超える超多チャンネルの連続データを生む。探索・注釈・アルゴリズム統合をストリーミング優先で行うPython枠組みを提案する。"),
-    "2605.20128v1": (
-        "MixRea: 大規模言語モデルの明示-暗黙推論のベンチマーク",
-        "人間の「非注意盲」に着想を得て、LLMが明示指示下で重要な文脈手掛かりを見落とすかを検証。2,246問の選択式問題からなるベンチマークを提案する。"),
-    "2605.20127v1": (
-        "予測精度を超えて: モデル-脳整合性評価のための標的空間回復プロファイル",
-        "視覚モデルを脳応答の予測精度だけで評価しても、脳応答空間のどの次元を捉えたかは分からない。予測が回復した応答次元を特定する統一的な評価枠組みを提案する。"),
-    "2605.20122v1": (
-        "ワッサースタイン距離推定の計算-統計ランタイムの最適化",
-        "二乗ワッサースタイン距離は分布間の差を測る常用ツールだが、低次元でも計算が標本数と精度に対し悪スケール。計算量と統計精度のトレードオフを最適化する。"),
-    "2605.20120v1": (
-        "Aristotle APIを使ったLean 4でのAI支援定理証明: バッタ問題の形式化事例",
-        "AI支援の定理証明はオリンピック級の数学のLean開発を生成できるが、実際に検証された宣言が何かが証拠的価値を左右する。IMO2009問6「バッタ問題」のLean 4形式化事例を報告する。"),
-    "2605.20119v1": (
-        "Toto 2.0: 時系列予測がスケーリング時代へ",
-        "時系列基盤モデルがスケールすることを示す——単一の学習レシピで4Mから2.5Bパラメータまで一貫して予測品質が向上。5モデルのオープンウェイト系列Toto 2.0を公開し、3つのベンチマークでSOTAを達成する。"),
-    "2605.20110v1": (
-        "SetCon: 集合レベルの概念予測によるオープンエンド参照セグメンテーション",
-        "参照セグメンテーションを複数インスタンスやオープンな対象集合に拡張するのは難しい。対象を逐次トークンでなく一貫した「集合」として扱い、完全性や排他性など集合レベルの性質を捉える。"),
-    "2605.20108v1": (
-        "未知の非線形ダイナミクスに対するk帰納的ニューラル・バリア証明書",
-        "従来の(k=1)バリア証明書は毎ステップ非増加を課すが、k帰納版は閾値内の一時増加をk-1回まで許し柔軟性を高める。ニューラルネットでk帰納的バリア証明書を構成する。"),
-    "2605.20107v1": (
-        "JEPAの等方性を超えて: ハミルトン幾何と斜交予測",
-        "JEPAは片視点の埋め込みを等方ガウスへ正則化し、ユークリッド対称性を暗黙に組み込む。下流幾何が既知なら最適共分散はその逆行列に比例し、等方性には明確な「コスト」があると示す。"),
-    "2605.20105v1": (
-        "最適な表現サイズ: 事前学習と線形プロービングの高次元解析",
-        "事前学習→線形プロービングの2段階パラダイムを解析的にモデル化。構造抽出を主成分分析として定式化し、最適な表現次元を高次元解析で導く。"),
-    "2605.20104v1": (
-        "ドラフトを減らし検索を増やす: 投機的デコーディングのためのハイブリッド木構築",
-        "投機的デコーディングは大きなドラフト木で受理率を上げるが、VRAM帯域と計算がボトルネック。検索を併用したハイブリッド木構築で、効率と受理率を両立する。"),
-    "2605.20101v1": (
-        "トポロジー最適化された空気圧ソフトアクチュエータ: 設計と実験検証",
-        "非線形トポロジー最適化でソフトな空気圧アクチュエータを計算設計。2D枠組みを3Dに拡張し、製造可能な2設計を数値・実験の両面で検証する。"),
-    "2605.20098v1": (
-        "推論時論証のためのニューロシンボリック学習",
-        "健康や金融の主張検証では、不完全・矛盾する情報下で二値でなく「不確か」を返すのが適切な場合がある。形式的論証意味論を用いた三値の主張検証枠組みを提案する。"),
-    "2605.20090v1": (
-        "MetaEarth-MM: シーン中心の統合モデリングによるマルチモーダルリモートセンシング画像生成",
-        "地球観測ではモダリティの揃ったペア観測が不足しがち。5モダリティを統一枠組みで結合生成・任意変換できる生成基盤モデルMetaEarth-MMを提案する。"),
-    "2605.20088v1": (
-        "INSHAPE: 解釈可能な時系列分類のためのインスタンス単位シェイプレット",
-        "シェイプレット発見は時系列分類を説明可能にするが、データ全体で最適化した集団レベルのパターンは個別事例とずれる。インスタンス単位のシェイプレットを学習して改善する。"),
-    "2605.20087v1": (
-        "ThoughtTrace: 実世界のLLM対話におけるユーザの思考の理解",
-        "既存データは人が「何を言ったか」だけを記録し「何を考えたか」は捉えない。実対話に、プロンプトを送った理由や応答への反応など自己申告の思考を対応付けた初の大規模データセット。"),
-    "2605.20086v1": (
-        "進化的コーディングエージェントは何を進化させているのか",
-        "LLMと進化的探索を組み合わせたコード生成は数学的発見で成果を上げるが、実際に何を進化させているのかは不明。新規アルゴリズム構造か、再調整か、既存知識の再結合かを分析する。"),
-    "2605.20085v1": (
-        "一人称視点の物体操作のための空間プロンプト付き視覚軌跡予測",
-        "似た物体が散らかる環境では、言語より「何をどこへ」を空間的に示す方が扱いやすい。バウンディングボックスや点の空間プロンプトでタスク目標を定義する初の定式化を提案する。"),
-    "2605.20084v1": (
-        "BalanceRAG: 段階的検索拡張生成のための統合的リスク較正",
-        "モデル単独で十分なら毎クエリにRAGを使う必要はない。LLM単独→RAGフォールバック→棄権というカスケードを、段階別でなく統合的に較正する。"),
-    "2605.20082v1": (
-        "VL-DPO: 選好整合な自動運転のための視覚言語誘導ファインチューニング",
-        "標準の模倣学習目的では人間の運転選好の機微を捉えきれない。VLMの推論・常識理解を活かし、自車の動き予測を人間の選好に整合させる枠組みを提案する。"),
-    "2605.20079v1": (
-        "確率保存型フローガイダンス",
-        "CFGなどのガイダンスは速度・スコアの発見的線形結合で生成多様体の幾何を無視し、強いガイダンスで確率保存を破る。連続の式を通じてガイダンスを解析し、確率保存型に改める。"),
-    "2605.20075v1": (
-        "CopT: 一般・エージェント推論のための連続空間での対比的オンポリシー思考",
-        "通常のCoTは「考えてから答える」順で、答えが先に分かっても無駄なトークンを費やす(パフォーマティブ推論)。思考と回答の順を反転させた推論パイプラインCopTを提案する。"),
-    "2605.20074v1": (
-        "組合せ最適化におけるアルゴリズム整合下での蒸留保証に向けて",
-        "構造化予測では、タスクの事前知識からアルゴリズム的に整合する目標アーキテクチャを選べる。組合せ最適化で蒸留が成功する条件を、グラフニューラルネットを対象に学習理論的に解析する。"),
-    "2605.20073v1": (
-        "機械学習と領域成長によるX線心臓血管造影の血管セグメンテーション",
-        "X線血管造影の血管抽出にピクセル分類アプローチを提案。異方性拡散やヘッセ行列ベースの特徴を抽出し、領域成長で制御する分類とランダムフォレストを用いる。"),
-    "2605.20072v1": (
-        "身体化LLMの探究: 観測の忠実度が高いほど問題解決を妨げるとき",
-        "ロボットの認知部品としてのLLMを行動的に研究。隠れた依存関係を持つ機械パズルで、RGB・RGB-D・記号観測を比較し、観測の忠実度が高いほど性能が下がる場合があると示す。"),
-    "2605.20069v1": (
-        "安定なランダム選抜のための滑らかな部分くじ",
-        "研究助成や入試で広がる部分くじは、評価点の僅かな変化が選抜確率を大きく変える不安定さを抱える。点数変化に滑らかに応答する、安定な部分くじ設計を提案する。"),
-    "2605.20068v1": (
-        "裾アニーリング: 裾の重いデータのためのフローマッチング",
-        "標準的な生成モデルは裾の重いデータが苦手。ソフトログ変換を座標ごとに適用してから学習し、生成後に指数化する簡潔な手法で、べき則の裾を扱えるようにする。"),
+    "2605.21489v1": (
+        "拡散教師モデルを用いる期待値計算の分散削減",
+        "text-to-3Dや蒸留などの下流パイプラインは凍結した拡散モデルを教師に使い、ノイズにわたるモンテカルロ期待値で勾配を得る。各標本がレンダリング等の高コストな上流計算を要するため推定分散が計算コストを支配する問題に、分散削減で取り組む。"),
+    "2605.21488v1": (
+        "均衡推論器: アトラクタの学習がスケーラブルな推論を可能にする",
+        "潜在状態を反復更新するテスト時計算は推論の強力な枠組みだが汎化の機構は不明。汎化的推論はタスク条件付きアトラクタ(安定固定点が正解に対応する潜在力学系)の学習から生じるとの仮説を立て、検証器なしでテスト時スケーリングを実現。Sudoku-Extremeで精度2.6%→99%超。"),
+    "2605.21487v1": (
+        "Uni-Edit: 知的な編集は統合モデル調整の汎用タスクである",
+        "統合マルチモーダルモデルの理解・生成・編集の強化は混合マルチタスク学習に頼り、タスク間競合で多段パイプラインを要し性能はトレードオフに留まる。編集を汎用タスクと捉え、真の相互強化を狙う新パラダイムを提案する。"),
+    "2605.21486v1": (
+        "ハイパーパラメータ転移の定量化と埋め込み層学習率の重要性",
+        "ハイパーパラメータ転移は小規模から大規模へ最適設定を外挿でき、LLM学習に不可欠。muPなどのパラメータ化で実現するが、本研究は転移を定量化し、埋め込み層の学習率が見過ごせない要素であることを示す。"),
+    "2605.21485v1": (
+        "EvoStruct: タンパク質言語モデル適応による抗体CDR設計の進化的・構造的事前知識の橋渡し",
+        "同変GNNによる抗体CDR設計は配列回復率が最高だが語彙崩壊が深刻で、チロシンやグリシンなど少数のアミノ酸を過剰予測する。原因をGNNエンコーダの学習傾向に突き止め、進化的事前知識と構造を橋渡しして改善する。"),
+    "2605.21484v1": (
+        "不動点反復による離散拡散画像生成器の1ステップ蒸留",
+        "離散拡散モデルは画像合成に優れるが遅い反復復号に依存。補助スコアネットで計算が倍増したり多段化で最適化が分断される既存蒸留に対し、不動点蒸留(FPD)で1ステップ生成を実現する。"),
+    "2605.21483v1": (
+        "Velocityformer: 宇宙論的速度再構成のための対称性破れ整合の同変グラフトランスフォーマー",
+        "運動学的スニヤエフ-ゼルドビッチ効果の精密測定には分光サーベイから銀河速度を正確に再構成する必要がある。対称性の破れに整合した同変グラフトランスフォーマーで、再構成速度と真の速度の相関を高める。"),
+    "2605.21482v1": (
+        "DeepWeb-Bench: 大量の情報源横断証拠と長期導出を要するディープリサーチのベンチマーク",
+        "フロンティアのディープリサーチ製品は既存ベンチで高得点で能力差が見えにくい。大量の証拠収集・情報源横断の照合・長期多段導出を要する難ベンチを提案。9モデル評価で「検索は律速でなく、導出と較正の失敗が誤りの7割超」と判明。"),
+    "2605.21481v1": (
+        "AiraXiv: 人間とAI科学者のためのAI駆動オープンアクセス基盤",
+        "AI生成・人間執筆の研究成果が急増し、従来の会議・ジャーナル中心の出版が査読負荷と規模で限界に。人間とAIが著者・読者として参加し論文がフィードバックで継続進化するAI時代の出版基盤AiraXivを提案。ICAIS 2025の投稿基盤として実運用した。"),
+    "2605.21479v1": (
+        "WikiVQABench: WikipediaとWikidataに基づく知識接地型視覚QAベンチマーク",
+        "既存のVQAベンチは画像だけで解ける知覚タスクが中心だが、現実は画像に映らない外部知識を要する。WikipediaとWikidataを体系的に組み合わせた人手作成の知識接地型VQAベンチマークを提案する。"),
+    "2605.21478v1": (
+        "全身アバターアニメーションのための潜在ダイナミクス",
+        "ポーズ駆動の全身アバターは高品質な新視点を生むが、ゆったりした衣服など動的要素はポーズだけでは説明できない(履歴・慣性・接触に依存)。明示的シミュレーションに頼らず潜在ダイナミクスで動的変形を扱う。"),
+    "2605.21475v1": (
+        "スキーマグラフは固定すべきか: リレーショナル深層学習のための全解像度グラフ構造学習",
+        "リレーショナルDBをグラフ化しGNNで学習するリレーショナル深層学習では、グラフ構築時に全解像度性を設計原則とするのが通例。その前提を問い直し、グラフ構造そのものを学習する手法を検討する。"),
+    "2605.21472v1": (
+        "Stream3D: 証拠的記憶による逐次的マルチビュー3D生成",
+        "SAM 3DやTRELLISなど視点条件付き3D生成器は単一視点から高品質再構成を行うが、現実の観測は長い単眼ストリームで来る。各フレームに独立適用すると時間的不整合が深刻。証拠的記憶を持つ初のストリーミング3D生成を提案する。"),
+    "2605.21470v1": (
+        "レイテンシ最適化のためのエージェントJITコンパイル",
+        "コンピュータ操作エージェントは「取得→スクショ→実行」の逐次ループで各反復にLLM呼び出しを要し、高レイテンシと誤操作を招く。Web操作の計画とスケジューリングをJITコンパイルして高速化する。"),
+    "2605.21468v1": (
+        "RLVR学習は最小限でよい: ランク1軌跡によるLLMの外挿",
+        "検証可能報酬による強化学習(RLVR)の重み軌跡は極めて低ランクで予測可能だと示す。下流性能の大半がランク1の方向で説明でき、最小限のRLVR学習から性能を外挿できる。"),
+    "2605.21467v1": (
+        "DelTA: RLVRのための識別的トークン信用割当",
+        "応答レベルの報酬がトークンレベルの確率変化にどう変換されるかは未解明。RLVR更新を識別器の視点で捉え、ポリシー勾配の更新方向が暗黙に識別器として働くことを示し、トークン単位の信用割当を改善する。"),
+    "2605.21466v1": (
+        "StreamGVE: 数ステップのストリーミング動画生成による学習不要の動画編集",
+        "既存の動画編集は高コストな反復を要し品質も不十分。原因をデータ対データのパラダイムに帰し、ノイズ対データの生成枠組みで動画編集を再考。数ステップのストリーミング生成で学習不要の編集を実現する。"),
+    "2605.21465v1": (
+        "文法適応へのLLM活用: メタモデルと文法の共進化の研究",
+        "モデル駆動工学ではメタモデルの進化に合わせ文法を手作業で適応させる必要がある。LLMで文法適応を自動化し、ルールベース手法が苦手な複雑な文法シナリオに対応する。"),
+    "2605.21463v1": (
+        "Mem-π: いつ何を生成するかを学ぶ適応的記憶",
+        "既存の記憶拡張エージェントは類似度検索でエピソード記憶から静的な項目を返し、現在の文脈とずれがち。Mem-πは外部記憶からの検索でなく、必要時に有用な指針をオンデマンド生成する。"),
+    "2605.21461v1": (
+        "活性化関数に基づく重み付き最小二乗GNSS測位の機械学習枠組み",
+        "都市部の谷間では高層ビルがGNSS信号の遮蔽や非見通し受信、マルチパスを起こし誤差を生む。活性化関数を用いた機械学習で重み付き最小二乗測位を改善する枠組みを提案する。"),
+    "2605.21460v1": (
+        "HITL-D: 人間参加型の拡散支援共有制御",
+        "自律操作は高い能力を持つが、拡散ベース方策と人間の専門性を融合する共有制御は未開拓。多段の挿入・精密操作タスクで人間の操作性能を高める人間参加型拡散の共有制御枠組みを提案する。"),
+    "2605.21458v1": (
+        "シミュレーションと現実のギャップに注意し、科学者のように考えよ",
+        "安価だが交絡やドリフトを抱える事前学習シミュレータと、不偏だが高コストな現実実験。計画者がいつどうシミュレータを実験で補うべきかを研究し、3つの理論的結果を与える。"),
+    "2605.21455v1": (
+        "解釈可能なルーブリック埋め込みによるラベルバイアスの緩和",
+        "採用や入試など真のラベルが得難い領域では過去の人間評価で学習するが、過去評価が特定集団を不当に優遇していればバイアスを継承する。解釈可能なルーブリック埋め込みでラベルバイアスを緩和する。"),
+    "2605.21454v1": (
+        "ProtoPathway: 生物学的構造を持つプロトタイプ-経路融合によるマルチモーダル癌生存予測",
+        "全スライド画像とトランスクリプトミクスを統合する、設計段階から解釈可能な癌生存予測枠組み。組織病理側は学習可能な形態プロトタイプ、遺伝子側は生物学的経路に基づく表現を用いる。"),
+    "2605.21453v1": (
+        "AI生成のPythonリファクタリングPRにおける品質とセキュリティの兆候",
+        "AIエージェントのリファクタリング寄与の品質・リスク特性の実証は乏しい。実プロジェクトのPython PRを分析し、品質属性を平均22.5%改善する一方、24.17%のファイルが新たなLint問題を、4.7%が新たなセキュリティ指摘を生むと示す。マージ率は73.5%。"),
+    "2605.21451v1": (
+        "ニューラルネットの近似理論: 古典と新展開",
+        "万能近似定理はニューラルネットの表現力を数学的に説明し、緩い条件下で連続関数やL^p空間、ソボレフ空間で稠密だと主張する。過去40年の定性的結果と最近の進展を概観する。"),
+    "2605.21446v1": (
+        "霧に迷う: センサ擾乱が運転VLAの推論の脆さを露呈する",
+        "解釈可能な自動運転は説明の生成だけでなく、現実のセンサ劣化下でも説明が信頼できることを要する。Vision-Language-Actionモデルを8種のセンサ擾乱・1,996シナリオで検証し、推論の脆弱性を明らかにする。"),
+    "2605.21443v1": (
+        "TempGlitch: ゲームプレイ動画の時間的グリッチ検出でVLMを評価",
+        "VLMはゲームのQA、特にグリッチ検出に使われ始めたが、多くの評価はグリッチを単一フレームの静的異常として扱う。空間的と時間的なグリッチの区別を見落としていると指摘し、時間的グリッチ検出でVLMを評価する。"),
+    "2605.21442v1": (
+        "torchtune: PyTorchネイティブの事後学習ライブラリ",
+        "現代のLLMは強い下流性能のため多段学習を要し、事後学習がオープンウェイトモデル適応の主要インターフェース。効率的なファインチューニング・実験・展開を支援するPyTorchネイティブの事後学習ライブラリを公開する。"),
+    "2605.21440v1": (
+        "ReMATF: 動的シーンのための再帰的・運動適応的マルチスケール乱流補正",
+        "大気乱流は幾何的歪み・ぼけ・時間的ちらつきで動画品質を劣化させる。SOTA手法は多フレーム入力と大きな計算コストを要しリアルタイム展開が難しい。再帰的で運動に適応するマルチスケール乱流補正を提案する。"),
+    "2605.21439v1": (
+        "入力制約付き不確かな非線形系のための完全駆動多様体制約に基づく出力フィードバック制御",
+        "未知の入力制約を持つ未知時変非線形系に対する、低複雑度・モデル不要・出力フィードバック制御器を提案。アクチュエータ非飽和時は所定精度を達成し、飽和後は柔軟な精度を保つ。"),
+    "2605.21437v1": (
+        "週次地震活動予測のためのニューラル負の二項回帰: セル別分散推定と裾リスク評価",
+        "週次地震数予測はポアソン分布と単一の大域分散仮定に頼るが、中央アジアのデータでこの仮定は系統的に破れる(p<10^-179)。セル別に分散を推定するニューラル負の二項回帰で裾リスクを評価する。"),
+    "2605.21435v1": (
+        "ガウシアン層(シーフ)ニューラルネットワーク",
+        "GNNのメッセージパッシングはベクトル値ノード特徴に適するが、ノード特徴が確率分布で表される方が良い場合がある。特徴が平均と共分散を持つガウス分布のとき、それを素朴に扱う問題を層(シーフ)理論で扱う。"),
+    "2605.21431v1": (
+        "iTryOn: 空間-意味誘導によるインタラクティブ動画バーチャル試着",
+        "動画バーチャル試着は時間的一貫性で進展したが、モデルが衣服を見せるだけの非インタラクティブ場面に限られがち。能動的な人-衣服インタラクションという現実の重要側面を、空間-意味誘導で扱う。"),
+    "2605.21429v1": (
+        "roto 2.0: ロボット触覚オリンピアード",
+        "触覚ベースの強化学習は研究が断片化し、飽和した姿勢タスクに偏る。4種のロボット形態(16〜24自由度)にわたり触覚ベースRLを標準化する、GPU並列のベンチマークroto 2.0を提案する。"),
+    "2605.21428v1": (
+        "ガウス周辺分布下での多クラス線形分類の多項式時間ロバスト学習",
+        "ガウス分布下での多クラス線形分類器の不可知学習を研究。二値(k=2)にはアルゴリズム理論が整備されているが多クラスは未開拓。多項式時間でロバストに学習する手法を与える。"),
+    "2605.21427v1": (
+        "PALS: MoEモデルのための電力考慮型LLMサービング",
+        "LLM推論はデータセンターの主要負荷でGPU電力を大量消費する。既存システムはGPU電力を静的制約として扱うが、制御可能な資源とみなす電力考慮型のMoEサービング実行系を提案する。"),
+    "2605.21426v1": (
+        "適応的信号蘇生: 疎な視覚ネットワークのためのチャネル単位の枝刈り後修復",
+        "ワンショットの大きさベース枝刈りは高疎度域で精度崩壊を招く。原因を修復の粒度のミスマッチに帰し、層単位でなくチャネル単位で枝刈り後の修復を行い精度を回復する。"),
+    "2605.21422v1": (
+        "選好を意識した影響関数ベースの効率的ファインチューニング向けデータ選択",
+        "LLM拡大に伴い学習効率はデータの有効活用に依存。既存のデータ選択は目標例を等価値に扱うが非効率。目標例の重要度差を考慮する影響関数ベースのデータ選択手法を提案する。"),
+    "2605.21421v1": (
+        "AIGaitor: エッジ計算によるプライバシー保護・クラウド不要の運動解析",
+        "モーションキャプチャは運動計測の標準だが、コスト・技術的複雑さ・プライバシー懸念で臨床利用が限られる。マーカーレス単眼解析をスマホ上のオンデバイス処理で完結させ、クラウド不要でプライバシーを守る。"),
+    "2605.21420v1": (
+        "HiRes: 反応条件推薦のための検証可能な先例記憶",
+        "反応条件推薦は逆合成の切断選択直後に位置し、化学者は正確な予測とそれを裏付ける先例の両方を求める。学習した反応空間を分類器特徴かつ検証可能な先例記憶として使う検索拡張型システムを提案する。"),
+    "2605.21418v1": (
+        "FedCritic: 6GマルチセルOFDMAのためのサーバレス連合クリティック学習による資源割当",
+        "6G超高密度ネットワークでは積極的な周波数再利用がセル間干渉を増幅し、スケジューリングと電力制御が隣接セル間で強く結合する。サーバレスの連合クリティック学習で分散的に下りリンク資源を管理する。"),
+    "2605.21417v1": (
+        "順序が重要: 混合感情認識のためのランク考慮型選択的融合",
+        "混合感情の認識は、感情が単一の支配信号でなく微妙で重なり合うマルチモーダル手掛かりの混合として表れるため難しい。多様な動画・音声エンコーダの相補的表現をランクを考慮して選択的に融合する。"),
+    "2605.21414v1": (
+        "PointACT: マルチスケールな点-行動相互作用を持つVision-Language-Actionモデル",
+        "VLAモデルは大規模事前学習バックボーンで汎用ロボット操作に有望だが、多くは2D視覚表現に頼り、精密操作に不可欠な細かい幾何や空間接地の推論が苦手。マルチスケールの点-行動相互作用で3D操作を強化する。"),
+    "2605.21413v1": (
+        "ベンチマーク構築を通じてAIを教える: 責任ある知識労働の演習としてのQuestBench",
+        "AI教育の多くはAIを生産性ツールとして使う訓練に偏る。学生がAIを検証し機械が作った知識を判断する自らの役割を学ぶ場が必要だとし、ベンチマーク構築を演習とする授業実践QuestBenchを提案する。"),
+    "2605.21411v1": (
+        "RoadTones: 道路イベント動画からのトーン制御可能なテキスト生成",
+        "既存の動画言語モデルは道路イベントの事実記述は生成できるが、トーン・緊急度・スタイルを制御できない。伝達が重要な場面向けに、トーンを制御できるテキスト生成のデータセット・モデル・評価を提案する。"),
+    "2605.21406v1": (
+        "MC-Risk: リスク識別と動作計画のための多成分リスク場",
+        "鳥瞰図グリッド上で早期・較正済み・クラス別のリスク局在を与える、計画整合の多成分リスク場。動力付きエージェント場など3つの解釈可能なモジュールを線形合成する。"),
+    "2605.21405v1": (
+        "標準ライブラリか外部か: LLM支援によるゼロ依存Pythonライブラリの性能と正しさ",
+        "外部Pythonライブラリは依存管理の負荷やサプライチェーンリスクを生む。標準ライブラリだけでこのエコシステムをどこまで再現できるか、正しさと性能の代償はいくらかを、単一ファイルモジュール集zerodepで実証的に検証する。"),
+    "2605.21404v1": (
+        "LLMエージェントのベンチマーク論文12本は自らについて何を開示しているか: 試行的監査と公開採点スキーマ",
+        "著名なLLMエージェントベンチマーク論文12本を読み、評価の実施方法を次元ごとに記録。同じベンチ・同じモデル名でも結果が食い違いその理由が分からない不満を動機に、開示状況を監査し公開採点スキーマを提案する。"),
+    "2605.21403v1": (
+        "一致の引き寄せに対する語形融合の通言語的影響の定量化",
+        "動詞が文法主辞でなく介在名詞に誤って一致する「一致の引き寄せ」誤りは、一部言語(英・独・露)では語形融合で増幅されるが他言語(トルコ語・アルメニア語)では増幅されない。LLMのサプライザルと注意エントロピーを処理の代理指標としてこの通言語的パターンを調べる。"),
 }
 
 # ─── HN translations (url → title_ja, summary_ja) for new items ───
 hn_new = {
-    "https://github.com/antoinezambelli/forge": (
-        "Show HN: Forge——ガードレールで8Bモデルをエージェントタスクで大幅底上げ",
-        "自前ホストの小型LLMの信頼性レイヤー。壊れた出力の自動修復・リトライ誘導・ステップ強制などのガードレールと文脈管理で、8Bモデルを多段エージェントワークフローで上位に押し上げる。"),
-    "https://twitter.com/github/status/2056884788179726685": (
-        "GitHub、内部リポジトリへの不正アクセスを調査中",
-        "GitHubが自社の内部リポジトリへの不正アクセスを調査していると公式アカウントで発表。開発基盤の中核企業だけに波紋が広がった一報。"),
-    "https://github.com/wiltodelta/remove-ai-watermarks": (
-        "Remove-AI-Watermarks——AI画像の透かしを除去するCLI・ライブラリ",
-        "AI生成画像に埋め込まれた透かしを除去するCLI・ライブラリ。来歴表示の取り組みが進む裏で、それを無効化するツールも公然と出回る現実を示す。"),
-    "https://www.tomshardware.com/tech-industry/artificial-intelligence/college-students-drown-out-ai-praising-commencement-speeches-with-boos-deal-with-it-one-speaker-fires-back-as-students-heckle-positive-pitches-for-ais-role": (
-        "卒業生がAI礼賛の祝辞をブーイングでかき消す",
-        "米国の大学の卒業式で、AIを称賛する祝辞に学生がブーイングを浴びせる事例が相次ぐ。AIへの就職不安や反発が若年層に広がっていることを象徴する。"),
-    "https://www.emmi.ai/news/mistral-ai-acquires-emmi-ai": (
-        "Mistral AI、Emmi AIを買収",
-        "欧州のAI企業MistralがEmmi AIを買収。科学・シミュレーション系AIの取り込みで、欧州勢の技術的自立を狙う動きとみられる。"),
-    "https://openai.com/index/advancing-content-provenance/": (
-        "OpenAI、AI画像にGoogleのSynthID透かしを採用——検証ツールも提供",
-        "OpenAIがAI生成画像の来歴明示にGoogleのSynthID透かしとContent Credentialsを採用し、検証ツールを公開。競合のプロベナンス技術を採る業界標準化の動き。"),
-    "https://twitter.com/github/status/2056949168208552080": (
-        "GitHubが侵害される",
-        "GitHub公式が侵害を確認したとするフォローアップ投稿。内部リポジトリのソースコード流出につながる大規模インシデントの続報。"),
-    "https://www.bbc.com/future/article/20260519-google-tackles-attempts-to-hack-its-ai-results": (
-        "GoogleのAIは操作されている——検索大手は静かに反撃",
-        "Google検索のAI回答を操作しようとする試み(プロンプト注入やSEO的な細工)が横行し、Googleが水面下で対策を進めている実態をBBCが伝える。"),
-    "https://www.ox.ac.uk/news/2026-05-15-why-is-almost-everyone-right-handed-the-answer-may-lie-in-how-we-learned-to-walk": (
-        "なぜほぼ全員が右利きなのか——二足歩行と結びつける新研究",
-        "オックスフォード大の研究。右利きの普遍性を、人類が二足歩行を学んだ過程と結びつける。AI色は薄いがHN上位に上がった科学トピック。"),
-    "https://news.ycombinator.com/item?id=48210590": (
-        "Ask HN: GoogleはRailwayの障害について公式声明を出すべきでは?",
-        "クラウド事業者Railwayで起きた障害をめぐり、原因とされるGoogle側が公式説明を出すべきかをHNコミュニティで議論する投稿。"),
-    "https://apnews.com/article/ai-college-commencement-anxiety-boo-35aec9bac660eaeb05c5b8d392db2cac": (
-        "卒業生が大学の卒業式でAI礼賛の励ましにブーイング",
-        "AIの役割を前向きに語る祝辞に卒業生がブーイングを浴びせる現象を、就職不安の高まりとしてAPが報じる。"),
-    "https://zfhuang99.github.io/rust/claude%20code/codex/contracts/spec-driven%20development/2025/12/01/rust-with-ai.html": (
-        "AIと書いたRust 10万行から得た学び(2025)",
-        "Claude CodeやCodexでRustを10万行書いた経験談。仕様駆動開発や契約による設計など、AIコーディングを大規模に回すための実践知をまとめる。"),
-    "https://www.bleepingcomputer.com/news/security/github-confirms-breach-of-3-800-repos-via-malicious-vscode-extension/": (
-        "GitHub、悪質なVS Code拡張機能経由で内部3,800リポジトリの侵害を確認",
-        "従業員が導入した悪質なVS Code拡張機能を起点に、GitHub内部の約3,800リポジトリが侵害されたと同社が確認。顧客データは影響を受けていないとする。"),
-    "https://reubenbrooks.dev/blog/structural-backpressure-beats-smarter-agents/": (
-        "AIコーディングループのための形式検証ゲート",
-        "AIエージェントを賢くするより、ループに構造的な「逆圧(バックプレッシャー)」をかける方が効くという主張。形式検証をゲートに置くアプローチを論じる。"),
-    "https://superlog.sh/": (
-        "Show HN: Superlog(YC P26)——自己インストールしてバグを直す可観測性ツール",
-        "YC P26のスタートアップ。自動で導入され、観測データからバグを検出・修正までこなすことを謳う可観測性プロダクト。"),
-    "https://github.com/GoogleChromeLabs/css-web-ui-demos/blob/main/html-in-canvas/awesome-html-in-canvas.md": (
-        "HTML-in-Canvasのデモ集",
-        "Google Chrome LabsによるHTMLをCanvas内に描画する実験的機能のデモ集。AI色は薄いがWeb UI技術として注目を集めた。"),
+    "https://axelk.ee/ai-is-just-unauthorised-plagiarism-at-a-bigger-scale/": (
+        "AIは規模を拡大した無断盗用にすぎない",
+        "AIは原作者の同意なく全入力を取り込み、出所に報いず利益を得るという批判エッセイ。自作のECチュートリアルをChatGPT生成のコピーが検索上位で上回った実体験を交え、派生コンテンツを優遇するGoogleの順位付けも批判する。"),
+    "https://qwen.ai/blog?id=qwen3.7": (
+        "Qwen3.7-Max: エージェントのフロンティア",
+        "AlibabaのQwenチームによる新フラッグシップ「Qwen3.7-Max」の発表。「The Agent Frontier」を掲げ、単発の応答でなくツール利用や多段の自律タスク遂行能力を前面に押し出した最上位モデル。"),
+    "https://github.com/kageroumado/phosphene": (
+        "Show HN: Appleの動画壁紙をリバースエンジニアリングした",
+        "macOSなどの動画壁紙の仕組みを解析したプロジェクト「phosphene」。AI色は薄いがHN上位に上がった技術ネタ。"),
+    "https://noslopgrenade.com/": (
+        "AI生成の長文の塊を会話に投げ込むのはやめよう",
+        "AIが吐いた長大なテキストをそのまま会話やレビューに貼り付ける行為への抗議サイト。生成AIによる「中身の薄い大量出力(スロップ)」が会話を埋める現象への苛立ちを示す。"),
+    "https://www.thehandbasket.co/p/hating-ai-is-good-actually": (
+        "AIを避けることこそ人間的な選択だ",
+        "「AIを嫌うのはむしろ正しい」と論じるオピニオン記事。AIの利用を拒むことを人間性の表明として擁護し、HN上位で賛否を呼んだ。"),
+    "https://techcrunch.com/2026/05/20/intuit-to-lay-off-over-3000-employees-to-refocus-on-ai/": (
+        "Intuit、AIへの注力のため3,000人超を解雇",
+        "TurboTaxやQuickBooksを擁する財務ソフト大手Intuitが、全世界人員の約17%にあたる3,000人超の解雇を発表。組織の簡素化とAI製品開発への資源集中が理由で、四半期売上17%増という好決算下での削減。"),
+    "https://valhovey.github.io/gaia-mary/": (
+        "プロジェクト・ヘイル・メアリー——恒星航法チャート",
+        "SF小説『プロジェクト・ヘイル・メアリー』の恒星航法を可視化したインタラクティブなチャート。AIとは無関係だがHN上位に上がった話題。"),
+    "https://www.osnews.com/story/145029/get-your-passwords-out-of-bitwarden-while-you-still-can/": (
+        "今のうちにBitwardenからパスワードを移しておけ",
+        "パスワード管理ツールBitwardenの方針変更を懸念し、パスワードを別ツールに移すよう促す記事。AI色は薄いがHN上位に上がったセキュリティ話題。"),
+    "https://news.ycombinator.com/item?id=48221896": (
+        "Show HN: オフラインのパスワード解読の習得に4年を捧げた",
+        "オフラインでのパスワードクラッキング技術の習得に4年を費やした経験を共有するShow HN投稿。"),
+    "https://www.wsj.com/tech/ai/openai-is-preparing-to-file-for-an-ipo-very-soon-0ec95af5": (
+        "OpenAI、近く新規株式公開(IPO)を申請する準備",
+        "OpenAIが近くIPOを申請する準備を進めているとWSJが報道。営利再編を経たAI大手の上場は、業界の資金調達と評価額をめぐる大きな節目となる。"),
+    "https://github.com/helvesec/rmux": (
+        "Show HN: Rmux——Playwright風SDKを持つプログラム可能なターミナルマルチプレクサ",
+        "tmuxのようなターミナル多重化を、Playwright風のSDKでプログラム制御できるツール。エージェントによるターミナル自動操作と相性がよい。"),
+    "https://www.barebones.com/products/bbedit/bbedit16.html": (
+        "BBEdit 16",
+        "老舗のmacOS用テキストエディタBBEditのメジャーアップデート。AIとは無関係だがHN上位に上がった話題。"),
+    "https://www.niemanlab.org/2026/05/more-than-340-local-news-outlets-are-limiting-the-internet-archives-access-to-their-journalism/": (
+        "340超の地域ニュースがInternet Archiveのアクセスを制限",
+        "340を超える米地域ニュース媒体が、自社報道へのInternet Archiveのアクセスを制限していると報じる記事。報道コンテンツのアーカイブ・収集をめぐる緊張の一端。"),
+    "https://www.wsj.com/opinion/how-i-choose-which-cloudflare-employees-to-replace-with-ai-40a197e5": (
+        "Cloudflare CEOが語る、どの従業員をAIで置き換えるかの選び方",
+        "Cloudflareのマシュー・プリンスCEOが、どの従業員の業務をAIに置き換えるかをどう判断するかを論じたWSJ寄稿。AIによる人員置換を経営者が公然と語る象徴的な一文。"),
 }
 
 # ─── Reddit translations (url → title_ja, summary_ja) for new items ───
 reddit_new = {
-    "https://v.redd.it/pzv3jtzdu62h1": (
-        "「AI対創造性」——自称・強欲な親AI企業からの動画",
-        "r/artificialで1500超のスコアを集めたバズ動画。AIと創造性の対立を、皮肉を込めて「強欲な企業」視点で描いたとされる投稿。"),
-    "https://www.reddit.com/r/artificial/comments/1tif4el/google_io_2026_confirms_ai_companies_are_creating/": (
-        "Google I/O 2026はAI企業が自らバブルの物語を作っていると示す",
-        "I/O 2026の発表を、AI企業が需要を自ら煽る「バブルの物語」だと批判する投稿。誇大宣伝への懐疑がコミュニティで共有されている。"),
-    "https://www.the-independent.com/arts-entertainment/books/news/barnes-and-noble-james-daunt-ai-books-b2978925.html": (
-        "バーンズ&ノーブルCEO、AI執筆本の店頭販売を支持",
-        "大手書店チェーンのCEOがAIが書いた本を店頭で売ることに前向きと表明。出版業界でのAIコンテンツ受容をめぐる議論を呼んだ。"),
-    "https://v.redd.it/56ct17atm12h1": (
-        "1ドル未満で作った解説動画——Claude Design + ElevenLabs",
-        "Claude DesignとElevenLabsを使い1ドル未満で制作した解説動画の紹介。生成AIで動画制作のコストが激減した実例。"),
-    "https://eesuck1.github.io/machine-learning-on-spherical-manifold/": (
-        "球面多様体上の機械学習",
-        "r/MachineLearningの研究投稿。データやパラメータが球面多様体上にある場合の機械学習手法を扱う。"),
-    "https://blocknow.com/meta-stock-layoffs-8000-jobs-ai-budget-145-billion/": (
-        "Metaは第1四半期に売上560億ドル——それでもAI資金のため8,000人を解雇",
-        "Metaが四半期売上560億ドルの記録を出しつつ、AIインフラ投資の原資として8,000人を解雇。好業績下の大量解雇に批判が集まる。"),
-    "https://i.redd.it/93fsgy1k0c2h1.jpeg": (
-        "この3年の営業トークを要約すると",
-        "過去3年のAI関連の売り込み文句を皮肉ったミーム的な画像投稿。誇大なセールストークへの飽きを示す。"),
-    "https://www.reddit.com/r/MachineLearning/comments/1ti1tgw/icml_proceedingsonly_d/": (
-        "ICML、現地発表なしのProceedings掲載のみ枠について",
-        "ICMLの「Proceedings掲載のみ(現地発表なし)」枠をめぐる議論。会議の運営方針に対する研究者の反応。"),
-    "https://www.reddit.com/r/MachineLearning/comments/1thxv15/eccv_2026_no_modified_date_next_to_reviews_d/": (
-        "【ECCV 2026】査読に更新日が表示されない件",
-        "ECCV 2026の査読システムで、レビューに更新日が表示されない問題についての議論投稿。"),
-    "https://www.nytimes.com/2026/05/19/business/media/future-of-truth-ai-quotes.html?unlocked_article_code=1.jlA.lQiD.-NWf4Mb2GtWZ&amp;smid=url-share": (
-        "「AI時代の真実」を論じた本に、AIがでっち上げた引用が載っていた",
-        "AI時代の真実をテーマにした書籍に、AIが捏造した引用が含まれていたとNYTが報じる。AIによる事実誤りの混入を象徴する皮肉な事例。"),
-    "https://www.reddit.com/r/MachineLearning/comments/1thap7a/firsttime_icml_workshop_acceptance_globalsouthml/": (
-        "ICMLワークショップ初採択も、韓国への渡航費が出せない",
-        "GlobalSouthMLワークショップに初採択された研究者が、開催地・韓国への渡航費を工面できず選択肢を相談する投稿。"),
+    "https://openai.com/index/model-disproves-discrete-geometry-conjecture/": (
+        "OpenAIのモデルが離散幾何学の中心的予想を反証",
+        "OpenAIの汎用モデルがエルデシュの「単位距離問題」をめぐる予想を反証したという発表が、r/artificialで434スコアを集めて拡散。AIが数学の未解決問題を自力で押し進めた事例として議論を呼ぶ。"),
+    "https://www.reddit.com/r/MachineLearning/comments/1tiy6s4/openai_claims_a_generalpurpose_reasoning_model/": (
+        "OpenAIが汎用推論モデルでエルデシュの単位距離限界の反例を発見と主張",
+        "汎用推論モデルがエルデシュの単位距離限界に対する反例を見つけたというOpenAIの主張を、r/MachineLearningで技術的に検討する議論スレッド。"),
+    "https://www.reddit.com/r/MachineLearning/comments/1tiw739/how_competitive_are_phd_admissions_currently_d/": (
+        "今のPhD入学はどれくらい競争が激しいか",
+        "機械学習分野の博士課程入試の競争激化について現状を尋ね合うr/MachineLearningの議論。AI人気で志願者が膨らむ実情がうかがえる。"),
+    "https://www.reddit.com/r/artificial/comments/1tj9m8s/google_is_officially_replacing_vertex_ai_with_the/": (
+        "Google、Vertex AIを新「Gemini Enterprise Agent Platform」へ置き換え",
+        "GoogleがエンタープライズAI基盤Vertex AIを、新たな「Gemini Enterprise Agent Platform」に正式に置き換えると伝える投稿。エージェント中心への路線転換を示す。"),
+    "https://www.reddit.com/r/MachineLearning/comments/1tjmrxm/do_vlms_in_production_still_use_fixedpatch_vits/": (
+        "本番のVLMはいまだ固定パッチViTを視覚に使っているのか",
+        "実運用の視覚言語モデルが視覚処理に今も固定パッチのViTを使っているのかを問う、r/MachineLearningの技術議論。"),
+    "https://www.reddit.com/r/MachineLearning/comments/1tiqlsu/any_tool_to_get_accepted_conference_papers_sorted/": (
+        "採択済み会議論文を引用数順に並べるツールはあるか",
+        "学会の採択論文を引用数で並べ替えられるツールを探すr/MachineLearningの質問投稿。"),
+    "http://comicsands.com/ai-misses-graduate-names": (
+        "卒業式で「新AIシステム」が数百人の卒業生名を読み飛ばし会場がブーイング",
+        "大学の卒業式で導入された「新しいAIシステム」が数百人の卒業生の名前を飛ばしたとされ、会場がブーイングに包まれたという報道。AI導入の拙速さを象徴する一件。"),
+    "https://www.reddit.com/r/artificial/comments/1tif4kd/feels_like_ai_tooling_is_evolving_faster_than/": (
+        "AIツールの進化が開発者体験の進化を追い越している気がする",
+        "AIツール自体は急速に進化する一方、それを使う開発者体験(DX)が追いついていないという問題提起のr/artificial投稿。"),
+    "https://www.reddit.com/r/artificial/comments/1tic62c/andrej_karpathy_just_joined_anthropic/": (
+        "アンドレイ・カーパシーがAnthropicに加わったとの投稿",
+        "著名なAI研究者アンドレイ・カーパシーがAnthropicに加わったとするr/artificialの投稿。エンゲージメントは小さく、裏取りを要する話題。"),
+    "https://www.reddit.com/r/artificial/comments/1ti8wc0/if_ai_didnt_threaten_our_jobs_would_most_people/": (
+        "もしAIが雇用を脅かさなければ、人々のAI観は変わるか",
+        "AIへの反発の根は雇用不安にあるのではないか——もし職を脅かさなければ大半の人の感情は違うはず、と問うr/artificialの議論。"),
+    "https://www.reddit.com/r/MachineLearning/comments/1tij4st/cantante_optimizing_agentic_systems_via/": (
+        "CANTANTE: 対比的信用割当によるエージェントシステムの最適化",
+        "対比的な信用割当(クレジット帰属)でエージェントシステムを最適化する研究のr/MachineLearning投稿。"),
+    "https://www.reddit.com/r/artificial/comments/1tjd2w3/what_is_the_actual_cost_of_developing_agentic_ai/": (
+        "2026年、企業向けエージェントAI開発の実際のコストは",
+        "2026年に企業プラットフォーム向けのエージェントAIを開発する実コストを問うr/artificialの議論。"),
+    "https://www.reddit.com/r/MachineLearning/comments/1ticoy5/instructions_for_icml_workshop_reviews_d/": (
+        "ICMLワークショップ査読の指示について",
+        "ICMLワークショップの査読指示をめぐるr/MachineLearningの議論投稿。"),
+    "https://www.reddit.com/r/artificial/comments/1ti1rry/anyone_can_customize_llms_for_their_needs/": (
+        "誰でも自分のニーズに合わせてLLMをカスタマイズできる",
+        "専門家でなくても自分の用途に合わせてLLMをカスタマイズできる、という主張のr/artificial投稿。"),
 }
 
 # ─── GitHub translations (url → title_ja, summary_ja) for new items ───
 github_new = {
-    "https://github.com/rohitg00/ai-engineering-from-scratch": (
-        "ai-engineering-from-scratch: AIエンジニアリングをゼロから",
-        "AIエンジニアリングを基礎から学び、自分で作って公開するための教材リポジトリ。学習用コンテンツとして本日急上昇した。"),
-    "https://github.com/ggml-org/llama.cpp": (
-        "",
-        "C/C++によるLLM推論の定番ライブラリ。ローカルでのモデル実行基盤として根強い人気で、本日も上位にランクインした。"),
-    "https://github.com/can1357/oh-my-pi": (
-        "oh-my-pi: ターミナル向けAIコーディングエージェント",
-        "ハッシュ固定の編集、最適化されたツールハーネス、LSP・Python・ブラウザ・サブエージェント対応を備えるターミナル用AIコーディングエージェント。"),
+    "https://github.com/multica-ai/andrej-karpathy-skills": (
+        "andrej-karpathy-skills: Claude Codeの挙動を改善するCLAUDE.md",
+        "アンドレイ・カーパシーのLLMコーディングの落とし穴に関する観察をもとに、Claude Codeの挙動を改善する単一のCLAUDE.mdファイル。"),
+    "https://github.com/obra/superpowers": (
+        "superpowers: 機能するエージェント的スキル枠組みと開発方法論",
+        "実際に機能するとうたうエージェント的スキルの枠組みとソフトウェア開発方法論。20万スター超を集める。"),
+    "https://github.com/msitarzewski/agency-agents": (
+        "agency-agents: 手元に完結するAIエージェンシー",
+        "フロントエンドからRedditコミュニティ運用まで、個性と手順と成果物を備えた専門エージェント群を集めた「AIエージェンシー」一式。"),
+    "https://github.com/anthropics/claude-plugins-official": (
+        "claude-plugins-official: Anthropic公式のClaude Codeプラグイン集",
+        "高品質なClaude Codeプラグインを集めた、Anthropic公式管理のディレクトリ。"),
+    "https://github.com/HKUDS/CLI-Anything": (
+        "CLI-Anything: あらゆるソフトをエージェントネイティブに",
+        "あらゆるソフトウェアをエージェントが扱えるCLIに変える「CLI-Anything」。エージェント時代のツール統合を狙うプロジェクト。"),
+    "https://github.com/multica-ai/multica": (
+        "multica: オープンソースのマネージドエージェント基盤",
+        "コーディングエージェントを「本物のチームメイト」に変え、タスク割当・進捗追跡・スキル蓄積を行うオープンソースのマネージドエージェント基盤。"),
+    "https://github.com/antoinezambelli/forge": (
+        "forge: 自前ホストLLMのツール呼び出し・エージェント枠組み",
+        "自前ホストの小型LLMでツール呼び出しと多段の自律ワークフローを安定させるPython枠組み。ガードレールで小型モデルの信頼性を底上げする。"),
+    "https://github.com/teng-lin/notebooklm-py": (
+        "notebooklm-py: Google NotebookLMの非公式Python API",
+        "Google NotebookLMを非公式にプログラム制御するPython API・エージェントスキル。Web UIが公開しない機能までCLIやAIエージェントから扱える。"),
+    "https://github.com/dotnet/skills": (
+        "dotnet/skills: .NET/C#向けのAIエージェント支援スキル集",
+        "AIコーディングエージェントの.NET・C#開発を支援するスキルを集めた公式リポジトリ。"),
+    "https://github.com/ChromeDevTools/chrome-devtools-mcp": (
+        "chrome-devtools-mcp: コーディングエージェント向けChrome DevTools",
+        "コーディングエージェントがChrome DevToolsの機能を使えるようにするMCPサーバ。ブラウザのデバッグ情報をエージェントに橋渡しする。"),
 }
 
 # ─── Blog translations (url → title_ja, summary_ja) for new items ───
 blogs_new = {
-    "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/": (
-        "Google I/O 2026で発表した100のこと",
-        "Google I/O 2026の全発表を100項目にまとめた一覧。Gemini 3.5、検索のAIモード、Workspace刷新などを網羅する。"),
-    "https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/": (
-        "Google Beamのグループ会議を改善する新実験",
-        "3D映像通話技術Google Beamで、室内参加者と画面越し参加者が混在するグループ会議を改善する実験的機能。"),
-    "https://openai.com/index/model-disproves-discrete-geometry-conjecture": (
-        "OpenAIのモデルが離散幾何学の中心的予想を反証",
-        "OpenAIの内部汎用モデルが、80年来の「単位距離問題」に関する予想を反証。代数的整数論を駆使した無限族の構成を見つけ、AIが数学の未解決問題を自律的に解いた初の事例とされる。"),
-    "https://openai.com/index/the-next-phase-of-education-for-countries": (
-        "OpenAIの「国家向け教育」プログラム、次の段階へ",
-        "OpenAIが学校でのAI導入を進める「Education for Countries」を拡大。新たな提携、教員研修、学習成果向上のためのツールを展開する。"),
-    "https://openai.com/index/introducing-openai-for-singapore": (
-        "OpenAI for Singaporeを発表",
-        "OpenAIがシンガポールと複数年のAIパートナーシップを開始。展開拡大、現地人材育成、企業・公共サービスのAI活用を支援する。"),
+    "https://openai.com/index/adventhealth": (
+        "AdventHealth、OpenAIで「全人的ケア」を推進",
+        "医療機関AdventHealthがChatGPT for Healthcareを使い、業務を効率化し管理負担を減らして患者ケアに時間を戻す事例。"),
+    "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/": (
+        "Google、ミズーリ州での地域投資を発表",
+        "Googleがミズーリ州で次世代の人材育成とエネルギー計画への投資を発表。データセンター拡大に伴う地域貢献策。"),
+    "https://openai.com/index/ramp": (
+        "RampのエンジニアはCodexでコードレビューをどう加速しているか",
+        "RampのエンジニアがGPT-5.5搭載のCodexでコードレビューを行い、数時間かかっていた実質的なフィードバックを数分で得ている事例。"),
+    "https://huggingface.co/blog/allenai/olmoearth-v1-1": (
+        "OlmoEarth v1.1: より効率的な地球観測モデル群",
+        "AllenAIによる地球観測モデルOlmoEarthの更新版v1.1。効率を高めたモデルファミリーを公開する。"),
+    "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/": (
+        "I/O 2026",
+        "Google I/O 2026の発表をまとめたコレクションページ。AIをより役立つものにする取り組みを総覧する。"),
+    "https://blog.google/products-and-platforms/products/search/ai-mode-us-insights/": (
+        "AIモードは米国の検索の仕方をどう変えているか",
+        "Google検索の「AIモード」が米国でどう使われているかの分析。検索行動の変化のデータを示す。"),
+    "https://blog.google/products-and-platforms/products/workspace/workspace-updates/": (
+        "Google Workspaceでの新しい作成・作業のかたち",
+        "Google WorkspaceにI/O 2026で発表された新機能群。AIによる作成支援や作業効率化のアップデート。"),
+    "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/": (
+        "I/O 2026: エージェント的Geminiの時代へようこそ",
+        "スンダー・ピチャイによるI/O 2026の基調。GeminiがエージェントとしてAIをより役立つものにする「エージェント的Geminiの時代」を打ち出す。"),
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/": (
+        "Gemini 3.5: 行動を伴うフロンティアの知能",
+        "GoogleのフラッグシップモデルGemini 3.5。単なる応答でなく「行動を伴う」エージェント能力を前面に出した最新世代。"),
+    "https://blog.google/products-and-platforms/products/search/search-io-2026/": (
+        "AI検索の新時代",
+        "検索エンジンの良さとAIの良さを融合するという、Google検索のI/O 2026での刷新発表。"),
+    "https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/": (
+        "I/O 2026発、Google AIサブスクの刷新",
+        "I/O 2026に合わせたGoogle AIサブスクリプションの更新。同価格でより多くの機能・特典を提供するという。"),
+    "https://huggingface.co/blog/ettin-reranker": (
+        "Ettinリランカーファミリーの紹介",
+        "検索結果を再順位付けするリランカーモデル「Ettin」ファミリーの公開。検索拡張パイプライン向けの部品。"),
+    "https://huggingface.co/blog/nvidia/cosmos-fine-tuning-for-robot-video-generation": (
+        "NVIDIA Cosmos Predict 2.5をLoRA/DoRAでファインチューニング",
+        "ロボット動画生成のため、NVIDIAの世界モデルCosmos Predict 2.5をLoRA/DoRAで微調整する手法の解説。"),
+    "https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers": (
+        "PaddleOCR 3.5: Transformersバックエンドで文書解析",
+        "OCR・文書解析ツールPaddleOCR 3.5が、Hugging Face Transformersバックエンドで動かせるようになった。"),
+    "https://huggingface.co/blog/ibm-research/open-agent-leaderboard": (
+        "Open Agent Leaderboard",
+        "IBM Researchによる、エージェントの性能を比較するオープンなリーダーボードの紹介。"),
+    "https://openai.com/index/dell-codex-enterprise-partnership": (
+        "OpenAIとDell、Codexをハイブリッド・オンプレ環境へ",
+        "OpenAIとDellが提携し、コーディングエージェントCodexをハイブリッドやオンプレミスの企業環境に展開。データを社内に保ったままAIコーディングを使えるようにする。"),
+    "https://openai.com/index/malta-chatgpt-plus-partnership": (
+        "OpenAIとマルタ、全国民にChatGPT Plusを提供",
+        "OpenAIがマルタと提携し、全国民にChatGPT Plusと研修を提供。国家規模でのAIアクセス拡大の事例。"),
+    "https://openai.com/academy/codex-for-work/how-sales-teams-use-codex": (
+        "営業チームはCodexをどう使うか",
+        "営業チームがCodexを使い、パイプライン要約や商談準備資料、予測レビュー、停滞案件の診断などを実務データから作る方法の解説。"),
+    "https://openai.com/index/databricks": (
+        "Databricks、GPT-5.5を企業のエージェントワークフローへ",
+        "DatabricksがGPT-5.5を企業のエージェントワークフローに採用。同モデルがOfficeQA Proベンチで新たなSOTAを記録したことを受けたもの。"),
 }
 
 # ─── Apply enrichment ───
@@ -327,128 +393,128 @@ for src, nmap in new_maps.items():
 # ─── Highlights ───
 d["highlights"] = [
     {
-        "source": "blogs",
-        "title": "An OpenAI model has disproved a central conjecture in discrete geometry",
-        "title_ja": "OpenAIのモデルが離散幾何学の中心的予想を反証——AIが数学の未解決問題を初めて自力で解いた",
-        "url": "https://openai.com/index/model-disproves-discrete-geometry-conjecture",
-        "hot_take_ja": "ベンチマークの高得点とは次元が違う話だ。OpenAIの内部モデルが、エルデシュが1946年に提起した「単位距離問題」をめぐる予想を反証し、80年間誰も超えられなかった構成を上回る無限族を見つけた。しかも数学専用に特訓したモデルではなく汎用モデル——「AIが数学の最前線を自律的に押し進めた初の事例」と呼ばれるのも誇張ではない。",
-        "detail_ja": "OpenAIは、自社の内部汎用モデルが離散幾何学の長年の予想を反証したと発表した。対象は、数学者ポール・エルデシュが1946年に提起した「単位距離問題(unit distance problem)」に関連する予想——平面上にn個の点を置いたとき、ちょうど距離1で結ばれる点ペアをどれだけ多く作れるか、という問題だ。約80年にわたり、最良の構成は正方格子に近い形だと広く信じられてきた。今回モデルが見つけたのは、それを上回る「まったく新しい構成の無限族」で、多項式オーダーの改善をもたらすという。鍵となったのは代数的整数論の道具立てだ。ガウス整数をより複雑な数体の一般化に置き換え、無限類体塔やゴロド-シャファレヴィチ理論といった高度な概念を用いて、単位長の差をはるかに多く生む豊かな対称性を引き出した。証明は外部の数学者グループによって検証され、著名な数学者ティモシー・ガワーズはこの成果を「迷いなくAnnals of Mathematicsに推薦する」と述べたと報じられている。重要なのは、これが数学専用に設計・訓練されたモデルではなく、汎用言語モデルだった点だ。注意したいのは、これは「人間が思いつかなかった構成をAIが発見した」事例であって、AIが数学全体を肩代わりできるという話ではないこと——とはいえ、分野の中心にある未解決問題が自律的に崩された意味は大きい。",
-        "detail_en": "OpenAI announced that its internal general-purpose model has disproved a longstanding conjecture in discrete geometry. The target is a conjecture tied to the \"unit distance problem,\" posed by the mathematician Paul Erdős in 1946: given n points in the plane, how many pairs can be connected at exactly distance 1? For nearly 80 years, the best constructions were widely believed to look roughly like square grids. The model found \"an entirely new family of constructions\" that beats them, yielding a polynomial-order improvement. The key was machinery from algebraic number theory: it replaced the Gaussian integers with more complicated generalizations from number fields, drawing on advanced concepts such as infinite class field towers and Golod–Shafarevich theory to extract richer symmetries that produce far more unit-length differences. The proof was checked by a group of external mathematicians, and the prominent mathematician Timothy Gowers reportedly said he would recommend the work to the Annals of Mathematics \"without any hesitation.\" Crucially, this was not a model designed or trained specifically for mathematics — it was a general-purpose language model. One caveat: this is a case of AI discovering a construction humans had not thought of, not a claim that AI can take over mathematics wholesale — but the autonomous toppling of an open problem central to a field is significant nonetheless.",
+        "source": "hn",
+        "title": "Qwen3.7-Max: The Agent Frontier",
+        "title_ja": "Qwen3.7-Max登場——Alibabaの新フラッグシップが「エージェントのフロンティア」を掲げる",
+        "url": "https://qwen.ai/blog?id=qwen3.7",
+        "hot_take_ja": "中国勢の追い上げが「エージェント」の土俵で本格化した。AlibabaのQwenチームが新フラッグシップ「Qwen3.7-Max」を公開し、キャッチコピーはずばり『The Agent Frontier』——単発のチャット性能ではなく、ツールを呼び自律的に多段タスクをこなす力を主戦場に据えた。Gemini 3.5やGPT-5.5が並ぶフロンティア争いに、Qwenが正面から名乗りを上げた格好だ。",
+        "detail_ja": "AlibabaのQwenチームが、新たなフラッグシップ大規模言語モデル「Qwen3.7-Max」を発表した。Hacker Newsには「Qwen3.7-Max: The Agent Frontier」という見出しで投稿され、686ポイントを集めて1日の上位に入った。注目すべきはその打ち出し方だ。モデル名に冠された「Max」はQwenシリーズの最上位ティアを指し、サブタイトルの「エージェントのフロンティア(The Agent Frontier)」は、このモデルが単発の質問応答や文章生成ではなく、ツールを呼び出し複数ステップにわたって自律的にタスクを遂行する「エージェント」用途に主眼を置いていることを示す。これは業界全体の潮流と一致する。Google I/Oが「エージェント的Geminiの時代」を掲げ、Gemini 3.5を「行動を伴う知能」と位置づけたのと同じ方向で、フロンティアモデルの競争軸が「賢く答える」から「自律的に動く」へと移っていることの表れだ。Qwenはオープンウェイトのモデル群でも知られ、米国のクローズドなフロンティアモデルに対する強力な対抗馬と見なされてきた。その最上位モデルがエージェント能力を前面に出したことは、エージェント性能が今後のモデル評価の中心的な指標になりつつあることを裏づける。注意点として、これは公開直後の発表であり、ベンチマークの具体的な数値や他モデルとの厳密な優劣は、第三者による独立評価を待って判断するのが妥当だ。誇大な自己申告と実力の乖離は、この分野で繰り返し起きてきた。",
+        "detail_en": "Alibaba's Qwen team has announced a new flagship large language model, \"Qwen3.7-Max.\" It was posted to Hacker News under the headline \"Qwen3.7-Max: The Agent Frontier\" and drew 686 points, landing among the day's top stories. What stands out is the framing. The \"Max\" in the name denotes the top tier of the Qwen series, and the subtitle \"The Agent Frontier\" signals that the model is aimed not at one-shot question answering or text generation but at \"agentic\" use — calling tools and autonomously carrying out multi-step tasks. This aligns with an industry-wide trend. It points in the same direction as Google I/O's \"agentic Gemini era\" framing and its positioning of Gemini 3.5 as \"intelligence with action\": the competitive axis for frontier models is shifting from \"answer smartly\" to \"act autonomously.\" Qwen is also known for its open-weight model lineup and has been seen as a strong challenger to the closed frontier models from the US. Its top model now leading with agentic capability reinforces the idea that agentic performance is becoming the central metric for evaluating models. One caveat: this is a fresh announcement, and the specific benchmark numbers and rigorous comparisons against other models are best judged after independent third-party evaluation. The gap between inflated self-reported claims and real-world capability has recurred repeatedly in this field.",
         "key_points_ja": [
-            "エルデシュが1946年に提起した「単位距離問題」の予想を反証",
-            "80年信じられた「正方格子が最良」を覆す無限族を発見",
-            "多項式オーダーの改善——代数的整数論が鍵",
-            "無限類体塔やゴロド-シャファレヴィチ理論を活用",
-            "数学専用でなく汎用モデルが達成した点が画期的",
-            "証明は外部数学者が検証、ガワーズも高評価",
+            "AlibabaのQwenが新フラッグシップ「Qwen3.7-Max」を公開",
+            "「The Agent Frontier」を掲げ、エージェント用途を主眼に",
+            "競争軸が「賢く答える」から「自律的に動く」へ",
+            "Google I/Oの「エージェント的Gemini」と同じ潮流",
+            "Qwenはオープンウェイト勢の有力な対抗馬",
+            "ベンチ数値は独立評価を待って判断するのが妥当",
         ],
         "key_points_en": [
-            "Disproves a conjecture tied to Erdős's 1946 unit distance problem",
-            "Finds an infinite family beating the 80-year 'square grid' belief",
-            "Polynomial-order improvement, driven by algebraic number theory",
-            "Uses infinite class field towers and Golod–Shafarevich theory",
-            "Done by a general-purpose model, not a math-specialized one",
-            "Proof checked by external mathematicians; praised by Gowers",
+            "Alibaba's Qwen unveils new flagship 'Qwen3.7-Max'",
+            "Framed as 'The Agent Frontier' — agentic use is the focus",
+            "Competitive axis shifts from 'answer' to 'act autonomously'",
+            "Same trend as Google I/O's 'agentic Gemini' framing",
+            "Qwen is a strong open-weight challenger to closed models",
+            "Benchmark numbers best judged after independent evaluation",
         ],
     },
     {
         "source": "hn",
-        "title": "GitHub confirms breach of 3,800 repos via malicious VSCode extension",
-        "title_ja": "GitHub、悪質なVS Code拡張機能経由で内部3,800リポジトリの侵害を確認",
-        "url": "https://www.bleepingcomputer.com/news/security/github-confirms-breach-of-3-800-repos-via-malicious-vscode-extension/",
-        "hot_take_ja": "開発者の信頼を一身に背負うGitHub自身が、たった一人の従業員が入れた悪質なVS Code拡張機能から侵害された。サプライチェーン攻撃の弱点はもはやコードそのものではなく、開発環境に気軽に足す「拡張機能」だ。AIコーディング全盛で誰もが拡張やエージェントを盛る今、この一件は刺さる。",
-        "detail_ja": "GitHubは、自社内部の約3,800リポジトリが侵害されたと確認した。侵入経路は、ある従業員が公式のVS Codeマーケットプレイスからダウンロードした悪質なVS Code拡張機能だった。拡張機能がインストールされた端末を足がかりに、攻撃者は内部リポジトリのソースコードを窃取した。GitHubは、影響を受けたリポジトリの外部に保存された顧客データは侵害されていないとしている。対応として同社は当該拡張機能をマーケットプレイスから削除し、侵害された端末を隔離してインシデント対応を開始した。報じられたタイムラインでは、GitHubは検知と封じ込めを前日に行ったとされ、「TeamPCP」を名乗るハッカー集団が地下フォーラムで犯行を主張し、窃取データに対し少なくとも5万ドルを要求したという。この事件が重いのは、攻撃対象が世界中の開発を支えるGitHub自身であり、しかも入口が「正規マーケットプレイスの拡張機能」だった点だ。VS Code拡張やIDEプラグインは強い権限で動くことが多く、審査をすり抜けた悪質拡張は実質的にマルウェアになりうる。AIコーディングツールやエージェントを拡張として次々に導入する流れの中で、開発環境そのものが攻撃面になっているという警鐘である。なお、攻撃の細部や被害範囲は調査が続いており、続報で更新される可能性がある。",
-        "detail_en": "GitHub has confirmed that roughly 3,800 of its internal repositories were breached. The entry point was a malicious VS Code extension that an employee downloaded from the official VS Code Marketplace. Using the device where the extension was installed as a foothold, attackers exfiltrated source code from internal repositories. GitHub says customer data stored outside the affected repos was not compromised. In response, the company removed the malicious extension from the marketplace, isolated the compromised device, and launched incident response. On the reported timeline, GitHub detected and contained the breach the previous day, and a hacker group calling itself \"TeamPCP\" claimed responsibility on an underground forum, demanding at least $50,000 for the stolen data. What makes this serious is that the target was GitHub itself — the backbone of software development worldwide — and that the entry point was an extension from a legitimate marketplace. VS Code extensions and IDE plugins often run with broad privileges, so a malicious extension that slips past review is effectively malware. As developers pile on AI coding tools and agents as extensions, this is a warning that the development environment itself has become an attack surface. Note that the details of the attack and its full scope are still under investigation and may be updated in follow-up reporting.",
+        "title": "OpenAI Is Preparing to File for an IPO Soon",
+        "title_ja": "OpenAI、近くIPOを申請へ——AI時代を象徴する上場が現実味",
+        "url": "https://www.wsj.com/tech/ai/openai-is-preparing-to-file-for-an-ipo-very-soon-0ec95af5",
+        "hot_take_ja": "ついに、という話だ。OpenAIが近く新規株式公開(IPO)の申請準備に入っているとWSJが報じた。非営利として始まり営利再編で揺れたあの会社が、公開市場に株式を出す——AIブームの資金を一般投資家にも開く節目であり、同時に「AIバブル」論争の最大の試金石になる。IPOで付く値段が、そのまま市場が今のAI熱狂をどう評価しているかの答えになる。",
+        "detail_ja": "ウォール・ストリート・ジャーナルが、OpenAIが近く新規株式公開(IPO)の申請準備を進めていると報じた。Hacker Newsでもこの記事が168ポイント・369コメントを集め、活発な議論を呼んだ。OpenAIは2015年に非営利団体として設立され、その後営利子会社を抱える独特の構造を経て、近年は営利企業としての再編を進めてきた。ChatGPTを擁し、世界で最も注目されるAI企業のひとつであるOpenAIが公開市場に上場すれば、それはAIブームの象徴的な出来事になる。意味合いは大きく三つある。第一に、これまで一部の大口投資家やマイクロソフトなどの戦略的パートナーに限られていたOpenAIへの出資機会が、一般投資家にも開かれる。第二に、IPOで付く時価総額は、市場が現在のAI熱狂をどう値付けするかの最も明確な答えになる——「AIバブル」かどうかの議論に、株価という具体的な数字が突きつけられる。第三に、上場企業になれば四半期ごとの開示義務が生じ、これまで不透明だったOpenAIの収益構造やコスト(特に巨額の計算インフラ支出)が公の監視下に置かれる。注意したいのは、これはあくまで「申請準備」段階の報道であり、実際の上場時期・規模・評価額・株式構造はまだ確定していない点だ。市況や規制対応次第でスケジュールは前後しうる。それでも、AI業界の中核企業が公開市場へ向かうという方向性自体が、この分野が実験段階から本格的な資本市場の対象へと移りつつあることを示している。",
+        "detail_en": "The Wall Street Journal has reported that OpenAI is preparing to file for an initial public offering (IPO) soon. The article also drew 168 points and 369 comments on Hacker News, sparking lively debate. OpenAI was founded in 2015 as a nonprofit, later operated through a distinctive structure with a for-profit subsidiary, and in recent years has been moving toward a restructuring as a for-profit company. If OpenAI — the maker of ChatGPT and one of the most closely watched AI companies in the world — lists on the public markets, it would be a symbolic moment for the AI boom. There are three big implications. First, the opportunity to invest in OpenAI, until now limited to certain large investors and strategic partners such as Microsoft, would open up to retail investors. Second, the market capitalization set at the IPO would be the clearest answer yet to how the market prices the current AI frenzy — the \"AI bubble\" debate would be confronted with a concrete number, the share price. Third, as a public company OpenAI would face quarterly disclosure obligations, placing its previously opaque revenue structure and costs (especially its massive compute infrastructure spending) under public scrutiny. One caveat: this is reporting at the \"preparing to file\" stage, and the actual timing, size, valuation, and share structure of the offering are not yet fixed. The schedule could shift depending on market conditions and regulatory matters. Even so, the very direction — a core AI company heading for the public markets — shows that the field is moving from an experimental phase toward becoming a serious object of the capital markets.",
         "key_points_ja": [
-            "GitHub内部の約3,800リポジトリが侵害される",
-            "侵入経路は従業員が入れた悪質なVS Code拡張機能",
-            "攻撃者は内部ソースコードを窃取、顧客データは無事とする",
-            "GitHubは拡張を削除・端末隔離・インシデント対応を実施",
-            "「TeamPCP」が犯行主張、5万ドル以上を要求と報道",
-            "開発環境の拡張機能が新たな攻撃面に",
+            "OpenAIが近くIPO申請準備とWSJが報道",
+            "非営利で発足、営利再編を経ての上場観測",
+            "一般投資家にもOpenAIへの出資機会が開く",
+            "IPO時価総額が「AIバブル」論争の試金石に",
+            "上場で収益・コスト構造が四半期開示の対象に",
+            "時期・規模・評価額は未確定、市況次第で前後も",
         ],
         "key_points_en": [
-            "~3,800 GitHub-internal repos breached",
-            "Entry point: a malicious VS Code extension an employee installed",
-            "Attackers exfiltrated internal source code; customer data said safe",
-            "GitHub removed the extension, isolated the device, started IR",
-            "'TeamPCP' claimed it, reportedly demanding $50,000+",
-            "Dev-environment extensions are now an attack surface",
+            "WSJ reports OpenAI preparing to file for an IPO soon",
+            "Founded as a nonprofit; listing follows for-profit restructuring",
+            "Retail investors would gain access to invest in OpenAI",
+            "IPO market cap becomes a test of the 'AI bubble' debate",
+            "Listing puts revenue and cost structure under disclosure",
+            "Timing, size, valuation still unfixed; schedule may shift",
         ],
     },
     {
         "source": "hn",
-        "title": "Show HN: Forge – Guardrails take an 8B model from 53% to 99% on agentic tasks",
-        "title_ja": "Show HN: Forge——ガードレールで8Bモデルをエージェントタスクで大幅底上げ",
-        "url": "https://github.com/antoinezambelli/forge",
-        "hot_take_ja": "「もっと賢いモデル」ではなく「もっと固い足場」。Forgeは8Bのローカルモデルに、出力の整形修復・リトライ誘導・ステップ強制といったガードレールをかぶせ、多段エージェントタスクの成功率を大きく押し上げる。プロキシ越しだとクライアントは“賢いモデルと話している”と錯覚する——スカフォールディングがモデル規模を肩代わりした好例だ。",
-        "detail_ja": "「Forge」は、自前ホストの小型LLMでツール呼び出しや多段エージェントワークフローを安定させるための信頼性レイヤーだ。Hacker Newsには「ガードレールで8Bモデルを53%→99%に」というキャッチで投稿され、636ポイントを集めた。Forgeの発想は、モデルそのものを賢くするのではなく、モデルの周りに「足場(スカフォールディング)」を組むことにある。具体的には、壊れたツール呼び出し出力を自動修復する「レスキューパース」、誤りを優しく直させる「リトライ誘導」、必要な手順を順守させる「ステップ強制」、そしてVRAMを意識した文脈圧縮といったガードレールを重ねる。プロジェクトのREADMEによれば、現行の最良構成(Ministral-3 8B Instruct Q8 を llama-server で実行)は26シナリオの評価スイートで86.5%、最難関ティアで76%を記録するという。使い方は3通り——ワークフローを直接回す、自前のループにミドルウェアとして差し込む、あるいはOpenAI互換のプロキシとして既存クライアントの前に置く。プロキシ越しだと、クライアント側は「より賢いモデルと話している」と錯覚するという。これは、エージェント性能を上げる近道がパラメータ増大だけではなく、出力の検証と矯正という地味な工学にもあることを示す。今週のarXivにも「形式検証ゲート」や「確率-決定境界」など同じ思想の論文が並んでおり、「賢いエージェントより構造的なバックプレッシャー(逆圧)」という潮流の一例といえる。なお53%→99%という数値は投稿者の打ち出しで、READMEの公式数値とは測定条件が異なる点には留意したい。",
-        "detail_en": "\"Forge\" is a reliability layer for stabilizing tool-calling and multi-step agentic workflows on self-hosted small LLMs. It was posted to Hacker News under the headline \"Guardrails take an 8B model from 53% to 99% on agentic tasks\" and drew 636 points. Forge's idea is not to make the model itself smarter but to build scaffolding around it. Concretely, it stacks guardrails: \"rescue parsing\" that auto-repairs malformed tool-call outputs, \"retry nudges\" that gently steer the model to fix errors, \"step enforcement\" that ensures required steps happen in order, and VRAM-aware context compaction. Per the project's README, its current best config (Ministral-3 8B Instruct Q8 on llama-server) scores 86.5% across a 26-scenario eval suite and 76% on the hardest tier. There are three ways to use it: run workflows directly, drop it into your own loop as middleware, or place it in front of existing clients as an OpenAI-compatible proxy — through the proxy, the client \"thinks it's talking to a smarter model.\" The takeaway is that the shortcut to better agentic performance isn't only more parameters; it's also the unglamorous engineering of verifying and correcting outputs. This week's arXiv echoes the same idea — papers on \"formal verification gates\" and the \"stochastic-deterministic boundary\" — making Forge one example of a \"structural backpressure beats smarter agents\" trend. Note that the \"53%→99%\" figure is the submitter's framing and uses different measurement conditions than the README's official numbers.",
+        "title": "AI is just unauthorised plagiarism at a bigger scale",
+        "title_ja": "「AIは規模を拡大した盗用」——HNでAIへの反発が一気に噴き出した日",
+        "url": "https://axelk.ee/ai-is-just-unauthorised-plagiarism-at-a-bigger-scale/",
+        "hot_take_ja": "この日のHacker Newsは、まるでAIへの不満の見本市だった。「AIは規模を拡大した無断盗用にすぎない」が701点、「AIを避けるのが人間的な選択だ」が332点、「AI生成の長文を会話に投げ込むな」が389点、卒業式でのAI礼賛にブーイング——技術好きが集まるはずのHNですら、AIへの反発が前向きな話題を上回った。熱狂のサイクルが、ついに逆回転を始めている。",
+        "detail_ja": "2026年5月21日のHacker Newsは、AIに対する反発・疲弊・懐疑を扱った記事が同時多発的に上位を占めるという、象徴的な一日になった。最も注目を集めたのは「AI is just unauthorised plagiarism at a bigger scale(AIは規模を拡大した無断盗用にすぎない)」というエッセイで、701ポイントを獲得した。筆者は、AIが原作者の同意なくあらゆる入力を取り込み、出所に報いることなく利益を上げていると批判する。実体験として、自分が書いたECサイト構築のチュートリアルを、ChatGPT生成のほぼ同内容のコピーが検索結果で上回り、リンクまで写し取られていたと述べ、派生コンテンツを優遇するGoogleの検索順位にも矛先を向けた。同じ日には、「Shunning AI is the human choice(AIを避けることこそ人間的な選択)」が332ポイント、「Stop throwing AI-generated walls of text into conversations(AI生成の長文の塊を会話に投げ込むな)」が389ポイント、米大学の卒業式でAIを称賛する祝辞に学生がブーイングを浴びせたという記事が368ポイントを集めた。重要なのは、Hacker Newsが本来テクノロジーに肯定的な、エンジニアや起業家中心のコミュニティだという点だ。そのHNですら、この日はAIへの肯定的な話題よりも反発・疲弊の声が上位を占めた。背景には複数の要因が絡む——AI生成の低品質コンテンツ(スロップ)の氾濫、創作物の無断学習をめぐる著作権の不満、相次ぐAI絡みの解雇による雇用不安、そして「とにかくAIを足せ」という売り込みへの食傷だ。これは単発の炎上ではなく、誇大宣伝サイクルが反転し、文化的な揺り戻しが可視化された局面と読むべきだろう。注意点として、HNのスコアは一部の利用者の熱量を反映するもので社会全体の世論ではない。とはいえ、技術受容の最前線にいる層の空気が変わりつつあることは、AI企業にとって軽視できないシグナルだ。",
+        "detail_en": "May 21, 2026 became a symbolic day on Hacker News: articles about backlash, fatigue, and skepticism toward AI simultaneously dominated the top of the front page. The most attention went to an essay titled \"AI is just unauthorised plagiarism at a bigger scale,\" which earned 701 points. The author argues that AI ingests all kinds of input without the consent of original creators and profits without rewarding the sources. Drawing on personal experience, the author describes how a near-identical ChatGPT-generated copy of their own e-commerce tutorial outranked the original in search results — even copying the links — and also takes aim at Google's search rankings for favoring derivative content. The same day, \"Shunning AI is the human choice\" drew 332 points, \"Stop throwing AI-generated walls of text into conversations\" drew 389 points, and an article about US college students booing AI-praising commencement speeches drew 368 points. The key point is that Hacker News is normally a technology-friendly community centered on engineers and founders. Yet even on HN, that day, voices of backlash and fatigue outranked positive AI topics. Several factors are intertwined in the background: a flood of low-quality AI-generated content (\"slop\"), copyright grievances over the unauthorized training on creative works, job anxiety from a string of AI-related layoffs, and exhaustion with the \"just add AI\" sales pitch. This should be read not as a one-off flare-up but as a moment when the hype cycle turned and a cultural backlash became visible. One caveat: HN scores reflect the intensity of a subset of users, not society-wide public opinion. Even so, the shift in mood among those at the frontier of technology adoption is a signal AI companies cannot afford to ignore.",
         "key_points_ja": [
-            "自前ホストの小型LLM向け信頼性レイヤー「Forge」",
-            "モデルを賢くせず、周囲に「足場」を組む発想",
-            "レスキューパース・リトライ誘導・ステップ強制が中核",
-            "公式では8B最良構成が26シナリオで86.5%",
-            "OpenAI互換プロキシで既存クライアントに透過適用",
-            "「賢いエージェントより構造的バックプレッシャー」の潮流",
+            "HNでAI反発系の記事が同時に上位を独占",
+            "「AIは規模を拡大した盗用」が701点で筆頭",
+            "「AIを避けるのが人間的」「長文スロップを投げるな」も上位",
+            "技術好きのHNですら反発が肯定的話題を上回った",
+            "背景はスロップ氾濫・著作権不満・雇用不安・売り込み疲れ",
+            "スコアは世論そのものではないが無視できないシグナル",
         ],
         "key_points_en": [
-            "'Forge': a reliability layer for self-hosted small LLMs",
-            "Don't make the model smarter — build scaffolding around it",
-            "Rescue parsing, retry nudges, step enforcement at the core",
-            "Official best 8B config scores 86.5% on 26 scenarios",
-            "OpenAI-compatible proxy applies guardrails transparently",
-            "Part of a 'structural backpressure beats smarter agents' trend",
+            "AI-backlash articles simultaneously dominated HN's top",
+            "'AI is unauthorised plagiarism' led with 701 points",
+            "'Shunning AI is human' and 'no walls of text' also ranked high",
+            "Even tech-friendly HN saw backlash outrank positive topics",
+            "Drivers: slop, copyright grievances, job fear, pitch fatigue",
+            "Scores aren't public opinion, but a signal worth heeding",
         ],
     },
     {
-        "source": "blogs",
-        "title": "OpenAI adopts SynthID watermarking — as a watermark-removal tool trends the same day",
-        "title_ja": "OpenAIがAI画像にSynthID透かしを採用——その同じ日、透かし除去ツールが急上昇",
-        "url": "https://openai.com/index/advancing-content-provenance",
-        "hot_take_ja": "来歴(プロベナンス)はいたちごっこだ。OpenAIがAI画像にGoogleのSynthID透かしとContent Credentialsを採用し検証ツールまで出した同じ日、Hacker Newsでは「AI透かしを消すCLI」が368ポイントを集めて急上昇した。透かしを入れる側と消す側が同じタイムラインに並ぶ——これがAIコンテンツ真正性の現実だ。",
-        "detail_ja": "OpenAIは「コンテンツの来歴(プロベナンス)」を前進させる取り組みを発表した。AI生成画像にContent Credentials(C2PA)のメタデータを付与し、さらにGoogleが開発した不可視の電子透かし技術「SynthID」を採用、加えて画像が自社モデル由来かを判定する検証ツールも公開する内容だ。狙いは、AI生成メディアの出所を辿れるようにして信頼性を担保することにある。皮肉なのは、これとほぼ同じ日に、Hacker Newsで「Remove-AI-Watermarks」というAI画像の透かしを除去するCLI・ライブラリが368ポイントを集めて上位に上がったことだ。来歴技術には大きく二系統ある——画像に付随する署名付きメタデータ(C2PAのように削除されやすい)と、ピクセルに埋め込む不可視透かし(SynthIDのように頑健性を狙う)だ。前者はファイルを再エンコードするだけで落ちやすく、後者も加工・圧縮・除去ツールで弱められうる。つまり「入れる側」と「消す側」が同時並行で進歩する構造で、透かしは万能の真正性証明にはならない。それでも、何もないよりは検証の手掛かりになる——プロベナンスは「決定的な証明」ではなく「確率を上げる仕組み」と捉えるのが妥当だ。一方で、OpenAIが競合であるGoogleのSynthIDに収束した点は、技術が乱立せず標準化へ向かう前向きな兆候とも読める。",
-        "detail_en": "OpenAI announced an initiative to advance \"content provenance.\" It attaches Content Credentials (C2PA) metadata to AI-generated images, adopts SynthID — the invisible digital watermarking technology developed by Google — and releases a verification tool that checks whether an image came from OpenAI's models. The goal is to make the origin of AI-generated media traceable and to bolster trust. The irony is that on roughly the same day, a CLI and library called \"Remove-AI-Watermarks\" for stripping watermarks from AI images climbed Hacker News with 368 points. Provenance tech comes in two broad flavors: signed metadata attached to a file (like C2PA, which is easy to strip) and invisible watermarks embedded in the pixels (like SynthID, which aims for robustness). The former is easily lost just by re-encoding a file, and the latter can be weakened by editing, compression, or removal tools. In other words, the \"adders\" and the \"removers\" advance in parallel, and watermarks are not a foolproof proof of authenticity. Still, they are better than nothing as a verification signal — provenance is best understood as a mechanism that raises the odds, not a definitive proof. On the other hand, OpenAI converging on Google's SynthID — a competitor's technology — can be read as a positive sign that the field is moving toward standardization rather than a thicket of incompatible schemes.",
+        "source": "hn",
+        "title": "Intuit to lay off over 3k employees to refocus on AI",
+        "title_ja": "Intuitが3,000人解雇、Cloudflare CEOは「誰をAIに置き換えるか」を公言——AI解雇が手順化した",
+        "url": "https://techcrunch.com/2026/05/20/intuit-to-lay-off-over-3000-employees-to-refocus-on-ai/",
+        "hot_take_ja": "もはや言い訳しない、という段階に入った。Intuitは好決算のさなかに全社員の17%・3,000人超を「AIへの注力」のために解雇。同じ日、CloudflareのプリンスCEOはWSJ寄稿で「どの従業員をAIで置き換えるか、私はこう選ぶ」と判断基準まで公開した。AIによる人員削減は、もはや経営者がこっそりやることではなく、手順として堂々と語られるものになった。",
+        "detail_ja": "AIを理由とした人員削減が、企業の「公然たる経営手法」へと変質しつつあることを示す二つの動きが、同じ日に重なった。ひとつはIntuitだ。TurboTaxやQuickBooks、Credit Karmaを擁する財務ソフト大手のIntuitは、全世界の従業員の約17%にあたる3,000人超の解雇を発表した。CEOのササン・グダルジは、組織構造を簡素化して複雑さを減らし、AI製品開発に資源を集中させるためだと説明している。注目すべきは、これが業績不振による削減ではない点だ。同社の四半期売上は前年比17%増の46.5億ドル、純利益も48%増と好調で、それでも人を切ってAIに振り向けている。背景には、従来型のSaaS企業がAIネイティブの新興勢に対抗できなくなるのではという業界の不安がある。もうひとつはCloudflareだ。同社のマシュー・プリンスCEOは、ウォール・ストリート・ジャーナルへの寄稿で「どのCloudflareの従業員をAIで置き換えるかを、私はどう選ぶか」を率直に論じた。解雇そのものより、経営トップが置き換えの判断基準を公の場で言語化したことに重みがある。この二件が示すのは、AIによる人員削減がもはや遠回しに語られる「副作用」ではなく、明示的な経営戦略・手順として正面から語られる段階に入ったということだ。5月20日にはMetaが好決算下で約8,000人を解雇しており、Intuit・Cloudflareはその流れの上にある。報道によれば、2026年のテック業界の人員削減は累計で10万人を超えた。ただし注意したいのは、「AIのため」という説明が常に額面通りとは限らないことだ。景気減速や過剰採用の調整、株価対策といった従来型のリストラ動機を、より前向きに聞こえる「AIシフト」の語で包んでいる側面もありうる。それでも、解雇を語る言葉そのものが変わったことは、労働市場におけるAIの位置づけの変化を映している。",
+        "detail_en": "Two developments on the same day show how AI-driven headcount cuts are shifting into an openly stated management practice. The first is Intuit. The financial-software giant — maker of TurboTax, QuickBooks, and Credit Karma — announced the layoff of more than 3,000 employees, about 17% of its global workforce. CEO Sasan Goodarzi explained that the goal is to reduce complexity by simplifying the corporate structure and to concentrate resources on AI product development. What stands out is that this is not a cut driven by poor performance: the company's quarterly revenue was $4.65 billion, up 17% year over year, and net profit rose 48% — and it is still cutting people to redirect toward AI. Behind it lies an industry fear that traditional SaaS companies may no longer be able to compete against AI-native upstarts. The second is Cloudflare. CEO Matthew Prince, in an op-ed for The Wall Street Journal, candidly discussed \"how I choose which Cloudflare employees to replace with AI.\" More than the cuts themselves, the weight lies in a chief executive publicly articulating the criteria for replacement. Together, these two cases show that AI-driven headcount reduction has entered a phase where it is discussed head-on as an explicit management strategy and procedure, not as an obliquely mentioned \"side effect.\" On May 20, Meta cut about 8,000 jobs amid strong earnings, and Intuit and Cloudflare sit on that same trend; per reporting, tech-industry layoffs in 2026 have cumulatively passed 100,000. One caveat, however: the explanation \"for AI\" is not always to be taken at face value. Traditional restructuring motives — an economic slowdown, correcting over-hiring, propping up the share price — may in part be wrapped in the more upbeat language of an \"AI shift.\" Even so, the very fact that the language used to describe layoffs has changed reflects a shift in AI's place in the labor market.",
         "key_points_ja": [
-            "OpenAIがAI画像にC2PAメタデータとSynthID透かしを採用",
-            "画像が自社モデル由来かを判定する検証ツールも公開",
-            "同日、HNで「AI透かし除去CLI」が368点で急上昇",
-            "来歴技術は署名メタデータと不可視透かしの2系統",
-            "どちらも再エンコードや除去ツールで弱められうる",
-            "競合SynthIDへの収束は標準化として前向きな兆候",
+            "Intuitが全社員17%・3,000人超を「AI注力」で解雇",
+            "売上17%増・純利益48%増の好決算下での削減",
+            "Cloudflare CEOは「誰をAIで置き換えるか」をWSJで公言",
+            "経営者が置き換え基準を公の場で言語化した点が重い",
+            "5月20日のMeta約8,000人解雇に続く流れ",
+            "「AIのため」が従来型リストラの建前を含む可能性に留意",
         ],
         "key_points_en": [
-            "OpenAI adopts C2PA metadata and SynthID watermarks for AI images",
-            "Also releases a tool to verify if an image is from its models",
-            "Same day, an 'AI watermark remover' CLI hit 368 points on HN",
-            "Provenance tech: signed metadata vs. invisible watermarks",
-            "Both can be weakened by re-encoding or removal tools",
-            "Converging on SynthID is a positive sign for standardization",
+            "Intuit cuts 3,000+ (17% of staff) to 'refocus on AI'",
+            "Cuts come amid strong results: revenue +17%, profit +48%",
+            "Cloudflare CEO publicly states how he picks who AI replaces",
+            "Weight is in a CEO articulating replacement criteria openly",
+            "Follows Meta's ~8,000 cuts on May 20",
+            "'For AI' framing may partly mask traditional restructuring",
         ],
     },
     {
-        "source": "reddit",
-        "title": "Meta Made $56B in Q1 and Is Still Firing 8,000 People to Pay for AI",
-        "title_ja": "Metaは第1四半期に売上560億ドル——それでもAI資金のため8,000人を解雇",
-        "url": "https://www.reddit.com/r/artificial/comments/1thq6cn/meta_made_56b_in_q1_and_is_still_firing_8000/",
-        "hot_take_ja": "数字の対比が生々しい。Metaは四半期売上560億ドル・純利益も過去最高級という絶好調の中で、約8,000人を解雇する。理由は「AIインフラへの投資原資」——2026年のAI設備投資は最大1,450億ドルに膨らむ見込みだ。好況下のリストラは、AIの計算コストが人件費を直接押しのけ始めたことの証拠といえる。",
-        "detail_ja": "Metaが2026年第1四半期に四半期売上約560億ドル(前年比約33%増)、純利益も過去最高水準を記録した一方で、約8,000人の解雇に踏み切ったことが大きな話題になっている。Reddit上では「560億ドル稼いでなお8,000人解雇」という見出しで批判が集中した。同社の説明によれば、解雇の主因はAIインフラへの投資原資の確保だ。マーク・ザッカーバーグCEOは人員削減をAI支出の急増と明確に結びつけており、2026年のAI設備投資(データセンター、NVIDIAのGPU、自社シリコンなど)は最大で約1,450億ドルに達する見込みだという。報道によれば、今回の解雇は2023年の大規模再編以来で最大規模で、加えて約6,000件の未充足求人(オープンな採用枠)も取り消され、実質的な人員縮小は1万4,000人規模に及ぶ。アナリストの試算では、解雇により年間70〜80億ドルのコスト削減が見込まれ、巨額のインフラ投資の一部を相殺するという。ここで重要なのは、これが業績不振によるリストラではないという点だ。会社は記録的な利益を上げており、それでも人を切ってAIに資金を回している。つまりAIの計算資源コストが、企業の予算配分の中で人件費と直接トレードオフされ始めた——その象徴的な事例といえる。一方で、これがAI投資の合理的な配分なのか、それとも過剰投資(バブル)の兆候なのかは、まだ評価が分かれる。",
-        "detail_en": "Meta posting roughly $56 billion in quarterly revenue in Q1 2026 (up about 33% year over year) and near-record net income — while still cutting about 8,000 jobs — has become a major talking point. On Reddit, criticism converged under the headline \"Made $56B and is still firing 8,000 people.\" By the company's own account, the layoffs are mainly about freeing up funds for AI infrastructure. CEO Mark Zuckerberg has explicitly tied the headcount cuts to surging AI spending, with 2026 AI capital expenditure (data centers, NVIDIA GPUs, custom silicon, and more) projected to reach up to roughly $145 billion. According to reporting, this is Meta's largest round of cuts since its 2023 restructuring, and on top of it about 6,000 unfilled job requisitions were canceled, bringing the effective headcount reduction to around 14,000. Analysts estimate the layoffs could yield $7–8 billion in annual cost savings, offsetting part of the massive infrastructure spend. The key point is that this is not a restructuring driven by poor performance: the company is posting record profits and is still cutting people to redirect money into AI. In other words, the cost of AI compute is starting to trade off directly against headcount in corporate budgets — a symbolic example of that shift. Whether this represents a rational allocation toward AI or a sign of overinvestment (a bubble) remains a matter of debate.",
+        "source": "arxiv",
+        "title": "Quality and Security Signals in AI-Generated Python Refactoring Pull Requests",
+        "title_ja": "AIが書いたリファクタリングPRを実プロジェクトで検証——73.5%がマージ、でも4分の1が新たな不具合の種を埋め込む",
+        "url": "https://arxiv.org/abs/2605.21453v1",
+        "hot_take_ja": "AIエージェントのコードを「実際にマージした後」どうなったかを追った、珍しく地に足のついた研究だ。エージェントのリファクタリングPRの22.5%は品質指標を改善する一方、24%は新たなLint違反を、4.7%は新たなセキュリティ指摘を生む。それでも73.5%がマージされる——不具合の種ごと取り込まれている。「賢いエージェント」より「マージ前のゲート」が要る、と数字が言っている。",
+        "detail_ja": "AIエージェントが書いたコードは、レビューを通り実プロジェクトにマージされた後、実際のところ品質やセキュリティにどう影響するのか——この素朴だが重要な問いに実証的に答えた研究だ。著者らは、AIエージェントによるコード貢献を集めたデータセット「AIDev」から、Pythonのリファクタリング目的のプルリクエスト(PR)を抽出して分析した。評価には、Python向けのML品質評価ツール「PyQu」で5つの品質属性の変化を測り、加えてドメイン非依存の静的解析ツールPylint(コード品質)とBandit(セキュリティ)で、変更の前後を比較した。結果は両義的だ。良い面として、エージェントのコミットは平均して調査対象の22.5%で何らかの品質属性を改善し、特に「使いやすさ(usability)」が36.5%と最も頻繁に向上した。一方で悪い面として、変更されたファイルの24.17%が新たなPylintの指摘を生み(その多くは長すぎる行などの規約レベルの違反)、4.7%が新たなBanditのセキュリティ指摘を導入した。著者らは観測された差分から24種類の頻出変更操作の分類体系を作り、それぞれがどのLint・セキュリティ指摘に結びつきやすいかを対応づけた。最も示唆的なのは開発者の受け入れ態度だ。分析対象PRの73.5%がマージされており、その中には新たなLint違反やセキュリティ指摘を持ち込んだものも含まれる——既存の問題の除去と引き換えに、新たな問題ごと取り込まれているのだ。著者らはこれを「エージェント的リファクタリングの有望さと現時点の限界の両方」を示すものと位置づけ、AI駆動開発には「ツールをループに組み込んだ品質・セキュリティのゲーティング」がより強く必要だと結論づける。これは今週のHacker Newsで話題になった「AIコーディングループのための形式検証ゲート」や、前日のハイライト「ガードレールで小型モデルを底上げするForge」と同じ思想——人間やCIによる検証の足場こそが要、という潮流の、実データによる裏づけといえる。",
+        "detail_en": "This research empirically answers a simple but important question: once code written by AI agents passes review and is merged into real projects, how does it actually affect quality and security? The authors extracted Python refactoring-oriented pull requests (PRs) from \"AIDev,\" a dataset of code contributions made by AI agents. For evaluation, they used \"PyQu,\" an ML-based quality-assessment tool for Python, to measure changes across five quality attributes, and complemented it with domain-independent static analyzers — Pylint (code quality) and Bandit (security) — comparing each change before and after. The results are mixed. On the positive side, agentic commits improved some quality attribute in 22.5% of the studied changes on average, with \"usability\" improving most frequently, at 36.5%. On the negative side, 24.17% of modified files introduced new Pylint findings (many of them convention-level violations such as overly long lines), and 4.7% introduced new Bandit security findings. From the observed diffs, the authors built a taxonomy of 24 recurring change operations and mapped each to the lint and security findings it most commonly affects. The most telling result is developer acceptance: 73.5% of the analyzed PRs were merged — including ones that introduced new lint or security findings, often alongside the removal of existing issues. In other words, new problems are being taken in along with the change. The authors frame this as showing \"both the promise and the current limitations of agentic refactoring,\" and conclude that AI-driven development needs stronger \"tool-in-the-loop quality and security gating.\" This is empirical backing for the same idea behind this week's Hacker News discussion of \"formal verification gates for AI coding loops\" and the prior day's highlight on \"Forge,\" which boosts small models with guardrails — the trend that the scaffolding of human or CI verification is what matters.",
         "key_points_ja": [
-            "Metaは第1四半期に売上約560億ドル、純利益も過去最高級",
-            "それでも約8,000人を解雇、AIインフラ投資が原資",
-            "2026年のAI設備投資は最大約1,450億ドルの見込み",
-            "未充足求人6,000件も取消、実質1.4万人規模の縮小",
-            "業績不振でなく好況下のリストラという点が異例",
-            "AIの計算コストが人件費と直接トレードオフに",
+            "AIエージェントのPythonリファクタリングPRを実証分析",
+            "22.5%が品質属性を改善、使いやすさが最頻(36.5%)",
+            "24.17%のファイルが新たなLint指摘を導入",
+            "4.7%が新たなセキュリティ指摘(Bandit)を持ち込む",
+            "それでも73.5%がマージ——不具合の種ごと取り込み",
+            "結論は「マージ前の品質・セキュリティゲートが必要」",
         ],
         "key_points_en": [
-            "Meta posted ~$56B Q1 revenue and near-record net income",
-            "Still cut ~8,000 jobs, funding AI infrastructure",
-            "2026 AI capex projected at up to ~$145B",
-            "6,000 open reqs also canceled — effective cut near 14,000",
-            "Unusual: layoffs amid record profits, not weak results",
-            "AI compute cost now trades off directly against headcount",
+            "Empirical study of AI agents' Python refactoring PRs",
+            "22.5% improve a quality attribute; usability most often (36.5%)",
+            "24.17% of files introduce new Pylint findings",
+            "4.7% introduce new Bandit security findings",
+            "Yet 73.5% get merged — new problems taken in too",
+            "Conclusion: need quality/security gating before merge",
         ],
     },
 ]
