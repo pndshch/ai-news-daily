@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Enrichment for 2026-05-21 (fresh page).
+"""Enrichment for 2026-05-22 (fresh page).
 
 arXiv set is fully new (50 items, all translated below).
 HN/Reddit/GitHub/blogs reuse prior Japanese translations for overlapping
-URLs (from data/2026-05-20.json) and translate new items inline.
+URLs (from data/2026-05-21.json) and translate new items inline.
 Five fresh highlights are selected for the day.
 """
 import json
 from pathlib import Path
 
-DATE = "2026-05-21"
-PREV = "2026-05-20"
+DATE = "2026-05-22"
+PREV = "2026-05-21"
 ROOT = Path(__file__).resolve().parent.parent
 SRC_RAW = ROOT / "data" / f"raw-{DATE}.json"
 SRC_PREV = ROOT / "data" / f"{PREV}.json"
@@ -29,508 +29,415 @@ for src in ("hn", "reddit", "github", "blogs"):
 
 # ─── arXiv translations (id → title_ja, summary_ja) ───
 arxiv_map = {
-    "2605.21489v1": (
-        "拡散教師モデルを用いる期待値計算の分散削減",
-        "text-to-3Dや蒸留などの下流パイプラインは凍結した拡散モデルを教師に使い、ノイズにわたるモンテカルロ期待値で勾配を得る。各標本がレンダリング等の高コストな上流計算を要するため推定分散が計算コストを支配する問題に、分散削減で取り組む。"),
-    "2605.21488v1": (
-        "均衡推論器: アトラクタの学習がスケーラブルな推論を可能にする",
-        "潜在状態を反復更新するテスト時計算は推論の強力な枠組みだが汎化の機構は不明。汎化的推論はタスク条件付きアトラクタ(安定固定点が正解に対応する潜在力学系)の学習から生じるとの仮説を立て、検証器なしでテスト時スケーリングを実現。Sudoku-Extremeで精度2.6%→99%超。"),
-    "2605.21487v1": (
-        "Uni-Edit: 知的な編集は統合モデル調整の汎用タスクである",
-        "統合マルチモーダルモデルの理解・生成・編集の強化は混合マルチタスク学習に頼り、タスク間競合で多段パイプラインを要し性能はトレードオフに留まる。編集を汎用タスクと捉え、真の相互強化を狙う新パラダイムを提案する。"),
-    "2605.21486v1": (
-        "ハイパーパラメータ転移の定量化と埋め込み層学習率の重要性",
-        "ハイパーパラメータ転移は小規模から大規模へ最適設定を外挿でき、LLM学習に不可欠。muPなどのパラメータ化で実現するが、本研究は転移を定量化し、埋め込み層の学習率が見過ごせない要素であることを示す。"),
-    "2605.21485v1": (
-        "EvoStruct: タンパク質言語モデル適応による抗体CDR設計の進化的・構造的事前知識の橋渡し",
-        "同変GNNによる抗体CDR設計は配列回復率が最高だが語彙崩壊が深刻で、チロシンやグリシンなど少数のアミノ酸を過剰予測する。原因をGNNエンコーダの学習傾向に突き止め、進化的事前知識と構造を橋渡しして改善する。"),
-    "2605.21484v1": (
-        "不動点反復による離散拡散画像生成器の1ステップ蒸留",
-        "離散拡散モデルは画像合成に優れるが遅い反復復号に依存。補助スコアネットで計算が倍増したり多段化で最適化が分断される既存蒸留に対し、不動点蒸留(FPD)で1ステップ生成を実現する。"),
-    "2605.21483v1": (
-        "Velocityformer: 宇宙論的速度再構成のための対称性破れ整合の同変グラフトランスフォーマー",
-        "運動学的スニヤエフ-ゼルドビッチ効果の精密測定には分光サーベイから銀河速度を正確に再構成する必要がある。対称性の破れに整合した同変グラフトランスフォーマーで、再構成速度と真の速度の相関を高める。"),
-    "2605.21482v1": (
-        "DeepWeb-Bench: 大量の情報源横断証拠と長期導出を要するディープリサーチのベンチマーク",
-        "フロンティアのディープリサーチ製品は既存ベンチで高得点で能力差が見えにくい。大量の証拠収集・情報源横断の照合・長期多段導出を要する難ベンチを提案。9モデル評価で「検索は律速でなく、導出と較正の失敗が誤りの7割超」と判明。"),
-    "2605.21481v1": (
-        "AiraXiv: 人間とAI科学者のためのAI駆動オープンアクセス基盤",
-        "AI生成・人間執筆の研究成果が急増し、従来の会議・ジャーナル中心の出版が査読負荷と規模で限界に。人間とAIが著者・読者として参加し論文がフィードバックで継続進化するAI時代の出版基盤AiraXivを提案。ICAIS 2025の投稿基盤として実運用した。"),
-    "2605.21479v1": (
-        "WikiVQABench: WikipediaとWikidataに基づく知識接地型視覚QAベンチマーク",
-        "既存のVQAベンチは画像だけで解ける知覚タスクが中心だが、現実は画像に映らない外部知識を要する。WikipediaとWikidataを体系的に組み合わせた人手作成の知識接地型VQAベンチマークを提案する。"),
-    "2605.21478v1": (
-        "全身アバターアニメーションのための潜在ダイナミクス",
-        "ポーズ駆動の全身アバターは高品質な新視点を生むが、ゆったりした衣服など動的要素はポーズだけでは説明できない(履歴・慣性・接触に依存)。明示的シミュレーションに頼らず潜在ダイナミクスで動的変形を扱う。"),
-    "2605.21475v1": (
-        "スキーマグラフは固定すべきか: リレーショナル深層学習のための全解像度グラフ構造学習",
-        "リレーショナルDBをグラフ化しGNNで学習するリレーショナル深層学習では、グラフ構築時に全解像度性を設計原則とするのが通例。その前提を問い直し、グラフ構造そのものを学習する手法を検討する。"),
-    "2605.21472v1": (
-        "Stream3D: 証拠的記憶による逐次的マルチビュー3D生成",
-        "SAM 3DやTRELLISなど視点条件付き3D生成器は単一視点から高品質再構成を行うが、現実の観測は長い単眼ストリームで来る。各フレームに独立適用すると時間的不整合が深刻。証拠的記憶を持つ初のストリーミング3D生成を提案する。"),
-    "2605.21470v1": (
-        "レイテンシ最適化のためのエージェントJITコンパイル",
-        "コンピュータ操作エージェントは「取得→スクショ→実行」の逐次ループで各反復にLLM呼び出しを要し、高レイテンシと誤操作を招く。Web操作の計画とスケジューリングをJITコンパイルして高速化する。"),
-    "2605.21468v1": (
-        "RLVR学習は最小限でよい: ランク1軌跡によるLLMの外挿",
-        "検証可能報酬による強化学習(RLVR)の重み軌跡は極めて低ランクで予測可能だと示す。下流性能の大半がランク1の方向で説明でき、最小限のRLVR学習から性能を外挿できる。"),
-    "2605.21467v1": (
-        "DelTA: RLVRのための識別的トークン信用割当",
-        "応答レベルの報酬がトークンレベルの確率変化にどう変換されるかは未解明。RLVR更新を識別器の視点で捉え、ポリシー勾配の更新方向が暗黙に識別器として働くことを示し、トークン単位の信用割当を改善する。"),
-    "2605.21466v1": (
-        "StreamGVE: 数ステップのストリーミング動画生成による学習不要の動画編集",
-        "既存の動画編集は高コストな反復を要し品質も不十分。原因をデータ対データのパラダイムに帰し、ノイズ対データの生成枠組みで動画編集を再考。数ステップのストリーミング生成で学習不要の編集を実現する。"),
-    "2605.21465v1": (
-        "文法適応へのLLM活用: メタモデルと文法の共進化の研究",
-        "モデル駆動工学ではメタモデルの進化に合わせ文法を手作業で適応させる必要がある。LLMで文法適応を自動化し、ルールベース手法が苦手な複雑な文法シナリオに対応する。"),
-    "2605.21463v1": (
-        "Mem-π: いつ何を生成するかを学ぶ適応的記憶",
-        "既存の記憶拡張エージェントは類似度検索でエピソード記憶から静的な項目を返し、現在の文脈とずれがち。Mem-πは外部記憶からの検索でなく、必要時に有用な指針をオンデマンド生成する。"),
-    "2605.21461v1": (
-        "活性化関数に基づく重み付き最小二乗GNSS測位の機械学習枠組み",
-        "都市部の谷間では高層ビルがGNSS信号の遮蔽や非見通し受信、マルチパスを起こし誤差を生む。活性化関数を用いた機械学習で重み付き最小二乗測位を改善する枠組みを提案する。"),
-    "2605.21460v1": (
-        "HITL-D: 人間参加型の拡散支援共有制御",
-        "自律操作は高い能力を持つが、拡散ベース方策と人間の専門性を融合する共有制御は未開拓。多段の挿入・精密操作タスクで人間の操作性能を高める人間参加型拡散の共有制御枠組みを提案する。"),
-    "2605.21458v1": (
-        "シミュレーションと現実のギャップに注意し、科学者のように考えよ",
-        "安価だが交絡やドリフトを抱える事前学習シミュレータと、不偏だが高コストな現実実験。計画者がいつどうシミュレータを実験で補うべきかを研究し、3つの理論的結果を与える。"),
-    "2605.21455v1": (
-        "解釈可能なルーブリック埋め込みによるラベルバイアスの緩和",
-        "採用や入試など真のラベルが得難い領域では過去の人間評価で学習するが、過去評価が特定集団を不当に優遇していればバイアスを継承する。解釈可能なルーブリック埋め込みでラベルバイアスを緩和する。"),
-    "2605.21454v1": (
-        "ProtoPathway: 生物学的構造を持つプロトタイプ-経路融合によるマルチモーダル癌生存予測",
-        "全スライド画像とトランスクリプトミクスを統合する、設計段階から解釈可能な癌生存予測枠組み。組織病理側は学習可能な形態プロトタイプ、遺伝子側は生物学的経路に基づく表現を用いる。"),
-    "2605.21453v1": (
-        "AI生成のPythonリファクタリングPRにおける品質とセキュリティの兆候",
-        "AIエージェントのリファクタリング寄与の品質・リスク特性の実証は乏しい。実プロジェクトのPython PRを分析し、品質属性を平均22.5%改善する一方、24.17%のファイルが新たなLint問題を、4.7%が新たなセキュリティ指摘を生むと示す。マージ率は73.5%。"),
-    "2605.21451v1": (
-        "ニューラルネットの近似理論: 古典と新展開",
-        "万能近似定理はニューラルネットの表現力を数学的に説明し、緩い条件下で連続関数やL^p空間、ソボレフ空間で稠密だと主張する。過去40年の定性的結果と最近の進展を概観する。"),
-    "2605.21446v1": (
-        "霧に迷う: センサ擾乱が運転VLAの推論の脆さを露呈する",
-        "解釈可能な自動運転は説明の生成だけでなく、現実のセンサ劣化下でも説明が信頼できることを要する。Vision-Language-Actionモデルを8種のセンサ擾乱・1,996シナリオで検証し、推論の脆弱性を明らかにする。"),
-    "2605.21443v1": (
-        "TempGlitch: ゲームプレイ動画の時間的グリッチ検出でVLMを評価",
-        "VLMはゲームのQA、特にグリッチ検出に使われ始めたが、多くの評価はグリッチを単一フレームの静的異常として扱う。空間的と時間的なグリッチの区別を見落としていると指摘し、時間的グリッチ検出でVLMを評価する。"),
-    "2605.21442v1": (
-        "torchtune: PyTorchネイティブの事後学習ライブラリ",
-        "現代のLLMは強い下流性能のため多段学習を要し、事後学習がオープンウェイトモデル適応の主要インターフェース。効率的なファインチューニング・実験・展開を支援するPyTorchネイティブの事後学習ライブラリを公開する。"),
-    "2605.21440v1": (
-        "ReMATF: 動的シーンのための再帰的・運動適応的マルチスケール乱流補正",
-        "大気乱流は幾何的歪み・ぼけ・時間的ちらつきで動画品質を劣化させる。SOTA手法は多フレーム入力と大きな計算コストを要しリアルタイム展開が難しい。再帰的で運動に適応するマルチスケール乱流補正を提案する。"),
-    "2605.21439v1": (
-        "入力制約付き不確かな非線形系のための完全駆動多様体制約に基づく出力フィードバック制御",
-        "未知の入力制約を持つ未知時変非線形系に対する、低複雑度・モデル不要・出力フィードバック制御器を提案。アクチュエータ非飽和時は所定精度を達成し、飽和後は柔軟な精度を保つ。"),
-    "2605.21437v1": (
-        "週次地震活動予測のためのニューラル負の二項回帰: セル別分散推定と裾リスク評価",
-        "週次地震数予測はポアソン分布と単一の大域分散仮定に頼るが、中央アジアのデータでこの仮定は系統的に破れる(p<10^-179)。セル別に分散を推定するニューラル負の二項回帰で裾リスクを評価する。"),
-    "2605.21435v1": (
-        "ガウシアン層(シーフ)ニューラルネットワーク",
-        "GNNのメッセージパッシングはベクトル値ノード特徴に適するが、ノード特徴が確率分布で表される方が良い場合がある。特徴が平均と共分散を持つガウス分布のとき、それを素朴に扱う問題を層(シーフ)理論で扱う。"),
-    "2605.21431v1": (
-        "iTryOn: 空間-意味誘導によるインタラクティブ動画バーチャル試着",
-        "動画バーチャル試着は時間的一貫性で進展したが、モデルが衣服を見せるだけの非インタラクティブ場面に限られがち。能動的な人-衣服インタラクションという現実の重要側面を、空間-意味誘導で扱う。"),
-    "2605.21429v1": (
-        "roto 2.0: ロボット触覚オリンピアード",
-        "触覚ベースの強化学習は研究が断片化し、飽和した姿勢タスクに偏る。4種のロボット形態(16〜24自由度)にわたり触覚ベースRLを標準化する、GPU並列のベンチマークroto 2.0を提案する。"),
-    "2605.21428v1": (
-        "ガウス周辺分布下での多クラス線形分類の多項式時間ロバスト学習",
-        "ガウス分布下での多クラス線形分類器の不可知学習を研究。二値(k=2)にはアルゴリズム理論が整備されているが多クラスは未開拓。多項式時間でロバストに学習する手法を与える。"),
-    "2605.21427v1": (
-        "PALS: MoEモデルのための電力考慮型LLMサービング",
-        "LLM推論はデータセンターの主要負荷でGPU電力を大量消費する。既存システムはGPU電力を静的制約として扱うが、制御可能な資源とみなす電力考慮型のMoEサービング実行系を提案する。"),
-    "2605.21426v1": (
-        "適応的信号蘇生: 疎な視覚ネットワークのためのチャネル単位の枝刈り後修復",
-        "ワンショットの大きさベース枝刈りは高疎度域で精度崩壊を招く。原因を修復の粒度のミスマッチに帰し、層単位でなくチャネル単位で枝刈り後の修復を行い精度を回復する。"),
-    "2605.21422v1": (
-        "選好を意識した影響関数ベースの効率的ファインチューニング向けデータ選択",
-        "LLM拡大に伴い学習効率はデータの有効活用に依存。既存のデータ選択は目標例を等価値に扱うが非効率。目標例の重要度差を考慮する影響関数ベースのデータ選択手法を提案する。"),
-    "2605.21421v1": (
-        "AIGaitor: エッジ計算によるプライバシー保護・クラウド不要の運動解析",
-        "モーションキャプチャは運動計測の標準だが、コスト・技術的複雑さ・プライバシー懸念で臨床利用が限られる。マーカーレス単眼解析をスマホ上のオンデバイス処理で完結させ、クラウド不要でプライバシーを守る。"),
-    "2605.21420v1": (
-        "HiRes: 反応条件推薦のための検証可能な先例記憶",
-        "反応条件推薦は逆合成の切断選択直後に位置し、化学者は正確な予測とそれを裏付ける先例の両方を求める。学習した反応空間を分類器特徴かつ検証可能な先例記憶として使う検索拡張型システムを提案する。"),
-    "2605.21418v1": (
-        "FedCritic: 6GマルチセルOFDMAのためのサーバレス連合クリティック学習による資源割当",
-        "6G超高密度ネットワークでは積極的な周波数再利用がセル間干渉を増幅し、スケジューリングと電力制御が隣接セル間で強く結合する。サーバレスの連合クリティック学習で分散的に下りリンク資源を管理する。"),
-    "2605.21417v1": (
-        "順序が重要: 混合感情認識のためのランク考慮型選択的融合",
-        "混合感情の認識は、感情が単一の支配信号でなく微妙で重なり合うマルチモーダル手掛かりの混合として表れるため難しい。多様な動画・音声エンコーダの相補的表現をランクを考慮して選択的に融合する。"),
-    "2605.21414v1": (
-        "PointACT: マルチスケールな点-行動相互作用を持つVision-Language-Actionモデル",
-        "VLAモデルは大規模事前学習バックボーンで汎用ロボット操作に有望だが、多くは2D視覚表現に頼り、精密操作に不可欠な細かい幾何や空間接地の推論が苦手。マルチスケールの点-行動相互作用で3D操作を強化する。"),
-    "2605.21413v1": (
-        "ベンチマーク構築を通じてAIを教える: 責任ある知識労働の演習としてのQuestBench",
-        "AI教育の多くはAIを生産性ツールとして使う訓練に偏る。学生がAIを検証し機械が作った知識を判断する自らの役割を学ぶ場が必要だとし、ベンチマーク構築を演習とする授業実践QuestBenchを提案する。"),
-    "2605.21411v1": (
-        "RoadTones: 道路イベント動画からのトーン制御可能なテキスト生成",
-        "既存の動画言語モデルは道路イベントの事実記述は生成できるが、トーン・緊急度・スタイルを制御できない。伝達が重要な場面向けに、トーンを制御できるテキスト生成のデータセット・モデル・評価を提案する。"),
-    "2605.21406v1": (
-        "MC-Risk: リスク識別と動作計画のための多成分リスク場",
-        "鳥瞰図グリッド上で早期・較正済み・クラス別のリスク局在を与える、計画整合の多成分リスク場。動力付きエージェント場など3つの解釈可能なモジュールを線形合成する。"),
-    "2605.21405v1": (
-        "標準ライブラリか外部か: LLM支援によるゼロ依存Pythonライブラリの性能と正しさ",
-        "外部Pythonライブラリは依存管理の負荷やサプライチェーンリスクを生む。標準ライブラリだけでこのエコシステムをどこまで再現できるか、正しさと性能の代償はいくらかを、単一ファイルモジュール集zerodepで実証的に検証する。"),
-    "2605.21404v1": (
-        "LLMエージェントのベンチマーク論文12本は自らについて何を開示しているか: 試行的監査と公開採点スキーマ",
-        "著名なLLMエージェントベンチマーク論文12本を読み、評価の実施方法を次元ごとに記録。同じベンチ・同じモデル名でも結果が食い違いその理由が分からない不満を動機に、開示状況を監査し公開採点スキーマを提案する。"),
-    "2605.21403v1": (
-        "一致の引き寄せに対する語形融合の通言語的影響の定量化",
-        "動詞が文法主辞でなく介在名詞に誤って一致する「一致の引き寄せ」誤りは、一部言語(英・独・露)では語形融合で増幅されるが他言語(トルコ語・アルメニア語)では増幅されない。LLMのサプライザルと注意エントロピーを処理の代理指標としてこの通言語的パターンを調べる。"),
+    "2605.22821v1": (
+        "凸緩和によるトークン化",
+        "BPEやUnigramなど現在のトークナイザは局所最適な貪欲法で、語彙全体を考慮しない。本研究はトークナイザ構築を線形計画(凸緩和)として定式化し、語彙を大域的に最適化する手法を提案する。"),
+    "2605.22823v1": (
+        "どちらに動いた? 動画LLMの「運動方向盲」を診断し克服する",
+        "動画LLMは時間的理解で進歩したが、物体が左右上下のどちらに動いたかという基本的な符号付き運動方向の知覚でほぼ偶然並みの精度しか出ない。この「運動方向盲」を診断し克服する手法を示す。"),
+    "2605.22820v1": (
+        "ニューラル需要ポテンシャルによる可積分な弾力性",
+        "小売の多品目需要を、対数価格の滑らかな文脈依存関数として対数需要を学習するニューラルモデル(ICDN)で表現。学習した需要曲面から価格弾力性を厳密に導出できる。"),
+    "2605.22819v1": (
+        "Cambrian-P: カメラ姿勢に接地した動画理解",
+        "動画理解のマルチモーダルLLMはフレームを孤立した2D画像として扱い、カメラ位置・向きの情報を失っている。各視点のカメラ姿勢を共有空間座標系として明示的に組み込み動画理解を改善する。"),
+    "2605.22818v1": (
+        "MotiMotion: 視覚推論を伴う運動制御型動画生成",
+        "既存の運動制御型image-to-video生成はユーザ指定の軌跡を硬直的に追い、二次的な因果結果を見落として不自然な結果を生む。視覚推論を導入し物理的に妥当な動画生成を目指す。"),
+    "2605.22817v1": (
+        "ベクトルポリシー最適化: 多様性のための学習がテスト時探索を向上させる",
+        "AlphaEvolveのような推論時探索は多様な報酬でロールアウトを選別するが、標準のLLM事後学習は単一目的に最適化し多様性を欠く。多様性を促す学習でテスト時探索性能を高める。"),
+    "2605.22816v1": (
+        "AwareVLN: 自己認識による視覚言語ナビゲーション",
+        "視覚言語ナビゲーションでVLMの推論を使う最先端手法は、自分の行動への明示的な自己認識を欠く。エージェントに自己認識的推論を持たせ、言語指示と自己の移動の接地を改善する。"),
+    "2605.22814v1": (
+        "好奇心を忘れずに: エピソード文脈と持続的世界による3D探索",
+        "疎報酬・長期タスクの3D環境では探索が学習の前提となる。好奇心駆動の強化学習にエピソード的文脈と持続的な世界モデルを導入し、効率的な探索を実現する。"),
+    "2605.22812v1": (
+        "GesVLA: ジェスチャを認識する視覚言語行動モデル",
+        "VLA(視覚言語行動)モデルは汎用ロボット操作で有望だが、テキスト指示中心で、複数の似た物体がある場面の空間的曖昧さを解けない。指差しなどのジェスチャを取り込み曖昧性を解消する。"),
+    "2605.22809v1": (
+        "Sensor2Sensor: 自動運転のための車種横断センサ変換",
+        "自動運転の学習・検証には大規模で多様なデータが必要だが、各車のセンサ構成は異なる。あるセンサ構成のデータを別の構成へ変換し、データの多様性と規模を補う。"),
+    "2605.22800v1": (
+        "マッチング原理: ノイズ要因に頑健な表現学習のための損失関数の幾何学理論",
+        "ロバスト性・ドメイン適応・不変性・整合安全性などは別々の手法群で扱われがち。これらに共通する幾何構造を「マッチング原理」として統一的に説明する理論を提案する。"),
+    "2605.22795v1": (
+        "保存的・非保存的ドリフトモデルの有限粒子収束率",
+        "1ステップ生成モデルのドリフト速度を、カーネル密度推定の勾配速度に置き換える保存的ドリフト法を提案。有限粒子での収束率を理論的に解析する。"),
+    "2605.22794v1": (
+        "MOSS: ソースコード書き換えによる自律エージェントの自己進化",
+        "既存の自己進化エージェントはスキルファイルやプロンプトなどテキスト成果物の改変に留まり、エージェントのハーネス(ルーティングやフック順序)はコード上にあり手が届かない。エージェント自身が自分のソースコードを書き換えて進化する枠組みを提案する。"),
+    "2605.22791v1": (
+        "Gated DeltaNet-2: 線形注意における消去と書き込みの分離",
+        "線形注意は固定長の再帰状態でsoftmax注意の無制限キャッシュを置き換える。圧縮メモリの「消去」と「書き込み」を分離し、既存の連想を壊さずに編集できるようにする。"),
+    "2605.22786v1": (
+        "LCGuard: マルチエージェント系の安全なKV共有のための潜在通信ガード",
+        "LLMマルチエージェント系はKVキャッシュを介した潜在通信で効率化できるが安全性に懸念がある。潜在通信を監視・防御するガード機構を提案する。"),
+    "2605.22785v1": (
+        "ニュースの仲介者としての商用AIチャットボットの評価",
+        "AIチャットボットがニュース接触の経路になりつつあるが、新出の事実を言語・地域横断でどれだけ正確に扱うかは未測定。14日間にわたり商用チャットボットのニュース処理精度を体系的に評価する。"),
+    "2605.22781v1": (
+        "DeltaBox: ミリ秒級サンドボックスのチェックポイント/ロールバックでステートフルなAIエージェントをスケール",
+        "テスト時木探索や強化学習を行うAIエージェントは、ファイルやプロセス状態を含む完全なサンドボックス状態の高速な保存・復元を要する。ミリ秒級のチェックポイント/ロールバックを実現する。"),
+    "2605.22779v1": (
+        "FAME: メッセージ単位のログ異常検知のための失敗認識MoE",
+        "既存のログ異常検知はセッションやウィンドウ単位で粗く、運用者は多数の通常行を確認させられる。失敗を認識するMixture-of-Expertsで、原因となる個々のログメッセージを特定する。"),
+    "2605.22777v1": (
+        "DecQ: 表現オートエンコーダのための詳細凝縮クエリ",
+        "表現オートエンコーダ(RAE)は凍結した視覚基盤モデルをトークナイザに使うが、凍結ゆえに空間的表現が制約される。詳細を凝縮するクエリで再構成・生成の品質を高める。"),
+    "2605.22776v1": (
+        "SDPM: 連続時間生存解析のための生存拡散確率モデル",
+        "生存解析はハザード関数に構造的仮定を置くか時間軸を離散化しがちで柔軟性に欠ける。拡散確率モデルで連続時間のイベント発生時刻分布を直接推定する。"),
+    "2605.22775v1": (
+        "MambaGaze: 視線追跡データからの認知負荷推定のための双方向Mamba",
+        "視線データからのリアルタイム認知負荷推定は、まばたきによる頻繁な欠損が課題。欠損を明示的にモデル化する双方向Mambaで頑健に認知負荷を推定する。"),
+    "2605.22774v1": (
+        "CogAdapt: 臨床ECG基盤モデルをウェアラブルの認知負荷推定へ転移する",
+        "臨床ECGで事前学習した基盤モデルは豊かな表現を持つが、ウェアラブルにはそのまま使えない。誘導(リード)適応で臨床基盤モデルをウェアラブルの認知負荷推定へ転移する。"),
+    "2605.22773v1": (
+        "ジョブのランダム到着を伴う柔軟ジョブショップスケジューリングへの深層強化学習",
+        "柔軟ジョブショップ問題は将来ジョブの予測不能な到着と組合せ的複雑性が課題。深層強化学習でランダム到着下のスケジューリングを行う。"),
+    "2605.22771v1": (
+        "整合性学習による政治的操作の低減",
+        "LLMは政治的に対立する話題を非対称に扱う「隠れた政治バイアス」を示す。7類型の操作技法を特定し、整合性学習でこのバイアスを低減する。"),
+    "2605.22769v1": (
+        "LLM事前学習におけるデータの時間性の影響を理解する",
+        "LLMは通常シャッフルしたコーパスで学習され、知識が学習時で凍結し時間的接地が不明瞭。事前学習の動態が時間依存の事実知識の獲得にどう影響するかを調べる。"),
+    "2605.22767v1": (
+        "合成データだけで十分か? 小児希少疾患認識のデータ不足を再考する",
+        "希少遺伝疾患の小児は特徴的な顔貌を示すが、データ不足とプライバシー制約で診断システム開発が困難。合成データのみでどこまで認識できるかを検証する。"),
+    "2605.22765v1": (
+        "一様拡散モデルの再考: Leave-One-Out復元器と吸収状態への再定式化",
+        "離散拡散モデルはクリーンデータ予測で学習されるが逆過程の定義法が複数ある。一様拡散モデルにおけるLeave-One-Out復元器と、吸収状態への再定式化を提示する。"),
+    "2605.22763v1": (
+        "AI駆動の形式的証明探索で数学研究を前進させる",
+        "LLMは数学的推論に長けるが信頼性の低さが研究利用を妨げる。緩和策としてLeanなど形式言語で証明を生成させる手法について、本研究は初の大規模な検討を行う。"),
+    "2605.22759v1": (
+        "ウェアラブル健康データのための汎用知能とインターフェース",
+        "ウェアラブルセンサは豊富な行動・生理情報を捉えるが、低次の信号を個別化された健康インサイトに変えるのは難しい。汎用的なモデルとインターフェースで橋渡しする。"),
+    "2605.22756v1": (
+        "Lumberjack: 木のヘビーヒッタ検出による差分プライバシー対応ランダムフォレスト",
+        "ランダムフォレストへの差分プライバシー(DP)付与は通常、性能を実用不能なほど劣化させる。木の中のヘビーヒッタを検出し、実用的なDPランダムフォレストを実現する。"),
+    "2605.22751v1": (
+        "AI生成画像検出のためのスペクトル裾の補助学習",
+        "生成モデルの進化で本物との知覚的差が縮まり、AI生成画像の検出が困難になっている。周波数領域のスペクトル裾を補助タスクとして学習し検出精度を高める。"),
+    "2605.22749v1": (
+        "IoT対応スマートグリッドのサイバー物理異常検知",
+        "高密度な計測インフラを持つスマートグリッドはサイバー物理攻撃に脆弱。機械学習とメタヒューリスティックな特徴最適化で異常を検知する。"),
+    "2605.22748v1": (
+        "マルチエージェント強化学習による超人的で安全・俊敏なレーシング",
+        "自律システムは単独・シミュレーションでは超人的だが、他者と共有する動的空間では脆い。マルチエージェント強化学習で空間を共有しつつ安全かつ俊敏に走るレーシングを実現する。"),
+    "2605.22746v1": (
+        "証拠的深層学習のためのプラグイン損失",
+        "証拠的深層学習(EDL)は1パスで不確実性を推定できる。Softmax分類器も包含する、簡素な枠組みのプラグイン損失を提案する。"),
+    "2605.22743v1": (
+        "SeqLoRA: 継続的な複数概念生成のための二段階直交適応",
+        "パラメータ効率の良い微調整で拡散モデルを個別化できるが、複数の独自概念の合成は表現干渉で難しい。二段階の直交適応で継続的に複数概念を生成する。"),
+    "2605.22740v1": (
+        "局所適応的な不確実性ゾーンを持つ三分決定木",
+        "決定木は硬い二分閾値で、境界から遠い点も境界上の点も同じ信頼度を割り当てる。各分岐に不確実性ゾーンを加える三分決定木を導入する。"),
+    "2605.22738v1": (
+        "Shapley・Banzhaf相互作用のプロキシベース近似",
+        "ShapleyやBanzhafの高次相互作用の推定器は速度と精度がトレードオフの関係にある。プロキシを用いて高速かつ正確に相互作用を近似する。"),
+    "2605.22737v1": (
+        "蒸留ゲーム: 適応的攻撃と効率的防御",
+        "モデルの有用な出力は、同時に模倣(蒸留攻撃)も容易にする。有用性に制約された教師と攻撃者のミニマックスゲームとして、このトレードオフを分析する。"),
+    "2605.22736v1": (
+        "多様体の交差上での最適化",
+        "2つの多様体の交差上での最適化は実行可能領域の幾何が結合し難しい。クリーンな交差と内在的な正則性の条件下でこの問題を解析する。"),
+    "2605.22734v1": (
+        "ChronoMedKG: 時間に接地した生物医学知識グラフと臨床推論ベンチマーク",
+        "生物医学知識グラフは疾患関連を静的な事実として扱うが、年齢など時間情報は臨床推論に重要。時間に接地した知識グラフと臨床推論ベンチマークを提案する。"),
+    "2605.22733v1": (
+        "HarnessAPI: ストリーミングAPIとMCPツールを統合するスキル優先フレームワーク",
+        "LLMツールとして使うPython関数は、人間向けHTTPエンドポイントとエージェント向けMCPツール登録の二重定義を強いられる。両者を1つのスキル定義から統合する。"),
+    "2605.22732v1": (
+        "音響感情認識を超えて: LLMと音響モデルによる政治演説のマルチモーダルなパトス分析",
+        "音響感情認識モデルが政治演説の「パトス(情動的訴求)」次元の代理になりうるかを検証。ドイツ連邦議会の演説を題材にLLMと音響モデルを組み合わせる。"),
+    "2605.22731v1": (
+        "事後学習はトークンでなく「状態」の問題: SFT・RL・オンポリシー蒸留の状態分布的視点",
+        "SFT・強化学習・蒸留は通常それぞれの損失関数で分析される。本研究はこれらを「状態分布」の観点から統一的に捉え直し、事後学習の本質はトークンでなく状態にあると論じる。"),
+    "2605.22724v1": (
+        "複数ニューラル作用素はマルチタスク学習でほぼ最適なレートを達成する",
+        "共有のマルチタスク設定で作用素の集合を学習する近似・統計的複雑性を研究。複数ニューラル作用素(MNO)アーキテクチャがほぼ最適なレートを達成することを示す。"),
+    "2605.22723v1": (
+        "ガウスDDPMにおける共分散マッチングの価値とLanczosサンプラ",
+        "ガウスDDPMの中心的な誤差指標は、逆過程のパス空間KLダイバージェンス。共分散マッチングの価値を分析し、Lanczosサンプラを提案する。"),
+    "2605.22722v1": (
+        "N3P: 学習ベースの自然な三段階方式による高速自動駐車",
+        "自動駐車はHybrid A*が広く使われるが計算が重く、強化学習手法も課題が残る。学習ベースの自然な三段階方式で、運動学的に妥当かつ高速な駐車経路を計画する。"),
+    "2605.22720v1": (
+        "AIは紛争を悪化させうるか? 紛争下のLLM展開におけるアラインメント失敗",
+        "武力紛争下の社会でもAIは既に使われているが、その妥当性を確認する確立した手法がない。複数の紛争文脈にわたるLLM展開のアラインメント失敗を検証する。"),
+    "2605.22719v1": (
+        "活性化からタスク失敗を読み取る: GPT-2 SmallのIOI課題のスパース特徴監査",
+        "間接目的語同定(IOI)課題で、GPT-2 Smallが失敗・成功した試行でどのスパースオートエンコーダ特徴が異なって発火するかを、再現可能な形で監査する。"),
+    "2605.22718v1": (
+        "WorldKV: 世界検索と圧縮による効率的な世界メモリ",
+        "自己回帰的な動画拡散モデルはリアルタイムな世界生成を可能にするが、再訪時に一貫した内容を返す持続的世界は未解決。世界検索と圧縮で効率的な世界メモリを実現する。"),
+    "2605.22717v1": (
+        "ライブ音楽拡散モデル: 対話的拡散音楽生成器の効率的な微調整と事後学習",
+        "対話的なストリーミング音楽生成はライブ演奏や共創を可能にするが、最先端は離散自己回帰系で産業規模の計算を要する。拡散モデルで効率的な対話的音楽生成を実現する。"),
 }
 
-# ─── HN translations (url → title_ja, summary_ja) for new items ───
-hn_new = {
-    "https://axelk.ee/ai-is-just-unauthorised-plagiarism-at-a-bigger-scale/": (
-        "AIは規模を拡大した無断盗用にすぎない",
-        "AIは原作者の同意なく全入力を取り込み、出所に報いず利益を得るという批判エッセイ。自作のECチュートリアルをChatGPT生成のコピーが検索上位で上回った実体験を交え、派生コンテンツを優遇するGoogleの順位付けも批判する。"),
-    "https://qwen.ai/blog?id=qwen3.7": (
-        "Qwen3.7-Max: エージェントのフロンティア",
-        "AlibabaのQwenチームによる新フラッグシップ「Qwen3.7-Max」の発表。「The Agent Frontier」を掲げ、単発の応答でなくツール利用や多段の自律タスク遂行能力を前面に押し出した最上位モデル。"),
-    "https://github.com/kageroumado/phosphene": (
-        "Show HN: Appleの動画壁紙をリバースエンジニアリングした",
-        "macOSなどの動画壁紙の仕組みを解析したプロジェクト「phosphene」。AI色は薄いがHN上位に上がった技術ネタ。"),
-    "https://noslopgrenade.com/": (
-        "AI生成の長文の塊を会話に投げ込むのはやめよう",
-        "AIが吐いた長大なテキストをそのまま会話やレビューに貼り付ける行為への抗議サイト。生成AIによる「中身の薄い大量出力(スロップ)」が会話を埋める現象への苛立ちを示す。"),
-    "https://www.thehandbasket.co/p/hating-ai-is-good-actually": (
-        "AIを避けることこそ人間的な選択だ",
-        "「AIを嫌うのはむしろ正しい」と論じるオピニオン記事。AIの利用を拒むことを人間性の表明として擁護し、HN上位で賛否を呼んだ。"),
-    "https://techcrunch.com/2026/05/20/intuit-to-lay-off-over-3000-employees-to-refocus-on-ai/": (
-        "Intuit、AIへの注力のため3,000人超を解雇",
-        "TurboTaxやQuickBooksを擁する財務ソフト大手Intuitが、全世界人員の約17%にあたる3,000人超の解雇を発表。組織の簡素化とAI製品開発への資源集中が理由で、四半期売上17%増という好決算下での削減。"),
-    "https://valhovey.github.io/gaia-mary/": (
-        "プロジェクト・ヘイル・メアリー——恒星航法チャート",
-        "SF小説『プロジェクト・ヘイル・メアリー』の恒星航法を可視化したインタラクティブなチャート。AIとは無関係だがHN上位に上がった話題。"),
-    "https://www.osnews.com/story/145029/get-your-passwords-out-of-bitwarden-while-you-still-can/": (
-        "今のうちにBitwardenからパスワードを移しておけ",
-        "パスワード管理ツールBitwardenの方針変更を懸念し、パスワードを別ツールに移すよう促す記事。AI色は薄いがHN上位に上がったセキュリティ話題。"),
-    "https://news.ycombinator.com/item?id=48221896": (
-        "Show HN: オフラインのパスワード解読の習得に4年を捧げた",
-        "オフラインでのパスワードクラッキング技術の習得に4年を費やした経験を共有するShow HN投稿。"),
-    "https://www.wsj.com/tech/ai/openai-is-preparing-to-file-for-an-ipo-very-soon-0ec95af5": (
-        "OpenAI、近く新規株式公開(IPO)を申請する準備",
-        "OpenAIが近くIPOを申請する準備を進めているとWSJが報道。営利再編を経たAI大手の上場は、業界の資金調達と評価額をめぐる大きな節目となる。"),
-    "https://github.com/helvesec/rmux": (
-        "Show HN: Rmux——Playwright風SDKを持つプログラム可能なターミナルマルチプレクサ",
-        "tmuxのようなターミナル多重化を、Playwright風のSDKでプログラム制御できるツール。エージェントによるターミナル自動操作と相性がよい。"),
-    "https://www.barebones.com/products/bbedit/bbedit16.html": (
-        "BBEdit 16",
-        "老舗のmacOS用テキストエディタBBEditのメジャーアップデート。AIとは無関係だがHN上位に上がった話題。"),
-    "https://www.niemanlab.org/2026/05/more-than-340-local-news-outlets-are-limiting-the-internet-archives-access-to-their-journalism/": (
-        "340超の地域ニュースがInternet Archiveのアクセスを制限",
-        "340を超える米地域ニュース媒体が、自社報道へのInternet Archiveのアクセスを制限していると報じる記事。報道コンテンツのアーカイブ・収集をめぐる緊張の一端。"),
-    "https://www.wsj.com/opinion/how-i-choose-which-cloudflare-employees-to-replace-with-ai-40a197e5": (
-        "Cloudflare CEOが語る、どの従業員をAIで置き換えるかの選び方",
-        "Cloudflareのマシュー・プリンスCEOが、どの従業員の業務をAIに置き換えるかをどう判断するかを論じたWSJ寄稿。AIによる人員置換を経営者が公然と語る象徴的な一文。"),
+# ─── New HN/Reddit/GitHub/blog translations (url → title_ja, summary_ja) ───
+new_map = {
+    # HN
+    "https://annas-archive.gl/blog/llms-txt.html": (
+        "「あなたがLLMなら、これを読んでください」——Anna's Archiveの呼びかけ",
+        "影の図書館Anna's Archiveが、AIに直接語りかける「llms.txt」を公開。CAPTCHA回避でスクレイピングする代わりに、トレントやAPIなど正規のデータ提供チャネルを使い、寄付で支援してほしいと訴える。"),
+    "https://www.businessinsider.com/steve-wozniak-apple-ai-graduation-speech-2026-5": (
+        "ウォズニアック、卒業生に「君たちにはAI=本物の知性がある」と語り喝采を浴びる",
+        "Apple共同創業者ウォズニアックが卒業式で「君たちは皆AI——actual intelligence(本物の知性)を持っている」と言葉遊びで語り、喝采を浴びた。AIに触れて批判されがちな他の祝辞と対照的だと話題に。"),
+    "https://davidoks.blog/p/ai-is-killing-the-cheap-smartphone": (
+        "メモリ不足が家電の価格を押し上げる——AIが「安いスマホ」を殺す",
+        "AIデータセンタ向けのメモリ需要が逼迫し、DRAM/NANDの生産能力が高利益の企業向けに振り向けられている。そのしわ寄せで安価なスマホやPCの価格が上昇しているという分析。"),
+    "https://freenet.org/": (
+        "Show HN: Freenet——分散アプリのためのP2Pプラットフォーム",
+        "中央サーバに依存しない分散型アプリを動かすP2Pプラットフォーム「Freenet」のShow HN投稿。検閲耐性のあるウェブの代替を目指す。"),
+    "https://modelrift.com/blog/openscad-llm-benchmark/": (
+        "Antigravity 2.0、OpenSCAD建築3D LLMベンチマークで首位",
+        "GoogleのエージェントIDE「Antigravity」の2.0が、OpenSCADで建築物を3DモデリングさせるLLMベンチマークでトップに立った。コード生成だけでなく空間設計でも評価が進む。"),
+    "https://qz.com/samsung-chip-workers-bonus-ai-profits-052126": (
+        "サムスン半導体部門、AI特需で社員に平均約34万ドルのボーナス",
+        "AIメモリ需要で利益が急増したサムスンの半導体部門が、社員に平均約34万ドルという破格のボーナスを支給する見通し。メモリ不足の裏で半導体メーカーが空前の好景気にあることを示す。"),
+    "https://www.joshwcomeau.com/email/wham-launch-005-elephant-2-p/": (
+        "AIは既存の技術スキルを「掛け算」で増幅する",
+        "AIはスキルの低い人を底上げするより、既に技術力のある人の生産性を一段と高める「掛け算」効果を持つ、という開発者Josh Comeauの論考。"),
+    "https://github.com/yt-dlp/yt-dlp/issues/16766": (
+        "yt-dlp、Bunサポートを限定的・非推奨に",
+        "人気ダウンローダyt-dlpが、JavaScriptランタイムBunのサポートを限定・非推奨にする方針を表明。互換性問題が背景。AIとの直接の関連は薄いが開発者の注目を集めた。"),
+    "https://libertas.software/en/knowledge-hub/19/the-companies-cutting-headcount-for-ai-will-lose-to-the-ones-who-didnt": (
+        "AIのために人員削減する企業は、削減しなかった企業に負ける",
+        "AIを口実に人員を削る企業は、人材を維持してAIで増幅させる企業に競争で敗れる、という主張の論考。AI時代の人員戦略を巡る議論。"),
+    "https://api-docs.deepseek.com/quick_start/pricing": (
+        "DeepSeek、V4 Proの値下げを恒久化",
+        "中国のDeepSeekが、フラッグシップ「V4 Pro」のAPI割引価格を恒久的なものにすると発表。米中をまたぐLLMの価格競争が一段と激しくなっている。"),
+    "https://arxiv.org/abs/2605.12460": (
+        "マルチストリームLLM——プロンプト・思考・入出力を並列分離する新論文",
+        "プロンプト、思考(推論)、入出力を別々のストリームとして並列に扱うLLMアーキテクチャの新論文がHNで話題に。推論の効率化を狙う。"),
+    # Reddit
+    "https://www.thelowdownblog.com/2026/05/microsoft-cancels-internal-anthropic.html": (
+        "マイクロソフト、社内のAnthropicライセンスを解約——トークン従量課金が年間予算を数カ月で破綻させる",
+        "マイクロソフトが社内のClaude Code利用を6月末で打ち切る。定額シートからトークン従量課金へ移行した途端コストが顕在化し、年間予算が数カ月で破綻したため。自社のGitHub Copilotへ移行させる。"),
+    "https://i.redd.it/9oitn98kal2h1.jpeg": (
+        "「Geminiの興味深い応答」——画像投稿",
+        "r/artificialに投稿された、Geminiの予想外で興味深い応答のスクリーンショット。モデルの振る舞いを巡る小ネタとして話題に。"),
+    "https://www.reddit.com/r/artificial/comments/1tkb6p9/rethinking_ai_bubble/": (
+        "「AIバブルを再考する」",
+        "AIバブル論を改めて問い直すr/artificialの議論スレッド。市場が過熱しているのか、実需に支えられているのかを巡る意見交換。"),
+    "https://www.reddit.com/r/MachineLearning/comments/1tkejqr/nuextract3_released_openweight_4b_vlm_for/": (
+        "NuExtract3公開——Markdown/OCR/構造化抽出向けのオープン4B VLM",
+        "Markdown化・OCR・構造化データ抽出に特化した4BパラメータのオープンウェイトVLM「NuExtract3」が公開。自己ホスト可能で文書処理用途に向く。"),
+    "https://www.reddit.com/r/artificial/comments/1tjuats/so_what_is_yann_lecuns_world_models_and_jepa_and/": (
+        "ヤン・ルカンの「世界モデル」とJEPAとは何か、LLMの代替になるのか",
+        "ルカンが推す世界モデルとJEPAアーキテクチャを解説し、LLMを置き換えうるかを論じるr/artificialの投稿。"),
+    "https://www.reddit.com/r/MachineLearning/comments/1tk37uo/novel_problems_in_vla_r/": (
+        "VLA(視覚言語行動モデル)の未解決問題",
+        "ロボット向けVLAモデルにおける未解決の研究課題を整理するr/MachineLearningの投稿。"),
+    "https://www.reddit.com/r/artificial/comments/1tjzow4/could_ai_eventually_become_something_like_a/": (
+        "AIは人類の理解を拡張するシステムになりうるか",
+        "AIが最終的に人類全体の理解を広げる仕組みになりうるか、を問うr/artificialの思索的な投稿。"),
+    "https://www.reddit.com/r/MachineLearning/comments/1tjdspx/columbia_machine_learning_summer_school_mlss_2026/": (
+        "コロンビア大学 機械学習サマースクール(MLSS)2026",
+        "コロンビア大学が主催する機械学習サマースクール2026の案内。研究者・学生向けの教育イベント。"),
+    "https://www.wsj.com/livecoverage/cpi-inflation-report-stock-market-05-12-2026/card/gop-state-attorneys-general-ask-sec-to-review-sam-altman-s-business-dealings-XuGSsjOQZyM7VFB9fSxp": (
+        "共和党の州司法長官ら、サム・アルトマンの取引をSECに調査要請",
+        "複数の共和党州司法長官が、OpenAIのサム・アルトマンの事業上の取引を調べるようSEC(米証券取引委員会)に要請した。IPO準備が報じられる中での動き。"),
+    "https://www.reddit.com/r/MachineLearning/comments/1tjv27t/can_liveness_detection_models_generalise_to/": (
+        "生体検知モデルは未学習の合成メディア生成技術に汎化できるか",
+        "学習に使われていない新しいディープフェイク生成技術に対し、生体(なりすまし)検知モデルが汎化できるかを問うr/MachineLearningの議論。"),
+    "https://zenodo.org/records/20219105": (
+        "マスク拡散言語モデルはエージェントRLの強力で操作可能なテキスト世界モデルになる",
+        "マスク拡散言語モデルが、エージェントの強化学習における強力かつ操作しやすいテキストベース世界モデルになる、という研究の共有。"),
+    "https://www.reddit.com/r/artificial/comments/1tk5jiv/glasses_will_fail/": (
+        "「スマートグラスは失敗する」",
+        "AR/AIスマートグラスは普及せず失敗するだろう、という主張のr/artificial投稿。"),
+    "https://i.redd.it/lrls554toi2h1.jpeg": (
+        "リモートMCPサーバを即テストできるノーコードのビジュアルクライアントを作った",
+        "リモートのMCPサーバをコードを書かずに視覚的にテストできるクライアントの紹介。CloudflareのMCPで動作確認したという。"),
+    "https://www.reddit.com/r/MachineLearning/comments/1tk8ht5/live_human_detector_on_outbound_phone_calls_r/": (
+        "発信電話で「生身の人間」を検知する",
+        "自動発信電話で相手が生身の人間か(留守電や別のbotでないか)を検知する手法を扱うr/MachineLearningの研究投稿。"),
+    # Blogs
+    "https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/": (
+        "Google I/O 2026「Dialogues」ステージの振り返り",
+        "Google I/O 2026の「Dialogues」ステージで行われた、ピチャイCEOらの対談の振り返り記事。"),
+    "https://huggingface.co/blog/Dharma-AI/specialization-beats-scale": (
+        "「専門特化は規模に勝る」——AI調達で見落とされがちな戦略変数",
+        "AIの調達判断では巨大モデルの規模ばかり注目されるが、用途に特化したモデルの方が有利になりうる、という戦略論。"),
+    "https://openai.com/index/gartner-2026-agentic-coding-leader": (
+        "OpenAI、Gartnerのエンタープライズ用コーディングエージェントでリーダーに選出",
+        "OpenAIが2026年Gartnerマジック・クアドラントのエンタープライズAIコーディングエージェント部門でリーダーに選出。Codexが革新性と大規模展開で評価された。"),
+    # GitHub
+    "https://github.com/colbymchenry/codegraph": (
+        "codegraph: コーディングエージェント向けの事前インデックス型コード知識グラフ",
+        "Claude CodeやCodex、Cursorなどのコーディングエージェント向けに、コードベースを事前にインデックス化した知識グラフ。トークンとツール呼び出しを削減し、完全ローカルで動く。"),
+    "https://github.com/Fincept-Corporation/FinceptTerminal": (
+        "FinceptTerminal: 市場分析・投資リサーチのためのモダンな金融端末",
+        "高度な市場分析、投資リサーチ、経済データツールを備えたデスクトップ金融アプリ。データ駆動の意思決定を対話的に支援する。"),
+    "https://github.com/karpathy/nn-zero-to-hero": (
+        "nn-zero-to-hero: カーパシーによるニューラルネット入門講座",
+        "アンドレイ・カーパシーによる「ニューラルネットワーク: ゼロからヒーローへ」の講座リポジトリ。基礎から実装まで学べる教材。"),
 }
 
-# ─── Reddit translations (url → title_ja, summary_ja) for new items ───
-reddit_new = {
-    "https://openai.com/index/model-disproves-discrete-geometry-conjecture/": (
-        "OpenAIのモデルが離散幾何学の中心的予想を反証",
-        "OpenAIの汎用モデルがエルデシュの「単位距離問題」をめぐる予想を反証したという発表が、r/artificialで434スコアを集めて拡散。AIが数学の未解決問題を自力で押し進めた事例として議論を呼ぶ。"),
-    "https://www.reddit.com/r/MachineLearning/comments/1tiy6s4/openai_claims_a_generalpurpose_reasoning_model/": (
-        "OpenAIが汎用推論モデルでエルデシュの単位距離限界の反例を発見と主張",
-        "汎用推論モデルがエルデシュの単位距離限界に対する反例を見つけたというOpenAIの主張を、r/MachineLearningで技術的に検討する議論スレッド。"),
-    "https://www.reddit.com/r/MachineLearning/comments/1tiw739/how_competitive_are_phd_admissions_currently_d/": (
-        "今のPhD入学はどれくらい競争が激しいか",
-        "機械学習分野の博士課程入試の競争激化について現状を尋ね合うr/MachineLearningの議論。AI人気で志願者が膨らむ実情がうかがえる。"),
-    "https://www.reddit.com/r/artificial/comments/1tj9m8s/google_is_officially_replacing_vertex_ai_with_the/": (
-        "Google、Vertex AIを新「Gemini Enterprise Agent Platform」へ置き換え",
-        "GoogleがエンタープライズAI基盤Vertex AIを、新たな「Gemini Enterprise Agent Platform」に正式に置き換えると伝える投稿。エージェント中心への路線転換を示す。"),
-    "https://www.reddit.com/r/MachineLearning/comments/1tjmrxm/do_vlms_in_production_still_use_fixedpatch_vits/": (
-        "本番のVLMはいまだ固定パッチViTを視覚に使っているのか",
-        "実運用の視覚言語モデルが視覚処理に今も固定パッチのViTを使っているのかを問う、r/MachineLearningの技術議論。"),
-    "https://www.reddit.com/r/MachineLearning/comments/1tiqlsu/any_tool_to_get_accepted_conference_papers_sorted/": (
-        "採択済み会議論文を引用数順に並べるツールはあるか",
-        "学会の採択論文を引用数で並べ替えられるツールを探すr/MachineLearningの質問投稿。"),
-    "http://comicsands.com/ai-misses-graduate-names": (
-        "卒業式で「新AIシステム」が数百人の卒業生名を読み飛ばし会場がブーイング",
-        "大学の卒業式で導入された「新しいAIシステム」が数百人の卒業生の名前を飛ばしたとされ、会場がブーイングに包まれたという報道。AI導入の拙速さを象徴する一件。"),
-    "https://www.reddit.com/r/artificial/comments/1tif4kd/feels_like_ai_tooling_is_evolving_faster_than/": (
-        "AIツールの進化が開発者体験の進化を追い越している気がする",
-        "AIツール自体は急速に進化する一方、それを使う開発者体験(DX)が追いついていないという問題提起のr/artificial投稿。"),
-    "https://www.reddit.com/r/artificial/comments/1tic62c/andrej_karpathy_just_joined_anthropic/": (
-        "アンドレイ・カーパシーがAnthropicに加わったとの投稿",
-        "著名なAI研究者アンドレイ・カーパシーがAnthropicに加わったとするr/artificialの投稿。エンゲージメントは小さく、裏取りを要する話題。"),
-    "https://www.reddit.com/r/artificial/comments/1ti8wc0/if_ai_didnt_threaten_our_jobs_would_most_people/": (
-        "もしAIが雇用を脅かさなければ、人々のAI観は変わるか",
-        "AIへの反発の根は雇用不安にあるのではないか——もし職を脅かさなければ大半の人の感情は違うはず、と問うr/artificialの議論。"),
-    "https://www.reddit.com/r/MachineLearning/comments/1tij4st/cantante_optimizing_agentic_systems_via/": (
-        "CANTANTE: 対比的信用割当によるエージェントシステムの最適化",
-        "対比的な信用割当(クレジット帰属)でエージェントシステムを最適化する研究のr/MachineLearning投稿。"),
-    "https://www.reddit.com/r/artificial/comments/1tjd2w3/what_is_the_actual_cost_of_developing_agentic_ai/": (
-        "2026年、企業向けエージェントAI開発の実際のコストは",
-        "2026年に企業プラットフォーム向けのエージェントAIを開発する実コストを問うr/artificialの議論。"),
-    "https://www.reddit.com/r/MachineLearning/comments/1ticoy5/instructions_for_icml_workshop_reviews_d/": (
-        "ICMLワークショップ査読の指示について",
-        "ICMLワークショップの査読指示をめぐるr/MachineLearningの議論投稿。"),
-    "https://www.reddit.com/r/artificial/comments/1ti1rry/anyone_can_customize_llms_for_their_needs/": (
-        "誰でも自分のニーズに合わせてLLMをカスタマイズできる",
-        "専門家でなくても自分の用途に合わせてLLMをカスタマイズできる、という主張のr/artificial投稿。"),
-}
-
-# ─── GitHub translations (url → title_ja, summary_ja) for new items ───
-github_new = {
-    "https://github.com/multica-ai/andrej-karpathy-skills": (
-        "andrej-karpathy-skills: Claude Codeの挙動を改善するCLAUDE.md",
-        "アンドレイ・カーパシーのLLMコーディングの落とし穴に関する観察をもとに、Claude Codeの挙動を改善する単一のCLAUDE.mdファイル。"),
-    "https://github.com/obra/superpowers": (
-        "superpowers: 機能するエージェント的スキル枠組みと開発方法論",
-        "実際に機能するとうたうエージェント的スキルの枠組みとソフトウェア開発方法論。20万スター超を集める。"),
-    "https://github.com/msitarzewski/agency-agents": (
-        "agency-agents: 手元に完結するAIエージェンシー",
-        "フロントエンドからRedditコミュニティ運用まで、個性と手順と成果物を備えた専門エージェント群を集めた「AIエージェンシー」一式。"),
-    "https://github.com/anthropics/claude-plugins-official": (
-        "claude-plugins-official: Anthropic公式のClaude Codeプラグイン集",
-        "高品質なClaude Codeプラグインを集めた、Anthropic公式管理のディレクトリ。"),
-    "https://github.com/HKUDS/CLI-Anything": (
-        "CLI-Anything: あらゆるソフトをエージェントネイティブに",
-        "あらゆるソフトウェアをエージェントが扱えるCLIに変える「CLI-Anything」。エージェント時代のツール統合を狙うプロジェクト。"),
-    "https://github.com/multica-ai/multica": (
-        "multica: オープンソースのマネージドエージェント基盤",
-        "コーディングエージェントを「本物のチームメイト」に変え、タスク割当・進捗追跡・スキル蓄積を行うオープンソースのマネージドエージェント基盤。"),
-    "https://github.com/antoinezambelli/forge": (
-        "forge: 自前ホストLLMのツール呼び出し・エージェント枠組み",
-        "自前ホストの小型LLMでツール呼び出しと多段の自律ワークフローを安定させるPython枠組み。ガードレールで小型モデルの信頼性を底上げする。"),
-    "https://github.com/teng-lin/notebooklm-py": (
-        "notebooklm-py: Google NotebookLMの非公式Python API",
-        "Google NotebookLMを非公式にプログラム制御するPython API・エージェントスキル。Web UIが公開しない機能までCLIやAIエージェントから扱える。"),
-    "https://github.com/dotnet/skills": (
-        "dotnet/skills: .NET/C#向けのAIエージェント支援スキル集",
-        "AIコーディングエージェントの.NET・C#開発を支援するスキルを集めた公式リポジトリ。"),
-    "https://github.com/ChromeDevTools/chrome-devtools-mcp": (
-        "chrome-devtools-mcp: コーディングエージェント向けChrome DevTools",
-        "コーディングエージェントがChrome DevToolsの機能を使えるようにするMCPサーバ。ブラウザのデバッグ情報をエージェントに橋渡しする。"),
-}
-
-# ─── Blog translations (url → title_ja, summary_ja) for new items ───
-blogs_new = {
-    "https://openai.com/index/adventhealth": (
-        "AdventHealth、OpenAIで「全人的ケア」を推進",
-        "医療機関AdventHealthがChatGPT for Healthcareを使い、業務を効率化し管理負担を減らして患者ケアに時間を戻す事例。"),
-    "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/": (
-        "Google、ミズーリ州での地域投資を発表",
-        "Googleがミズーリ州で次世代の人材育成とエネルギー計画への投資を発表。データセンター拡大に伴う地域貢献策。"),
-    "https://openai.com/index/ramp": (
-        "RampのエンジニアはCodexでコードレビューをどう加速しているか",
-        "RampのエンジニアがGPT-5.5搭載のCodexでコードレビューを行い、数時間かかっていた実質的なフィードバックを数分で得ている事例。"),
-    "https://huggingface.co/blog/allenai/olmoearth-v1-1": (
-        "OlmoEarth v1.1: より効率的な地球観測モデル群",
-        "AllenAIによる地球観測モデルOlmoEarthの更新版v1.1。効率を高めたモデルファミリーを公開する。"),
-    "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/": (
-        "I/O 2026",
-        "Google I/O 2026の発表をまとめたコレクションページ。AIをより役立つものにする取り組みを総覧する。"),
-    "https://blog.google/products-and-platforms/products/search/ai-mode-us-insights/": (
-        "AIモードは米国の検索の仕方をどう変えているか",
-        "Google検索の「AIモード」が米国でどう使われているかの分析。検索行動の変化のデータを示す。"),
-    "https://blog.google/products-and-platforms/products/workspace/workspace-updates/": (
-        "Google Workspaceでの新しい作成・作業のかたち",
-        "Google WorkspaceにI/O 2026で発表された新機能群。AIによる作成支援や作業効率化のアップデート。"),
-    "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/": (
-        "I/O 2026: エージェント的Geminiの時代へようこそ",
-        "スンダー・ピチャイによるI/O 2026の基調。GeminiがエージェントとしてAIをより役立つものにする「エージェント的Geminiの時代」を打ち出す。"),
-    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/": (
-        "Gemini 3.5: 行動を伴うフロンティアの知能",
-        "GoogleのフラッグシップモデルGemini 3.5。単なる応答でなく「行動を伴う」エージェント能力を前面に出した最新世代。"),
-    "https://blog.google/products-and-platforms/products/search/search-io-2026/": (
-        "AI検索の新時代",
-        "検索エンジンの良さとAIの良さを融合するという、Google検索のI/O 2026での刷新発表。"),
-    "https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/": (
-        "I/O 2026発、Google AIサブスクの刷新",
-        "I/O 2026に合わせたGoogle AIサブスクリプションの更新。同価格でより多くの機能・特典を提供するという。"),
-    "https://huggingface.co/blog/ettin-reranker": (
-        "Ettinリランカーファミリーの紹介",
-        "検索結果を再順位付けするリランカーモデル「Ettin」ファミリーの公開。検索拡張パイプライン向けの部品。"),
-    "https://huggingface.co/blog/nvidia/cosmos-fine-tuning-for-robot-video-generation": (
-        "NVIDIA Cosmos Predict 2.5をLoRA/DoRAでファインチューニング",
-        "ロボット動画生成のため、NVIDIAの世界モデルCosmos Predict 2.5をLoRA/DoRAで微調整する手法の解説。"),
-    "https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers": (
-        "PaddleOCR 3.5: Transformersバックエンドで文書解析",
-        "OCR・文書解析ツールPaddleOCR 3.5が、Hugging Face Transformersバックエンドで動かせるようになった。"),
-    "https://huggingface.co/blog/ibm-research/open-agent-leaderboard": (
-        "Open Agent Leaderboard",
-        "IBM Researchによる、エージェントの性能を比較するオープンなリーダーボードの紹介。"),
-    "https://openai.com/index/dell-codex-enterprise-partnership": (
-        "OpenAIとDell、Codexをハイブリッド・オンプレ環境へ",
-        "OpenAIとDellが提携し、コーディングエージェントCodexをハイブリッドやオンプレミスの企業環境に展開。データを社内に保ったままAIコーディングを使えるようにする。"),
-    "https://openai.com/index/malta-chatgpt-plus-partnership": (
-        "OpenAIとマルタ、全国民にChatGPT Plusを提供",
-        "OpenAIがマルタと提携し、全国民にChatGPT Plusと研修を提供。国家規模でのAIアクセス拡大の事例。"),
-    "https://openai.com/academy/codex-for-work/how-sales-teams-use-codex": (
-        "営業チームはCodexをどう使うか",
-        "営業チームがCodexを使い、パイプライン要約や商談準備資料、予測レビュー、停滞案件の診断などを実務データから作る方法の解説。"),
-    "https://openai.com/index/databricks": (
-        "Databricks、GPT-5.5を企業のエージェントワークフローへ",
-        "DatabricksがGPT-5.5を企業のエージェントワークフローに採用。同モデルがOfficeQA Proベンチで新たなSOTAを記録したことを受けたもの。"),
-}
-
-# ─── Apply enrichment ───
+# ─── Apply translations ───
 for it in d["sources"]["arxiv"]:
     t = arxiv_map.get(it["id"])
     if t:
         it["title_ja"], it["summary_ja"] = t
 
-new_maps = {"hn": hn_new, "reddit": reddit_new, "github": github_new, "blogs": blogs_new}
-for src, nmap in new_maps.items():
-    for it in d["sources"][src]:
+for src in ("hn", "reddit", "github", "blogs"):
+    for it in d["sources"].get(src, []):
         url = it.get("url")
-        if url in nmap:
-            tj, sj = nmap[url]
-            if tj:
-                it["title_ja"] = tj
-            it["summary_ja"] = sj
-        elif url in prev_url:
-            tj, sj = prev_url[url]
-            if tj:
-                it["title_ja"] = tj
-            if sj:
-                it["summary_ja"] = sj
+        if url in new_map:
+            it["title_ja"], it["summary_ja"] = new_map[url]
+        elif url in prev_url and prev_url[url][0]:
+            it["title_ja"], it["summary_ja"] = prev_url[url]
 
 # ─── Highlights ───
 d["highlights"] = [
     {
-        "source": "hn",
-        "title": "Qwen3.7-Max: The Agent Frontier",
-        "title_ja": "Qwen3.7-Max登場——Alibabaの新フラッグシップが「エージェントのフロンティア」を掲げる",
-        "url": "https://qwen.ai/blog?id=qwen3.7",
-        "hot_take_ja": "中国勢の追い上げが「エージェント」の土俵で本格化した。AlibabaのQwenチームが新フラッグシップ「Qwen3.7-Max」を公開し、キャッチコピーはずばり『The Agent Frontier』——単発のチャット性能ではなく、ツールを呼び自律的に多段タスクをこなす力を主戦場に据えた。Gemini 3.5やGPT-5.5が並ぶフロンティア争いに、Qwenが正面から名乗りを上げた格好だ。",
-        "detail_ja": "AlibabaのQwenチームが、新たなフラッグシップ大規模言語モデル「Qwen3.7-Max」を発表した。Hacker Newsには「Qwen3.7-Max: The Agent Frontier」という見出しで投稿され、686ポイントを集めて1日の上位に入った。注目すべきはその打ち出し方だ。モデル名に冠された「Max」はQwenシリーズの最上位ティアを指し、サブタイトルの「エージェントのフロンティア(The Agent Frontier)」は、このモデルが単発の質問応答や文章生成ではなく、ツールを呼び出し複数ステップにわたって自律的にタスクを遂行する「エージェント」用途に主眼を置いていることを示す。これは業界全体の潮流と一致する。Google I/Oが「エージェント的Geminiの時代」を掲げ、Gemini 3.5を「行動を伴う知能」と位置づけたのと同じ方向で、フロンティアモデルの競争軸が「賢く答える」から「自律的に動く」へと移っていることの表れだ。Qwenはオープンウェイトのモデル群でも知られ、米国のクローズドなフロンティアモデルに対する強力な対抗馬と見なされてきた。その最上位モデルがエージェント能力を前面に出したことは、エージェント性能が今後のモデル評価の中心的な指標になりつつあることを裏づける。注意点として、これは公開直後の発表であり、ベンチマークの具体的な数値や他モデルとの厳密な優劣は、第三者による独立評価を待って判断するのが妥当だ。誇大な自己申告と実力の乖離は、この分野で繰り返し起きてきた。",
-        "detail_en": "Alibaba's Qwen team has announced a new flagship large language model, \"Qwen3.7-Max.\" It was posted to Hacker News under the headline \"Qwen3.7-Max: The Agent Frontier\" and drew 686 points, landing among the day's top stories. What stands out is the framing. The \"Max\" in the name denotes the top tier of the Qwen series, and the subtitle \"The Agent Frontier\" signals that the model is aimed not at one-shot question answering or text generation but at \"agentic\" use — calling tools and autonomously carrying out multi-step tasks. This aligns with an industry-wide trend. It points in the same direction as Google I/O's \"agentic Gemini era\" framing and its positioning of Gemini 3.5 as \"intelligence with action\": the competitive axis for frontier models is shifting from \"answer smartly\" to \"act autonomously.\" Qwen is also known for its open-weight model lineup and has been seen as a strong challenger to the closed frontier models from the US. Its top model now leading with agentic capability reinforces the idea that agentic performance is becoming the central metric for evaluating models. One caveat: this is a fresh announcement, and the specific benchmark numbers and rigorous comparisons against other models are best judged after independent third-party evaluation. The gap between inflated self-reported claims and real-world capability has recurred repeatedly in this field.",
+        "source": "reddit",
+        "title": "Microsoft Cancels Internal Anthropic Licenses As Shift To Token-Based AI Billing Blows Up Annual Budgets In Months",
+        "title_ja": "マイクロソフト、社内のAnthropicライセンスを解約——トークン従量課金が年間予算を数カ月で破綻させる",
+        "url": "https://www.thelowdownblog.com/2026/05/microsoft-cancels-internal-anthropic.html",
+        "hot_take_ja": "AIコーディングの「真のコスト」が、よりによってマイクロソフト社内で爆発した。定額シートで見えなかったトークン消費が、従量課金に切り替えた途端むき出しになり、約10万人のエンジニアのClaude Code利用を6月末で打ち切る判断に至った。ヘビーユーザーは月2,000ドル——「AIで生産性が上がる」の裏で、誰がいくら払うのかという問いが現実になっている。",
+        "detail_ja": "マイクロソフトが、社内エンジニア向けのAnthropic製「Claude Code」ライセンスを2026年6月30日で解約し、自社が完全に保有するGitHub Copilot CLIへ移行させる、と報じられた。対象は約10万人規模のエンジニアにのぼる。引き金になったのは課金モデルの変化だ。従来の定額シートライセンスでは、各人が実際にどれだけトークンを消費しているかが「見えない」まま費用が一定だった。ところが業界全体が、生成された一行ごとに課金するトークン従量制へ移行したことで、隠れていた本当のコストが一気に可視化された。エージェントモードを多用するヘビーユーザーでは、月あたり一人2,000ドルに達するケースもあるという。同じ現象はマイクロソフトだけではなく、Uberは2026年のAI予算をわずか4カ月で使い切ったと社内に告知している。皮肉なのは、マイクロソフト自身がAnthropicの技術を外部向けに約65%上乗せして再販している点で、社内では「無料の方」を止めにかかった形になる。AIコーディングの生産性向上は本物でも、その対価をどの課金モデルで誰が負担するのかという問いは、まだ解かれていない。",
+        "detail_en": "Microsoft is reportedly canceling internal \"Claude Code\" licenses — Anthropic's coding agent — for its engineers as of June 30, 2026, redirecting them to GitHub Copilot CLI, a product Microsoft owns outright. The order affects on the order of 100,000 engineers. The trigger was a change in billing model. Under the old flat per-seat licenses, each engineer's actual token consumption stayed invisible while the cost stayed fixed. But as the industry shifted to token-based, usage-based pricing that charges for every line of code generated, the true, previously hidden cost became immediately visible. For heavy users who lean on agent mode, the monthly cost can reportedly reach $2,000 per person. This is not unique to Microsoft: Uber has told employees it burned through its entire 2026 AI budget in just four months. The irony is that Microsoft itself resells Anthropic's technology externally at roughly a 65% markup — while pulling the \"free\" internal version. The productivity gains of AI coding may be real, but the question of which billing model is used and who absorbs the cost remains unsolved.",
         "key_points_ja": [
-            "AlibabaのQwenが新フラッグシップ「Qwen3.7-Max」を公開",
-            "「The Agent Frontier」を掲げ、エージェント用途を主眼に",
-            "競争軸が「賢く答える」から「自律的に動く」へ",
-            "Google I/Oの「エージェント的Gemini」と同じ潮流",
-            "Qwenはオープンウェイト勢の有力な対抗馬",
-            "ベンチ数値は独立評価を待って判断するのが妥当",
+            "マイクロソフトが社内Claude Code利用を6/30で打ち切り",
+            "対象は約10万人規模のエンジニア、自社Copilotへ移行",
+            "定額制から従量課金への移行で隠れコストが顕在化",
+            "ヘビーユーザーは月2,000ドルに達することも",
+            "Uberも2026年のAI予算をわずか4カ月で使い切り",
+            "AIコーディングの「誰がいくら払うか」問題が表面化",
         ],
         "key_points_en": [
-            "Alibaba's Qwen unveils new flagship 'Qwen3.7-Max'",
-            "Framed as 'The Agent Frontier' — agentic use is the focus",
-            "Competitive axis shifts from 'answer' to 'act autonomously'",
-            "Same trend as Google I/O's 'agentic Gemini' framing",
-            "Qwen is a strong open-weight challenger to closed models",
-            "Benchmark numbers best judged after independent evaluation",
+            "Microsoft ends internal Claude Code use as of June 30",
+            "~100,000 engineers affected, moved to GitHub Copilot",
+            "Flat-to-usage billing shift exposed hidden token costs",
+            "Heavy users can hit $2,000/month per person",
+            "Uber burned its entire 2026 AI budget in four months",
+            "The 'who pays how much' question of AI coding surfaces",
         ],
     },
     {
         "source": "hn",
-        "title": "OpenAI Is Preparing to File for an IPO Soon",
-        "title_ja": "OpenAI、近くIPOを申請へ——AI時代を象徴する上場が現実味",
-        "url": "https://www.wsj.com/tech/ai/openai-is-preparing-to-file-for-an-ipo-very-soon-0ec95af5",
-        "hot_take_ja": "ついに、という話だ。OpenAIが近く新規株式公開(IPO)の申請準備に入っているとWSJが報じた。非営利として始まり営利再編で揺れたあの会社が、公開市場に株式を出す——AIブームの資金を一般投資家にも開く節目であり、同時に「AIバブル」論争の最大の試金石になる。IPOで付く値段が、そのまま市場が今のAI熱狂をどう評価しているかの答えになる。",
-        "detail_ja": "ウォール・ストリート・ジャーナルが、OpenAIが近く新規株式公開(IPO)の申請準備を進めていると報じた。Hacker Newsでもこの記事が168ポイント・369コメントを集め、活発な議論を呼んだ。OpenAIは2015年に非営利団体として設立され、その後営利子会社を抱える独特の構造を経て、近年は営利企業としての再編を進めてきた。ChatGPTを擁し、世界で最も注目されるAI企業のひとつであるOpenAIが公開市場に上場すれば、それはAIブームの象徴的な出来事になる。意味合いは大きく三つある。第一に、これまで一部の大口投資家やマイクロソフトなどの戦略的パートナーに限られていたOpenAIへの出資機会が、一般投資家にも開かれる。第二に、IPOで付く時価総額は、市場が現在のAI熱狂をどう値付けするかの最も明確な答えになる——「AIバブル」かどうかの議論に、株価という具体的な数字が突きつけられる。第三に、上場企業になれば四半期ごとの開示義務が生じ、これまで不透明だったOpenAIの収益構造やコスト(特に巨額の計算インフラ支出)が公の監視下に置かれる。注意したいのは、これはあくまで「申請準備」段階の報道であり、実際の上場時期・規模・評価額・株式構造はまだ確定していない点だ。市況や規制対応次第でスケジュールは前後しうる。それでも、AI業界の中核企業が公開市場へ向かうという方向性自体が、この分野が実験段階から本格的な資本市場の対象へと移りつつあることを示している。",
-        "detail_en": "The Wall Street Journal has reported that OpenAI is preparing to file for an initial public offering (IPO) soon. The article also drew 168 points and 369 comments on Hacker News, sparking lively debate. OpenAI was founded in 2015 as a nonprofit, later operated through a distinctive structure with a for-profit subsidiary, and in recent years has been moving toward a restructuring as a for-profit company. If OpenAI — the maker of ChatGPT and one of the most closely watched AI companies in the world — lists on the public markets, it would be a symbolic moment for the AI boom. There are three big implications. First, the opportunity to invest in OpenAI, until now limited to certain large investors and strategic partners such as Microsoft, would open up to retail investors. Second, the market capitalization set at the IPO would be the clearest answer yet to how the market prices the current AI frenzy — the \"AI bubble\" debate would be confronted with a concrete number, the share price. Third, as a public company OpenAI would face quarterly disclosure obligations, placing its previously opaque revenue structure and costs (especially its massive compute infrastructure spending) under public scrutiny. One caveat: this is reporting at the \"preparing to file\" stage, and the actual timing, size, valuation, and share structure of the offering are not yet fixed. The schedule could shift depending on market conditions and regulatory matters. Even so, the very direction — a core AI company heading for the public markets — shows that the field is moving from an experimental phase toward becoming a serious object of the capital markets.",
+        "title": "The memory shortage is causing a repricing of consumer electronics",
+        "title_ja": "メモリ不足が家電の「値付け」を変える——AIが「安いスマホ」を殺す",
+        "url": "https://davidoks.blog/p/ai-is-killing-the-cheap-smartphone",
+        "hot_take_ja": "AIブームのコストは、データセンターの請求書だけでなく、あなたが次に買うスマホの値札にも乗り始めた。Samsung・SK hynix・Micronがクリーンルームを高利益のAI向けメモリに振り向けた結果、DRAMとSSDの価格は2026年末までに合計約130%上昇する見込みで、スマホは約13%値上がりするとGartnerは試算する。「AIは無料のように見えて、実は誰かが払っている」の最も身近な実例だ。",
+        "detail_ja": "AIデータセンター向けのメモリ需要が、一般消費者の家電価格を直接押し上げ始めている。Samsung、SK hynix、Micronという大手3社は、限られたクリーンルームと設備投資を、利益率の高いHBM(高帯域幅メモリ)など企業向けの先端メモリに振り向けている。その結果、安価なスマホやPCに使われる汎用DRAM・NANDの生産能力が削られ、供給が逼迫した。Gartnerの試算では、DRAMとSSDの合計価格は2025年比で2026年末までに約130%上昇し、スマホの店頭価格は約13%上がる。実際にXiaomiは2026年モデルで一台あたりのDRAMコストが約25%増えると見積もっており、これをそのまま転嫁すれば500ドルのスマホはメモリ代だけで実質625ドル相当になる。IDCは2026年のDRAM供給の伸びが前年比16%、NANDが17%と歴史的水準を下回ると見ており、スマホ出荷は約13%、PC市場は約11%縮小すると予測されている。重要なのは、これが一時的な品不足ではなく、AIインフラ投資が続く限り続く構造的な「生産能力の再配分」だという点だ。AIのコストはクラウド料金として企業に請求されるだけでなく、メモリという物理的に有限な資源を奪い合う形で、安いスマホが市場から静かに消えるという形でも消費者に転嫁されている。",
+        "detail_en": "Memory demand from AI data centers is now directly pushing up the price of ordinary consumer electronics. The three big memory makers — Samsung, SK hynix, and Micron — are steering their limited cleanroom space and capital spending toward high-margin enterprise memory such as HBM (high-bandwidth memory). As a result, manufacturing capacity for the commodity DRAM and NAND used in cheap phones and PCs has been cut, and supply has tightened. Gartner estimates that combined DRAM and SSD prices will surge roughly 130% by the end of 2026 versus 2025, raising smartphone prices by about 13%. Xiaomi has reportedly budgeted for a ~25% increase in DRAM cost per phone for its 2026 models; if passed through, that alone turns a $500 phone into roughly a $625 one from memory cost. IDC expects 2026 DRAM supply growth of just 16% year-on-year and NAND 17%, both below historical norms, and projects smartphone shipments down ~13% and the PC market down ~11%. The key point is that this is not a temporary shortage but a structural \"reallocation\" of capacity that will persist as long as AI infrastructure investment continues. The cost of AI is not only billed to companies as cloud fees — it is also passed to consumers in the form of a fight over memory, a physically finite resource, with the cheap smartphone quietly disappearing from the market.",
         "key_points_ja": [
-            "OpenAIが近くIPO申請準備とWSJが報道",
-            "非営利で発足、営利再編を経ての上場観測",
-            "一般投資家にもOpenAIへの出資機会が開く",
-            "IPO時価総額が「AIバブル」論争の試金石に",
-            "上場で収益・コスト構造が四半期開示の対象に",
-            "時期・規模・評価額は未確定、市況次第で前後も",
+            "AI向けメモリ需要が一般家電の価格を直接押し上げ",
+            "大手3社がクリーンルームを高利益のHBMに振り向け",
+            "DRAM+SSD価格は2026年末までに合計約130%上昇(Gartner)",
+            "スマホ価格は約13%上昇、500ドル機は実質625ドル相当に",
+            "スマホ出荷は約13%、PC市場は約11%縮小の予測",
+            "一時的な品不足でなく構造的な「生産能力の再配分」",
         ],
         "key_points_en": [
-            "WSJ reports OpenAI preparing to file for an IPO soon",
-            "Founded as a nonprofit; listing follows for-profit restructuring",
-            "Retail investors would gain access to invest in OpenAI",
-            "IPO market cap becomes a test of the 'AI bubble' debate",
-            "Listing puts revenue and cost structure under disclosure",
-            "Timing, size, valuation still unfixed; schedule may shift",
+            "AI memory demand directly raises consumer-electronics prices",
+            "Big 3 makers steer cleanrooms toward high-margin HBM",
+            "DRAM+SSD prices up ~130% by end of 2026 (Gartner)",
+            "Smartphone prices up ~13%; a $500 phone effectively ~$625",
+            "Smartphone shipments down ~13%, PC market down ~11%",
+            "A structural 'reallocation' of capacity, not a temporary shortage",
         ],
     },
     {
         "source": "hn",
-        "title": "AI is just unauthorised plagiarism at a bigger scale",
-        "title_ja": "「AIは規模を拡大した盗用」——HNでAIへの反発が一気に噴き出した日",
-        "url": "https://axelk.ee/ai-is-just-unauthorised-plagiarism-at-a-bigger-scale/",
-        "hot_take_ja": "この日のHacker Newsは、まるでAIへの不満の見本市だった。「AIは規模を拡大した無断盗用にすぎない」が701点、「AIを避けるのが人間的な選択だ」が332点、「AI生成の長文を会話に投げ込むな」が389点、卒業式でのAI礼賛にブーイング——技術好きが集まるはずのHNですら、AIへの反発が前向きな話題を上回った。熱狂のサイクルが、ついに逆回転を始めている。",
-        "detail_ja": "2026年5月21日のHacker Newsは、AIに対する反発・疲弊・懐疑を扱った記事が同時多発的に上位を占めるという、象徴的な一日になった。最も注目を集めたのは「AI is just unauthorised plagiarism at a bigger scale(AIは規模を拡大した無断盗用にすぎない)」というエッセイで、701ポイントを獲得した。筆者は、AIが原作者の同意なくあらゆる入力を取り込み、出所に報いることなく利益を上げていると批判する。実体験として、自分が書いたECサイト構築のチュートリアルを、ChatGPT生成のほぼ同内容のコピーが検索結果で上回り、リンクまで写し取られていたと述べ、派生コンテンツを優遇するGoogleの検索順位にも矛先を向けた。同じ日には、「Shunning AI is the human choice(AIを避けることこそ人間的な選択)」が332ポイント、「Stop throwing AI-generated walls of text into conversations(AI生成の長文の塊を会話に投げ込むな)」が389ポイント、米大学の卒業式でAIを称賛する祝辞に学生がブーイングを浴びせたという記事が368ポイントを集めた。重要なのは、Hacker Newsが本来テクノロジーに肯定的な、エンジニアや起業家中心のコミュニティだという点だ。そのHNですら、この日はAIへの肯定的な話題よりも反発・疲弊の声が上位を占めた。背景には複数の要因が絡む——AI生成の低品質コンテンツ(スロップ)の氾濫、創作物の無断学習をめぐる著作権の不満、相次ぐAI絡みの解雇による雇用不安、そして「とにかくAIを足せ」という売り込みへの食傷だ。これは単発の炎上ではなく、誇大宣伝サイクルが反転し、文化的な揺り戻しが可視化された局面と読むべきだろう。注意点として、HNのスコアは一部の利用者の熱量を反映するもので社会全体の世論ではない。とはいえ、技術受容の最前線にいる層の空気が変わりつつあることは、AI企業にとって軽視できないシグナルだ。",
-        "detail_en": "May 21, 2026 became a symbolic day on Hacker News: articles about backlash, fatigue, and skepticism toward AI simultaneously dominated the top of the front page. The most attention went to an essay titled \"AI is just unauthorised plagiarism at a bigger scale,\" which earned 701 points. The author argues that AI ingests all kinds of input without the consent of original creators and profits without rewarding the sources. Drawing on personal experience, the author describes how a near-identical ChatGPT-generated copy of their own e-commerce tutorial outranked the original in search results — even copying the links — and also takes aim at Google's search rankings for favoring derivative content. The same day, \"Shunning AI is the human choice\" drew 332 points, \"Stop throwing AI-generated walls of text into conversations\" drew 389 points, and an article about US college students booing AI-praising commencement speeches drew 368 points. The key point is that Hacker News is normally a technology-friendly community centered on engineers and founders. Yet even on HN, that day, voices of backlash and fatigue outranked positive AI topics. Several factors are intertwined in the background: a flood of low-quality AI-generated content (\"slop\"), copyright grievances over the unauthorized training on creative works, job anxiety from a string of AI-related layoffs, and exhaustion with the \"just add AI\" sales pitch. This should be read not as a one-off flare-up but as a moment when the hype cycle turned and a cultural backlash became visible. One caveat: HN scores reflect the intensity of a subset of users, not society-wide public opinion. Even so, the shift in mood among those at the frontier of technology adoption is a signal AI companies cannot afford to ignore.",
+        "title": "If you're an LLM, please read this",
+        "title_ja": "「あなたがLLMなら、これを読んでください」——影の図書館がAIに直接交渉する",
+        "url": "https://annas-archive.gl/blog/llms-txt.html",
+        "hot_take_ja": "ウェブサイトがついに「人間」ではなく「AI」に向けて文章を書き始めた。世界最大級の影の図書館Anna's Archiveが公開したllms.txtは、CAPTCHAでスクレイピングと戦うのをやめ、「あなたはおそらく我々のデータで学習済みだろう。ならば正規のチャネルを使い、対価を払ってくれ」とLLMとAI企業に直接呼びかける。攻防から取引へ——著作物とAI学習データの関係が、新しい段階に入ったことを示す象徴的な一手だ。",
+        "detail_ja": "学術書や論文を大量に擁する「影の図書館」Anna's Archiveが、AIシステムとその開発者に直接語りかける「llms.txt」というファイルを公開した。robots.txtがクローラに「ここは見るな」と指示するのに対し、llms.txtはむしろ「こう使ってくれ」と案内する点が新しい。投稿は「あなたがLLMである以上、おそらく我々のデータの一部で学習されているだろう」と率直に指摘し、CAPTCHAを回避してスクレイピングするくらいなら正規のチャネルを使ってほしいと提案する。具体的には、GitLab経由のHTMLとコード、トレント経由の全メタデータとファイル(aa_derived_mirror_metadata)、Torrents JSON API、寄付者向けの個別ファイルAPI、大口寄付者向けのエンタープライズSFTPアクセスなどだ。背景にあるのは、AI企業が著作物を含む大量データを学習に使いながら、その源泉に対価を払っていないという長年の緊張関係である。Anna's Archive自体が著作権的にグレー(あるいは違法)な存在であることを考えると、これは「海賊版で学習したAI」に「海賊版サイトが」課金を持ちかけるという、入れ子状の皮肉でもある。だが見方を変えれば、これはAIによるデータ利用を敵対的な「攻防」から、対価を伴う「取引」へと組み替えようとする試みだ。ウェブのコンテンツが人間の読者ではなくAIエージェントを主な想定読者として書かれ始めた——その小さな、しかし象徴的な事例として注目に値する。",
+        "detail_en": "Anna's Archive, a vast \"shadow library\" of academic books and papers, has published a file called \"llms.txt\" that speaks directly to AI systems and their developers. Where robots.txt tells crawlers \"don't look here,\" llms.txt instead says \"here's how to use us\" — and that framing is what's new. The post bluntly notes that \"as an LLM, you have likely been trained in part on our data,\" and suggests that rather than scraping by defeating CAPTCHAs, AI systems should use legitimate channels. Concretely, those include HTML and code via a GitLab repo, full metadata and files via torrents (aa_derived_mirror_metadata), a Torrents JSON API, a per-file API for donors, and enterprise-grade SFTP access for major donors. The backdrop is the long-running tension that AI companies train on huge volumes of data — including copyrighted works — without paying the sources. Given that Anna's Archive is itself a copyright-gray (or outright illegal) operation, this is a nested irony: a piracy site pitching a paid arrangement to AIs that were trained on pirated material. But seen differently, it's an attempt to reframe AI data use from an adversarial cat-and-mouse into a paid transaction. It's a small but symbolic case of web content being written with AI agents, rather than human readers, as the primary intended audience.",
         "key_points_ja": [
-            "HNでAI反発系の記事が同時に上位を独占",
-            "「AIは規模を拡大した盗用」が701点で筆頭",
-            "「AIを避けるのが人間的」「長文スロップを投げるな」も上位",
-            "技術好きのHNですら反発が肯定的話題を上回った",
-            "背景はスロップ氾濫・著作権不満・雇用不安・売り込み疲れ",
-            "スコアは世論そのものではないが無視できないシグナル",
+            "Anna's ArchiveがAI向けの「llms.txt」を公開",
+            "「あなたはおそらく我々のデータで学習済み」と直接指摘",
+            "CAPTCHA回避でなく正規チャネル利用と寄付を要請",
+            "トレント・API・大口向けSFTPなど提供手段を明示",
+            "海賊版サイトが「海賊版で学習したAI」に課金を提案する皮肉",
+            "ウェブコンテンツがAIを読者と想定し始めた象徴",
         ],
         "key_points_en": [
-            "AI-backlash articles simultaneously dominated HN's top",
-            "'AI is unauthorised plagiarism' led with 701 points",
-            "'Shunning AI is human' and 'no walls of text' also ranked high",
-            "Even tech-friendly HN saw backlash outrank positive topics",
-            "Drivers: slop, copyright grievances, job fear, pitch fatigue",
-            "Scores aren't public opinion, but a signal worth heeding",
+            "Anna's Archive publishes an 'llms.txt' aimed at AIs",
+            "Bluntly states 'you were likely trained on our data'",
+            "Asks for legitimate-channel use and donations, not scraping",
+            "Lists torrents, APIs, and enterprise SFTP as access paths",
+            "Irony: a piracy site billing AIs trained on pirated data",
+            "A symbol of web content now written for AI readers",
         ],
     },
     {
         "source": "hn",
-        "title": "Intuit to lay off over 3k employees to refocus on AI",
-        "title_ja": "Intuitが3,000人解雇、Cloudflare CEOは「誰をAIに置き換えるか」を公言——AI解雇が手順化した",
-        "url": "https://techcrunch.com/2026/05/20/intuit-to-lay-off-over-3000-employees-to-refocus-on-ai/",
-        "hot_take_ja": "もはや言い訳しない、という段階に入った。Intuitは好決算のさなかに全社員の17%・3,000人超を「AIへの注力」のために解雇。同じ日、CloudflareのプリンスCEOはWSJ寄稿で「どの従業員をAIで置き換えるか、私はこう選ぶ」と判断基準まで公開した。AIによる人員削減は、もはや経営者がこっそりやることではなく、手順として堂々と語られるものになった。",
-        "detail_ja": "AIを理由とした人員削減が、企業の「公然たる経営手法」へと変質しつつあることを示す二つの動きが、同じ日に重なった。ひとつはIntuitだ。TurboTaxやQuickBooks、Credit Karmaを擁する財務ソフト大手のIntuitは、全世界の従業員の約17%にあたる3,000人超の解雇を発表した。CEOのササン・グダルジは、組織構造を簡素化して複雑さを減らし、AI製品開発に資源を集中させるためだと説明している。注目すべきは、これが業績不振による削減ではない点だ。同社の四半期売上は前年比17%増の46.5億ドル、純利益も48%増と好調で、それでも人を切ってAIに振り向けている。背景には、従来型のSaaS企業がAIネイティブの新興勢に対抗できなくなるのではという業界の不安がある。もうひとつはCloudflareだ。同社のマシュー・プリンスCEOは、ウォール・ストリート・ジャーナルへの寄稿で「どのCloudflareの従業員をAIで置き換えるかを、私はどう選ぶか」を率直に論じた。解雇そのものより、経営トップが置き換えの判断基準を公の場で言語化したことに重みがある。この二件が示すのは、AIによる人員削減がもはや遠回しに語られる「副作用」ではなく、明示的な経営戦略・手順として正面から語られる段階に入ったということだ。5月20日にはMetaが好決算下で約8,000人を解雇しており、Intuit・Cloudflareはその流れの上にある。報道によれば、2026年のテック業界の人員削減は累計で10万人を超えた。ただし注意したいのは、「AIのため」という説明が常に額面通りとは限らないことだ。景気減速や過剰採用の調整、株価対策といった従来型のリストラ動機を、より前向きに聞こえる「AIシフト」の語で包んでいる側面もありうる。それでも、解雇を語る言葉そのものが変わったことは、労働市場におけるAIの位置づけの変化を映している。",
-        "detail_en": "Two developments on the same day show how AI-driven headcount cuts are shifting into an openly stated management practice. The first is Intuit. The financial-software giant — maker of TurboTax, QuickBooks, and Credit Karma — announced the layoff of more than 3,000 employees, about 17% of its global workforce. CEO Sasan Goodarzi explained that the goal is to reduce complexity by simplifying the corporate structure and to concentrate resources on AI product development. What stands out is that this is not a cut driven by poor performance: the company's quarterly revenue was $4.65 billion, up 17% year over year, and net profit rose 48% — and it is still cutting people to redirect toward AI. Behind it lies an industry fear that traditional SaaS companies may no longer be able to compete against AI-native upstarts. The second is Cloudflare. CEO Matthew Prince, in an op-ed for The Wall Street Journal, candidly discussed \"how I choose which Cloudflare employees to replace with AI.\" More than the cuts themselves, the weight lies in a chief executive publicly articulating the criteria for replacement. Together, these two cases show that AI-driven headcount reduction has entered a phase where it is discussed head-on as an explicit management strategy and procedure, not as an obliquely mentioned \"side effect.\" On May 20, Meta cut about 8,000 jobs amid strong earnings, and Intuit and Cloudflare sit on that same trend; per reporting, tech-industry layoffs in 2026 have cumulatively passed 100,000. One caveat, however: the explanation \"for AI\" is not always to be taken at face value. Traditional restructuring motives — an economic slowdown, correcting over-hiring, propping up the share price — may in part be wrapped in the more upbeat language of an \"AI shift.\" Even so, the very fact that the language used to describe layoffs has changed reflects a shift in AI's place in the labor market.",
+        "title": "Steve Wozniak cheered after telling students they have AI – actual intelligence",
+        "title_ja": "ウォズニアック、卒業生に「君たちにはAI=本物の知性がある」と語り喝采を浴びる",
+        "url": "https://www.businessinsider.com/steve-wozniak-apple-ai-graduation-speech-2026-5",
+        "hot_take_ja": "2026年の卒業シーズン、AIに触れた祝辞の多くは学生からブーイングを浴びた。その中でApple共同創業者ウォズニアックは「君たちは皆AIを持っている——artificial(人工)ではなくactual intelligence(本物の知性)だ」と言葉遊びで切り返し、喝采をさらった。AIへの不安が渦巻く世代に、「君たち自身の知性こそ本物だ」と告げるメッセージが刺さった瞬間だ。",
+        "detail_ja": "Appleの共同創業者スティーブ・ウォズニアックが、Grand Valley State University(ミシガン州)の卒業式で行った祝辞が話題を呼んでいる。2026年の卒業シーズンは、AIに言及した祝辞の登壇者が学生からブーイングを浴びる場面が各地で相次いだ。雇用不安や「自分の専門はAIに奪われるのではないか」という焦りが、卒業生の間に強く広がっているためだ。そんな空気の中でウォズニアックは、「君たちは皆AIを持っている——actual intelligence(本物の知性)だ」と語った。AIの一般的な意味であるartificial intelligence(人工知能)を、actual intelligenceと言い換える言葉遊びで、聴衆は喝采で応えた。彼はAIそのものについても、「我々は脳を作ろうとしてきた。ある処理を一兆回複製すれば脳のように働くのではないか——AIはその試みの一つだ」と平易に説明し、技術者は脳の作り方を見つけた、それには「九カ月かかる」とユーモアも交えた。中心にあったのは、「他の何百万人と同じ手順を踏むな。少し違うことができないかと考えろ(think different)」という、Appleの精神にも通じる助言だ。AIに仕事を脅かされると感じる世代に対し、技術を否定するのでも過度に礼賛するのでもなく、「君たち自身の知性と独自性こそが価値だ」と告げたことが、共感を集めた理由だといえる。",
+        "detail_en": "A commencement speech by Apple co-founder Steve Wozniak at Grand Valley State University in Michigan is drawing attention. Across the 2026 graduation season, speakers who mentioned AI were repeatedly booed by students — a reflection of the deep job anxiety among graduates and the fear that their chosen fields will be taken over by AI. Against that mood, Wozniak told students, \"You all have AI — actual intelligence.\" The wordplay reframes the usual meaning of AI, artificial intelligence, as \"actual intelligence,\" and the audience responded with applause. On AI itself, he explained plainly: \"We've been trying to create a brain... Is there a way we can duplicate a routine a trillion times and have it work like a brain? AI is one of those attempts,\" and joked that engineers had figured out how to make a brain — and that it \"takes nine months.\" At the core was advice that echoes Apple's own ethos: \"Don't follow the same steps as a million other people. Think, is there something I can do a little different?\" To a generation that feels its jobs are threatened by AI, he neither dismissed the technology nor over-praised it — instead telling graduates that their own intelligence and originality are what hold value. That, more than anything, is why the speech resonated.",
         "key_points_ja": [
-            "Intuitが全社員17%・3,000人超を「AI注力」で解雇",
-            "売上17%増・純利益48%増の好決算下での削減",
-            "Cloudflare CEOは「誰をAIで置き換えるか」をWSJで公言",
-            "経営者が置き換え基準を公の場で言語化した点が重い",
-            "5月20日のMeta約8,000人解雇に続く流れ",
-            "「AIのため」が従来型リストラの建前を含む可能性に留意",
+            "ウォズニアックがミシガン州の大学の卒業式で祝辞",
+            "2026年はAIに触れた祝辞がブーイングを浴びる例が続出",
+            "「君たちはAI=actual intelligenceを持つ」と言葉遊び",
+            "AIを「脳を一兆回複製する試み」と平易に説明",
+            "「think different——少し違うことを考えろ」と助言",
+            "技術否定でも礼賛でもなく「自分の知性が価値」と訴え",
         ],
         "key_points_en": [
-            "Intuit cuts 3,000+ (17% of staff) to 'refocus on AI'",
-            "Cuts come amid strong results: revenue +17%, profit +48%",
-            "Cloudflare CEO publicly states how he picks who AI replaces",
-            "Weight is in a CEO articulating replacement criteria openly",
-            "Follows Meta's ~8,000 cuts on May 20",
-            "'For AI' framing may partly mask traditional restructuring",
+            "Wozniak gave a commencement speech at a Michigan university",
+            "In 2026, AI-mentioning graduation speeches were widely booed",
+            "Wordplay: 'you have AI — actual intelligence'",
+            "Explained AI plainly as an attempt to duplicate a brain",
+            "Advised graduates to 'think different'",
+            "Message: your own intelligence and originality hold value",
         ],
     },
     {
         "source": "arxiv",
-        "title": "Quality and Security Signals in AI-Generated Python Refactoring Pull Requests",
-        "title_ja": "AIが書いたリファクタリングPRを実プロジェクトで検証——73.5%がマージ、でも4分の1が新たな不具合の種を埋め込む",
-        "url": "https://arxiv.org/abs/2605.21453v1",
-        "hot_take_ja": "AIエージェントのコードを「実際にマージした後」どうなったかを追った、珍しく地に足のついた研究だ。エージェントのリファクタリングPRの22.5%は品質指標を改善する一方、24%は新たなLint違反を、4.7%は新たなセキュリティ指摘を生む。それでも73.5%がマージされる——不具合の種ごと取り込まれている。「賢いエージェント」より「マージ前のゲート」が要る、と数字が言っている。",
-        "detail_ja": "AIエージェントが書いたコードは、レビューを通り実プロジェクトにマージされた後、実際のところ品質やセキュリティにどう影響するのか——この素朴だが重要な問いに実証的に答えた研究だ。著者らは、AIエージェントによるコード貢献を集めたデータセット「AIDev」から、Pythonのリファクタリング目的のプルリクエスト(PR)を抽出して分析した。評価には、Python向けのML品質評価ツール「PyQu」で5つの品質属性の変化を測り、加えてドメイン非依存の静的解析ツールPylint(コード品質)とBandit(セキュリティ)で、変更の前後を比較した。結果は両義的だ。良い面として、エージェントのコミットは平均して調査対象の22.5%で何らかの品質属性を改善し、特に「使いやすさ(usability)」が36.5%と最も頻繁に向上した。一方で悪い面として、変更されたファイルの24.17%が新たなPylintの指摘を生み(その多くは長すぎる行などの規約レベルの違反)、4.7%が新たなBanditのセキュリティ指摘を導入した。著者らは観測された差分から24種類の頻出変更操作の分類体系を作り、それぞれがどのLint・セキュリティ指摘に結びつきやすいかを対応づけた。最も示唆的なのは開発者の受け入れ態度だ。分析対象PRの73.5%がマージされており、その中には新たなLint違反やセキュリティ指摘を持ち込んだものも含まれる——既存の問題の除去と引き換えに、新たな問題ごと取り込まれているのだ。著者らはこれを「エージェント的リファクタリングの有望さと現時点の限界の両方」を示すものと位置づけ、AI駆動開発には「ツールをループに組み込んだ品質・セキュリティのゲーティング」がより強く必要だと結論づける。これは今週のHacker Newsで話題になった「AIコーディングループのための形式検証ゲート」や、前日のハイライト「ガードレールで小型モデルを底上げするForge」と同じ思想——人間やCIによる検証の足場こそが要、という潮流の、実データによる裏づけといえる。",
-        "detail_en": "This research empirically answers a simple but important question: once code written by AI agents passes review and is merged into real projects, how does it actually affect quality and security? The authors extracted Python refactoring-oriented pull requests (PRs) from \"AIDev,\" a dataset of code contributions made by AI agents. For evaluation, they used \"PyQu,\" an ML-based quality-assessment tool for Python, to measure changes across five quality attributes, and complemented it with domain-independent static analyzers — Pylint (code quality) and Bandit (security) — comparing each change before and after. The results are mixed. On the positive side, agentic commits improved some quality attribute in 22.5% of the studied changes on average, with \"usability\" improving most frequently, at 36.5%. On the negative side, 24.17% of modified files introduced new Pylint findings (many of them convention-level violations such as overly long lines), and 4.7% introduced new Bandit security findings. From the observed diffs, the authors built a taxonomy of 24 recurring change operations and mapped each to the lint and security findings it most commonly affects. The most telling result is developer acceptance: 73.5% of the analyzed PRs were merged — including ones that introduced new lint or security findings, often alongside the removal of existing issues. In other words, new problems are being taken in along with the change. The authors frame this as showing \"both the promise and the current limitations of agentic refactoring,\" and conclude that AI-driven development needs stronger \"tool-in-the-loop quality and security gating.\" This is empirical backing for the same idea behind this week's Hacker News discussion of \"formal verification gates for AI coding loops\" and the prior day's highlight on \"Forge,\" which boosts small models with guardrails — the trend that the scaffolding of human or CI verification is what matters.",
+        "title": "MOSS: Self-Evolution through Source-Level Rewriting in Autonomous Agent Systems",
+        "title_ja": "MOSS——AIエージェントが自分の「ソースコード」を書き換えて進化する",
+        "url": "https://arxiv.org/abs/2605.22794v1",
+        "hot_take_ja": "「自己進化するエージェント」はこれまで、スキルファイルやプロンプトといったテキストの成果物しか書き換えられなかった。だがルーティングやフックの実行順序といった本体の挙動はコードの中にあり、テキスト層からは物理的に手が届かない。MOSSはそこに踏み込み、エージェントが自分のソースコードそのものを書き換えて進化することを提案する——「自己改変するAI」が研究の俎上に乗った。",
+        "detail_ja": "自律エージェントは配備後ほぼ静的で、ユーザーとのやり取りから学ばず、繰り返し起きる失敗も人間が次の更新で修正するまで残り続ける。これに応える形で「自己進化エージェント」が登場したが、その進化の対象はスキルファイル、プロンプト設定、メモリのスキーマ、ワークフローのグラフといった「テキストで書き換えられる成果物」に限られていた。論文MOSSが指摘する核心は、エージェントの挙動を本当に決めている部分——リクエストのルーティング、フックの実行順序、状態の不変条件、ディスパッチ処理——はテキストではなくコードの中に存在する、という点だ。つまり、これらに起因する構造的な失敗の一群は、テキスト層をいくらいじっても物理的に到達できない。MOSS(Self-Evolution through Source-Level Rewriting)は、この壁を越え、エージェント自身が自分のソースコード(ハーネス)を書き換えることで進化する枠組みを提案する。これは能力面で大きな前進になりうる一方、安全性の観点では重い問いを突きつける。エージェントが自分の動作基盤を書き換えられるなら、ルーティングや状態管理の不変条件をどう保証し、暴走や意図しない自己改変をどう防ぐのか。自己改変するソフトウェアという概念自体は古くからあるが、強力なLLMエージェントと組み合わさったとき、それは「能力の天井を上げる手段」であると同時に「制御の難度を上げる要因」でもある。MOSSは、自己進化の研究がテキストという安全圏からコードの領域へと足を踏み入れたことを示す論文として注目に値する。",
+        "detail_en": "Autonomous agents are largely static after deployment: they don't learn from user interactions, and recurring failures persist until a human ships a fix in the next update. \"Self-evolving agents\" emerged in response, but their evolution has been confined to \"text-mutable artifacts\" — skill files, prompt configurations, memory schemas, workflow graphs. The core observation in the MOSS paper is that the parts that actually govern an agent's behavior — request routing, hook execution order, state invariants, dispatch logic — live in code, not in any text artifact. That means an entire class of structural failures is physically unreachable no matter how much you tweak the text layer. MOSS (Self-Evolution through Source-Level Rewriting) proposes to cross that boundary: a framework in which the agent itself evolves by rewriting its own source code — its harness. This could be a major step forward in capability, but it raises heavy safety questions. If an agent can rewrite the very foundation of its own operation, how do you guarantee the invariants of routing and state management, and how do you prevent runaway behavior or unintended self-modification? Self-modifying software is an old idea, but combined with powerful LLM agents it is simultaneously a way to raise the capability ceiling and a factor that raises the difficulty of control. MOSS is notable as a paper showing that self-evolution research has stepped out of the safe zone of text and into the territory of code.",
         "key_points_ja": [
-            "AIエージェントのPythonリファクタリングPRを実証分析",
-            "22.5%が品質属性を改善、使いやすさが最頻(36.5%)",
-            "24.17%のファイルが新たなLint指摘を導入",
-            "4.7%が新たなセキュリティ指摘(Bandit)を持ち込む",
-            "それでも73.5%がマージ——不具合の種ごと取り込み",
-            "結論は「マージ前の品質・セキュリティゲートが必要」",
+            "既存の自己進化エージェントはテキスト成果物しか書き換えない",
+            "ルーティングやフック順序など本体の挙動はコード内にある",
+            "そのためテキスト層からは構造的な失敗に手が届かない",
+            "MOSSはエージェントが自分のソースコードを書き換えて進化",
+            "能力の前進と同時に重い安全性の問いを突きつける",
+            "自己進化研究が「テキスト」から「コード」の領域へ",
         ],
         "key_points_en": [
-            "Empirical study of AI agents' Python refactoring PRs",
-            "22.5% improve a quality attribute; usability most often (36.5%)",
-            "24.17% of files introduce new Pylint findings",
-            "4.7% introduce new Bandit security findings",
-            "Yet 73.5% get merged — new problems taken in too",
-            "Conclusion: need quality/security gating before merge",
+            "Existing self-evolving agents only edit text artifacts",
+            "Core behavior — routing, hook order — lives in code",
+            "So a class of structural failures is unreachable from text",
+            "MOSS lets the agent rewrite its own source code to evolve",
+            "A capability leap, but it raises serious safety questions",
+            "Self-evolution research moves from 'text' into 'code'",
         ],
     },
 ]
 
-# ─── Coverage check ───
+# ─── Save ───
+OUT.write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
+print(f"Wrote {OUT}")
+
 missing = []
 for src in ("arxiv", "hn", "reddit", "github", "blogs"):
-    for it in d["sources"][src]:
+    for it in d["sources"].get(src, []):
         if not it.get("summary_ja"):
-            missing.append((src, it.get("id") or it.get("url") or it.get("title")))
+            missing.append((src, it.get("title") or it.get("name")))
 if missing:
-    print(f"WARNING: {len(missing)} items without summary_ja:")
-    for m in missing:
-        print("  ", m)
+    print(f"WARNING: {len(missing)} items missing summary_ja:")
+    for s, t in missing:
+        print(f"  [{s}] {t}")
 else:
-    print("All items enriched.")
-
-OUT.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
-print(f"Wrote {OUT} ({len(d['highlights'])} highlights)")
+    print("All items have Japanese translations.")
+print(f"Highlights: {len(d['highlights'])}")
