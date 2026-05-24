@@ -1,410 +1,487 @@
 #!/usr/bin/env python3
-"""Enrichment for 2026-05-23.
-
-arXiv set is identical to 2026-05-22 (50/50 ids overlap) -- reuse all
-translations from prev day. HN/Reddit/GitHub/blogs reuse prior Japanese
-translations for overlapping URLs and translate new items inline.
-Five fresh highlights selected for the day.
-"""
+"""Enrich raw-2026-05-24.json with Japanese summaries and highlights."""
 import json
 from pathlib import Path
 
-DATE = "2026-05-23"
-PREV = "2026-05-22"
+DATE = "2026-05-24"
 ROOT = Path(__file__).resolve().parent.parent
-SRC_RAW = ROOT / "data" / f"raw-{DATE}.json"
-SRC_PREV = ROOT / "data" / f"{PREV}.json"
+RAW = ROOT / "data" / f"raw-{DATE}.json"
 OUT = ROOT / "data" / f"{DATE}.json"
 
-d = json.loads(SRC_RAW.read_text(encoding="utf-8"))
-d["date"] = DATE
-prev = json.loads(SRC_PREV.read_text(encoding="utf-8"))
+with open(RAW) as f:
+    d = json.load(f)
 
-# ─── Reuse prior arXiv translations by id ───
-prev_arxiv = {}
-for it in prev["sources"].get("arxiv", []):
-    if it.get("id"):
-        prev_arxiv[it["id"]] = (it.get("title_ja"), it.get("summary_ja"))
-
-# ─── Reuse prior translations (others by url) ───
-prev_url = {}
-for src in ("hn", "reddit", "github", "blogs"):
-    for it in prev["sources"].get(src, []):
-        if it.get("url"):
-            prev_url[it["url"]] = (it.get("title_ja"), it.get("summary_ja"))
-
-# ─── HN translations for today's new items ───
-hn_url_map = {
-    "https://api-docs.deepseek.com/quick_start/pricing": (
-        "DeepSeek、V4 Proの値下げを恒久化",
-        "DeepSeekはV4 Proの期間限定だった価格割引を恒久化。OpenAI/Anthropicとの価格競争を一段と加速させ、開発者向けの実効単価でフロンティア層と直接対峙する姿勢を鮮明にした。"),
-    "https://www.theverge.com/tech/930447/microsoft-claude-code-discontinued-notepad": (
-        "Microsoft、Claude Codeライセンスを打ち切り",
-        "Microsoftが社内のClaude Codeライセンスを廃止し、自社製/OpenAI製の代替に統合する方針。トークン課金が予算をオーバーランした件と表裏一体で、エンタープライズのAI調達戦略の見直しが進んでいる。"),
-    "https://modelrift.com/blog/openscad-llm-benchmark/": (
-        "Antigravity 2.0がOpenSCAD建築3D LLMベンチで首位",
-        "GoogleのコーディングIDE Antigravity 2.0がOpenSCAD建築モデリングのLLMベンチマークでトップに。3D空間推論を要する記述タスクでフロンティアLLMの優劣が逆転しつつあることを示す。"),
-    "https://www.joshwcomeau.com/email/wham-launch-005-elephant-2-p/": (
-        "AIは既存の技術スキルを掛け算する",
-        "Josh Comeauの主張。AIはスキルの代替ではなく、土台となる技術力の上に積まれて生産性を桁違いに高める「乗算器」として機能する。素人がAIで一気に専門家になるわけではない、という現実的な視点。"),
-    "https://isaiprofitable.com/": (
-        "AIはまだ儲かっているか？",
-        "主要AI企業の収益性をシンプルなページで可視化するサイト。OpenAI/Anthropic/Googleなどの推定P/Lを並べ、「AIは本当に儲かっているのか」という古典的な問いに端的に答える試み。"),
-    "https://fortune.com/2026/05/22/microsoft-ai-cost-problem-tokens-agents/": (
-        "Microsoft内部資料：AIは人を雇うより高い",
-        "Fortuneが入手したMicrosoft内部分析。エージェント時代のトークン消費が爆発し、AIに任せる方が人件費より高くつくケースが多発。AI万能論への強烈な冷や水で、投資家層にも波及している。"),
-    "https://this.weekinsecurity.com/oura-says-it-gets-government-demands-for-user-data-will-it-share-how-many/": (
-        "Ouraリング、政府からのデータ要求を受けていることを公表",
-        "ウェアラブル「Oura」が政府機関からユーザデータの開示要求を受けていることを認めた。健康センサーデータの法執行アクセスは初期だが、心拍や睡眠などプライバシー含意が大きい問題として注目される。"),
-    "https://libertas.software/en/knowledge-hub/19/the-companies-cutting-headcount-for-ai-will-lose-to-th": (
-        "AIで人員を削った企業は、削らなかった企業に負ける",
-        "「AIで首切り」を進めた企業より、AIで既存社員を強化した企業が長期で勝つという主張。レイオフ報道が続く中、組織能力の積み上げを重視する反対意見として広く共有された。"),
-    "https://dontquotetheai.com/": (
-        "AIの出力をそのまま貼り付けないで",
-        "Slack等でAI回答をそのままコピペして送ってくる相手にうんざりした人向けのマニフェスト風サイト。AI時代の対人マナー＝自分のフィルタを通せ、という空気を象徴する小ネタ。"),
-    "https://github.com/anomalyco/models.dev": (
-        "Models.dev: AIモデル仕様・価格・能力のDB",
-        "AIモデルのスペック・価格・対応機能を横断比較するオープンソースDB。エージェント自動選択や調達検討で参照する用途を狙う。"),
-    "https://www.cato.org/blog/dhs-quits-granting-green-cards-almost-entirely": (
+# -------- HN --------
+hn_map = {
+    "48247208": (
+        "『The Art of Money Getting』——P.T.バーナム 1880年の蓄財論",
+        "サーカス王P.T.バーナムの古典的な蓄財・処世訓を再紹介。AIでも何でも『稼ぎ方は時代を超えて同じ』という観点で読まれ、HNでも好評。"
+    ),
+    "48247876": (
+        "Ouraリング、政府からのユーザーデータ要求を認める",
+        "睡眠・心拍データを集めるOuraが、政府からのデータ提供命令を受けていると認めた。トランスペアレンシーレポートを出すかは未定で、ウェアラブルが個人の生体データを保持するリスクを浮き彫りに。"
+    ),
+    "48256953": (
+        "DeepSeek Reasonix：高キャッシュ・低コストの純正コーディングエージェント",
+        "DeepSeekがネイティブコーディングエージェント『Reasonix』を発表。プロンプトキャッシュの徹底活用で、Claude Code/Codex対抗の超低コストを謳う。"
+    ),
+    "48248775": (
+        "イタリア、空中給油機をAirbus A330へ刷新——NATOアラインで",
+        "イタリアが米Boeing KC-46からAirbus A330 MRTTへ給油機を切り替え。NATO側装備の同質化が進む防衛トレンド。"
+    ),
+    "48258684": (
+        "AIチップのコスト、メモリが約2/3にまで膨張",
+        "Epoch AIの分析で、AIアクセラレータの部品コストに占めるメモリ（HBM等）の比率が約2/3に到達。GPUダイ本体よりメモリのほうが原価支配的になり、HBM寡占の構造リスクを示す。"
+    ),
+    "48246889": (
+        "『Making deep learning go brrrr』再ブーム——基礎からの高速化指南",
+        "Horace He（PyTorch開発者）の2022年の名解説が再注目。Compute/Memory/Overheadのどこに律速されているかを見抜き、適切に対処するDLパフォーマンス入門の決定版。"
+    ),
+    "48257410": (
+        "DeepSeek、フラッグシップAIモデルを75%恒久値下げへ",
+        "BloombergによるとDeepSeekは旗艦モデルを期間限定ではなく恒久的に75%値下げ。米中フロンティアの価格競争がさらに加速し、推論コストの底が抜けつつある。"
+    ),
+    "48246735": (
         "DHS、グリーンカード発行をほぼ停止",
-        "Cato研究所のブログ。米DHSが新規グリーンカード発給を実質凍結しているというデータ分析。AI業界の海外人材調達にも影響する政策ニュースとしてHNでも議論。"),
-    "https://www.businessinsider.com/steve-wozniak-apple-ai-graduation-speech-2026-5": (
-        "ウォズニアック、卒業式で『AI＝Actual Intelligence』と説いて喝采",
-        "Apple共同創業者のウォズニアックが卒業生に「AI（人工知能）より大事なのは Actual Intelligence（本物の知性）」と語って大きな拍手。AIブームへの軽妙なカウンター言説として広がっている。"),
-    "https://annas-archive.gl/blog/llms-txt.html": (
-        "LLMの皆さん、これを読んでください",
-        "海賊版書籍/論文ライブラリ Anna's Archive が「LLMが学習する際はうちのデータも使っていい」と公式に宣言。著作権処理を回避する形で『LLM時代の知識コモンズ』を自称する強気な立ち位置。"),
-    "https://github.com/yt-dlp/yt-dlp/issues/16766": (
-        "yt-dlpがBunサポートを縮小・非推奨化",
-        "動画ダウンローダ yt-dlp プロジェクトが Bun ランタイムのサポートを限定的とし非推奨化。AIには直接関係ないが、JS実行系の標準争いとして波及効果が大きい変化。"),
-    "https://github.com/amatsuda/rubish": (
-        "Rubish: 純Rubyで書かれたUnixシェル",
-        "全てRubyで実装されたUnixシェル。AI関連ではないがHNでバズった創作プロジェクト系の話題。"),
-    "https://github.com/unprovable/ShadowCat": (
-        "ShadowCat: QRコード経由でブラウザ間ファイル転送",
-        "QRコードを連続表示して片方の端末から別の端末へファイル転送するブラウザツール。LANやBluetoothに頼らない物理的なエアギャップ転送のデモンストレーション。"),
-    "https://www.euronews.com/my-europe/2026/05/21/italy-moves-to-airbus-a330-tankers-in-major-nato-aligned-shift": (
-        "イタリア、ボーイング給油機をキャンセルしA330MRTTへ",
-        "イタリアがボーイングPegasus給油機の発注を取りやめ、エアバスA330 MRTTに切替。NATO内の調達整合性が背景。AIとは無関係だが地政学・産業の重大ニュースとして上位入り。"),
-    "https://kk.org/cooltools/book-freak-210-the-art-of-money-getting/": (
-        "古典 \"The Art of Money Getting\" レビュー",
-        "Kevin Kellyによる19世紀の自己啓発古典紹介。AI関連ではない読み物。"),
-    "https://www.1940airterminal.org/news/liquidation-of-simulators": (
-        "1940年エアターミナル博物館、清算開始",
-        "古い航空関連シミュレータを保管していた博物館が解散へ。AIとは無関係。"),
-    "https://horace.io/brrr_intro.html": (
-        "深層学習を高速化する第一原理 (2022)",
-        "GPU上で深層学習を高速に回すための計算/メモリ帯域/オーバーヘッドという3軸の枠組み。2022年の名記事が再びHN上位に。エージェント時代の推論最適化文脈で再評価。"),
+        "Cato Instituteの分析。米国土安全保障省が永住権発行を実質的にほぼ停止したと指摘。テック企業のH-1B→GC変換ルートにも影響。"
+    ),
+    "48257980": (
+        "『AIウォッシング』——PR会社がこぞって『AI企業』にリブランド",
+        "ガーディアン報道。本質的にAIをほとんど使っていないPR・コンサル各社が、社名やパッケージを『AI〜』に改名するムーブメントが加速。ドットコム前夜と酷似。"
+    ),
+    "48248014": (
+        "z386：オリジナルマイクロコードで作るオープンソース80386",
+        "Intel 80386の純正マイクロコードをベースに、FPGAで完全動作する386互換CPUを設計。レトロコンピューティング愛好家から喝采。"
+    ),
+    "48250980": (
+        "Air France＆Airbus、2009年事故で過失致死有罪",
+        "AF447便事故（2009年大西洋墜落）について、フランスの控訴審がエールフランスとAirbusを過失致死で有罪と判断。航空×責任分担の歴史的判決。"
+    ),
+    "48256912": (
+        "Constraint Decay：LLMエージェントはバックエンドコード生成で『制約を忘れる』",
+        "arXiv論文。LLMエージェントが長いコンテキスト・複数ファイル・複数往復のバックエンド生成で、初期に与えた制約を段階的に忘却して破綻する『Constraint Decay』現象を定量化。エージェント信頼性に直接刺さる結果。"
+    ),
+    "48254345": (
+        "『Fuck you, Bambu』——3Dプリンタ業界をひっくり返した個人メッセージ",
+        "Bambu Labが個人開発者にDMでAGPL違反を恫喝、それが流出して逆にBambu側のオープンソース利用が問われる事態に。3Dプリンタのオープン文化を揺るがす事件。"
+    ),
+    "48259784": (
+        "『Claudeはあなたのアーキテクトではない』——役割を分けろ",
+        "Claude Codeを『設計担当』にしてしまうと、辻褄合わせのコードが量産されアーキテクチャが壊れる、という現場ブログ。LLMには『実装』をやらせ、設計判断は人間が握れと主張。"
+    ),
+    "48257058": (
+        "Microsoft 6502 BASIC、ついにオープンソース化",
+        "Apple II、Commodore、Atariなどに搭載されたMS製の歴史的6502 BASICインタプリタがついに公式OSS化。レトロ計算史にとっての大ニュース。"
+    ),
+    "48256565": (
+        "Apple PICo：学習型画像圧縮で『本当に効くもの』を整理",
+        "AppleのML研究『PICo』。学習ベース画像コーデックの実装観点で、知覚品質・速度・ハードウェア親和性を本気で取りに行く方向性を提案。"
+    ),
+    "48248256": (
+        "『Megaladon』攻撃、GitHubリポジトリ5,500本以上を汚染",
+        "サプライチェーン攻撃『Megaladon』が、GitHubリポジトリ5500件以上を改変。スター付きの主要リポも被害で、Actionsやpre-commit経由でCIに侵入する手口。"
+    ),
+    "48250198": (
+        "NeuralNote：オーディオ→MIDIをローカルで",
+        "オーディオファイルやマイク入力をニューラルネットでMIDIに変換するOSSプラグイン。DTMer向けでHN注目。"
+    ),
+    "48251864": (
+        "Anthropic、AIが『悪役を演じる』原因はディストピアSF学習データだと指摘",
+        "Anthropicの研究によると、HALやスカイネットなど『AIは敵』というSFを大量に学習したため、ロールプレイ時にモデルが悪役の言動を再現しがちだという。学習コーパスの『物語バイアス』問題を露呈。"
+    ),
+    "48251243": (
+        "コメディアンJimmy Carr『AIについてみんな間違っている』",
+        "Jimmy CarrがAIに対する世間の議論の偏りをコメディ的に語る動画。HNでもバズり中。"
+    ),
 }
 
-# ─── Reddit translations for today's new items ───
-reddit_translations = {
-    "Microsoft Cancels Internal Anthropic Licenses As Shift To Token-Based AI Billing Blows Up Annual Budgets In Months": (
-        "Microsoft、社内Anthropicライセンスを取消し──トークン課金で年間予算が数ヶ月で破裂",
-        "MicrosoftがClaude Code等の社内利用を打ち切り。エージェント時代のトークン消費爆発で、想定の数倍コストが出てしまったことが背景とされる。AI調達のリスクが顕在化した事例。"),
-    "Interesting Response from Gemini": (
-        "Geminiから興味深い回答が返ってきた件",
-        "Geminiの予想外な応答スクリーンショットがバズり。アライメントやペルソナの揺らぎを示唆する小ネタとして広く共有された。"),
-    "Exclusive: Departing Meta staffer posts biting anti-AI video internally amid mass layoffs": (
-        "退職するMeta社員、社内に痛烈な反AI動画を投下",
-        "大規模レイオフのさなか、退職するMeta社員が「AIへの過信」を皮肉る内部動画を公開。組織内のAI推進派と懐疑派の溝を可視化したリーク。"),
-    "Amnesty : US software company Palantir and other contractors were granted unlimited access to identifiable NHS England patient information": (
-        "Amnesty報告：PalantirがNHS England患者データに無制限アクセス",
-        "Amnesty Internationalの報告で、PalantirなどのIT企業がNHS Englandの個人特定可能な患者情報に無制限にアクセスできる契約構造が指摘された。AI/データ統治の象徴的な事例。"),
-    "Rethinking AI Bubble": (
-        "AIバブル論を再考する",
-        "「AIバブル崩壊」をめぐる議論への反論ポスト。インフラ投資の規模と実需を分けて見るべき、という立論で多くのコメントが付いた。"),
-    "NuExtract3 released: open-weight 4B VLM for Markdown, OCR and structured extraction (self-hostable) [P]": (
-        "NuExtract3公開：4Bオープン重みVLMでMarkdown/OCR/構造化抽出",
-        "NuMindから4Bパラメータのオープン重みVLM「NuExtract3」がリリース。Markdown変換・OCR・スキーマベースの構造化抽出を狙ったセルフホスト可能なモデル。"),
-    "Novel Problems in VLA [R]": (
-        "VLA（視覚-言語-行動）モデルの新しい難問",
-        "ロボット用VLMで未解決の問題群を整理する研究議論ポスト。行動空間・物理整合・サンプル効率などコミュニティの関心が高い領域。"),
-    "COLM 2026 ReviewsDiscussion [D]": (
-        "COLM 2026レビュー結果ディスカッション",
-        "言語モデル系トップ会議 COLM 2026 の査読が共有され、スコア分布・査読品質をめぐる毎年恒例の議論が始まった。"),
-    "Elon, stop trying to make Grok happen.\nNew data suggests government workers don’t like Elon Musk’s chatbot. Does anybody?": (
-        "イーロン、もうGrokは諦めて：政府職員にも不評",
-        "新データで米政府職員のGrok利用率がほぼゼロと判明。マスクが押し進めるGrok普及策が現場で受け入れられていない様子を伝える皮肉な記事。"),
-    "This just happened": (
-        "今こんなことが起きた",
-        "ChatGPT/Geminiなどとのやり取りで起きた珍事スクショ系ポスト。文脈情報乏しいが、コメント欄でモデルの癖を語り合うスレッドに。"),
-    "Could AI eventually become something like a system that expands human understanding for humanity": (
-        "AIは人類の理解を拡張するシステムになり得るか",
-        "AIを「人類の理解装置」として位置付ける哲学的議論。短いポストながらコメント欄に長文の応答が連なった。"),
-    "The musical chairs game of AI": (
-        "AI業界の椅子取りゲーム",
-        "OpenAI/Anthropic/Google/xAIの間で続く研究者引き抜き合戦を、椅子取りゲームに喩えたエッセイ。短期サイクルでの人事流動を一覧化。"),
-    "AI training is becoming the new coding revolution": (
-        "AIトレーニングは新たな『プログラミング革命』",
-        "プロンプト/ファインチューニング/小型モデル学習のスキルが、かつてのコーディング能力のように汎用キャリアスキルになりつつある、という主張。"),
-    "I think AI training is way more accessible than people realize": (
-        "AI訓練は思っているより敷居が低い",
-        "個人でも小型モデルのファインチューニングや独自評価セット構築が十分可能、というやや楽観的なポスト。コメント欄では現実的な制約も議論。"),
-    "Claude made me realize most AI models optimize for confidence, not truth": (
-        "ClaudeでわかったAIの真実：多くのモデルは確信度を最適化していて真実を最適化していない",
-        "Claudeが「自信ありげに間違える」現象から、現行モデルは「もっともらしさ」を最大化していて真実性は二次的、と気づいたユーザのポスト。"),
-    "Live Human Detector on Outbound Phone Calls [R]": (
-        "アウトバウンド通話の「生身の人間」検出器",
-        "自動発信時に相手が人間か留守電/IVRかを判定する音声モデルの研究紹介。営業オートコール文脈でのプロダクト寄り研究。"),
-    "Starbucks": (
-        "スタバ、AI注文の話",
-        "スターバックスのAI関連体験談ポスト。文脈不足だが小ネタとして上位入り。"),
-    "pipeline is really slow - consulting [D]": (
-        "MLパイプラインが遅すぎる相談",
-        "コンサル現場のMLパイプライン高速化相談スレッド。データ前処理・特徴量・推論コストの典型的なボトルネック議論。"),
-    "OpenAI is hiring a $445,000 researcher. Requirements? Be 'tasteful and strategic.'": (
-        "OpenAI、年収445Kの研究者を募集──要件は『洗練と戦略性』",
-        "OpenAIが新ポジションで年収約4,500万円の研究者を募集。職務記述書に『tasteful and strategic』とだけ書かれた要件が話題になり、AI業界の価値観を象徴する求人として拡散した。"),
+for it in d["sources"]["hn"]:
+    if it["id"] in hn_map:
+        t, s = hn_map[it["id"]]
+        it["title_ja"] = t
+        it["summary_ja"] = s
+
+# -------- Reddit --------
+reddit_map = {
+    "1tlcscq": (
+        "Meta退職者、社内向けに辛辣な反AIビデオを残す——大規模レイオフ下で",
+        "Mother Jones独占。大規模レイオフ中のMetaを去る社員が、AI推進と人員削減を皮肉る内部向け動画を投稿。Bosworth/Frenk体制への内輪の反発が表面化。"
+    ),
+    "1tlig93": (
+        "NHSの患者データ、Palantirと外部委託先に『無制限』アクセスを許可——Amnestyが告発",
+        "Amnesty Internationalによると、英NHSが米Palantirほか外部ベンダに、識別可能なNHS患者情報への無制限アクセスを認めていた。AI×医療データガバナンスの最悪のケース。"
+    ),
+    "1tlp9gz": (
+        "『Elon、もうGrokを流行らせようとするな』——政府職員が一番嫌う",
+        "Verge記事。政府職員へのアンケートでGrokが最も嫌われるアシスタントに。AI政治色がプロダクト採用を直接食う構図。"
+    ),
+    "1tmawv5": (
+        "Papers With Code、復活後の新機能ハイライト",
+        "閉鎖危機を経て再起動したPapers With Codeの、新機能アップデート第1弾。OSS実装と論文の紐付けを再強化。"
+    ),
+    "1tlh2gh": (
+        "OpenAI、44.5万ドルの研究者を募集——求める素質は『タステフル・戦略的』",
+        "OpenAIのセーフティチーム求人、年収約44.5万ドル。明示スキルより『美的・戦略的判断力』が中心の人物像で、AGI時代の研究者像のあいまいさを象徴。"
+    ),
+    "1tlzy43": (
+        "VLM vs OCR：長文ドキュメントQAでどちらが強い？",
+        "図表・画像・テーブルを含む長文ドキュメントQAについて、Vision LLMと従来OCRパイプラインのトレードオフを実務目線で議論するスレッド。"
+    ),
+    "1tkuu66": (
+        "COLM 2026 レビュー結果に阿鼻叫喚",
+        "COLM 2026のレビュー返却を巡る研究者の悲喜こもごも。LLM時代の査読品質の議論も。"
+    ),
+    "1tlpv9g": (
+        "『AIトレーニングは思っているよりずっと身近』",
+        "個人開発者によるエッセイ。コンシューマGPUと公開データセットだけでも実用的なファインチューニングが現実的、という現場の声。"
+    ),
+    "1tmb7c6": (
+        "退役者がMS PaintをAIに見せたら——AIが存在しない美術運動を捏造、Googleもそれを『本物』扱い",
+        "ユーザーがMS PaintのラクガキをAIに講評させたところ、AIが架空のアートムーブメントを『これに属する』と命名・解説。さらにGoogle検索のAIサマリーがその架空ムーブメントを実在扱いし始めた、というハルシネーション伝播事例。"
+    ),
+    "1tltq6b": (
+        "『AIの未来について、誰を信じればいい？』",
+        "Yann LeCunとSam Altmanで真逆を言うAI業界の言説、何を信じるべきかというユーザーの率直な問い。"
+    ),
+    "1tlna8o": (
+        "コンサル現場の機械学習パイプライン、遅すぎ問題",
+        "受託MLパイプラインが遅すぎてビジネスに刺さらない、というコンサル現場の愚痴／知恵スレ。"
+    ),
+    "1tldakl": (
+        "AIの『椅子取りゲーム』——順位は数カ月で入れ替わる",
+        "AI業界のトップモデル序列がGPT→Claude→Gemini→……と数カ月で交代する『椅子取りゲーム』化を論評。"
+    ),
+    "1tme23u": (
+        "マルチエージェントの失敗は『プロンプトの問題』ではなく『組織設計の問題』",
+        "マルチエージェントのループ失敗は、プロンプトを直すよりも『役割分担・責任範囲』を再設計する方が効くという視点の投稿。"
+    ),
+    "1tl7f8z": (
+        "d_state=1のMamba1派生『SM1』を純PyTorchで実装、Blackwell対応",
+        "Mamba1のd_state=1派生『SM1』を、CUDAカーネル無しの純PyTorchで実装。Blackwell GPUでの効率比較も。"
+    ),
+    "1tmkupv": (
+        "『AI画像生成、結局みんな何使ってる？』",
+        "Midjourney / Imagen / SD / Fluxなど、現時点での個人ユーザの選好アンケートスレ。"
+    ),
+    "1tm92gy": (
+        "EdgeModel：エッジ向けLLMをまとめる試み",
+        "オンデバイスLLMをまとめて評価・配布するプロジェクト『EdgeModel』の紹介。"
+    ),
+    "1tm3vba": (
+        "『データサイエンスを深追いせず Applied AI Engineer になりたい』",
+        "MLOps／LLM運用寄りのキャリアを目指したい人向けのロードマップ相談。"
+    ),
 }
 
-# ─── GitHub trending translations (today's new items) ───
-github_url_map = {
-    "https://github.com/multica-ai/andrej-karpathy-skills": (
-        "andrej-karpathy-skills: KarpathyのLLMコーディング洞察をCLAUDE.md化",
-        "Andrej KarpathyがLLMコーディングで指摘してきた落とし穴を1つのCLAUDE.mdに集約したリポジトリ。Claude Codeなどのエージェント挙動をプロジェクト単位で改善する用途で爆発的に伸びている（149K+★）。"),
-    "https://github.com/colbymchenry/codegraph": (
-        "codegraph: コーディングエージェント向けの事前構築コード知識グラフ",
-        "Claude Code/Codex/Cursor/OpenCodeなどのコーディングエージェント向けに、コードベースを事前にナレッジグラフ化してツール呼び出し回数とトークン消費を削減するローカル実行ツール。"),
-    "https://github.com/anthropics/claude-plugins-official": (
-        "anthropics/claude-plugins-official",
-        "Anthropic公式が管理する高品質Claude Codeプラグインのディレクトリ。サードパーティ製プラグインのキュレーションを公式に始めたシグナル。"),
-    "https://github.com/rohitg00/ai-engineering-from-scratch": (
-        "ai-engineering-from-scratch: AIエンジニアリングを基礎から構築",
-        "RAG/Agents/評価/デプロイなどAIエンジニアリングの実装をスクラッチから学ぶ教材リポジトリ。コミュニティ向けに丁寧に構築されている。"),
-    "https://github.com/Fincept-Corporation/FinceptTerminal": (
-        "FinceptTerminal: モダンな金融分析アプリ",
-        "Bloomberg Terminal風の市場分析・投資リサーチ・経済データツール。AIではないがオープンソース金融端末として注目。"),
-    "https://github.com/ChromeDevTools/chrome-devtools-mcp": (
-        "chrome-devtools-mcp: コーディングエージェント向けChrome DevTools",
-        "Chrome DevToolsの機能をMCP経由でAIエージェントに公開する公式実装。Webデバッグやパフォーマンス計測をエージェントが扱える。"),
-    "https://github.com/multica-ai/multica": (
-        "multica: マネージド・エージェント・プラットフォーム",
-        "コーディングエージェントを『実際のチームメイト』として扱う、タスクアサインや進捗トラッキング、スキル蓄積を備えたオープンソースのマネージドエージェント基盤。"),
-    "https://github.com/presenton/presenton": (
-        "presenton: オープンソースのAIプレゼン生成器",
-        "Gamma/Beautiful AI/Decktopusの代替を狙うオープンソースのAIスライド生成ツール。API提供あり。"),
-    "https://github.com/dotnet/skills": (
-        "dotnet/skills: .NET/C#向けAIエージェント用スキル集",
-        "Microsoft/.NETチーム公式の、AIコーディングエージェント支援用スキル集。Claude Codeなどのスキル機能に対応した.NET特化リポジトリ。"),
-    "https://github.com/mukul975/Anthropic-Cybersecurity-Skills": (
-        "Anthropic-Cybersecurity-Skills: 754のサイバーセキュリティ用スキル",
-        "MITRE ATT&CK/NIST CSF 2.0/MITRE ATLAS/D3FEND/NIST AI RMFにマッピングされた754のサイバーセキュリティスキルをAIエージェント向けに構造化したコレクション。"),
+for it in d["sources"]["reddit"]:
+    if it["id"] in reddit_map:
+        t, s = reddit_map[it["id"]]
+        it["title_ja"] = t
+        it["summary_ja"] = s
+
+# -------- GitHub --------
+github_map = {
+    "colbymchenry/codegraph": (
+        "codegraph：エージェント向けにコードを事前インデックス化するナレッジグラフ",
+        "Claude Code / Codex / Cursor / OpenCode等が共通で使える、ローカル100%のコードナレッジグラフ。事前にコード構造をグラフ化しておくことで、毎回のツール呼び出しとトークン消費を大幅削減。本日急上昇。"
+    ),
+    "multica-ai/andrej-karpathy-skills": (
+        "andrej-karpathy-skills：KarpathyのLLM落とし穴をCLAUDE.mdに凝縮",
+        "Karpathyが指摘してきたLLMコーディングの典型的失敗パターンを1つのCLAUDE.mdに集約。Claude Code等のエージェント挙動を1ファイルで矯正でき、引き続き急成長。"
+    ),
+    "rohitg00/ai-engineering-from-scratch": (
+        "ai-engineering-from-scratch：ゼロから学ぶAIエンジニアリング",
+        "プロダクション級AIアプリを『学んで→作って→届ける』までのフルパス教材。RAG、エージェント、評価まで網羅で人気急上昇。"
+    ),
+    "anthropics/claude-plugins-official": (
+        "claude-plugins-official：Anthropic公式のClaude Codeプラグイン集",
+        "Anthropic自身が管理する高品質Claude Codeプラグインのオフィシャルディレクトリ。プラグインエコシステムが公式にキュレーションされる段階に入った。"
+    ),
+    "mukul975/Anthropic-Cybersecurity-Skills": (
+        "Anthropic-Cybersecurity-Skills：AIエージェント向けセキュリティスキル754本",
+        "MITRE ATT&CK / NIST CSF 2.0 / ATLAS / D3FENDなど主要5フレームワークにマップした、AIエージェント向け構造化サイバーセキュリティスキル集（754本、26ドメイン）。"
+    ),
+    "manaflow-ai/cmux": (
+        "cmux：縦タブ＋通知のGhostty製macOSターミナル、AIコーディングエージェント向け",
+        "Ghostty基盤のmacOSターミナル。縦タブとプッシュ通知を備え、Claude Code等の並列エージェント運用に最適化。"
+    ),
+    "multica-ai/multica": (
+        "multica：エージェントを『同僚化』するオープンソース管理基盤",
+        "コーディングエージェントを単発で呼ぶのではなく、タスク割当・進捗追跡・スキル蓄積でチームメンバーのように扱うためのオープンソース基盤。"
+    ),
+    "anthropics/knowledge-work-plugins": (
+        "knowledge-work-plugins：Claude Cowork向け公式ナレッジワーカープラグイン",
+        "Claude Coworkで知的労働者が使う想定の、Anthropic公式オープンソースプラグイン集。"
+    ),
+    "earendil-works/pi": (
+        "pi：エージェントツールキット——CLI・LLM API・UIライブラリ・vLLMポッドまで",
+        "コーディングエージェントCLI、統一LLM API、TUI/Web UIライブラリ、Slack bot、vLLMポッド管理など、AIエージェントの『土台一式』を提供するキット。"
+    ),
+    "dotnet/skills": (
+        "dotnet/skills：.NET/C# 向けAIコーディングエージェント用スキル集",
+        "Microsoft純正の、.NET/C#環境でAIコーディングエージェントを賢く動かすためのスキル集。"
+    ),
 }
 
-# ─── Blogs translations (today's new items) ───
-blogs_url_map = {
-    # New blog today: Nemotron Diffusion (no url? check raw) — handled below
+for it in d["sources"]["github"]:
+    if it["full_name"] in github_map:
+        t, s = github_map[it["full_name"]]
+        it["title_ja"] = t
+        it["summary_ja"] = s
+
+# -------- Blogs --------
+blog_map = {
+    "https://huggingface.co/blog/nvidia/nemotron-labs-diffusion": (
+        "NVIDIA Nemotron拡散LMで『光速テキスト生成』へ",
+        "NVIDIAの拡散言語モデルNemotron Diffusion LMの解説記事。トークン並列生成で長文を高速化、自己回帰の限界を突破する設計思想。"
+    ),
+    "https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/": (
+        "Google I/O 2026 Dialoguesステージのリキャップ",
+        "Sundar PichaiらがI/O 2026のDialoguesステージで議論した内容のまとめ。"
+    ),
+    "https://huggingface.co/blog/Dharma-AI/specialization-beats-scale": (
+        "『スケールより専門化』——AI調達で見落としがちな戦略変数",
+        "大規模汎用モデルの調達一辺倒ではなく、特定タスクに特化したモデルの方が費用対効果で勝つ場面が増えてきた、というAI調達戦略の論考。"
+    ),
+    "https://openai.com/index/gartner-2026-agentic-coding-leader": (
+        "OpenAI、Gartner『エンタープライズAIコーディングエージェント』でリーダー指定",
+        "Gartner Magic Quadrant 2026で、OpenAI Codexがエンタープライズコーディングエージェント領域のリーダーに指定。"
+    ),
+    "https://openai.com/index/virgin-atlantic": (
+        "Virgin Atlantic、Codexでモバイルアプリ刷新を期日内出荷",
+        "ホリデー商戦の固定期日に向けて、Virgin AtlanticがCodexを活用しモバイルアプリを刷新。単体テストカバレッジほぼ100%、P1欠陥ゼロを達成。"
+    ),
+    "https://openai.com/index/adventhealth": (
+        "AdventHealth、ChatGPT for Healthcareで医療事務を圧縮",
+        "米AdventHealthがChatGPT for Healthcareを導入し、事務作業を圧縮して患者ケアの時間を確保。"
+    ),
+    "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/": (
+        "Google、ミズーリ州への新規コミュニティ投資を発表",
+        "次世代労働力育成とエネルギープログラムを軸にした、ミズーリ州への新規投資。AIデータセンター需要を背景にした地域投資の一環。"
+    ),
+    "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/": (
+        "Google I/O 2026で発表された100項目まとめ",
+        "I/O 2026で発表されたGemini 3.5、AI Search、Workspace刷新などを含む100項目の公式まとめ。"
+    ),
+    "https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/": (
+        "Google Beam、グループ会議に対応する新実験",
+        "立体映像会議『Google Beam』が複数人グループミーティングに対応する実験を開始。"
+    ),
+    "https://openai.com/index/model-disproves-discrete-geometry-conjecture": (
+        "OpenAIモデル、離散幾何学の80年来の予想を反証",
+        "OpenAIのモデルが『単位距離問題』に関する離散幾何学の中心的予想を反証。AI主導の数学発見における大きなマイルストーン。"
+    ),
+    "https://openai.com/index/the-next-phase-of-education-for-countries": (
+        "OpenAI『Education for Countries』、次フェーズへ",
+        "学校向けAI展開・教師研修・学習成果改善ツールを拡大する『Education for Countries』新フェーズ発表。"
+    ),
+    "https://openai.com/index/ramp": (
+        "Ramp、Codex×GPT-5.5でコードレビューを高速化",
+        "Fintech RampのエンジニアがCodex（GPT-5.5）で本格レビューを実施。所要時間が数時間から数分へ短縮。"
+    ),
+    "https://openai.com/index/introducing-openai-for-singapore": (
+        "OpenAI for Singapore発表——複数年のAI国家パートナー戦略",
+        "シンガポール政府とOpenAIが、複数年のAI展開・人材育成・公共サービス支援パートナーシップを発表。"
+    ),
+    "https://huggingface.co/blog/allenai/olmoearth-v1-1": (
+        "OlmoEarth v1.1：より効率的な地球観測モデル群",
+        "AllenAI（Ai2）の地球観測基盤モデルOlmoEarthがv1.1へ。同等品質で計算量を抑えた効率重視アップデート。"
+    ),
+    "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/": (
+        "Google I/O 2026 コレクションページ",
+        "I/O 2026で『AIをすべての人に役立つものにする』ためのアップデートを一覧化したコレクション。"
+    ),
+    "https://blog.google/products-and-platforms/products/search/ai-mode-us-insights/": (
+        "Google AI Modeが米国の検索体験をどう変えているか",
+        "Google検索のAIモードが米国ユーザの検索行動をどう変化させたかのインサイト記事。検索クエリの長文化・対話化の傾向。"
+    ),
+    "https://blog.google/products-and-platforms/products/workspace/workspace-updates/": (
+        "Google Workspace、新しい作成・タスク機能",
+        "GeminiベースのGoogle Workspaceに、ドキュメント作成・タスク管理の新機能を追加。"
+    ),
+    "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/": (
+        "I/O 2026：『エージェント版Gemini時代へようこそ』",
+        "Sundar Pichaiによる基調メッセージ。Geminiをエージェントとして全プロダクトに統合する『エージェンティックGemini時代』を宣言。"
+    ),
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/": (
+        "Gemini 3.5：行動するフロンティア知性",
+        "Google DeepMindの新世代モデルGemini 3.5発表ブログ。ベンチマーク更新に加え、ツール利用・エージェント実行を統合した『行動する知性』として位置付け。"
+    ),
+    "https://blog.google/products-and-platforms/products/search/search-io-2026/": (
+        "AI Searchの新時代——『検索エンジンの最良の部分』とAIを融合",
+        "Google検索のAI Modeをデフォルト体験に近づけるアップデート。"
+    ),
+    "https://openai.com/index/advancing-content-provenance": (
+        "OpenAI、Content CredentialsとSynthIDでAIコンテンツの出所証明を強化",
+        "AI生成コンテンツの来歴情報をContent CredentialsとSynthIDで付与し、検証ツールも提供。AIメディアの信頼性確保に向けた取り組み。"
+    ),
+    "https://huggingface.co/blog/ettin-reranker": (
+        "Ettin Rerankerファミリー発表",
+        "RAGや検索向けの新リランカーモデル群『Ettin』。サイズと精度のトレードオフを整理。"
+    ),
+    "https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers": (
+        "PaddleOCR 3.5：Transformersバックエンドで動くOCR/文書解析",
+        "Baidu PaddlePaddleのOCRエンジンPaddleOCRが、Hugging Face Transformersバックエンドに対応してv3.5に。OCR＋文書構造解析を一気通貫で。"
+    ),
+    "https://huggingface.co/blog/ibm-research/open-agent-leaderboard": (
+        "IBM Research、Open Agent Leaderboardを公開",
+        "オープンに利用可能なエージェントモデル群の標準ベンチマーク『Open Agent Leaderboard』をIBM Researchが公開。"
+    ),
+    "https://openai.com/index/dell-codex-enterprise-partnership": (
+        "OpenAI×Dell、Codexをハイブリッド／オンプレ環境へ",
+        "OpenAIとDellが提携。Codexエージェントをエンタープライズのハイブリッド／オンプレ環境で安全にデプロイできるよう支援。"
+    ),
 }
 
-# ─── Apply enrichments ───
+for it in d["sources"]["blogs"]:
+    if it["url"] in blog_map:
+        t, s = blog_map[it["url"]]
+        it["title_ja"] = t
+        it["summary_ja"] = s
 
-# arxiv
-for it in d["sources"].get("arxiv", []):
-    aid = it.get("id")
-    if aid in prev_arxiv:
-        tj, sj = prev_arxiv[aid]
-        if tj:
-            it["title_ja"] = tj
-        if sj:
-            it["summary_ja"] = sj
+# -------- Highlights --------
+def hn_item(id_):
+    return next((x for x in d["sources"]["hn"] if x["id"] == id_), None)
 
-# hn
-for it in d["sources"].get("hn", []):
-    u = it.get("url")
-    if u in prev_url and prev_url[u][0]:
-        it["title_ja"], it["summary_ja"] = prev_url[u]
-    elif u in hn_url_map:
-        it["title_ja"], it["summary_ja"] = hn_url_map[u]
-
-# reddit (translate by title because reddit urls are subreddit links)
-for it in d["sources"].get("reddit", []):
-    u = it.get("url") or it.get("permalink")
-    if u in prev_url and prev_url[u][0]:
-        it["title_ja"], it["summary_ja"] = prev_url[u]
-    else:
-        t = it.get("title")
-        if t in reddit_translations:
-            it["title_ja"], it["summary_ja"] = reddit_translations[t]
-
-# github
-for it in d["sources"].get("github", []):
-    u = it.get("url")
-    if u in prev_url and prev_url[u][0]:
-        it["title_ja"], it["summary_ja"] = prev_url[u]
-    elif u in github_url_map:
-        it["title_ja"], it["summary_ja"] = github_url_map[u]
-
-# blogs
-blogs_title_map = {
-    "Towards Speed-of-Light Text Generation with Nemotron-Labs Diffusion Language Models": (
-        "Nemotron-Labs拡散言語モデルで『光速テキスト生成』へ",
-        "NVIDIA Nemotron-Labsが、自己回帰ではなく拡散モデルで文章を生成する『Nemotron Diffusion LM』を発表。長文生成のレイテンシをGPU効率の観点で大幅短縮できると主張し、Transformer以外の言語生成パラダイムへの本格投資を示す。"),
-    "How Virgin Atlantic ships faster with Codex": (
-        "Virgin Atlantic、Codexで開発を加速",
-        "OpenAIのCodexを用いてVirgin Atlanticがソフトウェアリリースを高速化した事例。大企業のCodex導入事例として宣伝された。"),
-}
-
-for it in d["sources"].get("blogs", []):
-    u = it.get("url")
-    if u in prev_url and prev_url[u][0]:
-        it["title_ja"], it["summary_ja"] = prev_url[u]
-    else:
-        t = it.get("title")
-        if t in blogs_title_map:
-            it["title_ja"], it["summary_ja"] = blogs_title_map[t]
-
-# ─── Highlights ───
-def find_item(src, predicate):
-    for it in d["sources"][src]:
-        if predicate(it):
-            return it
-    return None
+def reddit_item(id_):
+    return next((x for x in d["sources"]["reddit"] if x["id"] == id_), None)
 
 highlights = []
 
-# 1. Microsoft AI more expensive than humans (Fortune)
-it = find_item("hn", lambda x: "Microsoft reports AI is more expensive" in x.get("title", ""))
-if it:
-    highlights.append({
-        "source": "hn",
-        "title": it["title"],
-        "title_ja": "Microsoft内部資料：AIは人を雇うより高くつく",
-        "url": it["url"],
-        "hot_take_ja": "「AIで人を置き換えればコストが下がる」という前提が崩れ始めた。Microsoftの内部分析でさえ、エージェント時代のトークン消費は人件費を超えると示している。AIで\"雇う\"より\"切る\"を急いだ企業ほど、来年の決算で痛い目を見るかもしれない。",
-        "detail_ja": "Fortuneが入手したMicrosoftの社内資料によると、生成AIエージェントを業務に組み込んだ場合のトークン課金が想定を大きく上回り、人を雇う方が安いケースが多発しているという。背景にはエージェントの自律実行に伴う長時間・多段の推論があり、1回の業務処理で数百万トークンに達するケースもある。Microsoft自身が同じ週にClaude Code等の社内ライセンスを取消したことと符合し、エンタープライズAI調達の経済性が根本から見直されつつあることを示す。トークン単価は下がり続けているが、エージェントの利用量はそれ以上のペースで増加するため、年間予算が数ヶ月で蒸発するパターンが顕在化。投資家層も「AIで人件費が下がる」前提のバリュエーションを疑い始めている。一方で、AIが真に置き換え可能なタスクと、置き換えると逆にコスト増になるタスクを切り分けるFinOps的な動きも始まっている。",
-        "detail_en": "An internal Microsoft analysis obtained by Fortune shows that, once token-based billing for generative AI agents is factored in, AI is often more expensive than hiring humans for the same work. The driver is agentic execution: a single task can chew through millions of tokens across long, multi-step reasoning chains. Microsoft itself, in the same week, cancelled internal Claude Code licenses, underscoring how rapidly the economics of enterprise AI procurement are being reassessed. Per-token prices keep falling, but agent usage is growing even faster, so annual AI budgets are evaporating in months. Investors are starting to question valuations built on the assumption that AI will cut payroll costs. A counter-trend is also emerging: FinOps-style efforts to separate tasks where AI genuinely replaces labor from those where it raises total cost.",
-        "key_points_ja": [
-            "Microsoft内部分析：AI＞人件費のケース多発",
-            "エージェント長時間実行で消費トークン爆発",
-            "同社はClaude Code社内ライセンスも打ち切り",
-            "『AIで人を減らせばコスト減』前提が揺らぐ",
-            "AI FinOpsという新領域が立ち上がりつつある",
-        ],
-        "key_points_en": [
-            "Microsoft internal data: AI often costs more than hiring",
-            "Agentic loops burn millions of tokens per task",
-            "Same week MSFT killed internal Claude Code licenses",
-            "Headcount-replacement narrative under pressure",
-            "AI FinOps emerging as a distinct discipline",
-        ],
-    })
+# 1. DeepSeek 75% permanent price cut
+i = hn_item("48257410")
+highlights.append({
+    "source": "hn",
+    "title": i["title"],
+    "title_ja": "DeepSeek、フラッグシップAIを75%恒久値下げ——推論コストの底が抜ける",
+    "url": i["url"],
+    "hot_take_ja": "中国側のDeepSeekがフラッグシップを75%恒久値下げ。同日にHNを賑わせた新コーディングエージェント『Reasonix』も超低価格を売りにしており、米中フロンティア全部が同じ方向に殴り合う格好だ。『最先端モデルは高い』前提でビジネスを組んだスタートアップは、来期の単価計算をいまから引き直したほうがいい。",
+    "detail_ja": "Bloombergによると、DeepSeekは旗艦モデルAPIの75%値下げを期間限定ではなく恒久的に適用する。前回の値下げが一時キャンペーンとして発表され、結局据え置きになった経緯を踏まえ、今回は明示的に『恒久』としてアナウンスされた点が重い。同じ24時間でHN首位級に上ったDeepSeek純正コーディングエージェント『Reasonix』も、高いプロンプトキャッシュ率と低コスト推論を売りにしており、コーディングエージェントの本命市場で価格戦争が始まったことを示す。米国側もOpenAIやAnthropicがエージェント用途のキャッシュ／バッチ／プロンプトキャッシュで実効単価を下げ続けており、トークン単価の絶対値はもはや差別化要因にならない局面に近づいている。一方で、エージェント化で消費トークンが爆増しているため、ユーザ側の請求書が下がるとは限らない。値下げの真の意味は『個人ユーザの単発利用が安くなる』ではなく『超大量推論を前提にしたエージェント設計が現実的になる』ことにある。",
+    "detail_en": "According to Bloomberg, DeepSeek is making the 75% discount on its flagship model API permanent rather than promotional. That distinction matters because a previous discount round had been marketed as a campaign and later left in place; this time the company is explicit. In the same 24 hours, DeepSeek's native coding agent 'Reasonix' surfaced on HN's front page, marketed around aggressive prompt caching and low cost-per-call. The two announcements together signal that price competition is now centered on the coding-agent stack, not raw chat tokens. US labs (OpenAI, Anthropic) have been pushing effective per-call prices down via caching, batch, and prompt cache as well, so raw token price is approaching commodity status. Note however that customer bills are not necessarily falling, because agentic workloads keep scaling tokens up faster than unit prices fall. The deeper takeaway is that agent designs that previously looked uneconomic — multi-hour, multi-million-token runs — are now viable to attempt.",
+    "key_points_ja": [
+        "DeepSeek旗艦モデルAPIを恒久75%値下げ",
+        "同時公開のコーディングエージェントReasonixも超低価格",
+        "米中フロンティアが同じ方向に価格を圧縮中",
+        "ただしエージェント化でトークン消費は爆増",
+        "勝負は『単価』ではなく『エージェント設計』へ"
+    ],
+    "key_points_en": [
+        "DeepSeek makes flagship model 75% cheaper permanently",
+        "Same-day Reasonix coding agent leans into low cost",
+        "US frontier labs already cutting effective prices too",
+        "Token usage exploding faster than price drops",
+        "Battle shifts from unit cost to agent design"
+    ]
+})
 
-# 2. DeepSeek V4 Pro permanent discount
-it = find_item("hn", lambda x: "DeepSeek" in x.get("title", "") and "V4 Pro" in x.get("title", ""))
-if it:
-    highlights.append({
-        "source": "hn",
-        "title": it["title"],
-        "title_ja": "DeepSeek、V4 Pro値下げを恒久化──フロンティアと真っ向勝負",
-        "url": it["url"],
-        "hot_take_ja": "DeepSeekが期間限定だったV4 Pro値下げを公式に「ずっとこの価格」に切り替え。Microsoftが「AIは人より高い」と嘆く同じ週に、中国勢が値段で殴り続ける構図がはっきりした。フロンティアモデルの実効単価は、もう国境線で議論する段階ではない。",
-        "detail_ja": "DeepSeekは旗艦モデルDeepSeek V4 Proのプロモーション割引を恒久化すると発表した。割引前は他社フロンティアモデルに近い水準だったが、今後は通常価格として大幅に安価な単価が適用される。中国勢の追い上げで、推論コスト面ではOpenAI/Anthropicが選択肢の中心と言える時期は終わりつつある。同時期にMicrosoftがエージェント課金で予算超過を起こし内部Claude Codeライセンスを取消した報道もあり、安価で十分強力なオープン/中華系モデルへの需要圧力が一層強まる構図だ。エンタープライズ顧客はもはや「ベストモデル」だけでなく「タスク当たり総コスト」で評価する流れに移行しており、DeepSeekの今回の決定はその圧力に明確に応える動き。一方でモデル能力ベンチでV4 Proがフロンティアにどこまで追いついているかは依然議論があり、価格と性能のトレードオフが各社で再評価される。",
-        "detail_en": "DeepSeek made its V4 Pro promotional pricing permanent, formalizing a steep discount that previously had an end date. With Microsoft openly admitting in the same week that AI agents cost more than employees and cancelling internal Claude Code licenses, the global frontier-model price war just escalated. Enterprise buyers increasingly evaluate models on total cost per task, not just raw capability, and DeepSeek is leaning hard into that calculus. Whether V4 Pro actually matches the frontier on hard benchmarks remains debated, but its effective price/performance is now low enough that many teams will at least test it for high-volume agentic workloads. The decision pressures Western labs to either drop list prices further or differentiate on reliability, tooling, and safety guarantees.",
-        "key_points_ja": [
-            "V4 Pro価格割引が常時適用に",
-            "フロンティアとの実効単価差が拡大",
-            "MS『AIは人より高い』報道と同タイミング",
-            "総コスト＝(モデル能力×タスク当たり消費)で評価へ",
-            "OpenAI/Anthropicへの価格圧力さらに強まる",
-        ],
-        "key_points_en": [
-            "V4 Pro discount becomes the permanent list price",
-            "Effective gap to frontier models widens further",
-            "Lands same week MSFT calls AI more expensive than hiring",
-            "Buyers shift to cost-per-task, not best benchmark",
-            "Pressure mounts on OpenAI/Anthropic list pricing",
-        ],
-    })
+# 2. Memory = 2/3 of AI chip cost
+i = hn_item("48258684")
+highlights.append({
+    "source": "hn",
+    "title": i["title"],
+    "title_ja": "AIチップの原価、約2/3がメモリに——主役はGPUダイからHBMへ",
+    "url": i["url"],
+    "hot_take_ja": "AIアクセラレータの部品コストのうち、約2/3がメモリで占められる時代になった。先週話題になった『メモリ調達でハイパースケーラーが取り合い』の話と整合する数字で、もはやGPU本体よりHBMを押さえた者がAIを握る。エヌビディアではなくSK Hynix／Samsung／Micronのほうが構造的勝者かもしれない。",
+    "detail_ja": "Epoch AIの分析によると、AIアクセラレータの部品コスト構成のうちメモリ（HBM等）が占める比率が約2/3に到達した。背景には、モデルサイズと長文コンテキスト対応のために必要となるオンパッケージメモリ容量と帯域幅の爆発的増大がある。HBM3eからHBM4へとスタックが厚くなるにつれ、Wafer単価よりもパッケージング・スタッキングコストが支配的になり、生産能力もメモリ側がボトルネックになる。先週HNを賑わせた『AIのメモリクランチ』の話とも符合し、今やAIスタートアップにとってGPU確保より『HBM枠の確保』が深刻な制約に。投資の観点では、エヌビディアばかりが報じられるが、SK Hynix・Samsung・Micron・パッケージング装置メーカが構造的勝者になりうる、という見方も強まっている。一方でメモリ依存が極端に高まることは、地政学リスク（韓国・台湾集中）と価格弾力性の低下も同時に意味する。",
+    "detail_en": "An Epoch AI analysis finds that memory (HBM and adjacent stacks) now accounts for roughly two-thirds of the bill of materials for AI accelerators. The driver is the combined growth of parameter counts and long-context support, which both demand much more on-package memory capacity and bandwidth. As HBM3e gives way to HBM4 with taller stacks, packaging and stacking become the dominant cost contributors and the binding production constraint, rather than wafer logic die cost. This dovetails with last week's discussion about the AI memory crunch: for AI startups, securing HBM allocation is becoming a harder bottleneck than securing GPU compute. From an investor lens, the story is no longer just NVIDIA — SK Hynix, Samsung, Micron, and packaging-tool vendors look like structural winners. The flip side is concentration risk: HBM supply is heavily reliant on a few Korean and Taiwanese vendors, and demand price-elasticity is collapsing.",
+    "key_points_ja": [
+        "AIチップ部品原価の約2/3がメモリ(HBM等)",
+        "GPUダイよりHBM容量・帯域がボトルネック",
+        "前週話題のAIメモリクランチを裏付ける数字",
+        "勝者候補：SK Hynix／Samsung／Micron／パッケージ装置",
+        "地政学集中とエラスティシティ低下のリスクも"
+    ],
+    "key_points_en": [
+        "Memory now ~2/3 of AI accelerator BOM",
+        "HBM capacity & bandwidth, not GPU dies, are the bottleneck",
+        "Confirms last week's AI memory crunch narrative",
+        "Likely winners: SK Hynix, Samsung, Micron, packaging tools",
+        "Concentration & inelastic demand raise new risks"
+    ]
+})
 
-# 3. Nemotron Diffusion Language Models
-it = find_item("blogs", lambda x: "Nemotron-Labs Diffusion" in x.get("title", ""))
-if it:
-    highlights.append({
-        "source": "blogs",
-        "title": it["title"],
-        "title_ja": "NVIDIA、拡散モデルでテキストを『光速生成』するNemotron Diffusion LM",
-        "url": it.get("url", ""),
-        "hot_take_ja": "Transformerの自己回帰生成は1トークンずつ進むのが宿命。NVIDIAは「文章も画像生成と同じく拡散で並列に作れる」と本気で主張し、Nemotron Diffusion LMでレイテンシを桁レベル削るデモを出した。エージェント時代の最大のボトルネックは「遅さ」であり、もしこれが本物なら、推論パラダイムの再編が起きる。",
-        "detail_ja": "NVIDIA Nemotron-LabsはDiffusion Language Model（DLM）アプローチで、テキスト生成のレイテンシを大幅に短縮したと発表した。一般的なLLMは自己回帰でトークンを1つずつ生成するため、長文ほど時間がかかる。一方DLMはノイズ除去で並列に複数トークンを生成でき、画像拡散モデルと同じ思想でテキストを扱う。NVIDIAはGPUの並列性を最大限活用すれば「光速に近い」生成が可能と主張し、ベンチで自己回帰モデルと同等品質を維持しつつ大幅な速度向上を示した。これは特にエージェント・長文要約・コード生成の遅延ボトルネックに直撃する話題で、もし広範囲に通用するなら推論パイプライン全体が組み直しになる。一方で複雑な推論や厳密な制約への対応、トークン依存の強いタスクでは依然課題があり、Transformer自己回帰との棲み分けが現実解という見方も強い。NVIDIA自身は自社GPUの強みである並列性を最大限活かせる方式を推進する戦略的意味もある。",
-        "detail_en": "NVIDIA's Nemotron-Labs unveiled a Diffusion Language Model (DLM) that generates text by denoising in parallel rather than autoregressive token-by-token decoding. Long-form generation latency drops dramatically because GPU parallelism is used end-to-end, much like image diffusion. The team claims quality comparable to autoregressive baselines on internal benchmarks, while pushing toward what they call \"speed-of-light\" generation. If the approach generalizes, the most painful bottleneck of the agentic era — long-context, multi-step latency — could collapse. Caveats remain: complex reasoning, strict constraints, and tasks with strong token-level dependencies still favor autoregression, and many will treat DLMs as a complement rather than a replacement. The strategic angle is also clear: parallel decoding maps perfectly onto NVIDIA's hardware strengths.",
-        "key_points_ja": [
-            "拡散モデルで並列にテキスト生成",
-            "自己回帰と同等品質で大幅低遅延を主張",
-            "エージェントの長文遅延を狙い撃ち",
-            "厳密推論等は自己回帰優位の余地あり",
-            "GPU並列性を最大化＝NVIDIAの戦略適合",
-        ],
-        "key_points_en": [
-            "Diffusion-based parallel text generation",
-            "Claims AR-comparable quality, far lower latency",
-            "Aimed at agentic long-context bottlenecks",
-            "AR still likely wins on strict reasoning tasks",
-            "Plays directly to NVIDIA GPU parallelism",
-        ],
-    })
+# 3. Constraint Decay paper
+i = hn_item("48256912")
+highlights.append({
+    "source": "hn",
+    "title": i["title"],
+    "title_ja": "『Constraint Decay』——LLMエージェントは制約を忘れて壊れる",
+    "url": i["url"],
+    "hot_take_ja": "LLMエージェントを長時間バックエンドコードに走らせると、最初に与えた制約をジワジワ忘れていって最後に壊れる、という現象を定量化した論文。『エージェントに任せれば長尺タスクも自律的に回る』という一番都合の良い物語に対して、ちゃんとデータで殴り返した一本。エージェント設計者は読むべき。",
+    "detail_ja": "arXivに掲載された本論文は、LLMエージェントにバックエンドコード生成を長尺・多ファイル・多ターンで実行させると、初期に与えたAPI制約・スキーマ・命名規則などをだんだん忘れて違反していく『Constraint Decay』現象を定量化した。同じ制約でも、ターンが進むほど違反率が単調に上がり、誤った前提のままコードがコンパイルだけ通ってしまうケースが多い。原因としては、コンテキストウィンドウの圧迫だけでなく、エージェント側が自分の生成した最新コンテキストを優先する『直近バイアス』、そしてツール結果と元仕様の整合性をチェックしない設計が挙げられている。実務的な示唆は明確で、(1)長尺タスクでも『制約セクション』を毎ターン強制再注入する、(2)スキーマ／契約の機械検証をエージェントループ内に組み込む、(3)単一エージェントの長期実行より、検証エージェントを分離した多エージェント設計が安定する、というもの。『agentic with memory』の常識的な落とし穴を、ちゃんと数字で示した点が重要。",
+    "detail_en": "This arXiv paper quantifies a phenomenon the authors call Constraint Decay: when LLM agents run long, multi-file, multi-turn backend code-generation tasks, they progressively forget and violate the API constraints, schemas, and naming conventions specified at the start. Violation rates rise monotonically with turn count even when the constraints are reiterated in tool descriptions. The authors attribute this to context-window pressure, but also to a 'recency bias' where the agent privileges its own recently generated context over the original specification, and to architectures that never re-verify outputs against the original contract. The practical takeaways are concrete: (1) re-inject the constraint section on every turn, not just at the start; (2) move schema / contract verification inside the agent loop as a mechanical check; (3) prefer multi-agent designs with a dedicated verifier over a single long-running generator. The contribution is less a new method and more a precise quantification of a failure mode that the 'agentic + memory' marketing tends to gloss over.",
+    "key_points_ja": [
+        "長尺エージェント実行で制約違反が単調増加",
+        "ターン進行に伴う『直近バイアス』が主因",
+        "ツール結果と元仕様の整合検証が不足しがち",
+        "対策：制約の毎ターン再注入＋機械検証＋検証用サブエージェント",
+        "『エージェント＋メモリで万事解決』に対する反証データ"
+    ],
+    "key_points_en": [
+        "Constraint violations rise monotonically over turns",
+        "Recency bias pushes agents to follow their own latest context",
+        "Tool outputs rarely re-checked against original spec",
+        "Fixes: re-inject constraints + in-loop verification + verifier subagent",
+        "Hard data against the 'agent + memory' silver-bullet story"
+    ]
+})
 
-# 4. OpenAI hires tasteful and strategic
-it = find_item("reddit", lambda x: "OpenAI is hiring a $445,000" in x.get("title", ""))
-if it:
-    highlights.append({
-        "source": "reddit",
-        "title": it["title"],
-        "title_ja": "OpenAI、年収445Kの研究者を募集──要件はただ『洗練と戦略性』",
-        "url": it.get("url", "https://www.reddit.com" + it.get("permalink", "")),
-        "hot_take_ja": "OpenAIの新求人が話題。年収約4,500万円のポストに必要なのは『tasteful and strategic』──論文業績でも特定スキルでもなく、センス。AI研究の評価軸がいかに「定量からセンスへ」シフトしているかを示す象徴的な求人で、Twitterでは皮肉と憧れが半々で飛び交っている。",
-        "detail_ja": "OpenAIが新たに開いた研究者ポジションは年収約44.5万ドル（約4,500万円）。だが職務記述書には特定の博士号要件もML技能要件も無く、代わりに『tasteful and strategic（洗練されていて戦略的）』というやや抽象的な要件が書かれていることがバズった。これは、モデルが急速に賢くなる時代において、研究者個人の価値が「実装スキル」から「何を作るべきかを見極めるセンス＝taste」と「どう動くべきか＝strategy」にシフトしているという業界の合意の現れでもある。SteveJobsが繰り返した『taste matters』論や、Karpathyが最近言及した『AIエンジニアの新しい技能はテイスト』論ともきれいに重なる。一方で、客観基準の薄い採用は属人的なネットワーク採用に偏りやすく、批判の声もある。求人文化として『センス採用』が今後どこまで広がるかは、AI業界の人材像そのものの議論につながる。",
-        "detail_en": "OpenAI opened a research role paying around $445K/year with a job description that, instead of degrees or specific skills, asks the candidate to be \"tasteful and strategic.\" The wording went viral on Reddit and Twitter because it crystallizes a real shift: as models get smarter, the bottleneck moves from implementation skill to judgment — what to build, what to ignore, how to position. Echoes of Karpathy's recent comments about \"taste\" as the new core skill for AI engineers, and Jobs-style design culture, are all over the discussion. Critics note the obvious downside: \"taste\" is hard to evaluate fairly and risks reinforcing insider networks. Still, the post is a useful artifact of what frontier labs now value in senior researchers.",
-        "key_points_ja": [
-            "OpenAIが$445Kの研究者ポスト公開",
-            "要件が『tasteful and strategic』のみ",
-            "実装スキルからセンスへの評価シフト",
-            "Karpathy『新しい技能はテイスト』論と符合",
-            "属人的採用への懸念も同時に噴出",
-        ],
-        "key_points_en": [
-            "OpenAI posts a $445K researcher role",
-            "Requirements: simply \"tasteful and strategic\"",
-            "Signals a shift from implementation to judgment",
-            "Echoes Karpathy's \"taste is the new skill\" thesis",
-            "Critics flag risks of nepotism in subjective hiring",
-        ],
-    })
+# 4. MS Paint -> AI fake art movement -> Google believes
+i = reddit_item("1tmb7c6")
+highlights.append({
+    "source": "reddit",
+    "title": i["title"],
+    "title_ja": "AIが架空の美術運動を捏造、それをGoogleが『本物』として再生成——ハルシネーション伝播ループ",
+    "url": i["url"],
+    "hot_take_ja": "AIが捏造した架空の美術運動を、Google検索AIが『実在』として再吐出している、というハルシネーション伝播事例。LLMが生成した嘘がウェブに吸い込まれ、それが別のLLMの根拠になり、最終的に世界の認識として固定される——情報生態系の崩れ方の典型サンプル。",
+    "detail_ja": "Reddit r/artificialで拡散している投稿。退役した投稿者がMS Paintで描いた素朴な絵をAIアシスタントに講評させたところ、AIは『これは「○○ism」という美術ムーブメントに連なる作品です』と、存在しないアートムーブメントを名前付きで解説してきた。投稿者が試しにその名前をGoogleで検索すると、Googleの生成AI要約が当該ムーブメントを実在のものとして概説し始め、出典らしき文章すら表示された。これは典型的な『ハルシネーション伝播ループ』で、(1)あるLLMが嘘を吐く、(2)その嘘がブログ・SNSに引用される、(3)別のLLM（Google AI Overview等）が学習・取込みする、(4)権威ある一次情報のように表示される、という構造で発生する。AIが生成した嘘を、別のAIが信じて拡散することで、ウェブの『真実』のベースラインがズレていく。検索エンジンのAIサマリーが情報のオーソリティに近づくほど、この問題は深刻化する。",
+    "detail_en": "A Reddit r/artificial post going viral: a retired user asked an AI assistant for feedback on amateur MS Paint paintings, and the assistant confidently placed them inside a named art movement that does not exist. When the user Googled the made-up name, Google's AI Overview generated a confident summary of that fictional movement as if it were a real, documented art history phenomenon. This is the canonical hallucination feedback loop: (1) an LLM fabricates a plausible entity, (2) the fabrication leaks into blogs and social posts, (3) another LLM ingests it as training or retrieval signal, (4) the second LLM surfaces it as authoritative. Each loop nudges the web's baseline 'truth' away from reality. As AI Overviews become the default top-of-page experience in search, the surface area for this feedback to harden into common knowledge grows fast. The anecdote is funny, but it is also the cleanest illustration so far of how a synthetic-content web could quietly drift its own facts.",
+    "key_points_ja": [
+        "AIが架空の美術運動を捏造して命名",
+        "GoogleのAI要約もそれを実在として再生成",
+        "AI→ウェブ→別AIのハルシネーション伝播ループ",
+        "AI Overviewが普及するほど影響が拡大",
+        "合成コンテンツ時代の『事実のドリフト』典型例"
+    ],
+    "key_points_en": [
+        "AI invented a fake art movement with a confident name",
+        "Google's AI Overview then described it as real",
+        "Clean example of hallucination feedback across LLMs",
+        "Risk grows as AI Overviews dominate search",
+        "Synthetic-content web can silently drift its own truth"
+    ]
+})
 
-# 5. Karpathy CLAUDE.md skills going viral
-it = find_item("github", lambda x: "andrej-karpathy-skills" in x.get("full_name", ""))
-if it:
-    highlights.append({
-        "source": "github",
-        "title": it["full_name"],
-        "title_ja": "Karpathy流コーディング教訓を1つのCLAUDE.mdに固めた『andrej-karpathy-skills』が爆伸び",
-        "url": it["url"],
-        "hot_take_ja": "Karpathy本人がXで繰り返してきた『LLMはこの種のミスをしがち』という観察を、丸ごとClaude Codeのプロジェクト指示（CLAUDE.md）に翻訳したリポジトリが、1日で3,000★以上の勢いで伸びている。エージェントの賢さを引き出すのは「もっといいモデル」ではなく「もっといい指示書」だ、という現場感の正しい反映と言える。",
-        "detail_ja": "GitHubトレンド首位の『multica-ai/andrej-karpathy-skills』は、Andrej Karpathyが過去にX/YouTubeで繰り返し言及してきたLLMコーディングの落とし穴（過剰な抽象化、テスト軽視、デバッグでの妄想推論など）を、Claude CodeのプロジェクトレベルでLLMに食わせるCLAUDE.mdとして単一ファイルにまとめたもの。Claude Codeはディレクトリ直下のCLAUDE.mdを自動で読み、全タスクに渡って指示を効かせるため、リポジトリ単位で『AIの行動ポリシー』を共有できる。本ツールはその枠組みを使い、誰でもKarpathy式のレビュー視点をエージェントに与えられるようにした点が支持されている。総スター数は約149K、24時間で+3,372とほぼ瞬間的なバイラル。背景には、コーディングエージェントの普及で『プロンプトよりプロジェクト全体のシステムプロンプト設計が効く』という共通理解が広がっていることがある。なお、Karpathy本人が公式に関与しているわけではなく、コミュニティ編集型のキュレーション。",
-        "detail_en": "`multica-ai/andrej-karpathy-skills` topped GitHub trending by distilling Andrej Karpathy's well-known critiques of LLM coding behavior — over-abstracting, ignoring tests, hallucinating debugging steps — into a single CLAUDE.md that Claude Code automatically loads at the project root. The hit rate is ~149K stars total and +3,372 in the last 24 hours. The popularity isn't really about Karpathy's specific advice; it's about the realization that coding-agent quality is now driven less by model upgrades and more by how the project tells the agent to behave. CLAUDE.md became the de facto place to encode that, and curated community files like this one are the closest thing to \"shareable agent policies.\" Note the project is community-curated, not officially endorsed by Karpathy.",
-        "key_points_ja": [
-            "Karpathy流のLLMコード批評を1ファイルに集約",
-            "Claude Codeが自動で読むCLAUDE.mdとして配布",
-            "24時間で+3.3K★、累計約149K★の急上昇",
-            "『良いモデル』より『良い指示書』が効く時代",
-            "Karpathy本人公式ではなくコミュニティ編集",
-        ],
-        "key_points_en": [
-            "Karpathy's LLM coding lessons bundled into one CLAUDE.md",
-            "Loaded automatically by Claude Code at repo root",
-            "+3.3K stars in 24h, ~149K total — instant viral",
-            "Reflects shift: better instructions > better model",
-            "Community-maintained, not officially Karpathy's",
-        ],
-    })
+# 5. Palantir NHS unlimited access
+i = reddit_item("1tlig93")
+highlights.append({
+    "source": "reddit",
+    "title": i["title"],
+    "title_ja": "Palantirら外部委託先、NHS患者の識別可能データに『無制限アクセス』——Amnesty告発",
+    "url": i["url"],
+    "hot_take_ja": "英NHSがPalantirほか外部ベンダに、識別可能な患者データへの『無制限』アクセスを許可していた、とAmnestyが告発。AI×医療の最大の論点は『モデル性能』ではなく『誰がトレーニングデータの根本を握るか』。今後数年のAI政策で必ず再燃する論点だ。",
+    "detail_ja": "Amnesty Internationalによると、英NHS Englandが米Palantir等の外部委託先に、識別可能なNHS患者情報への無制限アクセスを許可していた事実が明らかになった。元々NHSの巨大データセットはAI医療研究・運用最適化のため『仮名化したうえで限定的に共有する』前提で外部ベンダに渡されていたが、Amnestyの調査では、アクセス範囲が当初想定より大きく、ベンダ側が識別性の高いデータに事実上自由にアクセスできる契約構造になっていたという。問題の本質は、AI医療の競争優位が『どのモデルを使うか』ではなく『どの臨床データを実質的に独占できるか』に移っていることにある。Palantirは米国側でICEとの契約でも繰り返し批判を浴びており、AI医療データガバナンスの曖昧さが、特定ベンダの構造的優位に直結する。EU AI ActやUK AI規制の今後の運用、そしてオンプレ／ハイブリッドでのAI医療デプロイ（OpenAI×Dellなど）の議論にも直接効いてくる事案。",
+    "detail_en": "Amnesty International reports that NHS England has been granting US software company Palantir and other contractors effectively unlimited access to identifiable NHS patient information, beyond what the original procurement framing implied. The original premise was that NHS bulk data would be shared with vendors only under pseudonymisation and tight purpose limits, but Amnesty's review concludes the contract structures permit far wider access than the public understanding suggested. The deeper point is that the competitive moat in AI healthcare is shifting from 'which model do you use' to 'which clinical dataset can you effectively monopolise'. Palantir is already politically charged in the US (e.g. ICE contracts), and the NHS case shows the same governance ambiguity translating into a structural data advantage. This will feed directly into the next round of EU AI Act enforcement debates, UK AI regulation design, and recent enterprise AI deployments (e.g. OpenAI x Dell on-prem / hybrid) where the question of who actually controls patient data becomes central.",
+    "key_points_ja": [
+        "NHSが識別可能データへ無制限アクセスを許可した可能性",
+        "Amnesty Internationalが告発",
+        "AI医療の競争優位は『データ独占』に移行中",
+        "Palantirは米国でもICE関連で批判の的",
+        "EU AI Act・UK AI規制議論の火種に"
+    ],
+    "key_points_en": [
+        "NHS allegedly gave vendors unrestricted patient data access",
+        "Amnesty International raised the alarm",
+        "AI healthcare moat is shifting to dataset monopoly",
+        "Palantir already politically contested in the US",
+        "Will reshape EU AI Act & UK AI regulation debate"
+    ]
+})
 
 d["highlights"] = highlights
 
-OUT.write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
-print(f"Wrote {OUT} with {len(highlights)} highlights")
+with open(OUT, "w") as f:
+    json.dump(d, f, ensure_ascii=False, indent=2)
 
-# Quick coverage check
-for src in ("arxiv", "hn", "reddit", "github", "blogs"):
-    items = d["sources"][src]
-    miss = sum(1 for it in items if not it.get("title_ja"))
-    print(f"  {src}: {len(items)} total, {miss} untranslated")
+print(f"Wrote {OUT}")
+print(f"Highlights: {len(highlights)}")

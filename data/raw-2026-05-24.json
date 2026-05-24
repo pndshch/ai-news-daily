@@ -1,0 +1,686 @@
+{
+  "date": "2026-05-24",
+  "generated_at": "2026-05-24T20:08:27Z",
+  "sources": {
+    "arxiv": [],
+    "hn": [
+      {
+        "id": "48247208",
+        "title": "The Art of Money Getting",
+        "url": "https://kk.org/cooltools/book-freak-210-the-art-of-money-getting/",
+        "points": 376,
+        "comments": 205,
+        "comments_url": "https://news.ycombinator.com/item?id=48247208",
+        "author": "dxs",
+        "created_at": "2026-05-23T12:48:02Z"
+      },
+      {
+        "id": "48247876",
+        "title": "Oura says it gets government demands for user data",
+        "url": "https://this.weekinsecurity.com/oura-says-it-gets-government-demands-for-user-data-will-it-share-how-many/",
+        "points": 289,
+        "comments": 157,
+        "comments_url": "https://news.ycombinator.com/item?id=48247876",
+        "author": "donohoe",
+        "created_at": "2026-05-23T14:09:57Z"
+      },
+      {
+        "id": "48256953",
+        "title": "DeepSeek reasonix, DeepSeek native coding agent with high caching and low cost",
+        "url": "https://esengine.github.io/DeepSeek-Reasonix/",
+        "points": 279,
+        "comments": 143,
+        "comments_url": "https://news.ycombinator.com/item?id=48256953",
+        "author": "Alifatisk",
+        "created_at": "2026-05-24T13:02:06Z"
+      },
+      {
+        "id": "48248775",
+        "title": "Italy moves to Airbus A330 tankers",
+        "url": "https://www.euronews.com/my-europe/2026/05/21/italy-moves-to-airbus-a330-tankers-in-major-nato-aligned-shift",
+        "points": 271,
+        "comments": 107,
+        "comments_url": "https://news.ycombinator.com/item?id=48248775",
+        "author": "embedding-shape",
+        "created_at": "2026-05-23T16:02:43Z"
+      },
+      {
+        "id": "48258684",
+        "title": "Memory has grown to nearly two-thirds of AI chip component costs",
+        "url": "https://epoch.ai/data-insights/ai-chip-component-cost-shares",
+        "points": 186,
+        "comments": 202,
+        "comments_url": "https://news.ycombinator.com/item?id=48258684",
+        "author": "intelkishan",
+        "created_at": "2026-05-24T16:31:29Z"
+      },
+      {
+        "id": "48246889",
+        "title": "Making deep learning go brrrr from first principles (2022)",
+        "url": "https://horace.io/brrr_intro.html",
+        "points": 183,
+        "comments": 64,
+        "comments_url": "https://news.ycombinator.com/item?id=48246889",
+        "author": "tosh",
+        "created_at": "2026-05-23T11:50:22Z"
+      },
+      {
+        "id": "48257410",
+        "title": "DeepSeek to Make Permanent 75% Discount on Flagship AI Model",
+        "url": "https://www.bloomberg.com/news/articles/2026-05-23/deepseek-to-make-permanent-75-discount-on-flagship-ai-model",
+        "points": 147,
+        "comments": 2,
+        "comments_url": "https://news.ycombinator.com/item?id=48257410",
+        "author": "moh_maya",
+        "created_at": "2026-05-24T14:09:33Z"
+      },
+      {
+        "id": "48246735",
+        "title": "DHS Quits Granting Green Cards–Almost",
+        "url": "https://www.cato.org/blog/dhs-quits-granting-green-cards-almost-entirely",
+        "points": 141,
+        "comments": 2,
+        "comments_url": "https://news.ycombinator.com/item?id=48246735",
+        "author": "malshe",
+        "created_at": "2026-05-23T11:18:23Z"
+      },
+      {
+        "id": "48257980",
+        "title": "'AI washing': firms are scrambling to rebrand themselves as tech-focused",
+        "url": "https://www.theguardian.com/technology/2026/may/24/ai-washing-pr-firms-scrambling-rebrand",
+        "points": 132,
+        "comments": 114,
+        "comments_url": "https://news.ycombinator.com/item?id=48257980",
+        "author": "Brajeshwar",
+        "created_at": "2026-05-24T15:21:28Z"
+      },
+      {
+        "id": "48248014",
+        "title": "z386: An Open-Source 80386 Built Around Original Microcode",
+        "url": "https://nand2mario.github.io/posts/2026/z386/",
+        "points": 130,
+        "comments": 30,
+        "comments_url": "https://news.ycombinator.com/item?id=48248014",
+        "author": "wicket",
+        "created_at": "2026-05-23T14:25:30Z"
+      },
+      {
+        "id": "48250980",
+        "title": "Air France and Airbus found guilty of manslaughter over 2009 plane crash",
+        "url": "https://www.bbc.com/news/articles/czd2qmdvmq6o",
+        "points": 124,
+        "comments": 108,
+        "comments_url": "https://news.ycombinator.com/item?id=48250980",
+        "author": "baal80spam",
+        "created_at": "2026-05-23T20:09:13Z"
+      },
+      {
+        "id": "48256912",
+        "title": "Constraint Decay: The Fragility of LLM Agents in Back End Code Generation",
+        "url": "https://arxiv.org/abs/2605.06445",
+        "points": 120,
+        "comments": 61,
+        "comments_url": "https://news.ycombinator.com/item?id=48256912",
+        "author": "wek",
+        "created_at": "2026-05-24T12:55:53Z"
+      },
+      {
+        "id": "48254345",
+        "title": "'Fuck you, Bambu': How one private message could change the face of 3D printing",
+        "url": "https://www.theverge.com/tech/931532/bambu-agpl-pawel-jarczak-open-source-threat-dmca-github",
+        "points": 112,
+        "comments": 88,
+        "comments_url": "https://news.ycombinator.com/item?id=48254345",
+        "author": "tambourine_man",
+        "created_at": "2026-05-24T04:22:39Z"
+      },
+      {
+        "id": "48259784",
+        "title": "Claude Is Not Your Architect. Stop Letting It Pretend",
+        "url": "https://www.hollandtech.net/claude-is-not-your-architect/",
+        "points": 92,
+        "comments": 62,
+        "comments_url": "https://news.ycombinator.com/item?id=48259784",
+        "author": "cdrnsf",
+        "created_at": "2026-05-24T18:28:11Z"
+      },
+      {
+        "id": "48257058",
+        "title": "Microsoft's 6502 BASIC is now Open Source (2025)",
+        "url": "https://opensource.microsoft.com/blog/2025/09/03/microsoft-open-source-historic-6502-basic/",
+        "points": 79,
+        "comments": 26,
+        "comments_url": "https://news.ycombinator.com/item?id=48257058",
+        "author": "GTP",
+        "created_at": "2026-05-24T13:16:33Z"
+      },
+      {
+        "id": "48256565",
+        "title": "Perceptual Image Codec: What Matters in Practical Learned Image Compression",
+        "url": "https://apple.github.io/ml-pico/",
+        "points": 66,
+        "comments": 21,
+        "comments_url": "https://news.ycombinator.com/item?id=48256565",
+        "author": "ksec",
+        "created_at": "2026-05-24T12:01:24Z"
+      },
+      {
+        "id": "48248256",
+        "title": "New Attack \"Megaladon\" Compromises 5.5K+ GitHub Repos",
+        "url": "https://www.theregister.com/security/2026/05/22/megalodon-chums-the-waters-in-55k-github-repo-poisonings/5245342",
+        "points": 50,
+        "comments": 0,
+        "comments_url": "https://news.ycombinator.com/item?id=48248256",
+        "author": "theanonymousone",
+        "created_at": "2026-05-23T14:57:42Z"
+      },
+      {
+        "id": "48250198",
+        "title": "NeuralNote",
+        "url": "https://github.com/DamRsn/NeuralNote",
+        "points": 33,
+        "comments": 1,
+        "comments_url": "https://news.ycombinator.com/item?id=48250198",
+        "author": "hyperific",
+        "created_at": "2026-05-23T18:51:01Z"
+      },
+      {
+        "id": "48251864",
+        "title": "Anthropic blames dystopian sci-fi for training AI models to act \"evil\"",
+        "url": "https://arstechnica.com/ai/2026/05/anthropic-blames-dystopian-sci-fi-for-training-ai-models-to-act-evil/",
+        "points": 30,
+        "comments": 17,
+        "comments_url": "https://news.ycombinator.com/item?id=48251864",
+        "author": "rbanffy",
+        "created_at": "2026-05-23T21:45:46Z"
+      },
+      {
+        "id": "48251243",
+        "title": "Jimmy Carr on Why Everyone Is Wrong About AI [video]",
+        "url": "https://www.youtube.com/watch?v=jaYOskvlq18",
+        "points": 29,
+        "comments": 8,
+        "comments_url": "https://news.ycombinator.com/item?id=48251243",
+        "author": "mooreds",
+        "created_at": "2026-05-23T20:38:02Z"
+      }
+    ],
+    "reddit": [
+      {
+        "id": "1tlcscq",
+        "title": "Exclusive: Departing Meta staffer posts biting anti-AI video internally amid mass layoffs",
+        "url": "https://www.motherjones.com/politics/2026/05/meta-video-ai-training-layoffs-video-exclusive-mci-bosworth-frenk/",
+        "subreddit": "artificial",
+        "score": 216,
+        "comments": 56,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tlcscq/exclusive_departing_meta_staffer_posts_biting/",
+        "author": "chunmunsingh",
+        "created_at": "2026-05-23T10:28:49Z"
+      },
+      {
+        "id": "1tlig93",
+        "title": "Amnesty : US software company Palantir and other contractors were granted unlimited access to identifiable NHS England patient information",
+        "url": "https://i.redd.it/40x1sg5kgw2h1.png",
+        "subreddit": "artificial",
+        "score": 196,
+        "comments": 29,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tlig93/amnesty_us_software_company_palantir_and_other/",
+        "author": "Goldenmentis",
+        "created_at": "2026-05-23T14:46:39Z"
+      },
+      {
+        "id": "1tlp9gz",
+        "title": "Elon, stop trying to make Grok happen.\nNew data suggests government workers don’t like Elon Musk’s chatbot. Does anybody?",
+        "url": "https://www.theverge.com/ai-artificial-intelligence/936219/elon-stop-trying-to-make-grok-happen",
+        "subreddit": "artificial",
+        "score": 99,
+        "comments": 74,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tlp9gz/elon_stop_trying_to_make_grok_happen_new_data/",
+        "author": "esporx",
+        "created_at": "2026-05-23T19:09:53Z"
+      },
+      {
+        "id": "1tmawv5",
+        "title": "PapersWithCode new features - week 1 [P]",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1tmawv5/paperswithcode_new_features_week_1_p/",
+        "subreddit": "MachineLearning",
+        "score": 84,
+        "comments": 7,
+        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tmawv5/paperswithcode_new_features_week_1_p/",
+        "author": "NielsRogge",
+        "created_at": "2026-05-24T12:31:12Z"
+      },
+      {
+        "id": "1tlh2gh",
+        "title": "OpenAI is hiring a $445,000 researcher. Requirements? Be 'tasteful and strategic.'",
+        "url": "https://www.businessinsider.com/openai-safety-team-ai-self-improvement-challenge-job-2026-5",
+        "subreddit": "artificial",
+        "score": 50,
+        "comments": 19,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tlh2gh/openai_is_hiring_a_445000_researcher_requirements/",
+        "author": "ThereWas",
+        "created_at": "2026-05-23T13:51:17Z"
+      },
+      {
+        "id": "1tlzy43",
+        "title": "Vision-capable LLMs vs. OCR for long-document (including charts, images, tables, etc.) QA",
+        "url": "https://www.reddit.com/r/artificial/comments/1tlzy43/visioncapable_llms_vs_ocr_for_longdocument/",
+        "subreddit": "artificial",
+        "score": 35,
+        "comments": 17,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tlzy43/visioncapable_llms_vs_ocr_for_longdocument/",
+        "author": "Uiqueblhats",
+        "created_at": "2026-05-24T02:52:53Z"
+      },
+      {
+        "id": "1tkuu66",
+        "title": "COLM 2026 ReviewsDiscussion [D]",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1tkuu66/colm_2026_reviewsdiscussion_d/",
+        "subreddit": "MachineLearning",
+        "score": 30,
+        "comments": 14,
+        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tkuu66/colm_2026_reviewsdiscussion_d/",
+        "author": "RandomMan0880",
+        "created_at": "2026-05-22T20:24:35Z"
+      },
+      {
+        "id": "1tlpv9g",
+        "title": "I think AI training is way more accessible than people realize",
+        "url": "https://www.reddit.com/r/artificial/comments/1tlpv9g/i_think_ai_training_is_way_more_accessible_than/",
+        "subreddit": "artificial",
+        "score": 22,
+        "comments": 62,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tlpv9g/i_think_ai_training_is_way_more_accessible_than/",
+        "author": "Raman606surrey",
+        "created_at": "2026-05-23T19:33:38Z"
+      },
+      {
+        "id": "1tmb7c6",
+        "title": "\"I'm retired. I showed my MS Paint paintings to AI for feedback. It accidentally invented an entire fake art movement. Google believes it's real.\"",
+        "url": "https://www.reddit.com/r/artificial/comments/1tmb7c6/im_retired_i_showed_my_ms_paint_paintings_to_ai/",
+        "subreddit": "artificial",
+        "score": 18,
+        "comments": 15,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tmb7c6/im_retired_i_showed_my_ms_paint_paintings_to_ai/",
+        "author": "Admirable_Major_4833",
+        "created_at": "2026-05-24T12:44:24Z"
+      },
+      {
+        "id": "1tltq6b",
+        "title": "Who am I even supposed to trust when it comes to the future of AI?",
+        "url": "https://www.reddit.com/r/artificial/comments/1tltq6b/who_am_i_even_supposed_to_trust_when_it_comes_to/",
+        "subreddit": "artificial",
+        "score": 17,
+        "comments": 60,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tltq6b/who_am_i_even_supposed_to_trust_when_it_comes_to/",
+        "author": "QuantumLand",
+        "created_at": "2026-05-23T22:09:41Z"
+      },
+      {
+        "id": "1tlna8o",
+        "title": "pipeline is really slow - consulting [D]",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1tlna8o/pipeline_is_really_slow_consulting_d/",
+        "subreddit": "MachineLearning",
+        "score": 16,
+        "comments": 35,
+        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tlna8o/pipeline_is_really_slow_consulting_d/",
+        "author": "Potential_Hippo1724",
+        "created_at": "2026-05-23T17:53:12Z"
+      },
+      {
+        "id": "1tldakl",
+        "title": "The musical chairs game of AI",
+        "url": "https://www.reddit.com/r/artificial/comments/1tldakl/the_musical_chairs_game_of_ai/",
+        "subreddit": "artificial",
+        "score": 13,
+        "comments": 21,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tldakl/the_musical_chairs_game_of_ai/",
+        "author": "carribeiro",
+        "created_at": "2026-05-23T10:56:26Z"
+      },
+      {
+        "id": "1tme23u",
+        "title": "Multi-agent loop failures might be org-design failures, not prompt failures",
+        "url": "https://www.reddit.com/r/artificial/comments/1tme23u/multiagent_loop_failures_might_be_orgdesign/",
+        "subreddit": "artificial",
+        "score": 10,
+        "comments": 9,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tme23u/multiagent_loop_failures_might_be_orgdesign/",
+        "author": "Hot-Leadership-6431",
+        "created_at": "2026-05-24T14:42:17Z"
+      },
+      {
+        "id": "1tl7f8z",
+        "title": "I built a Mamba1 variant I call SM1 with d_state=1 that runs on Blackwell in pure PyTorch [P]",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1tl7f8z/i_built_a_mamba1_variant_i_call_sm1_with_d_state1/",
+        "subreddit": "MachineLearning",
+        "score": 7,
+        "comments": 7,
+        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tl7f8z/i_built_a_mamba1_variant_i_call_sm1_with_d_state1/",
+        "author": "TechnoVoyager",
+        "created_at": "2026-05-23T05:30:26Z"
+      },
+      {
+        "id": "1tmkupv",
+        "title": "What AI image generator do you use?",
+        "url": "https://www.reddit.com/r/artificial/comments/1tmkupv/what_ai_image_generator_do_you_use/",
+        "subreddit": "artificial",
+        "score": 6,
+        "comments": 4,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tmkupv/what_ai_image_generator_do_you_use/",
+        "author": "just5do",
+        "created_at": "2026-05-24T18:55:26Z"
+      },
+      {
+        "id": "1tm92gy",
+        "title": "EdgeModel",
+        "url": "https://www.reddit.com/r/artificial/comments/1tm92gy/edgemodel/",
+        "subreddit": "artificial",
+        "score": 5,
+        "comments": 6,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tm92gy/edgemodel/",
+        "author": "ExiledFTW",
+        "created_at": "2026-05-24T11:00:55Z"
+      },
+      {
+        "id": "1tm3vba",
+        "title": "Is There a Roadmap for Applied AI Engineering Without Going Deep Into Data Science?",
+        "url": "https://www.reddit.com/r/artificial/comments/1tm3vba/is_there_a_roadmap_for_applied_ai_engineering/",
+        "subreddit": "artificial",
+        "score": 5,
+        "comments": 8,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tm3vba/is_there_a_roadmap_for_applied_ai_engineering/",
+        "author": "argumentnull",
+        "created_at": "2026-05-24T06:10:50Z"
+      }
+    ],
+    "github": [
+      {
+        "name": "codegraph",
+        "full_name": "colbymchenry/codegraph",
+        "description": "Pre-indexed code knowledge graph for Claude Code, Codex, Cursor, OpenCode, and Hermes Agent — fewer tokens, fewer tool calls, 100% local",
+        "url": "https://github.com/colbymchenry/codegraph",
+        "language": "TypeScript",
+        "stars": 21706,
+        "stars_today": 2993,
+        "forks": 1208
+      },
+      {
+        "name": "andrej-karpathy-skills",
+        "full_name": "multica-ai/andrej-karpathy-skills",
+        "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+        "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+        "language": "",
+        "stars": 151795,
+        "stars_today": 2555,
+        "forks": 15567
+      },
+      {
+        "name": "ai-engineering-from-scratch",
+        "full_name": "rohitg00/ai-engineering-from-scratch",
+        "description": "Learn it. Build it. Ship it for others.",
+        "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+        "language": "Python",
+        "stars": 15566,
+        "stars_today": 1836,
+        "forks": 2795
+      },
+      {
+        "name": "claude-plugins-official",
+        "full_name": "anthropics/claude-plugins-official",
+        "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+        "url": "https://github.com/anthropics/claude-plugins-official",
+        "language": "Python",
+        "stars": 27175,
+        "stars_today": 1179,
+        "forks": 2898
+      },
+      {
+        "name": "Anthropic-Cybersecurity-Skills",
+        "full_name": "mukul975/Anthropic-Cybersecurity-Skills",
+        "description": "754 structured cybersecurity skills for AI agents · Mapped to 5 frameworks: MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, D3FEND & NIST AI RMF · agentskills.io standard · Works with Claude Code, GitHub Copilot, Codex CLI, Cursor, Gemini CLI & 20+ platforms · 26 security domains · Apache 2.0",
+        "url": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
+        "language": "Python",
+        "stars": 8174,
+        "stars_today": 934,
+        "forks": 1050
+      },
+      {
+        "name": "cmux",
+        "full_name": "manaflow-ai/cmux",
+        "description": "Ghostty-based macOS terminal with vertical tabs and notifications for AI coding agents",
+        "url": "https://github.com/manaflow-ai/cmux",
+        "language": "Swift",
+        "stars": 18932,
+        "stars_today": 634,
+        "forks": 1443
+      },
+      {
+        "name": "multica",
+        "full_name": "multica-ai/multica",
+        "description": "The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills.",
+        "url": "https://github.com/multica-ai/multica",
+        "language": "TypeScript",
+        "stars": 32394,
+        "stars_today": 584,
+        "forks": 3898
+      },
+      {
+        "name": "knowledge-work-plugins",
+        "full_name": "anthropics/knowledge-work-plugins",
+        "description": "Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork",
+        "url": "https://github.com/anthropics/knowledge-work-plugins",
+        "language": "Python",
+        "stars": 13847,
+        "stars_today": 486,
+        "forks": 1716
+      },
+      {
+        "name": "pi",
+        "full_name": "earendil-works/pi",
+        "description": "AI agent toolkit: coding agent CLI, unified LLM API, TUI & web UI libraries, Slack bot, vLLM pods",
+        "url": "https://github.com/earendil-works/pi",
+        "language": "TypeScript",
+        "stars": 53842,
+        "stars_today": 444,
+        "forks": 6430
+      },
+      {
+        "name": "skills",
+        "full_name": "dotnet/skills",
+        "description": "Repository for skills to assist AI coding agents with .NET and C#",
+        "url": "https://github.com/dotnet/skills",
+        "language": "C#",
+        "stars": 2923,
+        "stars_today": 181,
+        "forks": 217
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Towards Speed-of-Light Text Generation with Nemotron-Labs Diffusion Language Models",
+        "url": "https://huggingface.co/blog/nvidia/nemotron-labs-diffusion",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-05-23T00:02:03Z"
+      },
+      {
+        "title": "Catch up on the Dialogues stage at Google I/O 2026.",
+        "url": "https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/",
+        "source": "Google DeepMind",
+        "summary": "Alphabet CEO Sundar Pichai in conversation on the I/O 2026 Dialogues stage",
+        "published": "2026-05-22T18:00:00Z"
+      },
+      {
+        "title": "Specialization Beats Scale: A Strategic Variable Most AI Procurement Decisions Overlook",
+        "url": "https://huggingface.co/blog/Dharma-AI/specialization-beats-scale",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-05-22T15:25:59Z"
+      },
+      {
+        "title": "OpenAI named a Leader in enterprise coding agents by Gartner",
+        "url": "https://openai.com/index/gartner-2026-agentic-coding-leader",
+        "source": "OpenAI",
+        "summary": "OpenAI is named a leader in the 2026 Gartner Magic Quadrant for Enterprise AI Coding Agents, with Codex recognized for innovation and enterprise-scale deployment.",
+        "published": "2026-05-22T00:00:00Z"
+      },
+      {
+        "title": "How Virgin Atlantic ships faster with Codex",
+        "url": "https://openai.com/index/virgin-atlantic",
+        "source": "OpenAI",
+        "summary": "How Virgin Atlantic used Codex to ship its revamped mobile app on a fixed holiday travel deadline, reaching near-total unit test coverage and zero P1 defects.",
+        "published": "2026-05-22T00:00:00Z"
+      },
+      {
+        "title": "AdventHealth advances whole-person care with OpenAI",
+        "url": "https://openai.com/index/adventhealth",
+        "source": "OpenAI",
+        "summary": "AdventHealth is using ChatGPT for Healthcare to streamline workflows, reduce administrative burden, and return more time to patient care.",
+        "published": "2026-05-21T12:00:00Z"
+      },
+      {
+        "title": "We’re announcing new community investments in Missouri.",
+        "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/",
+        "source": "Google DeepMind",
+        "summary": "We’re helping build the state’s next-generation workforce and investing in energy programs.",
+        "published": "2026-05-20T20:40:00Z"
+      },
+      {
+        "title": "100 things we announced at I/O 2026",
+        "url": "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/",
+        "source": "Google DeepMind",
+        "summary": "Image with the words \"Ready, Set, I/O\" and a colorful Gemini logo",
+        "published": "2026-05-20T19:30:00Z"
+      },
+      {
+        "title": "A new experiment brings better group meetings to Google Beam",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/",
+        "source": "Google DeepMind",
+        "summary": "A small group meeting featuring two in-room participants and three participants on-screen.",
+        "published": "2026-05-20T16:45:00Z"
+      },
+      {
+        "title": "An OpenAI model has disproved a central conjecture in discrete geometry",
+        "url": "https://openai.com/index/model-disproves-discrete-geometry-conjecture",
+        "source": "OpenAI",
+        "summary": "An OpenAI model solved the 80-year-old unit distance problem, disproving a major conjecture in discrete geometry and marking a milestone in AI-driven mathematics.",
+        "published": "2026-05-20T00:00:00Z"
+      },
+      {
+        "title": "The next phase of OpenAI’s Education for Countries",
+        "url": "https://openai.com/index/the-next-phase-of-education-for-countries",
+        "source": "OpenAI",
+        "summary": "OpenAI advances Education for Countries, expanding AI adoption in schools with new partnerships, teacher training, and tools to improve global learning outcomes.",
+        "published": "2026-05-20T00:00:00Z"
+      },
+      {
+        "title": "How Ramp engineers accelerate code review with Codex",
+        "url": "https://openai.com/index/ramp",
+        "source": "OpenAI",
+        "summary": "How Ramp engineers use Codex with GPT-5.5 to review code and ship improvements, allowing them to get substantive feedback in minutes instead of hours.",
+        "published": "2026-05-20T00:00:00Z"
+      },
+      {
+        "title": "Introducing OpenAI for Singapore",
+        "url": "https://openai.com/index/introducing-openai-for-singapore",
+        "source": "OpenAI",
+        "summary": "OpenAI for Singapore launches a multi-year AI partnership to expand deployment, build local talent, and support businesses and public services with AI.",
+        "published": "2026-05-19T20:30:00Z"
+      },
+      {
+        "title": "OlmoEarth v1.1: A more efficient family of Earth observation models",
+        "url": "https://huggingface.co/blog/allenai/olmoearth-v1-1",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-05-19T18:38:09Z"
+      },
+      {
+        "title": "I/O 2026",
+        "url": "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/",
+        "source": "Google DeepMind",
+        "summary": "At Google I/O 2026, we shared how we’re making AI more helpful for everyone. See everything we announced.",
+        "published": "2026-05-19T17:45:00Z"
+      },
+      {
+        "title": "How AI Mode is changing the way people search in the U.S.",
+        "url": "https://blog.google/products-and-platforms/products/search/ai-mode-us-insights/",
+        "source": "Google DeepMind",
+        "summary": "A graphic features the text \"How people are using AI Mode in the U.S.\" surrounded by colorful, stylized illustrations of a pencil, planet, banana, gift box, cursor, gamepad, and lipstick on a light blue background.",
+        "published": "2026-05-19T17:45:00Z"
+      },
+      {
+        "title": "New ways to create and get things done in Google Workspace",
+        "url": "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
+        "source": "Google DeepMind",
+        "summary": "Google Workspace",
+        "published": "2026-05-19T17:45:00Z"
+      },
+      {
+        "title": "I/O 2026: Welcome to the agentic Gemini era",
+        "url": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+        "source": "Google DeepMind",
+        "summary": "a series of colorful icons representing Google I/O against a black background",
+        "published": "2026-05-19T17:45:00Z"
+      },
+      {
+        "title": "Gemini 3.5: frontier intelligence with action",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+        "source": "Google DeepMind",
+        "summary": "Gemini 3.5 text and multi-colored star icon on an abstract blue background.",
+        "published": "2026-05-19T17:45:00Z"
+      },
+      {
+        "title": "A new era for AI Search",
+        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
+        "source": "Google DeepMind",
+        "summary": "Text that reads \"The best of a search engine with the best of AI\"",
+        "published": "2026-05-19T17:45:00Z"
+      },
+      {
+        "title": "Advancing content provenance for a safer, more transparent AI ecosystem",
+        "url": "https://openai.com/index/advancing-content-provenance",
+        "source": "OpenAI",
+        "summary": "OpenAI advances AI content provenance with Content Credentials, SynthID, and a verification tool to help people identify and trust AI-generated media.",
+        "published": "2026-05-19T10:45:00Z"
+      },
+      {
+        "title": "Introducing the Ettin Reranker Family",
+        "url": "https://huggingface.co/blog/ettin-reranker",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-05-19T00:00:00Z"
+      },
+      {
+        "title": "PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend",
+        "url": "https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-05-18T15:12:46Z"
+      },
+      {
+        "title": "The Open Agent Leaderboard",
+        "url": "https://huggingface.co/blog/ibm-research/open-agent-leaderboard",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-05-18T14:12:58Z"
+      },
+      {
+        "title": "OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments",
+        "url": "https://openai.com/index/dell-codex-enterprise-partnership",
+        "source": "OpenAI",
+        "summary": "OpenAI and Dell partner to bring Codex to hybrid and on-premise environments, helping enterprises deploy AI coding agents securely across data and workflows.",
+        "published": "2026-05-18T10:00:00Z"
+      }
+    ]
+  },
+  "highlights": [],
+  "stats": {
+    "arxiv_count": 0,
+    "hn_count": 20,
+    "reddit_count": 17,
+    "github_count": 10,
+    "blogs_count": 25,
+    "total": 72
+  }
+}
