@@ -1,0 +1,2004 @@
+{
+  "date": "2026-05-25",
+  "generated_at": "2026-05-25T20:08:22Z",
+  "sources": {
+    "arxiv": [
+      {
+        "id": "2605.23904v1",
+        "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
+        "authors": [
+          "Yifan Yang",
+          "Ziyang Gong",
+          "Weiquan Huang",
+          "Qihao Yang",
+          "Ziwei Zhou",
+          "Zisu Huang",
+          "Yan Li",
+          "Xuemei Gao",
+          "Qi Dai",
+          "Bei Liu",
+          "Kai Qiu",
+          "Yuqing Yang",
+          "Dongdong Chen",
+          "Xue Yang",
+          "Chong Luo"
+        ],
+        "abstract": "Agent skills today are hand-crafted, generated one-shot, or evolved through loosely controlled self-revision, none of which behaves like a deep-learning optimizer for the skill, and none of which reliably improves over its starting point under feedback. We argue the skill should instead be trained as the external state of a frozen agent, with the same discipline that makes weight-space optimization reproducible. SkillOpt is, to our knowledge, the first systematic controllable text-space optimizer for agent skills: a separate optimizer model turns scored rollouts into bounded add/delete/replace edits on a single skill document, and an edit is accepted only when it strictly improves a held-out validation score. A textual learning-rate budget, rejected-edit buffer, and epoch-wise slow/meta update make skill training stable while adding zero inference-time model calls at deployment. Across six benchmarks, seven target models, and three execution harnesses (direct chat, Codex, Claude Code), SkillOpt is best or tied on all 52 evaluated (model, benchmark, harness) cells and beats every per-cell competitor among human, one-shot LLM, Trace2Skill, TextGrad, GEPA, and EvoSkill skills. On GPT-5.5 it lifts the average no-skill accuracy by +23.5 points in direct chat, by +24.8 inside the Codex agentic loop, and by +19.1 inside Claude Code. Transfer experiments further show that optimized skill artifacts retain value when moved across model scales, between Codex and Claude Code execution environments, and to a nearby math benchmark without further optimization.",
+        "categories": [
+          "cs.AI",
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2605.23904v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23904v1",
+        "published": "2026-05-22T17:59:50Z",
+        "title_ja": "SkillOpt：自己進化エージェントスキルの『執行戦略』",
+        "summary_ja": "凍結したエージェントの『外部状態』としてスキルそのものを学習対象として最適化する初の体系的フレームワーク。手書き／一発生成／緩い自己改稿といった既存手法と異なり、再現可能な勾配最適化のような規律でスキルを改善することを目指す。"
+      },
+      {
+        "id": "2605.23903v1",
+        "title": "Geo-Align: Video Generation Alignment via Metric Geometry Reward",
+        "authors": [
+          "Zizun Li",
+          "Haoyu Guo",
+          "Runzhe Teng",
+          "Chunhua Shen",
+          "Tong He"
+        ],
+        "abstract": "Camera-controlled video generation has achieved remarkable progress in recent years. However, existing video-to-video re-rendering methods primarily rely on Supervised Fine-Tuning using synthetic datasets. At present, there is an extreme scarcity of synchronized, multi-view real-world video data. Consequently, the prevailing paradigm often exhibits limited generalization when processing out-of-distribution real-world videos, with models struggling to accurately adhere to physical scales and camera trajectories. To bridge this gap, we propose Geo-Align, the first Reinforcement Learning framework specifically designed for camera-controlled video re-rendering. Built upon a pretrained model, we optimize the model through a scale-aware perceptual reward mechanism. Specifically, we introduce a metric 3D estimator to extract precise camera trajectories from generated videos, explicitly penalizing deviations in rotation and translation. Furthermore, we meticulously designed a data pipeline strategy based on real-world conditioning videos and target camera trajectories derived from synthetic data, eliminating the reliance on paired data. Extensive experiments demonstrate that Geo-Align consistently outperforms existing supervised learning baselines in both precise camera controllability and visual fidelity, indicating the effectiveness of our method.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23903v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23903v1",
+        "published": "2026-05-22T17:59:43Z",
+        "title_ja": "Geo-Align：メトリック幾何を報酬にして動画生成をアライン",
+        "summary_ja": "カメラ制御動画生成の汎化を改善する手法。合成データでのSFTに依存せず、現実世界での幾何整合性を報酬として用いることで、out-of-distributionな実写でも物理スケールとカメラ挙動を保つ。"
+      },
+      {
+        "id": "2605.23902v1",
+        "title": "PiD: Fast and High-Resolution Latent Decoding with Pixel Diffusion",
+        "authors": [
+          "Yifan Lu",
+          "Qi Wu",
+          "Jay Zhangjie Wu",
+          "Zian Wang",
+          "Huan Ling",
+          "Sanja Fidler",
+          "Xuanchi Ren"
+        ],
+        "abstract": "Most practical high-resolution text-to-image systems, including latent diffusion and autoregressive models, perform generation in a compact latent space, and a decoder maps the generated latents back to pixels. Yet the latent-to-pixel decoder is reconstruction-oriented, optimized to invert the encoder rather than synthesize more details, and becomes increasingly costly at megapixel scale. This drawback calls for a more expressive and efficient decoding paradigm. Motivated by recent progress in scalable pixel-space diffusion, we introduce PiD, a Pixel diffusion Decoder that reformulates latent decoding as conditional pixel diffusion, unifying decoding and upsampling into one generative module. By denoising directly in high-resolution pixel space, PiD synthesizes $4\\times$ and even $8\\times$ upscaled images with low latency. For latent conditioning, a lightweight sigma-aware adapter injects noise-corrupted latents into the pixel diffusion backbone, enabling PiD to decode partially denoised latents and terminate the latent diffusion process early. To further improve efficiency, we distill the model using DMD2, reducing inference to just 4 steps. PiD applies to both conventional VAE latents and semantic latents (e.g., SigLIP, DINOv2) used in recent RAE-based models. PiD decodes latents of $512 \\times 512$ images into $2048 \\times 2048$ pixels in under 1 second with 13 GB peak memory on a consumer RTX 5090, and as fast as 210 ms on a GB200 GPU, about $6\\times$ faster than cascaded diffusion-based super-resolution pipelines with better visual fidelity.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23902v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23902v1",
+        "published": "2026-05-22T17:59:42Z",
+        "title_ja": "PiD：ピクセル拡散による高速・高解像ラテントデコーディング",
+        "summary_ja": "潜在拡散モデルのlatent→pixelデコーダを、再構成志向のVAEから拡散ベースに置き換える提案。メガピクセル級でも質を保ちつつ高速化、生成パイプラインのボトルネック解消を狙う。"
+      },
+      {
+        "id": "2605.23901v1",
+        "title": "LLMs as Noisy Channels: A Shannon Perspective on Model Capacity and Scaling Laws",
+        "authors": [
+          "Xu Ouyang",
+          "Deyi Liu",
+          "Yuhang Cai",
+          "Jing Liu",
+          "Yuan Yang",
+          "Chen Zheng",
+          "Thomas Hartvigsen",
+          "Yiyuan Ma"
+        ],
+        "abstract": "Existing scaling laws for Large Language Models (LLMs), predominantly monotonic power laws, fail to explain emerging non-monotonic phenomena such as catastrophic overtraining and quantization-induced degradation, where performance deteriorates despite increased compute.   We propose the Shannon Scaling Law, a unified theoretical framework that models LLM training as information transmission over a noisy channel, grounded in the Shannon-Hartley theorem. By mapping model parameters to channel bandwidth and training tokens to signal power, our formulation explicitly captures the interaction between learning signal and intrinsic noise. This perspective reveals a fundamental Shannon capacity for LLMs: scaling model size or data without preserving a sufficient signal-to-noise ratio (SNR) inevitably amplifies noise, inducing a transition from monotonic improvement to U-shaped performance degradation.   We validate our theory through experiments on Pythia and OLMo2 under perturbations, including Gaussian noise, quantization and supervised fine-tuning on math, QA and code tasks. The Shannon Scaling Law consistently outperforms classical scaling laws and recent perturbation-aware laws, achieving strong $R^2$ scores and accurately capturing loss basins missed by prior approaches. It also extrapolates: fitted on $\\leq$6.9B Pythia models with $\\leq$180B tokens, it predicts the unseen 12B model up to 307B tokens at pooled $R^2{=}0.847$, while monotonic baselines collapse.",
+        "categories": [
+          "cs.LG",
+          "cs.AI",
+          "cs.IT"
+        ],
+        "url": "https://arxiv.org/abs/2605.23901v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23901v1",
+        "published": "2026-05-22T17:59:38Z",
+        "title_ja": "LLMをShannon的『ノイジーチャネル』として捉え直すスケーリング則",
+        "summary_ja": "従来の単調パワーローでは説明できないカタストロフィックなオーバートレーニング・量子化劣化を、Shannon-Hartley定理ベースの新スケーリング則で統一的に説明。モデルパラメータをチャネル帯域に対応付ける枠組み。"
+      },
+      {
+        "id": "2605.23899v1",
+        "title": "From Raw Experience to Skill Consumption: A Systematic Study of Model-Generated Agent Skills",
+        "authors": [
+          "Zisu Huang",
+          "Jingwen Xu",
+          "Yifan Yang",
+          "Ziyang Gong",
+          "Qihao Yang",
+          "Muzhao Tian",
+          "Xiaohua Wang",
+          "Changze Lv",
+          "Xuemei Gao",
+          "Qi Dai",
+          "Bei Liu",
+          "Kai Qiu",
+          "Xue Yang",
+          "Dongdong Chen",
+          "Xiaoqing Zheng",
+          "Chong Luo"
+        ],
+        "abstract": "Language agents increasingly improve by reusing \\emph{skills} -- structured procedural artifacts distilled from past experience. In particular, \\emph{domain-level} and \\emph{model-generated} skills are especially promising. They offer fast adaptation within a domain by encoding domain-specific recurring procedures, and they scale beyond labor-intensive hand-crafting. However, while extraction methods continue to proliferate, understanding remains limited, with no comprehensive study spanning the full skill lifecycle -- \\textbf{experience generation}, \\textbf{skill extraction}, and \\textbf{skill consumption} -- to ask whether such skills actually work, when they work, and what makes them succeed or fail. To close this gap, we build a utility-grounded evaluation framework that provides systematic experimental results across extractors and target agents, covering five diverse agentic task domains. We find that model-generated skills are beneficial on average but exhibit non-trivial negative transfer, and that neither extractors nor targets behave uniformly. A model can be a strong extractor yet a weak consumer, or vice versa, with skill utility independent of model scale or baseline task strength. To explain these patterns, we then dissect each lifecycle stage in depth, analyzing how experience composition shapes skill quality, what properties characterize useful skills, and how the same skill transfers across different consumers. Finally, we translate these findings into a concrete \\emph{meta-skill} that guides skill extraction toward the features tied to actual utility, which consistently improves skill quality across domains and substantially reduces negative transfer.",
+        "categories": [
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2605.23899v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23899v1",
+        "published": "2026-05-22T17:59:12Z",
+        "title_ja": "モデル生成エージェントスキルを体系的に解剖",
+        "summary_ja": "言語エージェントが再利用するための『スキル』を、どう抽出・どう編成・どう使うべきかを横断的に評価。ドメインレベル・モデル生成スキルの強み・弱みを統一指標で初めて整理。"
+      },
+      {
+        "id": "2605.23898v1",
+        "title": "SPACENUM: Revisiting Spatial Numerical Understanding in VLMs",
+        "authors": [
+          "Jianshu Zhang",
+          "Yijiang Li",
+          "Huifeixin Chen",
+          "Haoran Lu",
+          "Letian Xue",
+          "Bingyang Wang",
+          "Han Liu"
+        ],
+        "abstract": "Vision-Language Models (VLMs) are increasingly deployed in embodied environments, where they need produce numerical outputs such as action magnitudes and spatial coordinates. Although these numbers appear meaningful, it remains unclear whether these numerical outputs are genuinely grounded in spatial perception. Therefore, in this work, we revisit spatial numerical understanding through SpaceNum, a unified framework that captures two complementary settings: numbers as dynamic transitions during spatial exploration, and numbers as static layouts in spatial reasoning. We formulate two bidirectional tasks, Num2Space and Space2Num, to evaluate how well VLMs map between vision-side spatial structure and language-side numerical representations. We systematically study whether current VLMs truly understand numerical values in spatial settings. Across dynamic transitions and static layouts, we find that models largely fail to ground numbers in spatial meaning and often perform close to random guess. Through error analysis, reasoning trace analysis, and controlled interventions, we show that current VLMs rely heavily on shallow spatial cues, struggle to build stable coordinate-aware representations, and fail to abstract structured spatial layouts from visual observations. We further show that explicit reasoning provides only marginal gains, while tuning can partially improve spatial numerical understanding and transfer to external spatial reasoning benchmarks.",
+        "categories": [
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2605.23898v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23898v1",
+        "published": "2026-05-22T17:58:36Z",
+        "title_ja": "SPACENUM：VLMの空間数値理解を本気で検証",
+        "summary_ja": "VLMが出すアクション量や座標などの数値出力が、本当に空間知覚に根ざしているのかを評価する統一フレームワーク。表面的に『数値が出る』だけのVLMの限界を可視化。"
+      },
+      {
+        "id": "2605.23897v1",
+        "title": "ETCHR: Editing To Clarify and Harness Reasoning",
+        "authors": [
+          "Beichen Zhang",
+          "Yuhong Liu",
+          "Jinsong Li",
+          "Yuhang Zang",
+          "Jiaqi Wang",
+          "Dahua Lin"
+        ],
+        "abstract": "Multimodal Large Language Models have advanced visual reasoning, yet a purely textual chain of thought remains a bottleneck for questions that require fine-grained focus or view transformations. The ''think with images'' paradigm narrows this gap, but existing approaches are either constrained by fixed predefined toolkits or produce noisy intermediate images from unified multimodal methods. We pursue a third option: using a dedicated image editing model and decouple it with an understanding model. However, off-the-shelf image editors fail as reasoning assistants with two complementary gaps: a language-side gap, where editors trained as passive instruction-followers cannot map an abstract question to an appropriate visual transformation, and a generation-side gap, where edit correctness degrades as reasoning depth grows. Guided by this analysis, we introduce ETCHR (Editing To Clarify and Harness Reasoning), a question-conditioned, reasoning-aware image editor decoupled from the downstream understanding model and trained with a two-stage recipe targeted at the two gaps: Reasoning Imitation via supervised fine-tuning on edit trajectories, followed by Reasoning Enhancement with VLM-derived rewards for edit correctness and downstream reasoning accuracy. Since the editor is decoupled, ETCHR plugs into different open- and closed-source MLLMs in a training-free manner. Across five task families (fine-grained perception, chart understanding, logic reasoning, jigsaw restoration, and 3D understanding), ETCHR raises average Pass@1 from 55.95 to 60.77 (+4.82) with Qwen3-VL-8B, from 65.08 to 70.55 (+5.47) with Gemini-3.1-Flash-Lite, and from 76.55 to 81.16 (+4.61) with the 1T-parameter MoE model Kimi K2.5.",
+        "categories": [
+          "cs.CV",
+          "cs.AI",
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2605.23897v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23897v1",
+        "published": "2026-05-22T17:58:28Z",
+        "title_ja": "ETCHR：画像を編集して推論を明確化するMLLM",
+        "summary_ja": "純テキストの思考連鎖だけでは細部や視点変換に弱いMLLMに対し、専用画像編集モデルと理解モデルを分離する設計。固定ツールキットや雑なマルチモーダル中間画像の問題を回避。"
+      },
+      {
+        "id": "2605.23895v1",
+        "title": "From Activation to Causality: Discovery of Causal Visual Representations in the Human Brain",
+        "authors": [
+          "Yuval Golbari",
+          "Navve Wasserman",
+          "Matias Cosarinsky",
+          "Roman Beliy",
+          "Aude Oliva",
+          "Antonio Torralba",
+          "Michal Irani",
+          "Tamar Rott Shaham"
+        ],
+        "abstract": "Identifying which brain regions represent a visual concept in the human brain is a central challenge in neuroscience. Existing approaches have localized coarse functional regions (e.g., faces, places) through activation maximization, identifying regions that activate strongly for a target concept relative to other concepts. Yet strong activation alone does not establish that a region represents the concept itself, as responses may instead be driven by correlated visual or semantic cues. We introduce BrainCause, an automated framework that combines generative and brain models to synthesize controlled stimuli and validate neural representations through targeted causal testing. Given a query specifying a concept of interest, our framework constructs targeted stimulus sets comprising concept images, counterfactual edits that remove the target concept while preserving other image content, and images with candidate correlated distractors. It then uses an image-to-fMRI encoding model to predict brain responses and searches for representations that respond specifically to the target concept over correlated alternatives. BrainCause returns validated candidate representations and proposes follow-up fMRI experiments to further test or extend its discoveries. Our approach successfully recovers known functional localizations and identifies new candidate representations across dozens of concepts, validated on both predicted and measured fMRI data. Critically, we show that without causal validation, a large fraction of localizations would be false positives, confirming that activation alone is insufficient evidence of representation.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23895v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23895v1",
+        "published": "2026-05-22T17:56:37Z",
+        "title_ja": "活性から因果へ——ヒト脳の因果的視覚表現の発見",
+        "summary_ja": "fMRI×AIで、ある視覚概念を『本当に表現している』脳領域を、単なる強い活性ではなく因果的介入で特定する手法。神経科学とAI解釈性研究の橋渡し。"
+      },
+      {
+        "id": "2605.23893v1",
+        "title": "Complete-muE: Optimal Hyperparameter Transfer and Scaling for MoE Models",
+        "authors": [
+          "Hongwu Peng",
+          "Ohiremen Dibua",
+          "Yuanjun Xiong",
+          "Yifan Gong",
+          "Jianming Zhang",
+          "Yan Kang"
+        ],
+        "abstract": "We propose Complete-muE, a framework which targets hyperparameter transfer across dense FFN and any Mixture-of-Experts (MoE) setups in transformer blocks. Existing tools such as $μ$P (requires fixed architectue) or SDE (requires fixed per-step token count) cannot directly solve the hyperparameter transfer problem in MoE setups because Dense to MoE transfer or MoE total experts scaling changes both architecture and tokens per expert. Complete-muE solves this challenge with a two-bridge system: Bridge~I maps between dense FFN and Dense MoE by active-width $μ$P with a normalized router scale. Bridge~II maps between Dense MoE and sparse MoE by activated-expert scaling, where the first-order SDE LR/WD correction cancels while a bounded residual $σ_0$ shift remains. The resulting transfer rule, which we term as Complete muE, covers changes in activated experts, total capacity, granularity, and shared/group-balanced hybrids for MoE models as well as network width/depth, batch size, and duration changes for general Transformer models. Extensive language model and diffusion model pretraining experiments confirm that complete-muE yields relatively stable hyperparameter optima across model architectures and parameter counts -- with only minor drift consistent with the non-strict SDE behavior of Bridge~II. In practice this drift is small enough that hyperparameters tuned on a single dense reference transfer near-optimally to all MoE configurations -- \\emph{tune dense once, transfer to all} is the practical recipe at the core of Complete-muE. This enables MoE models to achieve accelerated convergence speedup over dense models when scaling model capacity without costly hyperparameter search.",
+        "categories": [
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2605.23893v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23893v1",
+        "published": "2026-05-22T17:56:13Z",
+        "title_ja": "Complete-muE：MoEモデルでも効くハイパーパラメータ転移",
+        "summary_ja": "μPやSDEではカバーしきれなかった、Denseから/MoE間でのハイパーパラメータ転移をtwo-bridge設計で実現。MoE時代のスケーリング実験コストを大幅に下げる枠組み。"
+      },
+      {
+        "id": "2605.23892v1",
+        "title": "Good Token Hunting: A Hitchhiker's Guide to Token Selection for Visual Geometry Transformers",
+        "authors": [
+          "Shuhong Zheng",
+          "Michael Oechsle",
+          "Erik Sandström",
+          "Marie-Julie Rakotosaona",
+          "Federico Tombari",
+          "Igor Gilitschenski"
+        ],
+        "abstract": "Visual geometry transformers have become powerful architectures for multi-view 3D reconstruction, enabling joint prediction of multiple 3D attributes in a feed-forward manner. However, their computational cost grows quadratically with the input sequence length due to the global attention layers inside these models. This limits both their scalability and efficiency. In this work, we address this challenge with a simple yet general strategy: restricting the number of key/value tokens that each query interacts with during global attention. To achieve effective token selection, we introduce a two-stage framework. First, an inter-frame selection step operates at the frame level to identify frames that should be preserved. Second, an intra-frame selection step further discards more redundant tokens within the selected frames. Our analysis highlights the advantage of a diversity-based strategy for inter-frame selection, which ensures broad coverage of the scene. For intra-frame selection, we show that layer-aware sparsification is necessary, with the selection process guided by the entropy of the global attention pattern. Our approach offers a superior speed-accuracy trade-off compared to existing solutions. Extensive experiments show that it accelerates visual geometry transformers by over 85% for scenes with 500 images while maintaining, or even improving, baseline performance, which hints that how our token selection strategy can play a crucial role in future applications of visual geometry transformers. Our project website is available at https://zsh2000.github.io/good-token-hunting.github.io.",
+        "categories": [
+          "cs.CV",
+          "cs.AI",
+          "cs.GR",
+          "cs.LG",
+          "cs.RO"
+        ],
+        "url": "https://arxiv.org/abs/2605.23892v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23892v1",
+        "published": "2026-05-22T17:55:13Z",
+        "title_ja": "Visual Geometry Transformerのトークン選別ガイド",
+        "summary_ja": "多視点3D再構成向けTransformerの自己注意コストを抑えるため、KVトークンを賢く選別する一般戦略を提案。シンプルだが汎用的に効く。"
+      },
+      {
+        "id": "2605.23891v1",
+        "title": "Smart-Insertion-V: Photorealistic Video Insertion via a Closed-Loop Feedback Dual-Stream Framework",
+        "authors": [
+          "Xiao Cao",
+          "Yansong Qu",
+          "Xiangzhen",
+          "Chang",
+          "Wen Xiao",
+          "Jiakui Hu",
+          "Heyuan Li",
+          "Jialun Liu",
+          "Zhiyong Huang",
+          "Xuelong Li"
+        ],
+        "abstract": "Mask-free video object insertion has emerged as a challenging task, requiring harmonious integration of reference objects into source videos. However, existing methods struggle when references exhibit severe stylistic domain gaps with the source scene. To overcome this, we propose \\textit{\\textbf{Smart-Insertion-V}}, an end-to-end \\textbf{Dual-Stream} framework that concurrently conducts video insertion and image style transfer. Within this framework, the image stream synchronously guides the video generation process, while a \\textbf{Closed-loop Feedback} mechanism is further incorporated to ensure robust insertion. Inevitably, integrating these diverse conditioning signals results in feature entanglement and style leakage. To tackle this issue, we design \\textbf{Dual-World-View RoPE} to distinguish different signals via spatial-temporal offsets without incurring heavy training overhead. Furthermore, to facilitate spatial grounding and stylistic adaptation, we introduce a \\textbf{Decoupled Guidance Module} that leverages a Vision-Language Model for semantic reasoning while preserving original temporal guidance with native text encoder. To bridge data gap for harmonious reference insertion task, we propose a data curation pipeline and will release an \\textbf{open-source dataset}. Experiments demonstrate that our method can insert objects into plausible positions while achieving the most harmonious results.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23891v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23891v1",
+        "published": "2026-05-22T17:54:54Z",
+        "title_ja": "Smart-Insertion-V：参照スタイルの差を吸収する動画オブジェクト挿入",
+        "summary_ja": "ソース動画と参照画像のスタイル差が大きい場合でも自然に統合する、デュアルストリーム×閉ループ動画挿入フレームワーク。動画挿入とスタイル転送を同時実行。"
+      },
+      {
+        "id": "2605.23889v1",
+        "title": "HorizonStream: Long-Horizon Attention for Streaming 3D Reconstruction",
+        "authors": [
+          "Chong Cheng",
+          "Peilin Tao",
+          "Nanjie Yao",
+          "Guanzhi Ding",
+          "Xianda Chen",
+          "Yuansen Du",
+          "Xiaoyang Guo",
+          "Wei Yin",
+          "Weiqiang Ren",
+          "Qian Zhang",
+          "Zhengqing Chen",
+          "Hao Wang"
+        ],
+        "abstract": "Online 3D reconstruction requires estimating camera pose and scene geometry under strict causal and bounded-memory constraints. Existing methods often suffer from drift, jitter, or collapse on long sequences. We trace these failures to a fundamental mismatch. Streaming geometry is inherently temporally heterogeneous, with evidence ranging from short-lived correspondences to persistent global scale. However, current architectures impose uniform and pathological influence patterns. For example, sliding windows enforce hard cutoffs, while ungated recurrence and causal attention cause cache saturation and spike-like attention sinks. To resolve this, we formalize geometric propagation as an \\emph{evidence influence kernel} and propose HorizonStream, a long-horizon Transformer that explicitly factorizes this kernel. For the long-range temporal factor, Geometric Linear Attention learns channel-wise decay rates to enable bounded, multi-timescale propagation of geometric evidence. For the short-range spatial factor, Geometric Local Attention with Spatiotemporal RoPE performs reliable 3D matching while suppressing attention sinks. Finally, Metric Readout Tokens recover stable scale and rigid pose directly from the persistent geometric state. Extensive experiments show that HorizonStream, trained on only 48-frame clips, generalizes stably to sequences exceeding 10,000\\ frames with constant memory and linear time, achieving state-of-the-art streaming 3D reconstruction performance. Project Page: https://3dagentworld.github.io/horizonstream/",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23889v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23889v1",
+        "published": "2026-05-22T17:50:48Z",
+        "title_ja": "HorizonStream：ストリーミング3D再構成のための長時間アテンション",
+        "summary_ja": "オンライン3D再構成のドリフト・ジッタを、時間スケールが異質な手がかりを統合する長尺アテンション設計で抑制。因果＆有限メモリ制約の下で安定。"
+      },
+      {
+        "id": "2605.23888v1",
+        "title": "GenRecon: Bridging Generative Priors for Multi-View 3D Scene Reconstruction",
+        "authors": [
+          "Katharina Schmid",
+          "Nicolas von Lützow",
+          "Jozef Hladký",
+          "Angela Dai",
+          "Matthias Nießner"
+        ],
+        "abstract": "We introduce a new approach to high-fidelity 3D scene reconstruction from multi-view RGB images that tightly couples reconstruction with a strong generative 3D prior. We cast scene reconstruction as conditional 3D generation over a set of spatially-localized, overlapping chunks that together tile the scene, scaling generation to large scene extents. Crucially, we inherit the fidelity and completeness of state-of-the-art generative shape models -- we use Trellis.2 as an example -- which we generalize to the scene level. To this end, we propose a projection-based conditioning mechanism that lifts posed multi-view image features into a coherent 3D representation aligned with the generative model, independent of view ordering and spatially anchored to the scene, yielding high-fidelity, multi-view consistent generated geometry. This enables lifting the strong object-level prior of Trellis.2 to multi-view, scene-scale generation, producing faithful, editable PBR mesh reconstructions of indoor environments. As a result, we obtain high-fidelity results that outperform cutting-edge reconstruction methods by 16%.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23888v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23888v1",
+        "published": "2026-05-22T17:49:59Z",
+        "title_ja": "GenRecon：生成的3D事前分布を多視点再構成に橋渡し",
+        "summary_ja": "多視点RGBから高品質3Dシーンを得るために、強力な生成3D事前モデル（Trellis.2等）の条件付き生成として再構成を定式化。大規模シーンでもtile型に拡張可能。"
+      },
+      {
+        "id": "2605.23887v1",
+        "title": "CHRONOS: Temporally-Aware Multi-Agent Coordination for Evolving Data Marketplaces",
+        "authors": [
+          "Joydeep Chandra"
+        ],
+        "abstract": "Temporal knowledge-graph data marketplaces face three coupled failures in static designs: stale hybrid index shortcuts reduce recall as edges evolve, stationary Shapley pricing misattributes value after distribution shifts, and uncoordinated agents over-consume a shared differential-privacy budget. We present CHRONOS, a three-layer architecture providing a unified treatment of these challenges with explicit public and private separation. Layer one applies neural-ODE temporal decay to shortcut edges, providing a per-query expected recall-loss bound of Big-O of Pq lambda delta t, with a monotone-envelope guarantee reducing bound looseness to 1.8 to 3.2 times observed loss. Layer two conditions Shapley valuation on detected changepoints and provides finite-sample error guarantees under noise. Layer three uses EXP3-IX to achieve Big-O of the square root of T log T regret while enforcing epsilon and delta differential privacy via moments accounting. CHRONOS releases a privatized affinity matrix per epoch using the Gaussian mechanism; all retrieval and ranking are post-processing, incurring no extra privacy cost. We provide multi-epoch settlement, scalability analysis for 500 sellers, and comparisons against accelerated baselines. Across four benchmarks, CHRONOS shows 0.937 recall at ten, 2.74 queries per second, 161 ms latency, and total epsilon of 4.25 at delta of 10 to the power of negative 6 under zCDP composition. These results indicate a competitive operating point. A limitation is that at this privacy level, released valuations remain noise-dominated; utility derives primarily from public index routing and adaptive scheduling driven by low-sensitivity statistics.",
+        "categories": [
+          "cs.DB",
+          "cs.AI",
+          "cs.CR",
+          "cs.LG",
+          "cs.MA"
+        ],
+        "url": "https://arxiv.org/abs/2605.23887v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23887v1",
+        "published": "2026-05-22T17:47:45Z",
+        "title_ja": "CHRONOS：進化するデータマーケット向け時系列対応マルチエージェント",
+        "summary_ja": "時系列ナレッジグラフのデータ市場で、(1)古びる索引、(2)分布変化後のShapleyの誤帰属、(3)DPバジェットの過消費を同時に解決する3層アーキテクチャ。"
+      },
+      {
+        "id": "2605.23885v1",
+        "title": "Multilingual Knowledge Transfer under Data Constraints via Lexical Interventions",
+        "authors": [
+          "Anastasiia Sedova",
+          "Natalie Schluter",
+          "Skyler Seto",
+          "Maartje ter Hoeve"
+        ],
+        "abstract": "Cross-lingual knowledge transfer is critical for building high-performing multilingual language models for languages with insufficient training data. When target language data is scarce, the knowledge required for many downstream tasks involving scientific reasoning, commonsense inference, and world knowledge must be acquired primarily from the high-resource language, making effective knowledge transfer essential. Existing methods for improving such cross-lingual knowledge transfer require large amounts of parallel data, translation systems, auxiliary models, or additional training stages that are largely unavailable for many languages. We propose LINK - a data-level intervention method that improves knowledge transfer during model pretraining through lexical substitutions in high-resource part of pretraining data using bilingual vocabularies. For a given replacement ratio, randomly selected words in a portion of the high-resource (English) training corpus are swapped with their word-level translations, requiring no additional model training and only a bilingual vocabulary, which can be obtained at near-zero cost for virtually any language. Evaluation on eight languages across five model sizes shows notable improvements on downstream tasks in the target language, with up to a 2x speedup in training to reach equivalent performance.",
+        "categories": [
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2605.23885v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23885v1",
+        "published": "2026-05-22T17:45:49Z",
+        "title_ja": "低リソース言語への知識転移を語彙介入で",
+        "summary_ja": "低リソース言語向けLLMで必要な科学・常識・世界知識を、軽量な語彙レベル介入で高リソース言語から転移する手法。重い再学習を要さず実用的。"
+      },
+      {
+        "id": "2605.23883v1",
+        "title": "PGT: Procedurally Generated Tasks for improving visual grounding in MLLMs",
+        "authors": [
+          "Rim Assouel",
+          "Amir Bar",
+          "Michal Drozdzal",
+          "Adriana Romero-Soriano"
+        ],
+        "abstract": "Despite remarkable progress in Multimodal Large Language Models (MLLMs), these models still struggle with fine-grained understanding tasks. In this work, we propose Procedurally Generated Tasks (PGT), a simple data-driven framework that serves a dual purpose: inducing fine-grained visual understanding and acting as a low-cost diagnostic tool to identify the source of perception failures. By overlaying unambiguous geometric primitives on images, PGT generate additional dense supervision that disentangles visual grounding capability from semantic priors. Extensive experiments on relational, quantitative, and 3D/depth understanding benchmarks show that PGT yields remarkable gains across diverse architectures. Instruction tuning MLLMs on LLaVA-v1.5-Instruct augmented with PGT data results in improvements of up to +20% on the What'sUp benchmark and +13.3% on CV-Bench-2D, while maintaining general perception capabilities. Moreover, finetuning state-of-the-art MLLMs on PGT data leads to boosts of up to +5.5% on What'sUp and +8.3% on CV-Bench-2D. These findings demonstrate that PGT effectively address the bottleneck of fine-grained perception, revealing that many spatial reasoning deficits stem from inadequate supervision signals rather than inherent architectural or resolution limitations.",
+        "categories": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2605.23883v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23883v1",
+        "published": "2026-05-22T17:45:01Z",
+        "title_ja": "PGT：手続き生成タスクでMLLMの視覚グラウンディングを改善",
+        "summary_ja": "幾何プリミティブを画像に重ねるシンプルな手続き生成タスクで、MLLMのfine-grained視覚理解を強化しつつ、知覚失敗の原因を診断する低コスト道具にも転用。"
+      },
+      {
+        "id": "2605.23879v1",
+        "title": "On the Stability of Spherical Hellinger-Kantorovich Flows and Their Implications for Differential Privacy",
+        "authors": [
+          "Aratrika Mustafi",
+          "Soumya Mukherjee"
+        ],
+        "abstract": "Gradient-flow sampling interprets a Gibbs distribution as the minimizer of an energy functional over probability measures and generates dynamics converging to this target. Under spherical Hellinger-Kantorovich (SHK) geometry, the flow couples transport and reaction and coincides with birth-death Langevin dynamics. In this work, we develop a perturbation theory for SHK gradient flows. For two potentials $V$ and $V^{\\prime}$, we compare the associated flows from a common initialization and quantify how potential discrepancies propagate over time. A uniform perturbation bound yields dimension-free, pointwise control of the log-likelihood ratio and Rényi divergence, while additional structure allows us to derive bounds for the KL divergence as well. We apply these results to approximate sampling for the exponential mechanism in differential privacy. The likelihood-ratio control provides explicit time-dependent Pure-DP guarantees for SHK-based samplers, while the KL bound yields Approximate-DP certificates via hockey-stick divergence. We also derive a utility bound separating intrinsic exponential-mechanism suboptimality from finite-time sampling error.",
+        "categories": [
+          "stat.ML",
+          "cs.CR",
+          "cs.LG",
+          "math.ST"
+        ],
+        "url": "https://arxiv.org/abs/2605.23879v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23879v1",
+        "published": "2026-05-22T17:38:20Z",
+        "title_ja": "球面Hellinger-Kantorovichフローの安定性と差分プライバシー",
+        "summary_ja": "輸送と反応を結合するSHK勾配流の摂動論を構築。Gibbs分布サンプリングの理論基盤を差分プライバシー実装に応用するための一歩。"
+      },
+      {
+        "id": "2605.23878v1",
+        "title": "LaMo: Self-Supervised Latent Motion Priors for Physical Realism in Video Generation",
+        "authors": [
+          "Bo Jiang",
+          "Depu Meng",
+          "Yihan Hu",
+          "Yichen Xie",
+          "Tianshuo Xu",
+          "Wei Zhan"
+        ],
+        "abstract": "Modern video generators produce visually compelling clips but still struggle with physical and motion consistency, limiting their use as reliable world simulators. Existing remedies often rely on external simulators, teacher models, or curated physics-focused data. We explore a complementary self-supervised direction: extracting motion cues from the unlabeled videos already used to train video diffusion models. We propose LaMo, which formulates a latent motion prior over frame-to-frame latent changes conditioned on the current latent and prompt. This prior is exposed through two lightweight readouts: a macro motion drift used during training as a Motion Drift Loss, and a learned micro motion field used during sampling as Motion Prior Guidance. Both components are plug-and-play with existing video diffusion backbones, requiring no architectural or I/O changes. On VideoPhy and VideoPhy2, LaMo improves CogVideoX backbones and outperforms recent physics-aware baselines that use external supervision. On VBench, it preserves overall generation quality while improving motion-related dimensions. These results suggest that unlabeled video contains useful motion supervision for improving physical fidelity in modern video diffusion models.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23878v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23878v1",
+        "published": "2026-05-22T17:34:42Z",
+        "title_ja": "LaMo：自己教師あり潜在運動事前で動画生成に物理らしさを",
+        "summary_ja": "外部シミュレータや教師モデルに頼らず、未ラベル動画から運動の手がかりを抽出して動画拡散モデルに事前分布として与える自己教師あり手法。"
+      },
+      {
+        "id": "2605.23872v1",
+        "title": "Training-Free Looped Transformers",
+        "authors": [
+          "Lizhang Chen",
+          "Jonathan Li",
+          "Chen Liang",
+          "Ni Lao",
+          "Qiang Liu"
+        ],
+        "abstract": "We introduce training-free looped transformers, in which a lightweight inference-time wrapper loops a contiguous mid-stack block of layers of a frozen checkpoint without additional fine-tuning, continued training, or architectural changes. Unlike prior looped transformer methods that train with the looped structure end-to-end, we retrofit recurrence onto pretrained models at test time. We show that naive block reapplication usually degrades performance, highlighting the importance of the loop application strategy. Motivated by viewing a pre-norm transformer block as a forward Euler step on an ODE, we instead treat looping as a refinement of the same approximation, replacing one large update with smaller damped sub-steps. Across seven dense, sparse MoE, and MLA+MoE model families, our method improves Qwen3-4B-Instruct by +2.64 pp on MMLU-Pro, Qwen3-30B-A3B-Instruct by +1.14 pp on CommonsenseQA, and Moonlight-16B-A3B-Instruct by +1.20 pp on OpenBookQA.",
+        "categories": [
+          "cs.LG",
+          "math.NA",
+          "stat.ML"
+        ],
+        "url": "https://arxiv.org/abs/2605.23872v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23872v1",
+        "published": "2026-05-22T17:31:16Z",
+        "title_ja": "学習不要なループ型Transformer",
+        "summary_ja": "事前学習済みTransformerの中間ブロックを推論時にループさせる軽量ラッパで、再学習なしに再帰計算を導入。素朴な実装より工夫が必要だが効果あり。"
+      },
+      {
+        "id": "2605.23871v1",
+        "title": "Move on Muon : A Hamiltonian probability gradient flow perspective of Muon optimizer",
+        "authors": [
+          "Aratrika Mustafi",
+          "Soumya Mukherjee",
+          "Bharath K. Sriperumbudur"
+        ],
+        "abstract": "We develop a gradient flow on the space of probability measures defined on matrix-valued parameters induced by regularized Muon, an analytically smoothed version of the idealized Muon optimizer. The key observation is that the regularized orthogonalization map is the gradient of a smooth Fenchel-dual smoothing of the nuclear norm. This identifies the (regularized) Muon update as a mirror/prox step in the update variable, with momentum acting as the dual coordinate. We use this structure to lift Muon from a single matrix parameter to finite-particle probability objectives of the form $J(ρ)=R\\left(\\int F d ρ\\right)$, a setting motivated by mean-field descriptions of neural-network training, and derive the inertial continuous-time limit. Using this structure, we derive the finite-particle continuous-time limit under the inertial scaling of step size and momentum, and then pass to a phase-space mean-field equation over probability laws on parameter-momentum pairs. The resulting flow can be shown to be a damped Hamiltonian probability dynamics whose kinetic energy is induced by the regularized Muon mirror potential. We prove an exact Hamiltonian dissipation identity, showing that the Hamiltonian energy decreases monotonically. While the target objective itself need not be monotone along the inertial Muon dynamics, under additional gradient-dominance, bounded-momentum, and curvature/alignment assumptions, we obtain continuous and discrete-time exponential convergence rates for the objective gap. We also study the well-posedness of the mean-field limit equation and establish propagation of chaos guarantees for the interacting particle system. Finally, we extend the formulation to Hilbert-valued feature maps on product matrix spaces, yielding a blockwise Muon probability flow applicable to smooth transformer mixture-of-experts models.",
+        "categories": [
+          "stat.ML",
+          "cs.LG",
+          "math.ST"
+        ],
+        "url": "https://arxiv.org/abs/2605.23871v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23871v1",
+        "published": "2026-05-22T17:28:53Z",
+        "title_ja": "Muonオプティマイザを確率測度上のハミルトン勾配流として捉え直す",
+        "summary_ja": "正則化Muonの直交化マップが核ノルムの平滑Fenchel双対の勾配であることを示し、Muon更新を鏡像／近接ステップとして再解釈。理論的に整理。"
+      },
+      {
+        "id": "2605.23868v1",
+        "title": "Vision Transformers Need Better Token Interaction",
+        "authors": [
+          "Linxiang Su"
+        ],
+        "abstract": "Vision Transformers (ViTs) can learn strong image-level representations while their patch representations become less effective for dense prediction during prolonged training. We revisit this dense degradation phenomenon and argue that it is not fully explained by high-norm artifacts alone. Instead, we characterize \\emph{semantic diffusion}: an optimization shortcut in which global semantic information spreads through patch tokens beyond what is locally justified. Our analysis shows that dense representation quality is not captured by locality alone: shallow features can remain better aligned with foreground regions yet underperform deeper features, and \\texttt{[CLS]} features remain complementary for dense prediction. These observations suggest that the goal should not be to remove global context, but to make token interactions more selective. We therefore study sparse attention as a minimal intervention, replacing softmax attention with entmax-1.5 while preserving global token connectivity. On DINOv1 ViT-S/16 trained for 200 epochs on ImageNet-1K, this change preserves ImageNet linear probing accuracy and substantially improves semantic segmentation performance: VOC mIoU increases from 42.80 to 48.78, ADE20K from 19.85 to 21.97, and Cityscapes from 36.79 to 37.87. These results suggest that selective token mixing is a simple and effective bias for improving dense ViT representations.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23868v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23868v1",
+        "published": "2026-05-22T17:25:16Z",
+        "title_ja": "Vision Transformerには『より良いトークン相互作用』が必要",
+        "summary_ja": "ViTの密予測性能が長く訓練するほど劣化する現象を『意味的拡散』として特徴付け、原因の単純化（高ノルムアーティファクト説）に異議。改善の方向性を示す。"
+      },
+      {
+        "id": "2605.23867v1",
+        "title": "Human Decision-Making with Persuasive and Narrative LLM Explanations",
+        "authors": [
+          "Laura R. Marusich",
+          "Mary Grace Kozuch Dhooghe",
+          "Jonathan Z. Bakdash",
+          "Murat Kantarcioglu"
+        ],
+        "abstract": "Large language models (LLMs) have the potential to aid and improve human decision-making in classification tasks, not only by providing fairly accurate predictions, but also in their ability to generate cogent narrative explanations of those predictions. Prior work has demonstrated that people generally find AI narrative explanations to be understandable, trustworthy, and convincing for changing beliefs and opinions; however, less is known about the impact of narrative explanations on objective human decision-making performance. Here we conduct a large-scale human behavioral experiment to evaluate decision-making performance with LLM-generated narrative explanations of varying persuasiveness. We found the degree of persuasiveness, or lack thereof, for LLM-based explanations did not meaningfully impact decision accuracy over a simple AI prediction alone, in agreement with typical results with explainable AI based on feature importance. We found evidence that narratives increased reliance on AI, but both when the AI prediction was correct and incorrect. Exploratory analyses also indicated that the more persuasive narratives may have had a detrimental effect on decision response times and the ability to discriminate between a correct and incorrect AI prediction. Overall, this work indicates that including narrative explanations with AI predictions may involve tradeoffs for decision-making performance, and more work is needed to determine how and when narrative explanations impact human decision-making.",
+        "categories": [
+          "cs.HC",
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2605.23867v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23867v1",
+        "published": "2026-05-22T17:25:02Z",
+        "title_ja": "LLMの説得的・物語的説明が人間の判断に与える影響",
+        "summary_ja": "LLMが生成する物語的な説明は理解されやすく説得力もある一方、判断の客観的正しさを必ずしも向上させない。説明の語り口バイアスを実験的に評価。"
+      },
+      {
+        "id": "2605.23863v1",
+        "title": "Robotic Strawberry Harvesting with Robust Vision and Deep Reinforcement Learning based Sim-to-Real Control",
+        "authors": [
+          "Al Bashir",
+          "Shao-Yang Chang",
+          "Partho Ghose",
+          "Prem Raj",
+          "Chen-Kang Huang",
+          "Azlan Zahid"
+        ],
+        "abstract": "This study presents a closed-loop robotic strawberry harvesting system that combines a robust vision module, simulation-trained deep reinforcement learning (DRL) control, and ROS-based realrobot execution. For perception, we propose HRAttnEdge-YOLO26-seg, a modified YOLO26-seg architecture that incorporates a high-resolution P2 branch, segmentation-path attention, and edgesupervised prototype learning to improve instance segmentation in cluttered scenes. For control, we train a target-conditioned Proximal Policy Optimization (PPO) policy in Isaac Lab to produce smooth joint-position commands for a UR10e manipulator and deploy it on a UR10e robot for targetfruit reaching and harvesting. This simulation-based approach reduces hardware dependency, lowers development cost, and allows scalable policy training without exhaustive physical trials before real deployment. The proposed vision model demonstrated the highest overall performance among the evaluated methods. On both self-collected and public datasets, the model showed a 10 to 14% improvement in segmentation performance. In controlled in-house tests, the PPO controller produced stable and dynamically smoother motion than a inverse kinematics (IK)-based MoveIt baseline. In greenhouse trials, the proposed integrated system harvested 281 strawberries, achieving 96.6% reaching success, 91.3% grasp-and-pull success, and 84.3% overall harvesting success. These results illustrate that task-specific perception combined with simulation-trained PPO can serve as a practical and resource-efficient alternative to conventional planner-dependent reaching in manipulation, enabling reliable closed-loop robotic harvesting in complex agricultural environments.",
+        "categories": [
+          "cs.RO"
+        ],
+        "url": "https://arxiv.org/abs/2605.23863v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23863v1",
+        "published": "2026-05-22T17:21:06Z",
+        "title_ja": "ロバストビジョン×Sim-to-Real DRLで自動イチゴ収穫",
+        "summary_ja": "高解像分岐＋セグ注意＋エッジ教師付きYOLO26-segと、シミュ訓練DRL制御を組み合わせた閉ループのロボットイチゴ収穫システム。"
+      },
+      {
+        "id": "2605.23861v1",
+        "title": "Leveraging Foundation Models for Causal Generative Modeling",
+        "authors": [
+          "Aneesh Komanduri",
+          "Xintao Wu"
+        ],
+        "abstract": "Causal generative modeling is essential for developing reliable and transparent AI systems capable of counterfactual reasoning. While existing approaches focus on integrating causal constraints during the training of generative models, they often lack a unified framework to leverage the zero-shot reasoning capabilities of pretrained foundation models. We introduce FM-CGM, a modular framework for end-to-end visual causal reasoning using pretrained foundation models. FM-CGM formalizes the causal pipeline through three core components: a concept extractor, a concept manipulator, and a counterfactual generator. By leveraging a large reasoning model for causal inference and a text-to-image diffusion model for generation, our approach enables zero-shot causal discovery, intervention, and counterfactual generation. We then develop Causal Semantic Guidance (CSG), a cross-attention-based mechanism that ensures semantic interventions propagate to descendant concepts while preserving invariant regions. We empirically show that our approach can identify plausible causal structures and is suitable for faithful counterfactual image generation.",
+        "categories": [
+          "cs.LG",
+          "cs.AI",
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23861v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23861v1",
+        "published": "2026-05-22T17:20:17Z",
+        "title_ja": "基盤モデルを使った因果生成モデリング",
+        "summary_ja": "事前学習基盤モデルのゼロショット推論力を、因果生成モデル構築に体系的に取り込むモジュラ枠組みFM-CGM。視覚因果推論を一気通貫で。"
+      },
+      {
+        "id": "2605.23857v1",
+        "title": "Strong Teacher Not Needed? On Distillation in LLM Pretraining",
+        "authors": [
+          "Taiming Lu",
+          "Zhuang Liu"
+        ],
+        "abstract": "Knowledge distillation generally assumes a strong-to-weak relationship where stronger teachers yield better students. In this work, we examine this assumption about distillation in large language model pretraining. By varying architecture sizes and training token budgets, we create strong-to-weak, same-level, and weak-to-strong teacher-student relationships, and study distillation's effectiveness under each. We find that the teacher need not be strong: with proper mixing of the language modeling and knowledge distillation losses, even small and undertrained teachers improve larger students. At the same time, a stronger teacher is not always better: pushing the teacher further, through more parameters or more training tokens, can saturate or even reverse the distillation gains. We further observe that distillation improves generalization (out-of-distribution and downstream performance) more readily than in-domain fitting. Together, these results challenge the common belief that distillation pretraining always requires a strong teacher.",
+        "categories": [
+          "cs.LG",
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2605.23857v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23857v1",
+        "published": "2026-05-22T17:16:35Z",
+        "title_ja": "事前学習での蒸留に強い教師は本当に必要か",
+        "summary_ja": "事前学習段階での蒸留において、教師→生徒の強弱関係を体系的に検証。適切な混合があれば、教師は必ずしも『より強い』必要はない、という反直観的結果。"
+      },
+      {
+        "id": "2605.23856v1",
+        "title": "Point Tracking Improves World Action Models",
+        "authors": [
+          "Jiarui Guan",
+          "Wenshuai Zhao",
+          "Yue Pei",
+          "Ziliang Chen",
+          "Arno Solin",
+          "Juho Kannala"
+        ],
+        "abstract": "Robot policy learning benefits from world-action models that capture environment dynamics, but pixel-level prediction entangles dynamics with nuisance factors such as lighting and texture, making learned representations vulnerable to task-irrelevant visual variation. We propose JOPAT, a JOint Pixel-And-Track World-Action Model that predicts latent visual observations, 2D point tracks with visibility, and actions in a single denoising diffusion transformer. The key insight is that tracks provide an explicit representation of motion that captures long-horizon dynamics and remains robust under occlusion or partial out-of-frame motion, offering greater utility than modeling pixel appearance alone. On LIBERO and real-world LeRobot tasks, JOPAT improves over pixel-based baselines, with the largest gains on long-horizon tasks involving occlusion, object interaction, and off-screen motion.",
+        "categories": [
+          "cs.RO"
+        ],
+        "url": "https://arxiv.org/abs/2605.23856v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23856v1",
+        "published": "2026-05-22T17:08:37Z"
+      },
+      {
+        "id": "2605.23854v1",
+        "title": "Entrywise Error Bounds for Spectral Ranking with Semi-Random Adversaries",
+        "authors": [
+          "Dongmin Lee",
+          "Anuran Makur",
+          "Japneet Singh"
+        ],
+        "abstract": "Bradley-Terry-Luce (BTL) model estimation is a well-established strategy to rank a collection of items given a dataset of pairwise comparisons. Although the theoretical performance of BTL estimation methods, such as spectral and maximum likelihood estimation, is well studied in the regime of uniformly sampled graphs, generalizing such results to a wider class of random graphs has proved challenging. In this work, we investigate the entry-wise error of spectral algorithms against a semi-random adversary that can arbitrarily boost the sampling probabilities of certain edges. We find that the performance of the unweighted spectral method is heavily dependent on the spectral properties of the generated graph. Furthermore, we show that asymptotic performance approaching that of uniformly sampled graphs can be recovered by appropriately reweighting the observed edges to counteract the adversary and restore the spectral gap. Finally, we provide numerical simulations that support our theoretical findings.",
+        "categories": [
+          "cs.LG",
+          "math.ST",
+          "stat.ML"
+        ],
+        "url": "https://arxiv.org/abs/2605.23854v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23854v1",
+        "published": "2026-05-22T17:08:07Z"
+      },
+      {
+        "id": "2605.23847v1",
+        "title": "Instrumentation for Imitation Learning: Enhancing Training Datasets for Clothes Hanger Insertion",
+        "authors": [
+          "Remko Proesmans",
+          "Thomas Lips",
+          "Francis wyffels"
+        ],
+        "abstract": "Large behaviour models have transformed the field of robotic manipulation, but prohibitive data requirements have thus far prevented a revolution similar to vision language models. We believe that instrumentation, i.e. sensor integration in objects, can provide invaluable state information and enable efficient learning for robotic manipulation. In this paper, we present instrumented imitation learning of clothes hanger insertion. Using 180 teleoperated demonstrations, we train diffusion policies with and without access to instrumentation data. Results show that policies leveraging instrumentation outperform vision-only counterparts by 14-25 %pt and exhibit greater task awareness. Crucially, a black-box imitation learning policy learns to prioritise instrumentation signals without explicit guidance. In addition, enhancing the teleoperation dataset with rollouts from an instrumented expert policy, enables a vision-only student policy to achieve performance comparable to the instrumented expert, thereby surpassing the original vision-only policy. These findings establish instrumentation as a promising strategy to enhance imitation learning for robotic manipulation. Datasets are available on Zenodo.",
+        "categories": [
+          "cs.RO"
+        ],
+        "url": "https://arxiv.org/abs/2605.23847v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23847v1",
+        "published": "2026-05-22T16:59:55Z"
+      },
+      {
+        "id": "2605.23845v1",
+        "title": "Learning a Particle Dynamics Model with Real-world Videos",
+        "authors": [
+          "Chanho Kim",
+          "Suhas V. Sumukh",
+          "Li Fuxin"
+        ],
+        "abstract": "Data-driven learning approaches for physics simulation, sometimes referred to as world models, have emerged as promising alternatives to traditional physics simulators due to their differentiable nature. Prior work has demonstrated impressive results in predicting the motions of rigid and non-rigid objects in complex scenes involving multiple interacting bodies. However, these models are typically trained in simulated environments because obtaining perfect state information such as complete scene point clouds and point correspondences over time is challenging in real-world settings. This reliance on synthetic data can limit their applicability when the sim-to-real gap is large. In this work, we aim to overcome these limitations by introducing a novel framework for training neural object dynamics models directly from unlabeled real-world videos. Specifically, we propose to learn a particle-based dynamics model compatible with a Gaussian splatting framework, which operates on dense particles derived from Gaussians (i.e., particles with scales and rotations) and predicts their position and rotation changes over time. The model is trained via rendering supervision, enabling learning from real-world videos without requiring particle-level labeled states. Our model operates directly on dense Gaussians without relying on heuristic subsampling anchor points. To enable this study, we also present a real-world dataset consisting of about 500 videos capturing diverse object interactions.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23845v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23845v1",
+        "published": "2026-05-22T16:56:27Z"
+      },
+      {
+        "id": "2605.23840v1",
+        "title": "MuellerPT: Decomposition Driven Pretraining for Dense Learning in Mueller Polarimetry",
+        "authors": [
+          "Adam Tlemsani",
+          "Yingdian Li",
+          "Maxime Giot",
+          "Naim Slim",
+          "Christopher J. Peters",
+          "Abhijeet Ghosh",
+          "Daniel S. Elson"
+        ],
+        "abstract": "Mueller matrix imaging provides rich, physically meaningful contrast for biomedical tissue analysis, but supervised learning is hindered by scarce dense annotations and strong domain shifts across specimens and acquisition settings. We introduce MuellerPT, a physics guided pre-training approach that learns transferable dense representations by predicting Lu-Chipman decomposition maps from per-pixel 4x4 Mueller matrices. To scale pre-training, we collected a new large Multispectral Animal Polarimetric Organ dataset (MAP-Org). The pre-trained encoder is adapted with a segmentation head for grey vs. white matter segmentation in lamb brain. A classification head is used for colorectal cancer vs. non-cancer classification. Both segmentation and classification are evaluated across few-shot learning scenarios. In segmentation, MuellerPT improves label efficiency and cross specimen transfer compared to models without pre-training, achieving an absolute DICE gain of over 20% compared to the baseline trained from scratch when using 5% of the training data. In classification, MuellerPT also enhances label efficiency, improving overall accuracy by 8% compared to the baseline when using 1% of the training data. We demonstrate MuellerPT's robustness to domain shift with a qualitative evaluation of its predicted Lu-Chipman maps on an ex vivo human oesophagus sample. These results suggest that predicting Lu-Chipman decomposition is an effective and practical pretext task for robust biomedical inference from Mueller polarimetry and can pave the way for future work on label efficient Mueller imaging.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23840v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23840v1",
+        "published": "2026-05-22T16:48:57Z"
+      },
+      {
+        "id": "2605.23832v1",
+        "title": "SFG-ROS: A Resource-Aware Framework for Dense Multi-Agent Perception",
+        "authors": [
+          "Constantin Blessing",
+          "Elias Geiger",
+          "Jakob Häringer",
+          "Dennis Grewe",
+          "Markus Enzweiler"
+        ],
+        "abstract": "Deploying heterogeneous multi-agent robot fleets for collaborative perception requires robust data exchange and scalable software architectures. However, standard ROS 2 implementations often suffer from network saturation, namespace collisions, and severe computational overhead when distributing dense sensor streams across devices. To address these bottlenecks, we present SFG-ROS, a resource-aware multi-agent software framework designed for dynamic fleet deployments. SFG-ROS addresses these challenges through three primary contributions. First, schema-driven traffic routing isolates high-frequency intra-agent traffic from the global network using a programmatic fully qualified name schema and targeted Fast DDS routing. Second, an on-demand centralized decoding pipeline automatically offloads high-bandwidth sensor data decompression, eliminating redundant processing across local consumer nodes. Finally, a hardware-agnostic container pipeline dynamically adapts to heterogeneous accelerators, seamlessly bridging development environments with zero-touch, field-ready execution. We evaluate the framework using a fleet of wheeled and legged robots equipped with LiDAR and stereo depth cameras. Experimental results show SFG-ROS bounds network traffic to $\\mathcal{O}(1)$ and, by replacing redundant decompression with lightweight IPC, reduces the per-subscriber CPU scaling penalty by 72.3\\% versus standard ROS 2, all while maintaining low latency. Finally, we publish SFG-ROS under a permissive license, available via \\href{https://iis-esslingen.github.io/sfg-ros}{iis-esslingen.github.io/sfg-ros}.",
+        "categories": [
+          "cs.RO"
+        ],
+        "url": "https://arxiv.org/abs/2605.23832v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23832v1",
+        "published": "2026-05-22T16:41:12Z"
+      },
+      {
+        "id": "2605.23826v1",
+        "title": "Decomposing Queries into Tool Calls for Long-Video Keyframe Retrieval",
+        "authors": [
+          "Michal Shlapentokh-Rothman",
+          "Prachi Garg",
+          "Yu-Xiong Wang",
+          "Derek Hoiem"
+        ],
+        "abstract": "Keyframe selection is a direct way to provide verifiable visual evidence for long-video question answering (QA). Queries differ in what they require, and finding the right frames depends on knowing what to look for. Existing keyframe selectors either score every frame against a single query, or decompose the query into a fixed schema evaluated by a single visual tool. We propose ToolMerge, a keyframe retrieval method based on decomposition and merging: an Large Language Model (LLM) based planner decomposes the query into tool calls and specifies how their per-tool rankings are merged using boolean operators. To evaluate retrieval directly, we construct Molmo-2 Moments (M2M), a benchmark in which every question is anchored to a specific time interval by construction. Across QA, question retrieval, and caption retrieval, ToolMerge is competitive with prior keyframe selectors, most notably on caption retrieval, outperforming other methods by 5%. Code and data can be found at https://github.com/michalsr/ToolMerge .",
+        "categories": [
+          "cs.CV",
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2605.23826v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23826v1",
+        "published": "2026-05-22T16:29:51Z"
+      },
+      {
+        "id": "2605.23825v1",
+        "title": "It's the humans, not the data: Geopolitical bias in LLMs originates in post-training, amplified by the language of the prompt",
+        "authors": [
+          "Stuart Bladon",
+          "Brinnae Bent"
+        ],
+        "abstract": "It has generally been assumed that geopolitical bias in language models originates from the training data used during the pre-training phase. We tested seven open-weight LLM pairs consisting of the base model (pre-training only) and the chat model (pre-training and post-training) from seven labs on a paired-scenario forced-choice probe over 28 country pairs in English, French, and Chinese, and found that geopolitical bias originates in post-training rather than in pre-training. Across seven AI labs, six showed shifts in the direction associated with the country or region of the model developer after post-training. This shift is strongest in Alibaba's Qwen 2.5: while the base is neutral on China-favourability (-0.15 log-odds, p=0.15), the post-trained chat variant is at +2.91 (p<10^-4), an 18x shift in odds. We also observe shifts in biases toward other countries across all models. Additionally, the magnitude of this shift depends on the language used to prompt the model: the French-made Mistral becomes pro-France only under French prompting (FR-EN shift +1.91, p<10^-4). These findings suggest that geopolitical preferences in language models are not simply inherited from large-scale internet data but are actively shaped during post-training, highlighting the need for greater transparency, auditing, and oversight of alignment processes that influence how models represent nations, cultures, and political perspectives.",
+        "categories": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2605.23825v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23825v1",
+        "published": "2026-05-22T16:29:02Z"
+      },
+      {
+        "id": "2605.23821v1",
+        "title": "Hierarchical Concept Geometry in Language Models Emerges from Word Co-occurrence",
+        "authors": [
+          "Andres Nava",
+          "Matthieu Wyart"
+        ],
+        "abstract": "We propose a distributional theory of how hypernymy -- the ``is-a'' relation between general and specific concepts -- is encoded geometrically in language representations. Starting from the empirically verified assumption that words closer on the WordNet hypernym graph co-occur more often, we characterize theoretically the spectrum of the resulting embedding Gram matrix of word2vec embeddings. Under mild positivity and decay conditions on the co-occurrence kernel, we prove that the leading eigenvectors first separate broad taxonomic branches and then progressively finer sub-branches, producing a \\emph{hierarchical splitting geometry} with a coarse-to-fine spectral organization that mirrors the tree. We confirm these predictions in word2vec embeddings across many sampled WordNet subtrees, and show that the same signature extends strikingly well to Gemma 2B unembeddings. Our results indicate that hierarchical concept geometry in LLMs need not reflect a hierarchy-specific functional mechanism, but emerges from the spectral structure of pairwise word statistics.",
+        "categories": [
+          "cs.CL",
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2605.23821v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23821v1",
+        "published": "2026-05-22T16:24:30Z"
+      },
+      {
+        "id": "2605.23819v1",
+        "title": "Not Too Generative, Not Too Discriminative: The Human Alignment Sweet Spot",
+        "authors": [
+          "Jorge Chang Ortega",
+          "Bastien Le Lan",
+          "Thomas Serre",
+          "Victor Boutin"
+        ],
+        "abstract": "A central question in computational vision is whether human-like visual representations are better explained by discriminative or generative learning. Existing comparisons, however, often confound the learning objective with architecture, scale, and training data, leaving open whether the objective itself drives alignment. We address this confound using Joint Energy-Based Models (JEMs), which interpolate continuously between discriminative and generative training within a fixed architecture. By varying a single mixing coefficient, we isolate the effect of the learning objective and evaluate the resulting models across six human-alignment benchmarks spanning perceptual similarity, gloss perception, human response uncertainty, robustness, shape-texture cue conflict, and diagnostic feature attribution. Across this diverse suite, human alignment is consistently maximized at intermediate points of the generative-discriminative continuum, rather than at either endpoint. Hybrid JEMs combine the categorical structure induced by discriminative learning with the sensitivity to input structure induced by generative learning, yielding more human-like behavior across multiple levels of vision. These results suggest that the generative-discriminative dichotomy is the wrong axis for understanding human-aligned vision: alignment emerges not from choosing one objective over the other, but from balancing both.",
+        "categories": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2605.23819v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23819v1",
+        "published": "2026-05-22T16:21:25Z"
+      },
+      {
+        "id": "2605.23809v1",
+        "title": "Advanced AI Service Provisioning in O-RAN through LLM Engine Integration",
+        "authors": [
+          "Seyed Bagher Hashemi Natanzi",
+          "Pranshav Gajja",
+          "Bo Tang",
+          "Vijay K. Shah"
+        ],
+        "abstract": "The Open Radio Access Network (O-RAN) architecture allows AI to be embedded directly into the RAN through modular xApps and rApps, yet creating these applications collecting data, training models, writing code, and deploying them safely remains slow and largely manual. Large Language Models (LLMs) offer strong reasoning and code-generation capabilities but are unsuited for the fast, deterministic inference required in real-time RAN control. We present a proof-of-concept Dual-Brain architecture that combines both strengths: an LLM-based orchestrator translates operator intents into data-collection policies and deployment code, while an automated ML engine, NeuralSmith, trains lightweight classifiers on demand via an API. We describe the architecture and provisioning workflow, share practical insights from a containerized O-RAN 5G~SA testbed, and discuss open research directions.",
+        "categories": [
+          "eess.SY",
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2605.23809v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23809v1",
+        "published": "2026-05-22T16:12:39Z"
+      },
+      {
+        "id": "2605.23797v1",
+        "title": "Debiased Negative Mining Improves Out-of-distribution Detection with Pre-trained Vision-Language Models",
+        "authors": [
+          "Bo Peng",
+          "Jie Lu",
+          "Guangquan Zhang",
+          "Zhen Fang"
+        ],
+        "abstract": "Aiming at identifying unexpected inputs from unknown classes, out-of-distribution (OOD) detection has emerged as a pivotal approach to enhancing the reliability of machine learning models. This paper focuses on the burgeoning paradigm of post-hoc OOD detection with pre-trained vision-language models (VLMs), where a popular pipeline is to detect OOD inputs by examining their affinities between ID labels and negative labels, i.e., those semantically different from ID labels. Due to the unavailability of target OOD labels, existing works predominantly rely on heuristic rules to mine negative labels from unlabeled wild corpus data. Despite the empirical success, we argue that the power of VLM-based OOD detection has yet to be fully unleashed since the notorious false negative problem is far from addressed in the literature. With this motivation, we are interested in addressing the challenge of mining true negative labels for OOD scoring. To this end, we develop a theoretical framework for correcting the sampling bias of negatives labels by indirectly approximating the distribution of negative labels. Perhaps surprisingly, we show that the debiased negative mining can be naturally converted into Monte-Carlo sampling based on ID labels and the unlabeled wild corpus data. Extensive experiments empirically manifest that our method establishes a new state-of-the-art in a variety of OOD detection setups. Code is publicly available at \\href{https://github.com/60pen9/Debiased-Negative-Mining-Improves-OOD-Detection-with-Pre-trained-VLMs}{\\textcolor{red}{here}}.",
+        "categories": [
+          "cs.LG",
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23797v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23797v1",
+        "published": "2026-05-22T15:57:56Z"
+      },
+      {
+        "id": "2605.23790v1",
+        "title": "Exploring deep learning for Event-Based Saliency Prediction with a Transformer-based model",
+        "authors": [
+          "Romaric Mazna",
+          "Jean Martinet",
+          "Sai Deepesh Pokala"
+        ],
+        "abstract": "Saliency prediction has been extensively studied in RGB images and videos as a computational model of human visual attention. In contrast, predicting saliency from event-based data remains largely unexplored, despite the biological inspiration and favorable sensing properties of event cameras. Two obstacles have held this direction back: the absence of large-scale event saliency datasets, and the lack of a strong baseline. In this paper, we introduce SEST (Swin Event-based Saliency Transformer), a transformer-based model for saliency prediction from event data, bridging the data scarcity barrier through event-native pretraining and synthetic supervision. SEST leverages a self-supervised pretrained event-based Swin Transformer backbone combined with a lightweight CNN decoder to produce dynamic saliency maps. To address the scarcity of annotated event-based saliency data, we introduce two new benchmark datasets, N-DHF1K and N-UCF Sports, generated from large-scale RGB saliency benchmarks. Experimental results show that SEST clearly outperforms existing event-based saliency methods and narrows the performance gap with state-of-the-art RGB models. Zero-shot evaluation on a real event camera dataset further demonstrates that our model trained on synthetic data remains transferable on real event streams. To the best of our knowledge, this work is the first to apply deep learning to event-based saliency prediction, opening a new research direction at the intersection of event-based vision and neuromorphic visual attention.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23790v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23790v1",
+        "published": "2026-05-22T15:52:01Z"
+      },
+      {
+        "id": "2605.23780v1",
+        "title": "Beyond Binary Edits Robust Multimodal Knowledge Editing with Adversarial Subspace Alignment",
+        "authors": [
+          "Haoyuan Wang",
+          "Xiaohao Liu",
+          "Jiajie Su",
+          "Jianmao Xiao",
+          "Chaochao Chen"
+        ],
+        "abstract": "Multimodal large language models (MLLMs) need efficient mechanisms to update knowledge without degrading existing capabilities. While intrinsic multimodal knowledge editing achieves strong reliability and locality, it often exhibits limited generality, failing to propagate edits across semantically equivalent visual and linguistic variations. This issue arises from the lack of explicit semantic supervision, rigid editing scopes, and biased anchoring to individual samples in high-dimensional multimodal spaces. We address robust intrinsic multimodal knowledge editing by explicitly targeting generalization. We formalize robustness through knowledge units that group semantically equivalent multimodal inputs and define generality as consistent predictions within each unit. To expose fragile semantic regions, we introduce Latent Adversarial Robustification (LAR), which generates adversarial yet semantically coherent variants in the joint latent space. We further propose Rank-Constrained Subspace Learning (RCSL), enforcing low-rank alignment of adversarial representations at the edit layer via a singular value-based objective. Extensive analysis demonstrates the effectiveness of ASAM empirically.",
+        "categories": [
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2605.23780v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23780v1",
+        "published": "2026-05-22T15:46:10Z"
+      },
+      {
+        "id": "2605.23778v1",
+        "title": "The physics of AI weather models",
+        "authors": [
+          "George Craig",
+          "Tobias Selz",
+          "Matthias Beylich",
+          "Kirsten I. Tempest"
+        ],
+        "abstract": "Could it be that AI weather models are solving physical equations, although they may not be the equations used by conventional NWP models? We compute correlations of forecast skill and Centered Kernel Alignment, providing evidence that different AI weather models represent the atmosphere in similar ways, despite differences in architecture and capacity. We argue that the architecture and training of the AI models constrains the form of the physical laws that they might simulate. In particular, we propose that the models implement a particle description of the atmosphere, where the latent variables at each mesh point correspond to the position of a particle in the high dimensional latent space. We hypothesize that the movement of the particles follows a gradient flow in the latent space towards a minimum of a learned free energy functional. Analysis of the GraphCast and Aurora models show that they make changes on large spatial scales in the early processor layers and move to smaller scale with increasing layer depth, consistent with the gradient flow hypothesis.",
+        "categories": [
+          "physics.ao-ph",
+          "cs.LG",
+          "physics.comp-ph"
+        ],
+        "url": "https://arxiv.org/abs/2605.23778v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23778v1",
+        "published": "2026-05-22T15:43:56Z"
+      },
+      {
+        "id": "2605.23777v1",
+        "title": "Machine learning applied to emerald gemstone grading: framework proposal and creation of a public dataset",
+        "authors": [
+          "FB Pena",
+          "D Crabi",
+          "Sandro C Izidoro",
+          "Érick O Rodrigues",
+          "G Bernardes"
+        ],
+        "abstract": "The grading of gemstones is currently a manual procedure performed by gemologists. A popular approach uses reference stones, where those are visually inspected by specialists that decide which one of the available reference stone is the most similar to the inspected stone. This procedure is very subjective as different specialists may end up with different grading choices. This work proposes a complete framework that entails the image acquisition and goes up to the final stone categorization. The proposal is able to automate the entire process apart from including the stone in the created chamber for the image acquisition. It discards the subjective decisions made by specialists. This is the first work to propose a machine learning approach coupled with image processing techniques for emerald grading. The proposed framework achieves 98% of accuracy (correctly categorized stones), outperforming a deep learning approach. Furthermore, we also create and publish the used dataset that contains 192 images of emerald stones along with their extracted and pre-processed features.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23777v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23777v1",
+        "published": "2026-05-22T15:43:26Z"
+      },
+      {
+        "id": "2605.23775v1",
+        "title": "A Novel Approach for the Counting of Wood Logs Using cGANs and Image Processing Techniques",
+        "authors": [
+          "João VC Mazzochin",
+          "Giovani Bernardes Vitor",
+          "Gustavo Tiecker",
+          "Elioenai MF Diniz",
+          "Gilson A Oliveira",
+          "Marcelo Trentin",
+          "Érick O Rodrigues"
+        ],
+        "abstract": "This study tackles the challenge of precise wood log counting, where applications of the proposed methodology can span from automated approaches for materials management, surveillance, and safety science to wood traffic monitoring, wood volume estimation, and others. We introduce an approach leveraging Conditional Generative Adversarial Networks (cGANs) for eucalyptus log segmentation in images, incorporating specialized image processing techniques to handle noise and intersections, coupled with the Connected Components Algorithm for efficient counting. To support this research, we created and made publicly available a comprehensive database of 466 images containing approximately 13,048 eucalyptus logs, which served for both training and validation purposes. Our method demonstrated robust performance, achieving an average Accuracy_pixel of 96.4% and Accuracy_logs of 92.3%, with additional measures such as F1 scores ranging from 0.879 to 0.933 and IoU values between 0.784 and 0.875, further validating its effectiveness. The implementation proves to be efficient with an average processing time of 0.713s per image on an NVIDIA T4 GPU, making it suitable for realtime applications. The practical implications of this method are significant for operational forestry, enabling more accurate inventory management, reducing human errors in manual counting, and optimizing resource allocation. Furthermore, the segmentation capabilities of the model provide a foundation for advanced applications such as eucalyptus stack volume estimation, contributing to a more comprehensive and refined analysis of forestry operations. The methodology's success in handling complex scenarios, including intersecting logs and varying environmental conditions, positions it as a valuable tool for practical applications across related industrial sectors.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23775v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23775v1",
+        "published": "2026-05-22T15:43:16Z"
+      },
+      {
+        "id": "2605.23772v1",
+        "title": "Agentic Proving for Program Verification",
+        "authors": [
+          "Alessandro Sosso",
+          "Akhil Arora",
+          "Bas Spitters"
+        ],
+        "abstract": "Agentic systems have recently emerged as state-of-the-art approaches for automated theorem proving in formal mathematics. To assess how far these capabilities extend to program verification, we evaluate Claude Code in an agentic proving framework on CLEVER, a Lean 4 benchmark for verifiable code generation. Our results show that Claude generates arguably valid specifications for 98.8% of problems (with 81.3% also accepted by CLEVER's isomorphism-based scoring on the correct portion of the benchmark), certifies implementations against correct ground-truth specifications for 87.5% of problems, and reaches a 98.1% success rate on the end-to-end program generation and verification pipeline over entries with self-consistent premises. Across all stages, Claude further provides high-quality feedback on its own attempts (as confirmed under manual review), identifying underlying causes of failure and lingering bugs in the dataset. These findings highlight a growing mismatch between the difficulty of existing program verification benchmarks and the capabilities of modern agentic provers, and point to the need for more rigorous, bug-resilient evaluation methodologies, and in particular for alternatives to isomorphism-based scoring of generated specifications. More broadly, our results provide empirical evidence that tight compiler-in-the-loop agentic paradigms are currently the most effective approach for foundational program verification.",
+        "categories": [
+          "cs.AI",
+          "cs.LO",
+          "cs.PL",
+          "cs.SE"
+        ],
+        "url": "https://arxiv.org/abs/2605.23772v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23772v1",
+        "published": "2026-05-22T15:41:27Z"
+      },
+      {
+        "id": "2605.23771v1",
+        "title": "PhotoFlow: Agentic 3D Virtual Photography Missions",
+        "authors": [
+          "Jiarui Guo",
+          "Haojia Wei",
+          "Yiming Zhang",
+          "Yifei Liu",
+          "Yuning Gong",
+          "Hongjie Zhang",
+          "Xue Yang",
+          "Zhihang Zhong"
+        ],
+        "abstract": "Virtual photography asks an agent to enter a prepared 3D scene with no preselected camera pose or reference image, infer a suitable shot from scene information and a language intent, choose executable camera parameters, and render the final photograph. Recent progress in vision-language models makes this kind of spatial agent increasingly plausible, but the task stresses two capabilities that remain hard to evaluate together: complex 3D spatial understanding and abstract aesthetic judgment. We introduce PhotoFlow, a Director-Reviewer-Reflector agent for closed-loop camera search. The Director builds a soft photographic blueprint and proposes diverse candidate cameras; the Reviewer combines rule checks, visual critique, and pairwise incumbent selection; and the Reflector converts failures into region memory, dead-zone suppression, and high-explore relocation. We also introduce VPhotoBench, a benchmark of 47 open-license Blender scenes and 141 language-conditioned photography missions spanning subject placement, relational composition, and atmosphere/style. On held-out experiments, PhotoFlow achieves the strongest external quality-alignment composite and success rate among one-shot prediction, single-chain reflection, anchor-bank selection, and random search under a six-round rendering budget. To our knowledge, this is the first work to make language-conditioned virtual photography in arbitrary Blender scenes an executable agent task, and our results show that an LLM-centered spatial agent can already produce strong photographs in a setting designed to challenge both 3D reasoning and aesthetic choice.",
+        "categories": [
+          "cs.CV",
+          "cs.AI",
+          "cs.MA"
+        ],
+        "url": "https://arxiv.org/abs/2605.23771v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23771v1",
+        "published": "2026-05-22T15:40:52Z"
+      },
+      {
+        "id": "2605.23762v1",
+        "title": "Direct Dynamic Retargeting for Humanoid Imitation Learning from Videos",
+        "authors": [
+          "Constant Roux",
+          "Ludovic De Matteïs",
+          "Armand Jordana",
+          "Valentin Guillet",
+          "Nicolas Mansard",
+          "Olivier Stasse",
+          "Philippe Souères"
+        ],
+        "abstract": "Imitation Learning from monocular video demonstrations provides a scalable approach for teaching complex skills to humanoid robots. However, translating human motion to humanoids requires overcoming significant morphological mismatches. Standard approaches rely on Geometric Retargeting or Indirect Dynamic Retargeting pipelines. We identify that these intermediate kinematic projections introduce a geometric bias, restricting the search space and yielding suboptimal dynamic behaviors. In this paper, we propose Direct Dynamic Retargeting (DDR), a novel single-stage framework that generates high-fidelity, dynamically feasible trajectories directly from expert videos. By formulating the problem in the task space and leveraging a sampling-based Model Predictive Control solver within a physics simulator, DDR natively optimizes over complex contact sequences while mitigating input drift. Our experiments demonstrate that bypassing the geometric bias allows DDR to outperform state-of-the-art baselines in demonstration tracking accuracy. Furthermore, we establish that providing such physically viable references to RL agents accelerates training convergence and enhances the final execution of agile and balancing behaviors. Source code will be made publicly available.",
+        "categories": [
+          "cs.RO"
+        ],
+        "url": "https://arxiv.org/abs/2605.23762v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23762v1",
+        "published": "2026-05-22T15:33:40Z"
+      },
+      {
+        "id": "2605.23754v1",
+        "title": "LLM-driven design of physics-constrained constitutive models: two agents are better than one",
+        "authors": [
+          "Marius Tacke",
+          "Matthias Busch",
+          "Kian Abdolazizi",
+          "Jonas Eichinger",
+          "Kevin Linka",
+          "Roland Aydin",
+          "Christian Cyron"
+        ],
+        "abstract": "Developing constitutive models that capture how materials deform under load traditionally requires years of specialized expertise in continuum mechanics, machine learning, and scientific programming. Large language models (LLMs) have recently been shown to lower this barrier by generating constitutive models on demand, but existing single-agent pipelines lack systematic checks that the resulting models respect fundamental physical laws. To close this gap, we introduce the first multi-agent LLM-driven approach for constitutive model generation: a Creator agent proposes a model tailored to the data, while an Inspector agent critically audits each proposal against nine physical constraints and returns it for refinement whenever a violation is detected. We demonstrate this concept with constitutive artificial neural networks (CANNs) and benchmark it on brain tissue, experimental rubber, and synthetic rubber, using two different LLM backbones (Claude Opus 4.7 and Kimi K2.5). Adding the Inspector raises the share of exported models that truly satisfy all physical constraints from 91% to a perfect 100% for Opus and from 37% to 56% for Kimi, while preserving near-baseline accuracy and remarkable generalization to unseen loading paths. In combination, the generated models are physically valid, highly accurate, and extrapolate reliably beyond the training data - properties that together make them directly usable in practice. Separating generation from inspection thus turns LLM-driven constitutive modeling into a genuinely trustworthy process. The paradigm is deliberately technique-agnostic and scales automatically with advances in LLM capability, opening a promising path toward automated, physics-aware model discovery.",
+        "categories": [
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2605.23754v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23754v1",
+        "published": "2026-05-22T15:27:09Z"
+      },
+      {
+        "id": "2605.23753v1",
+        "title": "SeedER: Seed-and-Expand Retrieval from Knowledge Graphs",
+        "authors": [
+          "Hamed Shirzad",
+          "Frederik Wenkel",
+          "Dominique Beaini",
+          "Danica J. Sutherland",
+          "Emmanuel Noutahi"
+        ],
+        "abstract": "Knowledge graphs (KGs) offer a rich representation for relational knowledge, but their irregular structure makes retrieval challenging: ego-graph expansion grows rapidly, and dense embedding methods struggle with multi-hop compositional queries. Existing agent-based graph exploration approaches, while expressive, are often too expensive for large-scale retrieval. We introduce SeedER (Seed-and-Expand Retrieval), a retrieval framework that explicitly leverages KG structure through iterative, low-cost expansion. SeedER first seeds a compact set of core nodes using lightweight dense and entity-based retrieval, then selectively expands this set via a learned graph-aware policy trained with reinforcement learning. This design decomposes global reasoning into reusable local decisions, enabling efficient discovery of query-relevant nodes while tightly controlling expansion cost. We show theoretical limitations of dense retrieval on compositional graph queries, and establish advantages of SeedER from both compositional generalization and graph-constrained submodular optimization perspectives. Empirically, SeedER substantially improves recall with compact candidate sets over strong dense and graph-augmented baselines, making it an effective first-stage retriever for knowledge-intensive reasoning systems.",
+        "categories": [
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2605.23753v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23753v1",
+        "published": "2026-05-22T15:26:31Z"
+      },
+      {
+        "id": "2605.23751v1",
+        "title": "Approaching I/O-optimality for Approximate Attention",
+        "authors": [
+          "Pál András Papp",
+          "Aleksandros Sobczyk",
+          "Anastasios Zouzias"
+        ],
+        "abstract": "We revisit the I/O complexity of attention in large language models. Given query-key-value matrices $Q,K,V\\in\\mathbb{R}^{n\\times d}$, and a machine with fast memory size $M$, the goal is to compute the \"attention matrix\" $A=\\text{softmax}(Q K ^{\\top}/\\sqrt{d}) V$ with the minimal number of data transfers between fast and slow memory. Existing methods in the literature, most notably FlashAttention and its variants, incur an I/O cost that depends quadratically on $n$, while a trivial lower bound only requires $Ω(nd)$ I/O's to read the inputs and write the output. In this work, we present a technique for computing attention where the I/O cost only depends almost-linearly on $n$ in most parameter regimes. This is achieved by developing I/O-efficient algorithms inspired by the recent approximate attention framework of Alman and Song. We also prove corresponding lower bounds in each parameter regime to show that our algorithms are indeed close to I/O-optimal.",
+        "categories": [
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2605.23751v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23751v1",
+        "published": "2026-05-22T15:23:26Z"
+      },
+      {
+        "id": "2605.23747v1",
+        "title": "Revitalizing Dense Material Segmentation: Stabilized Vision Transformers and the Generalization Paradox",
+        "authors": [
+          "Allan Kazakov",
+          "Duygu Cakir",
+          "Hilal Kurt İrfanoğlu",
+          "Yavuz İrfanoğlu"
+        ],
+        "abstract": "Material segmentation, the pixel-wise classification of physical surface properties, remains a challenging problem in computer vision, requiring physicochemical understanding distinct from object-centric parsing. Despite the introduction of the rigorous Apple Dense Material Segmentation (DMS) dataset, the benchmark has suffered from attrition and stagnation, increasingly overshadowed by geometry-biased foundation models. In this paper, we revive the Apple-DMS benchmark to establish a modern Vision Transformer baseline. We conduct an exhaustive evaluation of SegFormer and Mask2Former architectures, revealing that standard training paradigms fail on amorphous texture fields due to high-variance gradients. To address this, we introduce a stabilized training recipe featuring High-Fidelity Logit Projection, Query Entropy Regularization, and a domain-specific, physics-compliant augmentation pipeline. Our optimized SegFormer-B5 achieves a new State-of-the-Art (SOTA) of 0.4572 mIoU on the original dataset split, significantly surpassing the prior convolutional baseline. Furthermore, we identify a critical \"Generalization Paradox\": while re-partitioning the dataset into a data-rich 80/10/10 split inflates the metric to 0.5276 mIoU, expert qualitative analysis reveals this induces distributional homogenization, severely degrading real-world, out-of-distribution performance. By releasing our recovered dataset index and robust training framework, we demonstrate that material perception is far from solved and urge the community to leverage the rigorous original split to drive genuine progress in physically grounded artificial intelligence.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2605.23747v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23747v1",
+        "published": "2026-05-22T15:20:27Z"
+      },
+      {
+        "id": "2605.23744v1",
+        "title": "Contrast to Detect: Dynamic Graph Contrastive Regularization for Unsupervised Anomaly Detection in Multivariate Time Series",
+        "authors": [
+          "Yunhua Pei",
+          "Zixing Song",
+          "Jin Zheng",
+          "John Cartlidge"
+        ],
+        "abstract": "Anomaly detection in multivariate time series (MTS) is hindered by dynamic inter-variable dependencies and feature entanglement under spectral noise, and in practice, is further complicated by the absence of anomaly labels. Existing reconstruction-based detectors tend to recover anomalies as faithfully as normal patterns, while prevailing graph contrastive methods enforce invariance across views and thus assume a stationary relational structure, an assumption that breaks under structural drift in real systems. We propose ContrastAD, an unsupervised framework that turns structural evolution itself into a learning signal rather than suppressing it. A Multi-Perspective Embedder encodes inputs from temporal, attribute, and structural perspectives. A Frequency-Aware Attention Mixer then performs spectral top-K filtering before attention, preventing noise from leaking into query-key similarities. The core component, a Dynamic Graph Contrastive Learner, builds power-law-inspired sparse graph snapshots from batch-level DTW distances and contrasts the most divergent pair against a stable anchor, regularizing the latent space without imposing rigid invariance. Across five real-world benchmarks, ContrastAD attains the highest mean F1 on all five datasets and the highest AUC on three (SWaT 93.60, SMD 98.66, PSM 97.79), with statistically significant F1 and AUC margins over the strongest baseline on SWaT and PSM. On MSL and SMAP, it trails the AUC leader by under 0.7 points while still leading on F1. Ablation and sensitivity studies further confirm that the contrastive objective works best as a soft regularizer, supporting our claim that strict invariance is suboptimal under non-stationary dynamics.",
+        "categories": [
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2605.23744v1",
+        "pdf_url": "https://arxiv.org/pdf/2605.23744v1",
+        "published": "2026-05-22T15:18:53Z"
+      }
+    ],
+    "hn": [
+      {
+        "id": "48256953",
+        "title": "DeepSeek reasonix, DeepSeek native coding agent with high caching and low cost",
+        "url": "https://esengine.github.io/DeepSeek-Reasonix/",
+        "points": 673,
+        "comments": 267,
+        "comments_url": "https://news.ycombinator.com/item?id=48256953",
+        "author": "Alifatisk",
+        "created_at": "2026-05-24T13:02:06Z",
+        "title_ja": "DeepSeek Reasonix：高キャッシュ・低コストの純正コーディングエージェント",
+        "summary_ja": "DeepSeekが純正コーディングエージェント『Reasonix』を発表。プロンプトキャッシュの徹底活用と超低コスト推論を売りに、Claude Code/Codex対抗のエージェント直接競争へ。"
+      },
+      {
+        "id": "48263238",
+        "title": "The Eternal Sloptember",
+        "url": "https://geohot.github.io//blog/jekyll/update/2026/05/24/the-eternal-sloptember.html",
+        "points": 427,
+        "comments": 345,
+        "comments_url": "https://news.ycombinator.com/item?id=48263238",
+        "author": "razin",
+        "created_at": "2026-05-25T03:47:24Z",
+        "title_ja": "Eternal Sloptember——geohotによるAI洪水時代の警句",
+        "summary_ja": "George Hotz(geohot)が、AI生成スロップに埋め尽くされる現代のウェブを『永遠のSeptember』になぞらえて批判。"
+      },
+      {
+        "id": "48258684",
+        "title": "Memory has grown to nearly two-thirds of AI chip component costs",
+        "url": "https://epoch.ai/data-insights/ai-chip-component-cost-shares",
+        "points": 422,
+        "comments": 465,
+        "comments_url": "https://news.ycombinator.com/item?id=48258684",
+        "author": "intelkishan",
+        "created_at": "2026-05-24T16:31:29Z",
+        "title_ja": "AIチップのコスト、約2/3がメモリへ",
+        "summary_ja": "Epoch AIの分析で、AIアクセラレータの部品コストに占めるメモリ（HBM等）比率が約2/3に到達。GPUダイ本体よりHBM寡占の構造リスクが鮮明に。"
+      },
+      {
+        "id": "48266485",
+        "title": "Pope Leo XIV says AI must serve humanity, not the powerful few",
+        "url": "https://religionnews.com/2026/05/25/in-his-first-encyclical-pope-leo-xiv-says-ai-must-serve-humanity-not-the-powerful-few/",
+        "points": 327,
+        "comments": 177,
+        "comments_url": "https://news.ycombinator.com/item?id=48266485",
+        "author": "benwerd",
+        "created_at": "2026-05-25T13:17:58Z",
+        "title_ja": "教皇レオ14世『AIは少数の権力者ではなく人類に奉仕すべき』——初の回勅",
+        "summary_ja": "教皇レオ14世が就任後初の回勅でAIに言及。『不透明なAIが少数の企業に握られることは新たな非人間化のリスク』だと警鐘。カトリック世界からの強い倫理的シグナル。"
+      },
+      {
+        "id": "48256912",
+        "title": "Constraint Decay: The Fragility of LLM Agents in Back End Code Generation",
+        "url": "https://arxiv.org/abs/2605.06445",
+        "points": 276,
+        "comments": 176,
+        "comments_url": "https://news.ycombinator.com/item?id=48256912",
+        "author": "wek",
+        "created_at": "2026-05-24T12:55:53Z",
+        "title_ja": "Constraint Decay：LLMエージェントはバックエンドコードで『制約を忘れる』",
+        "summary_ja": "arXiv論文。LLMエージェントが長尺・多ファイル・多ターンのバックエンド生成で、初期制約をターン進行とともに忘却・違反していく現象を定量化。"
+      },
+      {
+        "id": "48259784",
+        "title": "Claude is not your architect. Stop letting it pretend",
+        "url": "https://www.hollandtech.net/claude-is-not-your-architect/",
+        "points": 264,
+        "comments": 189,
+        "comments_url": "https://news.ycombinator.com/item?id=48259784",
+        "author": "cdrnsf",
+        "created_at": "2026-05-24T18:28:11Z",
+        "title_ja": "『Claudeはアーキテクトではない』——役割を分離せよ",
+        "summary_ja": "Claude Codeに『設計判断』までさせると、辻褄合わせのコードが量産されアーキテクチャが壊れるという現場ブログ。LLMには『実装』、設計判断は人間が握れと主張。"
+      },
+      {
+        "id": "48266906",
+        "title": "Netherlands Seizes 800 Servers, Arrests 2 for Aiding Cyberattacks",
+        "url": "https://krebsonsecurity.com/2026/05/netherlands-seizes-800-servers-arrests-2-for-aiding-cyberattacks/",
+        "points": 216,
+        "comments": 53,
+        "comments_url": "https://news.ycombinator.com/item?id=48266906",
+        "author": "jruohonen",
+        "created_at": "2026-05-25T13:56:39Z",
+        "title_ja": "オランダ警察、Botnet運用サーバ800台押収・2名逮捕",
+        "summary_ja": "サイバー攻撃支援に使われていたサーバ800台をオランダ警察が押収、2名を逮捕。大規模ボットネット解体作戦の最新事例。"
+      },
+      {
+        "id": "48257410",
+        "title": "DeepSeek to Make Permanent 75% Discount on Flagship AI Model",
+        "url": "https://www.bloomberg.com/news/articles/2026-05-23/deepseek-to-make-permanent-75-discount-on-flagship-ai-model",
+        "points": 209,
+        "comments": 2,
+        "comments_url": "https://news.ycombinator.com/item?id=48257410",
+        "author": "moh_maya",
+        "created_at": "2026-05-24T14:09:33Z",
+        "title_ja": "DeepSeek、フラッグシップAIを75%恒久値下げへ",
+        "summary_ja": "BloombergによるとDeepSeekは旗艦モデルを期間限定ではなく恒久的に75%値下げ。米中フロンティアの価格競争がさらに加速。"
+      },
+      {
+        "id": "48257980",
+        "title": "'AI washing': firms are scrambling to rebrand themselves as tech-focused",
+        "url": "https://www.theguardian.com/technology/2026/may/24/ai-washing-pr-firms-scrambling-rebrand",
+        "points": 176,
+        "comments": 160,
+        "comments_url": "https://news.ycombinator.com/item?id=48257980",
+        "author": "Brajeshwar",
+        "created_at": "2026-05-24T15:21:28Z",
+        "title_ja": "『AIウォッシング』——PR会社がこぞって『AI企業』にリブランド",
+        "summary_ja": "ガーディアン報道。本質的にAIをほとんど使っていないPR・コンサル各社が、社名やパッケージを『AI〜』に改名する動きが加速。ドットコム前夜と酷似。"
+      },
+      {
+        "id": "48259861",
+        "title": "Defeating Git Rigour Fatigue with Jujutsu",
+        "url": "https://ikesau.co/blog/defeating-git-rigour-fatigue-with-jujutsu/",
+        "points": 166,
+        "comments": 164,
+        "comments_url": "https://news.ycombinator.com/item?id=48259861",
+        "author": "ikesau",
+        "created_at": "2026-05-24T18:39:10Z",
+        "title_ja": "Jujutsuで『Git厳格疲れ』を克服する",
+        "summary_ja": "Gitの厳しさで疲弊した開発者向けに、Jujutsu(jj)による軽量で寛容なバージョン管理ワークフローを紹介するブログ。"
+      },
+      {
+        "id": "48268871",
+        "title": "Uber’s COO says it’s getting harder to justify money spent on tokenmaxxing",
+        "url": "https://www.businessinsider.com/uber-coo-andrew-macdonald-ai-token-spending-harder-justify-2026-5",
+        "points": 164,
+        "comments": 220,
+        "comments_url": "https://news.ycombinator.com/item?id=48268871",
+        "author": "_____k",
+        "created_at": "2026-05-25T16:44:49Z",
+        "title_ja": "Uber COO『AIトークン消費の正当化が日に日に難しくなっている』",
+        "summary_ja": "UberのCOOがAIエージェントによる『tokenmaxxing』の経済合理性に疑問を呈す発言。エンタープライズ側からAI支出の効果検証圧力が強まる兆候。"
+      },
+      {
+        "id": "48266435",
+        "title": "Pope Leo: opaque AI run by few firms risks \"New Forms of Dehumanization\"",
+        "url": "https://variety.com/2026/biz/global/pope-leo-ai-encyclical-algorithms-threaten-dehumanisation-1236758186/",
+        "points": 161,
+        "comments": 2,
+        "comments_url": "https://news.ycombinator.com/item?id=48266435",
+        "author": "embedding-shape",
+        "created_at": "2026-05-25T13:12:40Z",
+        "title_ja": "教皇レオ『少数企業の不透明AIは新しい非人間化を生む』",
+        "summary_ja": "カトリック教会トップがAI集中の倫理的危険を回勅で明示。AIガバナンス議論に宗教的・道徳的アクセントを加える。"
+      },
+      {
+        "id": "48256565",
+        "title": "Perceptual Image Codec: What Matters in Practical Learned Image Compression",
+        "url": "https://apple.github.io/ml-pico/",
+        "points": 123,
+        "comments": 41,
+        "comments_url": "https://news.ycombinator.com/item?id=48256565",
+        "author": "ksec",
+        "created_at": "2026-05-24T12:01:24Z",
+        "title_ja": "Apple PICo：実用的な学習型画像圧縮で本当に効くものを整理",
+        "summary_ja": "AppleのML研究『PICo』。学習ベース画像コーデックを、知覚品質・速度・ハードウェア親和性の観点から再整理。"
+      },
+      {
+        "id": "48267126",
+        "title": "C extensions, portability, and alternative compilers",
+        "url": "https://lemon.rip/w/6-c-extensions-compilers/",
+        "points": 107,
+        "comments": 34,
+        "comments_url": "https://news.ycombinator.com/item?id=48267126",
+        "author": "xngbuilds",
+        "created_at": "2026-05-25T14:15:19Z",
+        "title_ja": "C拡張・ポータビリティ・代替コンパイラ事情",
+        "summary_ja": "C言語の独自拡張・他コンパイラ移植・標準準拠の現状を整理した記事。"
+      },
+      {
+        "id": "48257058",
+        "title": "Microsoft's 6502 BASIC is now Open Source (2025)",
+        "url": "https://opensource.microsoft.com/blog/2025/09/03/microsoft-open-source-historic-6502-basic/",
+        "points": 90,
+        "comments": 29,
+        "comments_url": "https://news.ycombinator.com/item?id=48257058",
+        "author": "GTP",
+        "created_at": "2026-05-24T13:16:33Z",
+        "title_ja": "Microsoft 6502 BASIC、ついにオープンソース化",
+        "summary_ja": "Apple II・Commodore・Atari等に搭載されたMS製の歴史的6502 BASICインタプリタが公式OSS化。レトロ計算史にとっての大ニュース。"
+      },
+      {
+        "id": "48265745",
+        "title": "GPT Guesses Between 1 and 100",
+        "url": "https://github.com/exmergo/research-chatgpt-guesses-between-1-and-100",
+        "points": 80,
+        "comments": 64,
+        "comments_url": "https://news.ycombinator.com/item?id=48265745",
+        "author": "adunk",
+        "created_at": "2026-05-25T11:46:09Z",
+        "title_ja": "ChatGPTに『1から100まででどれを選ぶ？』と聞いた結果",
+        "summary_ja": "ChatGPTの『ランダムな数』の偏りを大規模実験で記録。LLMの確率的挙動の癖を可視化する小ネタ。"
+      },
+      {
+        "id": "48264635",
+        "title": "Show HN: Geomatic – A command-driven geometry studio enabled with autodiff",
+        "url": "https://www.tinyvolt.com/geomatic",
+        "points": 55,
+        "comments": 13,
+        "comments_url": "https://news.ycombinator.com/item?id=48264635",
+        "author": "nivter",
+        "created_at": "2026-05-25T08:25:00Z",
+        "title_ja": "Geomatic：自動微分搭載のコマンド駆動ジオメトリスタジオ",
+        "summary_ja": "コマンドベースで形状を構築できる新しいジオメトリスタジオ。自動微分で形状最適化に応用可能。"
+      },
+      {
+        "id": "48264290",
+        "title": "If you let AI do your writing, I will come to your house and kill you",
+        "url": "https://samkriss.substack.com/p/if-you-let-ai-do-your-writing-i-will",
+        "points": 31,
+        "comments": 12,
+        "comments_url": "https://news.ycombinator.com/item?id=48264290",
+        "author": "ghghgfdfgh",
+        "created_at": "2026-05-25T07:19:14Z",
+        "title_ja": "『AIに文章を書かせるな』——文章とは何かを問い直すエッセイ",
+        "summary_ja": "AIに自分の代わりに文章を書かせる行為を強く否定するエッセイ。AI執筆を許容するか否かの議論にカウンターを投じる。"
+      },
+      {
+        "id": "48261753",
+        "title": "There's Never Been a Better Time to Study Computer Science",
+        "url": "https://www.theatlantic.com/technology/2026/05/computer-science-major-coding-ai/687279/",
+        "points": 28,
+        "comments": 19,
+        "comments_url": "https://news.ycombinator.com/item?id=48261753",
+        "author": "zekrioca",
+        "created_at": "2026-05-24T22:44:29Z",
+        "title_ja": "『今ほどコンピュータサイエンスを学ぶのに良い時はない』",
+        "summary_ja": "AI時代こそCS基礎を学ぶ意義が高まっているというAtlantic論考。コーディング能力の希少化議論に対する反論。"
+      },
+      {
+        "id": "48259761",
+        "title": "The Eternal Sloptember",
+        "url": "https://geohot.github.io//blog/jekyll/update/2026/05/24/the-eternal-sloptember.html",
+        "points": 20,
+        "comments": 7,
+        "comments_url": "https://news.ycombinator.com/item?id=48259761",
+        "author": "therepanic",
+        "created_at": "2026-05-24T18:25:34Z",
+        "title_ja": "Eternal Sloptember（重複投稿）",
+        "summary_ja": "geohotのAIスロップ批判ブログのHN別スレッド。"
+      }
+    ],
+    "reddit": [
+      {
+        "id": "1tmffqn",
+        "title": "I simply do not understand how massively expensive AI and robotics are expected to be more cost effective than humans.",
+        "url": "https://www.reddit.com/r/artificial/comments/1tmffqn/i_simply_do_not_understand_how_massively/",
+        "subreddit": "artificial",
+        "score": 129,
+        "comments": 267,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tmffqn/i_simply_do_not_understand_how_massively/",
+        "author": "eniac_usabrl",
+        "created_at": "2026-05-24T15:34:41Z",
+        "title_ja": "『高価なAI・ロボットがなぜ人間より安くなると考えられているのか分からない』",
+        "summary_ja": "高額なAI／ロボット投資が結局人件費より安く済むという業界の前提に、r/artificialのユーザが素朴に異議を唱えるスレッド。"
+      },
+      {
+        "id": "1tmawv5",
+        "title": "PapersWithCode new features - week 1 [P]",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1tmawv5/paperswithcode_new_features_week_1_p/",
+        "subreddit": "MachineLearning",
+        "score": 121,
+        "comments": 7,
+        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tmawv5/paperswithcode_new_features_week_1_p/",
+        "author": "NielsRogge",
+        "created_at": "2026-05-24T12:31:12Z",
+        "title_ja": "Papers With Code、復活後の新機能ハイライト",
+        "summary_ja": "閉鎖から復活したPapers With Codeのアップデート週次第1回。OSS実装と論文の紐付けを再強化。"
+      },
+      {
+        "id": "1tn3e7k",
+        "title": "We're reaching a point where \"AI-generated but visually realistic\" content will become the norm, not the exception. 👀",
+        "url": "https://v.redd.it/jdms8pq3z83h1",
+        "subreddit": "artificial",
+        "score": 104,
+        "comments": 78,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tn3e7k/were_reaching_a_point_where_aigenerated_but/",
+        "author": "Old_Establishment287",
+        "created_at": "2026-05-25T08:55:24Z",
+        "title_ja": "『AI生成だが現実的に見える映像』が普通になる時代",
+        "summary_ja": "現実とAI生成の区別がほぼ不可能なレベルに到達した動画の例を共有するスレッド。"
+      },
+      {
+        "id": "1tmprdm",
+        "title": "How do ML practitioners select hyperparameters, architectures, etc for self-supervised representation learning when the loss is non-monotonic? [D]",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1tmprdm/how_do_ml_practitioners_select_hyperparameters/",
+        "subreddit": "MachineLearning",
+        "score": 69,
+        "comments": 19,
+        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tmprdm/how_do_ml_practitioners_select_hyperparameters/",
+        "author": "XTXinverseXTY",
+        "created_at": "2026-05-24T22:06:09Z",
+        "title_ja": "自己教師あり表現学習の非単調損失でHPをどう選ぶか",
+        "summary_ja": "損失が単調に下がらない自己教師あり学習でのHP・アーキ選定の実務知見を求めるスレ。"
+      },
+      {
+        "id": "1tndgv8",
+        "title": "Uber's COO says it's getting harder to justify the money spent on AI tokenmaxxing",
+        "url": "https://www.businessinsider.com/uber-coo-andrew-macdonald-ai-token-spending-harder-justify-2026-5",
+        "subreddit": "artificial",
+        "score": 46,
+        "comments": 21,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tndgv8/ubers_coo_says_its_getting_harder_to_justify_the/",
+        "author": "Hot-Upstairs9603",
+        "created_at": "2026-05-25T16:02:18Z",
+        "title_ja": "Uber COO『AIトークン課金の正当化が難しくなっている』",
+        "summary_ja": "UberのAndrew MacDonald COOが、AIエージェント運用のトークン消費に対する効果検証の難しさを語る記事のRedditスレ。"
+      },
+      {
+        "id": "1tlzy43",
+        "title": "Vision-capable LLMs vs. OCR for long-document (including charts, images, tables, etc.) QA",
+        "url": "https://www.reddit.com/r/artificial/comments/1tlzy43/visioncapable_llms_vs_ocr_for_longdocument/",
+        "subreddit": "artificial",
+        "score": 38,
+        "comments": 21,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tlzy43/visioncapable_llms_vs_ocr_for_longdocument/",
+        "author": "Uiqueblhats",
+        "created_at": "2026-05-24T02:52:53Z",
+        "title_ja": "VLM vs OCR：長文ドキュメントQAでどちらが強い？",
+        "summary_ja": "図表・画像・テーブルを含む長文QAについて、Vision LLMと従来OCRパイプラインのトレードオフを実務目線で議論するスレッド。"
+      },
+      {
+        "id": "1tnarvu",
+        "title": "AI agents need audit trails more than they need more autonomy",
+        "url": "https://www.reddit.com/r/artificial/comments/1tnarvu/ai_agents_need_audit_trails_more_than_they_need/",
+        "subreddit": "artificial",
+        "score": 28,
+        "comments": 23,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tnarvu/ai_agents_need_audit_trails_more_than_they_need/",
+        "author": "RonnySaya",
+        "created_at": "2026-05-25T14:26:07Z",
+        "title_ja": "AIエージェントに必要なのは自律性より監査ログ",
+        "summary_ja": "エージェントに自律性をさらに与える前に、すべての判断と外部呼び出しの監査トレイルを整備すべき、というオピニオン。"
+      },
+      {
+        "id": "1tmnb54",
+        "title": "Testing a Cold War-Era AI on Satellite Image Datasets",
+        "url": "https://i.redd.it/wdbc5j70a53h1.png",
+        "subreddit": "artificial",
+        "score": 24,
+        "comments": 2,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tmnb54/testing_a_cold_warera_ai_on_satellite_image/",
+        "author": "DragonfruitCalm261",
+        "created_at": "2026-05-24T20:29:09Z",
+        "title_ja": "冷戦時代のAIを衛星画像データセットでテスト",
+        "summary_ja": "古典的AI手法を現代の衛星画像分類タスクに当てて性能を観察する小実験。"
+      },
+      {
+        "id": "1tmb7c6",
+        "title": "\"I'm retired. I showed my MS Paint paintings to AI for feedback. It accidentally invented an entire fake art movement. Google believes it's real.\"",
+        "url": "https://www.reddit.com/r/artificial/comments/1tmb7c6/im_retired_i_showed_my_ms_paint_paintings_to_ai/",
+        "subreddit": "artificial",
+        "score": 24,
+        "comments": 18,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tmb7c6/im_retired_i_showed_my_ms_paint_paintings_to_ai/",
+        "author": "Admirable_Major_4833",
+        "created_at": "2026-05-24T12:44:24Z",
+        "title_ja": "MS PaintをAIに見せたら——AIが架空美術運動を捏造、Googleもそれを実在扱い",
+        "summary_ja": "ユーザのラクガキにAIが架空のアートムーブメント名を割り当て、さらにGoogle検索のAIサマリーがその架空ムーブメントを実在扱い、というハルシネーション伝播事例。"
+      },
+      {
+        "id": "1tmpfa9",
+        "title": "How to Hit Claude Limits in One Click",
+        "url": "https://v.redd.it/vrzipkbkp53h1",
+        "subreddit": "artificial",
+        "score": 23,
+        "comments": 13,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tmpfa9/how_to_hit_claude_limits_in_one_click/",
+        "author": "Raman606surrey",
+        "created_at": "2026-05-24T21:52:44Z",
+        "title_ja": "Claudeの利用上限を1クリックで叩く方法",
+        "summary_ja": "Claudeのレート/利用上限に1クリックで到達するというデモ動画。利用設計の限界を皮肉る投稿。"
+      },
+      {
+        "id": "1tltq6b",
+        "title": "Who am I even supposed to trust when it comes to the future of AI?",
+        "url": "https://www.reddit.com/r/artificial/comments/1tltq6b/who_am_i_even_supposed_to_trust_when_it_comes_to/",
+        "subreddit": "artificial",
+        "score": 20,
+        "comments": 62,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tltq6b/who_am_i_even_supposed_to_trust_when_it_comes_to/",
+        "author": "QuantumLand",
+        "created_at": "2026-05-23T22:09:41Z",
+        "title_ja": "『AIの未来について誰を信じればいいのか分からない』",
+        "summary_ja": "業界リーダーの言説が真っ二つに割れる中で、どこを信じるべきかというユーザの率直な問いかけ。"
+      },
+      {
+        "id": "1tm6mpt",
+        "title": "What Will be the next industries to be completely disrupted by AI?",
+        "url": "https://www.reddit.com/r/artificial/comments/1tm6mpt/what_will_be_the_next_industries_to_be_completely/",
+        "subreddit": "artificial",
+        "score": 18,
+        "comments": 59,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tm6mpt/what_will_be_the_next_industries_to_be_completely/",
+        "author": "mike9q",
+        "created_at": "2026-05-24T08:44:18Z",
+        "title_ja": "次に完全に破壊される業界はどこか？",
+        "summary_ja": "AIによる次の主要破壊対象業界を予想するディスカッションスレ。"
+      },
+      {
+        "id": "1tn73ve",
+        "title": "If you could subscribe to one AI provider who would it be?",
+        "url": "https://www.reddit.com/r/artificial/comments/1tn73ve/if_you_could_subscribe_to_one_ai_provider_who/",
+        "subreddit": "artificial",
+        "score": 14,
+        "comments": 38,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tn73ve/if_you_could_subscribe_to_one_ai_provider_who/",
+        "author": "No-Improvement-5396",
+        "created_at": "2026-05-25T12:02:53Z",
+        "title_ja": "一つだけAIプロバイダを契約するならどこ？",
+        "summary_ja": "OpenAI、Anthropic、Google、DeepSeek等の中で1社だけ契約するなら、というアンケート的スレッド。"
+      },
+      {
+        "id": "1tme23u",
+        "title": "Multi-agent loop failures might be org-design failures, not prompt failures",
+        "url": "https://www.reddit.com/r/artificial/comments/1tme23u/multiagent_loop_failures_might_be_orgdesign/",
+        "subreddit": "artificial",
+        "score": 11,
+        "comments": 18,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tme23u/multiagent_loop_failures_might_be_orgdesign/",
+        "author": "Hot-Leadership-6431",
+        "created_at": "2026-05-24T14:42:17Z",
+        "title_ja": "マルチエージェントの失敗は『プロンプト問題』ではなく『組織設計問題』",
+        "summary_ja": "マルチエージェントループの失敗は、プロンプトを直すよりも役割分担・責任範囲を再設計するほうが効くという視点の投稿。"
+      },
+      {
+        "id": "1tn8uoq",
+        "title": "Are ICML workshops worth attending? [D]",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1tn8uoq/are_icml_workshops_worth_attending_d/",
+        "subreddit": "MachineLearning",
+        "score": 9,
+        "comments": 9,
+        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tn8uoq/are_icml_workshops_worth_attending_d/",
+        "author": "dreameroutloud",
+        "created_at": "2026-05-25T13:14:49Z",
+        "title_ja": "ICMLワークショップは参加する価値があるか？",
+        "summary_ja": "ICMLのワークショップ採択論文を出すこと・現地参加の価値についての議論スレ。"
+      },
+      {
+        "id": "1tmq1eb",
+        "title": "MergeNB: An intuitive merge conflict resolver built for Jupyter notebooks in VS Code [P]",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1tmq1eb/mergenb_an_intuitive_merge_conflict_resolver/",
+        "subreddit": "MachineLearning",
+        "score": 9,
+        "comments": 0,
+        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tmq1eb/mergenb_an_intuitive_merge_conflict_resolver/",
+        "author": "EnderAvni",
+        "created_at": "2026-05-24T22:17:41Z",
+        "title_ja": "MergeNB：Jupyter Notebook向けマージ衝突解決UI(VS Code)",
+        "summary_ja": "VS Code拡張でJupyter Notebookのマージ衝突を視覚的に解決できるOSSプロジェクト。"
+      },
+      {
+        "id": "1tmshey",
+        "title": "The problem of 'brand' facing the platform providers in the age of AI",
+        "url": "https://www.reddit.com/r/artificial/comments/1tmshey/the_problem_of_brand_facing_the_platform/",
+        "subreddit": "artificial",
+        "score": 9,
+        "comments": 11,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tmshey/the_problem_of_brand_facing_the_platform/",
+        "author": "Im_Talking",
+        "created_at": "2026-05-25T00:01:04Z",
+        "title_ja": "AI時代における『プラットフォーム提供者のブランド』問題",
+        "summary_ja": "OpenAI/Anthropic等のプラットフォーム提供者が、AIに対する文化的態度の変化の中でブランドをどう保つかを論じる投稿。"
+      },
+      {
+        "id": "1tnhnh5",
+        "title": "The famous METR AI time horizons graph contains numerous severe errors [D]",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1tnhnh5/the_famous_metr_ai_time_horizons_graph_contains/",
+        "subreddit": "MachineLearning",
+        "score": 7,
+        "comments": 0,
+        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tnhnh5/the_famous_metr_ai_time_horizons_graph_contains/",
+        "author": "common_yarrow",
+        "created_at": "2026-05-25T18:30:21Z",
+        "title_ja": "有名なMETRの『AI時系列ホライズン』グラフに重大な誤りが多数",
+        "summary_ja": "AI能力推移を視覚化したMETRの著名グラフに、データソース・スケール・分類など多数の重大誤りがあるとする批判スレ。"
+      },
+      {
+        "id": "1tn1rtk",
+        "title": "If you use NVIDIA Isaac Sim for reinforcement learning, do you use Isaac Lab with it? Just want to get a sense of what the status quo is. [D]",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1tn1rtk/if_you_use_nvidia_isaac_sim_for_reinforcement/",
+        "subreddit": "MachineLearning",
+        "score": 7,
+        "comments": 1,
+        "comments_url": "https://www.reddit.com/r/MachineLearning/comments/1tn1rtk/if_you_use_nvidia_isaac_sim_for_reinforcement/",
+        "author": "StayingUp4AFeeling",
+        "created_at": "2026-05-25T07:26:30Z",
+        "title_ja": "NVIDIA Isaac SimをRLで使う人、Isaac Labも併用してる？",
+        "summary_ja": "RLでIsaac Simを使う実務者が、Isaac Labとの併用が一般的かどうかを確認するスレッド。"
+      },
+      {
+        "id": "1tne1m4",
+        "title": "Wix cutting",
+        "url": "https://www.reddit.com/r/artificial/comments/1tne1m4/wix_cutting/",
+        "subreddit": "artificial",
+        "score": 6,
+        "comments": 15,
+        "comments_url": "https://www.reddit.com/r/artificial/comments/1tne1m4/wix_cutting/",
+        "author": "Annual_Judge_7272",
+        "created_at": "2026-05-25T16:22:45Z",
+        "title_ja": "Wix、AI関連で人員削減",
+        "summary_ja": "Wixが社内体制をAI中心に切り替える中で人員削減を行っているという話題。"
+      }
+    ],
+    "github": [
+      {
+        "name": "codegraph",
+        "full_name": "colbymchenry/codegraph",
+        "description": "Pre-indexed code knowledge graph for Claude Code, Codex, Cursor, OpenCode, and Hermes Agent — fewer tokens, fewer tool calls, 100% local",
+        "url": "https://github.com/colbymchenry/codegraph",
+        "language": "TypeScript",
+        "stars": 24683,
+        "stars_today": 3171,
+        "forks": 1358,
+        "title_ja": "codegraph：エージェント向けにコードを事前インデックス化するナレッジグラフ",
+        "summary_ja": "Claude Code / Codex / Cursor / OpenCode等が共通で使える、ローカル100%のコードナレッジグラフ。事前にコード構造をグラフ化しておくことで、毎回のツール呼び出しとトークン消費を大幅削減。本日急上昇1位。"
+      },
+      {
+        "name": "ai-engineering-from-scratch",
+        "full_name": "rohitg00/ai-engineering-from-scratch",
+        "description": "Learn it. Build it. Ship it for others.",
+        "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+        "language": "Python",
+        "stars": 18252,
+        "stars_today": 3167,
+        "forks": 3111,
+        "title_ja": "ai-engineering-from-scratch：ゼロから学ぶAIエンジニアリング",
+        "summary_ja": "プロダクション級AIアプリを『学んで→作って→届ける』までのフルパス教材。RAG、エージェント、評価まで網羅で急成長中。"
+      },
+      {
+        "name": "andrej-karpathy-skills",
+        "full_name": "multica-ai/andrej-karpathy-skills",
+        "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+        "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+        "language": "",
+        "stars": 154617,
+        "stars_today": 2753,
+        "forks": 15836,
+        "title_ja": "andrej-karpathy-skills：KarpathyのLLM落とし穴をCLAUDE.mdに凝縮",
+        "summary_ja": "Karpathyが指摘してきたLLMコーディングの典型的失敗パターンを1つのCLAUDE.mdに集約。Claude Code等のエージェント挙動を1ファイルで矯正できる。"
+      },
+      {
+        "name": "ECC",
+        "full_name": "affaan-m/ECC",
+        "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+        "url": "https://github.com/affaan-m/ECC",
+        "language": "JavaScript",
+        "stars": 192185,
+        "stars_today": 2052,
+        "forks": 29747,
+        "title_ja": "ECC：エージェント基盤の性能最適化システム",
+        "summary_ja": "スキル・直感・メモリ・セキュリティ・リサーチファーストな開発を提供する、Claude Code/Codex/Cursor等向けエージェントハーネス最適化システム。"
+      },
+      {
+        "name": "knowledge-work-plugins",
+        "full_name": "anthropics/knowledge-work-plugins",
+        "description": "Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork",
+        "url": "https://github.com/anthropics/knowledge-work-plugins",
+        "language": "Python",
+        "stars": 15186,
+        "stars_today": 1448,
+        "forks": 1842,
+        "title_ja": "knowledge-work-plugins：Claude Cowork向け公式プラグイン集",
+        "summary_ja": "Claude Coworkで知識労働者が使う想定の、Anthropic公式オープンソースプラグイン集。"
+      },
+      {
+        "name": "Anthropic-Cybersecurity-Skills",
+        "full_name": "mukul975/Anthropic-Cybersecurity-Skills",
+        "description": "754 structured cybersecurity skills for AI agents · Mapped to 5 frameworks: MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, D3FEND & NIST AI RMF · agentskills.io standard · Works with Claude Code, GitHub Copilot, Codex CLI, Cursor, Gemini CLI & 20+ platforms · 26 security domains · Apache 2.0",
+        "url": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
+        "language": "Python",
+        "stars": 9095,
+        "stars_today": 999,
+        "forks": 1123,
+        "title_ja": "Anthropic-Cybersecurity-Skills：AIエージェント向けセキュリティスキル754本",
+        "summary_ja": "MITRE ATT&CK / NIST CSF 2.0 / ATLAS / D3FEND / NIST AI RMFにマップした、AIエージェント向け構造化サイバーセキュリティスキル集（754本）。"
+      },
+      {
+        "name": "cmux",
+        "full_name": "manaflow-ai/cmux",
+        "description": "Ghostty-based macOS terminal with vertical tabs and notifications for AI coding agents",
+        "url": "https://github.com/manaflow-ai/cmux",
+        "language": "Swift",
+        "stars": 19431,
+        "stars_today": 598,
+        "forks": 1469,
+        "title_ja": "cmux：縦タブ＋通知のGhostty製macOSターミナル、AIコーディングエージェント向け",
+        "summary_ja": "Ghostty基盤のmacOSターミナル。縦タブとプッシュ通知を備え、Claude Code等の並列エージェント運用に最適化。"
+      },
+      {
+        "name": "taste-skill",
+        "full_name": "Leonxlnx/taste-skill",
+        "description": "Taste-Skill - gives your AI good taste. stops the AI from generating boring, generic slop",
+        "url": "https://github.com/Leonxlnx/taste-skill",
+        "language": "Shell",
+        "stars": 19532,
+        "stars_today": 542,
+        "forks": 1646,
+        "title_ja": "Taste-Skill：AIに『良い趣味』を与えるスキル",
+        "summary_ja": "Claude等のAIが生成する文章を、ありきたりなテンプレート出力ではなく洗練された質感に近づける『センス』を与えるスキル。"
+      },
+      {
+        "name": "stop-slop",
+        "full_name": "hardikpandya/stop-slop",
+        "description": "A skill file for removing AI tells from prose",
+        "url": "https://github.com/hardikpandya/stop-slop",
+        "language": "",
+        "stars": 4326,
+        "stars_today": 353,
+        "forks": 375,
+        "title_ja": "stop-slop：散文から『AIっぽさ』を消すスキル",
+        "summary_ja": "AI生成テキスト特有の言い回し（『一方で〜』『重要なのは〜』等）を検出・除去するためのスキルファイル。"
+      },
+      {
+        "name": "FinceptTerminal",
+        "full_name": "Fincept-Corporation/FinceptTerminal",
+        "description": "FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.",
+        "url": "https://github.com/Fincept-Corporation/FinceptTerminal",
+        "language": "Python",
+        "stars": 23816,
+        "stars_today": 345,
+        "forks": 3276,
+        "title_ja": "FinceptTerminal：モダンなファイナンスターミナル",
+        "summary_ja": "市場分析・投資調査・経済データツールを統合した、Bloomberg風モダン金融ターミナル。"
+      },
+      {
+        "name": "claude-cookbooks",
+        "full_name": "anthropics/claude-cookbooks",
+        "description": "A collection of notebooks/recipes showcasing some fun and effective ways of using Claude.",
+        "url": "https://github.com/anthropics/claude-cookbooks",
+        "language": "Jupyter Notebook",
+        "stars": 43962,
+        "stars_today": 218,
+        "forks": 5042,
+        "title_ja": "claude-cookbooks：Claude活用Tipsを集めた公式ノートブック集",
+        "summary_ja": "AnthropicによるClaudeの面白く効果的な使い方をまとめたサンプルノートブック集。"
+      },
+      {
+        "name": "airi",
+        "full_name": "moeru-ai/airi",
+        "description": "💖🧸 Self hosted, you-owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude. Capable of realtime voice chat, Minecraft, Factorio playing. Web / macOS / Windows supported.",
+        "url": "https://github.com/moeru-ai/airi",
+        "language": "TypeScript",
+        "stars": 39653,
+        "stars_today": 32,
+        "forks": 4019,
+        "title_ja": "airi：セルフホスト型Grokコンパニオン",
+        "summary_ja": "セルフホスト・所有可能なAIキャラクターコンパニオン基盤。アニメ的キャラを自分のサイバー空間に置く実験プロジェクト。"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "OpenAI, Grupo Folha and Grupo UOL announce strategic content partnership",
+        "url": "https://openai.com/index/grupo-folha-grupo-uol-partnership",
+        "source": "OpenAI",
+        "summary": "OpenAI partners with Grupo Folha and Grupo UOL to bring trusted Brazilian journalism to ChatGPT, expanding access to news with attribution and transparency.",
+        "published": "2026-05-25T00:00:00Z",
+        "title_ja": "OpenAI、ブラジルGrupo Folha/UOLとコンテンツ戦略提携",
+        "summary_ja": "ブラジル大手メディアGrupo Folha／UOLとOpenAIがコンテンツ提携。ChatGPTへ高品質ポルトガル語ニュースを供給する、メディア×AIモデル提携の南米拡張。"
+      },
+      {
+        "title": "Harness, Scaffold, and the AI Agent Terms Worth Getting Right",
+        "url": "https://huggingface.co/blog/agent-glossary",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-05-25T00:00:00Z",
+        "title_ja": "Harness／Scaffold他——AIエージェント用語集",
+        "summary_ja": "ハーネス、スキャフォルド、エージェント、ハンドオフなど、AIエージェント領域で乱用される用語の定義を整理する記事。"
+      },
+      {
+        "title": "Towards Speed-of-Light Text Generation with Nemotron-Labs Diffusion Language Models",
+        "url": "https://huggingface.co/blog/nvidia/nemotron-labs-diffusion",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-05-23T00:02:03Z",
+        "title_ja": "Nemotron拡散言語モデルで『光速テキスト生成』へ",
+        "summary_ja": "NVIDIA Nemotron Labsの拡散言語モデル解説。トークン並列生成で長文を高速化、自己回帰の限界を突破する設計思想。"
+      },
+      {
+        "title": "Catch up on the Dialogues stage at Google I/O 2026.",
+        "url": "https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/",
+        "source": "Google DeepMind",
+        "summary": "Alphabet CEO Sundar Pichai in conversation on the I/O 2026 Dialogues stage",
+        "published": "2026-05-22T18:00:00Z",
+        "title_ja": "Google I/O 2026 Dialoguesステージのリキャップ",
+        "summary_ja": "Sundar PichaiらがI/O 2026のDialoguesステージで議論した内容のまとめ。"
+      },
+      {
+        "title": "Specialization Beats Scale: A Strategic Variable Most AI Procurement Decisions Overlook",
+        "url": "https://huggingface.co/blog/Dharma-AI/specialization-beats-scale",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-05-22T15:25:59Z",
+        "title_ja": "『スケールより専門化』——AI調達で見落としがちな戦略変数",
+        "summary_ja": "大規模汎用モデル一辺倒ではなく、特定タスクに特化したモデルの方が費用対効果で勝つ場面が増えてきた、というAI調達戦略の論考。"
+      },
+      {
+        "title": "How Virgin Atlantic ships faster with Codex",
+        "url": "https://openai.com/index/virgin-atlantic",
+        "source": "OpenAI",
+        "summary": "How Virgin Atlantic used Codex to ship its revamped mobile app on a fixed holiday travel deadline, reaching near-total unit test coverage and zero P1 defects.",
+        "published": "2026-05-22T00:00:00Z",
+        "title_ja": "Virgin Atlantic、Codexでモバイルアプリ刷新を期日内出荷",
+        "summary_ja": "ホリデー商戦の固定期日に向けて、Virgin AtlanticがCodexを活用しモバイルアプリを刷新。テストカバレッジほぼ100%、P1欠陥ゼロを達成。"
+      },
+      {
+        "title": "OpenAI named a Leader in enterprise coding agents by Gartner",
+        "url": "https://openai.com/index/gartner-2026-agentic-coding-leader",
+        "source": "OpenAI",
+        "summary": "OpenAI is named a leader in the 2026 Gartner Magic Quadrant for Enterprise AI Coding Agents, with Codex recognized for innovation and enterprise-scale deployment.",
+        "published": "2026-05-22T00:00:00Z",
+        "title_ja": "OpenAI、Gartner『エンタープライズAIコーディングエージェント』でリーダーに",
+        "summary_ja": "Gartner Magic Quadrant 2026で、OpenAI Codexがエンタープライズコーディングエージェント領域のリーダーに指定。"
+      },
+      {
+        "title": "AdventHealth advances whole-person care with OpenAI",
+        "url": "https://openai.com/index/adventhealth",
+        "source": "OpenAI",
+        "summary": "AdventHealth is using ChatGPT for Healthcare to streamline workflows, reduce administrative burden, and return more time to patient care.",
+        "published": "2026-05-21T12:00:00Z",
+        "title_ja": "AdventHealth、ChatGPT for Healthcareで医療事務を圧縮",
+        "summary_ja": "米AdventHealthがChatGPT for Healthcareを導入し、事務作業を圧縮して患者ケアの時間を確保。"
+      },
+      {
+        "title": "We’re announcing new community investments in Missouri.",
+        "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/",
+        "source": "Google DeepMind",
+        "summary": "We’re helping build the state’s next-generation workforce and investing in energy programs.",
+        "published": "2026-05-20T20:40:00Z",
+        "title_ja": "Google、ミズーリ州への新規コミュニティ投資を発表",
+        "summary_ja": "次世代労働力育成とエネルギープログラムを軸にした、ミズーリ州への新規投資。AIデータセンター需要を背景にした地域投資の一環。"
+      },
+      {
+        "title": "100 things we announced at I/O 2026",
+        "url": "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/",
+        "source": "Google DeepMind",
+        "summary": "Image with the words \"Ready, Set, I/O\" and a colorful Gemini logo",
+        "published": "2026-05-20T19:30:00Z",
+        "title_ja": "Google I/O 2026で発表された100項目まとめ",
+        "summary_ja": "I/O 2026で発表されたGemini 3.5、AI Search、Workspace刷新などを含む100項目の公式まとめ。"
+      },
+      {
+        "title": "A new experiment brings better group meetings to Google Beam",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/",
+        "source": "Google DeepMind",
+        "summary": "A small group meeting featuring two in-room participants and three participants on-screen.",
+        "published": "2026-05-20T16:45:00Z",
+        "title_ja": "Google Beam、グループ会議に対応する新実験",
+        "summary_ja": "立体映像会議『Google Beam』が複数人グループミーティングに対応する実験を開始。"
+      },
+      {
+        "title": "An OpenAI model has disproved a central conjecture in discrete geometry",
+        "url": "https://openai.com/index/model-disproves-discrete-geometry-conjecture",
+        "source": "OpenAI",
+        "summary": "An OpenAI model solved the 80-year-old unit distance problem, disproving a major conjecture in discrete geometry and marking a milestone in AI-driven mathematics.",
+        "published": "2026-05-20T00:00:00Z",
+        "title_ja": "OpenAIモデル、離散幾何学の重要予想を反証",
+        "summary_ja": "OpenAIのモデルが、離散幾何学における長年の中心予想を反証する証明を発見。AI主導の数学発見の象徴的成果。"
+      },
+      {
+        "title": "How Ramp engineers accelerate code review with Codex",
+        "url": "https://openai.com/index/ramp",
+        "source": "OpenAI",
+        "summary": "How Ramp engineers use Codex with GPT-5.5 to review code and ship improvements, allowing them to get substantive feedback in minutes instead of hours.",
+        "published": "2026-05-20T00:00:00Z",
+        "title_ja": "Ramp、Codexでコードレビューを高速化",
+        "summary_ja": "Fintech RampのエンジニアがCodexで本格コードレビューを実施。所要時間が数時間から数分へ短縮。"
+      },
+      {
+        "title": "The next phase of OpenAI’s Education for Countries",
+        "url": "https://openai.com/index/the-next-phase-of-education-for-countries",
+        "source": "OpenAI",
+        "summary": "OpenAI advances Education for Countries, expanding AI adoption in schools with new partnerships, teacher training, and tools to improve global learning outcomes.",
+        "published": "2026-05-20T00:00:00Z",
+        "title_ja": "OpenAI『Education for Countries』、次フェーズへ",
+        "summary_ja": "学校向けAI展開・教師研修・学習成果改善ツールを拡大する『Education for Countries』新フェーズ発表。"
+      },
+      {
+        "title": "Introducing OpenAI for Singapore",
+        "url": "https://openai.com/index/introducing-openai-for-singapore",
+        "source": "OpenAI",
+        "summary": "OpenAI for Singapore launches a multi-year AI partnership to expand deployment, build local talent, and support businesses and public services with AI.",
+        "published": "2026-05-19T20:30:00Z",
+        "title_ja": "OpenAI for Singapore発表——複数年の国家AI戦略パートナー",
+        "summary_ja": "シンガポール政府とOpenAIが、複数年のAI展開・人材育成・公共サービス支援パートナーシップを発表。"
+      },
+      {
+        "title": "OlmoEarth v1.1: A more efficient family of Earth observation models",
+        "url": "https://huggingface.co/blog/allenai/olmoearth-v1-1",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-05-19T18:38:09Z",
+        "title_ja": "OlmoEarth v1.1：より効率的な地球観測モデル群",
+        "summary_ja": "AllenAI（Ai2）の地球観測基盤モデルOlmoEarthがv1.1へ。同等品質で計算量を抑えた効率重視アップデート。"
+      },
+      {
+        "title": "I/O 2026",
+        "url": "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/",
+        "source": "Google DeepMind",
+        "summary": "At Google I/O 2026, we shared how we’re making AI more helpful for everyone. See everything we announced.",
+        "published": "2026-05-19T17:45:00Z",
+        "title_ja": "Google I/O 2026 コレクションページ",
+        "summary_ja": "I/O 2026で『AIをすべての人に役立つものにする』ためのアップデートを一覧化したコレクション。"
+      },
+      {
+        "title": "How AI Mode is changing the way people search in the U.S.",
+        "url": "https://blog.google/products-and-platforms/products/search/ai-mode-us-insights/",
+        "source": "Google DeepMind",
+        "summary": "A graphic features the text \"How people are using AI Mode in the U.S.\" surrounded by colorful, stylized illustrations of a pencil, planet, banana, gift box, cursor, gamepad, and lipstick on a light blue background.",
+        "published": "2026-05-19T17:45:00Z",
+        "title_ja": "Google AI Modeが米国の検索体験をどう変えているか",
+        "summary_ja": "Google検索のAIモードが米国ユーザの検索行動をどう変化させたかのインサイト記事。クエリの長文化・対話化の傾向。"
+      },
+      {
+        "title": "New ways to create and get things done in Google Workspace",
+        "url": "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
+        "source": "Google DeepMind",
+        "summary": "Google Workspace",
+        "published": "2026-05-19T17:45:00Z",
+        "title_ja": "Google Workspace、新しい作成・タスク機能",
+        "summary_ja": "GeminiベースのGoogle Workspaceに、ドキュメント作成・タスク管理の新機能を追加。"
+      },
+      {
+        "title": "I/O 2026: Welcome to the agentic Gemini era",
+        "url": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+        "source": "Google DeepMind",
+        "summary": "a series of colorful icons representing Google I/O against a black background",
+        "published": "2026-05-19T17:45:00Z",
+        "title_ja": "I/O 2026：『エージェント版Gemini時代へようこそ』",
+        "summary_ja": "Sundar Pichaiによる基調メッセージ。Geminiをエージェントとして全プロダクトに統合する『エージェンティックGemini時代』を宣言。"
+      },
+      {
+        "title": "Gemini 3.5: frontier intelligence with action",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+        "source": "Google DeepMind",
+        "summary": "Gemini 3.5 text and multi-colored star icon on an abstract blue background.",
+        "published": "2026-05-19T17:45:00Z",
+        "title_ja": "Gemini 3.5：『行動するフロンティア知性』",
+        "summary_ja": "Google DeepMindの新世代モデルGemini 3.5を発表。ベンチマーク更新に加え、ツール利用・エージェント実行を統合した『行動する知性』として位置付け。"
+      },
+      {
+        "title": "A new era for AI Search",
+        "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
+        "source": "Google DeepMind",
+        "summary": "Text that reads \"The best of a search engine with the best of AI\"",
+        "published": "2026-05-19T17:45:00Z",
+        "title_ja": "AI Searchの新時代——『検索エンジンの最良の部分』とAIを融合",
+        "summary_ja": "Google検索のAI Modeをデフォルト体験に近づけるアップデート。"
+      },
+      {
+        "title": "Advancing content provenance for a safer, more transparent AI ecosystem",
+        "url": "https://openai.com/index/advancing-content-provenance",
+        "source": "OpenAI",
+        "summary": "OpenAI advances AI content provenance with Content Credentials, SynthID, and a verification tool to help people identify and trust AI-generated media.",
+        "published": "2026-05-19T10:45:00Z",
+        "title_ja": "OpenAI、Content CredentialsとSynthIDでAIコンテンツの来歴強化",
+        "summary_ja": "AI生成コンテンツの来歴情報をContent CredentialsとSynthIDで付与し、検証ツールも提供。AIメディアの信頼性確保に向けた取り組み。"
+      },
+      {
+        "title": "Introducing the Ettin Reranker Family",
+        "url": "https://huggingface.co/blog/ettin-reranker",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-05-19T00:00:00Z",
+        "title_ja": "Ettin Rerankerファミリー発表",
+        "summary_ja": "RAG・検索向けの新リランカーモデル群『Ettin』。サイズと精度のトレードオフを整理。"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "source": "blog",
+      "title": "Gemini 3.5: frontier intelligence with action",
+      "title_ja": "Gemini 3.5発表——Googleが『行動するフロンティア知性』で全プロダクトをエージェント化",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+      "hot_take_ja": "Google I/O 2026の主役はやはりGemini 3.5。ベンチマーク更新だけでなく、ツール利用・エージェント実行を中核機能として統合し、Pichaiは『エージェンティックGemini時代』と宣言した。ポイントは『チャットの王様』から『行動するOS』への移行であり、検索・Workspace・Androidが全部Geminiエージェント前提に再設計されたこと。OpenAIやAnthropicがAPIファーストでエンタープライズに食い込む間に、Googleはディストリビューション全体を一気にエージェント化する作戦に出た。",
+      "detail_ja": "Google I/O 2026で発表されたGemini 3.5は、単なるベンチマーク更新ではなく『ツール呼び出しとエージェント実行を一級市民として組み込んだフロンティアモデル』として位置付けられた。同時にSundar Pichaiは基調メッセージで『エージェンティックGemini時代』を明示し、検索（AI Mode）、Workspace（ドキュメント・タスク自動化）、Android、開発者向けAPIにGeminiエージェントを横断的に統合する戦略を打ち出した。検索のAI Modeは米国でデフォルト体験に近づき、クエリは長文・対話化が進んでいるとの利用データも同日公開された。Workspaceでは、ユーザの指示一つで複数アプリをまたぐ作業をエージェントが完遂する新機能を投入。立体会議『Google Beam』のグループ対応など周辺プロダクトの発表100件もまとめて公開され、I/Oが『大量機能発表』から『プロダクト全体のエージェント化宣言』へとシフトしたことを示す。差別化は『どのチャットボットが賢いか』ではなく、『どこに既にユーザがいて、そこにAIをどう滑り込ませるか』。OpenAIやAnthropicがAPIとパートナーシップ（Dell・Singapore・Virgin Atlantic等）で勝負する一方、Googleはディストリビューションを武器に全方向同時にエージェント化を仕掛けている。",
+      "detail_en": "Gemini 3.5, the centerpiece of Google I/O 2026, is positioned not as a benchmark bump but as a frontier model that treats tool use and agentic execution as first-class capabilities. In the same keynote, Sundar Pichai framed the moment as the 'agentic Gemini era' and announced cross-product integration of Gemini agents into Search (AI Mode), Workspace (document and task automation), Android, and developer APIs. The Search AI Mode is moving closer to the default US experience, with new usage data showing that queries are getting longer and more conversational. Workspace gains new features where a single user instruction can drive an agent across multiple apps end-to-end. Adjacent product launches — Google Beam group meetings, 100+ I/O announcements bundled together — show the shift from 'feature firehose' to 'whole product surface, re-architected around agents'. The strategic point is no longer 'which chatbot is smartest', it is 'where users already live, and how AI slips into that surface'. While OpenAI and Anthropic are competing through APIs and enterprise partnerships (Dell, Singapore, Virgin Atlantic), Google is leaning on distribution to make every Google touchpoint agentic at once.",
+      "key_points_ja": [
+        "Gemini 3.5は『行動する知性』としてエージェント実行を標準装備",
+        "Pichaiが『エージェンティックGemini時代』を宣言",
+        "Search・Workspace・Android全部にGeminiエージェント統合",
+        "AI Modeが米国検索のデフォルト体験に近づく",
+        "Googleの武器はモデル単体ではなくディストリビューション"
+      ],
+      "key_points_en": [
+        "Gemini 3.5 ships with first-class tool use and agentic execution",
+        "Pichai declares the 'agentic Gemini era'",
+        "Gemini agents integrated into Search, Workspace, Android",
+        "AI Mode moving toward default US Search experience",
+        "Google's moat is distribution, not model raw IQ"
+      ]
+    },
+    {
+      "source": "hn",
+      "title": "DeepSeek reasonix, DeepSeek native coding agent with high caching and low cost",
+      "title_ja": "DeepSeek Reasonix——フラッグシップ75%恒久値下げと同時に投入された純正コーディングエージェント",
+      "url": "https://esengine.github.io/DeepSeek-Reasonix/",
+      "hot_take_ja": "DeepSeekが純正コーディングエージェント『Reasonix』を発表、同タイミングで旗艦モデルAPIを75%恒久値下げ。Claude Code/Codex/Cursorが繰り広げる『高機能・高価格』エージェント戦争に、中国側が真っ正面から価格破壊で殴り込んだ格好だ。プロンプトキャッシュを徹底活用した超低コスト推論を売りにしており、エージェント設計のコスト前提を根底から書き換えにくる。",
+      "detail_ja": "DeepSeek ReasonixはDeepSeekが自社モデル向けに最適化した純正コーディングエージェントで、HNで673ポイントを獲得し首位級に。最大の特徴は『プロンプトキャッシュ前提の超低コスト推論』で、エージェントが長い文脈を何度も読み直すコーディングワークフローでも、キャッシュにより実効単価が劇的に下がる設計。同日に報じられたDeepSeek旗艦APIの75%恒久値下げと組み合わせると、トークン単価の絶対値でClaude Code/Codex/Cursorに対して明確な価格優位が生まれる。重要なのは『安いから乗り換える』だけでなく、エージェント設計の前提条件が変わる点。単価が下がれば、これまで採算が合わなかった『超長時間・超大量推論を前提にした検証エージェント』『毎ターン制約を再注入する設計』（今週のConstraint Decay論文が推奨）も現実的になる。エコシステム的には、米中フロンティアが同じ方向に価格圧縮しており、勝負はもはや『価格』ではなく『エージェント設計とディストリビューション』へと移っている。Reasonix単体での実力はClaude Codeに比肩するか未知数だが、米国勢が無視できない圧力であることは明らかだ。",
+      "detail_en": "DeepSeek Reasonix is DeepSeek's own native coding agent, tuned for its own models and built around aggressive prompt caching for low effective cost-per-call. It hit the top of HN with 673 points, on the same day Bloomberg reported DeepSeek's flagship API getting a permanent 75% price cut. Together the two moves frame a deliberate price-and-product attack on Claude Code, Codex, and Cursor: aggressive token economics plus a first-party agent designed to exploit them. The deeper consequence is that the cost premise of agent design changes. With unit prices down and caching cheap, designs that were previously uneconomic — long-horizon multi-turn agents, verifier subagents, and re-injecting constraints every turn (as recommended this week by the Constraint Decay paper) — become realistic at scale. Strategically, both US and Chinese frontier labs are now compressing price in the same direction, which pushes the competitive battle from price to agent design and distribution. Whether Reasonix matches Claude Code in raw capability is still an open question, but the pressure on the US incumbents to defend their margins is now explicit.",
+      "key_points_ja": [
+        "DeepSeekが純正コーディングエージェントReasonixを発表",
+        "プロンプトキャッシュ前提で超低コスト推論を実現",
+        "同タイミングで旗艦API 75%恒久値下げと組み合わせ",
+        "Claude Code・Codex・Cursorへの価格＋プロダクト両面攻撃",
+        "エージェント設計の経済前提が書き換わる"
+      ],
+      "key_points_en": [
+        "DeepSeek launches first-party coding agent Reasonix",
+        "Built around aggressive prompt caching for low cost-per-call",
+        "Paired with permanent 75% cut on flagship API price",
+        "Direct price + product attack on Claude Code / Codex / Cursor",
+        "Cost premise of agent design starts to shift"
+      ]
+    },
+    {
+      "source": "hn",
+      "title": "Pope Leo XIV says AI must serve humanity, not the powerful few",
+      "title_ja": "教皇レオ14世、初の回勅でAIを正面論——『AIは少数の権力者ではなく人類に奉仕すべき』",
+      "url": "https://religionnews.com/2026/05/25/in-his-first-encyclical-pope-leo-xiv-says-ai-must-serve-humanity-not-the-powerful-few/",
+      "hot_take_ja": "ローマ教皇レオ14世が就任後初の回勅で、AIを中心テーマに据えて『不透明なAIが少数企業に握られることは新たな非人間化を生む』と警告した。テック業界の自主規制と各国規制の狭間で言葉が空回りしてきたAIガバナンス議論に、世界14億人のカトリック信徒を代表する道徳的な発話が初めて公式に加わった意味は大きい。EU AI Act、UK AI Bill、米州法と並ぶ『第4の規範軸』として、企業の社内倫理ポリシーに思いのほか強く効いてくる可能性がある。",
+      "detail_ja": "教皇レオ14世は就任後初の回勅でAIを中心議題に据え、(1)AIは特定の権力集団や少数企業ではなく『人類全体』に奉仕すべき、(2)不透明なAIが少数の企業に集中することは『新たな形の非人間化』を生む、(3)アルゴリズムが人間の尊厳と労働を侵食するリスクを軽視してはならない、と明示した。教皇職の回勅は法的拘束力を持たないが、カトリック教会の社会教説の中核文書として、各国の教育機関・医療機関・労組・倫理委員会のガイドライン作成に長期間影響する。直近の業界文脈とも噛み合う：今週の他のニュースでもUber COOがAIトークン消費の正当化に疑問を呈し、Amnesty InternationalがNHSデータのPalantirへの『無制限アクセス』を告発、AI搾取／AI集中の問題が立て続けに表面化している。EU AI Actは執行段階に入り、UKもAI Bill審議に入る局面で、宗教的・道徳的アクセントが加わったことは、企業の社内倫理ポリシー・調達基準・データ提供契約に実質的に効いてくる可能性がある。技術側の反応は『また精神論か』と『歴史的に重要な発話だ』に二分するだろうが、本質的な争点は『AIの便益を誰が所有するか』であり、これは今後数年のAI政策の核心テーマだ。",
+      "detail_en": "Pope Leo XIV used his first papal encyclical to put AI at the center of Catholic social teaching, with three main claims: (1) AI must serve humanity as a whole, not a narrow set of corporations or political powers; (2) opaque AI concentrated in the hands of a few firms creates 'new forms of dehumanization'; (3) algorithmic systems that erode human dignity and labor must not be tolerated. Encyclicals are not legally binding, but they are core documents of Catholic social teaching that shape institutional ethics policy across Catholic-affiliated schools, hospitals, unions, and ethics boards for decades. The timing dovetails with several other AI-power stories this week: Uber's COO publicly questioning whether 'tokenmaxxing' spend is justified, Amnesty International alleging that the NHS gave Palantir effectively unlimited access to identifiable patient data, and growing scrutiny of AI concentration in general. With the EU AI Act in enforcement and the UK preparing its own AI Bill, the addition of an explicit religious-moral axis to the debate is more than symbolic — it is likely to influence corporate ethics statements, procurement criteria, and data-sharing contracts. The underlying contested question is 'who owns the upside of AI', and that question is going to dominate AI policy for the next several years.",
+      "key_points_ja": [
+        "レオ14世が初の回勅でAIを中心議題に据える",
+        "『不透明なAIの少数企業集中』を新たな非人間化と批判",
+        "EU AI Act・UK AI Billと並ぶ第4の規範軸として作用しうる",
+        "Uber COO発言・Palantir/NHS問題と問題意識が共鳴",
+        "本質的争点は『AIの便益を誰が所有するか』"
+      ],
+      "key_points_en": [
+        "Pope Leo XIV centers his first encyclical on AI",
+        "Warns that concentrated, opaque AI creates new dehumanization",
+        "Adds a moral/religious axis alongside EU AI Act and UK AI Bill",
+        "Resonates with Uber COO pushback and Palantir/NHS scandal",
+        "Underlying question: who owns the upside of AI?"
+      ]
+    },
+    {
+      "source": "hn",
+      "title": "Uber’s COO says it’s getting harder to justify money spent on tokenmaxxing",
+      "title_ja": "Uber COO『AIトークン消費の正当化が日に日に難しくなっている』——大企業側からの効果検証圧力",
+      "url": "https://www.businessinsider.com/uber-coo-andrew-macdonald-ai-token-spending-harder-justify-2026-5",
+      "hot_take_ja": "UberのCOOが、エージェントによる大量トークン消費（『tokenmaxxing』）の経済合理性を真顔で疑問視した、というのが今週の地味だが効く一撃。AI支出を聖域にしてきた米メガテックの中から、初めて『費用対効果が見えない』と言葉にした幹部が出てきた格好で、これは個別の予算カット話ではなくエンタープライズ全体のセンチメントが変わる前触れだ。DeepSeekの値下げと表裏一体で、『安くしないと使ってもらえない』フェーズが本格化する。",
+      "detail_ja": "UberのAndrew MacDonald COOがBusiness Insiderのインタビューで、社内のAIエージェント運用に伴うトークン消費の急増と、それに対する効果検証の難しさを率直に語った。発言の含意は二つ。第一に、これまで『AIに金を出せば自動的に生産性が上がる』という前提でAI予算は青天井に近かったが、それが普通のIT支出と同じく『単位コストあたりの成果』を問われるフェーズに入ったということ。第二に、Uberほど規模があり社内データもあるテック企業ですら正当化が難しいのなら、それより小さい企業は更に厳しいということ。市場的にはDeepSeekの75%恒久値下げと完全に整合し、ベンダ側が価格を圧縮しないと企業側のROIモデルが崩壊する局面に来た。同日のHNで人気を集めた『Claudeはアーキテクトじゃない』論や、『マルチエージェント失敗は組織設計問題』論とも噛み合い、業界全体が『AIをばらまけば良い』から『どこに効くか厳密にやる』へ振り子が振れつつあることを示すサンプルだ。",
+      "detail_en": "Uber COO Andrew MacDonald told Business Insider that the company is finding it increasingly hard to justify the token spend that comes with running AI agents at scale — a remarkably plain statement of cost discipline from a hyperscale tech company. Two implications stand out. First, the assumption that AI spend will pay back automatically because 'AI raises productivity' is being replaced with normal unit-economics scrutiny: cost per outcome, not gross AI budget. Second, if Uber — with its scale, data, and reasonably mature AI integration — finds the math hard, smaller companies will find it even harder. That mood-shift dovetails directly with DeepSeek's permanent 75% price cut: the supply side already understands that vendors need to compress prices, or enterprise ROI models break. It also resonates with the same-week HN narratives: 'Claude is not your architect' (don't let agents drive design), 'multi-agent failures are org-design failures, not prompt failures', and the Constraint Decay paper. The industry pendulum is swinging from 'sprinkle AI everywhere' toward 'measure where it actually pays back, and design accordingly'.",
+      "key_points_ja": [
+        "Uber COOがAIトークン消費の正当化を疑問視",
+        "メガテック内部からAI支出の効果検証圧力",
+        "DeepSeek値下げと同じセンチメントの裏表",
+        "『Claudeはアーキテクトじゃない』論とも共鳴",
+        "業界の振り子が『ばらまき』から『精緻運用』へ"
+      ],
+      "key_points_en": [
+        "Uber COO questions justification for AI token spend",
+        "Cost discipline starting inside hyperscale tech firms",
+        "Mirrors DeepSeek's permanent 75% price cut",
+        "Aligns with 'Claude is not your architect' narrative",
+        "Industry pendulum swings from spray to precision"
+      ]
+    },
+    {
+      "source": "hn",
+      "title": "The Eternal Sloptember",
+      "title_ja": "geohot『Eternal Sloptember』——AIスロップが永遠化したウェブへの宣戦布告",
+      "url": "https://geohot.github.io//blog/jekyll/update/2026/05/24/the-eternal-sloptember.html",
+      "hot_take_ja": "George Hotz(geohot)が、AI生成スロップに埋め尽くされる現代のウェブを『永遠のSeptember』（Usenetが大衆化で一気に劣化した1993年の事件）になぞらえて批判した文章。技術者側の身内発話だが、AI業界の主要幹部が読み逃せない一本になっている。問題は『AIを使うこと』ではなく『AIで雑に量産すること』にある、というメッセージが、同時期の『AIに文章を書かせるな』論や教皇回勅と共鳴して効いてくる。",
+      "detail_ja": "geohot(tinygradのGeorge Hotz)が自ブログで、AI生成コンテンツでウェブが劣化していく状況を、Usenet史上の有名なエピソード『Eternal September』（1993年9月にAOLが大量のネット初心者を流入させ、Usenetの文化が永遠に変質した事件）になぞらえて論じた。主張は三段：(1)AIが文章・画像・コードを量産可能にしたことで、ウェブの一次情報密度が急激に薄まっている、(2)もはや高品質な情報を見つける作業より、低品質スロップを濾過する作業のほうがコストが高い、(3)この変化はもう逆戻りしない『eternal』であり、それを前提に技術・社会の設計を立て直す必要がある。重要なのは、geohot自身がAI開発者でありAI否定派ではない点で、議論の核は『AIをどう使うか』の規律論だ。同時期にHN上位に上がった『AIに文章を書かせるな』エッセイ、教皇レオ14世の回勅、そして『AI Washing』批判記事と共鳴する。実利的な示唆としては、(a)AI生成コンテンツの来歴情報（OpenAIが同日発表したContent Credentials/SynthID）の重要度が上がる、(b)個人サイト・小規模コミュニティの『人間っぽさ』が改めて差別化要素になる、(c)ベンダ側にもユーザ側にも『大量生成の自制』が求められる、という流れになる。",
+      "detail_en": "George Hotz (geohot, of tinygrad) wrote a blog post arguing that the AI-saturated web is the equivalent of Usenet's 'Eternal September' — the 1993 event when AOL flooded Usenet with newcomers and permanently degraded the culture. His three-part argument: (1) AI-driven mass generation of text, images, and code is collapsing the density of original signal on the web; (2) finding high-quality information is now cheaper than filtering out low-quality slop; (3) the change is irreversible — 'eternal' — and society needs to redesign infrastructure on that assumption. The piece carries weight because Hotz is himself a serious AI builder, not an AI skeptic; his point is about discipline of use, not abolition. It resonates with several same-week pieces: the 'don't let AI do your writing' essay, Pope Leo XIV's encyclical on AI dehumanization, and the Guardian's 'AI washing' story. Practical implications: (a) content provenance schemes (OpenAI announced new Content Credentials / SynthID work on the same day) become much more important, (b) handmade small sites and communities regain differentiation value, (c) both vendors and users have to develop genuine restraint about mass-generation. Slop as a load-bearing critique is moving from joke to industry concern.",
+      "key_points_ja": [
+        "geohotがAIスロップ氾濫を『Eternal September』に喩える",
+        "現実問題：高品質情報の探索より濾過のほうが高コストに",
+        "AI開発者本人による警鐘という重み",
+        "OpenAIのContent Credentials/SynthIDなど来歴対策の重要度UP",
+        "『大量生成の自制』が業界の共通課題に"
+      ],
+      "key_points_en": [
+        "geohot frames the AI slop web as an Eternal September",
+        "Filtering low-quality content now costs more than finding good content",
+        "Notable because it comes from an AI builder, not an AI skeptic",
+        "Boosts the case for content provenance (e.g. OpenAI SynthID)",
+        "Restraint on mass generation becomes an industry question"
+      ]
+    }
+  ],
+  "stats": {
+    "arxiv_count": 50,
+    "hn_count": 20,
+    "reddit_count": 20,
+    "github_count": 12,
+    "blogs_count": 24,
+    "total": 126
+  }
+}
