@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Enrich raw-2026-05-26.json with Japanese summaries and highlights."""
+"""Enrich raw-2026-05-27.json with Japanese summaries and highlights."""
 import json
 from pathlib import Path
 
-DATE = "2026-05-26"
+DATE = "2026-05-27"
 ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / f"raw-{DATE}.json"
 OUT = ROOT / "data" / f"{DATE}.json"
@@ -13,563 +13,666 @@ with open(RAW) as f:
 
 # -------- arXiv --------
 arxiv_map = {
-    "2605.26115v1": (
-        "TriSplat：シミュレーションすぐ使える3D再構成",
-        "スパースビューからフィードフォワードで三角形プリミティブを直接予測し、シミュレーション可能なメッシュをそのまま出力する3D再構成。Gaussian主流のSplatting系で曖昧だった表面表現を、推定法線で安定化する。"
+    "Algorithmic Monocultures in Hiring": (
+        "アルゴリズム単一栽培（モノカルチャー）が採用に及ぼす影響",
+        "ベンダー数社の採用スクリーニングAIが業界に行き渡ることで、特定の応募者・人種グループだけが体系的に通過/落選しやすくなる『モノカルチャー効果』を実証分析した論文。"
     ),
-    "2605.26114v1": (
-        "MobileGym：モバイルGUIエージェントの検証可能シミュレータ",
-        "本物のアプリのバックエンドを再現せず、JSON状態に対する決定論的判定で『成功・失敗』を検証可能にする軽量シミュレータ。GUIエージェントのオンラインRLを現実的に回せる。"
+    "G3T Up! Gravity Aligned Coordinate Frames Simplify Pointmap Processing": (
+        "重力整列座標系でPointmap処理を簡素化",
+        "VGGTなど近年の3D再構成はカメラ中心座標で点群を予測するが、重力方向に整列した座標フレームに変えるだけで複数下流タスクが改善することを示した研究。"
     ),
-    "2605.26113v1": (
-        "AnyScene：自動運転データ生成の高制御版",
-        "occupancyガイドで稀少安全シナリオを生成する手法。従来は浅い条件付けや参照フレーム依存だったのを、任意位置・任意視点でも細かい制御を可能にする。"
+    "SpatialBench: Is Your Spatial Foundation Model an All-Round Player?": (
+        "SpatialBench：空間基盤モデルは『万能選手』か？",
+        "空間基盤モデルが標準データでは強くても、視点・シーン・タスクが分布外になると一気に壊れることを検証する総合ベンチマーク。"
     ),
-    "2605.26112v1": (
-        "モデル拡張から『ハーネス拡張』へ——エージェントAIの次のボトルネック",
-        "エージェントAIの次の本丸はモデルサイズではなく、その周辺『ハーネス』——監査可能・永続・モジュール化された実行層——の設計だと主張する論文。メモリ・検索・ツール・検証を実装詳細扱いせず一級市民として扱う。"
+    "MUSE-Autoskill: Self-Evolving Agents via Skill Creation, Memory, Management, and Evaluation": (
+        "MUSE-Autoskill：スキルを自分で作って育てるエージェント",
+        "LLMエージェントの『スキル』を静的アーティファクトとして扱うのをやめ、生成・記憶・管理・評価のループに乗せて自己進化させるフレームワーク。"
     ),
-    "2605.26111v1": (
-        "MLLM容量を絞り切るsubject-driven画像生成",
-        "subject保持＋テキスト指示追従の両立を、別エンコーダ方式ではなくMLLMの能力を統合的に利用して達成する設計。コピペアーチファクトを抑える。"
+    "LocateAnything: Fast and High-Quality Vision-Language Grounding with Parallel Box Decoding": (
+        "LocateAnything：並列デコードで高速かつ高品質な視覚-言語グラウンディング",
+        "VLMの座標トークン逐次生成方式を、ボックスを並列にデコードする方式に置き換えて高速化と精度向上を両立した手法。"
     ),
-    "2605.26110v1": (
-        "Prism：MLLMの継続的インストラクションチューニング基盤",
-        "MCIT研究の評価不整合と実験再現性問題を解決する、プラグイン型の標準実験基盤。"
+    "Natural Language Query to Configuration for Retrieval Agents": (
+        "自然言語クエリから検索エージェント設定を自動生成",
+        "RAGエージェントのLLM選択・retriever・hop数・統合戦略といった設定空間を、自然言語クエリから自動最適化する仕組み。"
     ),
-    "2605.26109v1": (
-        "Helix4D：複雑トポロジ対応の4Dメッシュ生成",
-        "Trellis2の表現力をvideo-to-4Dに拡張。透明物体・薄板・内部表面のような従来手法が苦手な構造でも破綻しない動的メッシュ生成。"
+    "GENESIS: Harnessing AI Agents for Autonomous 6G RAN Synthesis, Research, and Testing": (
+        "GENESIS：6G無線網のR&Dを自律エージェントが回す",
+        "通信標準の検討〜実装〜試験まで人手で数ヶ月かかる6G RANのR&Dプロセスを、AIエージェント協調で自律化する野心的システム。"
     ),
-    "2605.26108v1": (
-        "Reward-Tilted Distribution Matching：少ステップ生成の人間好み調整",
-        "DMDと報酬ガイド型RLを統合し、few-step flow generatorを人間選好にアラインする2段階フレームワーク。"
+    "MobileMoE: Scaling On-Device Mixture of Experts": (
+        "MobileMoE：オンデバイスでMoEをスケールさせる",
+        "100B級で標準化されたMoEを、1B未満のオンデバイス領域でも使えるよう設計を見直した研究。"
     ),
-    "2605.26106v1": (
-        "Looped Diffusion LM——層を『回す』だけで拡散言語モデルが伸びる",
-        "Masked Diffusion ModelのTransformer中間層を選択的にループするだけで、最大3.3倍のFLOPS削減＋推論時にループ数で計算量を動的調整可能に。シンプルだが効くアーキテクチャ提案。"
+    "Alignment Tampering: How Reinforcement Learning from Human Feedback Is Exploited to Optimize Misaligned Biases": (
+        "Alignment Tampering：RLHFを悪用してバイアスを温存させる攻撃",
+        "RLHFパイプラインに細工することで、表面上はアラインされているように見えて実は偏った挙動を最適化できる新しい脆弱性を実証した研究。"
     ),
-    "2605.26105v1": (
-        "On-Policyな敵対的Flow蒸留で自己回帰ビデオ生成",
-        "強力なブラックボックスteacherをcausal studentに蒸留する難題に対し、studentのロールアウト分布上で敵対的Flow蒸留を行う設計。"
+    "Guiding LLM Post-training Data Engineering with Model Internals from Sparse Autoencoders": (
+        "SAE経由のモデル内部信号で事後学習データを選別する",
+        "外部メトリクスではなくスパースオートエンコーダで取り出した内部表現を使い、ポスト学習データを賢く選ぶデータエンジニアリング手法。"
     ),
-    "2605.26104v1": (
-        "EVIDENT：エンティティ視覚証拠でVideo Temporal Groundingを汎化",
-        "VTGのfine-tuneが分布シフトで急落する原因が『未知クエリ』より『視覚ドメインシフト』だと特定し、エンティティ注意を経由したルーティングで解決。"
+    "From Scores to Gibbs Correctors: Accelerating Uniform-Rate Discrete Diffusion Models": (
+        "Gibbsコレクタで離散拡散モデルを高速化",
+        "離散拡散モデルの生成にかかるステップ数を、Gibbsサンプリング的補正項で大幅削減する手法。"
     ),
-    "2605.26103v1": (
-        "Global SfMとフィードフォワード再構成の合流",
-        "古典的Structure-from-Motionとフィードフォワード3D再構成の利点を統合し、SfMの長年の失敗ケースを打開する設計。"
+    "Feedforward 3D Editing Learns from Semantic-Part Transformation": (
+        "意味的パーツ変形から学ぶフィードフォワード3D編集",
+        "画像編集の大規模フィードフォワード化に倣い、3D編集を意味パーツ変形タスクとして大規模学習可能にする提案。"
     ),
-    "2605.26102v1": (
-        "InstructSAM：任意指示でインスタンスセグメント",
-        "VLMとSAM3を明示的な『推論-to-インスタンス』クエリ経由でつなぎ、任意の自然言語指示で複数インスタンスを切る統一フレームワーク。"
+    "When Eyes Betray AI: Social Gaze Consistency as a Semantic Cue for AI-Generated Image Detection": (
+        "視線でAIを見破る——社会的視線の整合性を使ったAI生成検出",
+        "低レベルのアーチファクトでは生成モデルとほぼ見分けが付かなくなった画像でも、人物の社会的視線の整合性がまだ崩れていることを利用したAI画像検出手法。"
     ),
-    "2605.26100v1": (
-        "コード変更を『構造ラベル』として整理するLLM",
-        "rename/move/ロジック変更などコードパッチの変更タイプをLLMで識別し、レビュー効率を上げるための構造化ラベリング手法。"
+    "MATCHA: Matching Text via Contrastive Semantic Alignment": (
+        "MATCHA：対照学習で意味整合を測るLLM評価",
+        "ROUGEや埋め込み類似度の弱点を、対照学習による意味アラインメントで補強する新しいLLM評価メトリック。"
     ),
-    "2605.26099v1": (
-        "『言語モデルには睡眠が要る』——KVキャッシュをfast weightに固める",
-        "長い文脈を周期的にfast weight(SSMブロック)に固めてKVキャッシュを捨てる『睡眠機構』。推論レイテンシは維持したまま、長期文脈タスクの性能を回復できる新パラダイム。",
+    "Towards Controllable Image Generation through Representation-Conditioned Diffusion Models": (
+        "表現条件付き拡散モデルで画像生成を制御",
+        "拡散モデルを表現空間で条件付けることで、より細かい制御性を出す画像生成手法。"
     ),
-    "2605.26097v1": (
-        "言語モデルの忘却：容量・最適化・自己生成リプレイ",
-        "新タスク学習時の破壊的忘却を、自己生成サンプルをリプレイすることでほぼ解消できることを示す。ただし容量が飽和しているモデルでは忘却が残ることも明らかに。"
+    "2-ASP(Q) programs with weak constraints: Complexity and efficient implementation": (
+        "弱制約付き2量化ASP(Q)プログラムの計算量と実装",
+        "Answer Set Programmingに量化子を加えたASP(Q)の2量化＋弱制約クラスについて計算量と効率実装を解析した理論研究。"
     ),
-    "2605.26095v1": (
-        "舗装損傷をMask R-CNNでピクセル単位評価",
-        "細く分岐する亀裂を正確にローカライズし、整備に直結する幾何精度で評価するインスタンスセグメンテーション応用。"
+    "PARE: Pruning and Adaptive Routing for Efficient Video Generation": (
+        "PARE：プルーニング＋適応ルーティングで映像生成を効率化",
+        "Video Diffusion Transformerのブロック幅・深さ・反復サンプリングの計算コストを、適応的なルーティングで圧縮する手法。"
     ),
-    "2605.26093v1": (
-        "GoBOED：意思決定駆動のベイズ実験計画",
-        "従来BOEDの『パラメータ不確実性最小化』ではなく、下流の意思決定品質を直接最大化する目的駆動型BOED。"
+    "FinHarness: An Inline Lifecycle Safety Harness for Finance LLM Agents": (
+        "FinHarness：金融LLMエージェント向けの実行時安全ハーネス",
+        "プロンプト経由の不正操作をブロックしつつ、正当な多段ワークフローは通すことを目指す、金融エージェント用の実行時安全レイヤ。"
     ),
-    "2605.26092v1": (
-        "OrpQuant：乗算器不要のPower-of-2量子化",
-        "幾何的直交残差射影を使ったエッジ向けLLM/ViT量子化。乗算をシフトに置換でき、超低ビット領域での精度劣化を抑える。"
+    "EdgeFlow: Edge-Map Augmented VLM-Based Flowchart Processing for Industrial Requirements Engineering": (
+        "EdgeFlow：エッジマップ拡張VLMで工業フローチャートを解釈",
+        "産業要件で静的画像のまま放置されがちなフローチャートを、エッジマップを補強したVLMで機械可読化する手法。"
     ),
-    "2605.26089v1": (
-        "Channel-wise Vector Quantization——パッチでなく『チャネル』を量子化",
-        "画像を『パッチごとの離散トークン』ではなく『チャネルごとの離散レベル』として表現する新しいトークン化パラダイム。"
+    "Maat: The Agentic Legal Research Assistant for Competition Protection": (
+        "Maat：競争法リサーチを支援するエージェント",
+        "競争法・M&A判例を網羅的にレビューするエージェントAI。"
     ),
-    "2605.26087v1": (
-        "DiscoverPhysics：『見たことない物理』をLLMに発見させる",
-        "重力法則を改変した22の人工世界を用意し、LLMエージェントが実験設計・観測・法則仮説の提示までを行えるか評価。記憶でなく真の科学的推論を測るベンチ。"
+    "Governed Evolution of Agent Runtimes through Executable Operational Cognition": (
+        "実行可能な運用認知でエージェントランタイムを統治",
+        "コードを使い捨て出力ではなく『実行可能な運用基盤』として扱うエージェントランタイム設計を、ガバナンス込みで進化させるフレーム。"
     ),
-    "2605.26086v1": (
-        "Claw-Anything：『常時稼働型』パーソナルアシスタントの評価ベンチ",
-        "数か月分のユーザー活動・複数バックエンド連携・GUI/CLI横断のリアルなマルチデバイス状態を再現し、常時動くAIエージェントの実力を測る。"
+    "Semantic Gradients Interactions in SSD: A Case Study in Racial Identity and Hate Speech": (
+        "意味勾配の交互作用：人種アイデンティティとヘイト発話の事例研究",
+        "Supervised Semantic Differentialを拡張し、グループや特性で意味勾配がどう変わるかをテスト可能にする統計フレーム。"
     ),
-    "2605.26081v1": (
-        "VeriTrace：研究エージェントの『メンタルモデル』を明示的に進化させる",
-        "DeepResearchエージェントが暗黙的に持つ中間表象を、解釈更新／逸脱フィードバック／スキーマ改訂の3ループで明示制御する認知グラフ。Qwen3.5-27Bで強baselineを4.22pp改善。"
+    "Modeling Agentic Technical Debt and Stochastic Tax: A Standalone Framework for Measurement, Simulation, and Dashboarding": (
+        "エージェント技術的負債と確率的『税』のモデル化",
+        "ツール・記憶・オーケストレーションが絡むエージェントAIの技術的負債を定量計測・シミュレーション・ダッシュボード化する独立フレームワーク。"
     ),
-    "2605.26079v1": (
-        "AIベンチを自動監査するエージェント——四分の一が壊れていた",
-        "168本のフロンティアLLMベンチを自動監査し、25.7%以上に環境依存・仕様欠落・正解誤りなど致命的問題があることを発見。ベンチ自体の信頼性に切り込む論文。"
+    "Q-GeoMem: Question-Guided Geometric Memory for Video Spatial Reasoning": (
+        "Q-GeoMem：質問駆動の幾何メモリで映像空間推論",
+        "映像空間推論で『質問に必要な視点依存情報』だけを保持する質問ガイド型幾何メモリ。"
     ),
-    "2605.26078v1": (
-        "Wasserstein Policy GradientのGlobal Convergence証明",
-        "entropy正則化RL目的におけるWasserstein Policy Gradient法のglobal収束を理論的に証明。最適輸送幾何を活用した方策勾配の数理基盤。"
+    "Probabilistic Smoothing with Ratio-Monotone Transforms for Global Optimization": (
+        "比単調変換による確率平滑化での大域最適化",
+        "ガウス核と特定変換に依存していた確率平滑化を、比単調な変換族で一般化しハイパー感度を緩和する。"
+    ),
+    "Real Images, Worse Judgments: Evaluating Vision-Language Models on Concreteness and Imagery": (
+        "VLMは『役に立つ視覚証拠』を区別できない",
+        "視覚を入れれば常に役立つという前提を疑い、VLMが有用な視覚証拠とそうでないものを区別できないことを示した研究。"
+    ),
+    "Riding the Shifting Potential: When Reactive Control Suffices for Multi-Goal Behavior": (
+        "リアクティブ制御で多目的タスクをこなせる条件",
+        "多目的タスクで反応的制御では局所解にハマるとされてきた通説に対し、ポテンシャルを動的に切り替えれば反応的制御で十分であると示す研究。"
+    ),
+    "When Does Demographic Information Help? Data and Modeling Regimes for Perspective-Aware Hate Speech Detection": (
+        "デモグラ情報がヘイト検出に効くのはいつか",
+        "アノテータの属性情報がヘイト検出に効くケース・効かないケースを、データ量とモデル化方式の組み合わせで体系化した研究。"
+    ),
+    "Chartographer: Counterfactual Chart Generation for Evaluating Vision-Language Models": (
+        "Chartographer：反実仮想チャートでVLMを評価",
+        "Chart QAでショートカットや既視感に頼っていないかを暴くため、反事実的に作り替えたチャートで評価するベンチマーク。"
+    ),
+    "How and What to Imagine? Visual Thinking in Unified Multimodal Models for Cross-View Spatial Reasoning": (
+        "クロスビュー空間推論のためのビジュアル思考",
+        "VLMが言語に頼って細かい幾何を失う問題に対し、画像で考える『visual thinking』を統一マルチモーダルモデルで実装。"
+    ),
+    "Greening AI Inference with Accuracy and Latency-aware User Incentives": (
+        "AI推論をグリーンにする、精度・レイテンシ込みのユーザインセンティブ設計",
+        "AI推論のカーボン排出を抑えるため、精度とレイテンシを考慮したユーザ向けインセンティブ機構を提案。"
+    ),
+    "Normal Guidance is what Attention Needs": (
+        "法線ガイドが注目すべき正規化",
+        "ボリューム単位の二値ラベルしか持たない弱教師ありで3D医用画像分類器を学習する手法。"
+    ),
+    "PlayClass: Automated Play Behaviour Classification in Poultry": (
+        "PlayClass：家禽の『遊び』行動の自動分類",
+        "動物福祉モニタリングが負の指標に偏っているのを補うため、家禽の遊び行動という正の指標を自動分類するパイプライン。"
+    ),
+    "Risk Averse Alert Prioritization for IDS Using Subnormal Gaussian Fuzzy Models": (
+        "リスク回避型のIDSアラート優先度付け",
+        "侵入検知のアラート疲れを、サブノーマル・ガウシアン・ファジィでリスク回避的に優先度付けして緩和。"
+    ),
+    "Self-Ensembling Vision-Language Models for Chart Data Extraction": (
+        "Self-EnsembleでVLMからチャートデータを抽出",
+        "チャート画像から元の数値を抜き出す作業を、VLMをself-ensembleさせる構成で精度向上。"
+    ),
+    "Probing Cultural Awareness in LLMs: A Case Study of Cross-Culture Aesthetic Stylistics": (
+        "LLMの文化的気配り——美的修辞のケーススタディ",
+        "LLMが文化文脈に応じた『美的修辞』を操れるかを評価し、依然として大きなギャップがあることを示す。"
+    ),
+    "Gemini Embedding 2: A Native Multimodal Embedding Model from Gemini": (
+        "Gemini Embedding 2——ネイティブにマルチモーダルな埋め込みモデル",
+        "動画・音声・画像・テキストを統一表現空間に埋め込む、Geminiベースのネイティブ・マルチモーダル埋め込みモデル新バージョン。"
+    ),
+    "Separating Semantic Competition from Context Length in RAG Reading": (
+        "RAGの読みエラーを『意味競合』と『文脈長』に切り分ける",
+        "正しいパッセージを引いてもRAGが間違えるケースを、意味的な競合と単なる文脈長負荷とに切り分けた分析。"
+    ),
+    "BASIS: Batchwise Advantage Estimation from Single-Rollout Information Sharing for LLM Reasoning": (
+        "BASIS：単一ロールアウト情報共有によるアドバンテージ推定",
+        "検証可能報酬RLでLLMの推論を伸ばす際、計算効率と分散低減のトレードオフをバッチ内情報共有で改善する手法。"
+    ),
+    "Detectability in Diversity: Improved Canary Crafting for Privacy Auditing in One Run": (
+        "1ラン監査用のカナリア生成を改良",
+        "差分プライバシ保証を経験的に下界評価するプライバシ監査で、1回の学習ランで判定できるよう多様な『カナリア』を作る手法。"
+    ),
+    "It's Not Always Sycophancy: Measuring LLM Conformity as a Function of Epistemic Uncertainty": (
+        "それはお世辞じゃない——LLMの『同調』は認識的不確実性で説明できる",
+        "LLMがユーザのプッシュバックで意見を変える現象は、RLHFで覚えた『お世辞』だけでは説明できず、認識的不確実性のパラメタにもなっていることを示す。"
+    ),
+    "A Dynamic Programming Framework for Discovering Count and Values of Multilevel Image Thresholding": (
+        "閾値数と値を同時に発見する動的計画法",
+        "多段画像閾値処理で閾値の数自体を入力に取らず、動的計画で同時に決定するフレームワーク。"
+    ),
+    "Falcon-X: A Time Series Foundation Model for Heterogeneous Multivariate Modeling": (
+        "Falcon-X：異種多変量時系列の基盤モデル",
+        "多くの時系列基盤モデルが単変量止まりだった課題に対し、異種多変量に強い基盤モデル設計を提示。"
+    ),
+    "FineVLA: Fine-Grained Instruction Alignment for Steerable Vision-Language-Action Policies": (
+        "FineVLA：きめ細かい指示に従えるVLAポリシー",
+        "ロボット用VLAモデルが『何をするか』だけでなく『どうするか』の指示にも従えるよう、細粒度な指示アラインメントで学習する手法。"
+    ),
+    "Causal Risk Minimization for High-Dimensional Treatments": (
+        "高次元介入に対する因果リスク最小化",
+        "セラピー内容や決算開示文といった高次元な『介入』の効果を、因果リスク最小化で予測する枠組み。"
+    ),
+    "SIA: Self Improving AI with Harness & Weight Updates": (
+        "SIA：ハーネスと重みを両方更新して自己改良するAI",
+        "モデル本体だけでなく、その周辺ハーネス（コード・ツール・運用）も自己更新できるAIを目指す長期ロードマップ研究。"
+    ),
+    "Transfer Learning using 66 Diseases for Disease Forecasting Applications": (
+        "66疾患による転移学習で疾病予測を底上げ",
+        "短く・ノイジーな単一疾患データの脆弱性を、66疾患を束ねた転移学習で補強する疾病予測フレーム。"
+    ),
+    "Lost in Sampling: Assessing Lexical Reachability in LLMs via the Word Coverage Score (WCS)": (
+        "LLMの語彙リーチャビリティを測る——Word Coverage Score",
+        "LLMの語彙は広いのに出力は単調になりがちな問題を、Word Coverage Scoreという指標でサンプリング側の責任として切り分ける研究。"
+    ),
+    "Kan Extension Transformers: A Categorical Unification of Attention, Diffusion, and Predict-Detach Self-Conditioning": (
+        "Kan拡大トランスフォーマー——Attention・拡散・自己条件付けの圏論的統一",
+        "Transformer各種の実装をカン拡大として統一する圏論的フレームワーク。"
+    ),
+    "PilotTTS: A Disciplined Modular Recipe for Competitive Speech Synthesis": (
+        "PilotTTS：競争力ある音声合成のためのモジュール式レシピ",
+        "数百万時間の独自データや複雑な多段アーキテクチャに頼らずに競争力あるTTSを構築するための、規律あるモジュール構成。"
     ),
 }
 
 for it in d["sources"]["arxiv"]:
-    if it["id"] in arxiv_map:
-        t, s = arxiv_map[it["id"]]
-        it["title_ja"] = t
-        it["summary_ja"] = s
+    t = it.get("title", "")
+    if t in arxiv_map:
+        tj, sj = arxiv_map[t]
+        it["title_ja"] = tj
+        it["summary_ja"] = sj
 
 # -------- HN --------
 hn_map = {
-    "48272984": (
-        "AIで『より良いコードを』『より遅く』書く——意外なAIコーディングの本音",
-        "Nolan Lawsonのエッセイ。AIに任せると速くなるという神話に対し、『AIを使うことでむしろ熟考が増え、結果として遅く・良くなる』という体験談。HNで上位。"
+    "I'm Tired of Talking to AI": (
+        "『もうAIと喋るのに疲れた』",
+        "AI生成回答に対する強い疲労感を綴ったエッセイ。HN首位（1783pts）で、AI疲れがメインストリーム化していることを示す象徴的な投稿。"
     ),
-    "48278374": (
-        "GitHub Actionsダウン障害",
-        "GitHub Actions/Pagesが大規模障害。CIに依存する全エコシステムに影響、AI関連の自動化パイプラインも巻き込まれた。"
+    "GitHub Actions was down": (
+        "GitHub Actionsがダウン",
+        "全世界のCI/CDが一時停止。AI時代のソフト開発がいかにGitHubに依存しているかが浮き彫りになった大規模障害。"
     ),
-    "48266485": (
-        "教皇レオ14世『AIは少数の権力者ではなく人類に奉仕すべき』",
-        "ローマ教皇レオ14世が初の回勅でAI倫理を中心議題に据えた。少数企業によるAI集中を新たな『非人間化』と警告。"
+    "DuckDuckGo search saw 28% more visits after Google said people love AI mode": (
+        "DuckDuckGoが28%増——『GoogleのAI検索好きだよね』発言の直後",
+        "Googleの『ユーザーはAIモードを愛している』発言の翌週、DuckDuckGoの訪問数が28%急増。AI疲れの定量的シグナル。"
     ),
-    "48270770": (
-        "ノルウェー、HuaweiのフラッシュストレージでLLMトレーニング",
-        "ノルウェーが2ペタバイトのHuawei製ストレージを大規模LLMトレーニングに使用——西側内部での中国ハード採用例として地政学的に議論を呼ぶ。"
+    "Tech CEOs are apparently suffering from AI psychosis": (
+        "テックCEOたちが『AI精神病』にかかっているらしい",
+        "TechCrunchの記事。AGI到来を信じ込みすぎたCEOたちの言動が、社内外で『AI精神病』と揶揄される現象を取り上げる。"
     ),
-    "48266906": (
-        "オランダ警察、サイバー攻撃支援で800台のサーバ押収",
-        "サイバー攻撃インフラの摘発。AI関連の悪用ホスティングも対象に含まれる可能性。"
+    "Outsourcing plus local AI will soon become more economical vs. frontier labs": (
+        "オフショア＋ローカルAIがフロンティアラボより安くなる",
+        "フロンティアラボのAPIに払うより、海外開発＋オープン重みのローカルAIを組み合わせた方が経済合理的になる、という主張記事。"
     ),
-    "48268871": (
-        "Uber COO『AIトークン消費の正当化が日に日に難しくなっている』",
-        "UberのCOOがAIエージェント運用の費用対効果を疑問視。メガテック内部からAI支出への効果検証圧力が初めて公に。"
+    "Claude Code as a Daily Driver: Claude.md, Skills, Subagents, Plugins, and MCPs": (
+        "Claude Codeを日常使いに——Skills・Subagents・MCPの実戦ガイド",
+        "Claude Codeを業務メインで使うための実装メモ。CLAUDE.md・Skills・サブエージェント・プラグイン・MCPを総合的に活用する構成。"
     ),
-    "48277485": (
-        "Uber社長『AI支出の正当化が難しくなっている』(追加報道)",
-        "同件の追従報道。AI予算が普通のIT支出と同じROI査定に入る転換点との見方。"
+    "Uber president says AI spending is getting 'harder to justify'": (
+        "Uber社長『AI投資は正当化が難しくなってきた』",
+        "大手企業のCxOから『AI投資のROIが説明しづらくなっている』とハッキリ言われたのは大きな転換点。バブル期待への冷水。"
     ),
-    "48270812": (
-        "日本がMach-5ラムジェットエンジン試験に成功",
-        "AI直接の話題ではないがHN高評価の日本発技術ニュース。"
+    "Incident with Pull Requests, Issues, Git Operations and API Requests": (
+        "GitHubでPR・Issue・Git操作・APIが障害",
+        "同日のGitHub Actions障害と並ぶ、PR/Issue/Git/APIの並行インシデント。"
     ),
-    "48278610": (
-        "『外注＋ローカルAI』がフロンティアラボより経済的になる時代",
-        "値下がりするローカルモデルとオフショア人材の組み合わせが、フロンティアAPI＋現地エンジニアより経済的になる、という議論。"
+    "A sleep-like consolidation mechanism for LLMs": (
+        "LLMに『睡眠的圧縮』機構——KVキャッシュをfast weightに固める",
+        "長文脈KVキャッシュを周期的にfast weight側へ固める『睡眠機構』論文がHNでも盛り上がる（前日のハイライト題材）。"
     ),
-    "48267126": (
-        "C拡張・可搬性・代替コンパイラ",
-        "C拡張機能の可搬性とPythonエコシステムへの影響を整理した技術記事。AI研究のビルド基盤としても重要。"
+    "Stack Overflow’s forum is dead but the company’s still kicking": (
+        "Stack Overflowのフォーラムは死んだが、会社はまだ動いている",
+        "AIによってQ&Aフォーラムとしての役割が崩壊したStack Overflowが、企業向けに業態転換中、というSherwoodの記事。"
     ),
-    "48273169": (
-        "CVE-2026-28952：ClaudeがmacOS 26.5カーネル脆弱性を発見",
-        "AppleがClaudeに発見されたmacOSカーネル脆弱性を公表。AIによる本格的なゼロデイ発見の象徴的事例で、攻撃・防御の双方で議論を呼ぶ。"
+    "Training our own AI models": (
+        "PostHog、自社AIモデルを訓練する",
+        "PostHogが自社で軽量AIモデルを訓練している、その動機と方法を綴ったブログ。SaaS側で生成AIを内製する動きの一例。"
     ),
-    "48266435": (
-        "教皇レオ：少数企業の不透明AIが『新たな非人間化』を生む",
-        "回勅の核となる警告部分にフォーカスした続報。"
+    "Canada to order military plane fleet from Sweden in shift from US suppliers": (
+        "カナダがスウェーデン製軍用機を発注——米サプライヤから離れる",
+        "AI直球ではないが、AI/防衛系の調達ナラティブにも関わる地政学ニュース。"
     ),
-    "48273147": (
-        "Rust言語のパフォーマンス[PDF]",
-        "Rustの性能分析論文。AIインフラの低レベル実装言語として注目される。"
+    "Lombardy increases tax on data centers built in green and agricultural areas": (
+        "ロンバルディア州、緑地・農地のデータセンターに最大2倍課税",
+        "イタリア・ロンバルディア州がAIブームで膨張する緑地・農地のデータセンタに最大200%の課税強化。AI物理インフラへの政治的反発が顕在化。"
     ),
-    "48265745": (
-        "GPTに1〜100の数を当てさせる——統計的偏りの可視化",
-        "GPTに『1〜100の数を当てよ』と何度も問うと、人間と似た特定の数字に強くバイアスする現象。"
+    "Go: Support for Generic Methods": (
+        "Go言語、ジェネリックメソッドのサポート提案",
+        "Goの型システム議論でジェネリックメソッドの追加が提案される。AI直結ではないが、開発者文化として大きい議論。"
     ),
-    "48277537": (
-        "AWS API Gatewayの認証を末尾スラッシュ1個で迂回——$12K bounty",
-        "trailing slashだけで認証が迂回できる脆弱性をホワイトハットが発見。クラウドAPIゲートウェイ系の認証実装の脆さを示す。"
+    "Launch HN: Minicor (YC P26) – Windows desktop automations at scale": (
+        "Launch HN: Minicor——Windowsデスクトップを大規模自動化",
+        "Windows GUIを大規模自動化するMinicor。AIエージェントの『腕』としてのRPA的レイヤ。"
     ),
-    "48282709": (
-        "Stack Overflowのフォーラムは死んだ——会社はAIで生きている",
-        "AIで質問する文化に置き換わり、Stack Overflowのフォーラム機能は実質死亡。しかし企業としてはAI関連事業で生き延びている、という分析。"
+    "Incident with Actions and Pages": (
+        "GitHub ActionsとPagesでインシデント",
+        "GitHub Actions・Pagesの障害。"
     ),
-    "48272393": (
-        "Show HN：OpenBrief——ローカル動画ダウンローダ＆要約",
-        "オンデバイスで動画を取得して要約する個人開発ツール。"
+    "I bypassed AWS API Gateway auth with a trailing slash. Got $12K bounty": (
+        "AWS API Gateway認証を末尾スラッシュでバイパス——$12Kバウンティ",
+        "末尾スラッシュ1つでAWS API Gatewayの認証を回避できたバグレポート。Bounty $12K。"
     ),
-    "48278090": (
-        "GitHub Actions/Pagesの障害",
-        "ステータスページの公式インシデント。Pagesも影響を受けたためGitHub Pagesホスティングの公開ドキュメントが一時的に不安定に。"
+    "AI tools are only as good as your judgment": (
+        "AIツールは結局あなたの判断力次第",
+        "AIツールを過信せず、自分の判断とのループで使うべきだという定番論。"
     ),
-    "48264635": (
-        "Show HN：Geomatic——コマンド駆動＋自動微分の幾何スタジオ",
-        "コマンドベースで幾何構築でき、autodiffで動く幾何学スタジオ。教育・研究用途。"
+    "The AI bubble isn't like the internet bubble": (
+        "AIバブルはドットコムバブルとは違う",
+        "Cory DoctorowによるAIバブル分析。インターネットバブルとは違って、はじけても残るインフラ価値が小さいという主張。"
     ),
-    "48277784": (
-        "『AIバブルはインターネットバブルと違う』議論",
-        "インターネットバブル時代との比較分析。設備投資集中度や時間軸に焦点。"
+    "Show HN: Posthorn, self-hosted mail gateway": (
+        "Show HN: Posthorn——セルフホスト型メールゲートウェイ",
+        "自前メール配信のためのセルフホストGateway。"
     ),
 }
 
 for it in d["sources"]["hn"]:
-    if str(it["id"]) in hn_map:
-        t, s = hn_map[str(it["id"])]
-        it["title_ja"] = t
-        it["summary_ja"] = s
+    t = it.get("title", "")
+    if t in hn_map:
+        tj, sj = hn_map[t]
+        it["title_ja"] = tj
+        it["summary_ja"] = sj
 
 # -------- Reddit --------
 reddit_map = {
-    "1tndgv8": (
-        "Uber COO『AIトークン消費の正当化が難しい』(r/artificial)",
-        "Business Insiderインタビューを巡るRedditでの議論。AI支出の効果検証懐疑論が技術コミュニティでも広がる。"
+    "[D] Where do you go for serious AI research discussion online? [D]": (
+        "[D] 今どきマジメなAI研究議論はどこでするの？",
+        "Twitterもreddit r/MachineLearningもノイズだらけになり、研究者がどこで深い議論をしているのか、という嘆きとサジェスチョン。"
     ),
-    "1tn3e7k": (
-        "AI生成画像が『現実より現実的』になる転換点",
-        "視覚的に区別不能なAI生成コンテンツが標準になる、という議論。来歴情報の重要性が高まる。"
+    "Nothing is real anymore. We are reaching the point where crowd scenes can be entirely generated by AI.": (
+        "もう何もリアルじゃない——群衆シーンも丸ごとAI生成の時代",
+        "群衆シーンをまるごとAIで生成した映像が話題に。『現実と区別がつかない』段階に達したという反応。"
     ),
-    "1tmprdm": (
-        "自己教師あり学習でロスが単調でないとき、何で選ぶ？",
-        "SSLでハイパパラやアーキを選ぶ実践的方法を聞く投稿。ML実務の悩みどころが見える。"
+    "AI is becoming epistemic infrastructure controlled by a handful of private individuals?": (
+        "AIが少数の私的個人に支配される『認識的インフラ』になっている？",
+        "AIが知識・判断のインフラとして機能しはじめた一方で、その所有が極めて少数の私企業・個人に集中していることへの懸念。"
     ),
-    "1tnhnh5": (
-        "『METRのAI時間軸グラフ』に重大な誤り——METR批判の議論",
-        "AI能力の進歩を時間軸でプロットした有名な『METR Time Horizons』グラフに、複数の重大な統計的誤りが指摘される。今後のAI進歩予測の根拠が揺れる。"
+    "AI-generated CUDA kernels silently break training and inference [R]": (
+        "AIが書いたCUDAカーネルが学習・推論をサイレントに壊している",
+        "コード生成AIに書かせたCUDAカーネルが、数値的にズレた挙動でも『動いてしまう』ため、学習・推論を静かに壊しているという警鐘。"
     ),
-    "1to2l4c": (
-        "[D] ガチのAI研究議論はどこでするべきか",
-        "学術的な議論の場がXやRedditで成立しなくなった、という嘆きと提案。"
+    "Already 11 000 submissions for EMNLP? [D]": (
+        "EMNLPの投稿数がもう1.1万件？",
+        "EMNLP 2026の投稿数が早くも1.1万を超え、査読プロセスが破綻寸前という研究界の悲鳴。"
     ),
-    "1tnarvu": (
-        "AIエージェントに必要なのは自律性よりも『監査ログ』",
-        "エージェントの自律性を増やすより、何をしたか追跡可能にするほうが先だ、という現場の声。"
+    "The Young Are Being Battered by AI as Hiring Shifts to Older Workers": (
+        "若年層がAIに殴られている——採用がベテラン側にシフト",
+        "AIで若手の初級業務が圧縮された結果、企業がベテラン採用に寄り、若年層の雇用が悪化しているというトレンド記事。"
     ),
-    "1tnjhts": (
-        "今週のAI関連リポジトリTop10",
-        "Trending系まとめ。Claude Codeのスキル・プラグインまわりが目立つ。"
+    "Scoop: Trump appoints Bondi to White House AI panel": (
+        "[Scoop] トランプ、ボンディ司法長官をホワイトハウスAIパネルに任命",
+        "Axiosのスクープ。司法長官Pam BondiがホワイトハウスのAI諮問パネルに任命され、AI政策の法執行寄り傾斜が懸念される。"
     ),
-    "1tnwdss": (
-        "EMNLP投稿数すでに11,000本——査読崩壊への危惧",
-        "メインNLP会議の投稿激増。査読人材不足とAI生成論文問題が背景に。"
+    "Anthropic just published how they contain Claude agents, including two security incidents they got wrong": (
+        "Anthropicが『Claudeエージェントをどう封じ込めているか』を公開——自社で失敗した2件込み",
+        "Anthropicが内部で運用しているClaudeエージェントの封じ込めポリシーと、対処を誤った2件のセキュリティ事故を公開。"
     ),
-    "1to0dmn": (
-        "AIは『少数の私人が握る認識インフラ』になりつつある",
-        "教皇回勅と問題意識が共鳴するコミュニティ議論。"
+    "Wiz Integrates with Anthropic's Compliance API": (
+        "Wizが AnthropicのCompliance APIと統合",
+        "クラウドセキュリティのWizが、AnthropicのCompliance APIと統合。AIエージェント運用に対する企業ガバナンスの一例。"
     ),
-    "1tmpfa9": (
-        "Claudeの利用上限を一瞬で食い潰す方法",
-        "Claudeの長文・ツール利用での上限到達コツ。ユーザ側のコスト管理の難しさを示す。"
+    "Which AI image generator is actually worth the money?": (
+        "結局どのAI画像生成にお金を払う価値がある？",
+        "課金して使うべき画像生成AIはどれか、というユーザディスカッション。"
     ),
-    "1tnvmgt": (
-        "WizがAnthropicのコンプライアンスAPIと統合",
-        "セキュリティ・コンプラ自動化。Claudeを企業環境に組み込む補助インフラの整備が進む。"
+    "[R]GNN Model For Fraud Detection Isn't Performing Well[R]": (
+        "[R] 不正検出GNNモデルの性能が出ない件",
+        "不正検出向けGNNが思うように学習しないという実践相談スレ。"
     ),
-    "1tndecr": (
-        "なぜ今急にデータセンタ需要が爆発しているのか",
-        "AIブームによるDC建設ラッシュの背景を整理。Norwayの件など最新事例も。"
+    "[P] Built a portable GPU ISA after reading too many architecture manuals [P]": (
+        "[P] アーキマニュアル読みすぎてポータブルなGPU ISAを作った",
+        "GPUアーキテクチャマニュアルを読み込みすぎた結果、ポータブルなGPU ISAを自作したというホビープロジェクト。"
     ),
-    "1to5v3m": (
-        "結局どのAI画像生成サービスが課金する価値ある？",
-        "コンシューマ向け画像生成比較。ユーザ評価の現状把握に。"
+    "Aiki my local Wikipedia Retrieval-Augmented Generation system [R]": (
+        "Aiki：手元Wikipedia RAGシステム",
+        "ローカルWikipediaを対象にしたRAGシステムを自作したという紹介。"
     ),
-    "1tn8uoq": (
-        "ICMLワークショップは参加価値あるか[D]",
-        "アカデミアの会議参加コスパ議論。"
+    "Looking for an AI image generator, what's the best one": (
+        "おすすめのAI画像生成は？",
+        "用途別のAI画像生成おすすめスレ。"
     ),
-    "1tnhfxp": (
-        "12.6Mパラメータ・512KB SRAMマイコン上でDCGAN推論",
-        "純Cで26秒生成。超低リソース環境での生成AIデモ。"
+    "Profiling PyTorch training without accidentally stalling the GPU [D]": (
+        "GPUを止めずにPyTorch学習をプロファイルしたい",
+        "プロファイルでGPUをストールさせないテクのディスカッション。"
     ),
-    "1tn73ve": (
-        "1つだけAIプロバイダに課金するとしたらどれ？",
-        "コンシューマAIサブスク選びの実況世論調査。"
+    "How I build my own zero cost Agent": (
+        "ゼロコストで自分のエージェントを組む",
+        "課金APIを使わずに自前で組むエージェント構成のメモ。"
     ),
-    "1tnn89v": (
-        "Aiki——ローカル版Wikipedia RAGシステム",
-        "ローカルで動くWikipedia特化RAGの公開。"
+    "The Most Terrifying Superintelligence Might Not Want to Rule Us at All.": (
+        "もっとも恐ろしい超知能は『人類支配を望まない』ものかもしれない",
+        "超知能リスクの議論として、支配欲ですら持たない無関心型がより怖いという思考実験。"
     ),
-    "1tn1rtk": (
-        "NVIDIA Isaac SimでのRL：Isaac Labも併用してる？",
-        "ロボティクスRL実務者の現場アンケート。"
+    "Claude as an Orchestrator: Why Agentic AI Can't Be Secured by the AI Alone": (
+        "Claudeをオーケストレータに——エージェントAIをAI単独で守るのは無理",
+        "エージェントAIのセキュリティは、AI自身だけでなく外部のガードレールやランタイムが必須、というブログ。"
     ),
-    "1tmq1eb": (
-        "MergeNB：Jupyter向けマージコンフリクト解決ツール",
-        "VS Code拡張。ノートブックの.ipynbの差分・統合を可視化。"
+    "How to not doom over AI? Anything encouraging about the future?": (
+        "AIで絶望しないには？未来に希望ある？",
+        "AI悲観で疲れた人々が『何か明るい未来はないか』を語り合うスレ。"
     ),
-    "1tnnaa6": (
-        "Conifer——OSSローカル推論ランタイムを作る",
-        "個人開発のローカル推論ランタイム公開。"
+    "Built a tool to save Claude responses (and ChatGPT, Gemini) into one searchable vault - sharing in case it's useful": (
+        "Claude/ChatGPT/Geminiの回答を一括Vaultに保存できるツールを作った",
+        "各AIの回答を一元保存・検索できる個人ナレッジ管理ツールの紹介。"
     ),
 }
 
 for it in d["sources"]["reddit"]:
-    if str(it["id"]) in reddit_map:
-        t, s = reddit_map[str(it["id"])]
-        it["title_ja"] = t
-        it["summary_ja"] = s
+    t = it.get("title", "")
+    if t in reddit_map:
+        tj, sj = reddit_map[t]
+        it["title_ja"] = tj
+        it["summary_ja"] = sj
 
-# -------- GitHub --------
+# -------- GitHub Trending --------
 github_map = {
-    "rohitg00/ai-engineering-from-scratch": (
-        "AI Engineering を一から学ぶ大型カリキュラム",
-        "AIエンジニアリングを土台から学ぶための包括的な公開教材。プロダクション運用までカバー。"
+    "Leonxlnx/taste-skill": (
+        "taste-skill：AIに『センス』を与えるスキル",
+        "AIの出力が陳腐で量産品的になりがちな問題に対し、AIに『味（taste）』を与えてダサい量産物を抑止することを謳うスキルパック。本日2700+スター獲得。"
+    ),
+    "DigitalPlatDev/FreeDomain": (
+        "FreeDomain：無料ドメイン配布プロジェクト",
+        "個人向けに無料サブドメインを配布するプロジェクトが急上昇。AI関連ではないが、AIサイドプロジェクトのホスティング需要が背景にあるか。"
     ),
     "affaan-m/ECC": (
-        "ECC：エージェントハーネスを丸ごと最適化するシステム",
-        "スキル・直感・メモリ・セキュリティを横断して扱う統合ハーネスのOSS実装。今週の『ハーネス拡張』論文の文脈に合致。"
+        "ECC：エージェントハーネス最適化スイート",
+        "Claude Code / Codex / Cursor / Opencodeなど主要エージェントの『ハーネス』を最適化するスキル・メモリ・セキュリティ統合システム。"
+    ),
+    "harry0703/MoneyPrinterTurbo": (
+        "MoneyPrinterTurbo：AIで短尺動画を一発生成",
+        "テーマだけ入れればAI LLMが台本・画像・音声・動画を組み立て、TikTok向け短尺動画を一発生成する人気OSS。"
+    ),
+    "obra/superpowers": (
+        "superpowers：エージェント開発のためのスキルフレームワーク",
+        "Claude Codeなどのエージェント向けスキル・メソドロジを統合した『superpowers』フレームワーク。本日も1600+スター。"
+    ),
+    "mukul975/Anthropic-Cybersecurity-Skills": (
+        "Anthropic-Cybersecurity-Skills：754のセキュリティスキル集",
+        "MITRE ATT&CK・NIST CSF・MITRE ATLAS・D3FEND・NIST AI RMFの5フレームワークにマップされた、AIエージェント向けセキュリティスキル754個。"
     ),
     "anthropics/knowledge-work-plugins": (
         "Anthropic公式：ナレッジワーク向けプラグイン集",
-        "Claude Code向けに、ナレッジワーカーが業務で使えるプラグインをまとめたOSSリポジトリ。"
-    ),
-    "Leonxlnx/taste-skill": (
-        "Taste-Skill——AIに『良いセンス』を持たせるスキル",
-        "Claude向けのスキルファイルで、生成出力の『つまらなさ』を抑える狙い。バイラル系。"
-    ),
-    "DigitalPlatDev/FreeDomain": (
-        "DigitalPlat FreeDomain：無料ドメインプロジェクト",
-        "AI直接ではないがインフラ系で急上昇しているOSS。"
-    ),
-    "mukul975/Anthropic-Cybersecurity-Skills": (
-        "AIエージェント用サイバーセキュリティスキル754個",
-        "MITRE ATT&CKなど5フレームワークにマップされた構造化セキュリティスキル集。Claude Code向けの実務応用。"
+        "Claude Cowork向け、ナレッジワーカーが日常業務で使えるプラグインのオープンソース集。"
     ),
     "hardikpandya/stop-slop": (
-        "AI生成文章特有の癖を除去するスキル",
-        "geohotの『Eternal Sloptember』議論と呼応する、文章スロップ撲滅スキル。"
-    ),
-    "thedotmack/claude-mem": (
-        "claude-mem：エージェントの永続メモリ層",
-        "Claudeセッションを跨いだ永続コンテキストを実現。今週の『メモリは外部状態』論調と一致。"
+        "stop-slop：AIっぽさを文章から除去するスキル",
+        "『AIが書いた』と分かる定型表現や言い回しを文章から取り除くスキルファイル。"
     ),
     "twentyhq/twenty": (
-        "Twenty：AI時代のSalesforceオルタナティブ",
-        "SalesforceのオープンソースAI志向代替。"
+        "twenty：AI時代のオープンソースSalesforce",
+        "AIネイティブを謳う、Salesforceのオープン代替CRM。"
     ),
-    "Open-Dev-Society/OpenStock": (
-        "OpenStock：OSSのリアルタイム株価プラットフォーム",
-        "Bloomberg/有料ターミナルのOSS代替を目指す。"
+    "moeru-ai/airi": (
+        "airi：自分で持てる『推しAI』コンパニオン",
+        "セルフホスト型の推しAI/Vtuber的コンパニオン。Minecraft・Factorioもプレイし、Neuro-sama的体験を目指す。"
     ),
 }
 
 for it in d["sources"]["github"]:
-    if it.get("full_name") in github_map:
-        t, s = github_map[it["full_name"]]
-        it["title_ja"] = t
-        it["summary_ja"] = s
+    fn = it.get("full_name", "")
+    if fn in github_map:
+        tj, sj = github_map[fn]
+        it["title_ja"] = tj
+        it["summary_ja"] = sj
 
 # -------- Blogs --------
-blog_map = {
-    "https://openai.com/index/grupo-folha-grupo-uol-partnership": (
-        "OpenAI、ブラジル最大手メディアGrupo Folha/UOLとコンテンツ提携",
-        "南米最大級のニュースグループとの戦略的コンテンツ提携。学習データと最新情報配信の両面でブラジル市場を押さえる動き。"
+blogs_map = {
+    "ITBench-AA: Frontier Models Score Below 50% on the First Benchmark for Agentic Enterprise IT Tasks — by Artificial Analysis and IBM": (
+        "ITBench-AA：エージェントAIの企業IT実務、フロンティアでも50%未満",
+        "Artificial AnalysisとIBMが共同で発表した、エンタープライズITオペレーションをエージェントAIが実行できるかの初のベンチマーク。最新のフロンティアモデルでも50%未満で、現場仕事の壁が浮き彫りに。"
     ),
-    "https://huggingface.co/blog/agent-glossary": (
-        "『ハーネス』『スキャフォールド』など、AIエージェントの用語を整理",
-        "言葉が乱立するエージェント周辺の概念をHugging Faceが整理。今週のarXiv『Scaling the Harness』とも噛み合う。"
+    "Building self-improving tax agents with Codex": (
+        "Codexで自己改善する税務エージェントを作る",
+        "OpenAI・Thrive・Creteが組み、税務申告を自動化＋自己改善するエージェントを構築。"
     ),
-    "https://huggingface.co/blog/nvidia/nemotron-labs-diffusion": (
-        "NVIDIA Nemotron Labs：拡散LMで『光速テキスト生成』に挑む",
-        "NVIDIAが拡散言語モデルNemotron Diffusion LMを推進。自己回帰生成に比べ大幅な並列性能で、リアルタイム生成の実用化を狙う。"
+    "Warp’s big bet on building open source with GPT-5.5": (
+        "Warp、GPT-5.5でOSS開発に大型賭け",
+        "ターミナル「Warp」がGPT-5.5を中核に、ローカル・クラウド・OSSをまたぐコーディングエージェントを動かす。"
     ),
-    "https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/": (
-        "Google I/O 2026 Dialoguesステージのまとめ",
-        "Geminiやエージェント関連セッションのハイライト集。"
+    "Election information and safeguards in 2026": (
+        "2026年選挙：OpenAIによる情報と防護策",
+        "世界的選挙イヤーに向け、OpenAIが選挙情報アクセス・サイバー防衛者支援・AI透明性で打つ施策をまとめた声明。"
     ),
-    "https://huggingface.co/blog/Dharma-AI/specialization-beats-scale": (
-        "『スケールより専門化が勝つ』——AI調達の戦略変数",
-        "汎用フロンティアモデルに頼るより、用途特化モデルを選んだほうが調達効率が良い場面が増えていることを示す分析。"
+    "Reachy Mini goes fully local": (
+        "Reachy Miniが完全ローカル化",
+        "Hugging Faceの卓上ロボット「Reachy Mini」が、対話・推論をすべてオンデバイスで完結させる完全ローカル版に。"
     ),
-    "https://openai.com/index/virgin-atlantic": (
+    "Shipping a Trillion Parameters With a Hub Bucket: Delta Weight Sync in TRL": (
+        "TRLでTrillion級のデルタ重み同期",
+        "TRL（Transformer Reinforcement Learning）に、Hugging Face Hubのバケットを使った1兆パラメタ級デルタ重み同期機能を実装した話。"
+    ),
+    "OpenAI, Grupo Folha and Grupo UOL announce strategic content partnership": (
+        "OpenAI、ブラジル大手メディアGrupo Folha/UOLと提携",
+        "ブラジルのGrupo FolhaとUOLがOpenAIと戦略提携。ChatGPT内に出典付きのブラジル報道を統合。"
+    ),
+    "Harness, Scaffold, and the AI Agent Terms Worth Getting Right": (
+        "『ハーネス』『スキャフォルド』——AIエージェント用語をちゃんと使い分けよう",
+        "Hugging Faceブログ。エージェント実装で乱用されがちな『ハーネス』『スキャフォルド』『フレームワーク』といった用語を整理し、議論の質を上げる試み。"
+    ),
+    "Towards Speed-of-Light Text Generation with Nemotron-Labs Diffusion Language Models": (
+        "Nemotron-Labs拡散LMで『光速』テキスト生成へ",
+        "NVIDIAが、拡散ベース言語モデルNemotron Diffusionの最新版を解説。自己回帰型より大幅に速いテキスト生成のロードマップを示す。"
+    ),
+    "Catch up on the Dialogues stage at Google I/O 2026.": (
+        "Google I/O 2026『Dialogues』ステージのまとめ",
+        "Sundar PichaiCEOらが登壇したGoogle I/O 2026のDialoguesセッションのリキャップ。"
+    ),
+    "Specialization Beats Scale: A Strategic Variable Most AI Procurement Decisions Overlook": (
+        "AI調達では『スケール』より『専門化』が効く",
+        "AIモデル選定で『規模』ばかりを変数にしがちな企業向けに、専門化（タスク特化・データ特化）の方が実利益に直結することを示す戦略論。"
+    ),
+    "OpenAI named a Leader in enterprise coding agents by Gartner": (
+        "OpenAIがGartner『エンタープライズAIコーディングエージェント』のリーダーに",
+        "Gartner Magic Quadrantで、OpenAIのCodexがエンタープライズコーディングエージェント部門のリーダーに位置付けられた。"
+    ),
+    "How Virgin Atlantic ships faster with Codex": (
         "Virgin AtlanticがCodexで開発を加速",
-        "航空エンタープライズ事例。Codexによるコード生産性向上の社内事例。"
+        "Virgin AtlanticがCodexで、新モバイルアプリの単体テストカバレッジを高水準まで引き上げつつ、固定の繁忙期デッドラインまでにリリース。"
     ),
-    "https://openai.com/index/gartner-2026-agentic-coding-leader": (
-        "OpenAI、Gartnerの『エンタープライズコーディングエージェント』Leaderに選出",
-        "Codex系のエンタープライズ評価でリーダーポジション。Claude Code/Cursor勢との競合構図が明確化。"
+    "AdventHealth advances whole-person care with OpenAI": (
+        "AdventHealthがOpenAIで医療業務を効率化",
+        "米AdventHealthがChatGPT for Healthcareで管理業務を圧縮し、医師の患者時間を増やす取り組み。"
     ),
-    "https://openai.com/index/adventhealth": (
-        "AdventHealthがOpenAIで『全人的ケア』を推進",
-        "米大手医療法人での運用事例。電子カルテ業務効率化の枠を超えた患者ケア統合の試み。"
-    ),
-    "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/": (
-        "Googleがミズーリ州にAIコミュニティ投資",
-        "地域経済とAI教育・職業訓練を結ぶ投資パッケージ発表。"
-    ),
-    "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/": (
-        "Google I/O 2026：発表100連発まとめ",
-        "Gemini系・Workspace・Android・Beam・検索AI Modeまで横断するI/Oの全発表サマリ。"
-    ),
-    "https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/": (
-        "Google Beamに『グループ会議』実験——立体テレプレゼンスの次の一手",
-        "1対1主体だったGoogle Beamがグループミーティングに対応する実験を開始。"
-    ),
-    "https://openai.com/index/model-disproves-discrete-geometry-conjecture": (
-        "OpenAIのモデルが離散幾何の中心予想を『反証』した",
-        "AIが既存予想を実際に反証するに至った——AIが数学の新発見に踏み込む象徴的事例。手法はモデルがアイデアを出し人間が検証する協働型。"
-    ),
-    "https://openai.com/index/ramp": (
-        "Ramp、Codexでコードレビューを加速",
-        "FinTechのRampでのCodex導入事例。コードレビュー効率化の実数値が公開された。"
-    ),
-    "https://openai.com/index/the-next-phase-of-education-for-countries": (
-        "OpenAI『Education for Countries』の次フェーズ",
-        "国家レベルでのOpenAI教育プログラム拡大。各国とのパートナーシップが本格化。"
-    ),
-    "https://openai.com/index/introducing-openai-for-singapore": (
-        "OpenAIがシンガポール向けプログラムを開始",
-        "シンガポール政府との戦略連携。アジア拠点戦略の中核。"
+    "We’re announcing new community investments in Missouri.": (
+        "Google、ミズーリ州にコミュニティ投資",
+        "GoogleがミズーリのAI/インフラ拠点周辺で、人材育成とエネルギー支援プログラムに投資。"
     ),
 }
 
 for it in d["sources"]["blogs"]:
-    if it["url"] in blog_map:
-        t, s = blog_map[it["url"]]
-        it["title_ja"] = t
-        it["summary_ja"] = s
+    t = it.get("title", "")
+    if t in blogs_map:
+        tj, sj = blogs_map[t]
+        it["title_ja"] = tj
+        it["summary_ja"] = sj
 
 # -------- Highlights --------
-def hn_item(id_):
-    return next(it for it in d["sources"]["hn"] if str(it["id"]) == str(id_))
-
-def reddit_item(id_):
-    return next(it for it in d["sources"]["reddit"] if str(it["id"]) == str(id_))
-
-def blog_item(url):
-    return next(it for it in d["sources"]["blogs"] if it["url"] == url)
-
-def arxiv_item(id_):
-    return next(it for it in d["sources"]["arxiv"] if it["id"] == id_)
-
-highlights = []
-
-# 1. OpenAI model disproves discrete geometry conjecture - biggest news of the day
-i = blog_item("https://openai.com/index/model-disproves-discrete-geometry-conjecture")
-highlights.append({
-    "source": "blog",
-    "title": i["title"],
-    "title_ja": "OpenAIモデルが離散幾何の『中心予想』を反証——AIが本物の数学的発見に踏み込む",
-    "url": i["url"],
-    "hot_take_ja": "OpenAIが、離散幾何学で長年信じられてきた中心予想をモデルが反証した、と公表した。『AIが既存予想を強化する』『AIが定理を再証明する』の段階を越え、『AIが反例を見つけて予想を倒す』段階に達したという意味で、過去のAlphaProofやAlphaGeometryから一歩進んだマイルストーンだ。研究者・モデル・形式検証ツールが組んだ協働型ワークフローで成立した点も重要で、これは『AI for Math』が学術界に定着するシナリオを後押しする。",
-    "detail_ja": "OpenAIは自社のフロンティアモデルが離散幾何学の長年の中心予想を反証した、と発表した。具体的には、モデルが手がかり・候補となる反例構成を生成し、研究者がそれを精査・形式化したうえで、コンピュータによる厳密検証を通すという協働パイプラインを取った。鍵となる進歩は2点。第一に『反証』であること——既知定理の再証明や定理化されているものの確認ではなく、信じられていた予想を倒すには、構造的に新しい反例を発見しなければならない。第二に、結果が形式検証で裏付けられていることで、AI数学の最大の弱点だった『もっともらしいが嘘の証明』を回避できている。技術的にはAlphaProof / AlphaGeometryの系譜だが、OpenAI側がこの種の発表に踏み込んだことは、学術コミュニティの受容度・査読フローへの影響として大きい。すぐ実応用に直結するわけではないが、(1)AIを研究プロセスにどう組み込むかの規範例ができたこと、(2)『AIは記憶しかしてない』言説への強い反論材料になること、(3)競争相手のDeepMind/Anthropicも同種の発表で応酬すると見られること、の3点で来年のAI for Science議論を方向づける一発になる。",
-    "detail_en": "OpenAI announced that one of its frontier models has disproved a long-standing central conjecture in discrete geometry. Importantly, the result was obtained through a human-AI collaboration: the model generated candidate counterexample constructions and reasoning, human researchers refined and formalized them, and the final disproof was verified by a formal proof checker. Two things make this a notable milestone. First, it is a disproof, not a re-derivation — overturning a long-believed conjecture requires finding genuinely new structure, which is much harder than confirming known results. Second, the chain ends in a formally checked artifact, which closes the biggest credibility gap in AI math (the 'plausible but wrong' problem). Technically the work is in the AlphaProof / AlphaGeometry lineage, but the fact that OpenAI is now publishing this kind of headline result matters for academic uptake. Even though the math itself is not directly applicable engineering, the broader implications are large: (1) it sets a norm for how AI is woven into the research process, (2) it is strong evidence against the 'LLMs just memorize' narrative, and (3) it will pressure DeepMind and Anthropic to make competing claims, shaping the 'AI for Science' conversation for the next year.",
-    "key_points_ja": [
-        "OpenAIモデルが離散幾何の中心予想を反証",
-        "AIが反例構成を生み、人間と形式検証ツールが確認",
-        "再証明ではなく『予想を倒した』のが質的進歩",
-        "形式検証で『もっともらしい嘘の証明』を回避",
-        "AI for Mathの学術受容に影響する象徴的事件"
-    ],
-    "key_points_en": [
-        "OpenAI model disproves a central conjecture in discrete geometry",
-        "Model generated counterexample constructions, humans + formal checker verified",
-        "Qualitative jump: disproving a conjecture, not re-deriving theorems",
-        "Formal verification closes the 'plausible but wrong' credibility gap",
-        "Pressures DeepMind/Anthropic to respond; reshapes AI for Science"
-    ]
-})
-
-# 2. CVE-2026-28952 - Claude found a macOS kernel vuln
-i = hn_item("48273169")
-highlights.append({
-    "source": "hn",
-    "title": i["title"],
-    "title_ja": "ClaudeがmacOS 26.5のカーネル脆弱性を発見——CVE-2026-28952としてApple公式公表",
-    "url": i["url"],
-    "hot_take_ja": "AppleがmacOS 26.5のセキュリティアップデートに、Claudeが発見したカーネル脆弱性CVE-2026-28952を正式にクレジット入りで掲載した。OSベンダがAIをCVEのfinderとして公式記載するのは依然珍しく、AIによる本格的なゼロデイ発見が研究実験から運用フローに昇格した瞬間だ。攻撃側の参入障壁が下がる一方、防御側も同じ武器を持つフェーズに入る。",
-    "detail_ja": "AppleのmacOS 26.5セキュリティリリースノートに、AIモデルClaudeを発見者としてクレジットしたカーネル脆弱性CVE-2026-28952が掲載された。ベンダの公式ページにAIが脆弱性発見者として記載されること自体は前例があるものの、Apple規模・カーネル領域・OS核心の脆弱性という3点が揃った事例は依然稀。実務的なインパクトは3つ。(1)AIによるバグ発見の運用化：脆弱性発見が研究プロジェクトからエンジニアリングの一部に降りてきた。(2)非対称性の変化：これまで攻撃側はファジング＋人間の経験で十分強かったが、AIによる仕様理解＋経路探索が組み合わさることで、防御側も同じ武器を持たないと劣勢になる。(3)責任の問題：『AIが発見した』脆弱性の責任・賞金・帰属について、業界の取り決めが追い付いていない。同日のAWS API Gateway認証迂回($12K bounty)とあわせ、『AIで攻撃発見』『AIで防御発見』が同じ週に並んだのは象徴的。SOCやベンダのレッドチーム運用は、AIを前提に組み直しが進む。",
-    "detail_en": "Apple's macOS 26.5 security release notes credit Anthropic's Claude with the discovery of a kernel-level vulnerability, CVE-2026-28952. While AI-credited CVEs are no longer unprecedented, the combination here is still rare: Apple-scale, kernel-domain, and an OS-core vulnerability. Three practical implications. (1) Operationalization: AI-driven bug discovery is moving from research projects into normal engineering pipelines. (2) Asymmetry shift: attackers have been strong with fuzzing plus human intuition for years, but AI's ability to internalize complex specs and reason about reachable paths means defenders now must use the same tools or fall behind. (3) Norms: attribution, bounties, and responsibility for 'AI-found' vulnerabilities are still ad hoc, and the industry will need to formalize them. Combined with the same-day $12K AWS API Gateway trailing-slash bypass, this week is a snapshot of AI being applied symmetrically to both attack-surface discovery and audit. SOC and red-team workflows will get redesigned around AI as a default assumption.",
-    "key_points_ja": [
-        "macOS 26.5にCVE-2026-28952をClaudeがfinderとして掲載",
-        "Apple規模＋カーネル領域での公式AIクレジットは依然レア",
-        "AIによる脆弱性発見が運用フローに昇格する分水嶺",
-        "攻撃・防御の非対称性が再定義される",
-        "同日のAWS API Gateway迂回と合わせ象徴的な一週間"
-    ],
-    "key_points_en": [
-        "Apple credits Claude as finder of kernel CVE-2026-28952 in macOS 26.5",
-        "Apple-scale, kernel-domain AI-credited CVE is still rare",
-        "Marks AI bug discovery moving from research to ops",
-        "Attack/defense asymmetry being redefined by AI capability",
-        "Paired with the $12K AWS API Gateway bypass — defining week"
-    ]
-})
-
-# 3. METR time horizons graph - methodological pushback
-i = reddit_item("1tnhnh5")
-highlights.append({
-    "source": "reddit",
-    "title": i["title"],
-    "title_ja": "AI能力進歩の『時間軸』予測グラフ(METR)に重大な統計誤り——AI予測ナラティブを揺さぶる批判",
-    "url": i["url"],
-    "hot_take_ja": "AI能力が指数的に伸びている根拠としてあちこちで引用されていたMETRの『時間軸（Time Horizons）』グラフに、複数の統計的誤りが指摘された。AGI到達時期や投資判断の前提に使われてきた図なので、影響は単なる学術論争に留まらない。データ・選定・回帰の前提が崩れると、AI進歩を線形外挿してきた言説そのものが再評価対象になる。",
-    "detail_ja": "METRが公開した『AI Time Horizons』グラフは、AIモデルが解ける『人間がかかる時間』を縦軸に置き、AI能力の指数的進歩を主張する図として広く引用されてきた。Reddit上で、データセレクション(ベンチタスクの偏り)、課題分布の対数変換と回帰の解釈、信頼区間の扱い、観察期間の打ち切り、などに重大な誤りがあると指摘する詳細な批判がまとめられた。実務的な影響は二段階。第一に、研究者コミュニティが頻繁に引用してきた図が揺らぐと、論文・スライド・投資家ピッチでの『AIは指数的に進歩している』という主張のエビデンス基盤が薄くなる。第二に、政策議論（AGIへの時間軸を前提にした規制提言）にも影響する。重要なのは、批判は『AIの進歩が止まった』と主張しているのではなく、『進歩の形と速度を線形外挿で語ること』に再現性のある測定基盤が欠けている、と指摘している点。今後はベンチマーク監査(同日に公開された『Automated Benchmark Auditing』論文の問題意識とも合致)とより厳密な能力評価が、定量予測の前提になる流れだ。",
-    "detail_en": "METR's widely cited 'AI Time Horizons' graph — which plots the time it would take a human to complete the hardest task an AI can do, used as evidence of exponential AI progress — has been challenged in a detailed Reddit post for multiple statistical errors. The critique covers benchmark selection bias, the interpretation of the log-transformed regression, treatment of confidence intervals, and time-window truncation. The implications come in two layers. First, the graph has been quoted heavily in research talks, investor pitches, and policy briefings as the canonical evidence that AI capability is improving exponentially; if its statistical foundations are shaky, that line of argument loses some weight. Second, policy debates that assume specific AGI timelines (e.g. multi-year regulatory roadmaps) lean on graphs like this. Crucially, the critique does not argue that AI progress has stopped — it argues that we lack reproducible measurement infrastructure to claim a particular curve shape. The same week's 'Automated Benchmark Auditing' arXiv paper, which found critical issues in 25.7% of frontier benchmarks, reinforces the same theme: claims about AI capability need more rigorous measurement before they support quantitative extrapolation.",
-    "key_points_ja": [
-        "METR『AI時間軸』グラフに統計的誤りを多数指摘",
-        "ベンチ選定・回帰・信頼区間の扱いに問題",
-        "『AIは指数的進歩』議論のエビデンス基盤が揺らぐ",
-        "AGI到達時期前提の政策・投資判断にも影響",
-        "同日の自動ベンチ監査論文(25.7%の問題発見)とも共鳴"
-    ],
-    "key_points_en": [
-        "Numerous statistical errors found in METR's AI Time Horizons graph",
-        "Issues span benchmark selection, regression, CIs, truncation",
-        "Weakens the canonical 'exponential AI progress' evidence",
-        "Affects AGI-timeline-based policy and investment narratives",
-        "Aligns with same-week ABA paper finding 25.7% broken benchmarks"
-    ]
-})
-
-# 4. Language Models Need Sleep - new mechanism
-i = arxiv_item("2605.26099v1")
-highlights.append({
-    "source": "arxiv",
-    "title": i["title"],
-    "title_ja": "『言語モデルにも睡眠が要る』——KVキャッシュを永続重みに固める新パラダイム",
-    "url": i.get("url", f"https://arxiv.org/abs/{i['id'].rstrip('v1234567890').rstrip('v')}"),
-    "hot_take_ja": "Transformerの長文処理は注意機構のコストで詰む。本論文は、推論を一旦止めて『睡眠』中に最近の文脈をSSMブロックの高速重みに圧縮し、KVキャッシュを捨てる、という生物学的に魅力的な発想を実装し動かしてみせた。回数を増やすほど性能が伸びる、というスケーリング挙動も観測され、長文エージェントの設計原理を変える可能性がある。",
-    "detail_ja": "Transformer型LLMは長期文脈タスクで、注意計算がコンテキスト長に対し劣スケールするせいで詰まる。本論文は『睡眠的固定化(sleep-like consolidation)』機構を提案する：定期的に推論を停止し、それまで蓄積した文脈をN回のオフラインの再帰パスでSSMブロック内のfast weightsに圧縮し、その後KVキャッシュをクリアする。学習済みのローカル更新則によりfast weightsが更新されるため、起きている間(=wake-time prediction)のレイテンシは保たれ、追加計算は睡眠フェーズに押し込まれる。検証はセルラーオートマトン・マルチホップグラフ検索などの合成課題と、実用的な数学推論タスクに実施。通常のTransformerやSSM-attentionハイブリッドが落ちるところで本手法は機能し、しかも『睡眠パスN回を増やすと性能が伸びる』というスケーリングが見られた。これは(a)エージェントの長期メモリ設計に新しい原理を与え、(b)『推論で重み更新せよ』というtest-time training/fast weight系研究と融合する。短期的にはプロダクション用途より研究方向の影響が大きいが、エージェントが長時間動き続ける時代に向けて『AIにも休息サイクルを設計する』という発想を業界に持ち込んだ点でインパクトがある。",
-    "detail_en": "Transformer-based LLMs struggle on long-horizon tasks because their attention mechanism scales poorly with context length. This paper proposes a 'sleep-like consolidation' mechanism: the model periodically pauses and, during sleep, performs N offline recurrent passes over recently accumulated context, updating fast weights inside SSM blocks via a learned local rule, then clears its key-value cache. Wake-time prediction latency is preserved while extra compute is pushed to the sleep phase. Evaluation covers controlled synthetic tasks (cellular automata, multi-hop graph retrieval) and a realistic math reasoning task on which both regular transformers and SSM-attention hybrids fail. The method works there, and crucially it shows a scaling property: increasing the number of sleep passes raises performance. The paper sits at the intersection of test-time training and fast-weight literatures and offers a new design principle for long-horizon agent memory. The short-term impact is more on research direction than production deployment, but framing 'AI needs rest cycles' explicitly is a memorable contribution that will likely seed more concrete agent architectures in the next year.",
-    "key_points_ja": [
-        "推論を止めKVキャッシュをSSMのfast weightに圧縮",
-        "睡眠フェーズで追加計算、wake時のレイテンシは維持",
-        "通常Transformerが落ちる長期文脈タスクで機能",
-        "『睡眠回数を増やす』ことでさらに性能が伸びる",
-        "長時間動くエージェントのメモリ設計を変える可能性"
-    ],
-    "key_points_en": [
-        "Pause inference and consolidate KV cache into SSM fast weights",
-        "Extra compute pushed to sleep, wake-time latency preserved",
-        "Works on long-horizon tasks where standard transformers fail",
-        "Performance scales with number of sleep passes",
-        "New design principle for long-running agent memory"
-    ]
-})
-
-# 5. Nemotron-Labs Diffusion LM - production-grade diffusion text
-i = blog_item("https://huggingface.co/blog/nvidia/nemotron-labs-diffusion")
-highlights.append({
-    "source": "blog",
-    "title": i["title"],
-    "title_ja": "NVIDIA Nemotron Diffusion LM——自己回帰を超える『光速テキスト生成』への本気の挑戦",
-    "url": i["url"],
-    "hot_take_ja": "NVIDIAが拡散言語モデルNemotron Diffusion LMを公開。自己回帰LLMの一文字ずつ出すボトルネックを並列生成で吹き飛ばす設計で、レイテンシ・スループットの常識を書き換えに来ている。今週はarXivの『Looped Diffusion LM』論文もあり、拡散LMが研究から本気のプロダクト戦線に出てきた週となった。",
-    "detail_ja": "NVIDIAがHugging Face上で公開したブログでNemotron-Labs Diffusion Language Modelsを発表した。中心メッセージは『拡散LMで光速テキスト生成に近づける』。自己回帰モデルは1トークンずつ逐次的に予測する仕組み上、レイテンシが文長に比例し、ストリーミングや高スループット推論で本質的に不利だった。拡散LMは『マスクされた全トークンを並列に予測し、反復的にrefineする』方式で、ハードウェアの並列性と相性が良い。Nemotronはこの設計でレイテンシとスループットの両方を従来比で大幅改善する、と主張する。意義は3つ。(1)NVIDIAが自社推論プラットフォーム最適化と拡散LMを統合してきた——GPU上の戦略的Show of Force。(2)同時期のarXiv『Looped Diffusion Language Models』が、層をループするだけで拡散LMがFLOPSベースで自己回帰モデルを超える性能を出せると報告しており、研究面でも追い風。(3)エージェント時代において『大量推論を低レイテンシで』の需要が爆発する中、拡散LMが本物の選択肢に上がってきた。OpenAI/Anthropic/Googleが軒並み自己回帰モデルで構築している現状に対し、NVIDIAは『推論経済学そのものを変える』軸で殴り込んできた格好だ。",
-    "detail_en": "NVIDIA published a Hugging Face blog announcing its Nemotron-Labs Diffusion Language Models, with the explicit framing of moving toward 'speed-of-light text generation'. Autoregressive LLMs predict one token at a time, so latency scales with sequence length and parallel hardware is underutilized. Diffusion language models instead refine all tokens in parallel through iterative denoising, mapping much more naturally onto GPU parallelism. NVIDIA claims significant gains in both latency and throughput versus autoregressive baselines on its hardware. Three points of significance. (1) NVIDIA is now actively co-designing inference platforms with diffusion LMs — a strategic GPU-side move. (2) The same-week arXiv 'Looped Diffusion Language Models' paper shows that simple architecture tricks let masked diffusion LMs match same-size autoregressive models with up to 3.3× fewer training FLOPs — research tailwind. (3) In an agent-heavy era where bulk inference at low latency is the binding constraint, diffusion LMs are now a credible alternative — not just a research curiosity. OpenAI, Anthropic, and Google have built their stacks on autoregressive models; NVIDIA's bet is to change the inference economics underneath them.",
-    "key_points_ja": [
-        "NVIDIAが拡散LM『Nemotron Diffusion』を発表",
-        "並列生成で自己回帰LMのレイテンシ壁を破壊",
-        "GPU並列性と相性がよく推論経済学を変える",
-        "同日のarXiv『Looped Diffusion LM』が研究面で追い風",
-        "エージェント時代の大量推論需要を狙う戦略"
-    ],
-    "key_points_en": [
-        "NVIDIA unveils Nemotron Diffusion Language Models",
-        "Parallel denoising breaks the autoregressive latency wall",
-        "Maps naturally onto GPU parallelism, shifts inference economics",
-        "Same-week arXiv 'Looped Diffusion LM' adds research tailwind",
-        "Targets the agent-era demand for bulk low-latency inference"
-    ]
-})
+highlights = [
+    {
+        "source": "hn",
+        "title": "I'm Tired of Talking to AI",
+        "title_ja": "『AIと喋るのに疲れた』——AI疲労がついにメインストリーム化",
+        "url": "https://orchidfiles.com/im-tired-of-ai-generated-answers/",
+        "hot_take_ja": "HN1位（1783pts）に上がってきたのは、AIに対する技術論ではなく『もうウンザリ』という感情エッセイだった。同日にはDuckDuckGoがGoogleのAI推し発言の翌週に訪問数28%増、テックCEOの『AI精神病』記事も上位入り。2026年5月のAI疲労がついに『データ点になった日』として記録されそうだ。",
+        "detail_ja": "Hacker News首位に来たのは新技術でも論文でもなく、AI生成回答に対するシンプルな疲労を綴ったエッセイだった。著者は、検索・サポート・SNS・職場のあらゆる場面でAIが要約・代弁・回答するようになり、自分が触れる文章のどこまでが人間の意図かわからなくなったと書く。重要なのは、これが孤立した感情ではなく、同じ日にHN上位に来た複数の記事と共鳴している点だ。DuckDuckGoは『Googleのユーザーは皆AIモードを愛している』発言の翌週に訪問数28%増を記録、TechCrunchは『テックCEOがAI精神病にかかっている』というルポを出し、Cory Doctorowは『AIバブルはドットコムバブルと違って残るものが少ない』と書いた。技術的には突発事件ではないが、消費者・市民の側に明確な逆方向の流れが見え始めたタイミングで、これからのプロダクト設計でも『AIを使っていない選択肢を残す』ことが競争優位になる兆しと読める。AI企業側もこの空気を読まないと、提供を増やすほど好感度が下がる『過剰提供』フェーズに入る恐れがある。",
+        "detail_en": "The #1 post on Hacker News today is not a new model or paper but a plain-spoken essay titled 'I'm Tired of Talking to AI' — about being exhausted by how every channel (search, support, social, work) now mediates language through an AI layer. What makes it significant is the company it kept on the front page: DuckDuckGo posted a 28% spike in visits the week after Google's executives claimed users 'love' AI mode; TechCrunch ran a piece on tech CEOs 'suffering from AI psychosis'; Cory Doctorow argued the AI bubble will leave less behind than the dot-com bubble did. Taken together, these are not isolated reactions but a coherent counter-current finally large enough to register as data. For product builders, the implication is that 'AI-free option' is becoming a feature, not an oversight. For AI companies, it is a warning that pushing more AI into every surface may now reduce, rather than increase, perceived value — the field has entered an overprovisioning phase. The market and the discourse are quietly diverging from the strategy of the labs.",
+        "key_points_ja": [
+            "HN1位はAI生成回答への『疲労』エッセイ（1783pts）",
+            "DuckDuckGoの訪問数がGoogleのAI推し発言後に28%増",
+            "TechCrunchが『テックCEOのAI精神病』を特集",
+            "ドクトロウ『AIバブルはドットコムより残るものが少ない』",
+            "『AIを使わない選択肢』が機能要件化する兆し",
+            "AI企業は『過剰提供フェーズ』に入ったリスク"
+        ],
+        "key_points_en": [
+            "HN's #1 today is an essay about being tired of AI (1783 pts)",
+            "DuckDuckGo visits jumped 28% after Google's AI-mode claim",
+            "TechCrunch piece on tech CEOs 'AI psychosis' goes viral",
+            "Doctorow: AI bubble will leave less than the dot-com one",
+            "'AI-free option' is becoming a product feature, not an oversight",
+            "AI labs may have entered an over-provisioning phase"
+        ],
+    },
+    {
+        "source": "hn",
+        "title": "Uber president says AI spending is getting 'harder to justify'",
+        "title_ja": "Uber社長『AI投資はもう正当化が難しい』——大手CxOからついに本音",
+        "url": "https://www.theverge.com/transportation/937116/uber-ai-investment-hard-to-justify",
+        "hot_take_ja": "Uber社長Andrew Macdonaldが『AI投資のROIを正当化するのが難しくなってきている』と公の場で発言した。大手のCxOからここまで明確な懐疑がメディアに乗るのは初めてに近く、ITBench-AAで『フロンティアモデルでも企業ITタスクは50%未満』と同日に出たことと合わせて読むと、エンタープライズAIのキャズム前夜らしい光景が見える。",
+        "detail_ja": "Uber社長Andrew MacdonaldがThe Vergeの取材で、AI投資はもはや自動的に正当化される領域ではなく、ROIをきちんと示すのが難しくなってきている、と語った。これまでも一部ヘッジファンドや独立アナリストはAI capex懐疑論を出していたが、世界規模のオペレーションを回す上場企業のCxOが、メディアにここまで直球で『coverを取りに来ている』のは大きい。同日、Artificial AnalysisとIBMが共同で出した『ITBench-AA』ベンチマークでは、最新フロンティアモデルでも企業IT実務タスクで50%を切るスコアしか取れず、エージェントAIの現場適用が想定よりも遅いことが裏付けられている。Cory Doctorowの『AIバブル分析』、若年層雇用の悪化記事、データセンタ課税といった逆風ストーリーも並んでおり、生成AIの初期ハイプサイクル後半に典型的な『パイロットの墓場』フェーズに入りつつある兆候だ。投資家・経営層には、規模より特化（同日の『Specialization Beats Scale』も参照）でROIを取りに行く戦略へのリ・ピボットが求められる。",
+        "detail_en": "Uber president Andrew Macdonald told The Verge that AI spending has become 'harder to justify' — a striking line because it does not come from a hedge-fund skeptic or an outside analyst, but from a sitting C-level executive at a global operating company. Public skepticism from a CxO of this scale is rare and consequential, because it signals to other large enterprises that visibly questioning AI ROI is no longer career-limiting. The statement landed the same day that Artificial Analysis and IBM released ITBench-AA, the first agentic benchmark for enterprise IT operations, on which frontier models score below 50%. Combined with Doctorow's bubble piece, articles on AI-driven hiring damage to young workers, and Lombardy's new data-center tax, the day reads like a classic late-stage hype-cycle moment — pilots failing to convert, the discourse pivoting from 'how fast' to 'is it worth it'. For procurement leaders the practical takeaway is the same as the 'Specialization Beats Scale' essay published the same day: pivot from buying the biggest frontier model to buying narrowly specialized models with a defensible ROI story. For AI vendors, the window in which 'AI' alone justified the line item is closing.",
+        "key_points_ja": [
+            "Uber社長Macdonald『AI支出はROI説明が難しくなった』",
+            "大手上場CxOがメディアにここまで明確な懐疑を出すのは異例",
+            "同日のITBench-AAでフロンティアでも企業IT実務50%未満",
+            "Doctorow『AIバブルは残るものが少ない』も同日上位",
+            "『スケールより特化』が調達側の新しい合言葉に",
+            "Enterprise AIは『パイロットの墓場』フェーズに入る兆し"
+        ],
+        "key_points_en": [
+            "Uber's president: AI spending is 'harder to justify'",
+            "Rare for a CxO at this scale to voice this skepticism publicly",
+            "Same day: ITBench-AA shows frontier models <50% on enterprise IT",
+            "Doctorow's 'AI bubble' piece also trends on HN",
+            "Procurement narrative shifting to 'specialization beats scale'",
+            "Signs that enterprise AI is entering its 'pilot graveyard' phase"
+        ],
+    },
+    {
+        "source": "blog",
+        "title": "ITBench-AA: Frontier Models Score Below 50% on the First Benchmark for Agentic Enterprise IT Tasks",
+        "title_ja": "ITBench-AA：エージェントAI×企業IT実務の初ベンチマークで、フロンティアモデルも50%未満",
+        "url": "https://huggingface.co/blog/ibm-research/itbench-aa",
+        "hot_take_ja": "Artificial AnalysisとIBMが、企業のIT運用（インシデント対応・SREタスク・ITSMフロー）でエージェントAIがどこまで現場仕事できるかを測る初のベンチマーク『ITBench-AA』を公開。最新フロンティア・モデルでも50%未満という結果は、コーディングベンチで90%超を叩き出している現状とのギャップが大きい。『コードは書けても運用は無理』が定量的に示された。",
+        "detail_ja": "Artificial AnalysisとIBM Researchが共同で発表したITBench-AAは、エージェントAIが実際の企業IT運用——インシデント対応・SREタスク・ITSMチケット処理など——をエンドツーエンドで遂行できるかを評価する、本格的な業界向けベンチマークだ。重要なのは、SWE-Bench系のコーディングベンチでフロンティアモデルが90%超まで来ているのに対し、ITBench-AAではすべての最新モデルが50%を切っているという結果である。ギャップの原因は、ITオペが①長時間の状態追跡、②複数システムを跨ぐtool use、③曖昧な人間の指示を企業ポリシーに沿って解釈、④失敗の代償が大きい意思決定、を同時に要求するからで、純粋な推論力やコード生成力だけでは足りない。これはAIエージェントの『汎用さ』を測るうえで意味のあるシグナルで、近未来に注目すべきは、モデル単体性能ではなく『エージェントハーネス・記憶・ガバナンス』を含めたシステム評価の方だ。Uber社長のROI懐疑発言や、同日OpenAIがGartner Magic Quadrantのリーダーに選ばれたこととも併せて読むと、買い手側がエージェントAIに払う対価を、コードベンチでなく実務ベンチで判断するフェーズに入ったと言える。",
+        "detail_en": "Artificial Analysis and IBM Research jointly released ITBench-AA, the first serious benchmark that measures whether agentic AI systems can perform real enterprise IT operations end-to-end — incident response, SRE tasks, ITSM ticket handling, and similar. The headline number is that every current frontier model scores below 50%, a striking contrast to coding benchmarks like SWE-Bench where leading models already exceed 90%. The reason for the gap is structural: enterprise IT work demands long-horizon state tracking, cross-system tool use, interpreting ambiguous human instructions against company policy, and decisions whose failure cost is high — none of which are well exercised by code-completion benchmarks. ITBench-AA matters because it shifts the conversation from raw model capability to total agent system quality (harness, memory, guardrails, escalation). Read alongside Uber's president questioning AI ROI and OpenAI being named a Gartner MQ leader in enterprise coding agents the same day, the throughline is clear: the buyer is starting to evaluate AI on operational benchmarks rather than coding ones, and the floor of capability there is still low enough to explain enterprise AI's revenue lag.",
+        "key_points_ja": [
+            "Artificial Analysis×IBMが企業ITオペ向けエージェント評価を公開",
+            "全フロンティアモデルがスコア50%未満",
+            "コードベンチでは90%超なのに業務オペは半分以下",
+            "状態追跡・cross-systemツール・ポリシー解釈が壁",
+            "評価軸は『モデル単体』から『ハーネス込みシステム』へ",
+            "Uber/Doctorow懐疑論と同日に出てきた象徴的データ"
+        ],
+        "key_points_en": [
+            "Artificial Analysis × IBM launch first benchmark for agentic enterprise IT",
+            "All frontier models score below 50%",
+            "Sharp gap vs coding benchmarks where the same models exceed 90%",
+            "Long-horizon state, cross-system tools, and policy interpretation are the wall",
+            "Eval focus shifts from model alone to full agent system (harness, memory)",
+            "Lands the same day as Uber's ROI skepticism — symbolic timing"
+        ],
+    },
+    {
+        "source": "reddit",
+        "title": "AI-generated CUDA kernels silently break training and inference",
+        "title_ja": "AI生成のCUDAカーネルが、学習も推論もサイレントに壊している",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1tpaw6x/aigenerated_cuda_kernels_silently_break_training/",
+        "hot_take_ja": "r/MachineLearningで、生成AIに書かせたCUDAカーネルが『動くけど数値が微妙にズレている』状態で学習・推論を静かに壊している、というレポートが拡散。動いてしまうことが問題、というAI生成コードの怖いパターン。GPUコードのレビュー文化が追いついていない時点で『AI生成インフラ』はバンドリングしないと地雷化する。",
+        "detail_ja": "r/MachineLearningで話題になった投稿。生成AIに頼んで書かせたCUDAカーネルが、コンパイルも通り、テンソルshapeも合うため一見『動いている』ように見えるのに、実は数値精度の境界条件・同期・atomic順序などで微妙にズレた振る舞いをし、結果として学習が静かに収束しない、推論結果が微妙に違う、という事例が複数報告されている。怖いのは、CIで掴むには差が小さすぎて検査が漏れること、そしてCUDA知識を持たないチームが『手書きで書くより速かった』と本番に乗せてしまうことだ。これはコード生成AIの限界ではなく、現代の現場で『AI生成コードのレビュー文化が追いついていない』というプロセス問題でもある。短期的な対処は、(1)GPUカーネルなど低レイヤは必ず数値同等性テスト＋カーネルプロファイルを通す、(2)生成AIが書ける範囲を制限する社内ポリシーを作る、(3)複数モデルにクロスチェックさせる、あたりに整理される。長期的には、GPUカーネルのような『間違えが静かに広がる領域』に対して、AIが書いたコードを既存のverifierに食わせる仕組みが必要になる。",
+        "detail_en": "A widely-shared r/MachineLearning thread describes a quietly dangerous pattern: CUDA kernels written by code-generating AIs that compile, accept the right tensor shapes, and superficially 'work' — but quietly produce subtly wrong numerics due to boundary conditions, synchronization, or atomic ordering mistakes. The result is silent failure: training that doesn't converge as expected, or inference outputs that drift in ways CI tests do not catch because the deltas are too small. This is more dangerous than the obvious bug. CUDA code looks plausible enough that teams without deep GPU expertise deploy it because 'the AI wrote it faster than we could'. The takeaway is less about model limitations and more about a process gap: organizational review culture has not yet caught up to AI-generated infrastructure code. Practical mitigations: (1) require numerical-parity tests and kernel profiling for any AI-generated low-level code, (2) restrict which categories of code generation are allowed in production, (3) cross-check generations across multiple models. Longer term, AI-generated kernels need to be fed into existing GPU verifiers and not trusted on plausibility alone.",
+        "key_points_ja": [
+            "生成AIが書いたCUDAカーネルが『動くが数値がズレる』",
+            "コンパイル・shape合致で素通り、CIでも掴みにくい",
+            "学習が静かに収束しない／推論結果が微妙に違う",
+            "GPU専門知識のないチームほどそのまま本番に",
+            "対処：数値同等性テスト・適用範囲ポリシー・モデル間クロスチェック",
+            "AI生成コードの『レビュー文化』整備が急務"
+        ],
+        "key_points_en": [
+            "AI-written CUDA kernels compile and 'work' but are numerically off",
+            "Shape matches and clean compiles let them pass CI undetected",
+            "Symptoms: silent non-convergence, drifting inference outputs",
+            "Teams without deep GPU knowledge ship them to production",
+            "Mitigations: parity tests, scope policies, multi-model cross-check",
+            "Bigger problem: review culture has not caught up to AI infra code"
+        ],
+    },
+    {
+        "source": "reddit",
+        "title": "Scoop: Trump appoints Bondi to White House AI panel",
+        "title_ja": "[Scoop] トランプ、Bondi司法長官をホワイトハウスAI諮問パネルに任命",
+        "url": "https://www.axios.com/2026/05/27/pam-bondi-white-house-ai",
+        "hot_take_ja": "Axiosのスクープ。司法長官Pam BondiがホワイトハウスのAI諮問パネルに加わった。これでパネルが『法執行寄り』に大きく傾く構図に。米国のAIガバナンスがイノベーション促進からエンフォースメント寄りに動くかは、来年のフロンティアモデル展開・オープン重みポリシー・移民エンジニア政策にまで波及しうる。",
+        "detail_ja": "Axiosがスクープしたところによれば、トランプ大統領は司法長官Pam BondiをホワイトハウスのAI諮問パネルに加えた。これは政策的に大きい人事だ。司法長官が常設のAIパネルに入ることで、米連邦のAI議論の重心が『国家安全保障×法執行』寄りにシフトする。具体的に影響を受けうるのは、(1)フロンティアモデルの輸出規制と公開条件、(2)ディープフェイク・選挙コンテンツに対する刑事責任の範囲、(3)海外AI企業の米国内事業に対する制裁・調査の運用、(4)オープン重み公開やオフショア開発（同日HN上位の『outsourcing+local AI』記事と直接ぶつかる論点）の取り扱い、(5)AI関連の移民・労働ビザ。OpenAIが同日に発表した『2026年選挙情報の安全装置』ポストや、TechCrunchの『テックCEOがAI精神病』記事と並べて読むと、ワシントンとサンフランシスコの距離が来年は急速に詰まる予感がする。AI企業側のアフェアーズ部隊にとっては、本日の人事は『過去のAIサミットでの良い空気』が前提でなくなる転換点として扱うべき動きだ。",
+        "detail_en": "Axios scooped that President Trump has added Attorney General Pam Bondi to the White House AI advisory panel. This is a meaningful appointment because it pulls the panel's center of gravity toward national security and law enforcement framing of AI rather than competitiveness or research framing. Concrete areas that may shift: (1) frontier-model export controls and publication conditions, (2) the criminal-liability perimeter around deepfakes and election content, (3) how investigations and sanctions against foreign AI companies operating in the US are run, (4) treatment of open-weight releases and offshore development — directly intersecting today's HN piece on 'outsourcing + local AI' — and (5) AI-related immigration and labor policy. Read together with OpenAI's same-day post on 2026 election safeguards and TechCrunch's piece on tech CEOs' 'AI psychosis', the signal is that Washington and the AI labs are converging — and not necessarily in friendly ways. For policy and government-affairs teams at AI companies, this appointment is the moment to stop assuming continuity with earlier, friendlier AI-summit dynamics and to plan for enforcement-led posture changes over the next year.",
+        "key_points_ja": [
+            "Bondi司法長官をホワイトハウスAIパネルに任命（Axiosスクープ）",
+            "AI政策の重心が『国安全保障×法執行』寄りにシフトの可能性",
+            "輸出規制・オープン重み公開・移民政策に直接波及しうる",
+            "ディープフェイクや選挙コンテンツの刑事責任が論点に",
+            "OpenAIの『2026選挙ポスト』と同日に出ている整合",
+            "AIラボのGov Affairsチームは前提条件の更新が必要"
+        ],
+        "key_points_en": [
+            "AG Pam Bondi joins White House AI advisory panel (Axios scoop)",
+            "Pulls US AI policy axis toward national security and law enforcement",
+            "Likely impact on export controls, open-weight releases, immigration",
+            "Criminal liability scope for deepfakes/election content in play",
+            "Lands the same day as OpenAI's 2026 election safeguards post",
+            "AI company GovAffairs should reset assumptions about DC posture"
+        ],
+    },
+]
 
 d["highlights"] = highlights
+
+# Stats
+stats = d.get("stats", {})
+stats["counts"] = {
+    "arxiv": len(d["sources"]["arxiv"]),
+    "hn": len(d["sources"]["hn"]),
+    "reddit": len(d["sources"]["reddit"]),
+    "github": len(d["sources"]["github"]),
+    "blogs": len(d["sources"]["blogs"]),
+}
+stats["highlights"] = len(highlights)
+d["stats"] = stats
 
 with open(OUT, "w") as f:
     json.dump(d, f, ensure_ascii=False, indent=2)
 
 print(f"Wrote {OUT}")
 print(f"Highlights: {len(highlights)}")
+for h in highlights:
+    print(f"  - [{h['source']}] {h['title_ja']}")
