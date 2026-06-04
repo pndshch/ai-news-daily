@@ -1,0 +1,484 @@
+{
+  "date": "2026-06-03",
+  "generated_at": "2026-06-03T20:10:26Z",
+  "sources": {
+    "arxiv": [],
+    "hn": [
+      {
+        "id": "48370330",
+        "title": "Please don't spam people looking for employment. It's just cruel",
+        "url": "https://news.ycombinator.com/item?id=48370330",
+        "points": 950,
+        "comments": 267,
+        "comments_url": "https://news.ycombinator.com/item?id=48370330",
+        "author": "IliaLitviak",
+        "created_at": "2026-06-02T13:56:46Z"
+      },
+      {
+        "id": "48368121",
+        "title": "Adafruit receives demand letter from Fenwick legal counsel on behalf of Flux.ai",
+        "url": "https://blog.adafruit.com/",
+        "points": 667,
+        "comments": 276,
+        "comments_url": "https://news.ycombinator.com/item?id=48368121",
+        "author": "semanser",
+        "created_at": "2026-06-02T10:00:56Z"
+      },
+      {
+        "id": "48371562",
+        "title": "1-Click GitHub Token Stealing via a VSCode Bug",
+        "url": "https://blog.ammaraskar.com/github-token-stealing/",
+        "points": 621,
+        "comments": 95,
+        "comments_url": "https://news.ycombinator.com/item?id=48371562",
+        "author": "ammar2",
+        "created_at": "2026-06-02T15:29:05Z"
+      },
+      {
+        "id": "48375824",
+        "title": "CT scans of BYD car parts",
+        "url": "https://www.lumafield.com/scan-of-the-month/byd",
+        "points": 468,
+        "comments": 346,
+        "comments_url": "https://news.ycombinator.com/item?id=48375824",
+        "author": "viasfo",
+        "created_at": "2026-06-02T20:30:08Z"
+      },
+      {
+        "id": "48377404",
+        "title": "Use your Nvidia GPU's VRAM as swap space on Linux",
+        "url": "https://github.com/c0dejedi/nbd-vram",
+        "points": 448,
+        "comments": 113,
+        "comments_url": "https://news.ycombinator.com/item?id=48377404",
+        "author": "tanelpoder",
+        "created_at": "2026-06-02T22:55:33Z"
+      },
+      {
+        "id": "48377761",
+        "title": "AI outperforms law professors in Stanford Law study",
+        "url": "https://law.stanford.edu/press/ai-outperforms-law-professors-in-stanford-law-study/",
+        "points": 384,
+        "comments": 341,
+        "comments_url": "https://news.ycombinator.com/item?id=48377761",
+        "author": "berlianta",
+        "created_at": "2026-06-02T23:43:12Z"
+      },
+      {
+        "id": "48383241",
+        "title": "32GB of DDR5 now costs $375 – AI shortage continues to squeeze PC building",
+        "url": "https://www.tomshardware.com/pc-components/ddr5/32gb-of-ddr5-now-costs-usd375-minimum-ai-shortage-continues-to-squeeze-pc-building",
+        "points": 325,
+        "comments": 298,
+        "comments_url": "https://news.ycombinator.com/item?id=48383241",
+        "author": "papersail",
+        "created_at": "2026-06-03T12:43:43Z"
+      },
+      {
+        "id": "48372628",
+        "title": "Trump signs downsized AI order after weeks of reversals",
+        "url": "https://www.politico.com/news/2026/06/02/trump-signs-downsized-ai-order-00946389",
+        "points": 226,
+        "comments": 169,
+        "comments_url": "https://news.ycombinator.com/item?id=48372628",
+        "author": "_alternator_",
+        "created_at": "2026-06-02T16:40:16Z"
+      },
+      {
+        "id": "48373054",
+        "title": "Three Ways to Get Paid (2018)",
+        "url": "https://jasonzweig.com/three-ways-to-get-paid/",
+        "points": 225,
+        "comments": 142,
+        "comments_url": "https://news.ycombinator.com/item?id=48373054",
+        "author": "nate",
+        "created_at": "2026-06-02T17:09:04Z"
+      },
+      {
+        "id": "48372853",
+        "title": "Coreutils for Windows",
+        "url": "https://github.com/microsoft/coreutils",
+        "points": 219,
+        "comments": 239,
+        "comments_url": "https://news.ycombinator.com/item?id=48372853",
+        "author": "gigel82",
+        "created_at": "2026-06-02T16:55:11Z"
+      },
+      {
+        "id": "48379203",
+        "title": "Agentic Mfw",
+        "url": "https://agenticmotherfucking.website",
+        "points": 203,
+        "comments": 63,
+        "comments_url": "https://news.ycombinator.com/item?id=48379203",
+        "author": "elmerland",
+        "created_at": "2026-06-03T02:32:48Z"
+      },
+      {
+        "id": "48383056",
+        "title": "Uber's $1,500/month AI limit is a useful signal for AI tool pricing",
+        "url": "https://simonwillison.net/2026/Jun/3/uber-caps-usage/",
+        "points": 177,
+        "comments": 228,
+        "comments_url": "https://news.ycombinator.com/item?id=48383056",
+        "author": "pdyc",
+        "created_at": "2026-06-03T12:25:14Z"
+      },
+      {
+        "id": "48369863",
+        "title": "Expanding Project Glasswing",
+        "url": "https://www.anthropic.com/news/expanding-project-glasswing",
+        "points": 176,
+        "comments": 244,
+        "comments_url": "https://news.ycombinator.com/item?id=48369863",
+        "author": "surprisetalk",
+        "created_at": "2026-06-02T13:15:14Z"
+      },
+      {
+        "id": "48368187",
+        "title": "Michael Burry says neither SpaceX nor Anthropic is worth $1T",
+        "url": "https://www.businessinsider.com/big-short-michael-burry-spacex-anthropic-ipo-ai-bubble-claude-2026-6",
+        "points": 132,
+        "comments": 153,
+        "comments_url": "https://news.ycombinator.com/item?id=48368187",
+        "author": "mgh2",
+        "created_at": "2026-06-02T10:09:21Z"
+      },
+      {
+        "id": "48379664",
+        "title": "U of T researchers demonstrate AI worm could target any online device",
+        "url": "https://www.utoronto.ca/news/u-t-researchers-demonstrate-ai-worm-could-target-any-online-device",
+        "points": 128,
+        "comments": 40,
+        "comments_url": "https://news.ycombinator.com/item?id=48379664",
+        "author": "shscs911",
+        "created_at": "2026-06-03T03:47:21Z"
+      },
+      {
+        "id": "48371592",
+        "title": "Americans don't know how to fight AI so they're fighting data centers",
+        "url": "https://www.vox.com/future-perfect/490350/data-center-moratoria-ai-backlash",
+        "points": 119,
+        "comments": 212,
+        "comments_url": "https://news.ycombinator.com/item?id=48371592",
+        "author": "stalfosknight",
+        "created_at": "2026-06-02T15:32:06Z"
+      },
+      {
+        "id": "48373764",
+        "title": "GitHub Copilot App",
+        "url": "https://github.com/features/preview/github-app",
+        "points": 117,
+        "comments": 75,
+        "comments_url": "https://news.ycombinator.com/item?id=48373764",
+        "author": "theanonymousone",
+        "created_at": "2026-06-02T17:58:55Z"
+      },
+      {
+        "id": "48382052",
+        "title": "Mathematicians issue warning as AI rapidly gains ground",
+        "url": "https://www.science.org/content/article/mathematicians-issue-warning-ai-rapidly-gains-ground",
+        "points": 100,
+        "comments": 137,
+        "comments_url": "https://news.ycombinator.com/item?id=48382052",
+        "author": "pseudolus",
+        "created_at": "2026-06-03T10:05:48Z"
+      },
+      {
+        "id": "48374079",
+        "title": "Microsoft announces Scout, an autonomous AI agent built on OpenClaw",
+        "url": "https://www.computerworld.com/article/4180103/microsoft-unveils-scout-an-autonomous-ai-agent-built-on-openclaw.html",
+        "points": 92,
+        "comments": 83,
+        "comments_url": "https://news.ycombinator.com/item?id=48374079",
+        "author": "EvanZhouDev",
+        "created_at": "2026-06-02T18:19:27Z"
+      },
+      {
+        "id": "48375673",
+        "title": "Now AI agents need what RSS does",
+        "url": "https://julienreszka.com/blog/rss-is-back-ai-agents-are-reading-it/",
+        "points": 83,
+        "comments": 62,
+        "comments_url": "https://news.ycombinator.com/item?id=48375673",
+        "author": "julienreszka",
+        "created_at": "2026-06-02T20:19:11Z"
+      }
+    ],
+    "reddit": [],
+    "github": [
+      {
+        "name": "headroom",
+        "full_name": "chopratejas/headroom",
+        "description": "Compress tool outputs, logs, files, and RAG chunks before they reach the LLM. 60-95% fewer tokens, same answers. Library, proxy, MCP server.",
+        "url": "https://github.com/chopratejas/headroom",
+        "language": "Python",
+        "stars": 9289,
+        "stars_today": 3528,
+        "forks": 614
+      },
+      {
+        "name": "ECC",
+        "full_name": "affaan-m/ECC",
+        "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+        "url": "https://github.com/affaan-m/ECC",
+        "language": "JavaScript",
+        "stars": 205481,
+        "stars_today": 2147,
+        "forks": 31534
+      },
+      {
+        "name": "hermes-agent",
+        "full_name": "NousResearch/hermes-agent",
+        "description": "The agent that grows with you",
+        "url": "https://github.com/NousResearch/hermes-agent",
+        "language": "Python",
+        "stars": 178860,
+        "stars_today": 1736,
+        "forks": 30642
+      },
+      {
+        "name": "hermes-webui",
+        "full_name": "nesquena/hermes-webui",
+        "description": "Hermes WebUI: The best way to use Hermes Agent from the web or from your phone!",
+        "url": "https://github.com/nesquena/hermes-webui",
+        "language": "Python",
+        "stars": 13038,
+        "stars_today": 734,
+        "forks": 1589
+      },
+      {
+        "name": "Open-LLM-VTuber",
+        "full_name": "Open-LLM-VTuber/Open-LLM-VTuber",
+        "description": "Talk to any LLM with hands-free voice interaction, voice interruption, and Live2D taking face running locally across platforms",
+        "url": "https://github.com/Open-LLM-VTuber/Open-LLM-VTuber",
+        "language": "Python",
+        "stars": 8874,
+        "stars_today": 702,
+        "forks": 1101
+      },
+      {
+        "name": "supermemory",
+        "full_name": "supermemoryai/supermemory",
+        "description": "Memory engine and app that is extremely fast, scalable. The Memory API for the AI era.",
+        "url": "https://github.com/supermemoryai/supermemory",
+        "language": "TypeScript",
+        "stars": 25098,
+        "stars_today": 601,
+        "forks": 2204
+      },
+      {
+        "name": "opendataloader-pdf",
+        "full_name": "opendataloader-project/opendataloader-pdf",
+        "description": "PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.",
+        "url": "https://github.com/opendataloader-project/opendataloader-pdf",
+        "language": "Java",
+        "stars": 23183,
+        "stars_today": 573,
+        "forks": 2175
+      },
+      {
+        "name": "Vibe-Trading",
+        "full_name": "HKUDS/Vibe-Trading",
+        "description": "\"Vibe-Trading: Your Personal Trading Agent\"",
+        "url": "https://github.com/HKUDS/Vibe-Trading",
+        "language": "Python",
+        "stars": 9804,
+        "stars_today": 221,
+        "forks": 1989
+      },
+      {
+        "name": "airllm",
+        "full_name": "lyogavin/airllm",
+        "description": "AirLLM 70B inference with single 4GB GPU",
+        "url": "https://github.com/lyogavin/airllm",
+        "language": "Jupyter Notebook",
+        "stars": 18794,
+        "stars_today": 208,
+        "forks": 2063
+      },
+      {
+        "name": "trivy",
+        "full_name": "aquasecurity/trivy",
+        "description": "Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more",
+        "url": "https://github.com/aquasecurity/trivy",
+        "language": "Go",
+        "stars": 35338,
+        "stars_today": 26,
+        "forks": 412
+      }
+    ],
+    "blogs": [
+      {
+        "title": "5 ways Google Search can level up your thrift and vintage shopping",
+        "url": "https://blog.google/products-and-platforms/products/search/thrifting-tips/",
+        "source": "Google DeepMind",
+        "summary": "A colorful, grain-textured collage of various items scattered across a light blue background. The items include a green bucket hat, a wooden clothes hanger, a blue-and-red striped collar, blue sunglasses, denim shorts, a yellow price tag, a red high-heele",
+        "published": "2026-06-03T13:00:00Z"
+      },
+      {
+        "title": "Direct Preference Optimization Beyond Chatbots",
+        "url": "https://huggingface.co/blog/Dharma-AI/direct-preference-optimization-beyond-chatbots",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-06-03T12:55:11Z"
+      },
+      {
+        "title": "OpenAI public policy agenda",
+        "url": "https://openai.com/index/public-policy-agenda",
+        "source": "OpenAI",
+        "summary": "OpenAI outlines its public policy agenda for AI, including safety, youth protection, workforce transition, and global standards to ensure AI benefits society.",
+        "published": "2026-06-03T10:00:00Z"
+      },
+      {
+        "title": "A blueprint for democratic governance of frontier AI",
+        "url": "https://openai.com/index/frontier-safety-blueprint",
+        "source": "OpenAI",
+        "summary": "OpenAI outlines a blueprint for U.S. governance of frontier AI, proposing a federal framework for safety, resilience, and national security.",
+        "published": "2026-06-03T10:00:00Z"
+      },
+      {
+        "title": "Adding MCP Tools to Reachy Mini",
+        "url": "https://huggingface.co/blog/adding-mcp-tools-to-reachy-mini",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-06-03T00:00:00Z"
+      },
+      {
+        "title": "Holo3.1: Fast & Local Computer Use Agents",
+        "url": "https://huggingface.co/blog/Hcompany/holo31",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-06-02T14:13:23Z"
+      },
+      {
+        "title": "Travelers deploys AI-powered claims countrywide with OpenAI",
+        "url": "https://openai.com/index/travelers",
+        "source": "OpenAI",
+        "summary": "Travelers built an AI-powered Claim Assistant with OpenAI to guide customers through filing claims, provide 24/7 support, and scale operations during peak demand.",
+        "published": "2026-06-02T12:00:00Z"
+      },
+      {
+        "title": "Codex for every role, tool, and workflow",
+        "url": "https://openai.com/index/codex-for-every-role-tool-workflow",
+        "source": "OpenAI",
+        "summary": "Discover new Codex plugins, sites, and annotations that help analysts, marketers, designers, investors, and other teams get more done with AI.",
+        "published": "2026-06-02T09:00:00Z"
+      },
+      {
+        "title": "Advancing youth safety and opportunity through global leadership",
+        "url": "https://openai.com/index/advancing-youth-safety-and-opportunity-through-global-leadership",
+        "source": "OpenAI",
+        "summary": "OpenAI calls for global action on youth AI safety, proposing an international institute to strengthen safeguards, standards, and opportunities for young people.",
+        "published": "2026-06-02T07:00:00Z"
+      },
+      {
+        "title": "Codex is becoming a productivity tool for everyone",
+        "url": "https://openai.com/index/codex-for-knowledge-work",
+        "source": "OpenAI",
+        "summary": "The Next Era of Knowledge Work report explores how Codex is transforming productivity through AI-powered research, data analysis, workflow automation, and content creation.",
+        "published": "2026-06-02T02:00:00Z"
+      },
+      {
+        "title": "Our views on AI policy and political advocacy",
+        "url": "https://openai.com/index/our-views-on-ai-policy-and-political-advocacy",
+        "source": "OpenAI",
+        "summary": "Our approach to AI policy and political advocacy, transparency, support for thoughtful regulation and AI safety, and that no outside political group speaks on the company’s behalf.",
+        "published": "2026-06-01T17:00:00Z"
+      },
+      {
+        "title": "How we used Gemini to build Google I/O 2026",
+        "url": "https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/",
+        "source": "Google DeepMind",
+        "summary": "A collage of I/O-related images, including the Antigravity Coffee Co. pop-up, a colorful jellyfish and a still from the Timmy TPU video. The word AI repeats three times on the left of the image, and there are colorful icons, including a sparkle, as well.",
+        "published": "2026-06-01T16:00:00Z"
+      },
+      {
+        "title": "Introducing Mellum2: A 12B Mixture-of-Experts Model by JetBrains",
+        "url": "https://huggingface.co/blog/JetBrains/mellum2-launch",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-06-01T15:45:17Z"
+      },
+      {
+        "title": "Beyond LLMs: Why Scalable Enterprise AI Adoption Depends on Agent Logic",
+        "url": "https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-06-01T13:51:18Z"
+      },
+      {
+        "title": "Building the infrastructure for the Intelligence Age in Michigan",
+        "url": "https://openai.com/index/stargate-michigan-data-center",
+        "source": "OpenAI",
+        "summary": "OpenAI breaks ground on a 1GW data center project in Michigan as part of Stargate, building AI infrastructure to expand access, create jobs, and support communities.",
+        "published": "2026-06-01T12:00:00Z"
+      },
+      {
+        "title": "OpenAI frontier models and Codex are now available on AWS",
+        "url": "https://openai.com/index/openai-frontier-models-and-codex-are-now-available-on-aws",
+        "source": "OpenAI",
+        "summary": "OpenAI frontier models and Codex are now generally available on AWS, giving enterprises a new path to build with OpenAI through the AWS environments, controls, and procurement workflows they already use. Customers can get started with OpenAI on AWS and move faster from evaluation to production.",
+        "published": "2026-06-01T10:00:00Z"
+      },
+      {
+        "title": "Welcome NVIDIA Cosmos 3: The First Open Omni-model for Physical AI Reasoning and Action",
+        "url": "https://huggingface.co/blog/nvidia/cosmos-3-for-physical-ai",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-06-01T04:44:55Z"
+      },
+      {
+        "title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio.",
+        "url": "https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/",
+        "source": "Google DeepMind",
+        "summary": "We used Google AI Studio to vibe code a quiz about our top I/O 2026 announcements.",
+        "published": "2026-05-29T19:00:00Z"
+      },
+      {
+        "title": "9 demos of Gemini Omni and Gemini 3.5 in action",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/",
+        "source": "Google DeepMind",
+        "summary": "Gemini Omni & Gemini 3.5 hero",
+        "published": "2026-05-29T17:30:00Z"
+      },
+      {
+        "title": "Boston Children’s uses AI to unlock new diagnoses",
+        "url": "https://openai.com/index/boston-childrens-hospital",
+        "source": "OpenAI",
+        "summary": "Boston Children’s Hospital uses OpenAI technology to improve patient care, reduce operational burden, and help diagnose more than 40 rare disease cases.",
+        "published": "2026-05-29T12:00:00Z"
+      },
+      {
+        "title": "Check out real-life AI prototypes from the Futures Lab.",
+        "url": "https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/",
+        "source": "Google DeepMind",
+        "summary": "University of Waterloo students develop AI prototypes like sign language tutors to reshape the future of education and work.",
+        "published": "2026-05-29T12:00:00Z"
+      },
+      {
+        "title": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
+        "url": "https://huggingface.co/blog/torch-profiler",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-05-29T00:00:00Z"
+      },
+      {
+        "title": "Catch up on 12 major I/O 2026 moments",
+        "url": "https://blog.google/innovation-and-ai/technology/ai/io-2026-keynote-moment-videos/",
+        "source": "Google DeepMind",
+        "summary": "The colorful I/O logo against a black background, surrounded by stills from the I/O keynote",
+        "published": "2026-05-28T15:00:00Z"
+      }
+    ]
+  },
+  "highlights": [],
+  "stats": {
+    "arxiv_count": 0,
+    "hn_count": 20,
+    "reddit_count": 0,
+    "github_count": 10,
+    "blogs_count": 23,
+    "total": 53
+  }
+}
