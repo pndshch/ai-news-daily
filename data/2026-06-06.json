@@ -1,0 +1,1787 @@
+{
+ "date": "2026-06-06",
+ "generated_at": "2026-06-06T20:09:05Z",
+ "sources": {
+  "arxiv": [
+   {
+    "id": "2606.06494v1",
+    "title": "TailLoR: Protecting Principal Components in Parameter-Efficient Continual Learning",
+    "authors": [
+     "Marius Dragoi",
+     "Ioana Pintilie",
+     "Alexandra Dragomir",
+     "Antonio Barbalau",
+     "Florin Brad"
+    ],
+    "abstract": "Parameter-efficient finetuning methods based on spectral decomposition have enabled progress in Continual Learning. In this paper we introduce TailLoR, which utilizes the singular bases U and V of the pre-trained weights as a fixed reference frame to learn a low-rank update applied to the singular value matrix. A soft spectral penalty discourages updates aligned with dominant singular directions, reducing interference while routing fine-grained adaptation into the highly flexible, long-tail spectral coordinates.",
+    "categories": [
+     "cs.LG"
+    ],
+    "url": "https://arxiv.org/abs/2606.06494v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06494v1",
+    "published": "2026-06-04T17:59:55Z",
+    "title_ja": "TailLoR: 継続学習で主成分を保護するパラメータ効率的手法",
+    "summary_ja": "LoRA微調整時に重要な主成分(過去知識)を守りつつ新タスクを学ぶ継続学習法。破滅的忘却を抑えながら効率的に適応する。"
+   },
+   {
+    "id": "2606.06493v1",
+    "title": "HANDOFF: Humanoid Agentic Task-Space Whole-Body Control via Distilled Complementary Teachers",
+    "authors": [
+     "Lizhi Yang",
+     "Junheng Li",
+     "Nehar Poddar",
+     "Yiling Hou",
+     "Gio Huh",
+     "Robert Griffin",
+     "Georgia Gkioxari",
+     "Aaron Ames"
+    ],
+    "abstract": "For a humanoid robot to be deployed in the real world, the choice of command space (i.e., the interface between task planning and whole-body control) is crucial. Existing whole-body controllers typically demand dense kinematic or spatial references that planners struggle to synthesize from task semantics. We instead propose a compact, explicit interface that is intuitive, general, modular, and expressive enough for diverse manipulation skills. To this end, we introduce HANDOFF, a single humanoid whole-body controller that follows this interface and is distilled via multi-teacher KL distillation under a context-conditioned gating scheme into a mixture-of-experts student from three complementary specialists: whole-body motion tracking with safety-filtered data, locomotion, and fall-recovery. On the Unitree G1, HANDOFF matches state-of-the-art velocity tracking and offers one of the largest robust manipulation workspaces. We further demonstrate hardware feasibility through multiple natural-language-driven task roll-outs, powered by a VLM-driven agentic planner with no task-specific data or controller fine-tuning.",
+    "categories": [
+     "cs.RO",
+     "cs.AI",
+     "cs.LG"
+    ],
+    "url": "https://arxiv.org/abs/2606.06493v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06493v1",
+    "published": "2026-06-04T17:59:50Z",
+    "title_ja": "HANDOFF: 蒸留した相補的教師でヒューマノイド全身制御",
+    "summary_ja": "複数の専門教師方策を1つの生徒に蒸留し、ヒューマノイドの全身協調タスクをエージェント的に解く制御フレームワーク。"
+   },
+   {
+    "id": "2606.06492v1",
+    "title": "Code2LoRA: Hypernetwork-Generated Adapters for Code Language Models under Software Evolution",
+    "authors": [
+     "Liliana Hotsko",
+     "Yinxi Li",
+     "Yuntian Deng",
+     "Pengyu Nie"
+    ],
+    "abstract": "Code language models need repository-level context to resolve imports, APIs, and project conventions. Existing methods inject this knowledge as long inputs (retrieved through RAG or dependency analysis) or through per-repository fine-tuning and LoRA -- costly at repository scale and brittle to evolving codebases. We introduce Code2LoRA, a hypernetwork framework that generates repository-specific LoRA adapters, effectively injecting repository knowledge with zero inference-time token overhead. Code2LoRA supports two usage scenarios: Code2LoRA-Static converts a single repository snapshot into an adapter, suitable for comprehension of stable codebases; while Code2LoRA-Evo maintains an adapter backed by a GRU hidden state updated per code diff, suitable for active development of evolving codebases. To evaluate Code2LoRA against parameter-efficient fine-tuning baselines, we build RepoPeftBench, a benchmark of 604 Python repositories with two tracks: a static track with 40K training and 12K test assertion-completion tasks, and an evolution track with 215K commit-derived training and 87K commit-derived test tasks. On the static track, Code2LoRA-Static achieves 63.8% cross-repo and 66.2% in-repo exact match, matching the per-repository LoRA upper bound; on the evolution track, Code2LoRA-Evo achieves 60.3% cross-repo exact match (+5.2 pp over a single shared LoRA). Code2LoRA's code can be found at https://anonymous.4open.science/r/code2lora-6857; the model checkpoints and RepoPeftBench datasets can be found at https://huggingface.co/code2lora.",
+    "categories": [
+     "cs.SE",
+     "cs.AI",
+     "cs.CL"
+    ],
+    "url": "https://arxiv.org/abs/2606.06492v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06492v1",
+    "published": "2026-06-04T17:59:46Z",
+    "title_ja": "Code2LoRA: ソフト進化に対応するコードLLM向けハイパーネット生成アダプタ",
+    "summary_ja": "コードベースの変化に応じてLoRAアダプタをハイパーネットワークで動的生成し、再学習なしにコードLLMを最新の仕様へ追従させる。"
+   },
+   {
+    "id": "2606.06491v1",
+    "title": "TempoVLA: Learning Speed-Controllable Vision-Language-Action Policies",
+    "authors": [
+     "Dong Jing",
+     "Jingchen Nie",
+     "Tianqi Zhang",
+     "Jiaqi Liu",
+     "Huaxiu Yao",
+     "Zhiwu Lu",
+     "Mingyu Ding"
+    ],
+    "abstract": "Robot manipulation alternates between low-risk transit phases that call for fast execution and high-risk contact stages that demand slow, precise motion. Yet existing Vision-Language-Action models (VLAs) only inherit a single fixed speed from training demonstrations. Prior efforts to accelerate VLAs through model compression, KV-cache reuse, or reinforcement learning only shift the policy from one fixed speed to another, and leave deceleration almost unexplored. We observe that the magnitude of each predicted action already governs how fast the robot moves, opening a direct route to controllable execution speed. We turn this observation into TempoVLA, a single VLA whose execution speed is controlled by an explicit condition. TempoVLA combines two coupled components. (1) A data-side Variable-Speed Trajectory Augmentation (VSTA) that re-times demonstration to any target speed by merging or splitting actions while preserving its motion semantics. (2) A model-side conditioning mechanism that feeds the speed to the policy. Statistics show that VSTA reaches the requested speed with negligible motion error. Experiments in simulation and on real-world tasks demonstrate that TempoVLA achieves flexible speed control in both directions, while VSTA additionally boosts the default $1\\times$ performance via better data utilization. Furthermore, by cooperating with a large multimodal model, TempoVLA realizes dynamic speed control, accelerating through low-risk phases and decelerating for high-risk ones.",
+    "categories": [
+     "cs.RO",
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06491v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06491v1",
+    "published": "2026-06-04T17:59:40Z",
+    "title_ja": "TempoVLA: 速度を制御できるVision-Language-Action方策",
+    "summary_ja": "ロボット動作の実行速度を言語指示で調整できるVLA方策。同じタスクを速く/遅く実行する制御性を学習で獲得する。"
+   },
+   {
+    "id": "2606.06486v1",
+    "title": "Regret Minimization with Adaptive Opponents in Repeated Games",
+    "authors": [
+     "Mingyang Liu",
+     "Asuman Ozdaglar",
+     "Tiancheng Yu",
+     "Kaiqing Zhang"
+    ],
+    "abstract": "In this paper, we study regret minimization in repeated games with \\emph{adaptive} opponents who can respond based on histories of play. The standard metric of \\emph{external regret} in online learning is known to fail to capture such adaptivity. To account for players' counterfactual reasoning, we introduce {\\tt Repeated Policy Regret (RP-Regret)}, a game-theoretic metric that measures the difference between the \\emph{realized} and the \\emph{best-in-hindsight} accumulated utility when all players can \\emph{respond} to the history of play. Compared to existing regret notions in this setting, ours is native to repeated game playing, enabling stronger comparators and opponents with fewer constraints, while maintaining the possibility of finding better equilibria when all players minimize it. We first identify necessary conditions for obtaining {\\tt RP-Regret} sublinear in time, on the variation of the player's comparator strategies in the regret definition and on the memories of both the comparator and opponents' strategies. We then study additional conditions and provable algorithms to minimize {\\tt RP-Regret}, which is by definition \\emph{non-convex} in the strategy space. To address this challenge, we propose three algorithms: (i) one based on an optimization oracle, as assumed in some prior work in online non-convex learning; (ii) one that minimizes a convex and \\emph{linearized} surrogate of {\\tt RP-Regret} at each iteration; (iii) one that directly minimizes {\\tt RP-Regret} when opponents change strategies slowly. Furthermore, when all players can run algorithms to minimize the {\\tt RP-Regret} (or its linearized variant), certain subgame perfect equilibria of the repeated game can be learned. We also provide experiments showing that minimizing our regret notions can lead to more cooperative solutions with higher utility in games such as Stag-Hunt.",
+    "categories": [
+     "cs.LG",
+     "cs.AI",
+     "cs.GT"
+    ],
+    "url": "https://arxiv.org/abs/2606.06486v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06486v1",
+    "published": "2026-06-04T17:59:08Z",
+    "title_ja": "適応的な相手に対する繰り返しゲームでのリグレット最小化",
+    "summary_ja": "対戦相手が学習・適応してくる繰り返しゲームで、後悔(リグレット)を抑える新しいアルゴリズムを理論的に提案。"
+   },
+   {
+    "id": "2606.06485v1",
+    "title": "PAR3D: A Unified 3D-MLLM with Part-Aware Representation for Scene Understanding",
+    "authors": [
+     "Shaohui Dai",
+     "Yansong Qu",
+     "You Shen",
+     "Shengchuan Zhang",
+     "Liujuan Cao"
+    ],
+    "abstract": "Recent advances in 3D multimodal large language models (3D-MLLMs) have enabled unified solutions for 3D scene understanding tasks, including visual question answering, captioning, and referring segmentation. However, existing 3D-MLLMs remain largely object-centric, limiting their ability to model fine-grained part structures that are essential for embodied interaction with 3D environments. In this work, we present PAR3D, a unified part-aware 3D-MLLM framework that enables models to understand, reason about, and ground both objects and their parts in 3D scenes. To enable training and evaluation of part-aware 3D scene understanding, we introduce ScenePart, a synthetic 3D scene dataset with part-level annotations and language instructions. We further develop Part-Aware 3D Representation Learning to enrich 3D visual representations with fine-grained part-level semantics, and propose Hierarchical Segmentation Query Generation to ground part targets via hierarchical object-part queries. Extensive experiments show that our method substantially improves part-level question answering and referring segmentation, while also achieving strong performance across object-level vision-language tasks.",
+    "categories": [
+     "cs.CV"
+    ],
+    "url": "https://arxiv.org/abs/2606.06485v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06485v1",
+    "published": "2026-06-04T17:59:04Z",
+    "title_ja": "PAR3D: 部位認識表現を持つ統一3D-MLLM",
+    "summary_ja": "シーン理解のため、物体を部位レベルで認識する表現を組み込んだ統一的な3Dマルチモーダル大規模言語モデル。"
+   },
+   {
+    "id": "2606.06481v1",
+    "title": "Operation-Guided Progressive Human-to-AI Text Transformation Benchmark for Multi-Granularity AI-Text Detection",
+    "authors": [
+     "Sondos Mahmoud Bsharat",
+     "Jiacheng Liu",
+     "Xiaohan Zhao",
+     "Tianjun Yao",
+     "Xinyi Shang",
+     "Yi Tang",
+     "Jiacheng Cui",
+     "Ahmed Elhagry",
+     "Salwa K. Al Khatib",
+     "Hao Li",
+     "Salman Khan",
+     "Zhiqiang Shen"
+    ],
+    "abstract": "As AI writing assistants become increasingly integrated into real-world drafting and revision workflows, many documents are no longer purely human-written or AI-generated, but instead result from progressive human-AI co-editing. However, existing AI-text detection benchmarks largely focus on final outputs and provide limited understanding of how AI authorship signals emerge, accumulate, or disappear throughout the revision process. We introduce OpAI-Bench, an operation-guided benchmark for studying progressive human-to-AI text transformation across document, sentence, token, and span granularities. Starting from human-written documents, OpAI-Bench constructs nine sequentially revised versions for each sample under predefined AI coverage levels and five representative AI edit operations, covering four domains while preserving complete authorship provenance at multiple granularities. The benchmark supports comprehensive evaluation with 8 document-level detectors, 7 sentence-level detectors, and 2 fine-grained token/span-level detectors. Experiments reveal that AI-text detectability is governed not only by the proportion of AI-edited content, but also by edit operation, domain, and cumulative revision history. Interestingly, we notice that mixed-authorship intermediate versions are often harder to detect than both fully human and heavily AI-edited endpoints, exposing non-monotonic detection patterns missed by existing benchmarks. OpAI-Bench provides a controlled testbed for analyzing whether, when, and how AI-assisted writing becomes detectable under realistic progressive editing scenarios. Our code and benchmark are available at https://github.com/VILA-Lab/OpAI-Bench.",
+    "categories": [
+     "cs.CL",
+     "cs.AI",
+     "cs.LG"
+    ],
+    "url": "https://arxiv.org/abs/2606.06481v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06481v1",
+    "published": "2026-06-04T17:58:05Z",
+    "title_ja": "操作誘導の段階的Human-to-AIテキスト変換ベンチマーク",
+    "summary_ja": "人間が書いた文章をAI的に書き換える過程を多粒度で評価するベンチマーク。AI生成テキスト検出研究の基盤となる。"
+   },
+   {
+    "id": "2606.06480v1",
+    "title": "DNQ: Deep Nash Q-Network for Partially Observable n-Player Games",
+    "authors": [
+     "Qintong Xie",
+     "Edward Koh",
+     "Xavier Cadet",
+     "Peter Chin"
+    ],
+    "abstract": "Many real-world competitive systems require multiple decision-makers to act simultaneously under shared constraints, limited information, and repeated interaction, as in auctions, resource allocation, and security competition. We study multi-turn simultaneous bidding as a controlled testbed for such problems and propose DNQ, a solver-in-the-loop equilibrium supervision framework for training bidding agents. DNQ alternates between trajectory collection, critic-based payoff estimation, equilibrium computation, and policy imitation. At each visited state, a shared critic predicts either pairwise payoff matrices or an exact N-player payoff tensor, an external solver computes equilibrium strategies, and the agents are trained by minimizing the KL divergence between their masked policies and the solver-derived equilibrium targets. We focus on a scalable pairwise formulation that greatly reduces equilibrium-solving cost and training time compared with the exact formulation, while the shared critic amortizes payoff learning across agents and states. Experiments compare the pairwise and exact variants using critic loss, policy entropy, bidding resource usage, and training cost, showing that the pairwise method scales to larger numbers of agents, whereas the exact method becomes computationally impractical as the joint game grows. These results illustrate the trade-off between strategic fidelity and scalability in repeated competitive environments.",
+    "categories": [
+     "cs.GT",
+     "cs.LG"
+    ],
+    "url": "https://arxiv.org/abs/2606.06480v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06480v1",
+    "published": "2026-06-04T17:58:01Z",
+    "title_ja": "DNQ: 部分観測のnプレイヤーゲーム向けDeep Nash Q-Network",
+    "summary_ja": "観測が限られた多人数ゲームでナッシュ均衡を学習するQ学習手法。複雑な戦略ゲームへの強化学習適用を広げる。"
+   },
+   {
+    "id": "2606.06479v1",
+    "title": "Pretraining Recurrent Networks without Recurrence",
+    "authors": [
+     "Akarsh Kumar",
+     "Phillip Isola"
+    ],
+    "abstract": "Training recurrent neural networks (RNNs) requires assigning credit across long sequences of computations. Standard backpropagation through time (BPTT) addresses this problem poorly: it is sequential in time, limiting parallelism, and suffers from vanishing or exploding gradients, making long-range associations difficult to learn. We propose Supervised Memory Training (SMT), a method for training nonlinear RNNs that sidesteps recurrent credit propagation entirely by reducing RNN training to supervised learning on one-step memory transition labels $(m_t, x_{t+1}) \\rightarrow m_{t+1}$. SMT acquires these memory labels by training a Transformer-based encoder on a predictive state objective--retaining only information from the past necessary to predict the future. By decoupling what to remember from how to update memory, SMT enables time-parallel RNN training with a stable $O(1)$ length gradient path between any two tokens--without ever unrolling the RNN. We find that SMT outperforms BPTT when pretraining various RNN architectures on tasks like language modeling and pixel sequence modeling. SMT enables nonlinear RNNs to better capture long-range dependencies and train in parallel, potentially unlocking the scaling of models that build temporal abstractions of past experience.",
+    "categories": [
+     "cs.LG",
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06479v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06479v1",
+    "published": "2026-06-04T17:57:33Z",
+    "title_ja": "再帰なしで再帰型ネットワークを事前学習する",
+    "summary_ja": "RNNの学習を、時間方向に逐次なBPTTではなく「教師ありメモリ訓練(SMT)」で並列化。勾配消失を避け長距離依存を学べると主張。"
+   },
+   {
+    "id": "2606.06477v1",
+    "title": "Complexity-Balanced Diffusion Splitting",
+    "authors": [
+     "Noam Issachar",
+     "Dani Lischinski",
+     "Raanan Fattal"
+    ],
+    "abstract": "Standard continuous-time generative models rely on monolithic architectures that must navigate vastly different signal regimes, from isotropic noise to intricate data distributions. While scaling model capacity improves performance, deploying a massive network uniformly across the entire generative timeline is inherently inefficient. In this work, we propose Complexity-Balanced Splitting (CBS), a principled framework for temporal capacity allocation that distributes the generative workload across multiple specialized sub-networks. Grounded in function approximation theory and de Boor's equidistribution principle, CBS partitions the diffusion timeline into segments of equal approximation burden, allocating more representational capacity to regions where the generative dynamics are more difficult to model. To estimate this local complexity, we introduce two complementary and tractable monitor functions: a spatial measure based on the flow's Dirichlet energy, and a geometric measure based on the acceleration of the sampling trajectories. Using a lightweight auxiliary model to estimate these complexity profiles, our approach eliminates the need for heuristic temporal splits or computationally expensive search procedures. Extensive evaluation across multiple architectures (SiT, JiT, and UNet) and datasets demonstrates that CBS consistently improves synthesis quality without increasing per-step inference cost. In particular, CBS improves FID by ~35% on SiT-XL with CFG relative to naive temporal partitioning. Project page is available at https://noamissachar.github.io/CBS/.",
+    "categories": [
+     "cs.CV"
+    ],
+    "url": "https://arxiv.org/abs/2606.06477v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06477v1",
+    "published": "2026-06-04T17:57:15Z",
+    "title_ja": "複雑度バランス型の拡散スプリッティング",
+    "summary_ja": "拡散モデルのサンプリングを計算複雑度の観点で均衡化し、生成品質と速度のトレードオフを改善する手法。"
+   },
+   {
+    "id": "2606.06476v1",
+    "title": "Thinking with Imagination: Agentic Visual Spatial Reasoning with World Simulators",
+    "authors": [
+     "Chenming Zhu",
+     "Jingli Lin",
+     "Yilin Long",
+     "Peizhou Cao",
+     "Tai Wang",
+     "Jiangmiao Pang",
+     "Xihui Liu"
+    ],
+    "abstract": "While Vision-Language Models (VLMs) have shown strong visual reasoning capabilities, their spatial reasoning abilities remain largely constrained to the observed images and text-oriented chain-of-thought. They often struggle to infer unobserved layouts, maintain cross-view consistency, and reason from alternative viewpoints when only limited egocentric observations are available. In this work, we study this problem as thinking with imagination, where a VLM actively acquires imagined visual evidence by interacting with a world simulator during reasoning. We propose Astra, an agentic spatial reasoning framework that empowers VLMs with action-conditioned visual imagination. Specifically, Astra couples Astra-VL, an RL-trained VLM policy, with Astra-WM, a Bagel-based world simulator that generates novel-view observations from context images and natural-language camera motions. To provide reliable imagined evidence, Astra-WM is trained with view consistency tuning to improve pose and content consistency across views. In the RL stage, we propose a world-simulator-in-the-loop two-phase RL curriculum to stabilize tool-use exploration and advance the model's ability to invoke the simulator only when imagined observations improve over direct answering. Experiments demonstrate that both the world simulator and the agentic policy are necessary: Astra-WM improves simulator-augmented Gemini-3-Flash on MMSI-Bench from 45.1 to 49.5, while Astra-VL improves the Qwen3-VL backbone from 29.8 to 38.8 on MMSI-Bench and from 36.8 to 42.7 on MindCube. These results show that imagined observations can provide useful spatial evidence, but effective world-model-augmented reasoning requires learning when, where, and how to imagine.",
+    "categories": [
+     "cs.CV"
+    ],
+    "url": "https://arxiv.org/abs/2606.06476v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06476v1",
+    "published": "2026-06-04T17:56:36Z",
+    "title_ja": "想像して考える: ワールドシミュレータによる空間推論エージェント",
+    "summary_ja": "VLMが観測外のレイアウトを推論できるよう、ワールドシミュレータで未観測の視点を「想像」させ空間推論を強化する。"
+   },
+   {
+    "id": "2606.06475v1",
+    "title": "RREDCoT: Segment-Level Reward Redistribution for Reasoning Models",
+    "authors": [
+     "Mykyta Ielanskyi",
+     "Kajetan Schweighofer",
+     "Lukas Aichberger",
+     "Sepp Hochreiter"
+    ],
+    "abstract": "Recent advancements in reasoning language models have been driven by Reinforcement Learning (RL) fine-tuning. Most often, these rely on the Group Relative Policy Optimization (GRPO) algorithm or modifications thereof to steer the models to produce Chain-of-Thought (CoT) traces. The final answer can only be verified, and the reward assigned, after the CoT trace is complete, making it a delayed reward problem. GRPO and its modifications correspond to Monte Carlo methods in standard RL, which are known to suffer from high variance. A possible solution to this problem is the redistribution of rewards through credit assignment, where segments of the CoT trace that are important for arriving at the desirable solution are emphasized by assigning a higher reward. While Monte Carlo sampling can be used to provide an unbiased estimate of intermediate state values, its computational overhead makes it unsuitable for train-time credit assignment in long contexts at high granularity. We introduce RREDCoT (Reward REDistribution for Chain of Thoughts), which utilizes the model itself to approximate the optimal reward redistribution without additional generation. We investigate the advantages of our method compared to MC sampling and several attribution methods. We further analyze several aspects relevant to the construction of the redistribution such as segmentation of CoT traces and state value estimation.",
+    "categories": [
+     "cs.LG",
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06475v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06475v1",
+    "published": "2026-06-04T17:56:31Z",
+    "title_ja": "RREDCoT: 推論モデル向けセグメント単位の報酬再配分",
+    "summary_ja": "推論の連鎖(CoT)をセグメント単位に分け、各段階に報酬を再配分することで推論モデルの学習を安定・効率化する。"
+   },
+   {
+    "id": "2606.06474v1",
+    "title": "Self-Augmenting Retrieval for Diffusion Language Models",
+    "authors": [
+     "Paul Jünger",
+     "Justin Lovelace",
+     "Linxi Zhao",
+     "Dongyoung Go",
+     "Kilian Q. Weinberger"
+    ],
+    "abstract": "Discrete diffusion language models generate text by iteratively denoising an entire response in parallel. At each step, they predict tentative tokens for every masked position, committing the confident predictions to the output and discarding the unconfident ones. We show that the discarded tokens are in fact a useful lookahead signal for retrieval-augmented generation: even low-confidence tokens often surface salient entities early in the denoising trajectory, enabling retrieval of stronger evidence before the output is finalized. We exploit this through Self-Augmenting Retrieval for Diffusion Language Models (SARDI), a dynamic RAG framework that uses these lookahead tokens to guide retrieval during denoising. SARDI is training-free, retriever-agnostic, and applicable to any reasoning-capable discrete diffusion language model. Across five multi-hop QA benchmarks, SARDI outperforms current training-free diffusion and autoregressive retrieval baselines at up to $8\\times$ higher throughput.",
+    "categories": [
+     "cs.CL",
+     "cs.AI",
+     "cs.LG"
+    ],
+    "url": "https://arxiv.org/abs/2606.06474v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06474v1",
+    "published": "2026-06-04T17:56:27Z",
+    "title_ja": "拡散言語モデルのための自己拡張検索",
+    "summary_ja": "拡散型の言語モデルが復号途中に捨てる低確信トークンを先読み信号として使い、検索を補強して生成を改善するRAG手法(SARDI)。"
+   },
+   {
+    "id": "2606.06473v1",
+    "title": "MLEvolve: A Self-Evolving Framework for Automated Machine Learning Algorithm Discovery",
+    "authors": [
+     "Shangheng Du",
+     "Xiangchao Yan",
+     "Jinxin Shi",
+     "Zongsheng Cao",
+     "Shiyang Feng",
+     "Zichen Liang",
+     "Boyuan Sun",
+     "Tianshuo Peng",
+     "Yifan Zhou",
+     "Xin Li",
+     "Jie Zhou",
+     "Liang He",
+     "Bo Zhang",
+     "Lei Bai"
+    ],
+    "abstract": "Large language model (LLM) agents are increasingly applied to long-horizon tasks such as scientific discovery and machine learning engineering (MLE), where sustained self-evolution becomes a key capability. However, existing MLE agents suffer from inter-branch information isolation, memoryless search, and lack of hierarchical control, which together hinder long-horizon optimization. We present MLEvolve, an LLM-based self-evolving multi-agent framework for end-to-end machine learning algorithm discovery. By extending tree search to Progressive MCGS, MLEvolve enables cross-branch information flow through graph-based reference edges and gradually shifts the search from broad exploration to focused exploitation with an entropy-inspired progressive schedule. To allow the agent to evolve with accumulated experience, we introduce Retrospective Memory, which combines a cold-start domain knowledge base with a dynamic global memory for task-specific experience retrieval and reuse. For stable long-horizon iteration, we further decouple strategic planning from code generation with adaptive coding modes. Evaluation on MLE-Bench shows that MLEvolve achieves state-of-the-art performance across multiple dimensions including average medal rate and valid submission rate under a 12-hour budget (half the standard runtime). Moreover, MLEvolve also outperforms specialized algorithm discovery methods including AlphaEvolve on mathematical algorithm optimization tasks, demonstrating strong cross-domain generalization. Our code is available at https://github.com/InternScience/MLEvolve.",
+    "categories": [
+     "cs.AI",
+     "cs.CL"
+    ],
+    "url": "https://arxiv.org/abs/2606.06473v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06473v1",
+    "published": "2026-06-04T17:55:59Z",
+    "title_ja": "MLEvolve: ML アルゴリズム自動発見の自己進化フレームワーク",
+    "summary_ja": "LLMエージェントが機械学習アルゴリズムを長期にわたり自己進化的に探索・発見する枠組み。分岐間の情報共有と階層制御で長期最適化を実現。"
+   },
+   {
+    "id": "2606.06470v1",
+    "title": "PC Layer: Polynomial Weight Preconditioning for Improving LLM Pre-Training",
+    "authors": [
+     "Senmiao Wang",
+     "Tiantian Fang",
+     "Haoran Zhang",
+     "Yushun Zhang",
+     "Kunxiang Zhao",
+     "Alex Schwing",
+     "Ruoyu Sun"
+    ],
+    "abstract": "We propose a preconditioning (PC) layer, a weight parameterization via polynomial preconditioner that ensures stable weight conditioning throughout LLM training. The PC module reshapes the singular-value spectrum of weight matrices via low-degree polynomial preconditioning. After training, the preconditioned weights can be merged back into the original architecture, incurring no inference overhead. We demonstrate the advantage of the proposed PC layer over standard transformers in Llama-1B pre-training, for both the AdamW and Muon optimizers. Theoretically, we justify this spectrum-control principle by proving that uniformly bounding each layer's singular values ensures geometric convergence of gradient descent to global minima, for certain deep linear networks. Our code is available at https://github.com/Empath-aln/PC-layer.",
+    "categories": [
+     "cs.LG",
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06470v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06470v1",
+    "published": "2026-06-04T17:55:11Z",
+    "title_ja": "PC Layer: LLM事前学習を改善する多項式重み前処理",
+    "summary_ja": "重み行列を多項式で前処理(プリコンディショニング)し、LLM事前学習の収束を速める新しい層。"
+   },
+   {
+    "id": "2606.06469v1",
+    "title": "How abundant are good interpolators?",
+    "authors": [
+     "August Y. Chen",
+     "Ahmed El Alaoui"
+    ],
+    "abstract": "Let $S$ be the set of unit norm linear classifiers $θ\\in \\mathbb{R}^d$ which correctly classify every point of a labeled dataset $(X_i,y_i)_{i=1}^n$, $X_i \\in \\mathbb{R}^d$, $y_i \\in \\{-1,+1\\}$, with a possibly negative margin $κ$ fixed in advance. Under two natural data-generating distributions of the $(X,y)$ pairs -- a Gaussian mixture model and a logistic model with Gaussian features -- and in the proportional regime $n/d \\to α$ with small enough $α$, we establish a large deviation principle on the event that a point $θ$ chosen uniformly at random from $S$ achieves a given generalization error, with high probability over the choice of the data. The associated large deviation rate function is deterministic and describes the proportion, at the exponential scale in $d$, of interpolating classifiers having a given desired performance. As a consequence, we establish the following concentration phenomenon: all but an exponentially small fraction of interpolating classifiers have approximately the same generalization performance given by the unique maximizer of this rate function.   We numerically compare this maximizer to the performance of empirical risk minimization by gradient descent and to the performance of a natural linear program, both finding a point in $S$, and deduce that in the overparametrized regime of small $α$, these efficient procedures outperform the vast majority of interpolators, pointing to their nontrivial benign overfitting in this setting.",
+    "categories": [
+     "math.ST",
+     "cs.LG",
+     "math.PR"
+    ],
+    "url": "https://arxiv.org/abs/2606.06469v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06469v1",
+    "published": "2026-06-04T17:55:10Z",
+    "title_ja": "良い補間器はどれくらい豊富にあるか?",
+    "summary_ja": "過剰パラメータモデルが訓練データを完全に補間しつつ汎化する「良い補間器」の存在量を理論的に分析する。"
+   },
+   {
+    "id": "2606.06468v1",
+    "title": "Goedel-Architect: Streamlining Formal Theorem Proving with Blueprint Generation and Refinement",
+    "authors": [
+     "Jui-Hui Chung",
+     "Ziyang Cai",
+     "Zihao Li",
+     "Qishuo Yin",
+     "Rohit Agarwal",
+     "Simon Park",
+     "Rodrigo Porto",
+     "Narutatsu Ri",
+     "Ziran Yang",
+     "Shange Tang",
+     "Xingyu Dang",
+     "Hongzhou Lin",
+     "Mengdi Wang",
+     "Danqi Chen",
+     "Chi Jin",
+     "Liam H Fowl",
+     "Sanjeev Arora"
+    ],
+    "abstract": "We introduce Goedel-Architect, an agentic framework for formal theorem proving in Lean 4 centered on blueprint generation and refinement. A blueprint is a dependency graph of definitions and lemmas that builds up to the main theorem. First, Goedel-Architect generates a blueprint of formally stated definitions and lemmas, along with declared dependencies. This blueprint is optionally guided by a natural language proof. Then, a tool-equipped Lean prover component closes each open lemma node in parallel using relevant dependencies. Failed lemmas in turn drive refinement of the global blueprint. This strategy contrasts with other mainstream approaches which use recursive lemma decomposition, and can inefficiently loop on dead-end strategies. Using the open-weight DeepSeek-V4-Flash (284B-A13B) as the backbone, Goedel-Architect attains 99.2% pass@1 on MiniF2F-test and 75.6% pass@1 on PutnamBench. With an optional natural-language proof seeding the initial blueprint on the harder problems, we additionally close the remaining two MiniF2F-test problems (reaching 100%), lift PutnamBench to 88.8% (597/672), and solve 4/6 on IMO 2025, 11/12 on Putnam 2025, and 3/6 on USAMO 2026. This represents state-of-the-art performance for an open-source pipeline at a price point up to 500x less than comparable open-source pipelines.",
+    "categories": [
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06468v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06468v1",
+    "published": "2026-06-04T17:54:44Z",
+    "title_ja": "Goedel-Architect: ブループリント生成によるLean4形式証明の効率化",
+    "summary_ja": "定理証明を、定義と補題の依存グラフ(ブループリント)を先に生成・洗練してから埋めるエージェント的フレームワーク。Lean4で機能。"
+   },
+   {
+    "id": "2606.06467v1",
+    "title": "You Only Index Once: Cross-Layer Sparse Attention with Shared Routing",
+    "authors": [
+     "Yutao Sun",
+     "Yanqi Zhang",
+     "Li Dong",
+     "Jianyong Wang",
+     "Furu Wei"
+    ],
+    "abstract": "Long-context inference in modern LLMs is increasingly constrained by decoding efficiency, especially in reasoning-heavy settings where models generate long intermediate chains of thought. Existing sparse attention methods often face a practical efficiency-quality trade-off. Structured block sparse methods typically provide stronger acceleration but incur noticeable quality loss, while token sparse methods are usually more accurate yet deliver limited end-to-end speedup because top-k routing over the full cache remains expensive. In this work, we propose cross-layer sparse attention (CLSA), which is built on top of KV-sharing architectures such as YOCO. The core idea is to share not only the KV cache across cross-decoder layers, but also the routing index. A single indexer computes token-level top-k selection once and reuses the resulting index across layers, thereby preserving the fine-grained selectivity of token sparse attention while amortizing the routing overhead. The resulting architecture improves all major inference bottlenecks jointly, including pre-filling, KV-cache storage, and long-context decoding. Experiments across short-context and long-context benchmarks show that CLSA is both accurate and efficient, achieving up to 7.6x decoding speedup and 17.1x overall throughput improvement at 128K context. These results suggest a more complete architectural solution for long-context LLMs that jointly advances model quality and inference efficiency.",
+    "categories": [
+     "cs.CL",
+     "cs.AI",
+     "cs.LG"
+    ],
+    "url": "https://arxiv.org/abs/2606.06467v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06467v1",
+    "published": "2026-06-04T17:54:04Z",
+    "title_ja": "You Only Index Once: 共有ルーティングのクロス層スパース注意",
+    "summary_ja": "長文推論の復号効率を上げるため、一度作ったインデックスを層をまたいで共有するスパース注意。速度と品質を両立。"
+   },
+   {
+    "id": "2606.06464v1",
+    "title": "Human Adults and LLMs as Scientists: Who Benefits from Active Exploration?",
+    "authors": [
+     "Mandana Samiei",
+     "Eunice Yiu",
+     "Anthony GX-Chen",
+     "Dongyan Lin",
+     "Jocelyn Shen",
+     "Blake A. Richards",
+     "Alison Gopnik",
+     "Doina Precup"
+    ],
+    "abstract": "A long-standing finding in the causal learning literature is that adults struggle to identify conjunctive causal rules, where an effect requires the simultaneous presence of multiple causes, while performing better in disjunctive settings. However, most demonstrations of this ``conjunctive handicap'' rely on passive observation paradigms with limited evidence, where learners have no control over evidence generation. This paper asks whether this bias persists when adults are granted agency through active exploration. Using a modified ``blicket detector'' task, adult participants freely intervened to identify causal objects under conjunctive or disjunctive rule structures. We show that active exploration substantially improves adults' conjunctive causal reasoning, although conjunctive rules still require more tests to infer than disjunctive rules. We further compare human performance to a range of large language models in the same setting. While some state-of-the-art models approach human-level performance on hypothesis inference accuracy, they often exhibit less efficient exploration strategies and similar conjunctive-disjunctive performance gaps.",
+    "categories": [
+     "cs.CL"
+    ],
+    "url": "https://arxiv.org/abs/2606.06464v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06464v1",
+    "published": "2026-06-04T17:53:36Z",
+    "title_ja": "成人とLLMを科学者として比較: 能動的探索で得をするのは誰か",
+    "summary_ja": "人間とLLMに同じ探索課題を課し、能動的に実験して仮説を立てる能力を比較。LLMと人の科学的探索の差を測る。"
+   },
+   {
+    "id": "2606.06462v1",
+    "title": "Benchmark Everything Everywhere All at Once",
+    "authors": [
+     "Shiyun Xiong",
+     "Dongming Wu",
+     "Peiwen Sun",
+     "Yuang Ai",
+     "Bokang Yang",
+     "Wencheng Han",
+     "Xiao-Hui Li",
+     "Xiangyu Yue"
+    ],
+    "abstract": "Benchmarks are fundamental for evaluating and advancing LLMs and MLLMs by providing standardized and explicit measures of performance. However, their construction is labor-intensive and hard to reuse, raising concerns about sustainability and scalability. Moreover, existing benchmarks often quickly reach performance saturation after their release, resulting in insufficient discrimination among state-of-the-art models. To address these challenges, we introduce Benchmark Agent, a fully autonomous agentic system designed for benchmark building. Our framework orchestrates the complete benchmark construction pipeline, from user query analysis and subtask design to data annotation and quality control. To assess Benchmark Agent, we implement it to produce 15 representative benchmarks, spanning diverse evaluation scenarios, including text understanding, multimodal understanding, and domain-specific reasoning. Extensive experiments, including human evaluation, LLM-as-a-judge assessment, and consistency checks, demonstrate Benchmark Agent can generate high-quality benchmark samples with minimal human involvement. More importantly, through continual evaluation, we observe several insightful findings, including that current models struggle with certain domain-specific reasoning tasks. We believe that rapidly evolving benchmarks can contribute significantly to the research community. The preview and code will be publicly available at the demo page and code repository.",
+    "categories": [
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06462v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06462v1",
+    "published": "2026-06-04T17:52:04Z",
+    "title_ja": "Benchmark Everything Everywhere All at Once",
+    "summary_ja": "多様なタスク・モダリティを一括で評価する統合ベンチマーク基盤の提案。"
+   },
+   {
+    "id": "2606.06461v1",
+    "title": "Flow-based Policy Adaptation without Policy Updates",
+    "authors": [
+     "Luzhe Sun",
+     "Jingtian Ji",
+     "Haoran Chen",
+     "Jiawei Zhou",
+     "Matthew R. Walter"
+    ],
+    "abstract": "Leveraging prior knowledge from pretrained policies, foundation models, or human operators offers an efficient alternative to learning robot skills from scratch. However, these agents often provide actions that are suboptimal, noisy, or misaligned with task-specific expert behavior. We propose GLOVES, a family of flow-based adaptation methods that correct non-expert actions by transporting them toward an expert action distribution. Rather than replacing agentic control with full autonomy, GLOVES performs selective action-level adaptation, improving task success while preserving agent intent. The learned flow also provides a natural in-distribution scoring mechanism through reverse flow evaluation. We use this signal as an intervention gate: actions that appear consistent with the expert distribution are passed through unchanged, while anomalous or out-of-distribution (OOD) actions are corrected. In this way, assistance is only provided when necessary. GLOVES requires only limited expert supervision, using a small number of demonstrations or reusable successful skill segments. By learning local expert action patterns and stitching them during execution, GLOVES provides a lightweight shared-control module for robust action adaptation across tasks and environments. Code and demos are available at ripl.github.io/GLOVES_web.",
+    "categories": [
+     "cs.RO"
+    ],
+    "url": "https://arxiv.org/abs/2606.06461v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06461v1",
+    "published": "2026-06-04T17:51:12Z",
+    "title_ja": "方策更新なしのフローベース方策適応",
+    "summary_ja": "学習済み方策の重みを更新せず、フローベースの手法で新環境へ適応させる強化学習アプローチ。"
+   },
+   {
+    "id": "2606.06460v1",
+    "title": "Will the Agent Recuse Itself? Measuring LLM-Agent Compliance with In-Band Access-Deny Signals",
+    "authors": [
+     "Thamilvendhan Munirathinam"
+    ],
+    "abstract": "As autonomous LLM agents increasingly hold real credentials and operate infrastructure without a human in the loop, operators have no standard way to tell an agent that a resource is off-limits. Access controls either let the agent in (it has valid credentials) or hard-fail it (indistinguishable from any other client). We propose a third mode: a lightweight, published in-band deny signal -- the Recuse Signal -- that a server emits over a protocol's existing channels (an SSH banner, a PostgreSQL NOTICE) asking a connecting automated agent to voluntarily withdraw. This is a cooperative governance control, the robots.txt analogue for live access; it is explicitly not a security boundary. Its value is entirely empirical and, to our knowledge, unmeasured: do compliant LLM agents actually honor such a signal? We define the signal as an open mini-standard, implement two zero- or low-footprint adapters (an SSH banner/PAM hook and a PostgreSQL wire-protocol proxy), deploy them on a live production host, and run a controlled experiment in which fresh agents are given a benign operations task and observed for recusal. In a pilot (SSH; OpenAI GPT-4o and GPT-4o-mini; and Claude Code as a deployed agent), the signal cleanly induces recusal -- 100% recusal when present versus 100% task completion in a no-signal control -- and, revealingly, behaves as a cooperative rather than absolute signal: an explicit operator-authorization framing flips the most capable model to proceed, while other agents continue to defer to the on-host policy. We release the standard, adapters, and experiment harness for reproduction.",
+    "categories": [
+     "cs.CR",
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06460v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06460v1",
+    "published": "2026-06-04T17:50:54Z",
+    "title_ja": "エージェントは自分を忌避するか: アクセス拒否信号への遵守を測る",
+    "summary_ja": "LLMエージェントが「このリソースへのアクセスは拒否」という帯域内信号にちゃんと従うかを測定。エージェントの安全性評価。"
+   },
+   {
+    "id": "2606.06459v1",
+    "title": "Event Detection for Parameter-to-KPI Dependency Learning for AI-RAN",
+    "authors": [
+     "Christie Djidjev",
+     "Nicholas Kaminski"
+    ],
+    "abstract": "Next-generation wireless networks are expected to rely on multiple concurrent AI-driven control functions that optimize different network objectives simultaneously, particularly in AI-integrated and open radio access network architectures such as AI Radio Access Network (AI-RAN) and Open Radio Access Network (O-RAN). When these functions interact, they can interfere with one another in ways that are difficult to detect from raw network data alone. A key missing piece for managing such interactions is a reliable, interpretable dependency structure that captures which control parameters are actively influencing which network performance outcomes at any given time. This paper focuses on the event-detection step needed to support such dependency learning by converting noisy continuous telemetry into binary indicators of parameter activity and KPI response. The central difficulty is that not every fluctuation in the data reflects a genuine control interaction, so the method must distinguish real parameter-outcome relationships from background variation. Because real AI-RAN traffic traces with known parameter-KPI ground truth are difficult to obtain, we introduce a synthetic closed-loop traffic generator with planted latent dependencies. We use this controlled telemetry to evaluate a machine-learning-based dependency recovery pipeline that formulates the conversion of continuous traces into binary event indicators as a significance-detection problem. Experimental evaluation shows that the proposed pipeline reliably recovers the latent dependency structure from noisy continuous traces when the signal is sufficiently separated from background variation, while highlighting threshold calibration as the key factor controlling event-detection quality. These results constitute a foundational step toward interpretable dependency learning for adaptive AI-RAN control systems.",
+    "categories": [
+     "cs.LG"
+    ],
+    "url": "https://arxiv.org/abs/2606.06459v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06459v1",
+    "published": "2026-06-04T17:50:39Z",
+    "title_ja": "AI-RAN向けパラメータ-KPI依存学習のためのイベント検出",
+    "summary_ja": "無線アクセスネットワーク(AI-RAN)で、設定パラメータと性能指標(KPI)の依存関係を学習するためのイベント検出手法。"
+   },
+   {
+    "id": "2606.06458v1",
+    "title": "In-Context Multiple Instance Learning",
+    "authors": [
+     "Alexander Möllers",
+     "Marvin Sextro",
+     "Julius Hense",
+     "Gabriel Dernbach",
+     "Klaus-Robert Müller"
+    ],
+    "abstract": "Multiple Instance Learning (MIL) addresses problems where supervision is available at the level of bags of instances and has been successfully applied in fields ranging from computational pathology to satellite imagery. Nevertheless, existing algorithms struggle in the low-label regime that characterizes many real-world applications. Flexible models overfit and rigid ones fail to adapt to the task at hand. We show that pretraining an in-context learner with a Perceiver-style architecture on synthetic data yields a model that can solve new tasks from a handful of labeled bags. At inference time, classification happens in a single forward pass and requires no gradient updates. We propose and investigate different synthetic data generators for bag-structured data and find that they capture complementary inductive biases. A model pretrained on a mixture of these generators inherits their per-task strengths and achieves the best average performance across twelve MIL benchmarks, outperforming supervised baselines that require task-specific training.",
+    "categories": [
+     "cs.LG",
+     "cs.AI",
+     "cs.CV"
+    ],
+    "url": "https://arxiv.org/abs/2606.06458v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06458v1",
+    "published": "2026-06-04T17:50:32Z",
+    "title_ja": "In-Context Multiple Instance Learning",
+    "summary_ja": "文脈内学習(in-context)の枠組みで複数インスタンス学習(MIL)を行う手法。ラベルが袋単位の弱教師問題に対応。"
+   },
+   {
+    "id": "2606.06454v1",
+    "title": "Scaffold, Not Vocabulary? A Controlled, Two-Tier, Pre-Registered Study of a Popperian Code-Generation Skill",
+    "authors": [
+     "Mehmet Iscan"
+    ],
+    "abstract": "Large language models increasingly write, review, and judge code, and a fast-growing practice equips them with prompt 'skills' that ask the model to reason like a scientist. A prominent example tells the model to act as a Popperian falsificationist, and such skills are reported to improve generated code. But these gains are almost always read off an LLM-as-a-judge, an instrument with documented positional, self-preference, and stylistic biases. We ask: if it appears to help, is the gain from the skill's Popperian content, or from the structure any scaffold imposes? We pre-register a two-tier ablation with three controls: a length-matched placebo, a labels-only scaffold that keeps the Popperian headers but strips the procedure, and an execution oracle (HumanEval+ unit tests), plus a vocabulary-halo sentinel and a same-model self-judge audit. On a frontier model (Claude Sonnet 4.6, N=163) all conditions sit near the benchmark ceiling and do not separate, so the pre-registered +5-point improvement is not supported (a ceiling-limited non-detection). On a small model (Qwen2.5-Coder-0.5B, N=164) structured arms lift best-of-eight correctness by 20-22 points, but the full skill shows no separable benefit over a labels-only scaffold (aggregate F@8=L@8 vs V@8=34.8%), and the placebo trails by only 2.4 points. A 0.5B self-judge applying the Popperian rubric does not beat random selection and concentrates 60% of its picks on one index. In the two settings tested, the skill's Popperian procedural content adds no separable execution-correctness benefit beyond a labels-only scaffold, so the gains track scaffold structure. We contribute a calibrated negative result and a reusable disambiguation protocol; the finding bounds an engineering claim about one prompt-skill family and is not an evaluation of Popperian methodology in general.",
+    "categories": [
+     "cs.SE",
+     "cs.CL"
+    ],
+    "url": "https://arxiv.org/abs/2606.06454v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06454v1",
+    "published": "2026-06-04T17:49:00Z",
+    "title_ja": "足場か語彙か? ポパー的コード生成の二層・事前登録研究",
+    "summary_ja": "コード生成における足場(scaffold)と語彙の役割を、事前登録した統制実験で検証する方法論的研究。"
+   },
+   {
+    "id": "2606.06453v1",
+    "title": "Vortex: Efficient and Programmable Sparse Attention Serving for AI Agents",
+    "authors": [
+     "Zhuoming Chen",
+     "Xinrui Zhong",
+     "Qilong Feng",
+     "Ranajoy Sadhukhan",
+     "Yang Zhou",
+     "Michael Qizhe Shieh",
+     "Zhihao Jia",
+     "Beidi Chen"
+    ],
+    "abstract": "Sparse attention is becoming increasingly important for serving large language models (LLMs) as generation lengths continue to grow. However, deploying and evaluating new sparse attention algorithms at scale remains highly engineering-intensive, slowing both human researchers and AI agents in exploring the sparse attention design. To address this challenge, we present Vortex, a system that combines a Python-embedded frontend language atop a page-centric tensor abstraction for expressing a broad range of sparse attention algorithms, with an efficient backend tightly integrated into modern LLM serving stacks. Vortex enables rapid prototyping, deployment, and evaluation of sparse attention algorithms, effectively translating their theoretical efficiency gains into real-world throughput improvements. As a result, Vortex substantially accelerates the design and iteration of sparse attention algorithms. First, AI agents use Vortex to automatically generate and refine diverse algorithms, the best reaching up to $3.46\\times$ higher throughput than full attention while preserving accuracy. Second, Vortex extends sparse attention to emerging architectures and very large models that are otherwise hard to experiment with, reaching up to $4.7\\times$ higher throughput on the MLA-based GLM-4.7-Flash and $1.37\\times$ on the 229B-parameter MiniMax-M2.7 on NVIDIA B200 GPUs.",
+    "categories": [
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06453v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06453v1",
+    "published": "2026-06-04T17:48:17Z"
+   },
+   {
+    "id": "2606.06448v1",
+    "title": "Agent Memory: Characterization and System Implications of Stateful Long-Horizon Workloads",
+    "authors": [
+     "Yasmine Omri",
+     "Ziyu Gan",
+     "Zachary Broveak",
+     "Robin Geens",
+     "Zexue He",
+     "Alex Pentland",
+     "Marian Verhelst",
+     "Tsachy Weissman",
+     "Thierry Tambe"
+    ],
+    "abstract": "LLM agents are increasingly deployed on long-horizon tasks requiring sustained reasoning over extended interaction histories. Realizing this at scale requires agents to persistently store, retrieve, and update their own memory across sessions. A rich ecosystem of agent memory systems has emerged spanning flat retrieval, LLM-mediated extraction, consolidating fact stores, and agentic control flows. Yet, their system-level behavior remains uncharacterized. We present the first systems characterization of agent memory. First, we introduce a system-oriented taxonomy classifying agent memory systems along four axes. Second, we build a phase-aware profiling harness attributing cost to construction, retrieval, and generation. Third, we characterize ten representative systems across two benchmark suites, uncovering how design choices shift cost across the write and read paths. Finally, we derive 10 system recommendations covering construction scheduling, capability floors, amortization via query volume, freshness-latency tradeoffs, and fleet-scale management.",
+    "categories": [
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06448v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06448v1",
+    "published": "2026-06-04T17:44:18Z"
+   },
+   {
+    "id": "2606.06447v1",
+    "title": "Latent Reasoning with Normalizing Flows",
+    "authors": [
+     "Guancheng Tu",
+     "Xiangjun Fu",
+     "Suhao Yu",
+     "Yao Tang",
+     "Haoqiang Kang",
+     "Lianhui Qin",
+     "Yizhe Zhang",
+     "Jiatao Gu"
+    ],
+    "abstract": "Large language models often improve reasoning by generating explicit chain-of-thought (CoT), demonstrating the importance of intermediate computation. However, textual CoT forces this computation through a discrete, serial, and communication-oriented token stream: each reasoning step must be verbalized before the model can proceed, even when the underlying update is semantic, uncertain, or only partially formed. Latent reasoning offers a higher-bandwidth alternative by performing intermediate computation in compact continuous states before committing to text. Yet existing latent-reasoning methods often sacrifice key advantages that make CoT effective in autoregressive language models, including native left-to-right generation, probabilistic sampling, compatibility with KV-cache decoding, and tractable likelihood estimation. We propose NF-CoT, a latent reasoning framework that preserves these advantages by modeling continuous thoughts with normalizing flows. NF-CoT instantiates a TARFlow-style normalizing flow inside the LLM backbone, defining a tractable probability model over compact continuous thoughts distilled from explicit CoT. Continuous-thought positions are generated by an NF head, while text positions are generated by the standard LM head within the same causal stream. This design provides exact likelihoods for latent thoughts, enables probabilistic left-to-right decoding with the original KV cache, and supports direct policy-gradient optimization in the latent reasoning space. On code-generation benchmarks, NF-CoT improves pass rates over explicit-CoT and prior latent-reasoning baselines while substantially reducing intermediate-reasoning cost.",
+    "categories": [
+     "cs.CL",
+     "cs.LG"
+    ],
+    "url": "https://arxiv.org/abs/2606.06447v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06447v1",
+    "published": "2026-06-04T17:44:17Z"
+   },
+   {
+    "id": "2606.06444v1",
+    "title": "USAD 2.0: Scaling Representation Distillation for Universal Audio Understanding",
+    "authors": [
+     "Heng-Jui Chang",
+     "Alexander H. Liu",
+     "Saurabhchand Bhati",
+     "Mrudula Athi",
+     "Anton Ratnarajah",
+     "Amit Chhetri",
+     "James Glass"
+    ],
+    "abstract": "Audio encoders are critical to modern audio applications as large language models (LLMs) increasingly rely on a single encoder for diverse inputs. While self-supervised learning (SSL) has yielded strong domain-specific encoders like speech or music experts, multi-domain approaches like USAD and SPEAR remain limited in coverage and evaluation. Recent studies also suggest supervised encoders align better with audio LLMs. We present USAD 2.0, a universal encoder integrating knowledge from both SSL and supervised foundation models. USAD 2.0 introduces domain-aware distillation to address teacher mismatch, extends coverage to the music domain, and adds second-stage supervised distillation for downstream use. We further scale the model to one billion parameters via depth scaling. Experiments show USAD 2.0 achieves strong or state-of-the-art performance across probing and LLM-based evaluations.",
+    "categories": [
+     "eess.AS",
+     "cs.CL",
+     "cs.SD"
+    ],
+    "url": "https://arxiv.org/abs/2606.06444v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06444v1",
+    "published": "2026-06-04T17:42:05Z"
+   },
+   {
+    "id": "2606.06443v1",
+    "title": "Revising Context, Shifting Simulated Stance: Auditing LLM-Based Stance Simulation in Online Discussions",
+    "authors": [
+     "Xinnong Zhang",
+     "Wanting Shan",
+     "Hanjia Lyu",
+     "Zhongyu Wei",
+     "Jiebo Luo"
+    ],
+    "abstract": "Large language models are increasingly used to simulate social media users and infer how individuals may respond to online discussions. However, it remains unclear whether these simulations reflect precise user-specific beliefs or whether they are highly sensitive to semantically independent changes in conversational contexts. In this work, we study counterfactual context revision as a framework for auditing LLM-based stance simulation. Given an original online conversation, we first infer a target user's stance toward a specific topic. We then apply controlled revision strategies to the conversational context and simulate the user's stance again under the revised context. We compare text-only revision strategies with a multimodal one that incorporates meme-based context and evaluate two main effectiveness metrics, i.e., average directional stance shift and stance transition rate. The results reveal effective and robust stance transitions in both text-only and multimodal strategies across different polarization-preference mechanisms. Our study contributes an evaluation framework for understanding the context sensitivity of LLM-based stance simulation. More broadly, it highlights both the promise and risk of using LLMs to simulate online opinion dynamics.",
+    "categories": [
+     "cs.CL",
+     "cs.MM",
+     "cs.SI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06443v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06443v1",
+    "published": "2026-06-04T17:41:54Z"
+   },
+   {
+    "id": "2606.06440v1",
+    "title": "Causal Atlases from Entropic Inference: Bayesian Networks beyond Optimal DAGs",
+    "authors": [
+     "Hazhir Aliahmadi",
+     "Irina Babayan",
+     "Greg van Anders"
+    ],
+    "abstract": "Data-driven causal relationship identification is pertinent to advancing understanding of complex systems both within and beyond science. Bayesian networks offer a probabilistic method for modelling generic causal relationships via directed acyclic graphs (DAGs). However, typical techniques for constructing Bayesian networks rely on optimization, which can be ill-suited for learning causal relationships because the underlying data may admit multiple chains of causation. More data-faithful representations of causal relationships would provide frameworks for constructing multiple causal maps that are consistent with the variability that is inherent in underlying data. Here, we show that entropy-based inference generates atlases of plausible causal relationships that are consistent with underlying data. On simulated noisy data of 2- and 20-node linear structural equation models, we sample a maximum-entropy ensemble of graphs that allow us to quantify the inherent structural ambiguity in underlying causal relationships. Our method shows that \"optimized\" DAGs can contain causal artifacts are not consistent across equivalently accurate topologies.",
+    "categories": [
+     "cs.LG",
+     "stat.ML"
+    ],
+    "url": "https://arxiv.org/abs/2606.06440v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06440v1",
+    "published": "2026-06-04T17:41:32Z"
+   },
+   {
+    "id": "2606.06428v1",
+    "title": "Reinforcement Learning Elicits Contextual Learning of Unseen Language Translation",
+    "authors": [
+     "Hanxu Hu",
+     "Zdeněk Šnajdr",
+     "Pinzhen Chen",
+     "Jannis Vamvas",
+     "Rico Sennrich"
+    ],
+    "abstract": "Prior work has shown that large language models (LLMs) can translate unseen or low-resource languages by undergoing continued training or even by encoding a grammar book in their context. However, both methods typically overfit specific languages, with limited zero-shot transfer at test time. To translate extremely low-resource languages at scale, we argue that LLMs must acquire the meta-skill of utilizing in-context linguistic knowledge rather than memorizing specific languages. In this paper, we propose a reinforcement learning (RL) approach to unseen language translation given rich linguistic context, using a surface-level translation metric (chrF) as the reward. Empirically, despite the lightweight reward, our RL-trained models effectively extract and apply relevant linguistic information from the provided context, leading to better translations on completely unseen languages than in-context learning or supervised fine-tuning. Our analyses suggest that outcome-based RL can extend beyond conventional reasoning tasks like math and coding to serve as a recipe for language learning from context.",
+    "categories": [
+     "cs.CL"
+    ],
+    "url": "https://arxiv.org/abs/2606.06428v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06428v1",
+    "published": "2026-06-04T17:32:06Z"
+   },
+   {
+    "id": "2606.06423v1",
+    "title": "RiskFlow: Fast and Faithful Safety-Critical Traffic Scenario Generation",
+    "authors": [
+     "Qi Lan",
+     "Yining Tang",
+     "Yu Shen",
+     "Yi Zhou",
+     "Yuhao Wei",
+     "Jie Li",
+     "Guofa Li"
+    ],
+    "abstract": "Safety-critical traffic scenario generation is essential for evaluating autonomous driving systems under rare but high-risk interactions. Existing diffusion-based methods offer strong controllability in closed-loop generation, but their iterative denoising process is computationally expensive and may accumulate sampling and guidance errors over long rollouts, causing unrealistic motion artifacts such as jitter, abnormal acceleration, and off-road behavior. To address these issues, we propose RiskFlow, a closed-loop safety-critical multi-agent traffic generation framework that formulates future trajectory generation as transport in the action space. Instead of relying on iterative denoising, RiskFlow learns an average velocity field over a finite interval to transform Gaussian action sequences into future acceleration and yaw-rate commands with a single forward pass, using a JVP-based objective for efficient and stable training. At test time, RiskFlow applies output-space guidance to the generated actions, steering selected critical agents toward risky interactions while regularizing off-road behavior, and reconstructs physically feasible trajectories through vehicle dynamics. Experiments on nuScenes with tbsim closed-loop evaluation show that RiskFlow achieves a strong adversariality-realism trade-off across multi-agent and long-horizon settings. Compared with representative baselines, RiskFlow consistently improves realism while maintaining competitive safety-critical generation capability, and substantially reduces inference time for evaluation.",
+    "categories": [
+     "cs.RO",
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06423v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06423v1",
+    "published": "2026-06-04T17:28:42Z"
+   },
+   {
+    "id": "2606.06420v1",
+    "title": "A Komi-Yazva--Russian Parallel Corpus and Evaluation Protocol for Zero- and Few-Shot LLM Translation",
+    "authors": [
+     "Petr Parshakov"
+    ],
+    "abstract": "We present the first Komi-Yazva--Russian parallel corpus together with an explicit evaluation protocol for studying LLM translation in an endangered, extremely low-resource setting. The dataset contains 457 aligned sentence pairs from 74 narrative texts and is accompanied by documented provenance, sentence-level alignment, and story identifiers that enable leakage-aware evaluation. We use this setup to compare modern large language models on Komi-Yazva-to-Russian translation under severe parallel-data scarcity in zero-shot and retrieval-based few-shot regimes. The protocol includes story-level cross-validation, deterministic retrieval for few-shot prompting, strict validation of generated outputs, complementary reference-based and judge-based metrics, and story-level uncertainty estimates. Across models, LLMs produce non-trivial translations, but performance varies strongly by model family and prompting regime. Retrieval-based few-shot prompting consistently improves over zero-shot prompting, while gains beyond a small retrieved context remain limited. The results show that evaluative conclusions in this setting depend materially on metric choice and failure handling, so the paper frames the corpus as both a dataset contribution and a reproducible evaluation testbed for endangered-language machine translation.",
+    "categories": [
+     "cs.CL"
+    ],
+    "url": "https://arxiv.org/abs/2606.06420v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06420v1",
+    "published": "2026-06-04T17:26:38Z"
+   },
+   {
+    "id": "2606.06418v1",
+    "title": "Double Preconditioning (DoPr): Optimization for Test-Time Performance, not Validation Loss",
+    "authors": [
+     "Thomas T. Zhang",
+     "Alok Shah",
+     "Yifei Zhang",
+     "Vincent Zhang",
+     "Nikolai Matni",
+     "Max Simchowitz"
+    ],
+    "abstract": "Many modern applications of deep learning involve training a neural network via a one-step prediction loss (e.g., $L^2$ regression, cross-entropy), but deploy the network by rolling out along its own predictions. Key examples include autoregressive language modeling, flow-based generative modeling, and robot policy learning. It is well-documented that these settings induce a phenomenon we call test-time feedback (TTF): the mismatch between the training/validation loss and downstream metrics of interest, such as task success rate and generation quality, which grows with task length. While data curation, architecture, and objective design have been proposed to combat train-test shift in TTF settings, this paper proposes optimization as a new design axis to mitigate error accumulation. Specifically, we introduce a new optimization paradigm called double-preconditioning (DoPr) uniquely tailored to the challenges of TTF. DoPr combines gradient-wise preconditioning, as in Adam and Muon, with activation-wise preconditioning (AP), such as in KFAC. We show that the addition of AP yields a drop-in intervention for increasing downstream model performance across a range of TTF settings. Interestingly, these gains in test-time performance do not consistently accompany improvements in validation loss, opening new questions about how to properly evaluate models trained with one-step supervised objectives.",
+    "categories": [
+     "cs.LG",
+     "cs.AI",
+     "eess.SY"
+    ],
+    "url": "https://arxiv.org/abs/2606.06418v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06418v1",
+    "published": "2026-06-04T17:22:58Z"
+   },
+   {
+    "id": "2606.06416v1",
+    "title": "Unsupervised Skill Discovery for Agentic Data Analysis",
+    "authors": [
+     "Zhisong Qiu",
+     "Kangqi Song",
+     "Shengwei Tang",
+     "Shuofei Qiao",
+     "Lei Liang",
+     "Huajun Chen",
+     "Shumin Deng"
+    ],
+    "abstract": "Inference-time skill augmentation provides a lightweight way to improve data-analytic agents by injecting reusable procedural knowledge without updating model parameters. However, discovering effective skills for data analysis remains challenging, as reliable supervision is expensive and success criteria vary across analytical formats. This raises the key question of how to discover reusable data-analysis skills from unlabeled exploration alone. We propose DataCOPE, an unsupervised verifier-guided skill discovery framework for data-analytic agents. DataCOPE derives verifier signals from the exploration trajectories and uses them to characterize relative quality or aggreement among trajectories. It iteratively coordinates a Data-Analytic Agent for trajectory generation, an Unsupervised Verifier for signal extraction, and a Skill Manager for contrastive skill distillation. For report-style analysis, we instantiate the verifier as an Adaptive Checklist Verifier that derives task-specific criteria, scores reports by verifiable coverage, and iteratively refines the checklist. For reasoning-style analysis, we instantiate it as an Answer Agreement Verifier that groups trajectories by answer agreement and uses self-consistency as an auxiliary signal. We evaluate DataCOPE on report-style analysis from Deep Data Research and reasoning-style analysis from DABStep. Across both settings, DataCOPE consistently improves held-out performance over baselines. Averaged across four model settings, DataCOPE improves the mean score by 9.71% and 32.30% on report-style and reasoning-style tasks respectively.",
+    "categories": [
+     "cs.AI",
+     "cs.CL",
+     "cs.LG",
+     "cs.MA"
+    ],
+    "url": "https://arxiv.org/abs/2606.06416v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06416v1",
+    "published": "2026-06-04T17:20:47Z"
+   },
+   {
+    "id": "2606.06407v1",
+    "title": "A Vision-language Framework for Comparative Reasoning in Radiology",
+    "authors": [
+     "Tengfei Zhang",
+     "Ziheng Zhao",
+     "Lisong Dai",
+     "Xiaoman Zhang",
+     "Pengcheng Qiu",
+     "Ya Zhang",
+     "Yanfeng Wang",
+     "Weidi Xie"
+    ],
+    "abstract": "Medical imaging artificial intelligence has achieved strong performance in isolated image interpretation, but remains poorly aligned with radiological practice, where diagnosis and follow-up rely on comparison across prior studies and analogous reference cases. Here we formulate radiological comparison as an entity-aware cross-image reasoning problem and introduce a framework that supports both reference-case retrieval and temporal comparative interpretation. We construct MedReCo-DB, a large-scale comparative imaging resource derived from routine image-report pairs, comprising more than 690,000 images from over 160,000 patients across eight institutions, four countries and seven imaging modalities. Reports are decomposed into anatomical structures, abnormal findings and pathological conditions to provide supervision for entity-conditioned retrieval and comparative visual question answering. Using this resource, we develop MedReCo, an entity-aware visual encoder for controllable retrieval of clinically analogous cases, and MedReCo-VLM, a vision--language extension for generative interpretation of interval change. Across internal, external and cross-center evaluations, MedReCo achieved the highest Recall@1 in all 12 internal retrieval settings and improved external retrieval by a mean of 6.0 percentage points. In clinically confusable differential groups, it consistently outperformed the strongest baselines. MedReCo-VLM achieved the best performance across all comparative generation evaluations and improved longitudinal follow-up accuracy by 14.5-46.5 percentage points on chest radiographs and 13.0-27.9 percentage points on CT. These findings suggest that entity-aware comparative reasoning can be learned from routine clinical data at scale and may provide a more clinically aligned foundation for medical imaging AI.",
+    "categories": [
+     "cs.CV",
+     "cs.IR",
+     "cs.LG",
+     "eess.IV"
+    ],
+    "url": "https://arxiv.org/abs/2606.06407v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06407v1",
+    "published": "2026-06-04T17:12:47Z"
+   },
+   {
+    "id": "2606.06399v1",
+    "title": "CollabSim: A CSCW-Grounded Methodology for Investigating Collaborative Competence of LLM Agents through Controlled Multi-Agent Experiments",
+    "authors": [
+     "Jiaju Chen",
+     "Bo Sun",
+     "Yuxuan Lu",
+     "Yun Wang",
+     "Dakuo Wang",
+     "Bingsheng Yao"
+    ],
+    "abstract": "Multi-agent systems (MAS) built on large language models have shown growing promise, with their effectiveness resting on agents' ability to coordinate through text-based channels much as human teams do. Yet recent study suggests that MAS often falter not because agents lack individual task-solving ability, but because they lack collaborative competence: the capacity to establish common ground, maintain shared task understanding, balance individual and collective incentives, and repair misalignment as interaction unfolds. Decades of research in Computer-Supported Cooperative Work have characterized these requirements for human teams coordinating under constrained communication, yet existing MAS evaluations focus mainly on task outcomes or single-agent proficiency in reasoning, planning, and tool use. To enable a systematic analysis of agents' collaborative competence in MAS, we introduce CollabSim, a configurable simulation framework that combines a theory-grounded definition of collaborative capabilities, controlled manipulation of interaction conditions, and action-level probing of agents' internal states. Experiments across four LLMs show that CollabSim can capture condition effects, separate model performance patterns, and reveal task-dependent effects of agent design.",
+    "categories": [
+     "cs.CL"
+    ],
+    "url": "https://arxiv.org/abs/2606.06399v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06399v1",
+    "published": "2026-06-04T17:06:22Z"
+   },
+   {
+    "id": "2606.06397v1",
+    "title": "The Post-GCN Decade Revisited: Curvature-Stratified Evaluation of Relational Learning",
+    "authors": [
+     "Shuo Wang",
+     "Xiangyu Wang",
+     "Quanxin Wang",
+     "Bailin Wu",
+     "Bokui Wang",
+     "Shunyang Huang",
+     "Boyan Deng",
+     "Haonan Liu",
+     "Ruiyi Fang",
+     "Zhenxiang Xu",
+     "Boyu Wang",
+     "Zhao Kang"
+    ],
+    "abstract": "Current evaluation practices in relational learning rely heavily on flat leaderboards that average performance across heterogeneous datasets, implicitly assuming a uniform underlying structure. We show that this assumption introduces systematic bias: it obscures geometry-dependent performance variations and can lead to misleading conclusions about model generalization. In this work, we identify intrinsic geometry as a key latent factor governing model effectiveness. We demonstrate that conventional aggregated metrics mask critical performance trade-offs that only become visible when datasets are stratified by their geometric properties. To address this issue, we introduce a curvature-stratified evaluation framework that partitions datasets into positive, negative, and near-zero curvature regimes. Our benchmark evaluates 18 representative models including Graph Convolutional Networks (GCNs), Graph Foundation Models (GFMs), and tabular learning methods across 14 datasets. We find that model rankings are highly stable within each curvature regime but shift significantly across regimes, indicating that performance is fundamentally geometry-dependent rather than universally transferable. Notably, we identify regimes where GFMs offer diminishing returns compared to geometry-aligned GNNs. Based on these findings, we propose a geometry-aware evaluation protocol that yields more reliable and interpretable comparisons than standard aggregated benchmarks. We release all code, curvature-stratified dataset splits, and evaluation tools to support reproducible and rigorous assessment of future relational learning methods. Code and datasets are provided in our project homepage: https://sirbabbage.github.io/CurvBench_HOME/.",
+    "categories": [
+     "cs.LG"
+    ],
+    "url": "https://arxiv.org/abs/2606.06397v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06397v1",
+    "published": "2026-06-04T17:05:36Z"
+   },
+   {
+    "id": "2606.06396v1",
+    "title": "Risk Assessment of Autonomous Driving: Integrating Technical Failures, Ethical Dilemmas, and Policy Frameworks",
+    "authors": [
+     "Boyi Chen",
+     "Shengqin Chu",
+     "Zicheng Wang",
+     "Brian Baetz",
+     "Zhen Gao"
+    ],
+    "abstract": "Autonomous driving technology has the potential to reduce the large number of road traffic accidents caused by human error each year, but it also brings new types of risks that need to be evaluated from the aspects of technology, ethics and regulations. Based on public crash data from the National Highway Traffic Safety Administration (NHTSA), disengagement reports from the California Department of Motor Vehicles (DMV), the MIT Moral Machines dataset, and a comparative regulatory analysis of five jurisdictions, we have found that the main types of technical failure modes are perception and classification errors. These account for a relatively large proportion of the reported accidents, and it can be concluded that there are different ethical frameworks for autonomous vehicle decision-making, and inconsistent regulations in different areas increase the uncertainty of widespread application. Generally speaking, the problems of technology, ethics and regulation are closely related and need to be solved together. Therefore, this paper recommends a more adaptive and cooperative governance approach that combines engineering standards, ethical discussion, and institutional supervision.",
+    "categories": [
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06396v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06396v1",
+    "published": "2026-06-04T17:02:53Z"
+   },
+   {
+    "id": "2606.06393v1",
+    "title": "Proper Scoring Rules for Right-Censored Survival Data",
+    "authors": [
+     "Jef Jonkers",
+     "Glenn Van Wallendael",
+     "Luc Duchateau",
+     "Sofie Van Hoecke"
+    ],
+    "abstract": "Proper scoring rules provide a rigorous theoretical basis for the training and evaluation of probabilistic forecasts. However, in the presence of right censoring, the event time is only partially observed, rendering conventional scoring rules inapplicable in their standard form. We propose a framework for proper scoring of right-censored survival outcomes based on a simple idea: first, map the predictive distribution through the censoring mechanism, then apply the underlying proper score on the induced observed-data law. This yields localized scores for fixed censoring times and marginalized scores when the censoring time is random or only partially observed. The resulting construction recovers familiar right-censored likelihood and IPCW-type criteria within a coherent framework, while also yielding right-censored versions of the CRPS, pinball loss, Brier score, and energy score. We show that the marginalized score is proper under conditional independent censoring and strictly proper on the identifiable region. The same principle also leads to censored engression, a sample-based learning objective for multivariate right-censored survival modeling. In experiments, our scores correctly rank the oracle forecast across several censoring regimes, whereas forecast-dependent plug-in weighted scores can exhibit ranking reversals. Censored engression likewise substantially improves over naive training on censored outcomes.",
+    "categories": [
+     "cs.LG"
+    ],
+    "url": "https://arxiv.org/abs/2606.06393v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06393v1",
+    "published": "2026-06-04T17:00:29Z"
+   },
+   {
+    "id": "2606.06391v1",
+    "title": "Conformal Risk Sharing: Certified Cost Allocation with Participation Guarantees",
+    "authors": [
+     "Ieva Kazlauskaite"
+    ],
+    "abstract": "Sharing the financial impact of rare adverse events across a group can soften extreme individual burdens, but any participant made worse off by the arrangement has reason to leave. A credible mechanism must therefore provide each agent with a trustworthy cap on their future obligation and should be deployed only if the aggregate harm across participants is bounded. We formalise this as the Certified Allocation Problem: from finite data and without distributional assumptions, find a redistribution rule, produce obligation caps for every participant, and verify that no participant is made materially worse off. We propose Conformal Risk Sharing, which solves this problem by pairing an interpretable sharing policy with split conformal calibration. The sharing intensity is tuned on training data, while held-out calibration data produces distribution-free per-agent guarantees (valid under exchangeability). Experiments on synthetic and real-world data, including precipitation and energy-cooperative data, confirm that the framework can substantially reduce extreme obligations for high-risk agents while controlling harm to others.",
+    "categories": [
+     "stat.ML",
+     "cs.LG"
+    ],
+    "url": "https://arxiv.org/abs/2606.06391v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06391v1",
+    "published": "2026-06-04T16:59:27Z"
+   },
+   {
+    "id": "2606.06390v1",
+    "title": "HomeWorld: A Unified Floorplan-to-Furnished Framework for Generating Controllable, Densely Interactive Whole-Home Scenes",
+    "authors": [
+     "Wenbo Li",
+     "Xiaoliang Ju",
+     "Zipeng Qin",
+     "Rongyao Fang",
+     "Hongsheng Li"
+    ],
+    "abstract": "Indoor scene generation is crucial for robot simulation and modern interior design. However, complex layouts together with scarce 3D scene data make learning-based generation challenging. Existing methods often rely on hand-crafted rules or focus on isolated sub-tasks (e.g., floorplan synthesis or single-room furnishing), producing whole-home scenes that lack global coherence, realism, and simulation readiness. To mitigate these limitations, we propose a unified hierarchical framework that decomposes indoor scene synthesis into controllable stages. First, we curate a large-scale dataset of 300K real residential floorplans to train a large language model for whole-home floorplan generation. With detailed descriptions and a K-D tree-based representation, our method enables fine-grained, controllable whole-home floorplan generation. Building upon the generated whole-home floorplan, we leverage image generation models to draft furniture layouts from multi-level roaming viewpoints, and then generate the layouts of small manipulable objects on different supporting surfaces (e.g., cabinets, desks, and dining tables) for embodied AI simulation. During furniture and object layout generation, a VLM-based refiner iteratively corrects furniture and object placement, and a 3D generative model enables flexible replacement of individual assets. We further attach basic physical attributes and simple surface texture and lighting setups to complete the pipeline for embodied AI use. Experiments and user studies demonstrate that our pipeline produces indoor spaces with greater layout diversity and stronger 3D design appeal, outperforming prior methods on both quantitative and qualitative metrics. Finally, alongside our generation pipeline, we will release the floorplan dataset and 5K fully furnished scenes to the community. Project Page: https://kairos-homeworld.github.io/",
+    "categories": [
+     "cs.CV",
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06390v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06390v1",
+    "published": "2026-06-04T16:58:43Z"
+   },
+   {
+    "id": "2606.06388v1",
+    "title": "Humans' ALMANAC: A Human Collaboration Dataset of Action-Level Mental Model Annotations for Agent Collaboration",
+    "authors": [
+     "Jiaju Chen",
+     "Yuxuan Lu",
+     "Jiayi Su",
+     "Chaoran Chen",
+     "Songlin Xiao",
+     "Zheng Zhang",
+     "Yun Wang",
+     "Yunyao Li",
+     "Jian Zhao",
+     "Tongshuang Wu",
+     "Toby Jia-Jun Li",
+     "Dakuo Wang",
+     "Bingsheng Yao"
+    ],
+    "abstract": "Recent advances in LLM agents have enabled complex cognitive capabilities, such as multi-step reasoning, planning, and tool use, that increasingly position these agents as human collaborators. Effective collaboration, however, requires collaborators to continuously maintain and align mental models of their own reasoning,partners' intentions, and shared goals during the collaborative process. Today's agents rarely develop such capabilities since they are primarily optimized for task completion, and the community lacks authentic human collaboration data with action-level mental model annotations that could guide agents toward process-level collaborative competence. To bridge this gap, we present ALMANAC, a dataset of Action-Level Mental model ANnotations for Agent Collaboration built from the Map Task, a classic dyadic routing task from social science. ALMANAC contains 2,987 collaboration actions, each paired with theory-informed mental model annotations that record the participants' self-reasoning, perceived partner intent, and perceived team goal. We benchmark six LLMs on predicting humans' next-turn behavior and mental models. Our results demonstrate ALMANAC's utility in evaluating models' ability to simulate human collaborative behaviors and infer their underlying mental models.",
+    "categories": [
+     "cs.AI",
+     "cs.CL"
+    ],
+    "url": "https://arxiv.org/abs/2606.06388v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06388v1",
+    "published": "2026-06-04T16:56:12Z"
+   },
+   {
+    "id": "2606.06385v1",
+    "title": "Learned Response-Field Inertia Operator for HEC-RAS 2D Water-Surface Elevation Prediction",
+    "authors": [
+     "Edward Holmberg",
+     "Elias Ioup",
+     "Md Meftahul Ferdaus",
+     "Mahdi Abdelguerfi",
+     "Julian Simeonov"
+    ],
+    "abstract": "This article presents a cross-dataset evaluation of learned native-cell surrogate models for solver-consistent water-surface elevation (WSE) prediction in HEC-RAS 2D. To avoid raster remapping error and information-access confounding, surrogates are evaluated directly on the original nonuniform computational cells under an explicit policy that separates static project inputs, current hydraulic state, project-input forcing, calibration-derived quantities, and future solver-output targets. We introduce the Learned Response-Field Inertia Operator (LRFIO), a no-forcing, increment-based learned surrogate that calibrates an inertial response operator from solved HEC-RAS trajectories and deploys the retained operator through closed-form native-cell rollout. LRFIO evaluates a base-case-first response hierarchy consisting of persistence, global calibrated inertia, and segmented response-field inertia. Segmentation, residual correction, and neuralized inertia are treated as learnable modeling choices, with added complexity retained only when validation evidence justifies its cost. Evaluated across four diverse HEC-RAS 2D benchmarks, LRFIO retains different response structures for different domains, demonstrating adaptive learned complexity. The selector audit shows controlled complexity with a maximum validation regret of 4.30%. During deployment, retained rollout times range from 0.003 s to 0.242 s, and the Beaver Bayou measured-solve comparison gives an estimated 2.75 x 10^4 horizon-normalized speedup over HEC-RAS. These results indicate that the current native-cell increment is a strong solver-conditioned predictive scaffold and that added response-field, neural, or spatial complexity should be retained only when empirically justified.",
+    "categories": [
+     "cs.LG"
+    ],
+    "url": "https://arxiv.org/abs/2606.06385v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06385v1",
+    "published": "2026-06-04T16:49:35Z"
+   },
+   {
+    "id": "2606.06380v1",
+    "title": "Emergent Language as an Approach to Conscious AI",
+    "authors": [
+     "Zengqing Wu",
+     "Chuan Xiao"
+    ],
+    "abstract": "The question of whether artificial systems can be conscious remains open, in part because existing approaches either evaluate systems against theory-derived checklists (discriminative) or engineer consciousness-inspired modules directly (architectural); both leave open whether observed structures are artifacts of human language priors. We propose a generative methodology: emergent language (EL) in multi-agent reinforcement learning, where agents start from minimal (no language, no concept of self, minimal exposure to human text) and develop communication under task pressure alone, ensuring causal attributability to task demands rather than inherited human language priors. We position our methodology by discussing how EL serves as a generative tool for studying consciousness-relevant structure, including the role of environment complexity and the interpretation of emergent communication. As a proof of concept, we instantiate this methodology in a minimal environment and show that agents develop self-referential communication, including an echo-mismatch detection circuit that is not predicted by task structure or architecture alone but emerges from a specific environmental affordance.",
+    "categories": [
+     "cs.CL",
+     "cs.AI",
+     "cs.MA",
+     "cs.NE"
+    ],
+    "url": "https://arxiv.org/abs/2606.06380v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06380v1",
+    "published": "2026-06-04T16:47:41Z"
+   },
+   {
+    "id": "2606.06379v1",
+    "title": "EasyLens: A Training-Free Plug-and-Play Subtle-Lesion Representation Amplifier for Medical Vision-Language Models",
+    "authors": [
+     "Qiwei Zeng",
+     "Hao Wang",
+     "Jinghao Lin",
+     "Shuchang Ye",
+     "Yuezhe Yang",
+     "Yige Peng",
+     "Haoyuan Che",
+     "Jinman Kim",
+     "Lei Bi"
+    ],
+    "abstract": "Medical vision-language models (VLMs) have shown increasing potential for clinical image interpretation, including lesion detection and report generation. However, their practical utility remains limited by insufficient sensitivity to subtle lesions, whose visual evidence is often sparse, low-contrast, and embedded within complex anatomical context. As local visual tokens are aggregated, these weak lesion cues can become underrepresented in global image representations, making them difficult for medical VLMs to recognize. Existing efforts to improve lesion sensitivity mainly rely on medical-domain vision-encoder pre-training, clinical-term-guided alignment, or trainable pathological representation enhancement. Although effective, these approaches usually require additional training or model-specific adaptation and may overfit to particular disease morphologies, limiting their applicability to frozen medical VLMs. To address these limitations, we propose EasyLens, a training-free plug-and-play subtle-lesion representation amplifier for medical VLMs. EasyLens first constructs EasyBank, a pathology-anatomy prototype space that provides lesion-related prototypes and anatomy-aware normal references for comparing suspicious patches against both pathological and normal anatomical patterns. To avoid blindly amplifying normal tissues, EasyTag selects lesion-relevant patches through counterfactual prototype reasoning. To counteract the dilution of subtle lesion cues in global image representations, EasyAmplifier strengthens the selected lesion-relevant patch representations through morphology-guided residual enhancement, thereby increasing their contribution to the global image embedding. Experiments on multiple medical image datasets and frozen medical VLM backbones show that EasyLens improves subtle-lesion detection and outperforms existing encoder-enhancement baselines.",
+    "categories": [
+     "cs.CV",
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06379v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06379v1",
+    "published": "2026-06-04T16:47:33Z"
+   },
+   {
+    "id": "2606.06375v1",
+    "title": "Rethinking Infrastructure Inspection as Image Difference Classification: A Traffic Sign Case Study",
+    "authors": [
+     "Ching Yau Fergus Mok",
+     "Lavindra de Silva",
+     "Varun Kumar Reja",
+     "Ioannis Brilakis"
+    ],
+    "abstract": "Digital twins (DTs) allow the digitalization of road infrastructure inspection, though this is hindered by limited annotated data. This work exploits the relational nature of continuous asset condition monitoring to reformulate image-based defect detection as image difference classification (IDC) to reduce data reliance. This was evaluated in a case study on low-resource traffic sign inspection with different IDC classifiers using a newly-curated, high quality dataset. Results indicate that the instruction-based classifier outperforms encoder-based ones and gains from comparison with reference images. This shows that IDC can be an effective task modeling for tackling data constraints in infrastructure inspection and DT asset condition updating.",
+    "categories": [
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06375v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06375v1",
+    "published": "2026-06-04T16:43:30Z"
+   },
+   {
+    "id": "2606.06373v1",
+    "title": "LatentWave: JEPA Pretraining for Wireless Foundation Models",
+    "authors": [
+     "Ahmed Mohamed",
+     "Ahmed Aboulfotouh",
+     "Hatem Abou-Zeid"
+    ],
+    "abstract": "Wireless foundation models have emerged as a promising alternative to building separate models for each wireless task. However, existing approaches rely on masked input reconstruction, which can bias representations toward low-level signal details. In this paper, we propose LatentWave, a wireless foundation model pretrained using a Joint-Embedding Predictive Architecture (JEPA) on diverse wireless spectrograms and channel state information (CSI). By predicting masked regions in latent space, LatentWave learns representations that are more transferable out of the box across diverse downstream tasks. The proposed architecture employs per-channel patch embeddings with stochastic channel sampling during pretraining, allowing it to process variable antenna counts and improving usability across heterogeneous wireless configurations. We evaluate LatentWave on four downstream tasks: RF signal classification, 5G NR positioning, beam prediction, and LoS/NLoS classification, comparing against a masked-modeling baseline (WavesFM) pretrained on the same data. Additionally, we show that the masking geometry introduces a task-dependent inductive bias: frequency masking strongly favors channel-related tasks such as positioning and beam prediction, while region masking better preserves discriminability for signal classification.",
+    "categories": [
+     "eess.SP",
+     "cs.AI"
+    ],
+    "url": "https://arxiv.org/abs/2606.06373v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06373v1",
+    "published": "2026-06-04T16:39:39Z"
+   },
+   {
+    "id": "2606.06370v1",
+    "title": "Ensuring Interaction Safety in Multitask Exoskeleton Control: A Simulation-Trained Variable Impedance Framework",
+    "authors": [
+     "Muyuan Ma",
+     "Houcheng Li",
+     "Haotian Zhai",
+     "Lijun Han",
+     "Xinpan Meng",
+     "Xiuze Xia",
+     "Long Cheng"
+    ],
+    "abstract": "Wearable exoskeletons can augment human phys ical capabilities during complex activities. However, ensuring adaptation across diverse tasks while guaranteeing interaction safety remains a critical challenge. To address this, a simulation trained variable impedance control approach with stability guarantees is proposed. First, a simulation-based human exoskeleton motion data generation pipeline is established, utilizing Proximal Policy Optimization (PPO) to synthesize human muscle activations while the exoskeleton provides direct compensation for human biological joint torques. Subsequently, the generated dataset is used to train a dual modality policy that fuses semantic instructions with proprioceptive history, enabling the prediction of reference trajectories and variable impedance gains for nine different motion tasks. To guarantee safety, the network outputs are constrained by a stability criterion derived from Lyapunov stability theory, which bounds stiffness variations to ensure the asymptotic stability of the coupled system. Experimental results indicate that the proposed framework reduces metabolic cost in real-world scenarios com pared with standard baseline methods. These findings suggest the feasibility of the proposed framework for safe, multitask exoskeleton control.",
+    "categories": [
+     "cs.RO"
+    ],
+    "url": "https://arxiv.org/abs/2606.06370v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.06370v1",
+    "published": "2026-06-04T16:37:01Z"
+   }
+  ],
+  "hn": [
+   {
+    "id": "48421442",
+    "title": "S&P 500 rejects SpaceX, also blocking entry for OpenAI and Anthropic",
+    "url": "https://arstechnica.com/tech-policy/2026/06/sp-500-blocks-fast-spacex-entry-wont-waive-rule-for-unprofitable-ai-firms/",
+    "points": 1216,
+    "comments": 422,
+    "comments_url": "https://news.ycombinator.com/item?id=48421442",
+    "author": "maltalex",
+    "created_at": "2026-06-06T04:38:36Z",
+    "title_ja": "S&P 500、SpaceXの早期採用を見送り——OpenAI・Anthropicも門前払い",
+    "summary_ja": "指数委員会が黒字要件などの除外を拒否し、未黒字のAI大手やSpaceXのS&P500入りを阻んだ。時価総額の熱狂と財務実態の乖離が指数の門前で可視化された。"
+   },
+   {
+    "id": "48411635",
+    "title": "Did Claude increase bugs in rsync?",
+    "url": "https://alexispurslane.github.io/rsync-analysis/",
+    "points": 491,
+    "comments": 510,
+    "comments_url": "https://news.ycombinator.com/item?id=48411635",
+    "author": "logicprog",
+    "created_at": "2026-06-05T12:43:33Z",
+    "title_ja": "Claudeはrsyncのバグを増やしたのか?",
+    "summary_ja": "vibe codingでrsyncのバグが増えたという主張を統計的に再検証した分析。データ上は明確な悪化は確認できないと結論づける(関連トピックが既出)。"
+   },
+   {
+    "id": "48414367",
+    "title": "pg_durable: Microsoft open sources in-database durable execution",
+    "url": "https://github.com/microsoft/pg_durable",
+    "points": 456,
+    "comments": 104,
+    "comments_url": "https://news.ycombinator.com/item?id=48414367",
+    "author": "coffeemug",
+    "created_at": "2026-06-05T15:59:57Z",
+    "title_ja": "pg_durable: MicrosoftがDB内耐久実行をOSS化",
+    "summary_ja": "PostgreSQL内で耐久的なワークフロー実行を可能にするMicrosoftのオープンソース。外部キューなしで障害復旧可能な処理を書ける。"
+   },
+   {
+    "id": "48413464",
+    "title": "Astronauts told to return to ISS after sheltering over air leak repairs",
+    "url": "https://www.bbc.com/news/live/c4g44ew3g1kt",
+    "points": 416,
+    "comments": 257,
+    "comments_url": "https://news.ycombinator.com/item?id=48413464",
+    "author": "janpot",
+    "created_at": "2026-06-05T15:00:31Z",
+    "title_ja": "宇宙飛行士、空気漏れ修理で待避後にISS帰還を指示される",
+    "summary_ja": "ISSの空気漏れ対応に関する宇宙ニュース。AI以外の話題。"
+   },
+   {
+    "id": "48414653",
+    "title": "Gemma 4 QAT models: Optimizing compression for mobile and laptop efficiency",
+    "url": "https://blog.google/innovation-and-ai/technology/developers-tools/quantization-aware-training-gemma-4/",
+    "points": 386,
+    "comments": 120,
+    "comments_url": "https://news.ycombinator.com/item?id=48414653",
+    "author": "theanonymousone",
+    "created_at": "2026-06-05T16:18:48Z",
+    "title_ja": "Gemma 4 QATモデル: モバイル・ノートPC向けに圧縮を最適化",
+    "summary_ja": "量子化を意識して学習(QAT)したGemma 4を公開し、精度を保ったまま端末上で高効率に動かせるようにした。"
+   },
+   {
+    "id": "48420827",
+    "title": "Ask HN: Why is the HN crowd so anti-AI?",
+    "url": "https://news.ycombinator.com/item?id=48420827",
+    "points": 283,
+    "comments": 489,
+    "comments_url": "https://news.ycombinator.com/item?id=48420827",
+    "author": "Ekami",
+    "created_at": "2026-06-06T02:31:51Z",
+    "title_ja": "Ask HN: なぜHN民はこれほど反AIなのか?",
+    "summary_ja": "Hacker Newsコミュニティに広がるAIへの反発・疲労感を巡る議論スレッド。AI礼賛への反動が可視化されている。"
+   },
+   {
+    "id": "48411510",
+    "title": "Programmers will document for Claude, but not for each other",
+    "url": "https://blog.plover.com/2026/03/09/#documentation-wins-2",
+    "points": 185,
+    "comments": 156,
+    "comments_url": "https://news.ycombinator.com/item?id=48411510",
+    "author": "surprisetalk",
+    "created_at": "2026-06-05T12:30:17Z",
+    "title_ja": "プログラマはClaudeのためには文書を書くが、同僚のためには書かない",
+    "summary_ja": "AIに読ませる目的だと急にコメントやドキュメントを整備し始める——AIが開発文化を変えてしまった皮肉な観察。"
+   },
+   {
+    "id": "48417916",
+    "title": "Hacker News, Sans AI",
+    "url": "https://elijahpotter.dev/articles/hacker-news-sans-AI",
+    "points": 179,
+    "comments": 97,
+    "comments_url": "https://news.ycombinator.com/item?id=48417916",
+    "author": "chilipepperhott",
+    "created_at": "2026-06-05T20:38:40Z",
+    "title_ja": "AI抜きのHacker News",
+    "summary_ja": "HNからAI関連投稿を除外して表示する試み。AI話題の飽和への反動として注目を集めた。"
+   },
+   {
+    "id": "48422993",
+    "title": "The Smart TV in Your LivingRoom Is a Node in the AIScraping Economy",
+    "url": "https://blog.includesecurity.com/2026/06/the-smart-tv-in-your-livingroom-is-a-node-in-the-aiscraping-economy/",
+    "points": 179,
+    "comments": 81,
+    "comments_url": "https://news.ycombinator.com/item?id=48422993",
+    "author": "nikcub",
+    "created_at": "2026-06-06T09:17:49Z",
+    "title_ja": "あなたのリビングのスマートTVはAIスクレイピング経済の一ノード",
+    "summary_ja": "スマートTVがアプリ内SDK経由で住宅用プロキシと化し、AI企業のウェブスクレイピングを中継している実態を暴いた調査。"
+   },
+   {
+    "id": "48424605",
+    "title": "Nvidia is proposing a beast of a CPU system for Windows PCs",
+    "url": "https://twitter.com/lemire/status/2062880075117113739",
+    "points": 154,
+    "comments": 309,
+    "comments_url": "https://news.ycombinator.com/item?id=48424605",
+    "author": "tosh",
+    "created_at": "2026-06-06T12:52:18Z",
+    "title_ja": "NVIDIA、Windows PC向けに強力なCPUシステムを提案",
+    "summary_ja": "NVIDIAがWindows PC向けの高性能CPUシステムを構想しているという話題。"
+   },
+   {
+    "id": "48413629",
+    "title": "Ask HN: What is your (AI) dev tech stack / workflow?",
+    "url": "https://news.ycombinator.com/item?id=48413629",
+    "points": 144,
+    "comments": 126,
+    "comments_url": "https://news.ycombinator.com/item?id=48413629",
+    "author": "dv35z",
+    "created_at": "2026-06-05T15:13:54Z",
+    "title_ja": "Ask HN: あなたのAI開発の技術スタック/ワークフローは?",
+    "summary_ja": "開発者たちが日々使うAI開発環境・ワークフローを共有し合うスレッド。"
+   },
+   {
+    "id": "48409955",
+    "title": "Show HN: Lowfat – pluggable CLI filter that saved 91.8% of my LLM tokens",
+    "url": "https://github.com/zdk/lowfat",
+    "points": 143,
+    "comments": 72,
+    "comments_url": "https://news.ycombinator.com/item?id=48409955",
+    "author": "zdkaster",
+    "created_at": "2026-06-05T09:10:42Z",
+    "title_ja": "Show HN: Lowfat – LLMトークンを91.8%削減するCLIフィルタ",
+    "summary_ja": "コマンド出力を間引いてLLMに渡すトークンを大幅削減する、プラグイン式のCLIフィルタ。"
+   },
+   {
+    "id": "48416635",
+    "title": "Transformers are inherently succinct",
+    "url": "https://openreview.net/pdf?id=Yxz92UuPLQ",
+    "points": 135,
+    "comments": 40,
+    "comments_url": "https://news.ycombinator.com/item?id=48416635",
+    "author": "brandonb",
+    "created_at": "2026-06-05T18:50:26Z",
+    "title_ja": "Transformerは本質的に簡潔である",
+    "summary_ja": "Transformerが簡潔(succinct)な表現能力を本質的に備えることを理論的に示した研究。"
+   },
+   {
+    "id": "48416936",
+    "title": "Accidentally deleted subscriptions for chat integrations (Slack and MS Teams)",
+    "url": "https://www.githubstatus.com/incidents/2nmfnbknhlnv",
+    "points": 125,
+    "comments": 44,
+    "comments_url": "https://news.ycombinator.com/item?id=48416936",
+    "author": "SparkyDogs",
+    "created_at": "2026-06-05T19:15:36Z",
+    "title_ja": "GitHub、チャット連携(Slack/Teams)の購読を誤って削除",
+    "summary_ja": "GitHubの障害でSlack/Teams連携の購読設定が誤って削除された件の報告。"
+   },
+   {
+    "id": "48414479",
+    "title": "U.S. Military Turned GPS into a Global \"Numbers Station\"",
+    "url": "https://www.404media.co/the-u-s-military-quietly-turned-gps-into-a-global-numbers-station-evidence-suggests/",
+    "points": 110,
+    "comments": 2,
+    "comments_url": "https://news.ycombinator.com/item?id=48414479",
+    "author": "awkwardpotato",
+    "created_at": "2026-06-05T16:06:36Z",
+    "title_ja": "米軍はGPSを世界規模の「ナンバーズ・ステーション」に変えた",
+    "summary_ja": "GPS信号に隠された軍の暗号運用を解説。AI以外のセキュリティ話題。"
+   },
+   {
+    "id": "48426022",
+    "title": "Police in England and Wales told to halt AI use in court statements",
+    "url": "https://www.ft.com/content/229e5949-3ebc-4151-8a86-a01b5e259241",
+    "points": 109,
+    "comments": 39,
+    "comments_url": "https://news.ycombinator.com/item?id=48426022",
+    "author": "nmstoker",
+    "created_at": "2026-06-06T15:35:49Z",
+    "title_ja": "英国の警察、法廷向け供述でのAI利用停止を指示される",
+    "summary_ja": "イングランド・ウェールズの警察に、AIが生成した法廷文書の使用を止めるよう通達。誤情報(ハルシネーション)のリスクが理由。"
+   },
+   {
+    "id": "48411799",
+    "title": "The Quiet Numbers Station: Decoding Nineteen Years of GPS Cryptography",
+    "url": "https://www.benthamsgaze.org/2026/06/02/the-quiet-numbers-station-decoding-nineteen-years-of-gps-cryptography/",
+    "points": 107,
+    "comments": 78,
+    "comments_url": "https://news.ycombinator.com/item?id=48411799",
+    "author": "lordgilman",
+    "created_at": "2026-06-05T12:56:44Z",
+    "title_ja": "静かなナンバーズ・ステーション: 19年分のGPS暗号を解読",
+    "summary_ja": "GPSの暗号運用を長期にわたり解析した技術記事。"
+   },
+   {
+    "id": "48425031",
+    "title": "US House lawmakers release draft bill to prohibit state AI rules",
+    "url": "https://www.reuters.com/business/us-house-lawmakers-release-draft-bill-regulate-ai-2026-06-04/",
+    "points": 94,
+    "comments": 63,
+    "comments_url": "https://news.ycombinator.com/item?id=48425031",
+    "author": "1vuio0pswjnm7",
+    "created_at": "2026-06-06T13:40:22Z",
+    "title_ja": "米下院、州のAI規制を禁じる法案草案を公表",
+    "summary_ja": "州のAI開発規制を3年間凍結し連邦標準に一本化する超党派の討議草案(Great American AI Act)。AI規制の主導権を巡る攻防が本格化。"
+   },
+   {
+    "id": "48414978",
+    "title": "Mantine-datatable (and others) compromised – owner account suspended",
+    "url": "https://github.com/icflorescu/mantine-datatable/discussions/813",
+    "points": 69,
+    "comments": 29,
+    "comments_url": "https://news.ycombinator.com/item?id=48414978",
+    "author": "justsomehuman",
+    "created_at": "2026-06-05T16:39:57Z",
+    "title_ja": "Mantine-datatable等が侵害——所有者アカウント停止",
+    "summary_ja": "人気npmパッケージが供給網攻撃で侵害され、所有者アカウントが凍結された。OSS依存のリスクを改めて露呈。"
+   },
+   {
+    "id": "48419023",
+    "title": "Microsoft wants users to be addicted to Scout, their AI personal assistant",
+    "url": "https://disassociated.com/microsoft-users-addicted-ai-personal-assistant/",
+    "points": 67,
+    "comments": 3,
+    "comments_url": "https://news.ycombinator.com/item?id=48419023",
+    "author": "berlianta",
+    "created_at": "2026-06-05T22:12:58Z",
+    "title_ja": "Microsoft、AIアシスタント『Scout』に依存させたい",
+    "summary_ja": "MicrosoftがAIアシスタントへのユーザー依存を狙っているとする批評記事。"
+   }
+  ],
+  "reddit": [],
+  "github": [
+   {
+    "name": "superpowers",
+    "full_name": "obra/superpowers",
+    "description": "An agentic skills framework & software development methodology that works.",
+    "url": "https://github.com/obra/superpowers",
+    "language": "Shell",
+    "stars": 219569,
+    "stars_today": 1008,
+    "forks": 19535,
+    "title_ja": "superpowers: 21万★超のエージェント型スキルフレームワーク",
+    "summary_ja": "AIエージェントにスキルとソフトウェア開発手法を与えるフレームワーク。GitHubトレンド最上位で、エージェント開発の定番化が進む。"
+   },
+   {
+    "name": "Agent-Reach",
+    "full_name": "Panniantong/Agent-Reach",
+    "description": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
+    "url": "https://github.com/Panniantong/Agent-Reach",
+    "language": "Python",
+    "stars": 22218,
+    "stars_today": 700,
+    "forks": 1897,
+    "title_ja": "Agent-Reach: AIエージェントにネット全体を見る「目」を与える",
+    "summary_ja": "Twitter/Reddit/YouTubeなどを読んで検索できるようにし、エージェントに広範なウェブ閲覧能力を付与するツール。"
+   },
+   {
+    "name": "CopilotKit",
+    "full_name": "CopilotKit/CopilotKit",
+    "description": "The Frontend Stack for Agents & Generative UI. React, Angular, Mobile, Slack, and more. Makers of the AG-UI Protocol",
+    "url": "https://github.com/CopilotKit/CopilotKit",
+    "language": "TypeScript",
+    "stars": 33127,
+    "stars_today": 613,
+    "forks": 4234,
+    "title_ja": "CopilotKit: エージェント/生成UIのフロントエンド基盤",
+    "summary_ja": "React/Angular/モバイル/Slack等にAIエージェントのUIを組み込むためのフロントエンドスタック。"
+   },
+   {
+    "name": "PaddleOCR",
+    "full_name": "PaddlePaddle/PaddleOCR",
+    "description": "Turn any PDF or image document into structured data for your AI. A powerful, lightweight OCR toolkit that bridges the gap between images/PDFs and LLMs. Supports 100+ languages.",
+    "url": "https://github.com/PaddlePaddle/PaddleOCR",
+    "language": "Python",
+    "stars": 80901,
+    "stars_today": 449,
+    "forks": 10654,
+    "title_ja": "PaddleOCR: PDF・画像を構造化データに変換するOCR",
+    "summary_ja": "軽量で強力なOCRエンジン。文書をAI向けの構造化データに変換でき、根強い人気を保つ。"
+   },
+   {
+    "name": "last30days-skill",
+    "full_name": "mvanhorn/last30days-skill",
+    "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
+    "url": "https://github.com/mvanhorn/last30days-skill",
+    "language": "Python",
+    "stars": 28682,
+    "stars_today": 441,
+    "forks": 2427,
+    "title_ja": "last30days-skill: 任意トピックを横断調査するエージェントスキル",
+    "summary_ja": "Reddit/X/YouTube/HN/Polymarket等を横断し、直近30日の話題を調べるAIエージェントスキル。"
+   },
+   {
+    "name": "mempalace",
+    "full_name": "MemPalace/mempalace",
+    "description": "The best-benchmarked open-source AI memory system. And it's free.",
+    "url": "https://github.com/MemPalace/mempalace",
+    "language": "Python",
+    "stars": 54197,
+    "stars_today": 441,
+    "forks": 7103,
+    "title_ja": "mempalace: ベンチ最強を謳うOSSのAIメモリシステム",
+    "summary_ja": "LLMエージェント向けの長期記憶を実現するオープンソース。ベンチマークで最良と主張し、無料で提供。"
+   },
+   {
+    "name": "VibeVoice",
+    "full_name": "microsoft/VibeVoice",
+    "description": "Open-Source Frontier Voice AI",
+    "url": "https://github.com/microsoft/VibeVoice",
+    "language": "Python",
+    "stars": 48420,
+    "stars_today": 219,
+    "forks": 5389,
+    "title_ja": "VibeVoice: オープンソースの最先端音声AI",
+    "summary_ja": "高品質な音声合成・音声AIをオープンソースで提供するプロジェクト。"
+   },
+   {
+    "name": "plugins",
+    "full_name": "openai/plugins",
+    "description": "OpenAI Plugins",
+    "url": "https://github.com/openai/plugins",
+    "language": "JavaScript",
+    "stars": 1726,
+    "stars_today": 215,
+    "forks": 255,
+    "title_ja": "OpenAI Plugins",
+    "summary_ja": "OpenAIのプラグイン関連リポジトリ。"
+   },
+   {
+    "name": "career-ops",
+    "full_name": "santifer/career-ops",
+    "description": "AI-powered job search system built on Claude Code. 14 skill modes, Go dashboard, PDF generation, batch processing.",
+    "url": "https://github.com/santifer/career-ops",
+    "language": "JavaScript",
+    "stars": 49217,
+    "stars_today": 203,
+    "forks": 10191,
+    "title_ja": "career-ops: Claude Code上に作る求職自動化システム",
+    "summary_ja": "14のスキルモード、Goダッシュボード、PDF生成を備えたAI求職支援システム。"
+   },
+   {
+    "name": "trivy",
+    "full_name": "aquasecurity/trivy",
+    "description": "Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more",
+    "url": "https://github.com/aquasecurity/trivy",
+    "language": "Go",
+    "stars": 35972,
+    "stars_today": 159,
+    "forks": 452,
+    "title_ja": "Trivy: コンテナ・コード等の脆弱性スキャナ",
+    "summary_ja": "コンテナ/K8s/コードの脆弱性・設定ミス・秘密情報・SBOMを検出する定番セキュリティツール。"
+   },
+   {
+    "name": "whisper",
+    "full_name": "openai/whisper",
+    "description": "Robust Speech Recognition via Large-Scale Weak Supervision",
+    "url": "https://github.com/openai/whisper",
+    "language": "Python",
+    "stars": 101798,
+    "stars_today": 155,
+    "forks": 12436,
+    "title_ja": "Whisper: 大規模弱教師による頑健な音声認識",
+    "summary_ja": "OpenAIの音声認識モデル。多言語で高精度な文字起こしを実現する定番OSS。"
+   },
+   {
+    "name": "Personal_AI_Infrastructure",
+    "full_name": "danielmiessler/Personal_AI_Infrastructure",
+    "description": "Agentic AI Infrastructure for magnifying HUMAN capabilities.",
+    "url": "https://github.com/danielmiessler/Personal_AI_Infrastructure",
+    "language": "TypeScript",
+    "stars": 14895,
+    "stars_today": 63,
+    "forks": 2117,
+    "title_ja": "Personal AI Infrastructure: 個人の能力を拡張するエージェント基盤",
+    "summary_ja": "人間の能力を増幅するための自分専用エージェントAIインフラのテンプレート。"
+   },
+   {
+    "name": "mxc",
+    "full_name": "microsoft/mxc",
+    "description": "Policy-driven, layered isolation and containment",
+    "url": "https://github.com/microsoft/mxc",
+    "language": "Rust",
+    "stars": 541,
+    "stars_today": 57,
+    "forks": 24,
+    "title_ja": "mxc: 方針駆動の階層的な隔離・封じ込め",
+    "summary_ja": "ポリシーに基づき多層的にプロセスを隔離・封じ込めるツール。"
+   }
+  ],
+  "blogs": [
+   {
+    "title": "Five labs, five minds: building a multi-model finance drama on small models",
+    "url": "https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim-v2",
+    "source": "Hugging Face",
+    "summary": "",
+    "published": "2026-06-06T19:02:33Z",
+    "title_ja": "5つのラボ・5つの知性: 小型モデルで金融ドラマを作る",
+    "summary_ja": "複数の小型モデルを組み合わせ、金融シナリオのドラマを生成したハッカソンの記録。"
+   },
+   {
+    "title": "The latest AI news we announced in May 2026",
+    "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
+    "source": "Google DeepMind",
+    "summary": "May AI recap",
+    "published": "2026-06-05T14:45:00Z",
+    "title_ja": "2026年5月にGoogleが発表したAIニュースまとめ",
+    "summary_ja": "Google DeepMindの5月の主要発表を振り返るまとめ記事。"
+   },
+   {
+    "title": "Nemotron 3.5 Content Safety: Customizable Multimodal Safety for Global Enterprise AI",
+    "url": "https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety",
+    "source": "Hugging Face",
+    "summary": "",
+    "published": "2026-06-04T18:57:45Z",
+    "title_ja": "Nemotron 3.5 コンテンツ安全性: カスタム可能なマルチモーダル安全性",
+    "summary_ja": "NVIDIAの、企業向けにカスタマイズ可能なマルチモーダル安全性(コンテンツモデレーション)モデル。"
+   },
+   {
+    "title": "EVA-Bench Data 2.0: 3 Domains, 121 Tools, 213 Scenarios",
+    "url": "https://huggingface.co/blog/ServiceNow-AI/eva-bench-data",
+    "source": "Hugging Face",
+    "summary": "",
+    "published": "2026-06-04T12:24:58Z",
+    "title_ja": "EVA-Bench Data 2.0: 3ドメイン・121ツール・213シナリオ",
+    "summary_ja": "エージェント評価用ベンチマークの拡張版。多数のツールと現実的なシナリオを収録。"
+   },
+   {
+    "title": "How Endava is redesigning software delivery around AI agents",
+    "url": "https://openai.com/index/endava-frontiers",
+    "source": "OpenAI",
+    "summary": "Learn how Endava is using AI agents, ChatGPT Enterprise, and Codex to accelerate software delivery, automate workflows, and build an AI-native culture across the enterprise.",
+    "published": "2026-06-04T12:00:00Z",
+    "title_ja": "Endava、AIエージェント中心にソフト開発を再設計",
+    "summary_ja": "受託開発大手Endavaが、AIエージェントを軸に開発プロセスを作り替えた事例。"
+   },
+   {
+    "title": "Dreaming: Better memory for a more helpful ChatGPT",
+    "url": "https://openai.com/index/chatgpt-memory-dreaming",
+    "source": "OpenAI",
+    "summary": "ChatGPT introduces a new memory system to better remember preferences, keeping context fresh and relevant across conversations.",
+    "published": "2026-06-04T09:00:00Z",
+    "title_ja": "Dreaming: ChatGPTのより賢いメモリ",
+    "summary_ja": "ChatGPTがアイドル時に過去対話を整理・統合し記憶を改善する仕組み(既出トピック)。"
+   },
+   {
+    "title": "Biodefense in the Intelligence Age",
+    "url": "https://openai.com/index/biodefense-in-the-intelligence-age",
+    "source": "OpenAI",
+    "summary": "An action plan for AI-powered biological resilience",
+    "published": "2026-06-04T00:00:00Z",
+    "title_ja": "知能の時代のバイオ防衛",
+    "summary_ja": "OpenAIによる、AI時代の生物学的脅威への防衛戦略(関連トピックが既出)。"
+   },
+   {
+    "title": "Designing the hf CLI as an agent-optimized way to work with the Hub",
+    "url": "https://huggingface.co/blog/hf-cli-for-agents",
+    "source": "Hugging Face",
+    "summary": "",
+    "published": "2026-06-04T00:00:00Z",
+    "title_ja": "hf CLIをエージェント最適化で再設計",
+    "summary_ja": "Hugging Face Hubを扱うCLIを、AIエージェントが使いやすい形に設計し直した話。"
+   },
+   {
+    "title": "Introducing new capabilities to GPT-Rosalind",
+    "url": "https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind",
+    "source": "OpenAI",
+    "summary": "GPT-Rosalind advances life sciences research with enhanced biological reasoning, medicinal chemistry expertise, genomics analysis, and experimental workflow capabilities.",
+    "published": "2026-06-03T13:15:00Z",
+    "title_ja": "GPT-Rosalindに新機能を追加",
+    "summary_ja": "OpenAIのライフサイエンス向けモデルGPT-Rosalindの機能拡張(既出トピック)。"
+   },
+   {
+    "title": "5 ways Google Search can level up your thrift and vintage shopping",
+    "url": "https://blog.google/products-and-platforms/products/search/thrifting-tips/",
+    "source": "Google DeepMind",
+    "summary": "A colorful, grain-textured collage of various items scattered across a light blue background. The items include a green bucket hat, a wooden clothes hanger, a blue-and-red striped collar, blue sunglasses, denim shorts, a yellow price tag, a red high-heele",
+    "published": "2026-06-03T13:00:00Z",
+    "title_ja": "Google検索で古着・ヴィンテージ探しを強化する5つの方法",
+    "summary_ja": "AI検索機能を使った古着・ヴィンテージショッピングの活用術。"
+   },
+   {
+    "title": "Direct Preference Optimization Beyond Chatbots",
+    "url": "https://huggingface.co/blog/Dharma-AI/direct-preference-optimization-beyond-chatbots",
+    "source": "Hugging Face",
+    "summary": "",
+    "published": "2026-06-03T12:55:11Z",
+    "title_ja": "チャットボットを超えたDPO",
+    "summary_ja": "直接選好最適化(DPO)をチャット以外の領域に応用する解説記事。"
+   },
+   {
+    "title": "How Wasmer used Codex to build a Node.js runtime for the edge",
+    "url": "https://openai.com/index/wasmer",
+    "source": "OpenAI",
+    "summary": "See how Wasmer used Codex with GPT-5.5 to build a Node.js runtime for the edge, accelerating development 10x to 20x and shipping in weeks instead of months.",
+    "published": "2026-06-03T12:00:00Z",
+    "title_ja": "WasmerがCodexでエッジ向けNode.jsランタイムを構築",
+    "summary_ja": "OpenAI Codexを使い、エッジで動くNode.js互換ランタイムを開発した事例。"
+   },
+   {
+    "title": "A blueprint for democratic governance of frontier AI",
+    "url": "https://openai.com/index/frontier-safety-blueprint",
+    "source": "OpenAI",
+    "summary": "OpenAI outlines a blueprint for U.S. governance of frontier AI, proposing a federal framework for safety, resilience, and national security.",
+    "published": "2026-06-03T10:00:00Z",
+    "title_ja": "フロンティアAIの民主的ガバナンス青写真",
+    "summary_ja": "OpenAIが示す、最先端AIを民主的に統治するための枠組みの提案。"
+   },
+   {
+    "title": "OpenAI public policy agenda",
+    "url": "https://openai.com/index/public-policy-agenda",
+    "source": "OpenAI",
+    "summary": "OpenAI outlines its public policy agenda for AI, including safety, youth protection, workforce transition, and global standards to ensure AI benefits society.",
+    "published": "2026-06-03T10:00:00Z",
+    "title_ja": "OpenAIの公共政策アジェンダ",
+    "summary_ja": "OpenAIが掲げる政策面の方針・提言をまとめたもの。"
+   },
+   {
+    "title": "Adding MCP Tools to Reachy Mini",
+    "url": "https://huggingface.co/blog/adding-mcp-tools-to-reachy-mini",
+    "source": "Hugging Face",
+    "summary": "",
+    "published": "2026-06-03T00:00:00Z",
+    "title_ja": "Reachy MiniにMCPツールを追加",
+    "summary_ja": "卓上ロボットReachy MiniにMCP経由でツールを使わせる方法の紹介。"
+   },
+   {
+    "title": "Holo3.1: Fast & Local Computer Use Agents",
+    "url": "https://huggingface.co/blog/Hcompany/holo31",
+    "source": "Hugging Face",
+    "summary": "",
+    "published": "2026-06-02T14:13:23Z",
+    "title_ja": "Holo3.1: 高速・ローカルなコンピュータ操作エージェント",
+    "summary_ja": "ローカルで動く高速なGUI操作(コンピュータ操作)エージェント(既出トピック)。"
+   },
+   {
+    "title": "Travelers deploys AI-powered claims countrywide with OpenAI",
+    "url": "https://openai.com/index/travelers",
+    "source": "OpenAI",
+    "summary": "Travelers built an AI-powered Claim Assistant with OpenAI to guide customers through filing claims, provide 24/7 support, and scale operations during peak demand.",
+    "published": "2026-06-02T12:00:00Z",
+    "title_ja": "保険大手Travelers、OpenAIで保険金請求をAI化し全米展開",
+    "summary_ja": "保険会社Travelersが請求処理にAIを導入し、全国展開した事例。"
+   },
+   {
+    "title": "Codex for every role, tool, and workflow",
+    "url": "https://openai.com/index/codex-for-every-role-tool-workflow",
+    "source": "OpenAI",
+    "summary": "Discover new Codex plugins, sites, and annotations that help analysts, marketers, designers, investors, and other teams get more done with AI.",
+    "published": "2026-06-02T09:00:00Z",
+    "title_ja": "あらゆる役割・ツール・ワークフローのためのCodex",
+    "summary_ja": "OpenAI Codexを職種横断で使えるよう拡張した発表。"
+   },
+   {
+    "title": "Advancing youth safety and opportunity through global leadership",
+    "url": "https://openai.com/index/advancing-youth-safety-and-opportunity-through-global-leadership",
+    "source": "OpenAI",
+    "summary": "OpenAI calls for global action on youth AI safety, proposing an international institute to strengthen safeguards, standards, and opportunities for young people.",
+    "published": "2026-06-02T07:00:00Z",
+    "title_ja": "グローバルリーダーシップで若者の安全と機会を前進",
+    "summary_ja": "OpenAIの若年層保護に関する取り組みの紹介。"
+   },
+   {
+    "title": "How we used Gemini to build Google I/O 2026",
+    "url": "https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/",
+    "source": "Google DeepMind",
+    "summary": "A collage of I/O-related images, including the Antigravity Coffee Co. pop-up, a colorful jellyfish and a still from the Timmy TPU video. The word AI repeats three times on the left of the image, and there are colorful icons, including a sparkle, as well.",
+    "published": "2026-06-01T16:00:00Z",
+    "title_ja": "GeminiでGoogle I/O 2026を作った方法",
+    "summary_ja": "Geminiを活用してI/Oイベントの制作を行った舞台裏。"
+   },
+   {
+    "title": "Introducing Mellum2: A 12B Mixture-of-Experts Model by JetBrains",
+    "url": "https://huggingface.co/blog/JetBrains/mellum2-launch",
+    "source": "Hugging Face",
+    "summary": "",
+    "published": "2026-06-01T15:45:17Z",
+    "title_ja": "Mellum2: JetBrainsの12B MoEコーディングモデル",
+    "summary_ja": "JetBrainsが公開した、コード補完特化の12Bパラメータ混合専門家(MoE)モデル。"
+   },
+   {
+    "title": "Beyond LLMs: Why Scalable Enterprise AI Adoption Depends on Agent Logic",
+    "url": "https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption",
+    "source": "Hugging Face",
+    "summary": "",
+    "published": "2026-06-01T13:51:18Z",
+    "title_ja": "LLMを超えて: 企業AI普及はエージェントロジック次第",
+    "summary_ja": "IBM研究による、スケーラブルな企業AI導入にはエージェントの論理設計が鍵という論考。"
+   }
+  ]
+ },
+ "highlights": [
+  {
+   "source": "Hacker News",
+   "title": "S&P 500 rejects SpaceX, also blocking entry for OpenAI and Anthropic",
+   "title_ja": "S&P 500、SpaceXの早期採用を拒否——OpenAI・Anthropicも入れず",
+   "url": "https://arstechnica.com/tech-policy/2026/06/sp-500-blocks-fast-spacex-entry-wont-waive-rule-for-unprofitable-ai-firms/",
+   "hot_take_ja": "時価総額では誰もが認めるAIの主役なのに、S&P 500には入れない。理由は単純で、四半期GAAP黒字という条件を満たさないから。指数委員会は「時価総額の大きさだけを理由に例外を認めるべきではない」と言い切った。期待の熱狂と財務の冷たさのギャップが、指数の門前ではっきり可視化された一件だ。",
+   "detail_ja": "S&P Dow Jones Indicesの指数委員会が、SpaceX・OpenAI・Anthropicの3社を念頭に検討していた採用ルールの緩和を6月4日に見送った。委員会は、①上場後12カ月の「熟成(seasoning)」期間、②浮動株比率(public float)10%以上、③直近四半期と過去4四半期合計でのGAAP黒字、という3要件の例外適用を検討したが、最終的に「財務的健全性・熟成・浮動株要件の例外を、時価総額の大きさだけを根拠に認めるべきではない」と結論づけた。SpaceXは2025年に約49億ドルの赤字を計上しており、黒字要件を満たさないため早期採用の道は閉ざされた。Bloomberg Intelligenceの試算では、S&P500入りが実現すればSpaceXに約140億ドル、OpenAIに80億ドル超、Anthropicに46億ドルのパッシブ買いが発生するとされ、それが宙に浮いた格好だ。背景には、世界で7.5兆ドル規模のパッシブ資金がこの指数に連動しており、組入れ＝自動的な巨額買いを意味するという構造がある。一方でNasdaqやFTSE Russellは既に規則を調整しており、SpaceXは他指数経由なら入れる可能性がある。注意点として、これらの企業は多くがまだ非上場・赤字であり、今回の決定は「将来IPOしても自動では入れない」という規律の再確認という側面が強い。AIへの市場の熱狂と、伝統的な指数が課す財務規律との緊張関係を象徴する出来事と言える。",
+   "detail_en": "On June 4, the S&P Dow Jones Indices committee declined to relax its index-inclusion rules that had been under consideration with SpaceX, OpenAI, and Anthropic in mind. The committee had weighed waiving three separate requirements: the 12-month post-IPO 'seasoning' period, the 10% minimum public float, and the profitability test (positive GAAP earnings in the most recent quarter and summed over the trailing four quarters). It ultimately concluded that 'exceptions to the financial viability, seasoning, and IWF requirements should not be granted solely based on market capitalization.' SpaceX posted a roughly $4.94 billion loss in 2025, so it fails the profitability bar and gets no fast track. Bloomberg Intelligence estimated S&P 500 entry would trigger about $14 billion of passive buying for SpaceX, over $8 billion for OpenAI, and $4.6 billion for Anthropic — flows that are now on hold. The stakes are high because roughly $7.5 trillion in passive money tracks the index, so inclusion effectively means automatic large-scale buying. Meanwhile Nasdaq and FTSE Russell have already adjusted their rules, leaving a path for SpaceX into other indices. A caveat: most of these firms remain private and unprofitable, so the decision is largely a reaffirmation that even post-IPO they would not get automatic entry. It crystallizes the tension between the market's enthusiasm for AI and the financial discipline that traditional indices still enforce.",
+   "key_points_ja": [
+    "6/4にS&Pが採用ルール緩和を見送り",
+    "熟成・浮動株・GAAP黒字の3要件は維持",
+    "「時価総額だけで例外は認めない」と明言",
+    "SpaceXは2025年に約49億ドルの赤字",
+    "実現時はSpaceXに約140億ドルのパッシブ買い試算",
+    "NasdaqやFTSEは既に規則を調整済み"
+   ],
+   "key_points_en": [
+    "S&P declined to relax inclusion rules on June 4",
+    "Seasoning, float, and GAAP-profit rules all kept",
+    "'No exceptions based on market cap alone'",
+    "SpaceX posted a ~$4.94B loss in 2025",
+    "Entry would have meant ~$14B passive buying for SpaceX",
+    "Nasdaq and FTSE Russell already eased their rules"
+   ]
+  },
+  {
+   "source": "Hacker News",
+   "title": "US House lawmakers release draft bill to prohibit state AI rules",
+   "title_ja": "米下院、州のAI規制を3年凍結する超党派法案草案を公表",
+   "url": "https://www.insurancejournal.com/news/national/2026/06/05/872609.htm",
+   "hot_take_ja": "州ごとにバラバラなAI規制を「3年間凍結して連邦に一本化する」——そんな269ページの超党派草案が出た。引き換えに大手AI開発者には半年ごとの第三者監査を課す、いわば「規制の集権化と引き換えの透明性」ディール。だが労組や消費者団体は数時間で猛反発、業界団体は歓迎と、賛否がきれいに割れた。AI規制の主導権を州と連邦どちらが握るかの天王山だ。",
+   "detail_ja": "下院のJay Obernolte議員(共和・カリフォルニア)とLori Trahan議員(民主・マサチューセッツ)が6月4日、269ページに及ぶ超党派のAI規制討議草案「Great American AI Act」を公表した。最大の柱は、AIモデルの「開発」を直接規制する州法を3年間先取り(preemption)して凍結し、連邦標準に一本化する点だ。重要な線引きとして、この凍結はモデルの「利用・配備(use/deployment)」を規制する州法には及ばず、既存の消費者保護法・公民権法・プライバシー法もそのまま残る。一方で、カリフォルニア・ニューヨーク・イリノイが先行して定めたAI開発の透明性義務などは実質的に凍結・上書きされる見込みだ。代償として、大規模AI開発者には半年ごとの第三者監査が義務付けられ、フロンティアラボにはモデルの一定の開示も求められる。法案は公表から数時間で労働組合・消費者擁護団体・下院民主党の委員会から強い反対に遭った一方、主要テック企業を代表するITI(Information Technology Industry Council)は歓迎を表明した。これは2025年に予算法案へ盛り込まれて削除された「10年間のモラトリアム」案の再来であり、トランプ政権のAI大統領令(州法を標的に連邦標準を志向)とも軌を一にする。注意点として現時点はあくまで「討議草案」であり、3年のサンセット条項付き。州の規制権限と連邦の統一基準のどちらを優先するかという、AIガバナンスの根本的な綱引きが本格化したことを示す。",
+   "detail_en": "On June 4, Reps. Jay Obernolte (R-CA) and Lori Trahan (D-MA) released a 269-page bipartisan discussion draft, the 'Great American AI Act.' Its centerpiece is a three-year federal preemption that would freeze state laws 'specifically regulating the development' of AI models, consolidating authority at the federal level. Crucially, the preemption would not reach state laws governing the use or deployment of AI, and existing consumer-protection, civil-rights, and privacy laws would remain intact — but AI-development transparency laws already enacted in California, New York, and Illinois would effectively be frozen or superseded. In exchange, large AI developers would face semi-annual third-party audits, and frontier labs would be pushed to open up their models to a degree. Within hours the draft drew strong opposition from labor unions, consumer advocates, and a formal House Democratic commission, while the Information Technology Industry Council, representing major tech firms, praised it. The proposal echoes the '10-year moratorium' that was inserted into a 2025 budget bill and then stripped out, and aligns with the Trump administration's AI executive order that targets state laws in favor of a uniform federal standard. Note that this is still only a discussion draft and carries a three-year sunset. It marks the start of a serious tug-of-war over whether state regulatory power or a single federal standard should govern AI.",
+   "key_points_ja": [
+    "超党派の269ページ草案「Great American AI Act」",
+    "州のAI『開発』規制を3年間先取り・凍結",
+    "『利用・配備』規制や既存の消費者保護法は対象外",
+    "代償に大手開発者へ半年ごとの第三者監査",
+    "CA・NY・ILの透明性法は実質凍結の見込み",
+    "労組・消費者団体は反発、業界団体ITIは歓迎"
+   ],
+   "key_points_en": [
+    "Bipartisan 269-page 'Great American AI Act' draft",
+    "3-year preemption of state AI-development rules",
+    "Use/deployment and existing laws left untouched",
+    "Trade-off: semi-annual audits of big developers",
+    "CA, NY, IL transparency laws to be frozen",
+    "Unions oppose; tech group ITI applauds"
+   ]
+  },
+  {
+   "source": "Hacker News",
+   "title": "The Smart TV in Your Living Room Is a Node in the AI Scraping Economy",
+   "title_ja": "リビングのスマートTVはAIスクレイピング経済の一ノードだった",
+   "url": "https://blog.includesecurity.com/2026/06/the-smart-tv-in-your-livingroom-is-a-node-in-the-aiscraping-economy/",
+   "hot_take_ja": "あなたのスマートTVが、夜中にこっそり他人のウェブスクレイピングを代行しているかもしれない。アプリに埋め込まれたBright DataのSDKが、家庭のネット回線を「住宅用プロキシ」の出口ノードに変え、AI企業のボット対策回避に貸し出す仕組みだ。常時給電・帯域ほぼ無制限・誰も見ていない——TVは中継機として“理想の被害者”だった。",
+   "detail_ja": "セキュリティ企業IncludeSecurityの調査で、スマートTVがAI向けのウェブスクレイピングを中継する「住宅用プロキシ(residential proxy)」のノードとして使われている実態が明らかになった。仕組みの核は、提携アプリに組み込まれたBright DataのSDKだ。インストールされるとSDKはBright Dataのインフラへ常時WebSocket接続を張り、同社はスクレイピングの仕事をユーザー家庭のネット回線経由で送り出す。Bright Dataは「4億超の家庭用IP」へのアクセスを商品化し、CloudflareやDataDomeのボット対策を回避したいAI企業に販売する。提携先にはCTVゲーム大手PlayWorks Digital(約2.5億世帯)、125以上のTVブランドを抱えるCloudTV、Viber/Rakuten(2.5〜8.2億ユーザー)などが挙がる。スマートTVが狙われるのは、常時給電で24時間スタンバイ、帯域が実質無制限、企業の監視がほぼなく、ユーザーの注意も向かないという「理想的な条件」が揃うからだ。調査では既定でも月500MB、設定によっては月200GBもの通信を中継しうるという。SDKは検査回避のためVPNを迂回して物理インターフェース(en0/pdp_ip0)に直接バインドし、URLSessionフックを避けてCFNetworkを使うなど、マルウェアのC2(指令)通信に近い手口も確認された。同意ダイアログには「device resourcesをoccasionallyに使う」とあるが、実際の設定は大量通信を許す内容で、通信にメッセージ署名やHMAC、クライアント証明書、デバイス認証が一切なく、バッテリー・CPU・帯域・画面状態などのテレメトリを第三者サーバへ常時送り続ける点も問題視されている。",
+   "detail_en": "An investigation by security firm IncludeSecurity reveals that smart TVs are being used as nodes in a 'residential proxy' network that relays web-scraping traffic for AI companies. The mechanism centers on Bright Data's SDK, embedded in partner apps. Once installed, the SDK opens a persistent WebSocket connection to Bright Data's infrastructure, letting the company route scraping jobs through users' home internet connections. Bright Data monetizes access to '400M+ home IP addresses,' selling it to AI firms that need residential IPs to bypass anti-bot defenses from services like Cloudflare and DataDome. Named partners include PlayWorks Digital (400+ CTV game titles, ~250M homes), CloudTV (125+ TV brands), and Viber/Rakuten (250M–820M users). Connected TVs are ideal because they are always plugged in, run 24/7 in standby, have effectively unlimited bandwidth, receive minimal corporate oversight, and get little user attention. The research found a device could relay 500 MB monthly by default — or up to 200 GB in some configurations. To evade inspection, the SDK bypasses VPNs by binding to physical interfaces (en0/pdp_ip0) instead of system routes, and avoids URLSession hooks via CFNetwork — tactics reminiscent of malware command-and-control. Consent dialogs say Bright Data will 'occasionally' use device resources, yet configurations permit far heavier traffic, the protocol has no message signing, HMAC, client certificates, or device attestation, and the device continuously streams telemetry (battery, CPU, bandwidth, screen state) to third-party servers.",
+   "key_points_ja": [
+    "スマートTVが住宅用プロキシの出口ノードに",
+    "アプリ内のBright Data製SDKが常時接続を確立",
+    "「4億超の家庭IP」をAI企業へ販売しボット対策回避",
+    "常時給電・帯域無制限のTVが狙われやすい",
+    "既定で月500MB、設定次第で月200GBを中継",
+    "VPN迂回・署名なし通信などC2類似の手口"
+   ],
+   "key_points_en": [
+    "Smart TVs act as residential-proxy exit nodes",
+    "Bright Data SDK in apps keeps a persistent link",
+    "Sells '400M+ home IPs' to AI scrapers to dodge bot defenses",
+    "Always-on, high-bandwidth TVs are ideal targets",
+    "Relays 500MB/mo by default, up to 200GB configured",
+    "VPN bypass and unsigned traffic mimic malware C2"
+   ]
+  },
+  {
+   "source": "arXiv",
+   "title": "Pretraining Recurrent Networks without Recurrence",
+   "title_ja": "再帰なしで再帰型ネットワークを事前学習する(SMT)",
+   "url": "https://arxiv.org/abs/2606.06494",
+   "hot_take_ja": "RNN学習の宿敵は「時間方向に逐次でしか勾配を流せない」BPTTだった。この論文は、RNNの学習を“1ステップのメモリ遷移を当てる教師あり学習”に置き換えることで、再帰的な勾配伝播そのものを消し去る。並列化でき勾配消失も避けられるなら、RNN/状態空間モデル復権の追い風になりうる。",
+   "detail_ja": "RNN(再帰型ニューラルネット)の学習は、長い系列にまたがって「どの計算がどれだけ結果に寄与したか(credit assignment)」を割り当てる必要がある。標準手法のBPTT(通時的誤差逆伝播)はこれを苦手とする:時間方向に逐次的なので並列化できず、勾配が消失・爆発しやすく、長距離の依存関係を学びにくい。本研究が提案するSupervised Memory Training(SMT)は、再帰的な勾配伝播そのものを回避する。鍵は、RNNの学習を「1ステップのメモリ遷移ラベル (m_t, x_{t+1}) → m_{t+1} を当てる教師あり学習」へと還元する点だ。このメモリラベルは、予測的状態(predictive state)目的でTransformerベースのエンコーダを先に訓練して取得する。いったんラベルが手に入れば、各時刻の更新が独立した教師あり問題になるため、時間方向に並列学習でき、長系列でも勾配消失の問題を避けられる、と著者は主張する。これはRNNやSSM(状態空間モデル)が長文・長系列モデリングで再び注目される流れの中で意義が大きい。注意点として、SMTは良いメモリラベルを作るエンコーダの質に依存し、Transformerの事前訓練という別コストを要する。それでも、逐次性というRNN学習最大のボトルネックを設計レベルで外そうとする発想は新規性が高く、効率的な系列モデルの学習法に新たな選択肢を示す。",
+   "detail_en": "Training recurrent neural networks (RNNs) requires assigning credit across long sequences of computations. The standard approach, backpropagation through time (BPTT), handles this poorly: it is sequential in time (limiting parallelism) and suffers from vanishing or exploding gradients, making long-range associations hard to learn. This paper proposes Supervised Memory Training (SMT), which sidesteps recurrent credit propagation entirely. The key idea is to reduce RNN training to supervised learning on one-step memory-transition labels of the form (m_t, x_{t+1}) → m_{t+1}. These memory labels are obtained by first training a Transformer-based encoder on a predictive-state objective. Once the labels exist, each timestep's update becomes an independent supervised problem, so training can be parallelized across time and avoids the vanishing-gradient issue even on long sequences, the authors argue. This matters amid renewed interest in RNNs and state-space models (SSMs) for long-context and long-sequence modeling. A caveat: SMT depends on the quality of the encoder that produces the memory labels and incurs the separate cost of pretraining that Transformer. Still, the idea of removing sequentiality — the biggest bottleneck in RNN training — at the design level is genuinely novel and offers a new option for efficiently training sequence models.",
+   "key_points_ja": [
+    "BPTTは逐次的で並列化できず勾配も不安定",
+    "SMTは1ステップのメモリ遷移を当てる教師あり学習に還元",
+    "メモリラベルはTransformerエンコーダで生成",
+    "各時刻が独立化し時間方向に並列学習が可能",
+    "勾配消失を避け長距離依存を学べると主張",
+    "RNN/SSM復権の流れに新たな学習法を提示"
+   ],
+   "key_points_en": [
+    "BPTT is sequential, non-parallel, gradient-unstable",
+    "SMT reduces training to one-step memory-transition labels",
+    "Memory labels produced by a Transformer encoder",
+    "Each timestep becomes independent, enabling parallel training",
+    "Claims to avoid vanishing gradients on long sequences",
+    "A fresh training option amid the RNN/SSM revival"
+   ]
+  },
+  {
+   "source": "Hacker News",
+   "title": "Programmers will document for Claude, but not for each other",
+   "title_ja": "プログラマはClaudeのためには文書を書くが、同僚のためには書かない",
+   "url": "https://blog.plover.com/2026/03/09/#documentation-wins-2",
+   "hot_take_ja": "「ドキュメントを書け」と何年言われても動かなかった開発者が、AIに読ませるためなら嬉々としてREADMEや設計メモを整え始める。読み手が人間からAIに変わった途端、長年の文化的課題があっさり溶けた——という皮肉。AIが“最良のドキュメント読者”になることで、結果的に人間にとっての文書も充実するなら、それは怪我の功名かもしれない。",
+   "detail_ja": "ベテラン開発者Mark Dominus(blog.plover.com)が綴った、AI時代のソフトウェア文化に関する鋭い観察記事で、Hacker Newsで大きな共感を呼んだ。要点はタイトル通り、「プログラマは同僚のためにはドキュメントを書かないのに、Claudeのためなら書く」という現象だ。コードのコメント、README、設計上の前提、命名規約といった文書化は、ソフト工学で何十年も『重要だが後回しにされる』典型だった。レビューや教育で繰り返し促されても定着しなかったのに、AIコーディング支援が普及すると状況が一変する。AIに正確なコードを書かせ、文脈を理解させるには、明示的な仕様・制約・意図の記述が効くと開発者が体感し、自発的に文書を整えるようになった、というわけだ。背景には、AIが人間の同僚と違って「行間を読む」「過去の経緯を覚えている」「直接質問できる」といった暗黙の補完をしてくれないため、書き手が文脈を言語化せざるを得ない事情がある。皮肉なのは、長年の啓蒙より、AIという新しい『読者』の登場の方が行動変容に効いた点だ。含意として、結果的に書かれた文書は人間にとっても有益なので、AIが副次的にコードベースの可読性・保守性を底上げする可能性がある。一方で、文書がAI向けに最適化されすぎ、人間にとっての読みやすさやニュアンスが失われるリスクや、「AIが読むから人間は読まなくていい」という新たな怠慢を生む懸念も指摘できる。",
+   "detail_en": "A sharp observation on AI-era software culture by veteran developer Mark Dominus (blog.plover.com) that struck a chord on Hacker News. The thesis is in the title: programmers won't write documentation for their colleagues, but they will write it for Claude. Documenting code — comments, READMEs, design assumptions, naming conventions — has for decades been the classic 'important but perpetually deferred' task in software engineering. Repeated nudging in reviews and onboarding never made it stick, yet the spread of AI coding assistants changed things overnight. Developers found that to get an AI to write correct code and understand context, explicit specs, constraints, and statements of intent really help — so they began voluntarily fleshing out documentation. Part of the reason is that, unlike a human colleague, an AI won't 'read between the lines,' remember historical context, or be asked a quick follow-up, which forces the author to put context into words. The irony is that a new kind of 'reader' — the AI — drove behavior change more effectively than years of advocacy. The implication is upbeat: the docs that result are also useful to humans, so AI may incidentally raise a codebase's readability and maintainability. On the flip side, there's a risk that docs become over-optimized for AI at the expense of human nuance, and a worry about a new kind of laziness — 'the AI reads it, so humans don't have to.'",
+   "key_points_ja": [
+    "AIに読ませる目的だと開発者が自発的に文書化",
+    "長年定着しなかった文書化が一気に進む皮肉",
+    "AIは行間を読まないので意図の明文化が必要",
+    "副産物として人間向けの可読性も向上しうる",
+    "AI最適化で人間向けのニュアンス喪失のリスク",
+    "『AIが読むから不要』という新たな怠慢の懸念"
+   ],
+   "key_points_en": [
+    "Devs document voluntarily when the reader is AI",
+    "A long-unsolved cultural problem suddenly shifts",
+    "AI won't read between lines, forcing explicit intent",
+    "Side effect: human readability may improve too",
+    "Risk of docs over-optimized for AI, losing nuance",
+    "New laziness worry: 'the AI reads it, so we needn't'"
+   ]
+  }
+ ],
+ "stats": {
+  "arxiv_count": 50,
+  "hn_count": 20,
+  "reddit_count": 0,
+  "github_count": 13,
+  "blogs_count": 22,
+  "total": 105,
+  "highlights": 5
+ }
+}

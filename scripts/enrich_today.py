@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
-"""Enrich raw-2026-06-05.json with Japanese/English summaries + highlights."""
+"""Enrich raw-2026-06-06.json with Japanese/English summaries + highlights."""
 import json
 from pathlib import Path
 
-DATE = "2026-06-05"
+DATE = "2026-06-06"
 ROOT = Path(__file__).resolve().parent.parent
 raw = json.load(open(ROOT / f"data/raw-{DATE}.json"))
 src = raw["sources"]
 
-# ---- helper: set ja fields by index ----
 def setja(items, idx, title_ja, summary_ja):
     if idx < len(items):
         items[idx]["title_ja"] = title_ja
         items[idx]["summary_ja"] = summary_ja
 
-# ============ ARXIV ============
+# ============ ARXIV (top listing identical to 2026-06-05, reuse translations) ============
 arxiv = [
     ("TailLoR: 継続学習で主成分を保護するパラメータ効率的手法", "LoRA微調整時に重要な主成分(過去知識)を守りつつ新タスクを学ぶ継続学習法。破滅的忘却を抑えながら効率的に適応する。"),
     ("HANDOFF: 蒸留した相補的教師でヒューマノイド全身制御", "複数の専門教師方策を1つの生徒に蒸留し、ヒューマノイドの全身協調タスクをエージェント的に解く制御フレームワーク。"),
@@ -28,7 +27,7 @@ arxiv = [
     ("複雑度バランス型の拡散スプリッティング", "拡散モデルのサンプリングを計算複雑度の観点で均衡化し、生成品質と速度のトレードオフを改善する手法。"),
     ("想像して考える: ワールドシミュレータによる空間推論エージェント", "VLMが観測外のレイアウトを推論できるよう、ワールドシミュレータで未観測の視点を「想像」させ空間推論を強化する。"),
     ("RREDCoT: 推論モデル向けセグメント単位の報酬再配分", "推論の連鎖(CoT)をセグメント単位に分け、各段階に報酬を再配分することで推論モデルの学習を安定・効率化する。"),
-    ("拡散言語モデルのための自己拡張検索", "拡散型の言語モデルに、自分で検索クエリを生成して文脈を補強する自己拡張検索を導入し生成を改善する。"),
+    ("拡散言語モデルのための自己拡張検索", "拡散型の言語モデルが復号途中に捨てる低確信トークンを先読み信号として使い、検索を補強して生成を改善するRAG手法(SARDI)。"),
     ("MLEvolve: ML アルゴリズム自動発見の自己進化フレームワーク", "LLMエージェントが機械学習アルゴリズムを長期にわたり自己進化的に探索・発見する枠組み。分岐間の情報共有と階層制御で長期最適化を実現。"),
     ("PC Layer: LLM事前学習を改善する多項式重み前処理", "重み行列を多項式で前処理(プリコンディショニング)し、LLM事前学習の収束を速める新しい層。"),
     ("良い補間器はどれくらい豊富にあるか?", "過剰パラメータモデルが訓練データを完全に補間しつつ汎化する「良い補間器」の存在量を理論的に分析する。"),
@@ -42,221 +41,219 @@ arxiv = [
     ("In-Context Multiple Instance Learning", "文脈内学習(in-context)の枠組みで複数インスタンス学習(MIL)を行う手法。ラベルが袋単位の弱教師問題に対応。"),
     ("足場か語彙か? ポパー的コード生成の二層・事前登録研究", "コード生成における足場(scaffold)と語彙の役割を、事前登録した統制実験で検証する方法論的研究。"),
 ]
-for i,(t,s) in enumerate(arxiv):
+for i, (t, s) in enumerate(arxiv):
     setja(src["arxiv"], i, t, s)
 
 # ============ HN ============
 hn = [
-    ("Anthropicの脆弱性発見オープンソースフレームワーク", "Claudeでコードの脆弱性を自律発見・修正するリファレンス実装。脅威モデリングから動的スキャン、トリアージ、パッチ生成まで7段階のパイプラインを公開。"),
-    ("AIが自分自身を作るとき: 再帰的自己改善への進捗", "Anthropicによる、AIがAIの研究開発を加速させる「再帰的自己改善」の現状レポート。"),
-    ("宇宙飛行士、空気漏れ修理で待避後ISSへ帰還指示", "ISSの空気漏れ修理中に待避していた飛行士が帰還を指示された件。AI外の宇宙ニュース。"),
-    ("Open Code Review – AI駆動のコードレビューCLIツール", "ターミナルでAIにコードレビューさせるオープンソースCLI。プルリクの差分を解析して指摘する。"),
-    ("Uruky(EU拠点のKagi代替検索)が画像検索とURL書換に対応", "プライバシー重視のEU製有料検索エンジンが機能拡充。Kagiの代替を狙う。"),
-    ("pg_durable: MicrosoftがDB内で耐久実行をOSS化", "PostgreSQL内で耐久的なワークフロー実行を可能にするMicrosoftのOSS。"),
-    ("韓国の掲示板、全画像をAI検閲ツールでスキャン義務化へ", "韓国でオンライン掲示板が投稿画像をAI検閲にかける規制案。表現の自由を巡り議論。"),
-    ("WSL 2のWindowsファイルシステムアクセスが高速化", "WSL2でWindows側ファイルへのアクセス性能が改善される。"),
-    ("1995年風のドキュメントを書くようLLMを微調整", "あえて90年代風の文体でドキュメントを書くようLLMを微調整した実験的取り組み。"),
-    ("ESP32 Bit Pirate: あらゆるプロトコルを話すハードハッキングツール", "WebCLIから多様な通信プロトコルを扱えるESP32ベースのハードウェアハッキングツール。"),
-    ("Google社員、自社AIがダメだとミームを内部共有", "「新コードの75%はAI生成」という経営陣の主張に対し、現場社員は自社AIコード生成の質を内部ミームで揶揄。建前と本音のギャップが露呈。"),
-    ("プログラマはClaudeのためには書くが、同僚のためには書かない", "人間の同僚向けには省略されがちなドキュメントを、AIに読ませるためなら書く——という開発文化の皮肉を指摘するエッセイ。"),
-    ("Claudeはrsyncのバグを増やしたのか?", "「ClaudeがrsyncのコードをダメにしてバグAが増えた」という炎上を統計的に検証。36リリースを重み付き指標で分析し、有意な悪化はなかったと結論。"),
-    ("KVarN: Huawei製のvLLM向けKVキャッシュ量子化バックエンド", "vLLMでKVキャッシュを量子化しメモリを削減するHuaweiのネイティブバックエンド。"),
-    ("GoogleがTimnit Gebruを解雇する原因となったLLM警告は全て現実に", "Gebruが2020年に警告したLLMのリスク(偏見・環境負荷・誤情報等)が今や全て現実化した、と振り返る投稿。"),
-    ("Pentagon、中南米向けAIプロパガンダ工場を運営", "米軍南方特殊作戦軍が運営する「La Tilde」。家計記事に軍事プロパガンダを混ぜ、文章も画像もLLM/Midjourneyで大量生成していたとInterceptが暴露。"),
-    ("Ask HN: あなたの(AI)開発スタックとワークフローは?", "HNユーザーが各自のAI開発ツール構成やワークフローを共有するスレッド。"),
-    ("Show HN: Boxes.dev – localhostを捨ててClaude CodeとCodexをクラウドで", "Claude CodeやCodexをクラウド上で動かす開発環境サービス。"),
-    ("米軍はGPSを世界規模の『ナンバーズ局』に変えた", "GPS信号を秘密通信に転用していたという話題。AI外の技術ニュース。"),
-    ("Show HN: FFmpeg WebCLI – ブラウザ完結のFFmpeg(WASM・オフライン)", "アップロード不要でブラウザ内完結のFFmpeg。WASMで動くPWA。"),
+    ("S&P 500、SpaceXの早期採用を見送り——OpenAI・Anthropicも門前払い", "指数委員会が黒字要件などの除外を拒否し、未黒字のAI大手やSpaceXのS&P500入りを阻んだ。時価総額の熱狂と財務実態の乖離が指数の門前で可視化された。"),
+    ("Claudeはrsyncのバグを増やしたのか?", "vibe codingでrsyncのバグが増えたという主張を統計的に再検証した分析。データ上は明確な悪化は確認できないと結論づける(関連トピックが既出)。"),
+    ("pg_durable: MicrosoftがDB内耐久実行をOSS化", "PostgreSQL内で耐久的なワークフロー実行を可能にするMicrosoftのオープンソース。外部キューなしで障害復旧可能な処理を書ける。"),
+    ("宇宙飛行士、空気漏れ修理で待避後にISS帰還を指示される", "ISSの空気漏れ対応に関する宇宙ニュース。AI以外の話題。"),
+    ("Gemma 4 QATモデル: モバイル・ノートPC向けに圧縮を最適化", "量子化を意識して学習(QAT)したGemma 4を公開し、精度を保ったまま端末上で高効率に動かせるようにした。"),
+    ("Ask HN: なぜHN民はこれほど反AIなのか?", "Hacker Newsコミュニティに広がるAIへの反発・疲労感を巡る議論スレッド。AI礼賛への反動が可視化されている。"),
+    ("プログラマはClaudeのためには文書を書くが、同僚のためには書かない", "AIに読ませる目的だと急にコメントやドキュメントを整備し始める——AIが開発文化を変えてしまった皮肉な観察。"),
+    ("AI抜きのHacker News", "HNからAI関連投稿を除外して表示する試み。AI話題の飽和への反動として注目を集めた。"),
+    ("あなたのリビングのスマートTVはAIスクレイピング経済の一ノード", "スマートTVがアプリ内SDK経由で住宅用プロキシと化し、AI企業のウェブスクレイピングを中継している実態を暴いた調査。"),
+    ("NVIDIA、Windows PC向けに強力なCPUシステムを提案", "NVIDIAがWindows PC向けの高性能CPUシステムを構想しているという話題。"),
+    ("Ask HN: あなたのAI開発の技術スタック/ワークフローは?", "開発者たちが日々使うAI開発環境・ワークフローを共有し合うスレッド。"),
+    ("Show HN: Lowfat – LLMトークンを91.8%削減するCLIフィルタ", "コマンド出力を間引いてLLMに渡すトークンを大幅削減する、プラグイン式のCLIフィルタ。"),
+    ("Transformerは本質的に簡潔である", "Transformerが簡潔(succinct)な表現能力を本質的に備えることを理論的に示した研究。"),
+    ("GitHub、チャット連携(Slack/Teams)の購読を誤って削除", "GitHubの障害でSlack/Teams連携の購読設定が誤って削除された件の報告。"),
+    ("米軍はGPSを世界規模の「ナンバーズ・ステーション」に変えた", "GPS信号に隠された軍の暗号運用を解説。AI以外のセキュリティ話題。"),
+    ("英国の警察、法廷向け供述でのAI利用停止を指示される", "イングランド・ウェールズの警察に、AIが生成した法廷文書の使用を止めるよう通達。誤情報(ハルシネーション)のリスクが理由。"),
+    ("静かなナンバーズ・ステーション: 19年分のGPS暗号を解読", "GPSの暗号運用を長期にわたり解析した技術記事。"),
+    ("米下院、州のAI規制を禁じる法案草案を公表", "州のAI開発規制を3年間凍結し連邦標準に一本化する超党派の討議草案(Great American AI Act)。AI規制の主導権を巡る攻防が本格化。"),
+    ("Mantine-datatable等が侵害——所有者アカウント停止", "人気npmパッケージが供給網攻撃で侵害され、所有者アカウントが凍結された。OSS依存のリスクを改めて露呈。"),
+    ("Microsoft、AIアシスタント『Scout』に依存させたい", "MicrosoftがAIアシスタントへのユーザー依存を狙っているとする批評記事。"),
 ]
-for i,(t,s) in enumerate(hn):
+for i, (t, s) in enumerate(hn):
     setja(src["hn"], i, t, s)
 
 # ============ GITHUB ============
-gh = [
-    ("headroom: LLMに渡す前にツール出力やログを圧縮", "ツール出力・ログ・RAGチャンクをLLM投入前に60-95%圧縮しトークンを節約。ライブラリ/プロキシ/MCPサーバで提供。"),
-    ("あなたと共に成長するエージェント", "ユーザーと共に学び成長していくタイプのAIエージェント実装。"),
-    ("エージェントハーネスの性能最適化システム", "スキル・本能(instincts)などでエージェントのハーネス性能を最適化する仕組み。"),
-    ("PDF・画像を構造化データに変換", "あらゆるPDFや画像ドキュメントをAI向けの構造化データに変換するパワフルなツール。"),
-    ("Reddit/X/YouTube/HNを横断調査するエージェントスキル", "任意トピックを複数SNS・サイト横断でリサーチするAIエージェントスキル。"),
-    ("NVIDIA Cosmos: 物理AI向けワールドモデルのオープン基盤", "世界モデル・データセット・ツールをまとめたNVIDIAのオープンな物理AIプラットフォーム。"),
-    ("エージェント&生成UIのためのフロントエンドスタック", "React/Angular対応の、エージェントと生成UI構築のためのフロントエンド基盤。"),
-    ("GitHub Copilot Agentをアプリに統合するマルチプラットフォームSDK", "Copilot Agentを各種アプリへ組み込むためのSDK。"),
-    ("最高ベンチのオープンソースAIメモリシステム", "ベンチマーク最強を謳う無料のAIメモリ(記憶)システム。"),
-    ("コンテナの脆弱性・誤設定・秘密情報・SBOMを検出", "コンテナ等から脆弱性・設定ミス・秘密情報・SBOMを発見するセキュリティスキャナ。"),
-    ("AIエージェントにインターネットを見る目を与える", "X(Twitter)などWeb全体を読んで検索できるようAIエージェントに与えるツール。"),
+github = [
+    ("superpowers: 21万★超のエージェント型スキルフレームワーク", "AIエージェントにスキルとソフトウェア開発手法を与えるフレームワーク。GitHubトレンド最上位で、エージェント開発の定番化が進む。"),
+    ("Agent-Reach: AIエージェントにネット全体を見る「目」を与える", "Twitter/Reddit/YouTubeなどを読んで検索できるようにし、エージェントに広範なウェブ閲覧能力を付与するツール。"),
+    ("CopilotKit: エージェント/生成UIのフロントエンド基盤", "React/Angular/モバイル/Slack等にAIエージェントのUIを組み込むためのフロントエンドスタック。"),
+    ("PaddleOCR: PDF・画像を構造化データに変換するOCR", "軽量で強力なOCRエンジン。文書をAI向けの構造化データに変換でき、根強い人気を保つ。"),
+    ("last30days-skill: 任意トピックを横断調査するエージェントスキル", "Reddit/X/YouTube/HN/Polymarket等を横断し、直近30日の話題を調べるAIエージェントスキル。"),
+    ("mempalace: ベンチ最強を謳うOSSのAIメモリシステム", "LLMエージェント向けの長期記憶を実現するオープンソース。ベンチマークで最良と主張し、無料で提供。"),
+    ("VibeVoice: オープンソースの最先端音声AI", "高品質な音声合成・音声AIをオープンソースで提供するプロジェクト。"),
     ("OpenAI Plugins", "OpenAIのプラグイン関連リポジトリ。"),
+    ("career-ops: Claude Code上に作る求職自動化システム", "14のスキルモード、Goダッシュボード、PDF生成を備えたAI求職支援システム。"),
+    ("Trivy: コンテナ・コード等の脆弱性スキャナ", "コンテナ/K8s/コードの脆弱性・設定ミス・秘密情報・SBOMを検出する定番セキュリティツール。"),
+    ("Whisper: 大規模弱教師による頑健な音声認識", "OpenAIの音声認識モデル。多言語で高精度な文字起こしを実現する定番OSS。"),
+    ("Personal AI Infrastructure: 個人の能力を拡張するエージェント基盤", "人間の能力を増幅するための自分専用エージェントAIインフラのテンプレート。"),
+    ("mxc: 方針駆動の階層的な隔離・封じ込め", "ポリシーに基づき多層的にプロセスを隔離・封じ込めるツール。"),
 ]
-for i,(t,s) in enumerate(gh):
+for i, (t, s) in enumerate(github):
     setja(src["github"], i, t, s)
 
 # ============ BLOGS ============
-bl = [
-    ("Google DeepMind: 2026年5月に発表したAIニュースまとめ", "DeepMindが5月に公表した主要発表のまとめ記事。"),
-    ("Hugging Face: Nemotron 3.5 コンテンツ安全モデル", "NVIDIAの、カスタマイズ可能なマルチモーダル安全性(コンテンツ・モデレーション)モデル。"),
-    ("Hugging Face: EVA-Bench Data 2.0 — 3領域121ツール213シナリオ", "エージェント評価用ベンチEVA-Benchの拡張版。3領域・121ツール・213シナリオを収録。"),
-    ("OpenAI: Endavaがソフト開発をAIエージェント中心に再設計", "IT企業Endavaが開発プロセスをAIエージェント中心に作り替えた事例。"),
-    ("OpenAI: Dreaming — より役立つChatGPTのための記憶強化", "会話をまたいで嗜好や文脈を保持する新しいメモリ機構をChatGPTに導入。"),
-    ("OpenAI: 知能時代の生物防御(Biodefense)", "AIで生物学的脅威への耐性を高めるための行動計画。GPT-Rosalindなど生命科学AIと併せた防御戦略。"),
-    ("OpenAI: GPT-Rosalindに新機能を追加", "生物学的推論・医薬品化学・ゲノミクス解析・実験ワークフローを強化した生命科学特化モデルGPT-Rosalindの新機能。"),
-    ("Google DeepMind: Google検索で古着・ヴィンテージ探しを格上げする5つの方法", "Google検索のショッピング機能を使った古着探しのコツ紹介(ライフスタイル記事)。"),
-    ("Hugging Face: チャットボットを超えたDPO", "選好最適化(DPO)をチャットボット以外の用途へ応用する解説。"),
-    ("OpenAI: WasmerがCodexでエッジ向けNode.jsランタイムを構築", "WasmerがCodexを使いエッジで動くNode.jsランタイムを開発した事例。"),
-    ("OpenAI: 公共政策アジェンダ", "安全性・若年者保護・労働移行・国際標準などOpenAIの政策方針。"),
-    ("OpenAI: フロンティアAIの民主的ガバナンスの青写真", "フロンティアAIの安全・耐性・安全保障のための米連邦ガバナンス枠組みの提案。"),
-    ("Hugging Face: Reachy MiniにMCPツールを追加", "卓上ロボットReachy MiniにMCPツールを統合する取り組み。"),
-    ("Hugging Face: Holo3.1 — 高速・ローカルなコンピュータ操作エージェント", "オンデバイスで動く高速なコンピュータ操作(GUI)エージェントHolo3.1。"),
-    ("OpenAI: Travelers社がAI保険請求処理を全国展開", "保険大手TravelersがOpenAIを使ったAI請求処理を全国に展開。"),
-    ("OpenAI: あらゆる役割・ツール・ワークフローのためのCodex", "Codexを開発者以外の役割や多様なツール・業務にも広げる発表。"),
-    ("OpenAI: グローバルなリーダーシップによる若者の安全と機会の前進", "若年者の安全と機会のための国際的な取り組み。"),
-    ("Google DeepMind: GeminiでGoogle I/O 2026を作った方法", "Geminiを使ってI/O 2026のイベントを制作した舞台裏。"),
-    ("Hugging Face: Mellum2 — JetBrains製12B MoEモデル", "JetBrainsが公開したコード向け12BパラメータのMixture-of-Expertsモデル。"),
-    ("Hugging Face: LLMを超えて — 企業AI普及はエージェントロジックに依存", "スケーラブルな企業AI導入にはLLM単体でなくエージェントのロジック設計が鍵という論考。"),
-    ("Hugging Face: hf CLIをエージェント最適化で設計", "Hub操作用hf CLIを、エージェントが使いやすいよう再設計した話。"),
+blogs = [
+    ("5つのラボ・5つの知性: 小型モデルで金融ドラマを作る", "複数の小型モデルを組み合わせ、金融シナリオのドラマを生成したハッカソンの記録。"),
+    ("2026年5月にGoogleが発表したAIニュースまとめ", "Google DeepMindの5月の主要発表を振り返るまとめ記事。"),
+    ("Nemotron 3.5 コンテンツ安全性: カスタム可能なマルチモーダル安全性", "NVIDIAの、企業向けにカスタマイズ可能なマルチモーダル安全性(コンテンツモデレーション)モデル。"),
+    ("EVA-Bench Data 2.0: 3ドメイン・121ツール・213シナリオ", "エージェント評価用ベンチマークの拡張版。多数のツールと現実的なシナリオを収録。"),
+    ("Endava、AIエージェント中心にソフト開発を再設計", "受託開発大手Endavaが、AIエージェントを軸に開発プロセスを作り替えた事例。"),
+    ("Dreaming: ChatGPTのより賢いメモリ", "ChatGPTがアイドル時に過去対話を整理・統合し記憶を改善する仕組み(既出トピック)。"),
+    ("知能の時代のバイオ防衛", "OpenAIによる、AI時代の生物学的脅威への防衛戦略(関連トピックが既出)。"),
+    ("hf CLIをエージェント最適化で再設計", "Hugging Face Hubを扱うCLIを、AIエージェントが使いやすい形に設計し直した話。"),
+    ("GPT-Rosalindに新機能を追加", "OpenAIのライフサイエンス向けモデルGPT-Rosalindの機能拡張(既出トピック)。"),
+    ("Google検索で古着・ヴィンテージ探しを強化する5つの方法", "AI検索機能を使った古着・ヴィンテージショッピングの活用術。"),
+    ("チャットボットを超えたDPO", "直接選好最適化(DPO)をチャット以外の領域に応用する解説記事。"),
+    ("WasmerがCodexでエッジ向けNode.jsランタイムを構築", "OpenAI Codexを使い、エッジで動くNode.js互換ランタイムを開発した事例。"),
+    ("フロンティアAIの民主的ガバナンス青写真", "OpenAIが示す、最先端AIを民主的に統治するための枠組みの提案。"),
+    ("OpenAIの公共政策アジェンダ", "OpenAIが掲げる政策面の方針・提言をまとめたもの。"),
+    ("Reachy MiniにMCPツールを追加", "卓上ロボットReachy MiniにMCP経由でツールを使わせる方法の紹介。"),
+    ("Holo3.1: 高速・ローカルなコンピュータ操作エージェント", "ローカルで動く高速なGUI操作(コンピュータ操作)エージェント(既出トピック)。"),
+    ("保険大手Travelers、OpenAIで保険金請求をAI化し全米展開", "保険会社Travelersが請求処理にAIを導入し、全国展開した事例。"),
+    ("あらゆる役割・ツール・ワークフローのためのCodex", "OpenAI Codexを職種横断で使えるよう拡張した発表。"),
+    ("グローバルリーダーシップで若者の安全と機会を前進", "OpenAIの若年層保護に関する取り組みの紹介。"),
+    ("GeminiでGoogle I/O 2026を作った方法", "Geminiを活用してI/Oイベントの制作を行った舞台裏。"),
+    ("Mellum2: JetBrainsの12B MoEコーディングモデル", "JetBrainsが公開した、コード補完特化の12Bパラメータ混合専門家(MoE)モデル。"),
+    ("LLMを超えて: 企業AI普及はエージェントロジック次第", "IBM研究による、スケーラブルな企業AI導入にはエージェントの論理設計が鍵という論考。"),
 ]
-for i,(t,s) in enumerate(bl):
+for i, (t, s) in enumerate(blogs):
     setja(src["blogs"], i, t, s)
 
 # ============ HIGHLIGHTS ============
 highlights = [
     {
         "source": "Hacker News",
-        "title": "Anthropic's open-source framework for AI-powered vulnerability discovery",
-        "title_ja": "Anthropic、AIによる脆弱性発見フレームワークをオープンソース公開",
-        "url": "https://github.com/anthropics/defending-code-reference-harness",
-        "hot_take_ja": "「AIが攻撃に使われる」恐怖の裏で、Anthropicは“守る側”の自動化を全部見せた。脅威モデリング→動的スキャン→トリアージ→パッチまで7段階を回し、N体のエージェントが3/3でクラッシュを再現できた脆弱性だけを通す。AI脆弱性発見の標準実装を無料で配る、という静かなインフラ提供だ。",
-        "detail_ja": "Anthropicが、Claudeを使ってソースコードの脆弱性を自律的に発見・修正するリファレンス実装『defending-code-reference-harness』をオープンソースで公開した。これはセキュリティチームとの協業から得た知見をまとめたもので、対話的に使える“スキル”群と、完全自動のスキャンパイプラインの両方を含む。自動パイプラインは7段階で動く:①ターゲットをDocker化しASAN等の計装を入れてビルド、②エージェントがコードを入力解析サブシステムに分割(recon)、③N体の並列エージェントが不正入力を作りクラッシュを3回中3回再現するまで探索(find)、④別の採点エージェントがまっさらな隔離コンテナで再現を検証(verify)、⑤既知バグとの重複を判定(dedupe)、⑥悪用可能性・到達性・深刻度を構造化レポート化(report)、⑦元のPoCがもう刺さらないことを確認しつつ修正を生成(patch)。鍵は“実行で検証する”点で、静的解析だけの手法より誤検知を大幅に減らせると主張する。エージェントはgVisorコンテナで隔離され、ネットワークはClaude APIのみに制限される。参照実装はC/C++のメモリ系脆弱性向けだが、`/customize`スキルで他言語・他の脆弱性クラスにも拡張できる。AI脆弱性発見の“防御側テンプレート”を誰でも使えるようにした点が大きい。",
-        "detail_en": "Anthropic open-sourced 'defending-code-reference-harness,' a reference implementation that uses Claude to autonomously find and fix vulnerabilities in source code. Distilled from its work with security teams, it ships both interactive skills and a fully autonomous scanning pipeline. The pipeline runs in seven stages: (1) Build the target into a Docker image with instrumentation like ASAN; (2) Recon, where an agent partitions the code into input-parsing subsystems; (3) Find, where N parallel agents craft malformed inputs until a crash reproduces 3 out of 3 times; (4) Verify, where a separate grader agent reproduces the crash in a fresh, isolated container; (5) Dedupe against known bugs; (6) Report with structured exploitability, reachability, and severity analysis; (7) Patch, generating a fix and confirming the original PoC no longer crashes. The core idea is execution-verified findings, which the team claims sharply reduce false positives versus static-only scanning. Agents run inside gVisor containers with network egress restricted to the Claude API only. The reference targets C/C++ memory bugs but can be retargeted to other languages and vulnerability classes via a `/customize` skill. The significance is that it hands defenders a usable, end-to-end template for AI-driven vulnerability discovery.",
+        "title": "S&P 500 rejects SpaceX, also blocking entry for OpenAI and Anthropic",
+        "title_ja": "S&P 500、SpaceXの早期採用を拒否——OpenAI・Anthropicも入れず",
+        "url": "https://arstechnica.com/tech-policy/2026/06/sp-500-blocks-fast-spacex-entry-wont-waive-rule-for-unprofitable-ai-firms/",
+        "hot_take_ja": "時価総額では誰もが認めるAIの主役なのに、S&P 500には入れない。理由は単純で、四半期GAAP黒字という条件を満たさないから。指数委員会は「時価総額の大きさだけを理由に例外を認めるべきではない」と言い切った。期待の熱狂と財務の冷たさのギャップが、指数の門前ではっきり可視化された一件だ。",
+        "detail_ja": "S&P Dow Jones Indicesの指数委員会が、SpaceX・OpenAI・Anthropicの3社を念頭に検討していた採用ルールの緩和を6月4日に見送った。委員会は、①上場後12カ月の「熟成(seasoning)」期間、②浮動株比率(public float)10%以上、③直近四半期と過去4四半期合計でのGAAP黒字、という3要件の例外適用を検討したが、最終的に「財務的健全性・熟成・浮動株要件の例外を、時価総額の大きさだけを根拠に認めるべきではない」と結論づけた。SpaceXは2025年に約49億ドルの赤字を計上しており、黒字要件を満たさないため早期採用の道は閉ざされた。Bloomberg Intelligenceの試算では、S&P500入りが実現すればSpaceXに約140億ドル、OpenAIに80億ドル超、Anthropicに46億ドルのパッシブ買いが発生するとされ、それが宙に浮いた格好だ。背景には、世界で7.5兆ドル規模のパッシブ資金がこの指数に連動しており、組入れ＝自動的な巨額買いを意味するという構造がある。一方でNasdaqやFTSE Russellは既に規則を調整しており、SpaceXは他指数経由なら入れる可能性がある。注意点として、これらの企業は多くがまだ非上場・赤字であり、今回の決定は「将来IPOしても自動では入れない」という規律の再確認という側面が強い。AIへの市場の熱狂と、伝統的な指数が課す財務規律との緊張関係を象徴する出来事と言える。",
+        "detail_en": "On June 4, the S&P Dow Jones Indices committee declined to relax its index-inclusion rules that had been under consideration with SpaceX, OpenAI, and Anthropic in mind. The committee had weighed waiving three separate requirements: the 12-month post-IPO 'seasoning' period, the 10% minimum public float, and the profitability test (positive GAAP earnings in the most recent quarter and summed over the trailing four quarters). It ultimately concluded that 'exceptions to the financial viability, seasoning, and IWF requirements should not be granted solely based on market capitalization.' SpaceX posted a roughly $4.94 billion loss in 2025, so it fails the profitability bar and gets no fast track. Bloomberg Intelligence estimated S&P 500 entry would trigger about $14 billion of passive buying for SpaceX, over $8 billion for OpenAI, and $4.6 billion for Anthropic — flows that are now on hold. The stakes are high because roughly $7.5 trillion in passive money tracks the index, so inclusion effectively means automatic large-scale buying. Meanwhile Nasdaq and FTSE Russell have already adjusted their rules, leaving a path for SpaceX into other indices. A caveat: most of these firms remain private and unprofitable, so the decision is largely a reaffirmation that even post-IPO they would not get automatic entry. It crystallizes the tension between the market's enthusiasm for AI and the financial discipline that traditional indices still enforce.",
         "key_points_ja": [
-            "Claudeで脆弱性を自律発見・修正する公式OSS実装",
-            "7段階: build→recon→find→verify→dedupe→report→patch",
-            "3/3でクラッシュ再現した脆弱性だけ通す実行検証型",
-            "誤検知を静的解析より大幅に減らすと主張",
-            "エージェントはgVisorで隔離・通信はClaude APIのみ",
-            "C/C++向け参照実装、/customizeで他言語へ拡張可"
+            "6/4にS&Pが採用ルール緩和を見送り",
+            "熟成・浮動株・GAAP黒字の3要件は維持",
+            "「時価総額だけで例外は認めない」と明言",
+            "SpaceXは2025年に約49億ドルの赤字",
+            "実現時はSpaceXに約140億ドルのパッシブ買い試算",
+            "NasdaqやFTSEは既に規則を調整済み",
         ],
         "key_points_en": [
-            "Official OSS for autonomous vuln find-and-fix with Claude",
-            "7 stages: build→recon→find→verify→dedupe→report→patch",
-            "Execution-verified: only crashes reproduced 3/3 pass",
-            "Claims far fewer false positives than static scanning",
-            "Agents sandboxed in gVisor, egress limited to Claude API",
-            "C/C++ reference; retargetable via /customize skill"
-        ],
-    },
-    {
-        "source": "OpenAI",
-        "title": "Introducing new capabilities to GPT-Rosalind",
-        "title_ja": "OpenAI、生命科学特化モデル『GPT-Rosalind』を強化",
-        "url": "https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind",
-        "hot_take_ja": "ChatGPTが汎用で殴る一方、OpenAIは“分野特化モデル”の旗も立て始めた。GPT-Rosalind(名はロザリンド・フランクリン由来か)は生物学的推論・医薬品化学・ゲノミクス・実験計画に振り切った専用モデル。同日に出た生物防御(Biodefense)計画とセットで、OpenAIが本気でライフサイエンスを取りに来たのが分かる。",
-        "detail_ja": "OpenAIが生命科学に特化したモデル『GPT-Rosalind』の新機能を発表した。汎用のChatGPTとは別系統の、研究用途に振り切ったモデルという位置づけだ。強化されたのは、生物学的推論(biological reasoning)、医薬品化学(medicinal chemistry)の専門知、ゲノミクス解析、そして実験ワークフローの設計・支援といった能力。狙いは、論文の読解や仮説生成にとどまらず、実際の創薬や遺伝子解析、実験プロトコルの立案といった“湿った実験(wet lab)”に近い工程までAIが伴走することにある。注目すべきは、同日にOpenAIが「知能時代の生物防御(Biodefense in the Intelligence Age)」という行動計画も公表している点で、強力な生命科学AIは創薬を加速する一方、悪用すれば生物学的脅威にもなりうる——という両刃の剣を、能力強化と防御策をセットで出すことで先回りしようとしている。分野特化モデルは、汎用モデルより専門タスクで精度・信頼性を上げやすい反面、誤りが専門家以外には検証しづらいという課題もある。創薬や臨床に直結する領域だけに、生成内容の正確性と検証可能性が今後の鍵になる。なお現時点で公開された性能の定量値は限定的で、実運用での評価はこれからだ。",
-        "detail_en": "OpenAI announced new capabilities for GPT-Rosalind, a model purpose-built for the life sciences and distinct from general-purpose ChatGPT. The upgrades target biological reasoning, medicinal-chemistry expertise, genomics analysis, and the design and support of experimental workflows. The ambition goes beyond reading papers and generating hypotheses: it aims to assist with the more 'wet-lab'-adjacent steps of drug discovery, genetic analysis, and experimental protocol design. Notably, OpenAI published a 'Biodefense in the Intelligence Age' action plan the same day — an acknowledgment that powerful life-science AI is dual-use: it can accelerate drug discovery but could also lower barriers to biological threats. Pairing capability with a defense plan is an attempt to get ahead of that tension. Domain-specific models can raise accuracy and reliability on specialized tasks compared with general models, but their errors are harder for non-experts to catch — a real concern in fields tied directly to drug development and clinical work, where correctness and verifiability matter most. Quantitative performance details remain limited for now, so real-world evaluation is still ahead.",
-        "key_points_ja": [
-            "生命科学特化の専用モデルGPT-Rosalindを強化",
-            "生物学的推論・医薬品化学・ゲノミクスに対応",
-            "実験ワークフローの設計まで支援を狙う",
-            "同日に生物防御(Biodefense)行動計画も公表",
-            "強力な生命科学AIは創薬加速と悪用懸念の両刃",
-            "定量的な性能値は限定的で実運用評価はこれから"
-        ],
-        "key_points_en": [
-            "Upgraded GPT-Rosalind, a life-sciences-specific model",
-            "Biological reasoning, med-chem, genomics expertise",
-            "Aims to assist with experimental workflow design",
-            "Paired with a same-day Biodefense action plan",
-            "Powerful bio-AI is dual-use: cures vs. misuse",
-            "Quantitative benchmarks still limited so far"
+            "S&P declined to relax inclusion rules on June 4",
+            "Seasoning, float, and GAAP-profit rules all kept",
+            "'No exceptions based on market cap alone'",
+            "SpaceX posted a ~$4.94B loss in 2025",
+            "Entry would have meant ~$14B passive buying for SpaceX",
+            "Nasdaq and FTSE Russell already eased their rules",
         ],
     },
     {
         "source": "Hacker News",
-        "title": "The Pentagon is running an AI propaganda mill targeting Latin America",
-        "title_ja": "Pentagon、中南米を狙うAIプロパガンダ工場を運営",
-        "url": "https://theintercept.com/2026/06/02/la-tilde-propaganda-latin-america-pentagon/",
-        "hot_take_ja": "「生成AIで偽情報が量産される」は予言じゃなく、もう国家がやっている。米軍が運営する“メディアブランド”La Tildeは、家計記事に軍事プロパガンダを混ぜ、文章はLLM・画像はMidjourneyで量産。崩れた手の指やおかしな建築が逆に正体をバラした。プロパガンダは“スイッチ一つ”の時代に入った。",
-        "detail_ja": "The Interceptが、米軍南方特殊作戦軍(SOCSOUTH)が運営するメディアサイト『La Tilde』を暴いた。2026年初頭に立ち上がり、スペイン語・英語で中南米の読者を狙う“軍の情報発信プラットフォーム”だ。サイトには署名・編集部・スタッフ表記がなく、「数十人のフリーランス制作者を雇っている」と称する。手口は巧妙で、一見無害な個人ファイナンス記事に米軍プロパガンダを織り交ぜる。例として、ベネズエラのマドゥロ大統領拘束とされる「Operation Absolute Resolve」を称賛する記事や、パナマでの米軍演習を“侵略でなく主権強化だ”と描く記事が挙がっている。コンテンツの多くはLLMで生成され、画像はMidjourney製で、崩れた文字や建築の破綻といった生成AI特有のアラが残っていた。エクアドル、エルサルバドル、ガイアナ、ホンジュラス、ジャマイカ、パナマ、ペルー向けの国別版も計画され、各国の読者に合わせて内容を調整する設計だ。サイト最下部には「La Tildeは米国政府予算で公的に資金提供される国際メディア組織の製品」と小さく開示があるが、トップページからは分かりにくい。生成AIが国家による情報操作のコストを劇的に下げ、“スイッチ一つ”で多言語プロパガンダを量産できる現実を示す事例だ。デザインはコロンビアのデジタルマーケ企業Antpackに外注されていた。",
-        "detail_en": "The Intercept exposed 'La Tilde,' a media site run by U.S. Special Operations Command South (SOCSOUTH). Launched in early 2026, it targets Latin American audiences in Spanish and English as a 'military messaging platform.' It carries no bylines, masthead, or staff list, yet claims to employ dozens of freelance creators. The tactic is to blend seemingly harmless personal-finance articles with U.S. military propaganda — for instance, pieces praising 'Operation Absolute Resolve' (the alleged abduction of Venezuelan president Nicolás Maduro) and framing U.S. military exercises in Panama as sovereignty-strengthening rather than invasive. Much of the content appears LLM-generated, and the imagery is from Midjourney, complete with tell-tale artifacts like garbled text and architectural errors. Country-specific editions are planned for Ecuador, El Salvador, Guyana, Honduras, Jamaica, Panama, and Peru, each tailored to local readers. A small disclosure at the page bottom states the site is 'a product of an international media organization publicly funded from the budget of the United States Government,' but it's easy to miss. The case shows how generative AI slashes the cost of state information operations, letting actors spin up multilingual propaganda 'at the flip of a switch.' The site's design was subcontracted to Antpack, a Colombian digital-marketing firm.",
+        "title": "US House lawmakers release draft bill to prohibit state AI rules",
+        "title_ja": "米下院、州のAI規制を3年凍結する超党派法案草案を公表",
+        "url": "https://www.insurancejournal.com/news/national/2026/06/05/872609.htm",
+        "hot_take_ja": "州ごとにバラバラなAI規制を「3年間凍結して連邦に一本化する」——そんな269ページの超党派草案が出た。引き換えに大手AI開発者には半年ごとの第三者監査を課す、いわば「規制の集権化と引き換えの透明性」ディール。だが労組や消費者団体は数時間で猛反発、業界団体は歓迎と、賛否がきれいに割れた。AI規制の主導権を州と連邦どちらが握るかの天王山だ。",
+        "detail_ja": "下院のJay Obernolte議員(共和・カリフォルニア)とLori Trahan議員(民主・マサチューセッツ)が6月4日、269ページに及ぶ超党派のAI規制討議草案「Great American AI Act」を公表した。最大の柱は、AIモデルの「開発」を直接規制する州法を3年間先取り(preemption)して凍結し、連邦標準に一本化する点だ。重要な線引きとして、この凍結はモデルの「利用・配備(use/deployment)」を規制する州法には及ばず、既存の消費者保護法・公民権法・プライバシー法もそのまま残る。一方で、カリフォルニア・ニューヨーク・イリノイが先行して定めたAI開発の透明性義務などは実質的に凍結・上書きされる見込みだ。代償として、大規模AI開発者には半年ごとの第三者監査が義務付けられ、フロンティアラボにはモデルの一定の開示も求められる。法案は公表から数時間で労働組合・消費者擁護団体・下院民主党の委員会から強い反対に遭った一方、主要テック企業を代表するITI(Information Technology Industry Council)は歓迎を表明した。これは2025年に予算法案へ盛り込まれて削除された「10年間のモラトリアム」案の再来であり、トランプ政権のAI大統領令(州法を標的に連邦標準を志向)とも軌を一にする。注意点として現時点はあくまで「討議草案」であり、3年のサンセット条項付き。州の規制権限と連邦の統一基準のどちらを優先するかという、AIガバナンスの根本的な綱引きが本格化したことを示す。",
+        "detail_en": "On June 4, Reps. Jay Obernolte (R-CA) and Lori Trahan (D-MA) released a 269-page bipartisan discussion draft, the 'Great American AI Act.' Its centerpiece is a three-year federal preemption that would freeze state laws 'specifically regulating the development' of AI models, consolidating authority at the federal level. Crucially, the preemption would not reach state laws governing the use or deployment of AI, and existing consumer-protection, civil-rights, and privacy laws would remain intact — but AI-development transparency laws already enacted in California, New York, and Illinois would effectively be frozen or superseded. In exchange, large AI developers would face semi-annual third-party audits, and frontier labs would be pushed to open up their models to a degree. Within hours the draft drew strong opposition from labor unions, consumer advocates, and a formal House Democratic commission, while the Information Technology Industry Council, representing major tech firms, praised it. The proposal echoes the '10-year moratorium' that was inserted into a 2025 budget bill and then stripped out, and aligns with the Trump administration's AI executive order that targets state laws in favor of a uniform federal standard. Note that this is still only a discussion draft and carries a three-year sunset. It marks the start of a serious tug-of-war over whether state regulatory power or a single federal standard should govern AI.",
         "key_points_ja": [
-            "米軍SOCSOUTHが運営するメディア『La Tilde』",
-            "家計記事に軍事プロパガンダを混入",
-            "文章はLLM、画像はMidjourneyで量産",
-            "崩れた指・建築などAI生成のアラが残存",
-            "7カ国向けの国別版を計画",
-            "資金源開示はあるが目立たない場所に小さく"
+            "超党派の269ページ草案「Great American AI Act」",
+            "州のAI『開発』規制を3年間先取り・凍結",
+            "『利用・配備』規制や既存の消費者保護法は対象外",
+            "代償に大手開発者へ半年ごとの第三者監査",
+            "CA・NY・ILの透明性法は実質凍結の見込み",
+            "労組・消費者団体は反発、業界団体ITIは歓迎",
         ],
         "key_points_en": [
-            "'La Tilde' media site run by U.S. SOCSOUTH",
-            "Mixes propaganda into harmless finance articles",
-            "Text via LLMs, images via Midjourney",
-            "Tell-tale AI artifacts: garbled text, bad buildings",
-            "Country editions planned for 7 nations",
-            "Funding disclosure exists but is tiny and buried"
+            "Bipartisan 269-page 'Great American AI Act' draft",
+            "3-year preemption of state AI-development rules",
+            "Use/deployment and existing laws left untouched",
+            "Trade-off: semi-annual audits of big developers",
+            "CA, NY, IL transparency laws to be frozen",
+            "Unions oppose; tech group ITI applauds",
         ],
     },
     {
         "source": "Hacker News",
-        "title": "Did Claude increase bugs in rsync?",
-        "title_ja": "Claudeはrsyncのバグを増やしたのか?——炎上を統計検証",
-        "url": "https://alexispurslane.github.io/rsync-analysis/",
-        "hot_take_ja": "「AIがrsyncをダメにした」というSNS発の炎上を、誰かがちゃんとデータで殴り返した。36リリースを重み付き深刻度で分析した結果、Claude関与リリースの悪化は統計的に有意でない(p=46〜74%)。むしろ歴代最悪のリリースはClaudeコミット0件。スプリアスな相関に乗った集団パニックの典型例だ。",
-        "detail_ja": "「ClaudeのAIコーディングがrsyncのコード品質を落とし、バグを増やした」というSNS発の主張が炎上した件を、ある書き手が統計的に検証した。対象はrsync v2.4.6〜v3.4.3の36リリース。指標は『10コミットあたりの深刻度重み付きバグ数(sev/10c)』で、各バグの実世界影響をAIモデルが0〜100で採点し、正規化して集計した。結果、Claude関与リリース(v3.4.2は0.00、v3.4.3は3.29 sev/10c)は四分位範囲の両側に分かれ、過去平均2.95に対しClaude平均は1.65と、むしろ低かった。統計検定でも、正確順列検定でp値46%、フィッシャー正確検定で74%と、Claudeリリースが歴史的中央値を有意に超える傾向は見られなかった。さらに皮肉なことに、史上最悪のリリースv3.4.1(39.39 sev/10c)はClaudeコミットがゼロだったのに、炎上は起きなかった。著者は、炎上の発端はSNSユーザーが見た“スプリアス(見せかけ)な相関”で、それがGitHubやHNで増幅されたと指摘する。実際に変更が増えた本当の理由は、LLMが発見した脆弱性に対応するセキュリティ作業の増加であって、Claude由来の品質劣化ではなかった、と結論づけている。AIコーディングの是非を語る前に、まずデータを見ろ——という冷静さの教訓でもある。",
-        "detail_en": "After a social-media claim that Claude-assisted coding had degraded rsync's code quality and increased bugs went viral, one writer put it to a statistical test. The dataset: 36 rsync releases from v2.4.6 to v3.4.3. The metric: severity-weighted bugs per 10 commits (sev/10c), where each bug's real-world impact was scored 0–100 by an AI model, then normalized and aggregated. The result: Claude-involved releases (v3.4.2 at 0.00, v3.4.3 at 3.29 sev/10c) landed on opposite sides of the interquartile range, and the Claude mean of 1.65 was actually below the historical mean of 2.95. Statistical tests agreed — an exact permutation test gave p=46% and Fisher's exact test p=74%, showing no significant tendency for Claude releases to exceed the historical median. Ironically, the worst release ever, v3.4.1 at 39.39 sev/10c, had zero Claude commits yet generated no outrage. The author argues the furor began with a 'spurious correlation' spotted by a social-media user and amplified through GitHub and Hacker News; the real driver of increased churn was security work addressing LLM-discovered vulnerabilities, not quality problems introduced by Claude. It's a tidy lesson in checking the data before judging AI coding.",
+        "title": "The Smart TV in Your Living Room Is a Node in the AI Scraping Economy",
+        "title_ja": "リビングのスマートTVはAIスクレイピング経済の一ノードだった",
+        "url": "https://blog.includesecurity.com/2026/06/the-smart-tv-in-your-livingroom-is-a-node-in-the-aiscraping-economy/",
+        "hot_take_ja": "あなたのスマートTVが、夜中にこっそり他人のウェブスクレイピングを代行しているかもしれない。アプリに埋め込まれたBright DataのSDKが、家庭のネット回線を「住宅用プロキシ」の出口ノードに変え、AI企業のボット対策回避に貸し出す仕組みだ。常時給電・帯域ほぼ無制限・誰も見ていない——TVは中継機として“理想の被害者”だった。",
+        "detail_ja": "セキュリティ企業IncludeSecurityの調査で、スマートTVがAI向けのウェブスクレイピングを中継する「住宅用プロキシ(residential proxy)」のノードとして使われている実態が明らかになった。仕組みの核は、提携アプリに組み込まれたBright DataのSDKだ。インストールされるとSDKはBright Dataのインフラへ常時WebSocket接続を張り、同社はスクレイピングの仕事をユーザー家庭のネット回線経由で送り出す。Bright Dataは「4億超の家庭用IP」へのアクセスを商品化し、CloudflareやDataDomeのボット対策を回避したいAI企業に販売する。提携先にはCTVゲーム大手PlayWorks Digital(約2.5億世帯)、125以上のTVブランドを抱えるCloudTV、Viber/Rakuten(2.5〜8.2億ユーザー)などが挙がる。スマートTVが狙われるのは、常時給電で24時間スタンバイ、帯域が実質無制限、企業の監視がほぼなく、ユーザーの注意も向かないという「理想的な条件」が揃うからだ。調査では既定でも月500MB、設定によっては月200GBもの通信を中継しうるという。SDKは検査回避のためVPNを迂回して物理インターフェース(en0/pdp_ip0)に直接バインドし、URLSessionフックを避けてCFNetworkを使うなど、マルウェアのC2(指令)通信に近い手口も確認された。同意ダイアログには「device resourcesをoccasionallyに使う」とあるが、実際の設定は大量通信を許す内容で、通信にメッセージ署名やHMAC、クライアント証明書、デバイス認証が一切なく、バッテリー・CPU・帯域・画面状態などのテレメトリを第三者サーバへ常時送り続ける点も問題視されている。",
+        "detail_en": "An investigation by security firm IncludeSecurity reveals that smart TVs are being used as nodes in a 'residential proxy' network that relays web-scraping traffic for AI companies. The mechanism centers on Bright Data's SDK, embedded in partner apps. Once installed, the SDK opens a persistent WebSocket connection to Bright Data's infrastructure, letting the company route scraping jobs through users' home internet connections. Bright Data monetizes access to '400M+ home IP addresses,' selling it to AI firms that need residential IPs to bypass anti-bot defenses from services like Cloudflare and DataDome. Named partners include PlayWorks Digital (400+ CTV game titles, ~250M homes), CloudTV (125+ TV brands), and Viber/Rakuten (250M–820M users). Connected TVs are ideal because they are always plugged in, run 24/7 in standby, have effectively unlimited bandwidth, receive minimal corporate oversight, and get little user attention. The research found a device could relay 500 MB monthly by default — or up to 200 GB in some configurations. To evade inspection, the SDK bypasses VPNs by binding to physical interfaces (en0/pdp_ip0) instead of system routes, and avoids URLSession hooks via CFNetwork — tactics reminiscent of malware command-and-control. Consent dialogs say Bright Data will 'occasionally' use device resources, yet configurations permit far heavier traffic, the protocol has no message signing, HMAC, client certificates, or device attestation, and the device continuously streams telemetry (battery, CPU, bandwidth, screen state) to third-party servers.",
         "key_points_ja": [
-            "「Claudeがrsyncのバグを増やした」炎上を統計検証",
-            "36リリースを深刻度重み付き指標(sev/10c)で分析",
-            "Claude平均1.65 < 歴代平均2.95でむしろ低い",
-            "順列検定p=46%、フィッシャー検定p=74%で有意差なし",
-            "史上最悪v3.4.1はClaudeコミット0件だった",
-            "炎上の正体はスプリアスな相関の増幅"
+            "スマートTVが住宅用プロキシの出口ノードに",
+            "アプリ内のBright Data製SDKが常時接続を確立",
+            "「4億超の家庭IP」をAI企業へ販売しボット対策回避",
+            "常時給電・帯域無制限のTVが狙われやすい",
+            "既定で月500MB、設定次第で月200GBを中継",
+            "VPN迂回・署名なし通信などC2類似の手口",
         ],
         "key_points_en": [
-            "Stat test of the 'Claude broke rsync' outrage",
-            "36 releases analyzed via severity-weighted sev/10c",
-            "Claude mean 1.65 < historical mean 2.95",
-            "Permutation p=46%, Fisher p=74%: no significance",
-            "Worst-ever release v3.4.1 had zero Claude commits",
-            "The furor traces to an amplified spurious correlation"
+            "Smart TVs act as residential-proxy exit nodes",
+            "Bright Data SDK in apps keeps a persistent link",
+            "Sells '400M+ home IPs' to AI scrapers to dodge bot defenses",
+            "Always-on, high-bandwidth TVs are ideal targets",
+            "Relays 500MB/mo by default, up to 200GB configured",
+            "VPN bypass and unsigned traffic mimic malware C2",
+        ],
+    },
+    {
+        "source": "arXiv",
+        "title": "Pretraining Recurrent Networks without Recurrence",
+        "title_ja": "再帰なしで再帰型ネットワークを事前学習する(SMT)",
+        "url": "https://arxiv.org/abs/2606.06494",
+        "hot_take_ja": "RNN学習の宿敵は「時間方向に逐次でしか勾配を流せない」BPTTだった。この論文は、RNNの学習を“1ステップのメモリ遷移を当てる教師あり学習”に置き換えることで、再帰的な勾配伝播そのものを消し去る。並列化でき勾配消失も避けられるなら、RNN/状態空間モデル復権の追い風になりうる。",
+        "detail_ja": "RNN(再帰型ニューラルネット)の学習は、長い系列にまたがって「どの計算がどれだけ結果に寄与したか(credit assignment)」を割り当てる必要がある。標準手法のBPTT(通時的誤差逆伝播)はこれを苦手とする:時間方向に逐次的なので並列化できず、勾配が消失・爆発しやすく、長距離の依存関係を学びにくい。本研究が提案するSupervised Memory Training(SMT)は、再帰的な勾配伝播そのものを回避する。鍵は、RNNの学習を「1ステップのメモリ遷移ラベル (m_t, x_{t+1}) → m_{t+1} を当てる教師あり学習」へと還元する点だ。このメモリラベルは、予測的状態(predictive state)目的でTransformerベースのエンコーダを先に訓練して取得する。いったんラベルが手に入れば、各時刻の更新が独立した教師あり問題になるため、時間方向に並列学習でき、長系列でも勾配消失の問題を避けられる、と著者は主張する。これはRNNやSSM(状態空間モデル)が長文・長系列モデリングで再び注目される流れの中で意義が大きい。注意点として、SMTは良いメモリラベルを作るエンコーダの質に依存し、Transformerの事前訓練という別コストを要する。それでも、逐次性というRNN学習最大のボトルネックを設計レベルで外そうとする発想は新規性が高く、効率的な系列モデルの学習法に新たな選択肢を示す。",
+        "detail_en": "Training recurrent neural networks (RNNs) requires assigning credit across long sequences of computations. The standard approach, backpropagation through time (BPTT), handles this poorly: it is sequential in time (limiting parallelism) and suffers from vanishing or exploding gradients, making long-range associations hard to learn. This paper proposes Supervised Memory Training (SMT), which sidesteps recurrent credit propagation entirely. The key idea is to reduce RNN training to supervised learning on one-step memory-transition labels of the form (m_t, x_{t+1}) → m_{t+1}. These memory labels are obtained by first training a Transformer-based encoder on a predictive-state objective. Once the labels exist, each timestep's update becomes an independent supervised problem, so training can be parallelized across time and avoids the vanishing-gradient issue even on long sequences, the authors argue. This matters amid renewed interest in RNNs and state-space models (SSMs) for long-context and long-sequence modeling. A caveat: SMT depends on the quality of the encoder that produces the memory labels and incurs the separate cost of pretraining that Transformer. Still, the idea of removing sequentiality — the biggest bottleneck in RNN training — at the design level is genuinely novel and offers a new option for efficiently training sequence models.",
+        "key_points_ja": [
+            "BPTTは逐次的で並列化できず勾配も不安定",
+            "SMTは1ステップのメモリ遷移を当てる教師あり学習に還元",
+            "メモリラベルはTransformerエンコーダで生成",
+            "各時刻が独立化し時間方向に並列学習が可能",
+            "勾配消失を避け長距離依存を学べると主張",
+            "RNN/SSM復権の流れに新たな学習法を提示",
+        ],
+        "key_points_en": [
+            "BPTT is sequential, non-parallel, gradient-unstable",
+            "SMT reduces training to one-step memory-transition labels",
+            "Memory labels produced by a Transformer encoder",
+            "Each timestep becomes independent, enabling parallel training",
+            "Claims to avoid vanishing gradients on long sequences",
+            "A fresh training option amid the RNN/SSM revival",
         ],
     },
     {
         "source": "Hacker News",
-        "title": "Google employees internally share memes about how its AI sucks",
-        "title_ja": "Google社員、自社AIのダメさを内部ミームで共有",
-        "url": "https://www.404media.co/google-employees-internally-share-memes-about-how-its-ai-sucks/",
-        "hot_take_ja": "ピチャイは「新コードの75%はAI生成」と誇るが、実際に使う現場の社員は内部ミームで自社AIを笑っている。売る側と使う側の温度差が、ここまで露骨に漏れたのは珍しい。AIコード生成の“過大広告”に、内部から最も手厳しいツッコミが入った形だ。",
-        "detail_ja": "404 Mediaが、Google社内で従業員が自社AIの出来の悪さを揶揄するミームを共有している、と報じた。背景にあるのは、CEOのスンダー・ピチャイが「社内の新規コードの75%がAI生成」と公言していること。だが、実際にそのツールを使う現場のエンジニアたちは、コード生成の質に懐疑的で、内部チャンネルでミームにして笑っているという。記事が突くのは、経営陣が描く“AI礼賛”の対外ナラティブと、現場社員の本音との大きな断絶だ。AIを「売る・宣伝する」側ではなく、毎日「使う」側の人々が効果に疑問を呈しているという事実は、業界全体に広がる「AI生成コード」の誇大宣伝が、現実の性能や信頼性とどれだけ噛み合っているのかという疑問を突きつける。とくに「コードの何%がAI製か」という指標は、生産性や品質の証明にはならず、むしろ宣伝文句として独り歩きしやすい。記事本体はペイウォール内で、具体的なミーム例の詳細までは確認できないが、大手テック各社が掲げるAI効果の主張に、内部から冷や水が浴びせられた象徴的な一件と言える。AIコーディングは便利だが万能ではない——その温度感を、ほかならぬ最前線の開発者が示している。",
-        "detail_en": "404 Media reported that Google employees are internally sharing memes mocking the quality of the company's own AI. The backdrop is CEO Sundar Pichai's public claim that '75 percent of all new code at the company is AI-generated.' Yet the engineers actually using those tools are skeptical of the code-generation quality and are turning that skepticism into memes on internal channels. The article highlights a stark gap between leadership's celebratory, outward-facing AI narrative and the rank-and-file's lived experience. When the people who use these systems daily — not the ones marketing them — question their effectiveness, it raises real doubts about whether the industry-wide hype around AI-generated code matches actual performance and reliability. The much-cited 'what percent of code is AI-written' figure, in particular, proves neither productivity nor quality and tends to take on a life of its own as a talking point. The full article sits behind a paywall, so specific meme examples aren't fully visible, but it stands as a telling case of internal pushback against the AI-impact claims big tech keeps making. AI coding is useful but not magic — and it's the frontline developers themselves making that point.",
+        "title": "Programmers will document for Claude, but not for each other",
+        "title_ja": "プログラマはClaudeのためには文書を書くが、同僚のためには書かない",
+        "url": "https://blog.plover.com/2026/03/09/#documentation-wins-2",
+        "hot_take_ja": "「ドキュメントを書け」と何年言われても動かなかった開発者が、AIに読ませるためなら嬉々としてREADMEや設計メモを整え始める。読み手が人間からAIに変わった途端、長年の文化的課題があっさり溶けた——という皮肉。AIが“最良のドキュメント読者”になることで、結果的に人間にとっての文書も充実するなら、それは怪我の功名かもしれない。",
+        "detail_ja": "ベテラン開発者Mark Dominus(blog.plover.com)が綴った、AI時代のソフトウェア文化に関する鋭い観察記事で、Hacker Newsで大きな共感を呼んだ。要点はタイトル通り、「プログラマは同僚のためにはドキュメントを書かないのに、Claudeのためなら書く」という現象だ。コードのコメント、README、設計上の前提、命名規約といった文書化は、ソフト工学で何十年も『重要だが後回しにされる』典型だった。レビューや教育で繰り返し促されても定着しなかったのに、AIコーディング支援が普及すると状況が一変する。AIに正確なコードを書かせ、文脈を理解させるには、明示的な仕様・制約・意図の記述が効くと開発者が体感し、自発的に文書を整えるようになった、というわけだ。背景には、AIが人間の同僚と違って「行間を読む」「過去の経緯を覚えている」「直接質問できる」といった暗黙の補完をしてくれないため、書き手が文脈を言語化せざるを得ない事情がある。皮肉なのは、長年の啓蒙より、AIという新しい『読者』の登場の方が行動変容に効いた点だ。含意として、結果的に書かれた文書は人間にとっても有益なので、AIが副次的にコードベースの可読性・保守性を底上げする可能性がある。一方で、文書がAI向けに最適化されすぎ、人間にとっての読みやすさやニュアンスが失われるリスクや、「AIが読むから人間は読まなくていい」という新たな怠慢を生む懸念も指摘できる。",
+        "detail_en": "A sharp observation on AI-era software culture by veteran developer Mark Dominus (blog.plover.com) that struck a chord on Hacker News. The thesis is in the title: programmers won't write documentation for their colleagues, but they will write it for Claude. Documenting code — comments, READMEs, design assumptions, naming conventions — has for decades been the classic 'important but perpetually deferred' task in software engineering. Repeated nudging in reviews and onboarding never made it stick, yet the spread of AI coding assistants changed things overnight. Developers found that to get an AI to write correct code and understand context, explicit specs, constraints, and statements of intent really help — so they began voluntarily fleshing out documentation. Part of the reason is that, unlike a human colleague, an AI won't 'read between the lines,' remember historical context, or be asked a quick follow-up, which forces the author to put context into words. The irony is that a new kind of 'reader' — the AI — drove behavior change more effectively than years of advocacy. The implication is upbeat: the docs that result are also useful to humans, so AI may incidentally raise a codebase's readability and maintainability. On the flip side, there's a risk that docs become over-optimized for AI at the expense of human nuance, and a worry about a new kind of laziness — 'the AI reads it, so humans don't have to.'",
         "key_points_ja": [
-            "Google社員が自社AIを揶揄する内部ミームを共有",
-            "ピチャイ「新コードの75%はAI生成」と公言",
-            "使う側の現場は生成コードの質に懐疑的",
-            "対外ナラティブと現場の本音に大きな断絶",
-            "「AI製コードの割合」は品質の証明にならない",
-            "AIコーディング過大広告への内部からの冷や水"
+            "AIに読ませる目的だと開発者が自発的に文書化",
+            "長年定着しなかった文書化が一気に進む皮肉",
+            "AIは行間を読まないので意図の明文化が必要",
+            "副産物として人間向けの可読性も向上しうる",
+            "AI最適化で人間向けのニュアンス喪失のリスク",
+            "『AIが読むから不要』という新たな怠慢の懸念",
         ],
         "key_points_en": [
-            "Google staff share memes mocking their own AI",
-            "Pichai claims 75% of new code is AI-generated",
-            "Daily users are skeptical of code-gen quality",
-            "Big gap between PR narrative and ground truth",
-            "'% of code AI-written' proves neither speed nor quality",
-            "Internal pushback against AI-code hype"
+            "Devs document voluntarily when the reader is AI",
+            "A long-unsolved cultural problem suddenly shifts",
+            "AI won't read between lines, forcing explicit intent",
+            "Side effect: human readability may improve too",
+            "Risk of docs over-optimized for AI, losing nuance",
+            "New laziness worry: 'the AI reads it, so we needn't'",
         ],
     },
 ]
 
 raw["highlights"] = highlights
-raw["stats"] = {
-    "arxiv_count": len(src["arxiv"]),
-    "hn_count": len(src["hn"]),
-    "reddit_count": len(src.get("reddit", [])),
-    "github_count": len(src["github"]),
-    "blogs_count": len(src["blogs"]),
-    "total": len(src["arxiv"]) + len(src["hn"]) + len(src.get("reddit", [])) + len(src["github"]) + len(src["blogs"]),
-    "highlights": len(highlights),
-}
+
+# ============ stats ============
+raw["stats"] = {f"{s}_count": len(src[s]) for s in src}
+raw["stats"]["total"] = sum(len(v) for v in src.values())
+raw["stats"]["highlights"] = len(highlights)
 
 out = ROOT / f"data/{DATE}.json"
-json.dump(raw, open(out, "w"), ensure_ascii=False, indent=2)
+json.dump(raw, open(out, "w"), ensure_ascii=False, indent=1)
 print(f"Wrote {out}")
-print("stats:", raw["stats"])
+print("highlights:", len(highlights), "| stats:", raw["stats"])
