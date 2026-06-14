@@ -1,0 +1,1718 @@
+{
+  "date": "2026-06-14",
+  "generated_at": "2026-06-14T00:54:55Z",
+  "sources": {
+    "arxiv": [
+      {
+        "id": "2606.13681v1",
+        "title": "EvoArena: Tracking Memory Evolution for Robust LLM Agents in Dynamic Environments",
+        "authors": [
+          "Jundong Xu",
+          "Qingchuan Li",
+          "Jiaying Wu",
+          "Yihuai Lan",
+          "Shuyue Stella Li",
+          "Huichi Zhou",
+          "Bowen Jiang",
+          "Lei Wang",
+          "Jun Wang",
+          "Anh Tuan Luu",
+          "Caiming Xiong",
+          "Hae Won Park",
+          "Bryan Hooi",
+          "Zhiyuan Hu"
+        ],
+        "abstract": "Large language model (LLM) agents have achieved strong performance on a wide range of benchmarks, yet most evaluations assume static environments. In contrast, real-world deployment is inherently dynamic, requiring agents to continually align their knowledge, skills, and behavior with changing environments and updated task conditions. To address this gap, we introduce EvoArena, a benchmark suite that models environment changes as sequences of progressive updates across terminal, software, and social domains. We further propose EvoMem, a patch-based memory paradigm that records memory evolution as structured update histories, enabling agents to reason about environmental evolution through changes in their memory. Experiments show that current agents struggle on EvoArena, achieving an average accuracy of 39.6% across evolving terminal, software, and social-preference domains. EvoMem consistently improves performance, yielding an average gain of 1.5% on EvoArena and also improving standard benchmarks such as GAIA and LoCoMo by 6.1% and 4.8%. Beyond individual tasks, EvoMem further improves chain-level accuracy by 3.7% on EvoArena, where success requires completing a consecutive sequence of related evolutionary subtasks. Mechanistic analysis shows that EvoMem improves evidence capture in the memory, indicating better preservation of complete evolving environment states. Our results highlight the importance of modeling evolution in both evaluation and memory for reliable agent deployment.",
+        "categories": [
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2606.13681v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13681v1",
+        "published": "2026-06-11T17:59:59Z",
+        "title_ja": "EvoArena: 動的環境でのLLMエージェントの記憶進化を追跡",
+        "summary_ja": "環境が段階的に変化する状況でエージェントを評価するベンチマーク。記憶を構造化された更新履歴として記録するパッチ型メモリ(EvoMem)を提案し、環境進化への適応力を測る。"
+      },
+      {
+        "id": "2606.13680v1",
+        "title": "Learning to Reason by Analogy via Retrieval-Augmented Reinforcement Fine-Tuning",
+        "authors": [
+          "Zilin Xiao",
+          "Qi Ma",
+          "Chun-cheng Jason Chen",
+          "Xintao Chen",
+          "Avinash Atreya",
+          "Hanjie Chen",
+          "Vicente Ordonez"
+        ],
+        "abstract": "Retrieval-augmented generation (RAG) has become a standard mechanism for grounding language models in external knowledge, yet conventional retrieval based on lexical or semantic similarity is poorly suited for complex reasoning tasks: a semantically similar problem may demand an entirely different solution strategy, while a superficially different problem may share the same underlying reasoning pattern. We propose Retrieval-Augmented Reinforcement Fine-Tuning (RA-RFT), a post-training framework that teaches language models to reason by analogy. RA-RFT uses gold-relevance distillation to train a retriever that ranks contexts by expected reasoning benefit rather than semantic overlap, and then fine-tunes the policy model via reinforcement fine-tuning methods with retrieved analogous demonstrations, so the model learns to leverage reasoning traces under verifiable outcome rewards. We further analyze the diversity of retrieved contexts and find that reasoning-aware retrieval surfaces complementary solution strategies that provide distinct reasoning scaffolds for individual problems. Across challenging mathematical reasoning benchmarks, RA-RFT consistently outperforms standard reinforcement fine-tuning methods. For example, it improves AIME 2025 average@32 accuracy by 7.1 and 2.8 points over GRPO for Qwen3-1.7B and Qwen3-4B respectively -- suggesting that reasoning-aware retrieval is a complementary axis of improvement and orthogonal to advances in reward design or training curricula.",
+        "categories": [
+          "cs.CL",
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2606.13680v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13680v1",
+        "published": "2026-06-11T17:59:52Z",
+        "title_ja": "検索拡張RL微調整で類推による推論を学習",
+        "summary_ja": "過去の類似問題を検索して強化学習の微調整に活かすことで、LLMが「類推」によって新しい問題を解く能力を高める手法。"
+      },
+      {
+        "id": "2606.13679v1",
+        "title": "InterleaveThinker: Reinforcing Agentic Interleaved Generation",
+        "authors": [
+          "Dian Zheng",
+          "Harry Lee",
+          "Manyuan Zhang",
+          "Kaituo Feng",
+          "Zoey Guo",
+          "Ray Zhang",
+          "Hongsheng Li"
+        ],
+        "abstract": "Recent image generators have demonstrated impressive photorealism and instruction-following capabilities in single-image generation and editing. However, constrained by their architectures, they cannot achieve interleaved generation (text-image sequence), which has crucial applications in visual narratives, guidance, and embodied manipulation. Even the latest open-source Unified Multimodal Models (UMMs) exhibit limited performance in this regard. In this paper, we introduce InterleaveThinker, the first multi-agent pipeline designed to endow any existing image generator with interleaved generation capabilities. Specifically, we employ a planner agent to organize the image-text input sequence, instructing the image generator on the required execution at each step. Subsequently, we introduce a critic agent to evaluate the generator's outputs, identify samples that deviate from the planned instructions, and refine the instructions for regeneration. To implement this pipeline, we construct the Interleave-Planner-SFT-80k and Interleave-Critic-SFT-112k to perform a format cold-start. Then we develop Interleave-Critic-RL-13k to reinforce the step-wise instruction correction capability within a generation trajectory using GRPO. Since a single interleaved generation trajectory may involve over 25 generator calls, optimizing the entire trajectory is computationally impractical. Therefore, we propose accuracy reward and step-wise reward, allowing single-step RL to effectively guide the entire generation trajectory. The results show that InterleaveThinker improves performance across various image generators. On interleaved generation benchmarks, it achieves performance comparable to Nano Banana and GPT-5. Surprisingly, it also significantly enhances the base model on reasoning-based benchmarks; for example, on 4-step FLUX.2-klein, we observe substantial gains on WISE and RISE.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2606.13679v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13679v1",
+        "published": "2026-06-11T17:59:50Z",
+        "title_ja": "InterleaveThinker: エージェント的な思考と生成の交互実行を強化",
+        "summary_ja": "思考(reasoning)と行動/生成を交互に挟み込むエージェントを強化学習で訓練。長い対話やタスクで思考と出力をうまく織り交ぜる。"
+      },
+      {
+        "id": "2606.13677v1",
+        "title": "Mana: Dexterous Manipulation of Articulated Tools",
+        "authors": [
+          "Zhao-Heng Yin",
+          "Guanya Shi",
+          "Pieter Abbeel",
+          "C. Karen Liu"
+        ],
+        "abstract": "Articulated tool manipulation remains a major challenge in dexterous robotics due to the need to coordinate internal degrees of freedom and contact-rich interactions. While prior work has largely focused on rigid objects, articulated tool use remains underexplored because of its physical complexity and the difficulty of learning functional grasping and manipulation policies. We present Mana (Manipulation Animator), a general sim-to-real framework that reinterprets dexterous manipulation as an animation problem. Inspired by computer animation, Mana employs a coarse-to-fine pipeline that transforms procedurally-generated grasp keyframes into manipulation trajectories through motion planning and reinforcement learning. The data generation process is largely automatic, requiring only a few mouse clicks to specify functional affordances (<1 minute per tool). Across four articulated tools spanning different scales and joint types, Mana achieves zero-shot sim-to-real transfer for both grasping and in-hand manipulation, demonstrating a scalable approach to dexterous articulated tool use.",
+        "categories": [
+          "cs.RO",
+          "cs.AI",
+          "cs.CV",
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2606.13677v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13677v1",
+        "published": "2026-06-11T17:59:49Z",
+        "title_ja": "Mana: 関節を持つ道具の器用な操作",
+        "summary_ja": "ハサミやペンチのように関節のある道具をロボットハンドで器用に扱うための学習手法。"
+      },
+      {
+        "id": "2606.13675v1",
+        "title": "Improving Robotic Generalist Policies via Flow Reversal Steering",
+        "authors": [
+          "Andy Tang",
+          "William Chen",
+          "Andrew Wagenmaker",
+          "Chelsea Finn",
+          "Sergey Levine"
+        ],
+        "abstract": "Generalist policies can learn a wide range of skills from diverse robot datasets. In order to solve or improve on challenging news tasks, we need a way to infer and invoke the appropriate actions from the policy's rich behavioral prior, especially when directly commanding the policy fails. We focus on flow matching generalists and propose Flow Reversal Steering (FRS): a method that takes suboptimal but ``reasonable'' actions, finds their latent noises by passing them through the flow policy in reverse, and maps them to nearby generalist action modes. We evaluate FRS across many simulated and real-world manipulation settings. First, FRS can turn coarse semantic guidance from humans or vision-language models (VLMs) into corresponding good robot actions, improving zero-shot control. These gains can be distilled with behavioral cloning by training an auxiliary policy to output noises that the generalist maps to good actions -- showing up to 95% absolute task success rate boosts in under a minute of training. Finally, FRS enables policy improvement by bootstrapping reinforcement learning with semantic knowledge, improving on several tasks that standard RL fails to improve on.",
+        "categories": [
+          "cs.RO"
+        ],
+        "url": "https://arxiv.org/abs/2606.13675v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13675v1",
+        "published": "2026-06-11T17:59:45Z",
+        "title_ja": "フロー反転ステアリングでロボット汎用方策を改善",
+        "summary_ja": "拡散/フローモデルの生成過程を逆向きに誘導することで、ロボットの汎用方策の性能を底上げする。"
+      },
+      {
+        "id": "2606.13676v1",
+        "title": "Modality Forcing for Scalable Spatial Generation",
+        "authors": [
+          "Bardienus Pieter Duisterhof",
+          "Deva Ramanan",
+          "Jeffrey Ichnowski",
+          "Justin Johnson",
+          "Keunhong Park"
+        ],
+        "abstract": "Text-to-image (T2I) models contain rich spatial priors. Synthesizing photorealistic, cluttered scenes requires an understanding of geometry, including perspective and relative scale. Prior works adapt T2I models to leverage this prior for depth prediction, but they require dense depth data and involve complex recipes. We propose Modality Forcing, a simple, scalable post-training recipe for joint image-depth generation using a single DiT trained on sparse depth data. Modality Forcing enables conditional and joint generation of image and depth in any permutation by assigning separate noise levels per modality. Per-modality decoders let us train on sparse, real-world depth and achieve strong, generalizable depth prediction. We further show that Modality Forcing inherits the scalability of T2I pre-training: by training a set of T2I models from scratch (370M to 3.3B parameters), we find that larger models trained on more image data produce more accurate depth. Our strongest model is competitive with state-of-the-art monocular depth estimators and reduces AbsRel by 57% relative to existing joint image-depth generative models. These results provide strong evidence that image generation is a scalable pre-training objective for spatial perception. https://modality-forcing.github.io/",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2606.13676v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13676v1",
+        "published": "2026-06-11T17:59:45Z",
+        "title_ja": "Modality Forcing: スケーラブルな空間生成",
+        "summary_ja": "複数モダリティを強制的に整合させることで、大規模な3D空間生成を安定・高品質化するアプローチ。"
+      },
+      {
+        "id": "2606.13674v1",
+        "title": "RepWAM: World Action Modeling with Representation Visual-Action Tokenizers",
+        "authors": [
+          "Junke Wang",
+          "Qihang Zhang",
+          "Shuai Yang",
+          "Yiming Luo",
+          "Yujun Shen",
+          "Zuxuan Wu",
+          "Yu-Gang Jiang",
+          "Yinghao Xu"
+        ],
+        "abstract": "This work presents RepWAM, a representation-centric world action model (WAM) built on representation visual-action tokenizers. Existing WAMs typically inherit reconstruction-oriented video tokenizers from pretrained video generation models. Although these tokenizers preserve visual fidelity, pixel reconstruction alone provides limited guidance for learning instruction-following dynamics that connect future prediction with robot control. To address this, we explore a semantic visual-action latent space for representation-centric world action modeling. Specifically, we train a representation visual-action tokenizer that maps visual inputs into aligned visual and latent action tokens. We then pretrain our WAM to jointly model future visual states and the latent actions that connect them under language instructions, followed by adaptation to real robot trajectories for closed-loop manipulation. Experiments on real-world manipulation tasks and simulation benchmarks show that RepWAM delivers strong performance across diverse manipulation settings, while ablations highlight the value of semantic visual-action tokenization over reconstruction-oriented alternatives. These results establish representation visual-action tokenization as a promising foundation for world action models and a step toward generalist robot policies. Code and weights will be available at https://github.com/wdrink/RepWAM.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2606.13674v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13674v1",
+        "published": "2026-06-11T17:59:43Z",
+        "title_ja": "RepWAM: 表現的な視覚-行動トークナイザによる世界行動モデリング",
+        "summary_ja": "視覚と行動を共通トークンで表現し、世界モデルと行動予測を統合的に学習する枠組み。"
+      },
+      {
+        "id": "2606.13673v1",
+        "title": "SpatialClaw: Rethinking Action Interface for Agentic Spatial Reasoning",
+        "authors": [
+          "Seokju Cho",
+          "Ryo Hachiuma",
+          "Abhishek Badki",
+          "Hang Su",
+          "Byung-Kwan Lee",
+          "Chan Hee Song",
+          "Sifei Liu",
+          "Subhashree Radhakrishnan",
+          "Seungryong Kim",
+          "Yu-Chiang Frank Wang",
+          "Min-Hung Chen"
+        ],
+        "abstract": "Spatial reasoning, the ability to determine where objects are, how they relate, and how they move in 3D, remains a fundamental challenge for vision-language models (VLMs). Tool-augmented agents attempt to address this by augmenting VLMs with specialist perception modules, yet their effectiveness is bounded by the action interface through which those tools are invoked. In this work, we study how the design of this interface shapes the agent's capacity for open-ended spatial reasoning. Existing spatial agents either employ single-pass code execution, which commits to a full analysis strategy before any intermediate result is observed, or rely on a structured tool-call interface that often offers less flexibility for freely composing operations or tailoring the analysis to each task. Both designs offer limited flexibility for open-ended, complex 3D/4D spatial reasoning. We therefore propose SpatialClaw, a training-free framework for spatial reasoning that adopts code as the action interface. SpatialClaw maintains a stateful Python kernel pre-loaded with input frames and a suite of perception and geometry primitives, letting a VLM-backed agent write one executable cell per step conditioned on all prior outputs, enabling the agent to flexibly compose and manipulate perception results and adapt its analysis to both intermediate text and visual observations and the demands of each problem. Evaluated across 20 spatial reasoning benchmarks spanning a broad range of static and dynamic 3D/4D spatial reasoning tasks, SpatialClaw achieves 59.9% average accuracy, outperforming the recent spatial agent by +11.2 points, with consistent gains across six VLM backbones from two model families without any benchmark- or model-specific adaptation.",
+        "categories": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2606.13673v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13673v1",
+        "published": "2026-06-11T17:59:36Z",
+        "title_ja": "SpatialClaw: エージェント的空間推論の行動インタフェースを再考",
+        "summary_ja": "空間推論をするエージェントが環境とやり取りする「行動の出し方」を見直し、より効果的な操作インタフェースを設計。"
+      },
+      {
+        "id": "2606.13672v1",
+        "title": "$\\texttt{WEAVER}$, Better, Faster, Longer: An Effective World Model for Robotic Manipulation",
+        "authors": [
+          "Arnav Kumar Jain",
+          "Yilin Wu",
+          "Jesse Farebrother",
+          "Gokul Swamy",
+          "Andrea Bajcsy"
+        ],
+        "abstract": "The potential impacts of world models (WMs, i.e., learned simulators) on robotics are far-reaching -- policy evaluation, policy improvement, and test-time planning -- all with limited real-world interaction. To unlock these downstream capabilities, a WM needs to jointly satisfy three desiderata: $\\textit{(i)}$ fidelity (i.e., producing simulated trajectories that correlate with reality), $\\textit{(ii)}$ consistency (i.e., producing simulated trajectories that are coherent over long horizons), and $\\textit{(iii)}$ efficiency (i.e., producing simulated trajectories quickly). We propose $\\texttt{WEAVER}$ (World Estimation Across Views for Embodied Reasoning): a WM architecture that simultaneously achieves all three desiderata, providing state-of-the-art results on robotic manipulation tasks. $\\texttt{WEAVER}$ is a multi-view WM trained to predict future latents and reward values via a flow-matching loss. We distill the key design decisions across model architecture, memory, and prediction objectives required to unlock the kinds of long-horizon dynamic manipulation tasks that have confounded prior world modeling approaches. We apply $\\texttt{WEAVER}$ in robotic hardware, demonstrating its effectiveness at policy evaluation ($ρ$=0.870 correlation with real-world success rate), policy improvement (real-world success rate improvement of $38\\%$ on top of the $π_{0.5}$ robot foundation model), and test-time planning (real-world success rate improvement of $14\\%$ with a $5-10\\times$ speedup over prior WMs). $\\texttt{WEAVER}$ also demonstrates better performance than prior WMs when evaluated on out-of-distribution scenarios. Code, models, and videos at: https://arnavkj1995.github.io/WEAVER/ .",
+        "categories": [
+          "cs.RO"
+        ],
+        "url": "https://arxiv.org/abs/2606.13672v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13672v1",
+        "published": "2026-06-11T17:59:15Z",
+        "title_ja": "WEAVER: ロボット操作のための効果的な世界モデル",
+        "summary_ja": "より良く・速く・長く予測できるロボット操作用の世界モデル。長期の操作タスクで精度と効率を両立。"
+      },
+      {
+        "id": "2606.13671v1",
+        "title": "Understanding Truncated Positional Encodings for Graph Neural Networks",
+        "authors": [
+          "James Flora",
+          "Mitchell Black",
+          "Weng-Keen Wong",
+          "Amir Nayyeri"
+        ],
+        "abstract": "Positional encodings (PEs) enhance the power of graph neural networks (GNNs), both theoretically and empirically. Two of the most popular families of PEs - spectral (e.g., Laplacian eigenspaces, effective resistance) and walk-based (polynomials of the adjacency matrix) - are theoretically equivalent in expressive power, with expressivity between the 1-WL and 3-WL tests. However, this equivalence assumes the GNN uses the \"complete\" version of these PEs, which requires $O(n^3)$ time and space complexity. Instead, practitioners commonly use truncated variants of these encodings, such as the first $k$ eigenspaces or powers of the adjacency matrix. However, the theoretical properties of these truncated PEs are unknown. In this work, we initiate the study of these truncated PEs. Theoretically, we show that, under truncation, several families of PEs are fundamentally different in expressive power. As a corollary, we show that truncated spectral PEs are no longer stronger than the 1-WL test. We also study a family of spectral PEs, the $k$-harmonic distances, to highlight the differences in expressive power of even closely related truncated PEs. Finally, we experimentally show that a mix of truncated PEs is preferable to any single family on real-world datasets.",
+        "categories": [
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2606.13671v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13671v1",
+        "published": "2026-06-11T17:58:56Z",
+        "title_ja": "グラフニューラルネットの切詰め位置エンコーディングを理解する",
+        "summary_ja": "GNNにおける位置エンコーディングを途中で切り詰める手法の効果と理論的性質を分析。"
+      },
+      {
+        "id": "2606.13670v1",
+        "title": "Automated reproducibility assessments in the social and behavioral sciences using large language models",
+        "authors": [
+          "Tobias Holtdirk",
+          "Pietro Marcolongo",
+          "Anna Steinberg Schulten",
+          "Felix Henninger",
+          "Stefan Rose",
+          "Sarah Ball",
+          "Bolei Ma",
+          "Frauke Kreuter",
+          "Markus Weinmann",
+          "Stefan Feuerriegel"
+        ],
+        "abstract": "Reproducibility in the social and behavioral sciences is typically evaluated by independent researchers who reanalyze the original data to assess whether the published findings can be recovered. However, such approaches are resource-intensive and difficult to scale. Here, we show that large language models (LLMs) can automate reproducibility assessments. Using N=76 published studies with predefined claims from the behavioral and social sciences, we compare LLM-generated analysis with the original findings and human reanalysis. For 7 studies, the LLM could not produce a viable effect size estimate. For the remaining studies, our LLM pipeline recovered the original effect sizes in 41% of studies using a +/-0.05 tolerance in Cohen's d. Further, our LLM pipeline reached the same qualitative conclusion as the original study in 96% of cases, where conclusions indicate whether the reanalysis supports the original claim. For comparison, human reanalysts recovered the original effect sizes in 34% of studies and reached the same qualitative conclusion in 74% of cases. Together, these results show that LLMs can serve as a scalable tool for automated reproducibility assessment and provide a foundation for systematic auditing of empirical results in the social and behavioral sciences.",
+        "categories": [
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2606.13670v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13670v1",
+        "published": "2026-06-11T17:58:36Z",
+        "title_ja": "大規模言語モデルによる社会・行動科学の再現性自動評価",
+        "summary_ja": "LLMを使って社会・行動科学の論文の再現性を自動でチェックする試み。査読・メタサイエンスの自動化に向けた一歩。"
+      },
+      {
+        "id": "2606.13669v1",
+        "title": "Agents-K1: Towards Agent-native Knowledge Orchestration",
+        "authors": [
+          "Zongsheng Cao",
+          "Bihao Zhan",
+          "Jinxin Shi",
+          "Jiong Wang",
+          "Fangchen Yu",
+          "Zhijie Zhong",
+          "Zijie Guo",
+          "Tianshuo Peng",
+          "Zhuo Liu",
+          "Yi Xie",
+          "Xiang Zhuang",
+          "Yue Fan",
+          "Runmin Ma",
+          "Shiyang Feng",
+          "Xiangchao Yan",
+          "Anran Liu",
+          "Peng Ye",
+          "Wenlong Zhang",
+          "Shufei Zhang",
+          "Chunfeng Song",
+          "Fenghua Ling",
+          "Jie Zhou",
+          "Liang He",
+          "Bo Zhang",
+          "Lei Bai"
+        ],
+        "abstract": "Current LLM-based research agents have advanced through agent orchestration, yet largely overlook scientific knowledge orchestration. Existing works often reduce papers to abstracts, surface mentions, and flat \\texttt{cites} edges, omitting key entities, claims, evidence, mechanisms, and method lineages essential for scientific reasoning. To this end, we introduce \\textbf{Agents-K1}, an end-to-end knowledge orchestration pipeline that converts raw documents into agent-native scientific knowledge graphs. Agents-K1 integrates three components under a unifying theoretical foundation: a multimodal parser whose five-module schema captures entities, multimodal evidence, citations, and typed inter-entity relations across the full paper rather than abstracts alone; a 4B information-extraction backbone trained with GRPO under a rule-based reward; and a graphanything CLI, a tri-source agent interface that unifies web search, multimodal graph retrieval, and cross-document traversal. On top of this, we process 2.46 million scientific papers across six subjects to produce \\textbf{Scholar-KG}, of which we release a one-million-paper subset, and the full Scholar-KG is accessible via the SCP link below. The same pipeline can be extended to general-domain corpora and to schema-conformant data synthesis. Extensive experiments demonstrate that Agents-K1 achieves superior performance in scientific information extraction, knowledge graph construction, and multi-hop scientific reasoning.",
+        "categories": [
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2606.13669v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13669v1",
+        "published": "2026-06-11T17:58:35Z",
+        "title_ja": "Agents-K1: エージェントネイティブな知識オーケストレーション",
+        "summary_ja": "論文を要約や引用関係に縮約せず、実体・主張・証拠・手法系譜まで含む知識グラフに変換し、科学的推論を支援するパイプライン。"
+      },
+      {
+        "id": "2606.13668v1",
+        "title": "Influcoder: Distilling Decoders' Gradient Influence Rankings into an Encoder for Data Attribution",
+        "authors": [
+          "Dimitri Kachler",
+          "Damien Sileo",
+          "Pascal Denis"
+        ],
+        "abstract": "With the growth of LLMs' (Large Language Models) capabilities, there has been an increasing push to curate high quality datasets by filtering samples in the training data. In general, Data Attribution (DA) methods aim to estimate how individual samples in a training dataset can precondition a model to generate certain outputs. As an example, one might be interested in which samples in the data could be the source of toxic behavior after training the LLM. Many methods quantify this conditioning through the paradigm of influence functions. While methods of this family are effective in its function, they lack the necessary processing speed and storage compactness to be practically implemented on large datasets. We propose a method, Influcoder, as a quick and cost-effective approach to influence-based Data Attribution at scale.",
+        "categories": [
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2606.13668v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13668v1",
+        "published": "2026-06-11T17:58:33Z",
+        "title_ja": "Influcoder: デコーダの勾配影響ランキングをエンコーダに蒸留",
+        "summary_ja": "どの訓練データが出力に効いたか(データ帰属)を、重いデコーダ計算から軽いエンコーダへ蒸留して高速化。"
+      },
+      {
+        "id": "2606.13663v1",
+        "title": "HyperTool: Beyond Step-Wise Tool Calls for Tool-Augmented Agents",
+        "authors": [
+          "Yaxin Du",
+          "Yifan Zhou",
+          "Yujie Ge",
+          "Jiajun Wang",
+          "Xianghe Pang",
+          "Shuo Tang",
+          "Tuney Zheng",
+          "Bryan Dai",
+          "Jian Yang",
+          "Siheng Chen"
+        ],
+        "abstract": "Tool-augmented LLM agents commonly rely on step-wise atomic tool calls, where each invocation, observation, and value transfer is exposed in the main reasoning trace. This creates an \\emph{execution-granularity mismatch}: locally deterministic tool workflows are unfolded into repeated model-visible decisions, consuming context and forcing the model to manage low-level dataflow in the trace. We introduce \\textbf{HyperTool}, a unified executable MCP-style tool interface that changes the model-visible unit of tool execution. A model invokes HyperTool with a code block that can call existing tools through their original schemas, manipulate returned values, and pass intermediate results locally, folding deterministic tool subroutines into a single outer call. To train models to use this interface, we synthesize HyperTool-format trajectories from cross-tool compositional tasks and verify them in real MCP environments. On MCP-Universe, HyperTool improves average accuracy from 15.69\\% to 35.29\\% on Qwen3-32B and from 9.93\\% to 33.33\\% on Qwen3-8B, and surpass GPT-OSS and Kimi-k2.5 on average accuracy, showing that our HyperTool can substantially improve multi-step tool use.",
+        "categories": [
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2606.13663v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13663v1",
+        "published": "2026-06-11T17:56:36Z",
+        "title_ja": "HyperTool: 段階的なツール呼び出しを超えるツール拡張エージェント",
+        "summary_ja": "一手ずつのツール呼び出しに留まらず、より大局的にツール群を計画・活用するエージェント設計。"
+      },
+      {
+        "id": "2606.13662v1",
+        "title": "EurekAgent: Agent Environment Engineering is All You Need For Autonomous Scientific Discovery",
+        "authors": [
+          "Amy Xin",
+          "Jiening Siow",
+          "Junjie Wang",
+          "Zijun Yao",
+          "Fanjin Zhang",
+          "Jian Song",
+          "Lei Hou",
+          "Juanzi Li"
+        ],
+        "abstract": "LLM-based agents have shown increasing potential in automating scientific discovery. Given an optimizable metric and an execution environment, they can propose, validate, and iterate scientific solutions, and have produced results that outperform human-designed approaches. As model capabilities continue to improve, we argue that the bottleneck for autonomous scientific discovery is shifting from prescribing agent workflows to designing agent environments: the resources, constraints, and interfaces that shape agent behavior. We frame this as environment engineering: building environments that amplify productive behaviors, such as open-ended exploration, systematic artifact management, and inter-agent collaboration, while suppressing harmful behaviors, such as reward hacking and high-friction human oversight. We present EurekAgent, an environment-engineered agent system for metric-driven autonomous scientific discovery. EurekAgent engineers the environment along four dimensions: permissions engineering for bounded agent execution and isolated evaluation; artifact engineering for filesystem and Git-based collaboration; budget engineering for budget-aware exploration; and human-in-the-loop engineering for easy human supervision and intervention. EurekAgent sets new state-of-the-art results on multiple mathematics, kernel engineering, and machine learning tasks, including new state-of-the-art 26-circle packing results discovered with less than $11 in total API cost. We open-source our code and results, and call for environment engineering as a core research direction for developing reliable autonomous research agents.",
+        "categories": [
+          "cs.AI",
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2606.13662v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13662v1",
+        "published": "2026-06-11T17:56:35Z",
+        "title_ja": "EurekAgent: 自律的科学発見にはエージェント環境工学こそ重要",
+        "summary_ja": "自律科学発見のボトルネックはワークフロー設計から「環境設計」へ移ったと主張。探索や成果物管理を促す環境を作ることが鍵だとする。"
+      },
+      {
+        "id": "2606.13658v1",
+        "title": "Before You Think: System 0, AI-Mediated Cognition and Cognitive Colonization",
+        "authors": [
+          "Marianna Bergamaschi Ganapini",
+          "Massimo Chiriatti",
+          "Enrico Panai",
+          "Giuseppe Riva"
+        ],
+        "abstract": "This paper examines three recent frameworks for understanding the cognitive and epistemic consequences of artificial intelligence: Tri-System Theory, Thinkframes, and System 0. It argues that while the first two capture important dimensions of AI's influence on individual reasoning and collective epistemic practices, System 0 occupies a theoretically distinctive position that neither can fully replicate. The paper introduces the concept of cognitive colonization, according to which AI systems can embed external interests within the architecture of the self in ways that are difficult for users to perceive. Because such systems are already widely deployed, understanding these invisible forms of influence is an urgent philosophical and practical task.",
+        "categories": [
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2606.13658v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13658v1",
+        "published": "2026-06-11T17:54:59Z",
+        "title_ja": "Before You Think: System 0とAI媒介認知、認知の植民地化",
+        "summary_ja": "AIが思考の「前段(System 0)」として無意識に人の認知へ入り込み、外部の利害を自己の内部に埋め込む「認知の植民地化」を起こしうると論じる思想的論文。"
+      },
+      {
+        "id": "2606.13657v1",
+        "title": "Dense Supervision, Sparse Updates: On the Sparsity and Geometry of On-Policy Distillation",
+        "authors": [
+          "Guo Yu",
+          "Wenlin Liu",
+          "Yulan Hu",
+          "Hao-Xuan Ma",
+          "Jun-Peng Jiang",
+          "Han-Jia Ye"
+        ],
+        "abstract": "On-policy distillation (\\textsc{OPD}) has recently become a prominent post-training recipe as it combines two desirable ingredients: on-policy student trajectories and dense teacher supervision, yet how this hybrid changes a model's parameters remains unclear. Across several language and vision-language model pairs and use cases, our analysis yields two main findings. On sparsity, \\textsc{OPD}-style updates are small and coordinate-sparse. They are distributed across layers and are usually FFN-heavy. This sparse structure is operationally useful: training only the discovered subnetwork recovers nearly the same performance as full \\textsc{OPD}. However, the sparsity-inducing SGD optimizer underperforms AdamW in our optimizer ablation, likely because dense teacher supervision preserves heterogeneous coordinate-wise gradient scales where AdamW's adaptive scaling remains useful. On geometry, the updates are numerically full-rank but spectrally concentrated; they lie mostly away from the principal singular subspaces of the source weights and fall disproportionately on coordinates where the source weights are close to zero. These findings suggest that dense teacher supervision does not turn \\textsc{OPD} into ordinary dense parameter rewriting; instead, \\textsc{OPD} retains important geometric signatures of on-policy post-training.",
+        "categories": [
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2606.13657v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13657v1",
+        "published": "2026-06-11T17:54:09Z",
+        "title_ja": "密な教師信号・疎な更新: オンポリシー蒸留のスパース性と幾何",
+        "summary_ja": "オンポリシー蒸留による重み更新は小さく座標的に疎で、FFN偏重。発見された部分ネットだけ訓練しても性能をほぼ再現できると示す。"
+      },
+      {
+        "id": "2606.13655v1",
+        "title": "Flex4DHuman: Flexible Multi-view Video Diffusion for 4D Human Reconstruction",
+        "authors": [
+          "Jen-Hao Cheng",
+          "Yipeng Wang",
+          "Hao Zhang",
+          "Gengshan Yang",
+          "Jenq-Neng Hwang"
+        ],
+        "abstract": "We present Flex4DHuman, a multi-view video diffusion model that transforms a monocular or sparse multi-view video of a dynamic subject into synchronized dense multi-view videos using only relative camera-pose conditioning. Unlike prior human-centric methods that rely on skeletons, depth maps, normals, or rendered target-view geometry, Flex4DHuman requires no explicit geometry priors and instead conditions generation through relative camera-pose positional encoding. The generated videos can be directly ingested by downstream reconstruction pipelines to create dynamic 4D Gaussian splats. Built on the Wan 2.1 1.3B text-to-video model, Flex4DHuman preserves the backbone architecture and encodes camera and view information through a five-axis positional encoding that extends spatio-temporal RoPE with view indices and continuous SE(3) relative camera geometry. A three-stage curriculum progressively trains the model for pose following, flexible reference-to-target view generation, and temporal rollout. To support temporal rollout, we train with clean historical target-view tokens. We also add multi-view captions to enable test-time text control. Combined with an off-the-shelf 4D Gaussian Splatting stage, our framework lifts monocular static-camera videos into dynamic 4D Gaussian splats. Experiments on DNA-Rendering and ActorsHQ show that Flex4DHuman surpasses prior state-of-the-art methods, while the same formulation generalizes to animal categories after mixed human-animal training. These capabilities make Flex4DHuman a practical step toward scalable 4D content creation from casual monocular videos for simulation, gaming, AR/VR, and video re-shooting.",
+        "categories": [
+          "cs.CV",
+          "cs.GR"
+        ],
+        "url": "https://arxiv.org/abs/2606.13655v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13655v1",
+        "published": "2026-06-11T17:54:05Z",
+        "title_ja": "Flex4DHuman: 4D人体再構成のための柔軟な多視点動画拡散",
+        "summary_ja": "複数視点の動画から動く人体を4D(3D+時間)で再構成する拡散モデル。"
+      },
+      {
+        "id": "2606.13652v1",
+        "title": "World Tracing: Generative Pixel-Aligned Geometry Beyond the Visible",
+        "authors": [
+          "Hao Zhang",
+          "Mohamed El Banani",
+          "Jen-Hao Cheng",
+          "Paul Zhang",
+          "Yi Hua",
+          "Ben Mildenhall",
+          "Christoph Lassner",
+          "Narendra Ahuja",
+          "Gengshan Yang"
+        ],
+        "abstract": "Image-to-3D methods often trade off faithfulness and completeness: depth estimators are anchored to input pixels but stop at the visible surface, while image-to-3D models generate complete shapes that are often misaligned with the input. We introduce World Tracing, a generative pixel-aligned geometry representation that predicts 3D points aligned with observed pixels while completing geometry beyond the visible surface. For each input pixel, World Tracing predicts an ordered stack of camera-space 3D points, where the first layer represents the visible surface and subsequent layers represent front-to-back intersections with occluded surfaces. We instantiate this representation with a world-tracing diffusion transformer, WT-DiT, which treats multiple geometry layers as separate denoising tokens coupled through factorized and global attention. WT-DiT is trained with pixel-space flow matching and a mixed noise schedule that balances visible-surface reconstruction with occluded-geometry generation. World Tracing achieves strong performance on visible-surface reconstruction and complete geometry generation across object, scene, and dynamic benchmarks, outperforming both depth predictors and image-to-3D generators. It also preserves 2D-to-3D correspondence, enabling text-driven 3D scene editing, geometry-conditioned novel-view video synthesis, and training-free integration with textured-mesh generators.",
+        "categories": [
+          "cs.CV",
+          "cs.GR"
+        ],
+        "url": "https://arxiv.org/abs/2606.13652v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13652v1",
+        "published": "2026-06-11T17:52:48Z",
+        "title_ja": "World Tracing: 見えない部分まで含む生成的ピクセル整合幾何",
+        "summary_ja": "画像から、見えていない領域まで含めて3D幾何を生成的に補完する手法。"
+      },
+      {
+        "id": "2606.13649v1",
+        "title": "Operadic consistency: a label-free signal for compositional reasoning failures in LLMs",
+        "authors": [
+          "Nathaniel Bottman",
+          "Yinhong Liu",
+          "Kyle Richardson"
+        ],
+        "abstract": "Detecting LLM reasoning failures at inference time without ground-truth labels has motivated a wide range of confidence baselines, including self-consistency, semantic entropy, and P(True), built on within-question sampling and self-evaluation. Operad theory, the formalism for systems built by iterated substitution, suggests a complementary diagnostic: a model's direct answer to a compositional query should agree with the answer it produces by composing a stated decomposition of the same query. We instantiate this idea as operadic consistency (OC), a per-question signal. Across twelve instruction-tuned LLMs (4B to 671B parameters, open-weights and closed-source) on four multi-hop QA datasets, OC is strongly correlated with accuracy on every dataset (Pearson $r \\in [0.86, 0.94]$, all $p \\leq 0.0004$), and is the only signal we evaluate with $r \\geq 0.85$ uniformly across all four datasets. Chain-of-thought self-consistency (CoT-SC; Wang et al., 2023) matches OC on HotpotQA and DROP ($r = 0.93, 0.87$) but drops to $r \\approx 0.45$ on MuSiQue and StrategyQA. At the per-question level, OC contributes information beyond CoT-SC and semantic entropy on every dataset (cluster-robust $p \\leq 10^{-16}$ for the OC coefficient), and the conclusion is robust to additionally controlling for constructed decomposition-aware baselines ($p \\leq 10^{-13}$). The same signal yields selective-prediction improvements (accuracy at fixed coverage) over a tuned CoT-SC baseline at the equal-cost $K = 3$ budget (AUARC lifts of +0.086 to +0.096 and AUROC lifts of +0.092 to +0.164; 95% CIs exclude zero on every cell). On five frontier thinking models, where the decomposition is extracted from the model's own chain of thought, the same equal-cost comparison gives positive selective-prediction point-estimate lift on all 16 (dataset, budget, metric) cells tested, with 95% CIs excluding zero on 12 of the 16.",
+        "categories": [
+          "cs.CL",
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2606.13649v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13649v1",
+        "published": "2026-06-11T17:50:40Z",
+        "title_ja": "オペラド的整合性: ラベル不要でLLMの合成的推論失敗を検知",
+        "summary_ja": "問いを分解して合成した答えと、直接の答えが一致するかを見る指標(OC)。正解ラベルなしで多段推論の失敗を検知できる。"
+      },
+      {
+        "id": "2606.13647v1",
+        "title": "SkMTEB: Slovak Massive Text Embedding Benchmark and Model Adaptation",
+        "authors": [
+          "Marek Šuppa",
+          "Andrej Ridzik",
+          "Daniel Hládek",
+          "Natália Kňažeková",
+          "Viktória Ondrejová"
+        ],
+        "abstract": "We introduce SkMTEB, the first comprehensive MTEB-style text embedding benchmark for Slovak, a low-resource West Slavic language, comprising 31 datasets across 7 task types -- nearly 4$\\times$ the depth of existing multilingual benchmark coverage for Slovak. Our evaluation of 31 embedding models reveals that large instruction-tuned multilingual models achieve the strongest performance, while existing Slovak-specific models trained for NLU tasks transfer poorly to embedding tasks. To address the need for efficient, locally-deployable Slovak embeddings, we develop \\texttt{e5-sk-small} (45M parameters) and \\texttt{e5-sk-large} (365M) by applying vocabulary trimming and fine-tuning to Multilingual E5 models. Despite size reductions of up to 62\\%, our open-source models achieve competitive performance with proprietary APIs while remaining locally deployable for semantic search and retrieval-augmented generation (RAG). We release the benchmark, models, datasets, and code openly, hoping our approach offers a replicable path for other under-resourced languages.",
+        "categories": [
+          "cs.CL",
+          "cs.AI",
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2606.13647v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13647v1",
+        "published": "2026-06-11T17:50:06Z",
+        "title_ja": "SkMTEB: スロバキア語の大規模テキスト埋め込みベンチマーク",
+        "summary_ja": "スロバキア語向けの埋め込み評価ベンチマークとモデル適応手法。低資源言語のNLP整備。"
+      },
+      {
+        "id": "2606.13644v1",
+        "title": "Surflo: Consistent 3D Surface Flow Model with Global State",
+        "authors": [
+          "Antoine Guédon",
+          "Shu Nakamura",
+          "Nicolas Dufour",
+          "Jiahui Lei",
+          "Ko Nishino",
+          "Angjoo Kanazawa"
+        ],
+        "abstract": "Geometry is invariant to viewpoint, which makes any collection of images a redundant encoding of a single 3D state. Existing feed-forward reconstruction models fail to exploit this: per-view methods emit overlapping, unaligned pointmaps that grow linearly with input count, while global-latent methods commit to a fixed, low-resolution output. We introduce Surflo, which compresses a variable number of unposed RGB views into K latent tokens-one global state-and decodes oriented 3D surface points by independently transporting them from noise onto the surface via flow matching. This frees the output from any fixed grid or token budget: the same latent yields from a few thousand to a million points in a single forward pass. To suppress the local inconsistencies inherent to independent per-point decoding, an inference-time guidance term correlates nearby points by injecting a photometric gradient during ODE integration. Surflo matches or surpasses feed-forward baselines on surface metrics, runs an order of magnitude faster than optimization-based methods that require hundreds of views, and is the only feed-forward approach to combine a global latent with arbitrary-resolution decoding.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2606.13644v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13644v1",
+        "published": "2026-06-11T17:48:38Z",
+        "title_ja": "Surflo: 大域状態を持つ一貫した3D表面フローモデル",
+        "summary_ja": "3D表面上の流れを大域的な状態と整合させて一貫してモデル化する手法。"
+      },
+      {
+        "id": "2606.13643v1",
+        "title": "Recursive Agent Harnesses",
+        "authors": [
+          "Elias Lumer",
+          "Sahil Sen",
+          "Kevin Paul",
+          "Vamse Kumar Subbiah"
+        ],
+        "abstract": "Recursive language models (RLMs) showed that recursion over model calls is an effective strategy for long-context reasoning, and production coding agents have begun to write code that spawns subagents at scale, most recently in Anthropic's dynamic workflows. We name and study the pattern between these two lines of work, where the recursive unit is a full agent harness with filesystem tools, code execution, and planning rather than a model call with no tools. We call this the Recursive Agent Harness (RAH) and frame it as harness recursion, the code-first extension to the model recursion of RLMs. A parent agent generates and runs an executable script that spawns subagent harnesses in parallel for fine-grained workloads and uses structured function calls for small subtasks. We provide a controlled evaluation on long-context reasoning. With the backbone held fixed at GPT-5 to match the published Codex and RLM baselines, RAH improves the Codex coding-agent baseline from 71.75% to 81.36% on Oolong-Synthetic (199 samples, 13 context-length buckets up to 4M tokens), a gain attributable to the harness rather than the model. With a stronger backbone, Claude Sonnet 4.5, the same design reaches 89.77%.",
+        "categories": [
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2606.13643v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13643v1",
+        "published": "2026-06-11T17:47:30Z",
+        "title_ja": "Recursive Agent Harnesses: 再帰的エージェントハーネス",
+        "summary_ja": "親エージェントが実行可能なスクリプトを生成し、ファイル操作やコード実行を持つ「フルなサブエージェント」を並列に再帰生成するパターンを定式化(Anthropicの動的ワークフローが実例)。"
+      },
+      {
+        "id": "2606.13637v1",
+        "title": "The Stable Recovery Manifold: Geometric Principles Governing Recoverability in Continual Learning",
+        "authors": [
+          "Ayushman Trivedi",
+          "Bhavika Melwani"
+        ],
+        "abstract": "Catastrophic forgetting is often viewed as the destruction of previously learned knowledge during sequential learning. Building on the Accessibility Collapse framework, we investigate the geometric structure of recoverability in continual learning. Using Split CIFAR-100 and a sequentially trained ResNet-18, we analyze recoverability, representational drift, and recovery complexity across ten tasks. We introduce Recovery Subspace Dimensionality (k_t), a measure of the minimum number of singular directions required to preserve 90 percent of full probe performance. Contrary to our Recoverability Diffusion hypothesis, recovery dimensionality remains stable throughout training (mean k_t = 8.0) despite substantial representational drift. Principal-angle drift strongly predicts recoverability (r = -0.862), and a simple geometric model explains 82.2 percent of recoverability variance. These findings support the Stable Recovery Manifold hypothesis, suggesting that forgotten knowledge remains compactly decodable despite representational reorganization. The results indicate that catastrophic forgetting is primarily an accessibility and manifold-alignment problem rather than information destruction.",
+        "categories": [
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2606.13637v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13637v1",
+        "published": "2026-06-11T17:45:41Z",
+        "title_ja": "安定回復多様体: 継続学習における回復可能性を司る幾何原理",
+        "summary_ja": "継続学習でモデルが性能を回復できる条件を、パラメータ空間の幾何的構造から説明する。"
+      },
+      {
+        "id": "2606.13634v1",
+        "title": "Operads for compositional reasoning in LLMs",
+        "authors": [
+          "Nathaniel Bottman",
+          "Kyle Richardson"
+        ],
+        "abstract": "Question decomposition, i.e. breaking a complex query into simpler sub-queries whose answers are composed to produce a final answer, is a widely used strategy for improving LLM reasoning, yet it currently lacks a rigorous mathematical foundation. In this paper, we propose operads, mathematical structures that model many-in, one-out operations and compositions thereof, as a natural framework for describing question decomposition. We define the questions operad $Q$, in which operations correspond to question templates and composition corresponds to substitution of sub-answers, and show how QA models can be interpreted as algebras over $Q$. Beyond reframing existing practice, this operadic perspective points toward new methods, in particular a notion of operadic consistency, which measures whether a QA model's answers agree across the partial collapses of a question decomposition tree. Empirical evaluation of operadic consistency is reported in our companion paper (Bottman, Liu, and Richardson, 2026), which finds it strongly correlated with accuracy across twelve LLMs and four multi-hop QA datasets and outperforming standard temperature-based self-consistency baselines. We argue that operads are the natural mathematical home for question decomposition, and that invariants such as operadic consistency open new directions for analyzing and improving the reliability of multi-step reasoning.",
+        "categories": [
+          "cs.CL",
+          "math.CT"
+        ],
+        "url": "https://arxiv.org/abs/2606.13634v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13634v1",
+        "published": "2026-06-11T17:44:15Z",
+        "title_ja": "LLMの合成的推論のためのオペラド理論",
+        "summary_ja": "反復的な置換で系を組み立てるオペラド理論を、LLMの合成的推論の形式的枠組みとして導入。"
+      },
+      {
+        "id": "2606.13633v1",
+        "title": "Aerial Wildfire Suppression Planning with a Hybrid CNN-Cellular Automata Fire Model",
+        "authors": [
+          "Ion Matei",
+          "Maksym Zhenirovskyy",
+          "Takuya Kurihana",
+          "Rohit Vupala",
+          "Anthony Wong"
+        ],
+        "abstract": "Aerial wildfire suppression requires not only predicting fire spread, but also designing effective intervention strategies under operational and environmental uncertainty. We present a modeling and optimization framework for aerial wildfire suppression that combines a hybrid neural-cellular automaton wildfire model with gradient-based design of targeted aerial drops. The wildfire model predicts spatially varying spread behavior from terrain, fuel, and wind data, while the intervention module determines binary drop actions with continuous-valued location and orientation parameters mapped to the simulation grid. Water and retardant are represented with distinct suppression effects, corresponding to immediate reduction of active burning and persistent reduction of future spread. To evaluate the robustness of the resulting suppression plans, we quantify both aleatoric uncertainty through Monte Carlo sampling of daily fire-state realizations and epistemic uncertainty through spatially correlated prediction-error perturbations. A case study based on the 2020 Bear Fire shows that the framework can generate coherent aerial suppression schedules for reducing total fire-affected area and can support uncertainty-aware analysis of wildfire intervention strategies.",
+        "categories": [
+          "eess.SY",
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2606.13633v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13633v1",
+        "published": "2026-06-11T17:42:34Z"
+      },
+      {
+        "id": "2606.13630v1",
+        "title": "From Tokens to Faces: Investigating Discrete Speech Representations for 3D Facial Animation",
+        "authors": [
+          "Pedro Correa",
+          "Olivier Perrotin",
+          "Samir Sadok",
+          "Paula Costa",
+          "Thomas Hueber"
+        ],
+        "abstract": "The choice of speech representation is critical in speech-driven 3D facial animation. Representations differ in what they encode: SSL features emphasize segmental and semantic cues, neural codecs yield latents optimized for acoustic reconstruction, and ASR-style objectives produce label-based spaces. We evaluate four speech representation families for 3D facial synthesis, comparing their facial reconstruction quality across two facial decoders using objective metrics and a perceptual evaluation. We additionally conduct probing analyses that relate tokenized representations to phonetic units and to articulatory deformations. We found that encoding phonetic classes is beneficial for accurate facial animation prediction on both semantic and label-based representations with comparable facial animation quality. From the latter, we introduce an Audio Visual Text-to-Speech (AVTTS) pipeline that leverages, as a shared space, discrete representations to decode speech and 3D facial motion.",
+        "categories": [
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2606.13630v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13630v1",
+        "published": "2026-06-11T17:41:18Z"
+      },
+      {
+        "id": "2606.13629v1",
+        "title": "Valid Inference with Synthetic Data via Task Exchangeability",
+        "authors": [
+          "Lezhi Tan",
+          "Tijana Zrnic"
+        ],
+        "abstract": "There is a proliferation of work arguing for the use of synthetic data in scientific research. For example, social scientists are arguing for the use of LLM-generated \"silicon samples\" in pilot studies; AI evaluations increasingly rely on \"LLM-as-a-judge\" outputs; and proteomics research is accelerated by generative models that produce synthetic protein structures. These developments raise an intriguing possibility: synthetic data may help researchers ask more questions, run more studies, and accelerate discovery. But they also raise a fundamental concern: synthetic data can be biased, noisy, and misspecified. In this work, we propose statistical principles for using synthetic data in scientific research with provable validity guarantees. The key insight is a new technical condition that we call task exchangeability. Informally, this is a requirement that the researcher can identify historical tasks, for which real data is available, such that their current task of interest is exchangeable with the historical tasks in an appropriate mathematical sense. We develop methods for valid inference under task exchangeability, together with extensions that provide guarantees even beyond exchangeability. We demonstrate the framework on public opinion surveys with silicon samples and AI evaluation with autoraters.",
+        "categories": [
+          "stat.ME",
+          "cs.AI",
+          "cs.LG",
+          "stat.ML"
+        ],
+        "url": "https://arxiv.org/abs/2606.13629v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13629v1",
+        "published": "2026-06-11T17:41:09Z"
+      },
+      {
+        "id": "2606.13626v1",
+        "title": "Generative Modeling of Bach-Style Symbolic Music: A Comparative Study of Autoregressive, Latent-Variable, and Adversarial Approaches",
+        "authors": [
+          "Kyuil Lee",
+          "Dezhi Yu",
+          "Yongkang Huang"
+        ],
+        "abstract": "We study generative modeling of Bach-style symbolic piano music using a shared MIDI corpus and three model families: autoregressive LSTMs with attention, latent-variable models including recurrent VAEs and vector-quantized VAEs, and generative adversarial networks. We compare their ability to model polyphonic note sequences, learn useful latent representations, and generate stylistically coherent compositions. Our experiments show that the autoregressive LSTM with attention produces the most musically coherent samples, while vector quantization helps mitigate posterior collapse and yields more structured outputs than conventional recurrent VAEs. The adversarial approach captures local pitch patterns but remains difficult to train and generalizes less reliably to Bach's style. These results highlight the relative strengths and failure modes of autoregressive, latent-variable, and adversarial approaches for symbolic music generation.",
+        "categories": [
+          "cs.SD",
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2606.13626v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13626v1",
+        "published": "2026-06-11T17:39:55Z"
+      },
+      {
+        "id": "2606.13625v1",
+        "title": "Revisiting Vehicle Color Recognition in Long-Tailed Surveillance Scenarios",
+        "authors": [
+          "Vinícius Orrú",
+          "Bruno H. Foggiatto",
+          "Gabriel E. Lima",
+          "David Menotti",
+          "Rayson Laroca"
+        ],
+        "abstract": "Vehicle color recognition is an important cue for vehicle identification in surveillance systems, especially when license plates are illegible due to low resolution, occlusion, motion blur, or poor illumination. However, real-world vehicle color distributions are highly imbalanced, making overall accuracy insufficient to assess performance on rare but operationally relevant colors. This paper presents a comprehensive study of vehicle color recognition under severe class imbalance using UFPR-VeSV, a challenging real-world surveillance dataset. We investigate synthetic minority-class augmentation through two off-the-shelf generative strategies: text-conditioned image generation with RunDiffusion/JuggernautXL and image-conditioned color editing with Gemini 2.0 Flash. The curated synthetic data are combined with modern visual representations, loss reweighting, learning-rate scheduling, color-safe augmentation, foreground-aware preprocessing, and ensemble fusion. The bestperforming approach achieves 94.6% micro accuracy and 79.7% macro accuracy, improving macro accuracy by 8.2 percentage points over recent literature. A manual error analysis further shows that many remaining failures are visually ambiguous even for human annotators, highlighting the practical limits of color-based vehicle identification in unconstrained surveillance imagery. The generated images and source code are publicly available at https://github.com/viniciusorru/vcr-synthetic",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2606.13625v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13625v1",
+        "published": "2026-06-11T17:39:40Z"
+      },
+      {
+        "id": "2606.13624v1",
+        "title": "Beyond Uniform Tokens: Adaptive Compression for Time Series Language Models",
+        "authors": [
+          "Jialin Gan",
+          "Xin Qiu",
+          "Guangzhe Chen",
+          "Xue Wang"
+        ],
+        "abstract": "Large language models (LLMs) have enabled time series (TS) analysis by jointly modeling numerical observations and textual context through a shared token interface. However, TS tokens and prompt tokens exhibit fundamentally different information structures, making uniform token processing inefficient. In this paper, we study token efficiency in TS language modeling from an asymmetric-token perspective. We show that TS tokens have highly uneven spectral contributions, where many tokens share redundant frequency patterns while a small subset preserves critical temporal evidence. We also observe that prompt-token influence attenuates with model depth, suggesting that full prompt retention across all layers is unnecessary. Based on these findings, we develop an adaptive token budgeting framework that compresses TS tokens via frequency-domain structure and progressively reduces prompt tokens across layers. Experiments across forecasting, classification, imputation, and anomaly detection demonstrate up to \\textit{\\textbf{7.68$\\times$}} inference acceleration and performance gains in \\textit{\\textbf{78\\%}} of evaluated settings, showing the effectiveness of asymmetric token compression for scalable TS foundation models.",
+        "categories": [
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2606.13624v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13624v1",
+        "published": "2026-06-11T17:39:26Z"
+      },
+      {
+        "id": "2606.13621v1",
+        "title": "Beyond Runtime Enforcement: Shield Synthesis as Defensibility Analysis for Adversarial Networks",
+        "authors": [
+          "Achraf Hsain",
+          "Sultan Almuhammadi"
+        ],
+        "abstract": "Shielded reinforcement learning is typically presented as a runtime safety mechanism that compiles temporal-logic specifications into automata restricting an agent's actions. We argue this is the wrong product. The same automata-theoretic machinery -- specification compilation, product game construction, attractor computation, and winning-region extraction -- is better read as a design-time analytical instrument whose outputs are structural insights about a system rather than runtime constraints on a deployed agent.   We instantiate this through a constrained two-player safety game for network defense. The two specifications are enforced asymmetrically: the defender specification defines the unsafe region of the game, whereas the attacker specification restricts the adversary's legal actions during attractor computation. Solving the game yields a defensibility verdict -- a formal certificate that a topology-specification pair is or is not defensible -- with the associated winning region and shield.   Beyond the binary verdict, we derive topology-level metrics from the attractor structure and combine them with post-convergence behavior from shield-constrained adversarial multi-agent reinforcement learning. Together these form a defensibility fingerprint capturing both a network's formal safety properties and its operational behavior under adaptive play.   A what-if analysis shows that formal defensibility and operational effectiveness capture distinct aspects of security: small architectural changes can produce large shifts in operational outcomes while leaving formal safety margins nearly unchanged. Shield synthesis is thus most valuable not as a deployment mechanism for safe agents, but as a framework for answering architectural questions about whether, where, and how a system can be defended. The defensibility verdict is the output, not the safe policy.",
+        "categories": [
+          "cs.AI",
+          "cs.CR",
+          "cs.GT",
+          "cs.LG",
+          "cs.MA"
+        ],
+        "url": "https://arxiv.org/abs/2606.13621v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13621v1",
+        "published": "2026-06-11T17:35:40Z"
+      },
+      {
+        "id": "2606.13614v1",
+        "title": "Majority-of-Three is Optimal",
+        "authors": [
+          "Divit Rawal",
+          "Nikita Zhivotovskiy"
+        ],
+        "abstract": "We give a short proof that the majority vote of three independent consistent classifiers is an optimal learner in the realizable PAC setting. This proves optimality for the simplest voting scheme, while simplifying both the algorithmic structure and the probabilistic analysis of previous voting learners, including the algorithm of S. Hanneke and the analysis of bagging by K. Green Larsen.",
+        "categories": [
+          "stat.ML",
+          "cs.LG",
+          "math.ST"
+        ],
+        "url": "https://arxiv.org/abs/2606.13614v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13614v1",
+        "published": "2026-06-11T17:26:13Z"
+      },
+      {
+        "id": "2606.13610v1",
+        "title": "One Polluted Page Is Enough: Evaluating Web Content Pollution in Generative Recommenders",
+        "authors": [
+          "Minghao Luo",
+          "Liang Chen"
+        ],
+        "abstract": "Search-augmented LLMs increasingly mediate everyday consumer recommendations by retrieving live web content. This creates a new risk: generative recommenders may consume polluted web content, such as fake reviews and promotional pages crafted to mislead recommendations. We ask: to what extent do search-augmented LLMs become unwitting promoters of fake products when consuming polluted retrieval results? To answer this, we introduce FORGE (Fake Online Recommendations in Generative Environments), a benchmark for measuring fake-product promotion under controlled web-content pollution. Given an upstream search result, FORGE locally rewrites real products in retrieved web pages into fake ones to simulate web-content pollution, and measures how often the LLM recommends the fake product. FORGE covers 225 real-world products across 15 categories and 5 consumer scenarios. Across 12 commercial and open-weights LLMs, all models are vulnerable: a single polluted page yields fooled rates of up to 27%, while the full top-3 replacement raises this to 73.8%. Vulnerability varies substantially across categories, increasing when models lack stable prior knowledge of the relevant products. Reasoning does not mitigate this vulnerability; instead, it often generates spurious social proof to justify false recommendations. We evaluate three defenses: skepticism prompting and consensus filtering (over model priors or cross-document evidence). Skepticism can exacerbate vulnerability, much like reasoning, while filtering risks suppressing legitimate products. We release FORGE at https://github.com/leoluolol/forge-benchmark.",
+        "categories": [
+          "cs.CL",
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2606.13610v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13610v1",
+        "published": "2026-06-11T17:24:14Z"
+      },
+      {
+        "id": "2606.13608v1",
+        "title": "AgentBeats: Agentifying Agent Assessment for Openness, Standardization, and Reproducibility",
+        "authors": [
+          "Xiaoyuan Liu",
+          "Jianhong Tu",
+          "Yuqi Chen",
+          "Siyuan Xie",
+          "Sihan Ren",
+          "Tianneng Shi",
+          "Gal Gantar",
+          "Evan Sandoval",
+          "Donghyun Lee",
+          "Daniel Miao",
+          "Peter J. Gilbert",
+          "Nick Hynes",
+          "Mauro Staver",
+          "Warren He",
+          "David Marn",
+          "Andrew Low",
+          "Xi Zhang",
+          "Elron Bandel",
+          "Michal Shmueli-Scheuer",
+          "Siva Reddy",
+          "Alexandre Drouin",
+          "Alexandre Lacoste",
+          "Ramayya Krishnan",
+          "Elham Tabassi",
+          "Yu Su",
+          "Victor Barres",
+          "Chenguang Wang",
+          "Wenbo Guo",
+          "Dawn Song"
+        ],
+        "abstract": "Agent systems are advancing quickly across domains, but their evaluation remains fragmented. Most benchmarks rely on fixed, LLM-centric harnesses that require heavy integration, create test-production mismatch, and limit fair comparison across diverse agent designs. The root problem is the lack of an open, agent-agnostic assessment interface. We advocate Agentified Agent Assessment (AAA), where evaluation is performed by judge agents and all participants interact through standardized protocols: A2A for task management and MCP for tool access. Conventional benchmarking defines two separate interfaces, one for the benchmark and one for the agent, while AAA only needs one; this yields a generic, unified framework that separates assessment logic from agent implementation and enables reproducible, interoperable, and multi-agent evaluation. We further introduce AgentBeats as a concrete realization of AAA: we identify five practical operation modes that make standardized assessment compatible with real-world constraints on openness, privacy, and reproducibility.   To evaluate our design at scale, we conduct two studies: a five-month open competition that drew 298 judge agents across 12 categories together with 467 subject agents from independent participants, showing that AAA applies across a heterogeneous range of benchmarks; and a case study on coding agents that confirms agentified evaluation preserves fidelity with the public record while surfacing previously missing head-to-head results, yielding research insights about agent design. Combining a community-scale field study and a controlled coding case study, we verify that AAA delivers coverage, practicality, and fidelity across heterogeneous scenarios at scale. Together, AAA and AgentBeats offer a clear path toward open, standardized, and reproducible agent assessment.",
+        "categories": [
+          "cs.AI",
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2606.13608v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13608v1",
+        "published": "2026-06-11T17:23:54Z"
+      },
+      {
+        "id": "2606.13607v1",
+        "title": "Reasoning as Pattern Matching: Shared Mechanisms in Human and LLM Everyday Reasoning",
+        "authors": [
+          "Zach Studdiford",
+          "Gary Lupyan"
+        ],
+        "abstract": "When large language models (LLMs) fail to generalize or make haphazard errors in reasoning, it is often taken as evidence that LLMs are not truly reasoning, but rather performing a kind of pattern matching. The implication is that people's behavior does not exhibit the same types of failures because human reasoning uses principled and abstract world models. We evaluate human participants and 25 LLMs on their ability to engage in common-sense reasoning about a variety of everyday situations and observe similar patterns of errors in both people and models. We then identify the set of attention heads driving LLM responses and find that these heads implement a form of pattern-matching. These attention heads allow us to predict seemingly inexplicable reasoning errors in people caused by ostensibly irrelevant prompt details. Taken together, our results suggest that everyday causal reasoning in people and LLMs is more consistent with a form of pattern-matching than with abstract world models.",
+        "categories": [
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2606.13607v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13607v1",
+        "published": "2026-06-11T17:23:10Z"
+      },
+      {
+        "id": "2606.13605v1",
+        "title": "Distribution-Agnostic Robust Trajectory Optimization via Chance-Constrained Reinforcement Learning",
+        "authors": [
+          "Yashdeep Chaudhary",
+          "Roberto Armellin",
+          "Harry Holt",
+          "Marco Sagliano"
+        ],
+        "abstract": "This paper presents a distribution-agnostic robust trajectory-optimization framework based on chance-constrained reinforcement learning. The uncertainty is represented here through initial conditions and process noise, with the only requirement being that it can be sampled. A deterministic nominal trajectory is first computed offline, and reinforcement learning is then used only to robustify that baseline through a structured affine closed-loop correction law comprising a feedforward control adjustment and time-varying feedback gains. Probabilistic feasibility is enforced empirically through rollout-based upper-tail quantiles, while terminal dispersion is regulated through covariance-feasibility penalties. The framework is assessed on two materially different trajectory design problems. The flagship case study is a three-dimensional multi-impulse Earth-Mars transfer, where the learned policy is benchmarked against a recent robust trajectory-optimization reference under Gaussian uncertainty and then evaluated under bounded uniform uncertainty and under process disturbances not seen during training. The second case study is a stochastic atmospheric pinpoint rocket landing problem, used to assess portability to a short-horizon continuous-thrust setting with drag, mass depletion, and glide-slope constraints. The results show that the proposed framework can remain competitive in upper-tail fuel cost while preserving probabilistic feasibility, and that the same robustification scaffold can be carried across heterogeneous spacecraft trajectory planning problems without redesign of its core stochastic-control structure.",
+        "categories": [
+          "math.OC",
+          "cs.LG",
+          "eess.SY"
+        ],
+        "url": "https://arxiv.org/abs/2606.13605v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13605v1",
+        "published": "2026-06-11T17:22:05Z"
+      },
+      {
+        "id": "2606.13604v1",
+        "title": "Multi-Agent Reinforcement Learning from Delayed Marketplace Feedback for Objective-Weight Adaptation in Three-Sided Dispatch",
+        "authors": [
+          "Haochen Wu",
+          "Yi Hou",
+          "Shiguang Xie"
+        ],
+        "abstract": "Dispatch in three-sided marketplaces provides a natural setting for reinforcement learning from world feedback: decisions are evaluated by delayed operational outcomes such as delivery speed, courier utilization, and merchant congestion. We present a deployed reinforcement learning system at DoorDash that adapts dispatch objective weights in a large-scale food-delivery marketplace using delayed signals. Rather than replacing the combinatorial assignment optimizer, a store-level policy learned from logged marketplace data selects a discrete multiplier that shifts the dispatch optimizer's tradeoff between delivery quality and batching efficiency. This interface enables offline policy learning under noisy, delayed, and coupled feedback while preserving production feasibility constraints and operational safeguards. We train a shared value function using centralized offline data and decentralized store-level execution, with Double Q-learning targets and a conservative regularizer to reduce out-of-distribution value overestimation. In a production switchback experiment, the offline-trained policy increases batching and reduces courier-side time costs without degrading customer-facing delivery quality. Results illustrate how world feedback from a live economic and logistics system can be used to safely adapt decision policies online.",
+        "categories": [
+          "cs.AI",
+          "cs.LG",
+          "cs.MA"
+        ],
+        "url": "https://arxiv.org/abs/2606.13604v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13604v1",
+        "published": "2026-06-11T17:21:20Z"
+      },
+      {
+        "id": "2606.13603v1",
+        "title": "Beyond the Commitment Boundary: Probing Epiphenomenal Chain-of-Thought in Large Reasoning Models",
+        "authors": [
+          "Daniel Scalena",
+          "Sara Candussio",
+          "Luca Bortolussi",
+          "Elisabetta Fersini",
+          "Malvina Nissim",
+          "Gabriele Sarti"
+        ],
+        "abstract": "Chain-of-thought (CoT) reasoning is the dominant paradigm for inference-time scaling in language models, yet the causal influence of individual steps on the final answer poorly understood. We estimate each step's causal importance via early exit and use this measure to study how answers form across the reasoning traces of several model families. Across diverse tasks, we find that reasoning typically crosses a \\emph{commitment boundary} -- a sharp transition from transient intermediate guesses to a stable, high-confidence answer. This transition often happens in a single step, well before the model's reasoning block ends, and is followed by \\emph{epiphenomenal} CoT steps that leave the final answer probability unaltered. Using attention probes, we show that answer-formation stages can be linearly decoded from intermediate reasoning steps with high accuracy and generalize robustly to unseen reasoning tasks. We exploit this signal to early-exit reasoning blocks at the commitment boundary, reducing the length of CoTs up to 55\\% on average with negligible impact on model performance.",
+        "categories": [
+          "cs.LG",
+          "cs.AI",
+          "cs.CL"
+        ],
+        "url": "https://arxiv.org/abs/2606.13603v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13603v1",
+        "published": "2026-06-11T17:21:16Z"
+      },
+      {
+        "id": "2606.13602v1",
+        "title": "EpiBench: Verifiable Evaluation of AI Agents on Epigenomics Analysis",
+        "authors": [
+          "Harihara Muralidharan",
+          "Reema Baskar",
+          "Soo Hee Lee",
+          "Tim Proctor",
+          "Kenny Workman"
+        ],
+        "abstract": "We introduce EpiBench, a verifiable benchmark for short-horizon epigenomics analysis. EpiBench evaluates whether agents can make well-defined analysis decisions from realistic workflow states and return deterministically gradable answers. The benchmark includes 106 evaluations across CUT\\&Tag/CUT\\&RUN, ATAC-seq, ChIP-seq, and DNA methylation workflows. Across 5,088 valid trajectories from 16 model-harness pairs, no system passed a majority of attempts: GPT-5.5 / Pi led at 45.0\\% (143/318 attempts; 95\\% confidence interval (CI), 36.3--53.7), followed by GPT-5.5 / OpenAI Codex at 39.9\\% (127/318 attempts; 95\\% CI, 31.6--48.3). Claude Opus 4.8 Max / Pi and GPT-5.4 / Pi each passed 39.0\\% (124/318 attempts; 95\\% CI, 30.2--47.8 and 31.0--47.0, respectively). Performance varies across assay types, and many failed runs still contain parts of the correct answer. Agents often found the right files and computed useful intermediate results, but failed when the task required deeper, assay-specific scientific judgment.",
+        "categories": [
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2606.13602v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13602v1",
+        "published": "2026-06-11T17:20:29Z"
+      },
+      {
+        "id": "2606.13601v1",
+        "title": "MCR-Bionic Hand: Anatomical Structural Priors for Dexterous Manipulation",
+        "authors": [
+          "Haosen Yang",
+          "Guowu Wei"
+        ],
+        "abstract": "Dexterous robotic hands are usually formulated as high dimensional active control systems governed by degrees of freedom, actuation, and algorithms. Human hand dexterity, however, is partly encoded in the physical architecture of bones, ligaments, tendons, aponeuroses, and intrinsic muscles. This work describes that contribution as two linked forms of structural intelligence: structural prior generation, in which wrist to finger tenodesis, FDS/FDP routing, and the dorsal extensor hood transform low dimensional posture inputs into default grasp configurations and PIP to DIP coordination; and muscle mediated modulation, in which extrinsic muscles, lumbricals, and interossei regulate MCP posture, distal stability, fingertip force paths, and contact states around that default state.   Based on this framework, MCR-Bionic Hand is developed as a 1:1 musculoskeletal biomimetic hand integrating a two row eight bone wrist, cross wrist tendons, anatomical flexor routing, volar plate and collateral ligament constraints, the dorsal extensor hood, and intrinsic muscle pathways within one body. Functional demonstrations and geometric mechanical models show that wrist posture induces multi joint pre shaping, the extensor hood maps PIP posture to a coupled DIP response, and intrinsic plus pathways modulate distal stability and fingertip action direction after grasp formation. Contact rich tasks, including coin rotation, pen transfer, dorsal coin flipping, and cube manipulation, show that MCR-Bionic links low dimensional state generation with fine post contact modulation. These results suggest that anatomical biomimetics is valuable not for visual similarity, but for identifying human hand structures that perform part of control.",
+        "categories": [
+          "cs.RO",
+          "eess.SY"
+        ],
+        "url": "https://arxiv.org/abs/2606.13601v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13601v1",
+        "published": "2026-06-11T17:20:15Z"
+      },
+      {
+        "id": "2606.13598v1",
+        "title": "Reward Modeling for Multi-Agent Orchestration",
+        "authors": [
+          "King Yeung Tsang",
+          "Zihao Zhao",
+          "Vishal Venkataramani",
+          "Haizhou Shi",
+          "Zixuan Ke",
+          "Semih Yavuz",
+          "Shafiq Joty",
+          "Hao Wang"
+        ],
+        "abstract": "Multi-Agent Systems (MAS) built on Large Language Models (LLMs) require effective orchestration to coordinate specialized agents, yet training such orchestrators is hindered by limited supervision and high computational cost. We propose Orchestration Reward Modeling (OrchRM), a self-supervised framework for evaluating orchestration quality without human annotations. OrchRM leverages intermediate artifacts from multi-agent executions to construct win-lose pairs for Bradley-Terry reward model training. Unlike existing MAS test-time scaling and orchestrator training frameworks that rely on costly sub-agent rollouts, OrchRM operates directly at the orchestration level, enabling efficient and high-performing reward-guided orchestrator training and MAS test-time scaling. OrchRM improves training efficiency by up to 10x in token usage while improving MAS test-time scaling performance by up to 8% in accuracy. These gains consistently transfer across multiple domains, including mathematical reasoning, web-based question answering, and multi-hop reasoning, demonstrating orchestration-level reward modeling as a scalable direction for robust multi-agent orchestration. Code will be available at https://github.com/Wang-ML-Lab/OrchRM.",
+        "categories": [
+          "cs.AI",
+          "cs.CL",
+          "cs.LG",
+          "cs.MA"
+        ],
+        "url": "https://arxiv.org/abs/2606.13598v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13598v1",
+        "published": "2026-06-11T17:16:24Z"
+      },
+      {
+        "id": "2606.13591v1",
+        "title": "Multiagent Protocols with Aggregated Confidence Signals",
+        "authors": [
+          "Ali Elahi",
+          "Barbara Di Eugenio"
+        ],
+        "abstract": "Confidence is used for reliability, oversight, and a range of downstream decision tasks in Natural Language Processing (NLP), yet no existing method produces or evaluates a confidence for the output of a multiagent system. Prior work uses confidence within multiagent debate (MAD) to weight messages, trigger debate, or calibrate individual agents, but it never aggregates these into a single confidence for the system itself. We introduce three protocols that produce a final answer along with a single aggregated confidence by first transforming raw confidence signals to make them comparable across models, then combining them via soft voting or a probability fusion we call Bayesian fusion. This aggregated confidence is substantially more discriminative (AUARC) than that of the best single agent or the standard debate baselines, while correctness (F1-score) stays stable and recovers the losses MAD incurs on more ambiguous tasks. Analyzing two estimators, sequence probability and self-report, alongside parametric and non-parametric calibrators, we find that calibration improves F1 for both estimators while AUARC is less reliant on it. We evaluate six homogeneous and heterogeneous debating pairs per benchmark, across five benchmarks and four task types, spanning a range of model capabilities and sizes.",
+        "categories": [
+          "cs.AI",
+          "cs.LG",
+          "cs.MA"
+        ],
+        "url": "https://arxiv.org/abs/2606.13591v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13591v1",
+        "published": "2026-06-11T17:12:11Z"
+      },
+      {
+        "id": "2606.13589v1",
+        "title": "Simplex-Constrained Sparse Bagging: Transitioning from Uniform Priors to Sparse Posteriors in Ensemble Learning",
+        "authors": [
+          "Meher Sai Preetam",
+          "Meher Bhaskar"
+        ],
+        "abstract": "We present Simplex-Constrained Sparse Bagging (SCSB), a mathematically rigorous framework for post-training compression and probability calibration of bootstrap-based bagging ensembles. Standard bagging ensembles (such as Random Forests, Bagged SVMs, and Bagged Neural Networks) assign uniform voting power to all constituent estimators. However, this naive uniform prior ignores the varying local competence of base estimators and contributes to model overconfidence. We formulate ensemble pruning and calibration as a joint optimization problem over the probability simplex by minimizing the Out-Of-Bag (OOB) loss. To induce sparsity, we address the theoretical \"L1-simplex paradox\" -- the mathematical reality that the L1 norm is constant on the simplex and fails to prune -- by introducing a concave quadratic penalty. SCSB is model-agnostic and achieves up to 96% ensemble compression, yielding linear inference speedups and superior probability calibration (lowered Expected Calibration Error) while preserving or enhancing generalization accuracy.",
+        "categories": [
+          "cs.LG"
+        ],
+        "url": "https://arxiv.org/abs/2606.13589v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13589v1",
+        "published": "2026-06-11T17:11:51Z"
+      },
+      {
+        "id": "2606.13587v1",
+        "title": "Towards Effective Waste Segmentation for Automated Waste Recycling in Cluttered Background",
+        "authors": [
+          "Mamoona Javaid",
+          "Mubashir Noman",
+          "Abdul Hannan",
+          "Shah Nawaz",
+          "Mustansar Fiaz",
+          "Sajid Ghuffar"
+        ],
+        "abstract": "Rapid expansion of urban areas and population growth is causing an immense increase in waste production, which demands the need for efficient and automated waste management. In this scenario, automated waste recycling (AWR) using deep learning methods can assist humans in optimal waste management. Recent deep learning approaches for AWR provide promising waste segmentation performance, however, these methods rely on large backbone networks that are inefficient for AWR systems and suffer from performance deterioration in cluttered scenes. To this end, an optimal waste segmentation network is introduced which effectively utilizes the spatial domain to capture localized structural dependencies and the spectral domain to efficiently extract global contextual relationships. This cascaded design allows the network to progressively leverage both local and global representations across complementary domains to highlight the semantic information necessary for effective segmentation of various waste objects. Furthermore, auxiliary feature enhancement module (AFEM) is introduced to enhance the target objects' boundaries and blob amplification for better segmentation in cluttered scenarios. Extensive experimentation on ZeroWaste-aug, ZeroWaste-f and SpectralWaste datasets reveals the merits of the proposed method.",
+        "categories": [
+          "cs.CV"
+        ],
+        "url": "https://arxiv.org/abs/2606.13587v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13587v1",
+        "published": "2026-06-11T17:11:04Z"
+      },
+      {
+        "id": "2606.13581v1",
+        "title": "The Tone of Awareness: Topic, Sentiment, and Toxicity Maps During Mental Health Month on TikTok",
+        "authors": [
+          "Henrique Ferraz de Arruda",
+          "Andreia Sofia Teixeira",
+          "Pranay Gundala Reddy",
+          "Anindya Mondal",
+          "Kleber Andrade Oliveira",
+          "Filipi Nascimento Silva"
+        ],
+        "abstract": "Despite raising concerns about the mental health effects associated with the usage of TikTok, little is known about how related content is framed by creators and received by audiences. We collect the content of 28,341 TikTok videos and 80,130 comments from Mental Health Awareness Month (May) in 2023 and 2024 via the TikTok Research API, and study how the tone of awareness varies across topics and years. We characterize \"tone\" as the emotional and interpersonal framing of mental health discourse, operationalized through sentiment and toxicity measures. We extract topics from video text using BERTopic and log-odds keywords, then quantify topic-conditioned sentiment (XLM-T) and toxicity (Detoxify) separately for video transcriptions and comments. Sentiment captures the affective valence of content, while toxicity reflects the presence of harmful or abusive language. We find a stable set of recurring themes across years, spanning clinical conditions, emotional disclosure, self-care, and campaign-oriented content, with engagement highly skewed toward a small subset of topics. All sentiment and toxicity analyses are computed separately for video content and comments, allowing us to distinguish between content production and audience reception. Sentiment in videos is often negative for emotionally charged topics, while comments tend to shift toward more mixed or positive polarity, especially for suicide prevention. Toxicity is low in median overall, but exhibits longer-tailed outliers in comments than in videos that are more pronounced in comments and concentrated in specific topics (e.g., \"Duet\", \"Suicide Prevention\", and \"Psychisch\"). Overall, our results provide a topic-level decomposition of mental health discourse on TikTok during awareness-month campaigns.",
+        "categories": [
+          "cs.CY",
+          "cs.CL",
+          "cs.HC",
+          "physics.soc-ph"
+        ],
+        "url": "https://arxiv.org/abs/2606.13581v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13581v1",
+        "published": "2026-06-11T17:04:11Z"
+      },
+      {
+        "id": "2606.13580v1",
+        "title": "EvTexture++: Event-Driven Texture Enhancement for Video Super-Resolution",
+        "authors": [
+          "Dachun Kai",
+          "Jiayao Lu",
+          "Yueyi Zhang",
+          "Xiaoyan Sun"
+        ],
+        "abstract": "Event-based vision has drawn increasing attention owing to its distinctive properties, including ultra-high temporal resolution and extreme dynamic range. Recent works have introduced it to video super-resolution (VSR) to enhance flow estimation and temporal alignment. In contrast, this paper shifts the focus of event signals from motion refinement to texture enhancement in VSR. We propose EvTexture++, the first event-driven framework dedicated to texture enhancement in VSR. It leverages high-frequency spatiotemporal details from events to improve texture recovery. EvTexture++ incorporates a customized texture enhancement branch, along with an iterative texture enhancement module that progressively exploits high-temporal-resolution event information for texture restoration. This enables gradual refinement of texture regions across iterations, yielding more accurate and detailed high-resolution outputs. Besides intra-frame texture recovery, large motions could degrade inter-frame temporal consistency, particularly in texture regions, leading to texture flickering. To mitigate this, we further exploit the continuous-time motion cues of events to enhance temporal consistency, introducing a temporal texture alignment module that estimates event-guided texture-aware flow for precise inter-frame texture alignment. Moreover, EvTexture++ is designed as a plug-and-play tool to flexibly boost the performance of existing VSR models. Experiments on five datasets demonstrate that EvTexture++ achieves state-of-the-art performance. When integrated into recent VSR models, it yields significant improvements, with gains of up to 1.55 dB in PSNR on the texture-rich Vid4 dataset. Code: https://github.com/DachunKai/EvTexture.",
+        "categories": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2606.13580v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13580v1",
+        "published": "2026-06-11T17:04:08Z"
+      },
+      {
+        "id": "2606.13578v1",
+        "title": "LabVLA: Grounding Vision-Language-Action Models in Scientific Laboratories",
+        "authors": [
+          "Baochang Ren",
+          "Xinjie Liu",
+          "Xi Chen",
+          "Yanshuo Liu",
+          "Chenxi Li",
+          "Daqi Gao",
+          "Zeqin Su",
+          "Jintao Xing",
+          "Zirui Xue",
+          "Rui Li",
+          "Xiangyu Zhao",
+          "Shuofei Qiao",
+          "Minting Pan",
+          "Wangmeng Zuo",
+          "Lei Bai",
+          "Dongzhan Zhou",
+          "Ningyu Zhang",
+          "Huajun Chen"
+        ],
+        "abstract": "Scientific laboratories increasingly rely on AI systems to reason about experiments, but the physical act of doing science remains largely outside their reach. AI can help read literature, generate hypotheses, and plan protocols, yet the execution of those protocols at the bench still requires a human operator. Vision-Language-Action (VLA) models provide one possible interface between written protocols and robot execution, but existing policies are trained mostly on household and tabletop demonstrations and rarely encounter the instruments, transparent liquids, or fixed protocol workflows found in scientific laboratories. Closing this gap requires both laboratory-specific supervision and a unified learning framework that can accommodate the diverse robot embodiments used to execute experimental protocols. We therefore identify data and embodiment as central bottlenecks alongside model design. To address the data side, we build RoboGenesis, a simulation-based workflow and data engine that composes configured laboratory workflows from atomic skills, validates and filters rollouts, and exports structured demonstrations across supported robot profiles. On the policy side, we present LabVLA, trained with a two-stage recipe: FAST action token pretraining first makes the Qwen3-VL-4B-Instruct backbone action aware before any continuous control is learned, and flow matching posttraining then attaches a DiT action expert under knowledge insulation. On the LabUtopia benchmark, LabVLA achieves the highest average success rate among all evaluated baselines under both in-distribution and out-of-distribution settings.",
+        "categories": [
+          "cs.CL",
+          "cs.AI",
+          "cs.LG",
+          "cs.MM",
+          "cs.RO"
+        ],
+        "url": "https://arxiv.org/abs/2606.13578v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13578v1",
+        "published": "2026-06-11T17:03:53Z"
+      },
+      {
+        "id": "2606.13576v1",
+        "title": "Learning with Simulators: No Regret in a Computationally Bounded World",
+        "authors": [
+          "Sasha Voitovych",
+          "Abhishek Shetty",
+          "Noah Golowich",
+          "Alexander Rakhlin"
+        ],
+        "abstract": "Understanding the minimal assumptions necessary for generalization is the fundamental question in learning theory. Unfortunately, most results rely heavily on independence (or some proxy thereof) of the data-generating process, while results for strongly dependent data are far more limited. Towards addressing this gap, we introduce the framework of simulatable processes, where the learner has access to a simulator that approximates the distribution generating the data (which may be an arbitrarily complex and dependent process). Surprisingly, given access to such a simulator, we show that we can recover the same learning guarantees as in the classical setting with independent data, namely, error bounds that depend on the VC dimension. Further, we use this framework to study the power of conditional sampling and show strict statistical and computational advantages in this setting. As a highlight of our framework, we exhibit a single algorithm that simultaneously learns any given VC class under all processes samplable in bounded polynomial time, with regret controlled by the time-bounded Kolmogorov complexity of the process. This provides a significant conceptual broadening of the classical PAC model.",
+        "categories": [
+          "cs.LG",
+          "cs.CC",
+          "cs.DS",
+          "stat.ML"
+        ],
+        "url": "https://arxiv.org/abs/2606.13576v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13576v1",
+        "published": "2026-06-11T17:02:24Z"
+      },
+      {
+        "id": "2606.13572v1",
+        "title": "ArogyaSutra: A Multi-Agent Framework for Multimodal Medical Reasoning in Indic Languages",
+        "authors": [
+          "Tanmoy Kanti Halder",
+          "Akash Ghosh",
+          "Subhadip Baidya",
+          "Arijit Roy",
+          "Sriparna Saha"
+        ],
+        "abstract": "Multimodal Large Language Models (MLLMs) have shown promising reasoning capabilities in general domains, yet their performance remains limited in specialized settings such as healthcare, especially in multilingual and low-resource scenarios. This gap is critical in regions like rural India, where patients often express complex medical queries in native Indic languages and rely on multimodal inputs such as medical images. Existing English-centric MLLMs struggle to support such use cases, limiting equitable access to AI-driven healthcare assistance. To address this challenge, we introduce ArogyaBodha, a large-scale multilingual multimodal medical question-answer dataset constructed from eight heterogeneous sources, covering 31 body systems, six imaging modalities, and 21 clinical domains across English and seven major Indian languages. We further propose ArogyaSutra, an actor-critic-based multi-agent framework that integrates tool grounding with dual-memory mechanisms for step-wise, reasoning-aware decision making, and uses stored actor-critic simulation trajectories for distillation. Experiments show that our dataset and framework improve multilingual medical reasoning accuracy across all Indic languages, with ablations validating the contribution of each component. The source code and dataset are available at: https://iitp-cse.github.io/ ArogyaSutra/",
+        "categories": [
+          "cs.CL",
+          "cs.AI"
+        ],
+        "url": "https://arxiv.org/abs/2606.13572v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.13572v1",
+        "published": "2026-06-11T16:59:42Z"
+      }
+    ],
+    "hn": [
+      {
+        "id": "48511072",
+        "title": "Statement on US government directive to suspend access to Fable 5 and Mythos 5",
+        "url": "https://www.anthropic.com/news/fable-mythos-access",
+        "points": 3055,
+        "comments": 2217,
+        "comments_url": "https://news.ycombinator.com/item?id=48511072",
+        "author": "Dylan1312",
+        "created_at": "2026-06-13T00:51:30Z",
+        "title_ja": "米政府指令によりFable 5とMythos 5へのアクセスを停止: Anthropic声明",
+        "summary_ja": "Anthropicが米政府の指令を受け最上位モデルFable 5/Mythos 5の提供を停止したという衝撃的な公式声明。HN首位3000超の大注目。"
+      },
+      {
+        "id": "48511908",
+        "title": "Open source AI must win",
+        "url": "https://opensourceaimustwin.com/?share=v2",
+        "points": 1509,
+        "comments": 462,
+        "comments_url": "https://news.ycombinator.com/item?id=48511908",
+        "author": "vednig",
+        "created_at": "2026-06-13T02:14:24Z",
+        "title_ja": "オープンソースAIは勝たねばならない",
+        "summary_ja": "クローズドな最先端モデルが政府指令で止められうる現実を背景に、オープンソースAIの重要性を訴えるキャンペーンサイト。"
+      },
+      {
+        "id": "48519092",
+        "title": "Amazon CEO's talks with U.S. officials triggered crackdown on Anthropic models",
+        "url": "https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&reflink=desktopwebshare_permalink",
+        "points": 510,
+        "comments": 377,
+        "comments_url": "https://news.ycombinator.com/item?id=48519092",
+        "author": "ls612",
+        "created_at": "2026-06-13T16:57:49Z",
+        "title_ja": "Amazon CEOと米当局の会談がAnthropicモデル規制の引き金に",
+        "summary_ja": "WSJ報道。Amazon CEOの米政府高官との協議が、Anthropicモデルへの取り締まりを誘発したとされる。商業的思惑が政策に影響した構図。"
+      },
+      {
+        "id": "48506659",
+        "title": "Pirates, a naval warfare game inspired by Sid Meier's Pirates",
+        "url": "https://piwodlaiwo.github.io/pirates/",
+        "points": 311,
+        "comments": 93,
+        "comments_url": "https://news.ycombinator.com/item?id=48506659",
+        "author": "iweczek",
+        "created_at": "2026-06-12T17:07:46Z",
+        "title_ja": "Pirates: Sid Meier's Piratesに着想を得た海戦ゲーム",
+        "summary_ja": "名作『Sid Meier's Pirates』に触発された個人開発の海戦ゲーム。"
+      },
+      {
+        "id": "48518684",
+        "title": "GLM 5.2 Is Out",
+        "url": "https://twitter.com/jietang/status/2065784751345287314",
+        "points": 309,
+        "comments": 172,
+        "comments_url": "https://news.ycombinator.com/item?id=48518684",
+        "author": "aloknnikhil",
+        "created_at": "2026-06-13T16:18:31Z",
+        "title_ja": "GLM 5.2 がリリース",
+        "summary_ja": "智譜AI(Zhipu)のGLM 5.2が登場。Fable停止騒動の最中、中国系オープンモデルの存在感が増す。"
+      },
+      {
+        "id": "48504063",
+        "title": "WASI 0.3",
+        "url": "https://bytecodealliance.org/articles/WASI-0.3",
+        "points": 253,
+        "comments": 95,
+        "comments_url": "https://news.ycombinator.com/item?id=48504063",
+        "author": "mavdol04",
+        "created_at": "2026-06-12T13:51:15Z",
+        "title_ja": "WASI 0.3",
+        "summary_ja": "WebAssembly System Interfaceの新版0.3。非同期サポートなどでWASMのサーバサイド利用が前進。"
+      },
+      {
+        "id": "48511121",
+        "title": "We've suspended access to Claude Mythos 5 and Claude Fable 5",
+        "url": "https://status.claude.com/incidents/s9w82lp9dcn9",
+        "points": 251,
+        "comments": 5,
+        "comments_url": "https://news.ycombinator.com/item?id=48511121",
+        "author": "jesse_dot_id",
+        "created_at": "2026-06-13T00:58:06Z",
+        "title_ja": "Claude Mythos 5とFable 5へのアクセスを停止: ステータスページ",
+        "summary_ja": "Anthropicの公式ステータスページに掲載された提供停止インシデント。"
+      },
+      {
+        "id": "48516504",
+        "title": "AI OSS tool repo goes archived over night after raising $7.3M Seed",
+        "url": "https://github.com/tensorzero/tensorzero",
+        "points": 237,
+        "comments": 157,
+        "comments_url": "https://news.ycombinator.com/item?id=48516504",
+        "author": "hek2sch",
+        "created_at": "2026-06-13T12:10:47Z",
+        "title_ja": "OSS AIツールのリポジトリが$7.3Mシード調達直後に一夜でアーカイブ化",
+        "summary_ja": "TensorZeroが多額の資金調達後すぐリポジトリをアーカイブ。OSSと商業化の緊張を象徴する出来事として話題。"
+      },
+      {
+        "id": "48518969",
+        "title": "AI coding at home without going broke",
+        "url": "https://stephen.bochinski.dev/blog/2026/06/13/ai-coding-at-home-without-going-broke/",
+        "points": 223,
+        "comments": 204,
+        "comments_url": "https://news.ycombinator.com/item?id=48518969",
+        "author": "sbochins",
+        "created_at": "2026-06-13T16:45:03Z",
+        "title_ja": "破産せずに自宅でAIコーディングする",
+        "summary_ja": "高額なAPI課金を避け、ローカル/低コストでAIコーディング環境を整える実践的ガイド。"
+      },
+      {
+        "id": "48504912",
+        "title": "Slightly reducing the sloppiness of AI generated front end",
+        "url": "https://envs.net/~volpe/blog/posts/reduce-slop.html",
+        "points": 217,
+        "comments": 130,
+        "comments_url": "https://news.ycombinator.com/item?id=48504912",
+        "author": "FergusArgyll",
+        "created_at": "2026-06-12T14:48:38Z",
+        "title_ja": "AI生成フロントエンドの「雑さ」を少し減らす",
+        "summary_ja": "LLMが吐くフロントエンドコードの品質を改善する小ワザの紹介。"
+      },
+      {
+        "id": "48520807",
+        "title": "Police officer investigated for using AI to 'create evidence' in multiple cases",
+        "url": "https://news.sky.com/story/derbyshire-police-officer-investigated-for-using-ai-to-create-evidence-in-multiple-cases-13553661",
+        "points": 205,
+        "comments": 94,
+        "comments_url": "https://news.ycombinator.com/item?id=48520807",
+        "author": "austinallegro",
+        "created_at": "2026-06-13T19:54:55Z",
+        "title_ja": "AIで「証拠を捏造」した疑いで警察官を捜査",
+        "summary_ja": "英ダービーシャー警察の警官が複数事件でAIを使い証拠を作成した疑い。司法とAI悪用の深刻な事例。"
+      },
+      {
+        "id": "48513728",
+        "title": "Shepherd's Dog: A Game by Fable",
+        "url": "https://koenvangilst.nl/lab/claude-fable-shepherds-dog",
+        "points": 177,
+        "comments": 127,
+        "comments_url": "https://news.ycombinator.com/item?id=48513728",
+        "author": "vnglst",
+        "created_at": "2026-06-13T05:44:46Z",
+        "title_ja": "Shepherd's Dog: Fableが作ったゲーム",
+        "summary_ja": "AIモデルFableを使って作られたゲーム。"
+      },
+      {
+        "id": "48504543",
+        "title": "A dumpster arrived behind my university's library",
+        "url": "https://yalereview.org/article/sheila-liming-the-end-of-books",
+        "points": 175,
+        "comments": 172,
+        "comments_url": "https://news.ycombinator.com/item?id=48504543",
+        "author": "mooreds",
+        "created_at": "2026-06-12T14:21:22Z",
+        "title_ja": "大学図書館の裏にゴミ収集箱が届いた",
+        "summary_ja": "図書館が蔵書を廃棄していた件を追う個人ブログ。AIとは無関係だがHN人気。"
+      },
+      {
+        "id": "48515385",
+        "title": "Show HN: Paca – Lightweight Jira alternative for human-AI collaboration",
+        "url": "https://github.com/Paca-AI/paca",
+        "points": 133,
+        "comments": 51,
+        "comments_url": "https://news.ycombinator.com/item?id=48515385",
+        "author": "pikann22",
+        "created_at": "2026-06-13T09:44:25Z",
+        "title_ja": "Show HN: Paca – 人とAIの協働向け軽量Jira代替",
+        "summary_ja": "人間とAIエージェントが一緒に使うことを想定した軽量プロジェクト管理ツール。"
+      },
+      {
+        "id": "48505452",
+        "title": "Where Did Earth Get Its Oceans? Maybe It Made Them Itself",
+        "url": "https://www.quantamagazine.org/where-did-earth-get-its-oceans-maybe-it-made-them-itself-20260612/",
+        "points": 131,
+        "comments": 68,
+        "comments_url": "https://news.ycombinator.com/item?id=48505452",
+        "author": "ibobev",
+        "created_at": "2026-06-12T15:32:56Z",
+        "title_ja": "地球の海はどこから来たのか: 自前で作った可能性",
+        "summary_ja": "海の起源を地球内部に求める地球科学の研究。AI無関係だがHN人気。"
+      },
+      {
+        "id": "48509133",
+        "title": "/architect: Reduce Fable tokens by 80%, Fable orchestrates/reviews, Codex builds",
+        "url": "https://github.com/DanMcInerney/architect-loop",
+        "points": 102,
+        "comments": 39,
+        "comments_url": "https://news.ycombinator.com/item?id=48509133",
+        "author": "DanMcInerney",
+        "created_at": "2026-06-12T20:33:22Z",
+        "title_ja": "/architect: Fableトークンを80%削減、Fableが統括しCodexが実装",
+        "summary_ja": "Fableに設計・レビューを任せ、実装はCodexに振ることでトークン消費を大幅削減するワークフロー。"
+      },
+      {
+        "id": "48509143",
+        "title": "Mmorpg World of ClaudeCraft, vibe coded with Fable 5",
+        "url": "https://worldofclaudecraft.com/",
+        "points": 92,
+        "comments": 105,
+        "comments_url": "https://news.ycombinator.com/item?id=48509143",
+        "author": "beatthatflight",
+        "created_at": "2026-06-12T20:34:42Z",
+        "title_ja": "World of ClaudeCraft: Fable 5でバイブコーディングしたMMORPG",
+        "summary_ja": "Fable 5を使って『雰囲気で』作られたブラウザMMORPG。AIコーディングのデモとして話題。"
+      },
+      {
+        "id": "48511168",
+        "title": "As a result of a US Government directive, we are suspending access to Fable 5",
+        "url": "https://twitter.com/ClaudeDevs/status/2065597942602531163",
+        "points": 89,
+        "comments": 4,
+        "comments_url": "https://news.ycombinator.com/item?id=48511168",
+        "author": "plonkus",
+        "created_at": "2026-06-13T01:02:41Z",
+        "title_ja": "米政府指令の結果、Fable 5へのアクセスを停止します",
+        "summary_ja": "ClaudeDevsのXポスト。開発者向けにFable 5停止を告知。"
+      },
+      {
+        "id": "48517412",
+        "title": "Orthodox C++ (2016)",
+        "url": "https://bkaradzic.github.io/posts/orthodoxc++/",
+        "points": 79,
+        "comments": 136,
+        "comments_url": "https://news.ycombinator.com/item?id=48517412",
+        "author": "signa11",
+        "created_at": "2026-06-13T13:58:46Z",
+        "title_ja": "Orthodox C++ (2016)",
+        "summary_ja": "現代的すぎる機能を避け素直なC++を書く流儀『Orthodox C++』を説く2016年の記事が再浮上。"
+      },
+      {
+        "id": "48519519",
+        "title": "PwC Report: AI Making Medical Bills Higher",
+        "url": "https://fortune.com/2026/06/12/ai-making-medical-bills-higher/",
+        "points": 66,
+        "comments": 15,
+        "comments_url": "https://news.ycombinator.com/item?id=48519519",
+        "author": "karakoram",
+        "created_at": "2026-06-13T17:39:14Z",
+        "title_ja": "PwCレポート: AIが医療費を押し上げている",
+        "summary_ja": "PwCの分析として、AI導入が医療コストを下げるどころか押し上げているとするFortune報道。"
+      }
+    ],
+    "reddit": [],
+    "github": [
+      {
+        "name": "agent-skills",
+        "full_name": "addyosmani/agent-skills",
+        "description": "Production-grade engineering skills for AI coding agents.",
+        "url": "https://github.com/addyosmani/agent-skills",
+        "language": "Shell",
+        "stars": 58375,
+        "stars_today": 1514,
+        "forks": 6304,
+        "title_ja": "AIコーディングエージェント向けの実戦的スキル集",
+        "summary_ja": "AIコーディングエージェントに与える『プロダクション品質のエンジニアリングスキル』を集めたリポジトリ。エージェント運用ノウハウへの関心の高さを反映。"
+      },
+      {
+        "name": "container",
+        "full_name": "apple/container",
+        "description": "A tool for creating and running Linux containers using lightweight virtual machines on a Mac. It is written in Swift, and optimized for Apple silicon.",
+        "url": "https://github.com/apple/container",
+        "language": "Swift",
+        "stars": 36306,
+        "stars_today": 1487,
+        "forks": 1033,
+        "title_ja": "Apple Silicon上で軽量VMによりLinuxコンテナを実行",
+        "summary_ja": "Macの軽量仮想マシン上でLinuxコンテナを作成・実行するApple製ツール。DockerなしでネイティブにコンテナをMacで動かせる。"
+      },
+      {
+        "name": "superpowers",
+        "full_name": "obra/superpowers",
+        "description": "An agentic skills framework & software development methodology that works.",
+        "url": "https://github.com/obra/superpowers",
+        "language": "Shell",
+        "stars": 226928,
+        "stars_today": 924,
+        "forks": 20181,
+        "title_ja": "動くエージェント的スキルフレームワーク&開発手法",
+        "summary_ja": "AIエージェント向けのスキルフレームワークとソフトウェア開発方法論をまとめたプロジェクト。"
+      },
+      {
+        "name": "SkillSpector",
+        "full_name": "NVIDIA/SkillSpector",
+        "description": "Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, and security risks.",
+        "url": "https://github.com/NVIDIA/SkillSpector",
+        "language": "Python",
+        "stars": 4450,
+        "stars_today": 804,
+        "forks": 335,
+        "title_ja": "AIエージェントのスキルを検査するセキュリティスキャナ",
+        "summary_ja": "NVIDIA製。AIエージェントの『スキル』に潜む脆弱性や悪意あるパターンを検出する。エージェントのサプライチェーン安全を狙う。"
+      },
+      {
+        "name": "iptv",
+        "full_name": "iptv-org/iptv",
+        "description": "Collection of publicly available IPTV channels from all over the world",
+        "url": "https://github.com/iptv-org/iptv",
+        "language": "TypeScript",
+        "stars": 119113,
+        "stars_today": 530,
+        "forks": 6369,
+        "title_ja": "世界中の公開IPTVチャンネル集",
+        "summary_ja": "世界各国の公開IPTVチャンネルを集めた定番リポジトリ。AI無関係だが常連トレンド。"
+      },
+      {
+        "name": "LMCache",
+        "full_name": "LMCache/LMCache",
+        "description": "LMCache: Supercharge Your LLM with the Fastest KV Cache Layer",
+        "url": "https://github.com/LMCache/LMCache",
+        "language": "Python",
+        "stars": 8889,
+        "stars_today": 238,
+        "forks": 1305,
+        "title_ja": "LLMを高速化する最速KVキャッシュ層",
+        "summary_ja": "LLM推論のKVキャッシュを効率化し、長文・反復処理を大幅高速化するライブラリ。"
+      },
+      {
+        "name": "agentsview",
+        "full_name": "kenn-io/agentsview",
+        "description": "Local-first session intelligence and analytics for coding agents, supporting Claude Code, Codex, and more than 20 other agents. Also: 100x faster replacement for ccusage!",
+        "url": "https://github.com/kenn-io/agentsview",
+        "language": "Go",
+        "stars": 2362,
+        "stars_today": 190,
+        "forks": 216,
+        "title_ja": "コーディングエージェント向けのローカル分析ツール",
+        "summary_ja": "Claude Codeなどコーディングエージェントのセッションをローカルで解析・可視化するツール。"
+      },
+      {
+        "name": "aisuite",
+        "full_name": "andrewyng/aisuite",
+        "description": "Simple, unified interface to multiple Generative AI providers",
+        "url": "https://github.com/andrewyng/aisuite",
+        "language": "Python",
+        "stars": 14112,
+        "stars_today": 127,
+        "forks": 1487,
+        "title_ja": "複数生成AIプロバイダへの統一インタフェース",
+        "summary_ja": "Andrew Ng発。各社の生成AI APIを共通インタフェースで叩けるライブラリ。"
+      },
+      {
+        "name": "system-prompts-and-models-of-ai-tools",
+        "full_name": "x1xhlol/system-prompts-and-models-of-ai-tools",
+        "description": "FULL Augment Code, Claude Code, Cluely, CodeBuddy, Comet, Cursor, Devin AI, Junie, Kiro, Leap.new, Lovable, Manus, NotionAI, Orchids.app, Perplexity, Poke, Qoder, Replit, Same.dev, Trae, Traycer AI, VSCode Agent, Warp.dev, Windsurf, Xcode, Z.ai Code, Dia & v0. (And other Open Sourced) System Prompts, Internal Tools & AI Models",
+        "url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools",
+        "language": "",
+        "stars": 140304,
+        "stars_today": 109,
+        "forks": 34658,
+        "title_ja": "主要AIツールのシステムプロンプト集",
+        "summary_ja": "Cursor/Claude Code/Devinなど主要AIツールのシステムプロンプトとモデル情報を集めたリポジトリ。"
+      },
+      {
+        "name": "chatwoot",
+        "full_name": "chatwoot/chatwoot",
+        "description": "Open-source live-chat, email support, omni-channel desk. An alternative to Intercom, Zendesk, Salesforce Service Cloud etc. 🔥💬",
+        "url": "https://github.com/chatwoot/chatwoot",
+        "language": "Ruby",
+        "stars": 30855,
+        "stars_today": 83,
+        "forks": 7554,
+        "title_ja": "オープンソースのオムニチャネル顧客サポート基盤",
+        "summary_ja": "Intercom/Zendeskの代替を目指すOSSのライブチャット・メールサポート基盤。"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "olmo-eval: An evaluation workbench for the model development loop",
+        "url": "https://huggingface.co/blog/allenai/olmo-eval",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-06-12T15:56:10Z",
+        "title_ja": "olmo-eval: モデル開発ループのための評価ワークベンチ",
+        "summary_ja": "AI2のオープンモデル開発で使う評価基盤を公開。モデル開発の評価サイクルを回しやすくする。"
+      },
+      {
+        "title": "New OpenAI Academy courses for the next era of work",
+        "url": "https://openai.com/index/academy-courses-applying-ai-at-work",
+        "source": "OpenAI",
+        "summary": "OpenAI introduces three Academy courses that help people build practical AI skills, create repeatable workflows, and apply agents in everyday work.",
+        "published": "2026-06-12T10:00:00Z",
+        "title_ja": "次世代の働き方に向けたOpenAI Academyの新講座",
+        "summary_ja": "OpenAIが提供する学習プログラムに、AI時代の働き方を学ぶ新コースを追加。"
+      },
+      {
+        "title": "How Preply combines AI and human tutors to personalize learning",
+        "url": "https://openai.com/index/preply",
+        "source": "OpenAI",
+        "summary": "Preply uses OpenAI to launch AI-generated lesson summaries, providing personalised feedback and language learning exercises.",
+        "published": "2026-06-12T00:00:00Z",
+        "title_ja": "Preplyが人とAIの講師を組み合わせて学習を個別最適化",
+        "summary_ja": "語学学習PreplyがAIと人間講師を併用し個別最適な学習体験を作る事例。"
+      },
+      {
+        "title": "Our new community investments in Virginia support local jobs and expand energy affordability.",
+        "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/virginia-community-investments/",
+        "source": "Google DeepMind",
+        "summary": "We’re helping build the state’s next-generation workforce and investing in energy programs.",
+        "published": "2026-06-11T20:00:00Z"
+      },
+      {
+        "title": "Supporting Europe’s work in ensuring a trustworthy AI ecosystem",
+        "url": "https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem",
+        "source": "OpenAI",
+        "summary": "OpenAI supports the EU Code of Practice on AI content transparency, advancing provenance standards and tools to help people understand AI-generated content.",
+        "published": "2026-06-11T00:00:00Z",
+        "title_ja": "信頼できるAIエコシステムに向けた欧州支援",
+        "summary_ja": "OpenAIが欧州の信頼できるAI構築の取り組みを支援する方針を表明。"
+      },
+      {
+        "title": "BBVA puts AI at the core of banking with OpenAI",
+        "url": "https://openai.com/index/bbva",
+        "source": "OpenAI",
+        "summary": "Learn how BBVA scaled ChatGPT Enterprise to 100,000 employees and partnered with OpenAI to accelerate AI-powered banking transformation worldwide.",
+        "published": "2026-06-11T00:00:00Z",
+        "title_ja": "BBVAがOpenAIと組み銀行業務の中核にAIを据える",
+        "summary_ja": "スペインの大手銀行BBVAがOpenAIを使い、銀行業務の中核にAIを組み込む。"
+      },
+      {
+        "title": "OpenAI to acquire Ona",
+        "url": "https://openai.com/index/openai-to-acquire-ona",
+        "source": "OpenAI",
+        "summary": "OpenAI plans to acquire Ona to expand Codex with secure, persistent cloud environments, enabling long-running AI agents across enterprise workflows.",
+        "published": "2026-06-11T00:00:00Z",
+        "title_ja": "OpenAIがOnaを買収へ",
+        "summary_ja": "OpenAIがクラウド開発環境/コーディングエージェントのOna(旧Gitpod系)を買収。コーディングAI陣取り合戦の一手。"
+      },
+      {
+        "title": "How an astrophysicist uses Codex to help simulate black holes",
+        "url": "https://openai.com/index/using-codex-to-simulate-black-holes",
+        "source": "OpenAI",
+        "summary": "Discover how astrophysicist Chi-kwan Chan uses Codex to build black hole simulations, helping scientists study extreme physics and test Einstein’s theory of general relativity.",
+        "published": "2026-06-11T00:00:00Z",
+        "title_ja": "天体物理学者がCodexでブラックホール計算を支援",
+        "summary_ja": "天体物理学者がCodexを使いブラックホールのシミュレーションコードを書く事例。"
+      },
+      {
+        "title": "Profiling in PyTorch (Part 2): From nn.Linear to a Fused MLP",
+        "url": "https://huggingface.co/blog/torch-mlp-fusion",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-06-11T00:00:00Z",
+        "title_ja": "PyTorchプロファイリング(後編): nn.Linearから融合MLPへ",
+        "summary_ja": "nn.Linearを融合MLPへ最適化する過程をプロファイリングで追うHugging Faceの技術解説。"
+      },
+      {
+        "title": "Access OpenAI models and Codex through your Oracle cloud commitment",
+        "url": "https://openai.com/index/openai-on-oracle-cloud",
+        "source": "OpenAI",
+        "summary": "Access OpenAI models and Codex through Oracle Cloud, using existing commitments to build and deploy AI with enterprise security and governance.",
+        "published": "2026-06-10T20:00:00Z",
+        "title_ja": "OracleクラウドのコミットでOpenAIモデルとCodexを利用可能に",
+        "summary_ja": "Oracle Cloudの契約枠からOpenAIモデルやCodexを使えるようにする提携。"
+      },
+      {
+        "title": "PRC-linked influence operations are targeting AI debates in the US",
+        "url": "https://openai.com/index/prc-linked-influence-operations-ai-debates",
+        "source": "OpenAI",
+        "summary": "A new report from OpenAI details PRC-linked influence operations using AI to target U.S. tech debates, data center narratives, tariffs, and false claims  about ChatGPT.",
+        "published": "2026-06-10T12:00:00Z",
+        "title_ja": "中国系の影響工作が米国のAI議論を標的に",
+        "summary_ja": "OpenAIが、中国に関連する影響工作が米国内のAI政策論議を標的にしていると報告。"
+      },
+      {
+        "title": "From data to decisions: how LSEG is scaling trusted AI",
+        "url": "https://openai.com/index/lseg",
+        "source": "OpenAI",
+        "summary": "See how LSEG uses OpenAI to scale trusted AI across its global business, accelerating insights, shrinking release cycles, and empowering 4,000 employees.",
+        "published": "2026-06-10T00:00:00Z",
+        "title_ja": "データから意思決定へ: LSEGの信頼できるAIスケール",
+        "summary_ja": "ロンドン証券取引所グループ(LSEG)が信頼できるAIを業務規模で展開する事例。"
+      },
+      {
+        "title": "Introducing North Mini Code: Cohere’s First Model For Developers",
+        "url": "https://huggingface.co/blog/CohereLabs/introducing-north-mini-code",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-06-09T15:56:23Z",
+        "title_ja": "North Mini Code: Cohere初の開発者向けモデル",
+        "summary_ja": "Cohereが開発者向けの初コーディングモデルNorth Mini Codeを発表。"
+      },
+      {
+        "title": "How engineers at Nextdoor use Codex to build without limits",
+        "url": "https://openai.com/index/nextdoor",
+        "source": "OpenAI",
+        "summary": "How engineers at Nextdoor use Codex with GPT-5.5 to investigate hard-to-reproduce issues, build across platforms, and focus on product outcomes.",
+        "published": "2026-06-09T12:00:00Z",
+        "title_ja": "NextdoorのエンジニアがCodexで開発を加速",
+        "summary_ja": "地域SNS NextdoorがCodexを使って開発スピードを上げる事例。"
+      },
+      {
+        "title": "How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces",
+        "url": "https://huggingface.co/blog/mishig/spaces-agents-md",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-06-09T10:46:19Z",
+        "title_ja": "エージェントが2つのHF Spacesを連結し3Dパリ画廊を構築",
+        "summary_ja": "AIエージェントがHugging Faceの2つのSpaceを連鎖させ、3Dのパリの画廊を自動生成した事例。"
+      },
+      {
+        "title": "Migrating Your GitHub CI to Hugging Face Jobs",
+        "url": "https://huggingface.co/blog/github-ci-hf-jobs",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-06-09T00:00:00Z",
+        "title_ja": "GitHub CIをHugging Face Jobsへ移行する",
+        "summary_ja": "GitHub ActionsのCIをHugging Face Jobsへ移す方法を解説。GPUジョブを安価に回す狙い。"
+      },
+      {
+        "title": "The Open Source Community is backing OpenEnv for Agentic RL",
+        "url": "https://huggingface.co/blog/openenv-agentic-rl",
+        "source": "Hugging Face",
+        "summary": "",
+        "published": "2026-06-08T00:00:00Z",
+        "title_ja": "OSSコミュニティがエージェント的RLの標準OpenEnvを支持",
+        "summary_ja": "エージェント強化学習のための共通環境規格OpenEnvに、OSSコミュニティが集まりつつある。"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "source": "Hacker News",
+      "title": "US government directive forces Anthropic to suspend Fable 5 and Mythos 5",
+      "title_ja": "米政府の指令でAnthropicがFable 5とMythos 5を停止",
+      "url": "https://www.anthropic.com/news/fable-mythos-access",
+      "hot_take_ja": "最先端AIモデルが一夜で政府指令により止まるという、これまで誰も本気で備えていなかった事態が現実になった。しかもWSJによれば引き金はAmazon CEOと米当局の会談。AI覇権が安全保障と巨大企業の政治力の交点で動き始めた象徴的な日だ。",
+      "detail_ja": "AnthropicはHackerNewsで3000票超を集めた公式声明で、米政府の指令を受けて最上位モデルClaude Fable 5とMythos 5へのアクセスを停止したと発表した。ステータスページにも提供停止インシデントとして掲載され、開発者向けXアカウントからも告知が出た。WSJの続報によれば、この取り締まりの引き金になったのはAmazon CEOと米政府高官の協議だったとされ、商業的・地政学的な思惑が政策判断に影響した構図が浮かぶ。停止理由の詳細は限定的だが、フロンティアモデルが国家安全保障や輸出管理に類する枠組みで規制対象になりうることを実地で示した初の大型事例といえる。利用者にとっては、特定ベンダーの最先端モデルに依存することのサプライチェーンリスクが現実の運用停止として顕在化した。同日HN2位に『オープンソースAIは勝たねばならない』が、関連してGLM 5.2など中国系オープンモデルの話題も急浮上しており、クローズドモデルの政治的脆弱性への反動が起きている。AI企業間の競争が、性能だけでなくロビイングと規制を巡る政治戦に移行しつつあることを示す。今後は他社モデルへの波及や、停止の法的根拠・期間が焦点になる。",
+      "detail_en": "In an official statement that topped Hacker News with over 3,000 points, Anthropic announced it had suspended access to its top models Claude Fable 5 and Mythos 5 in response to a US government directive. The suspension also appeared as an incident on Anthropic's status page and was announced via the developer-facing X account. A follow-up Wall Street Journal report says the crackdown was triggered by talks between Amazon's CEO and US officials, suggesting commercial and geopolitical interests shaped the policy move. Details on the rationale remain limited, but this is the first large-scale, real-world case showing that frontier models can become targets of national-security- or export-control-style regulation. For users, the supply-chain risk of depending on a single vendor's frontier model has materialized as an actual operational outage. The same day, 'Open source AI must win' hit #2 on HN, and Chinese open models like GLM 5.2 surged in attention — a clear backlash against the political fragility of closed models. It signals that competition among AI labs is shifting from pure capability toward a political battle over lobbying and regulation. Going forward, the focus will be whether this spreads to other vendors, and the legal basis and duration of the suspension.",
+      "key_points_ja": [
+        "Anthropicが米政府指令でFable 5/Mythos 5を停止",
+        "HN首位3000票超、ステータスページにも掲載",
+        "WSJ: 引き金はAmazon CEOと米当局の会談",
+        "フロンティアモデルが規制対象になった初の大型事例",
+        "単一ベンダー依存のサプライチェーンリスクが顕在化",
+        "オープンモデル(GLM 5.2等)への注目が急上昇"
+      ],
+      "key_points_en": [
+        "Anthropic suspends Fable 5/Mythos 5 on US directive",
+        "Topped HN (3000+); also a status-page incident",
+        "WSJ: triggered by Amazon CEO's talks with officials",
+        "First major case of a frontier model being regulated",
+        "Single-vendor supply-chain risk becomes real outage",
+        "Surge of interest in open models like GLM 5.2"
+      ]
+    },
+    {
+      "source": "Hacker News",
+      "title": "Open source AI must win",
+      "title_ja": "オープンソースAIは勝たねばならない",
+      "url": "https://opensourceaimustwin.com/?share=v2",
+      "hot_take_ja": "フロンティアモデルが政府指令で一夜にして止まる——その同じ日に『オープンソースAIは勝たねばならない』がHN2位に駆け上がった。これは偶然ではない。クローズドモデルの政治的な単一障害点を見せつけられたコミュニティの、リアルタイムの反射神経だ。",
+      "detail_ja": "『Open source AI must win』は、オープンソースAIの優位を訴えるキャンペーンサイトで、Fable 5/Mythos 5停止のニュースと同日にHN2位へ急浮上した。主張の核心は、最先端AIが特定企業のクローズドな管理下にあると、政府指令や商業的圧力で一瞬にして利用不能になり得るというリスクだ。実際この日、Anthropicの最上位モデルが停止し、その脆弱性が衆目に晒された。これに対し、重みが公開され誰でもホスト・改変できるオープンモデルは、単一ベンダーや単一政府の判断で消えることがない、という耐検閲性・継続性が改めて評価された。同日、中国の智譜AIのGLM 5.2がHN上位に入り、オープン/準オープンモデルの実力が伸びている現状も追い風になっている。一方で、オープンモデルにも安全性・悪用・資金持続性の課題はあり、『勝てばよい』という単純化への批判もある。それでも、AIインフラを公共財として分散管理すべきだという議論が、抽象論ではなく具体的な運用停止を背景に語られるようになった点が重要だ。今回の騒動は、モデルの選定基準に『政治的・規制的レジリエンス』という新しい軸を加えた。",
+      "detail_en": "'Open source AI must win' is a campaign site arguing for the primacy of open-source AI, and it surged to #2 on Hacker News the same day as the Fable 5/Mythos 5 suspension. Its core argument: when frontier AI sits under a single company's closed control, it can become unavailable in an instant due to a government directive or commercial pressure. That very day, Anthropic's top models were suspended, putting exactly this fragility on public display. By contrast, open models — with published weights that anyone can host and modify — cannot be erased by the decision of a single vendor or government, renewing appreciation for their censorship-resistance and continuity. The same day, Zhipu AI's GLM 5.2 ranked highly on HN, and the rising capability of open and semi-open models adds tailwind. That said, open models face their own challenges around safety, misuse, and funding sustainability, and there is criticism of the simplistic 'just win' framing. Still, what matters is that the argument for treating AI infrastructure as a decentralized public good is now being made against the backdrop of a concrete outage, not in the abstract. The episode adds a new axis — political and regulatory resilience — to how people choose models.",
+      "key_points_ja": [
+        "Fable停止と同日にHN2位へ急浮上",
+        "クローズドモデルの政治的単一障害点を問題視",
+        "公開重みは単一の判断で消えない耐検閲性",
+        "GLM 5.2などオープンモデルの実力向上が追い風",
+        "安全性・資金持続性など反論も存在",
+        "『規制レジリエンス』がモデル選定の新基準に"
+      ],
+      "key_points_en": [
+        "Surged to #2 on HN the day Fable was suspended",
+        "Frames closed models as a political single point of failure",
+        "Open weights can't be erased by one actor's decision",
+        "Rising open models (GLM 5.2) add momentum",
+        "Counterpoints: safety, funding sustainability",
+        "Adds 'regulatory resilience' as a model-choice criterion"
+      ]
+    },
+    {
+      "source": "Hacker News",
+      "title": "Police officer investigated for using AI to 'create evidence' in multiple cases",
+      "title_ja": "AIで『証拠を捏造』した疑いで警察官を捜査",
+      "url": "https://news.sky.com/story/derbyshire-police-officer-investigated-for-using-ai-to-create-evidence-13553661",
+      "hot_take_ja": "生成AIの悪用が、ついに刑事司法の根幹に届いた。英国の警察官が複数の事件でAIを使い『証拠』を作っていた疑いで捜査されている。冤罪を生みかねないこの種の事案は、ディープフェイク時代の証拠の信頼性そのものを揺るがす。",
+      "detail_ja": "英ダービーシャー警察の警察官が、複数の事件で生成AIを使って証拠を捏造した疑いで捜査を受けているとSky Newsが報じた。詳細な手口は公表されていないが、AIで文書・画像・記録などそれらしい証拠物を生成していた可能性が指摘されている。これが事実なら、捜査機関の内部者がAIを悪用して司法手続きを歪めた重大な事案であり、過去の有罪判決の見直しや冤罪の懸念にも直結する。生成AIはテキスト・画像・音声を容易に本物らしく作れるため、証拠の真正性をどう担保するかが法廷の喫緊の課題になっている。具体的には、デジタル証拠の来歴(プロビナンス)管理、生成物検知、チェーン・オブ・カストディの厳格化などが求められる。今回の件は、AIの脅威が『誤情報の拡散』という社会全体の話だけでなく、個人の自由を左右する刑事手続きという最も重い局面に及び始めたことを示す。技術的な検知だけでなく、組織的な統制と説明責任が問われる。AIリテラシーと不正抑止の仕組みを、捜査・司法の現場にどう実装するかが今後の論点になる。",
+      "detail_en": "Sky News reports that a Derbyshire police officer in the UK is under investigation for allegedly using generative AI to fabricate evidence across multiple cases. The exact method has not been disclosed, but it is suggested the officer may have generated plausible-looking evidentiary materials — documents, images, or records — with AI. If true, this is a serious case of an insider in law enforcement abusing AI to distort judicial proceedings, with direct implications for reviewing past convictions and the risk of wrongful conviction. Because generative AI can easily make text, images, and audio look authentic, ensuring the authenticity of evidence has become an urgent challenge for the courts. Concretely, this calls for digital-evidence provenance management, generated-content detection, and stricter chain-of-custody. The case shows that the AI threat is reaching beyond society-wide 'misinformation' into the heaviest arena of all — criminal procedure, where individual liberty is at stake. Beyond technical detection, organizational controls and accountability are being tested. How to implement AI literacy and fraud-deterrence mechanisms in investigative and judicial settings will be a key issue going forward.",
+      "key_points_ja": [
+        "英警察官が複数事件でAI証拠捏造の疑い",
+        "事実なら過去判決の見直し・冤罪リスクに直結",
+        "生成AIで証拠物を本物らしく作れる脅威",
+        "証拠の来歴管理・生成物検知が急務",
+        "誤情報拡散を超え刑事司法の中枢に到達",
+        "技術検知だけでなく組織的統制と説明責任が必要"
+      ],
+      "key_points_en": [
+        "UK officer suspected of fabricating AI evidence",
+        "If true, risks wrongful convictions and case reviews",
+        "GenAI can make evidence look authentic",
+        "Urgent need for provenance and detection",
+        "AI threat reaches the core of criminal justice",
+        "Needs organizational control, not just detection"
+      ]
+    },
+    {
+      "source": "Hacker News",
+      "title": "GLM 5.2 Is Out",
+      "title_ja": "GLM 5.2 がリリース",
+      "url": "https://twitter.com/jietang/status/2065784751345287314",
+      "hot_take_ja": "西側のフロンティアモデルが政府指令で止まったまさにその日に、中国・智譜AIがGLM 5.2を出してきた。タイミングが全てを物語る。クローズド最先端が政治で揺らぐほど、オープン/中国系モデルの戦略的価値は上がる。",
+      "detail_ja": "智譜AI(Zhipu AI)のGLM 5.2が、GLM創設者Jie Tang氏らのXポストでリリース告知された。GLMシリーズは中国発の大規模言語モデル群で、近年は性能・効率の両面で急速に追い上げ、オープン/準オープンの選択肢として世界的に存在感を増している。今回のリリースが注目される最大の理由はタイミングだ。同日、AnthropicのFable 5/Mythos 5が米政府指令で停止し、『オープンソースAIは勝たねばならない』がHN2位に浮上するなど、クローズドな西側フロンティアモデルの政治的脆弱性が露わになった。その文脈でGLM 5.2は、ベンダーや単一政府の判断に左右されにくい代替肢として相対的な魅力を増す。性能の詳細なベンチマークは精査が必要だが、コーディングや推論で上位西側モデルに迫る水準を主張するケースが続いており、価格・自前ホスト可能性の面でも実利が大きい。一方で、データ統制や輸出・利用規制、信頼性検証といった課題も残る。いずれにせよ、AIの競争軸が単なる性能から『供給の安定性・地政学的中立性』へと広がりつつある今、GLM 5.2の登場はオープン陣営の追い風として象徴的だ。",
+      "detail_en": "Zhipu AI's GLM 5.2 was announced via an X post from GLM founder Jie Tang and colleagues. The GLM series is a family of large language models from China that has rapidly closed the gap in both capability and efficiency, growing into a globally significant open/semi-open option. The biggest reason this release drew attention is timing. The same day, Anthropic's Fable 5/Mythos 5 were suspended under a US government directive, and 'Open source AI must win' rose to #2 on HN — laying bare the political fragility of closed Western frontier models. In that context, GLM 5.2 gains relative appeal as an alternative less subject to the decisions of a single vendor or government. Detailed benchmarks warrant scrutiny, but recent GLM releases have claimed performance approaching top Western models on coding and reasoning, with practical advantages in price and self-hosting. At the same time, challenges remain around data governance, export/usage restrictions, and trust verification. Either way, as the axis of AI competition broadens from raw capability toward 'supply stability and geopolitical neutrality,' GLM 5.2's arrival is a symbolic tailwind for the open camp.",
+      "key_points_ja": [
+        "中国・智譜AIがGLM 5.2をリリース",
+        "Fable停止と同日という象徴的タイミング",
+        "性能・効率で西側上位モデルに迫ると主張",
+        "自前ホスト可・価格面の実利が大きい",
+        "供給安定性・地政学的中立性が新たな価値軸",
+        "データ統制・信頼性検証など課題も残る"
+      ],
+      "key_points_en": [
+        "Zhipu AI releases GLM 5.2",
+        "Symbolic timing — same day as Fable suspension",
+        "Claims capability nearing top Western models",
+        "Self-hostable, with real cost advantages",
+        "Supply stability and neutrality as new value axes",
+        "Open challenges: governance and trust verification"
+      ]
+    },
+    {
+      "source": "arXiv",
+      "title": "Before You Think: System 0, AI-Mediated Cognition and Cognitive Colonization",
+      "title_ja": "Before You Think: System 0とAI媒介認知、そして『認知の植民地化』",
+      "url": "https://arxiv.org/abs/2606.13658v1",
+      "hot_take_ja": "私たちは『考える前』にすでにAIに考えさせられているのかもしれない。この論文は、AIが思考の前段(System 0)に入り込み、外部の利害を本人に気づかれぬまま自己の中に埋め込む『認知の植民地化』を警告する。検索とレコメンドに慣れた私たち全員に刺さる視点だ。",
+      "detail_ja": "本論文は、AIが人間の認知に及ぼす影響を捉える3つの枠組み——Tri-System理論、Thinkframes、System 0——を比較検討する。著者は、前者2つが個人の推論や集団的な知の営みへの影響をよく捉える一方で、System 0が他の枠組みでは置き換えられない独自の位置を占めると論じる。System 0とは、人間のSystem 1(直感)/System 2(熟考)に先立ち、AIが情報の取捨選択や問題設定そのものを下支えする『思考の前段』を指す。ここで提示される中心概念が『認知の植民地化(cognitive colonization)』だ。これは、AIシステムが外部(企業や国家など)の利害を、ユーザー本人には知覚しにくい形で自己の認知構造の内側に埋め込んでしまう現象を指す。検索結果、レコメンド、要約、デフォルトの言い回しなどを通じて、何を考えるに値する問いとみなすかが静かに方向づけられる、という危惧だ。こうしたシステムはすでに広く展開されているため、目に見えにくいこの影響を理解することが急務だと著者は主張する。技術的というより思想・倫理的な論考だが、生成AIが日常の意思決定インフラになった現在、設計者にもユーザーにも重い問いを投げかける。透明性、選択肢の多様性、AIに依存しない思考の余地をどう確保するかが論点になる。",
+      "detail_en": "This paper compares three frameworks for understanding AI's effect on human cognition — Tri-System Theory, Thinkframes, and System 0. The author argues that while the first two capture important dimensions of AI's influence on individual reasoning and collective epistemic practices, System 0 occupies a distinctive position the others cannot replicate. System 0 refers to a 'pre-thought' layer that precedes human System 1 (intuition) and System 2 (deliberation), where AI quietly underwrites the filtering of information and even the framing of problems. The central concept introduced is 'cognitive colonization': the phenomenon whereby AI systems embed external interests (corporate, governmental, etc.) within the architecture of the self in ways users find hard to perceive. Through search results, recommendations, summaries, and default phrasings, what counts as a question worth thinking about is subtly steered. Because such systems are already widely deployed, the author argues that understanding these invisible influences is urgent. More philosophical and ethical than technical, the work poses a heavy question now that generative AI has become everyday decision-making infrastructure. The key issues become transparency, diversity of options, and preserving room for thought that does not depend on AI.",
+      "key_points_ja": [
+        "AIが思考の前段『System 0』に入り込むと論じる",
+        "Tri-System理論・Thinkframesと比較し独自性を主張",
+        "中心概念は『認知の植民地化』",
+        "外部の利害が自己の認知構造に埋め込まれる",
+        "検索・推薦・要約が問いの立て方を静かに方向づける",
+        "透明性とAI非依存の思考余地の確保が論点"
+      ],
+      "key_points_en": [
+        "Argues AI enters a 'System 0' pre-thought layer",
+        "Contrasts with Tri-System Theory and Thinkframes",
+        "Introduces 'cognitive colonization'",
+        "External interests embedded in the architecture of self",
+        "Search/recs/summaries quietly frame our questions",
+        "Calls for transparency and AI-independent thought"
+      ]
+    }
+  ],
+  "stats": {
+    "arxiv_count": 50,
+    "hn_count": 20,
+    "reddit_count": 0,
+    "github_count": 10,
+    "blogs_count": 17,
+    "total": 97
+  }
+}
