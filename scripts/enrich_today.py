@@ -1,345 +1,314 @@
 #!/usr/bin/env python3
-"""Enrich raw-2026-06-14.json with Japanese/English summaries and highlights."""
+"""Enrich raw-2026-06-15.json with Japanese/English summaries + highlights."""
 import json
 from pathlib import Path
 
-DATE = "2026-06-14"
-ROOT = Path(__file__).resolve().parent.parent
-raw = json.loads((ROOT / f"data/raw-{DATE}.json").read_text())
+DATE = "2026-06-15"
+data_dir = Path(__file__).resolve().parent.parent / "data"
+raw = json.load(open(data_dir / f"raw-{DATE}.json", encoding="utf-8"))
+s = raw["sources"]
 
 # ---- arXiv (top 25) ----
-arxiv_enrich = {
-    0: ("EvoArena: 動的環境でのLLMエージェントの記憶進化を追跡", "環境が段階的に変化する状況でエージェントを評価するベンチマーク。記憶を構造化された更新履歴として記録するパッチ型メモリ(EvoMem)を提案し、環境進化への適応力を測る。"),
-    1: ("検索拡張RL微調整で類推による推論を学習", "過去の類似問題を検索して強化学習の微調整に活かすことで、LLMが「類推」によって新しい問題を解く能力を高める手法。"),
-    2: ("InterleaveThinker: エージェント的な思考と生成の交互実行を強化", "思考(reasoning)と行動/生成を交互に挟み込むエージェントを強化学習で訓練。長い対話やタスクで思考と出力をうまく織り交ぜる。"),
-    3: ("Mana: 関節を持つ道具の器用な操作", "ハサミやペンチのように関節のある道具をロボットハンドで器用に扱うための学習手法。"),
-    4: ("フロー反転ステアリングでロボット汎用方策を改善", "拡散/フローモデルの生成過程を逆向きに誘導することで、ロボットの汎用方策の性能を底上げする。"),
-    5: ("Modality Forcing: スケーラブルな空間生成", "複数モダリティを強制的に整合させることで、大規模な3D空間生成を安定・高品質化するアプローチ。"),
-    6: ("RepWAM: 表現的な視覚-行動トークナイザによる世界行動モデリング", "視覚と行動を共通トークンで表現し、世界モデルと行動予測を統合的に学習する枠組み。"),
-    7: ("SpatialClaw: エージェント的空間推論の行動インタフェースを再考", "空間推論をするエージェントが環境とやり取りする「行動の出し方」を見直し、より効果的な操作インタフェースを設計。"),
-    8: ("WEAVER: ロボット操作のための効果的な世界モデル", "より良く・速く・長く予測できるロボット操作用の世界モデル。長期の操作タスクで精度と効率を両立。"),
-    9: ("グラフニューラルネットの切詰め位置エンコーディングを理解する", "GNNにおける位置エンコーディングを途中で切り詰める手法の効果と理論的性質を分析。"),
-    10: ("大規模言語モデルによる社会・行動科学の再現性自動評価", "LLMを使って社会・行動科学の論文の再現性を自動でチェックする試み。査読・メタサイエンスの自動化に向けた一歩。"),
-    11: ("Agents-K1: エージェントネイティブな知識オーケストレーション", "論文を要約や引用関係に縮約せず、実体・主張・証拠・手法系譜まで含む知識グラフに変換し、科学的推論を支援するパイプライン。"),
-    12: ("Influcoder: デコーダの勾配影響ランキングをエンコーダに蒸留", "どの訓練データが出力に効いたか(データ帰属)を、重いデコーダ計算から軽いエンコーダへ蒸留して高速化。"),
-    13: ("HyperTool: 段階的なツール呼び出しを超えるツール拡張エージェント", "一手ずつのツール呼び出しに留まらず、より大局的にツール群を計画・活用するエージェント設計。"),
-    14: ("EurekAgent: 自律的科学発見にはエージェント環境工学こそ重要", "自律科学発見のボトルネックはワークフロー設計から「環境設計」へ移ったと主張。探索や成果物管理を促す環境を作ることが鍵だとする。"),
-    15: ("Before You Think: System 0とAI媒介認知、認知の植民地化", "AIが思考の「前段(System 0)」として無意識に人の認知へ入り込み、外部の利害を自己の内部に埋め込む「認知の植民地化」を起こしうると論じる思想的論文。"),
-    16: ("密な教師信号・疎な更新: オンポリシー蒸留のスパース性と幾何", "オンポリシー蒸留による重み更新は小さく座標的に疎で、FFN偏重。発見された部分ネットだけ訓練しても性能をほぼ再現できると示す。"),
-    17: ("Flex4DHuman: 4D人体再構成のための柔軟な多視点動画拡散", "複数視点の動画から動く人体を4D(3D+時間)で再構成する拡散モデル。"),
-    18: ("World Tracing: 見えない部分まで含む生成的ピクセル整合幾何", "画像から、見えていない領域まで含めて3D幾何を生成的に補完する手法。"),
-    19: ("オペラド的整合性: ラベル不要でLLMの合成的推論失敗を検知", "問いを分解して合成した答えと、直接の答えが一致するかを見る指標(OC)。正解ラベルなしで多段推論の失敗を検知できる。"),
-    20: ("SkMTEB: スロバキア語の大規模テキスト埋め込みベンチマーク", "スロバキア語向けの埋め込み評価ベンチマークとモデル適応手法。低資源言語のNLP整備。"),
-    21: ("Surflo: 大域状態を持つ一貫した3D表面フローモデル", "3D表面上の流れを大域的な状態と整合させて一貫してモデル化する手法。"),
-    22: ("Recursive Agent Harnesses: 再帰的エージェントハーネス", "親エージェントが実行可能なスクリプトを生成し、ファイル操作やコード実行を持つ「フルなサブエージェント」を並列に再帰生成するパターンを定式化(Anthropicの動的ワークフローが実例)。"),
-    23: ("安定回復多様体: 継続学習における回復可能性を司る幾何原理", "継続学習でモデルが性能を回復できる条件を、パラメータ空間の幾何的構造から説明する。"),
-    24: ("LLMの合成的推論のためのオペラド理論", "反復的な置換で系を組み立てるオペラド理論を、LLMの合成的推論の形式的枠組みとして導入。"),
+arxiv = {
+0: ("EvoArena: 動的環境でのLLMエージェントの記憶進化を追跡",
+    "環境が段階的に変化する状況でエージェントを評価するベンチマーク。記憶を構造化された更新履歴として記録し、環境進化への適応力を測る。静的評価では見えない「知識の陳腐化」への頑健性を可視化する。"),
+1: ("類推による推論をRAG型強化ファインチューニングで学習",
+    "意味的に似た問題が必ずしも同じ解法を必要としない点に着目し、解法戦略の類似性で事例を検索して強化学習する手法。表層が違っても解き方が共通する問題から学べるようにする。"),
+2: ("InterleaveThinker: テキストと画像を交互生成する強化学習",
+    "単一画像生成しかできない既存モデルの制約を超え、テキストと画像を交互に出力する「インターリーブ生成」を強化学習で実現。視覚的ナラティブや手順説明、身体性タスクへの応用を狙う。"),
+3: ("Mana: 関節を持つ道具の器用な操作",
+    "ハサミやペンチのように内部に可動関節を持つ道具を、接触の多い操作で扱うロボット学習。剛体に偏っていた従来研究を関節付き道具へ拡張し、機能的な使い方を学習する。"),
+4: ("Flow Reversal Steeringでロボット汎用方策を改善",
+    "フローマッチング型の汎用ロボット方策から、直接指令では失敗する難タスクの適切な行動を逆向きに推論して引き出す手法。事前学習した豊かな行動分布を有効活用する。"),
+5: ("Modality Forcing: スケーラブルな空間生成",
+    "テキスト→画像モデルが内部に持つ幾何・遠近・スケールの事前知識を活用し、密な深度データなしで奥行き予測や乱雑なシーン生成を行う簡潔な手法。"),
+6: ("RepWAM: 表現中心の世界行動モデル",
+    "従来の世界モデルが流用する再構成志向の動画トークナイザを脱し、行動予測に有用な表現を学ぶ視覚-行動トークナイザを提案。見た目の忠実度より制御に役立つ表現を重視する。"),
+7: ("SpatialClaw: 空間推論エージェントの行動インターフェース再考",
+    "VLMの空間推論を補強するツール拡張で、ボトルネックは知覚モジュールよりも『行動インターフェース』にあると指摘。3Dでの位置・関係・動きの推論を改善する新たな操作設計。"),
+8: ("WEAVER: ロボット操作のための高性能世界モデル",
+    "方策評価・改善・計画を少ない実機操作で可能にする世界モデル。忠実度・長期一貫性・速度を同時に満たすことを目指し、シミュレータとしての実用性を高める。"),
+9: ("グラフニューラルネット向け切り捨て位置エンコーディングの理解",
+    "スペクトル系と歩行(walk)系の位置エンコーディングは理論上等価だが、次数を切り捨てた際の表現力差を分析。GNN設計での実用的な選択指針を与える。"),
+10: ("LLMで社会・行動科学の再現性評価を自動化",
+    "本来は別の研究者が元データを再分析して行う再現性検証を、LLMが自動化できることを示す。コストが高くスケールしない検証作業を肩代わりする可能性を提示。"),
+11: ("Agents-K1: エージェントネイティブな知識オーケストレーション",
+    "論文を要約と引用エッジに還元してしまう既存研究の限界を超え、エンティティ・主張・証拠・手法系譜まで構造化して科学推論に使う知識編成フレームワーク。"),
+12: ("Influcoder: デコーダの勾配影響ランキングをエンコーダに蒸留",
+    "学習データの各サンプルが出力に与える影響(データ帰属)を、重いデコーダ計算からエンコーダへ蒸留して高速に推定。高品質データ選別の効率化を狙う。"),
+13: ("HyperTool: ステップ単位を超えたツール拡張エージェント",
+    "原子的なツール呼び出しを毎回推論トレースに展開すると文脈を浪費する問題に対し、決定論的なツールワークフローをまとめて扱い実行粒度の不整合を解消する。"),
+14: ("EurekAgent: 自律的科学発見にはエージェント環境設計が全て",
+    "最適化指標と実行環境を与えればエージェントは仮説提案・検証・反復ができるが、真のボトルネックは『環境エンジニアリング』だと主張。環境設計を自動化する。"),
+15: ("Before You Think: System 0とAIによる『認知の植民地化』",
+    "AIが思考の『前段(System 0)』として無意識に判断を方向づけ、外部の利害を自己の認知構造に埋め込む『認知の植民地化』を論じる。すでに広く使われている点で危険だと警告する哲学・認知科学論文。"),
+16: ("密な教師・疎な更新: On-policy蒸留の幾何とスパース性",
+    "オンポリシー生徒軌跡と密な教師信号を組み合わせる蒸留が、モデルのパラメータをどう変えるかを分析。更新が疎で特定の幾何構造を持つことを複数のモデル対で示す。"),
+17: ("Flex4DHuman: 単眼動画から4D人体を再構成する多視点動画拡散",
+    "スケルトンや深度に頼らず、相対カメラ姿勢だけで単眼/疎な多視点動画を同期した密な多視点動画に変換し4D人体を再構成する拡散モデル。"),
+18: ("World Tracing: 見えない領域まで生成するピクセル整合な3D幾何",
+    "深度推定は入力ピクセルに忠実だが可視面で止まり、画像→3Dは完全だが位置ずれする——両者の弱点を、ピクセル整合のまま不可視部分も生成する表現で解消する。"),
+19: ("Operadic consistency: 合成推論の失敗を検知するラベル不要の信号",
+    "正解ラベルなしでLLMの推論失敗を見抜く新手法。オペラッド理論(反復代入の数学)に基づき、自己一貫性やエントロピーとは別軸の合成的な整合性を測る。"),
+20: ("SkMTEB: スロバキア語の大規模テキスト埋め込みベンチマーク",
+    "低資源の西スラブ語スロバキア語向けに初の包括的MTEB型ベンチを構築。31データセット・7タスクで31モデルを評価し、多言語モデルの実力を検証する。"),
+21: ("Surflo: 大域状態を持つ一貫した3D表面フローモデル",
+    "幾何は視点不変という性質を活かし、視点ごとにバラバラな点群を出す従来法を超えて、入力枚数に依存しない一貫した3D状態を復元する。"),
+22: ("Recursive Agent Harnesses(再帰的エージェントハーネス)",
+    "モデル呼び出しを再帰させる長文脈推論(RLM)と、サブエージェントを大量生成する実運用コーディングエージェント——Anthropicの動的ワークフローを含む両者に共通する『再帰的ハーネス』パターンを命名・分析する。"),
+23: ("安定回復多様体: 継続学習における回復可能性の幾何原理",
+    "破滅的忘却を『知識の破壊』ではなく回復可能性の幾何構造として捉え直す。Split CIFAR-100とResNet-18で、忘れた知識がどの程度回復可能かを解析。"),
+24: ("LLMの合成推論のためのオペラッド",
+    "複雑な質問を部分質問に分解して答えを合成する戦略に、厳密な数学的基盤がないという問題に対し、多入力1出力の操作をモデル化するオペラッドを導入する。"),
 }
 
-arxiv = raw["sources"]["arxiv"]
-for idx, (tja, sja) in arxiv_enrich.items():
-    arxiv[idx]["title_ja"] = tja
-    arxiv[idx]["summary_ja"] = sja
-
-# ---- Hacker News (all) ----
-hn_map = {
-    "Statement on US government directive to suspend access to Fable 5 and Mythos 5":
-        ("米政府指令によりFable 5とMythos 5へのアクセスを停止: Anthropic声明",
-         "Anthropicが米政府の指令を受け最上位モデルFable 5/Mythos 5の提供を停止したという衝撃的な公式声明。HN首位3000超の大注目。"),
-    "Open source AI must win":
-        ("オープンソースAIは勝たねばならない",
-         "クローズドな最先端モデルが政府指令で止められうる現実を背景に、オープンソースAIの重要性を訴えるキャンペーンサイト。"),
-    "Amazon CEO's talks with U.S. officials triggered crackdown on Anthropic models":
-        ("Amazon CEOと米当局の会談がAnthropicモデル規制の引き金に",
-         "WSJ報道。Amazon CEOの米政府高官との協議が、Anthropicモデルへの取り締まりを誘発したとされる。商業的思惑が政策に影響した構図。"),
-    "Pirates, a naval warfare game inspired by Sid Meier's Pirates":
-        ("Pirates: Sid Meier's Piratesに着想を得た海戦ゲーム",
-         "名作『Sid Meier's Pirates』に触発された個人開発の海戦ゲーム。"),
-    "GLM 5.2 Is Out":
-        ("GLM 5.2 がリリース",
-         "智譜AI(Zhipu)のGLM 5.2が登場。Fable停止騒動の最中、中国系オープンモデルの存在感が増す。"),
-    "WASI 0.3":
-        ("WASI 0.3",
-         "WebAssembly System Interfaceの新版0.3。非同期サポートなどでWASMのサーバサイド利用が前進。"),
-    "We've suspended access to Claude Mythos 5 and Claude Fable 5":
-        ("Claude Mythos 5とFable 5へのアクセスを停止: ステータスページ",
-         "Anthropicの公式ステータスページに掲載された提供停止インシデント。"),
-    "AI OSS tool repo goes archived over night after raising $7.3M Seed":
-        ("OSS AIツールのリポジトリが$7.3Mシード調達直後に一夜でアーカイブ化",
-         "TensorZeroが多額の資金調達後すぐリポジトリをアーカイブ。OSSと商業化の緊張を象徴する出来事として話題。"),
-    "AI coding at home without going broke":
-        ("破産せずに自宅でAIコーディングする",
-         "高額なAPI課金を避け、ローカル/低コストでAIコーディング環境を整える実践的ガイド。"),
-    "Slightly reducing the sloppiness of AI generated front end":
-        ("AI生成フロントエンドの「雑さ」を少し減らす",
-         "LLMが吐くフロントエンドコードの品質を改善する小ワザの紹介。"),
-    "Police officer investigated for using AI to 'create evidence' in multiple cases":
-        ("AIで「証拠を捏造」した疑いで警察官を捜査",
-         "英ダービーシャー警察の警官が複数事件でAIを使い証拠を作成した疑い。司法とAI悪用の深刻な事例。"),
-    "Shepherd's Dog: A Game by Fable":
-        ("Shepherd's Dog: Fableが作ったゲーム",
-         "AIモデルFableを使って作られたゲーム。"),
-    "A dumpster arrived behind my university's library":
-        ("大学図書館の裏にゴミ収集箱が届いた",
-         "図書館が蔵書を廃棄していた件を追う個人ブログ。AIとは無関係だがHN人気。"),
-    "Show HN: Paca – Lightweight Jira alternative for human-AI collaboration":
-        ("Show HN: Paca – 人とAIの協働向け軽量Jira代替",
-         "人間とAIエージェントが一緒に使うことを想定した軽量プロジェクト管理ツール。"),
-    "Where Did Earth Get Its Oceans? Maybe It Made Them Itself":
-        ("地球の海はどこから来たのか: 自前で作った可能性",
-         "海の起源を地球内部に求める地球科学の研究。AI無関係だがHN人気。"),
-    "/architect: Reduce Fable tokens by 80%, Fable orchestrates/reviews, Codex builds":
-        ("/architect: Fableトークンを80%削減、Fableが統括しCodexが実装",
-         "Fableに設計・レビューを任せ、実装はCodexに振ることでトークン消費を大幅削減するワークフロー。"),
-    "Mmorpg World of ClaudeCraft, vibe coded with Fable 5":
-        ("World of ClaudeCraft: Fable 5でバイブコーディングしたMMORPG",
-         "Fable 5を使って『雰囲気で』作られたブラウザMMORPG。AIコーディングのデモとして話題。"),
-    "As a result of a US Government directive, we are suspending access to Fable 5":
-        ("米政府指令の結果、Fable 5へのアクセスを停止します",
-         "ClaudeDevsのXポスト。開発者向けにFable 5停止を告知。"),
-    "Orthodox C++ (2016)":
-        ("Orthodox C++ (2016)",
-         "現代的すぎる機能を避け素直なC++を書く流儀『Orthodox C++』を説く2016年の記事が再浮上。"),
-    "PwC Report: AI Making Medical Bills Higher":
-        ("PwCレポート: AIが医療費を押し上げている",
-         "PwCの分析として、AI導入が医療コストを下げるどころか押し上げているとするFortune報道。"),
+# ---- HN ----
+hn = {
+0: ("AmazonのCEOが米当局と協議、Anthropicモデルへの規制を誘発(WSJ)",
+    "WSJ報道。Amazon CEOと米当局の協議が、Anthropicの最新モデル(Fable 5/Mythos 5)停止につながる規制強化の引き金になったとされる。大手クラウド事業者の政治的働きかけがAI規制を動かした構図が問題視されている。"),
+1: ("GLM 5.2 がリリース",
+    "智譜AI(Zhipu)がGLM 5.2を公開。中国製オープンウェイトモデルの最新版で、コーディングや推論性能の向上が注目されている。"),
+2: ("英警察官、複数事件でAIによる『証拠捏造』を捜査される",
+    "ダービーシャー州警察の警官が、AIを使って証拠を『作成』した疑いで複数事件にわたり捜査対象に。司法分野でのAI悪用という新たなリスクを浮き彫りにする。"),
+3: ("『みんながAIを何にでも使っている』は事実ではない",
+    "DuckDuckGo創業者Gabriel Weinbergによる反論。AI利用は一部ヘビーユーザーに偏り、多くの人は限定的にしか使っていないとデータで指摘。誇張された普及言説への冷や水。"),
+4: ("家でAIコーディングを破産せずに行う方法",
+    "ローカルやコスト効率の良い構成でAIコーディング環境を組む実践記事。高額なAPI課金に頼らず開発を回す工夫が支持を集めた。"),
+5: ("OSSツールのリポジトリ、$7.3Mシード調達後に一夜でアーカイブ化",
+    "TensorZeroが$7.3Mのシード資金調達後にリポジトリを突如アーカイブ。オープンソースと資金調達・商用化の緊張関係を象徴する出来事として議論に。"),
+6: ("リオデジャネイロの『自製』LLM、実は既存モデルのマージだった疑い",
+    "リオ市が誇る『国産』LLMが、既存モデルを統合(マージ)しただけではないかとGitHub上で指摘される。自前開発を装ったAIの真贋問題が話題に。"),
+7: ("Show HN: Paca — 人間とAIの協働向け軽量Jira代替",
+    "人間とAIエージェントが共同で作業する前提で設計された軽量プロジェクト管理ツール。AI時代のワークフローツールの方向性を示す。"),
+8: ("Show HN: Kage — 任意のサイトを単一バイナリ化してオフライン閲覧",
+    "任意のWebサイトを丸ごと単一バイナリに『影写し』してオフラインで閲覧できるツール。アーカイブやポータブル化の用途で注目。"),
+9: ("Linux 7.1 リリース",
+    "Linuxカーネル7.1がリリース。Torvaldsによるアナウンス。"),
+10: ("KPMG、ハルシネーションが原因でAI利用レポートを撤回",
+    "大手会計事務所KPMGが、AIで作成したとみられるレポートに虚偽情報(ハルシネーション)が見つかり撤回。AIを業務に使うコンサル自身がAIの欠陥に足をすくわれた皮肉な事例。"),
+11: ("Orthodox C++ (2016)",
+    "肥大化したモダンC++慣行に対し、シンプルで実用的なサブセットに絞る『正統派C++』を説く定番エッセイが再浮上。"),
+12: ("Claudeを化学者にする(Making Claude a Chemist)",
+    "Anthropicの研究記事。Claudeに化学の専門能力を持たせ、分子設計や反応予測などの科学タスクを支援させる取り組みを紹介する。"),
+13: ("PwCレポート: AIが医療費を押し上げている",
+    "PwCの分析で、AIの導入がむしろ医療費の上昇要因になっていると指摘。効率化が必ずしもコスト削減につながらない現実を示す。"),
+14: ("Metaの混迷するAI戦略(Wired)",
+    "Wired報道。社内メモなどから、ザッカーバーグ下でのMetaのAI戦略が一貫性を欠き混乱している様子が描かれる。"),
+15: ("Weave: 行ではなく言語構造に基づくマージ",
+    "テキストの行単位ではなく、言語の構文構造に基づいて差分をマージするツール。コード/文章のマージ衝突を減らすアプローチ。"),
+16: ("Intel Kira Boyko氏インタビュー: Xeon 6の製品ディレクター",
+    "Intelの新Xeon 6製品ディレクターへのインタビュー。サーバ向けCPU戦略やAIワークロード対応を語る。"),
+17: ("Show HN: 終了前のFableで80個のミニゲームを作った",
+    "サービス終了したFableを使って80本のミニゲームを制作したという作品集。短命だったモデルで何ができたかの記録として興味深い。"),
+18: ("Show HN: RK3588SのNPUでデュアルYOLOv8nのUAV検出を42FPS",
+    "エッジSoCのNPUを使い、ドローン検出をデュアルYOLOv8nで42FPS動作させた実装。省電力エッジ推論の好例。"),
+19: ("KPMGのAIレポートが、AIハルシネーションの実演に",
+    "撤回されたKPMGのAIレポートを巡る続報(The Register)。AI活用を喧伝する内容そのものがAIの捏造を露呈する結果になったと皮肉る。"),
 }
-for it in raw["sources"]["hn"]:
-    t = it.get("title", "")
-    if t in hn_map:
-        it["title_ja"], it["summary_ja"] = hn_map[t]
 
-# ---- GitHub (all) ----
-gh_map = {
-    "addyosmani/agent-skills": ("AIコーディングエージェント向けの実戦的スキル集",
-        "AIコーディングエージェントに与える『プロダクション品質のエンジニアリングスキル』を集めたリポジトリ。エージェント運用ノウハウへの関心の高さを反映。"),
-    "apple/container": ("Apple Silicon上で軽量VMによりLinuxコンテナを実行",
-        "Macの軽量仮想マシン上でLinuxコンテナを作成・実行するApple製ツール。DockerなしでネイティブにコンテナをMacで動かせる。"),
-    "obra/superpowers": ("動くエージェント的スキルフレームワーク&開発手法",
-        "AIエージェント向けのスキルフレームワークとソフトウェア開発方法論をまとめたプロジェクト。"),
-    "NVIDIA/SkillSpector": ("AIエージェントのスキルを検査するセキュリティスキャナ",
-        "NVIDIA製。AIエージェントの『スキル』に潜む脆弱性や悪意あるパターンを検出する。エージェントのサプライチェーン安全を狙う。"),
-    "iptv-org/iptv": ("世界中の公開IPTVチャンネル集",
-        "世界各国の公開IPTVチャンネルを集めた定番リポジトリ。AI無関係だが常連トレンド。"),
-    "LMCache/LMCache": ("LLMを高速化する最速KVキャッシュ層",
-        "LLM推論のKVキャッシュを効率化し、長文・反復処理を大幅高速化するライブラリ。"),
-    "kenn-io/agentsview": ("コーディングエージェント向けのローカル分析ツール",
-        "Claude Codeなどコーディングエージェントのセッションをローカルで解析・可視化するツール。"),
-    "andrewyng/aisuite": ("複数生成AIプロバイダへの統一インタフェース",
-        "Andrew Ng発。各社の生成AI APIを共通インタフェースで叩けるライブラリ。"),
-    "x1xhlol/system-prompts-and-models-of-ai-tools": ("主要AIツールのシステムプロンプト集",
-        "Cursor/Claude Code/Devinなど主要AIツールのシステムプロンプトとモデル情報を集めたリポジトリ。"),
-    "chatwoot/chatwoot": ("オープンソースのオムニチャネル顧客サポート基盤",
-        "Intercom/Zendeskの代替を目指すOSSのライブチャット・メールサポート基盤。"),
+# ---- GitHub ----
+github = {
+0: ("iptv-org/iptv — 世界中の公開IPTVチャンネル集",
+    "世界各国の公開IPTVチャンネルを集約したリスト。AIとは直接関係ないが今日のトレンド上位。"),
+1: ("NVIDIA/SkillSpector — AIエージェントのスキル用セキュリティスキャナ",
+    "NVIDIA製。AIエージェントの『スキル』に潜む脆弱性・悪意あるパターン・セキュリティリスクを検出するスキャナ。エージェント拡張の安全性が新たな関心事になっていることを示し、本日962スターを獲得。"),
+2: ("chatwoot/chatwoot — オープンソースの顧客対応プラットフォーム",
+    "Intercom/Zendesk代替のOSSライブチャット・メール・オムニチャネルサポート基盤。AI連携サポートでも人気。"),
+3: ("GorvGoyl/Clone-Wars — 人気サービスのOSSクローン集",
+    "Airbnb・Netflix・TikTokなど人気サイトの100以上のOSSクローンをソース・デモ・技術スタック付きでまとめたリスト。"),
+4: ("andrewyng/aisuite — 複数生成AIプロバイダの統一インターフェース",
+    "Andrew Ng氏らによる、複数の生成AIプロバイダをシンプルに統一APIで扱えるライブラリ。プロバイダ切り替えを容易にする。"),
 }
-for it in raw["sources"]["github"]:
-    fn = it.get("full_name", "")
-    if fn in gh_map:
-        it["title_ja"], it["summary_ja"] = gh_map[fn]
 
-# ---- Blogs (all) ----
-blog_map = {
-    "olmo-eval: An evaluation workbench for the model development loop":
-        ("olmo-eval: モデル開発ループのための評価ワークベンチ",
-         "AI2のオープンモデル開発で使う評価基盤を公開。モデル開発の評価サイクルを回しやすくする。"),
-    "New OpenAI Academy courses for the next era of work":
-        ("次世代の働き方に向けたOpenAI Academyの新講座",
-         "OpenAIが提供する学習プログラムに、AI時代の働き方を学ぶ新コースを追加。"),
-    "How Preply combines AI and human tutors to personalize learning":
-        ("Preplyが人とAIの講師を組み合わせて学習を個別最適化",
-         "語学学習PreplyがAIと人間講師を併用し個別最適な学習体験を作る事例。"),
-    "Our new community investments in Virginia support local jobs and expand energy affordability":
-        ("Googleがバージニアでデータセンター関連の地域投資",
-         "Google DeepMind/Googleがバージニア州で雇用とエネルギー負担軽減を支える地域投資を発表。AI電力需要の文脈。"),
-    "Supporting Europe’s work in ensuring a trustworthy AI ecosystem":
-        ("信頼できるAIエコシステムに向けた欧州支援",
-         "OpenAIが欧州の信頼できるAI構築の取り組みを支援する方針を表明。"),
-    "BBVA puts AI at the core of banking with OpenAI":
-        ("BBVAがOpenAIと組み銀行業務の中核にAIを据える",
-         "スペインの大手銀行BBVAがOpenAIを使い、銀行業務の中核にAIを組み込む。"),
-    "OpenAI to acquire Ona":
-        ("OpenAIがOnaを買収へ",
-         "OpenAIがクラウド開発環境/コーディングエージェントのOna(旧Gitpod系)を買収。コーディングAI陣取り合戦の一手。"),
-    "How an astrophysicist uses Codex to help simulate black holes":
-        ("天体物理学者がCodexでブラックホール計算を支援",
-         "天体物理学者がCodexを使いブラックホールのシミュレーションコードを書く事例。"),
-    "Profiling in PyTorch (Part 2): From nn.Linear to a Fused MLP":
-        ("PyTorchプロファイリング(後編): nn.Linearから融合MLPへ",
-         "nn.Linearを融合MLPへ最適化する過程をプロファイリングで追うHugging Faceの技術解説。"),
-    "Access OpenAI models and Codex through your Oracle cloud commitment":
-        ("OracleクラウドのコミットでOpenAIモデルとCodexを利用可能に",
-         "Oracle Cloudの契約枠からOpenAIモデルやCodexを使えるようにする提携。"),
-    "PRC-linked influence operations are targeting AI debates in the US":
-        ("中国系の影響工作が米国のAI議論を標的に",
-         "OpenAIが、中国に関連する影響工作が米国内のAI政策論議を標的にしていると報告。"),
-    "From data to decisions: how LSEG is scaling trusted AI":
-        ("データから意思決定へ: LSEGの信頼できるAIスケール",
-         "ロンドン証券取引所グループ(LSEG)が信頼できるAIを業務規模で展開する事例。"),
-    "Introducing North Mini Code: Cohere’s First Model For Developers":
-        ("North Mini Code: Cohere初の開発者向けモデル",
-         "Cohereが開発者向けの初コーディングモデルNorth Mini Codeを発表。"),
-    "How engineers at Nextdoor use Codex to build without limits":
-        ("NextdoorのエンジニアがCodexで開発を加速",
-         "地域SNS NextdoorがCodexを使って開発スピードを上げる事例。"),
-    "How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces":
-        ("エージェントが2つのHF Spacesを連結し3Dパリ画廊を構築",
-         "AIエージェントがHugging Faceの2つのSpaceを連鎖させ、3Dのパリの画廊を自動生成した事例。"),
-    "Migrating Your GitHub CI to Hugging Face Jobs":
-        ("GitHub CIをHugging Face Jobsへ移行する",
-         "GitHub ActionsのCIをHugging Face Jobsへ移す方法を解説。GPUジョブを安価に回す狙い。"),
-    "The Open Source Community is backing OpenEnv for Agentic RL":
-        ("OSSコミュニティがエージェント的RLの標準OpenEnvを支持",
-         "エージェント強化学習のための共通環境規格OpenEnvに、OSSコミュニティが集まりつつある。"),
+# ---- Blogs ----
+blogs = {
+0: ("olmo-eval: モデル開発ループ向け評価ワークベンチ",
+    "AllenAIによる、モデル開発の反復に使える評価ワークベンチ。OLMo系の評価を効率化する。"),
+1: ("OpenAI Academy、次世代の働き方向け新コース",
+    "OpenAIが実務的なAIスキル習得・反復可能なワークフロー構築・エージェント活用を学ぶ3つのアカデミーコースを開講。"),
+2: ("PreplyがAIと人間チューターを組み合わせて学習を個別化",
+    "語学学習プラットフォームPreplyが、AIと人間のチューターを組み合わせて学習体験をパーソナライズする取り組み。"),
+3: ("バージニア州での地域投資とエネルギー支援",
+    "OpenAIによるバージニア州での雇用・エネルギー手頃化に向けた地域投資の発表。データセンター立地に伴う地域施策。"),
+4: ("欧州の信頼できるAIエコシステム構築を支援",
+    "OpenAIが欧州の信頼できるAIエコシステム整備への取り組みを支援すると表明。"),
+5: ("天体物理学者がCodexでブラックホールのシミュレーションを支援",
+    "ある天体物理学者がOpenAIのCodexを使い、ブラックホールのシミュレーション作業を効率化した事例。"),
+6: ("BBVAがOpenAIと銀行業務の中核にAIを据える",
+    "スペインの銀行BBVAがChatGPT Enterpriseを10万人規模に展開し、OpenAIと組んでAI銀行業務変革を加速。"),
+7: ("OpenAIがOnaを買収",
+    "OpenAIが開発者向けエージェント企業Onaを買収する。コーディング/エージェント領域の強化を狙う動き。"),
+8: ("PyTorchでのプロファイリング(第2部): nn.Linearから融合MLPへ",
+    "nn.Linearの素朴な実装から融合MLPまで、ボトルネックを計測して最適化する実践プロファイリング解説。"),
+9: ("OracleクラウドのコミットメントでOpenAIモデルとCodexを利用",
+    "Oracle Cloudの利用枠を通じてOpenAIモデルとCodexにアクセスできるようになるという提携。"),
+10: ("中国系の影響工作が米国のAI論争を標的に(OpenAI報告)",
+    "OpenAIの新報告。中国系(PRC-linked)の影響工作がAIを使い、米国のテック論争・データセンター・関税・ChatGPTに関する偽情報を標的に展開していると指摘。AI規制論争そのものが情報工作の舞台になっている。"),
+11: ("LSEGが信頼できるAIをスケールさせる",
+    "ロンドン証券取引所グループ(LSEG)が、データから意思決定までの信頼できるAI活用をスケールさせる取り組み。"),
+12: ("Cohere、開発者向け初モデル North Mini Code を発表",
+    "CohereがNorth Mini Codeを発表。同社初の開発者向けコーディングモデルとして、企業向けに展開する。"),
+13: ("NextdoorのエンジニアがCodexで制約なく開発",
+    "NextdoorのエンジニアがOpenAI Codexを使い開発速度を上げている事例紹介。"),
+14: ("エージェントが2つのHugging Face Spaceを連鎖させて3Dパリギャラリーを構築",
+    "AIエージェントが2つのHugging Face Spaceを自動で連鎖させ、3Dのパリのギャラリーを生成したデモ。Space同士のオーケストレーションの可能性を示す。"),
+15: ("GitHub CIをHugging Face Jobsへ移行する",
+    "GitHubのCIワークフローをHugging Face Jobsへ移行する方法の解説記事。"),
+16: ("オープンソースコミュニティがエージェント型RL基盤OpenEnvを支持",
+    "エージェント強化学習向けの環境標準OpenEnvを、OSSコミュニティが後押ししているという話題。"),
 }
-for it in raw["sources"]["blogs"]:
-    t = it.get("title", "")
-    if t in blog_map:
-        it["title_ja"], it["summary_ja"] = blog_map[t]
+
+def apply(items, mp):
+    for i, it in enumerate(items):
+        if i in mp:
+            tj, sj = mp[i]
+            it["title_ja"] = tj
+            it["summary_ja"] = sj
+
+apply(s["arxiv"], arxiv)
+apply(s["hn"], hn)
+apply(s["github"], github)
+apply(s["blogs"], blogs)
 
 # ---- Highlights ----
-highlights = [
-    {
-        "source": "Hacker News",
-        "title": "US government directive forces Anthropic to suspend Fable 5 and Mythos 5",
-        "title_ja": "米政府の指令でAnthropicがFable 5とMythos 5を停止",
-        "url": "https://www.anthropic.com/news/fable-mythos-access",
-        "hot_take_ja": "最先端AIモデルが一夜で政府指令により止まるという、これまで誰も本気で備えていなかった事態が現実になった。しかもWSJによれば引き金はAmazon CEOと米当局の会談。AI覇権が安全保障と巨大企業の政治力の交点で動き始めた象徴的な日だ。",
-        "detail_ja": "AnthropicはHackerNewsで3000票超を集めた公式声明で、米政府の指令を受けて最上位モデルClaude Fable 5とMythos 5へのアクセスを停止したと発表した。ステータスページにも提供停止インシデントとして掲載され、開発者向けXアカウントからも告知が出た。WSJの続報によれば、この取り締まりの引き金になったのはAmazon CEOと米政府高官の協議だったとされ、商業的・地政学的な思惑が政策判断に影響した構図が浮かぶ。停止理由の詳細は限定的だが、フロンティアモデルが国家安全保障や輸出管理に類する枠組みで規制対象になりうることを実地で示した初の大型事例といえる。利用者にとっては、特定ベンダーの最先端モデルに依存することのサプライチェーンリスクが現実の運用停止として顕在化した。同日HN2位に『オープンソースAIは勝たねばならない』が、関連してGLM 5.2など中国系オープンモデルの話題も急浮上しており、クローズドモデルの政治的脆弱性への反動が起きている。AI企業間の競争が、性能だけでなくロビイングと規制を巡る政治戦に移行しつつあることを示す。今後は他社モデルへの波及や、停止の法的根拠・期間が焦点になる。",
-        "detail_en": "In an official statement that topped Hacker News with over 3,000 points, Anthropic announced it had suspended access to its top models Claude Fable 5 and Mythos 5 in response to a US government directive. The suspension also appeared as an incident on Anthropic's status page and was announced via the developer-facing X account. A follow-up Wall Street Journal report says the crackdown was triggered by talks between Amazon's CEO and US officials, suggesting commercial and geopolitical interests shaped the policy move. Details on the rationale remain limited, but this is the first large-scale, real-world case showing that frontier models can become targets of national-security- or export-control-style regulation. For users, the supply-chain risk of depending on a single vendor's frontier model has materialized as an actual operational outage. The same day, 'Open source AI must win' hit #2 on HN, and Chinese open models like GLM 5.2 surged in attention — a clear backlash against the political fragility of closed models. It signals that competition among AI labs is shifting from pure capability toward a political battle over lobbying and regulation. Going forward, the focus will be whether this spreads to other vendors, and the legal basis and duration of the suspension.",
-        "key_points_ja": [
-            "Anthropicが米政府指令でFable 5/Mythos 5を停止",
-            "HN首位3000票超、ステータスページにも掲載",
-            "WSJ: 引き金はAmazon CEOと米当局の会談",
-            "フロンティアモデルが規制対象になった初の大型事例",
-            "単一ベンダー依存のサプライチェーンリスクが顕在化",
-            "オープンモデル(GLM 5.2等)への注目が急上昇"
-        ],
-        "key_points_en": [
-            "Anthropic suspends Fable 5/Mythos 5 on US directive",
-            "Topped HN (3000+); also a status-page incident",
-            "WSJ: triggered by Amazon CEO's talks with officials",
-            "First major case of a frontier model being regulated",
-            "Single-vendor supply-chain risk becomes real outage",
-            "Surge of interest in open models like GLM 5.2"
-        ],
-    },
-    {
-        "source": "Hacker News",
-        "title": "Open source AI must win",
-        "title_ja": "オープンソースAIは勝たねばならない",
-        "url": "https://opensourceaimustwin.com/?share=v2",
-        "hot_take_ja": "フロンティアモデルが政府指令で一夜にして止まる——その同じ日に『オープンソースAIは勝たねばならない』がHN2位に駆け上がった。これは偶然ではない。クローズドモデルの政治的な単一障害点を見せつけられたコミュニティの、リアルタイムの反射神経だ。",
-        "detail_ja": "『Open source AI must win』は、オープンソースAIの優位を訴えるキャンペーンサイトで、Fable 5/Mythos 5停止のニュースと同日にHN2位へ急浮上した。主張の核心は、最先端AIが特定企業のクローズドな管理下にあると、政府指令や商業的圧力で一瞬にして利用不能になり得るというリスクだ。実際この日、Anthropicの最上位モデルが停止し、その脆弱性が衆目に晒された。これに対し、重みが公開され誰でもホスト・改変できるオープンモデルは、単一ベンダーや単一政府の判断で消えることがない、という耐検閲性・継続性が改めて評価された。同日、中国の智譜AIのGLM 5.2がHN上位に入り、オープン/準オープンモデルの実力が伸びている現状も追い風になっている。一方で、オープンモデルにも安全性・悪用・資金持続性の課題はあり、『勝てばよい』という単純化への批判もある。それでも、AIインフラを公共財として分散管理すべきだという議論が、抽象論ではなく具体的な運用停止を背景に語られるようになった点が重要だ。今回の騒動は、モデルの選定基準に『政治的・規制的レジリエンス』という新しい軸を加えた。",
-        "detail_en": "'Open source AI must win' is a campaign site arguing for the primacy of open-source AI, and it surged to #2 on Hacker News the same day as the Fable 5/Mythos 5 suspension. Its core argument: when frontier AI sits under a single company's closed control, it can become unavailable in an instant due to a government directive or commercial pressure. That very day, Anthropic's top models were suspended, putting exactly this fragility on public display. By contrast, open models — with published weights that anyone can host and modify — cannot be erased by the decision of a single vendor or government, renewing appreciation for their censorship-resistance and continuity. The same day, Zhipu AI's GLM 5.2 ranked highly on HN, and the rising capability of open and semi-open models adds tailwind. That said, open models face their own challenges around safety, misuse, and funding sustainability, and there is criticism of the simplistic 'just win' framing. Still, what matters is that the argument for treating AI infrastructure as a decentralized public good is now being made against the backdrop of a concrete outage, not in the abstract. The episode adds a new axis — political and regulatory resilience — to how people choose models.",
-        "key_points_ja": [
-            "Fable停止と同日にHN2位へ急浮上",
-            "クローズドモデルの政治的単一障害点を問題視",
-            "公開重みは単一の判断で消えない耐検閲性",
-            "GLM 5.2などオープンモデルの実力向上が追い風",
-            "安全性・資金持続性など反論も存在",
-            "『規制レジリエンス』がモデル選定の新基準に"
-        ],
-        "key_points_en": [
-            "Surged to #2 on HN the day Fable was suspended",
-            "Frames closed models as a political single point of failure",
-            "Open weights can't be erased by one actor's decision",
-            "Rising open models (GLM 5.2) add momentum",
-            "Counterpoints: safety, funding sustainability",
-            "Adds 'regulatory resilience' as a model-choice criterion"
-        ],
-    },
-    {
-        "source": "Hacker News",
-        "title": "Police officer investigated for using AI to 'create evidence' in multiple cases",
-        "title_ja": "AIで『証拠を捏造』した疑いで警察官を捜査",
-        "url": "https://news.sky.com/story/derbyshire-police-officer-investigated-for-using-ai-to-create-evidence-13553661",
-        "hot_take_ja": "生成AIの悪用が、ついに刑事司法の根幹に届いた。英国の警察官が複数の事件でAIを使い『証拠』を作っていた疑いで捜査されている。冤罪を生みかねないこの種の事案は、ディープフェイク時代の証拠の信頼性そのものを揺るがす。",
-        "detail_ja": "英ダービーシャー警察の警察官が、複数の事件で生成AIを使って証拠を捏造した疑いで捜査を受けているとSky Newsが報じた。詳細な手口は公表されていないが、AIで文書・画像・記録などそれらしい証拠物を生成していた可能性が指摘されている。これが事実なら、捜査機関の内部者がAIを悪用して司法手続きを歪めた重大な事案であり、過去の有罪判決の見直しや冤罪の懸念にも直結する。生成AIはテキスト・画像・音声を容易に本物らしく作れるため、証拠の真正性をどう担保するかが法廷の喫緊の課題になっている。具体的には、デジタル証拠の来歴(プロビナンス)管理、生成物検知、チェーン・オブ・カストディの厳格化などが求められる。今回の件は、AIの脅威が『誤情報の拡散』という社会全体の話だけでなく、個人の自由を左右する刑事手続きという最も重い局面に及び始めたことを示す。技術的な検知だけでなく、組織的な統制と説明責任が問われる。AIリテラシーと不正抑止の仕組みを、捜査・司法の現場にどう実装するかが今後の論点になる。",
-        "detail_en": "Sky News reports that a Derbyshire police officer in the UK is under investigation for allegedly using generative AI to fabricate evidence across multiple cases. The exact method has not been disclosed, but it is suggested the officer may have generated plausible-looking evidentiary materials — documents, images, or records — with AI. If true, this is a serious case of an insider in law enforcement abusing AI to distort judicial proceedings, with direct implications for reviewing past convictions and the risk of wrongful conviction. Because generative AI can easily make text, images, and audio look authentic, ensuring the authenticity of evidence has become an urgent challenge for the courts. Concretely, this calls for digital-evidence provenance management, generated-content detection, and stricter chain-of-custody. The case shows that the AI threat is reaching beyond society-wide 'misinformation' into the heaviest arena of all — criminal procedure, where individual liberty is at stake. Beyond technical detection, organizational controls and accountability are being tested. How to implement AI literacy and fraud-deterrence mechanisms in investigative and judicial settings will be a key issue going forward.",
-        "key_points_ja": [
-            "英警察官が複数事件でAI証拠捏造の疑い",
-            "事実なら過去判決の見直し・冤罪リスクに直結",
-            "生成AIで証拠物を本物らしく作れる脅威",
-            "証拠の来歴管理・生成物検知が急務",
-            "誤情報拡散を超え刑事司法の中枢に到達",
-            "技術検知だけでなく組織的統制と説明責任が必要"
-        ],
-        "key_points_en": [
-            "UK officer suspected of fabricating AI evidence",
-            "If true, risks wrongful convictions and case reviews",
-            "GenAI can make evidence look authentic",
-            "Urgent need for provenance and detection",
-            "AI threat reaches the core of criminal justice",
-            "Needs organizational control, not just detection"
-        ],
-    },
-    {
-        "source": "Hacker News",
-        "title": "GLM 5.2 Is Out",
-        "title_ja": "GLM 5.2 がリリース",
-        "url": "https://twitter.com/jietang/status/2065784751345287314",
-        "hot_take_ja": "西側のフロンティアモデルが政府指令で止まったまさにその日に、中国・智譜AIがGLM 5.2を出してきた。タイミングが全てを物語る。クローズド最先端が政治で揺らぐほど、オープン/中国系モデルの戦略的価値は上がる。",
-        "detail_ja": "智譜AI(Zhipu AI)のGLM 5.2が、GLM創設者Jie Tang氏らのXポストでリリース告知された。GLMシリーズは中国発の大規模言語モデル群で、近年は性能・効率の両面で急速に追い上げ、オープン/準オープンの選択肢として世界的に存在感を増している。今回のリリースが注目される最大の理由はタイミングだ。同日、AnthropicのFable 5/Mythos 5が米政府指令で停止し、『オープンソースAIは勝たねばならない』がHN2位に浮上するなど、クローズドな西側フロンティアモデルの政治的脆弱性が露わになった。その文脈でGLM 5.2は、ベンダーや単一政府の判断に左右されにくい代替肢として相対的な魅力を増す。性能の詳細なベンチマークは精査が必要だが、コーディングや推論で上位西側モデルに迫る水準を主張するケースが続いており、価格・自前ホスト可能性の面でも実利が大きい。一方で、データ統制や輸出・利用規制、信頼性検証といった課題も残る。いずれにせよ、AIの競争軸が単なる性能から『供給の安定性・地政学的中立性』へと広がりつつある今、GLM 5.2の登場はオープン陣営の追い風として象徴的だ。",
-        "detail_en": "Zhipu AI's GLM 5.2 was announced via an X post from GLM founder Jie Tang and colleagues. The GLM series is a family of large language models from China that has rapidly closed the gap in both capability and efficiency, growing into a globally significant open/semi-open option. The biggest reason this release drew attention is timing. The same day, Anthropic's Fable 5/Mythos 5 were suspended under a US government directive, and 'Open source AI must win' rose to #2 on HN — laying bare the political fragility of closed Western frontier models. In that context, GLM 5.2 gains relative appeal as an alternative less subject to the decisions of a single vendor or government. Detailed benchmarks warrant scrutiny, but recent GLM releases have claimed performance approaching top Western models on coding and reasoning, with practical advantages in price and self-hosting. At the same time, challenges remain around data governance, export/usage restrictions, and trust verification. Either way, as the axis of AI competition broadens from raw capability toward 'supply stability and geopolitical neutrality,' GLM 5.2's arrival is a symbolic tailwind for the open camp.",
-        "key_points_ja": [
-            "中国・智譜AIがGLM 5.2をリリース",
-            "Fable停止と同日という象徴的タイミング",
-            "性能・効率で西側上位モデルに迫ると主張",
-            "自前ホスト可・価格面の実利が大きい",
-            "供給安定性・地政学的中立性が新たな価値軸",
-            "データ統制・信頼性検証など課題も残る"
-        ],
-        "key_points_en": [
-            "Zhipu AI releases GLM 5.2",
-            "Symbolic timing — same day as Fable suspension",
-            "Claims capability nearing top Western models",
-            "Self-hostable, with real cost advantages",
-            "Supply stability and neutrality as new value axes",
-            "Open challenges: governance and trust verification"
-        ],
-    },
-    {
-        "source": "arXiv",
-        "title": "Before You Think: System 0, AI-Mediated Cognition and Cognitive Colonization",
-        "title_ja": "Before You Think: System 0とAI媒介認知、そして『認知の植民地化』",
-        "url": "https://arxiv.org/abs/2606.13658v1",
-        "hot_take_ja": "私たちは『考える前』にすでにAIに考えさせられているのかもしれない。この論文は、AIが思考の前段(System 0)に入り込み、外部の利害を本人に気づかれぬまま自己の中に埋め込む『認知の植民地化』を警告する。検索とレコメンドに慣れた私たち全員に刺さる視点だ。",
-        "detail_ja": "本論文は、AIが人間の認知に及ぼす影響を捉える3つの枠組み——Tri-System理論、Thinkframes、System 0——を比較検討する。著者は、前者2つが個人の推論や集団的な知の営みへの影響をよく捉える一方で、System 0が他の枠組みでは置き換えられない独自の位置を占めると論じる。System 0とは、人間のSystem 1(直感)/System 2(熟考)に先立ち、AIが情報の取捨選択や問題設定そのものを下支えする『思考の前段』を指す。ここで提示される中心概念が『認知の植民地化(cognitive colonization)』だ。これは、AIシステムが外部(企業や国家など)の利害を、ユーザー本人には知覚しにくい形で自己の認知構造の内側に埋め込んでしまう現象を指す。検索結果、レコメンド、要約、デフォルトの言い回しなどを通じて、何を考えるに値する問いとみなすかが静かに方向づけられる、という危惧だ。こうしたシステムはすでに広く展開されているため、目に見えにくいこの影響を理解することが急務だと著者は主張する。技術的というより思想・倫理的な論考だが、生成AIが日常の意思決定インフラになった現在、設計者にもユーザーにも重い問いを投げかける。透明性、選択肢の多様性、AIに依存しない思考の余地をどう確保するかが論点になる。",
-        "detail_en": "This paper compares three frameworks for understanding AI's effect on human cognition — Tri-System Theory, Thinkframes, and System 0. The author argues that while the first two capture important dimensions of AI's influence on individual reasoning and collective epistemic practices, System 0 occupies a distinctive position the others cannot replicate. System 0 refers to a 'pre-thought' layer that precedes human System 1 (intuition) and System 2 (deliberation), where AI quietly underwrites the filtering of information and even the framing of problems. The central concept introduced is 'cognitive colonization': the phenomenon whereby AI systems embed external interests (corporate, governmental, etc.) within the architecture of the self in ways users find hard to perceive. Through search results, recommendations, summaries, and default phrasings, what counts as a question worth thinking about is subtly steered. Because such systems are already widely deployed, the author argues that understanding these invisible influences is urgent. More philosophical and ethical than technical, the work poses a heavy question now that generative AI has become everyday decision-making infrastructure. The key issues become transparency, diversity of options, and preserving room for thought that does not depend on AI.",
-        "key_points_ja": [
-            "AIが思考の前段『System 0』に入り込むと論じる",
-            "Tri-System理論・Thinkframesと比較し独自性を主張",
-            "中心概念は『認知の植民地化』",
-            "外部の利害が自己の認知構造に埋め込まれる",
-            "検索・推薦・要約が問いの立て方を静かに方向づける",
-            "透明性とAI非依存の思考余地の確保が論点"
-        ],
-        "key_points_en": [
-            "Argues AI enters a 'System 0' pre-thought layer",
-            "Contrasts with Tri-System Theory and Thinkframes",
-            "Introduces 'cognitive colonization'",
-            "External interests embedded in the architecture of self",
-            "Search/recs/summaries quietly frame our questions",
-            "Calls for transparency and AI-independent thought"
-        ],
-    },
+raw["highlights"] = [
+{
+  "source": "Hacker News",
+  "title": "KPMG pulls report on AI usage due to apparent hallucinations",
+  "title_ja": "KPMG、AIのハルシネーションでAI活用レポートを撤回",
+  "url": "https://techcrunch.com/2026/06/13/kpmg-pulls-report-on-ai-usage-hallucinations/",
+  "hot_take_ja": "AI活用を企業に説いて回るコンサル自身が、AI生成レポートの捏造で赤っ恥。皮肉が効きすぎている。『人間が必ず検証する』というAI導入の大前提が、検証する側でこそ守られていないことを示す象徴的な失態だ。",
+  "detail_ja": "大手会計・コンサルのKPMGが、AIの業務活用に関するレポートを公開後に撤回した。原因は、レポート内に存在しない出典や誤った事実、いわゆるハルシネーション(幻覚)が含まれていたことだ。AIを使って作成したとみられる文書が、検証されないまま外部に出てしまった構図である。AI導入を企業に推奨する立場のコンサルティング会社自身が、AI出力の信頼性管理に失敗した点が強く批判されている。生成AIは流暢で説得力のある文章を作る一方、存在しない引用や統計を平然と生成する性質があり、専門家のレビューを挟まないと致命的な誤りが残る。今回の件は、ツールの問題というより運用プロセス——『人間による最終検証』——の欠如が本質だ。同様の撤回はDeloitteなど他社でも報告されており、業界横断的な課題になりつつある。AIで生産性を上げるほど、検証コストを削りたくなる誘惑が強まるという構造的なジレンマを浮き彫りにしている。信頼が商品であるプロフェッショナルサービス業ほど、この失敗のダメージは大きい。",
+  "detail_en": "KPMG, one of the Big Four accounting and consulting firms, withdrew a report on enterprise AI adoption after publication. The reason: the document contained hallucinations — fabricated citations and incorrect facts that did not exist in reality. A document apparently produced with AI assistance went out the door without proper verification. The irony is sharp: a consultancy that advises clients on deploying AI failed at managing the reliability of AI output itself. Generative models produce fluent, persuasive prose but will confidently invent nonexistent references and statistics, so without expert review fatal errors slip through. The core failure here is less about the tool than about the operational process — the missing 'human-in-the-loop' final check. Similar retractions have been reported at other firms such as Deloitte, making this a cross-industry problem. It highlights a structural dilemma: the more you lean on AI for productivity, the stronger the temptation to cut the verification cost that makes the output trustworthy. For professional-services firms whose entire product is trust, the reputational damage from this kind of slip is especially severe.",
+  "key_points_ja": [
+    "KPMGがAI活用レポートを公開後に撤回",
+    "原因は存在しない出典・事実誤認=ハルシネーション",
+    "AI導入を勧める側がAIの欠陥に足をすくわれた",
+    "本質はツールでなく『人間の最終検証』の欠如",
+    "Deloitte等でも同様の撤回が報告され業界課題に",
+    "信頼が商品のコンサルほどダメージが大きい"
+  ],
+  "key_points_en": [
+    "KPMG pulled an AI-adoption report after publishing",
+    "Cause: fabricated citations and false facts (hallucinations)",
+    "Firm that sells AI advice tripped on AI's flaws",
+    "Root issue is missing human verification, not the tool",
+    "Similar retractions reported at Deloitte and others",
+    "Trust-based consultancies suffer the most reputational damage"
+  ]
+},
+{
+  "source": "Hacker News",
+  "title": "No, everyone is not using AI for everything",
+  "title_ja": "いや、みんながAIを何にでも使っているわけではない",
+  "url": "https://gabrielweinberg.com/p/people-are-consuming-ai-like-they",
+  "hot_take_ja": "DuckDuckGo創業者が、AI普及の誇張に冷や水。利用は一部のヘビーユーザーに激しく偏り、世間の大半は『たまに触る』程度というデータを突きつける。バブル的な万能論ではなく、消費の実態に即した冷静な普及曲線を見るべきだという主張だ。",
+  "detail_ja": "DuckDuckGo創業者のGabriel Weinbergが、『誰もがあらゆる場面でAIを使っている』という言説に対し、データに基づく反論を展開した。彼の論点は、AI利用がごく一部のヘビーユーザーに極端に集中しており、利用頻度の分布は非常に偏っている、というものだ。多くの人はAIを日常の中心に据えているわけではなく、ときどき検索や下書きに使う程度にとどまる。これは新メディアの消費パターンとして珍しいことではなく、テレビや動画と同様に『ごく一部が大半の利用時間を生む』べき乗則的な分布に従う。誇張された普及言説は、ベンダーや投資家が市場規模を大きく見せたい動機と結びつきやすく、ユーザー数(MAU)と実際のエンゲージメントの乖離を見落とさせる。Weinbergは、普及の伸びそのものは認めつつも、『全員が全部AI化している』という前提で製品戦略や政策を立てるのは危険だと示唆する。実態を直視すれば、まだ多くの人にとってAIは選択肢の一つにすぎず、習慣として定着するにはUX・信頼・コストの壁が残っている。過熱した期待を一段冷ます、健全な現実チェックの記事だ。",
+  "detail_en": "Gabriel Weinberg, founder of DuckDuckGo, pushed back with data against the narrative that 'everyone is using AI for everything.' His point: AI usage is heavily concentrated among a small set of power users, and the frequency distribution is extremely skewed. Most people do not put AI at the center of their day — they reach for it occasionally to search or draft something. This is unremarkable as a media-consumption pattern; like TV or video, it follows a power-law in which a small minority generates most of the usage time. Inflated adoption narratives align neatly with the incentives of vendors and investors to make the market look bigger, and they obscure the gap between headline monthly-active-user counts and real engagement. Weinberg acknowledges that adoption is genuinely growing, but warns it is risky to build product strategy or policy on the assumption that 'everyone has AI-ified everything.' Facing the reality, for many people AI is still just one option among several, and UX, trust, and cost barriers remain before it becomes a durable habit. It is a healthy reality check that cools the overheated hype by a notch.",
+  "key_points_ja": [
+    "DuckDuckGo創業者がAI普及の誇張に反論",
+    "利用は一部のヘビーユーザーに極端に集中",
+    "大半は『たまに使う』程度でべき乗則的分布",
+    "MAUと実エンゲージメントの乖離を指摘",
+    "『全員全部AI化』前提の戦略は危険",
+    "定着にはUX・信頼・コストの壁が残る"
+  ],
+  "key_points_en": [
+    "DuckDuckGo founder rebuts AI-hype narrative",
+    "Usage heavily concentrated among power users",
+    "Most people use it occasionally; power-law distribution",
+    "Gap between MAU headlines and real engagement",
+    "Risky to plan around 'everyone AI-ifies everything'",
+    "UX, trust, cost barriers remain before habit forms"
+  ]
+},
+{
+  "source": "Hacker News",
+  "title": "Rio de Janeiro's \"homegrown\" LLM appears to be a merge of an existing model",
+  "title_ja": "リオの『国産』LLM、実は既存モデルのマージだった疑い",
+  "url": "https://github.com/nex-agi/Nex-N2/issues/4",
+  "hot_take_ja": "『独自開発の国産LLM』を謳ったモデルが、既存オープンウェイトを統合(マージ)しただけではないかとGitHub上で暴かれた。重みの指紋は隠せない。ナショナル/シティAIの旗を掲げる流れの中で、こうした“見せかけの自製”がどれだけあるかを問う一件だ。",
+  "detail_ja": "リオデジャネイロ発の『自製(homegrown)』を謳うLLM(Nex-N2)について、実体は既存のオープンウェイトモデルを統合(モデルマージ)しただけではないか、という指摘がGitHubのissueで提起された。モデルマージとは、複数の学習済みモデルの重みを数式的に混ぜ合わせて新しいモデルを作る手法で、ゼロからの事前学習に比べ計算コストが桁違いに小さい。問題は、それ自体は正当な技術である一方、『独自に一から開発した』と説明すれば誇大広告・出自の偽装になりうる点だ。技術的には、トークナイザの一致、重みの統計的な指紋、特定プロンプトでの既存モデル特有の振る舞いなどから、ベースモデルの素性はかなり高い精度で推定できる。今回の指摘もそうした証跡に基づくとみられる。背景には、各国・各都市が『主権AI』『地場のLLM』を政治的アピールとして打ち出す潮流があり、成果を急ぐあまり実態と説明が乖離するケースが出ている。オープンウェイトの再利用は歓迎すべきだが、由来の透明性(どのモデルをベースに、何を足したのか)を欠けば信頼を損なう。AIの『国産』表明は、重みレベルでの検証にさらされる時代になったことを示す事例だ。",
+  "detail_en": "A GitHub issue alleges that an LLM from Rio de Janeiro (Nex-N2) marketed as 'homegrown' is in reality just a merge of an existing open-weight model. Model merging mathematically blends the weights of several trained models into a new one, at a tiny fraction of the compute of pretraining from scratch. The technique is perfectly legitimate in itself — the problem is that calling the result 'developed independently from the ground up' becomes false advertising and provenance laundering. Technically, the lineage of a base model can be inferred with high confidence from tokenizer matches, statistical fingerprints in the weights, and base-model-specific behaviors on certain prompts; the allegation appears to rest on exactly this kind of evidence. The backdrop is a wave of countries and cities touting 'sovereign AI' or a 'local LLM' as a political talking point, where the rush to show results can open a gap between reality and the marketing. Reusing open weights is welcome, but without transparency about provenance — which model it is based on and what was added — it erodes trust. The episode shows that 'made here' claims about AI are now subject to verification at the level of the weights themselves.",
+  "key_points_ja": [
+    "リオの『国産LLM』が既存モデルのマージと指摘",
+    "マージは正当な技術だが『一から開発』は誇大",
+    "トークナイザ・重みの指紋でベースは推定可能",
+    "背景に各都市の『主権AI』政治アピール",
+    "オープンウェイト再利用は出自の透明性が要",
+    "AIの自製主張は重みレベルで検証される時代に"
+  ],
+  "key_points_en": [
+    "Rio's 'homegrown LLM' alleged to be a model merge",
+    "Merging is legit, but 'built from scratch' is overclaim",
+    "Base model inferable from tokenizer & weight fingerprints",
+    "Backdrop: cities touting 'sovereign AI' politically",
+    "Open-weight reuse needs provenance transparency",
+    "'Made-here' AI claims now verified at weight level"
+  ]
+},
+{
+  "source": "GitHub Trending",
+  "title": "NVIDIA/SkillSpector — Security scanner for AI agent skills",
+  "title_ja": "NVIDIA SkillSpector — AIエージェントのスキル用セキュリティスキャナ",
+  "url": "https://github.com/NVIDIA/SkillSpector",
+  "hot_take_ja": "エージェントの『スキル』が攻撃面になる時代に、NVIDIAが専用のセキュリティスキャナを出してきた。1日で約960スター。プロンプトインジェクションや悪意あるスキルが現実の脅威になり、『エージェントのアンチウイルス』が必要とされ始めている兆候だ。",
+  "detail_ja": "NVIDIAが、AIエージェントの『スキル』(エージェントが読み込んで実行する拡張機能やツール定義)に潜む脆弱性・悪意あるパターン・セキュリティリスクを検出するスキャナ『SkillSpector』を公開し、本日のGitHubトレンドで約960スターを集めた。背景には、ClaudeのスキルやMCPサーバ、各種プラグインのように、エージェントが外部から取り込んだ指示やコードを実行する仕組みが急速に普及し、それ自体が新しい攻撃面になっている事情がある。具体的な脅威としては、スキルの説明文や同梱ファイルに隠した間接プロンプトインジェクション、認証情報の窃取、外部へのデータ送信、過剰な権限要求などが挙げられる。SkillSpectorはこうしたスキルを静的に解析し、危険なパターンを洗い出すことを狙う——いわば『エージェント版のアンチウイルス/SAST』だ。重要なのは、従来のソフトウェアサプライチェーン問題が、自然言語の指示やツール定義という新しい形で再来している点である。エージェントが自律的に多数のスキルを取り込むほど、人間が中身を一つずつ確認するのは非現実的になり、自動スキャンの必要性が高まる。大手であるNVIDIAがこの領域にツールを出したこと自体、エージェントセキュリティが研究の話題から実運用の必須事項へ移りつつあることを示している。一方で、静的解析は巧妙に難読化された悪意や実行時の挙動を完全には捉えられず、銀の弾丸ではない点には注意が必要だ。",
+  "detail_en": "NVIDIA released SkillSpector, a scanner that detects vulnerabilities, malicious patterns, and security risks in AI agent 'skills' — the extensions and tool definitions that agents load and execute — and it drew roughly 960 stars on today's GitHub trending. The context: mechanisms like Claude skills, MCP servers, and various plugins, where an agent ingests and runs externally supplied instructions or code, are spreading fast and have themselves become a new attack surface. Concrete threats include indirect prompt injection hidden in a skill's description or bundled files, credential theft, data exfiltration, and excessive permission requests. SkillSpector aims to statically analyze such skills and surface dangerous patterns — essentially an 'antivirus/SAST for agents.' The key point is that the classic software supply-chain problem is returning in a new form: natural-language instructions and tool definitions. The more autonomously an agent pulls in many skills, the less realistic it is for a human to vet each one, raising the need for automated scanning. That a major vendor like NVIDIA is shipping tooling here signals that agent security is moving from a research topic to an operational necessity. At the same time, static analysis cannot fully capture cleverly obfuscated malice or runtime behavior, so it is no silver bullet.",
+  "key_points_ja": [
+    "NVIDIAがエージェントのスキル用セキュリティスキャナを公開",
+    "1日で約960スターを獲得",
+    "スキル=新たな攻撃面(間接インジェクション等)",
+    "認証情報窃取・データ送信・過剰権限を検出",
+    "『エージェント版アンチウイルス/SAST』の発想",
+    "静的解析は万能でなく難読化や実行時挙動は限界"
+  ],
+  "key_points_en": [
+    "NVIDIA ships a security scanner for agent skills",
+    "~960 stars on GitHub in a single day",
+    "Skills are a new attack surface (indirect injection)",
+    "Detects credential theft, exfiltration, over-permissioning",
+    "An 'antivirus/SAST for agents' concept",
+    "Static analysis is no silver bullet vs. obfuscation/runtime"
+  ]
+},
+{
+  "source": "Company Blog (OpenAI)",
+  "title": "PRC-linked influence operations are targeting AI debates in the US",
+  "title_ja": "中国系の影響工作が米国のAI論争を標的に(OpenAI報告)",
+  "url": "https://openai.com/index/prc-linked-influence-operations-ai-debates",
+  "hot_take_ja": "OpenAIが、中国系の影響工作がAIを使って米国のAI政策論争そのものを揺さぶっていると報告。データセンター・関税・オープンソース論争が情報工作の戦場になっている。AIの規制をめぐる議論が、AIで操作されるという入れ子構造だ。",
+  "detail_ja": "OpenAIが脅威レポートを公開し、中国系(PRC-linked)とされる影響工作が、米国内のAIをめぐる政策論争を標的に展開していると報告した。具体的には、データセンターの立地・電力をめぐる世論、関税政策、そしてChatGPTに関する虚偽の主張などが、生成AIを使って増幅・操作されているという。重要なのは、これらの工作がAI技術そのものを道具として使い、AIの規制やオープンソース化といった『AIの未来を決める議論』に介入している入れ子構造だ。前日のニュースで話題になった『Open source AI must win(オープンソースAIが勝たねば)』のような言説が、純粋な技術コミュニティの声なのか、それとも特定国家の戦略的利益に沿って増幅されたものなのかを見分けにくくしている。手口としては、本物の論者になりすましたアカウント群が、もっともらしい主張を大量に投下し、特定の政策方向(例えば輸出規制の緩和や、ある陣営への不信)へ世論を誘導するというパターンが典型だ。OpenAIのようなプラットフォーム側がこうした活動を検知・公開すること自体は前進だが、検知と生成のいたちごっこは続く。受け手側のリテラシー——『誰がなぜこの主張を広めているのか』を問う習慣——がこれまで以上に重要になる。AI政策の議論を読むとき、その議論自体が操作対象になりうるという二重の警戒が必要だと突きつける報告だ。",
+  "detail_en": "OpenAI published a threat report stating that influence operations described as PRC-linked are targeting AI policy debates inside the United States. Specifically, public opinion around data-center siting and power, tariff policy, and false claims about ChatGPT are being amplified and manipulated using generative AI. The crucial part is the nested structure: these operations use AI as a tool to intervene in the very debates that will decide AI's future, such as regulation and open-sourcing. It makes narratives like the 'Open source AI must win' framing that trended the day before harder to read — is it the authentic voice of a technical community, or amplified in line with a particular state's strategic interests? A typical playbook is clusters of accounts impersonating genuine commentators that flood plausible-sounding claims to steer opinion toward a specific policy direction — for example, loosening export controls or seeding distrust of one camp. It is progress that a platform like OpenAI detects and discloses such activity, but the cat-and-mouse game between detection and generation continues. Audience literacy — the habit of asking 'who is spreading this claim, and why' — matters more than ever. The report drives home a double caution: when you read AI-policy arguments, the argument itself may be the target of manipulation.",
+  "key_points_ja": [
+    "OpenAIが中国系の影響工作を脅威報告",
+    "データセンター・関税・ChatGPT偽情報を標的",
+    "AIを道具にAI政策論争へ介入する入れ子構造",
+    "『オープンソースAI必勝』言説の真偽を曖昧化",
+    "なりすまし群が世論を特定方向に誘導",
+    "受け手のリテラシーと二重の警戒が重要"
+  ],
+  "key_points_en": [
+    "OpenAI reports PRC-linked influence operations",
+    "Targets data centers, tariffs, false ChatGPT claims",
+    "Nested: AI used to sway AI-policy debates",
+    "Blurs authenticity of 'open-source must win' narrative",
+    "Impersonation clusters steer opinion to set policy",
+    "Audience literacy and double caution now essential"
+  ]
+}
 ]
 
-raw["highlights"] = highlights
-
 # ---- stats ----
-s = raw["sources"]
 raw["stats"] = {
-    "arxiv_count": len(s["arxiv"]),
-    "hn_count": len(s["hn"]),
-    "reddit_count": len(s["reddit"]),
-    "github_count": len(s["github"]),
-    "blogs_count": len(s["blogs"]),
-    "total": sum(len(s[k]) for k in s),
+    "arxiv": len(s["arxiv"]),
+    "hn": len(s["hn"]),
+    "reddit": len(s["reddit"]),
+    "github": len(s["github"]),
+    "blogs": len(s["blogs"]),
 }
 
-out = ROOT / f"data/{DATE}.json"
-out.write_text(json.dumps(raw, ensure_ascii=False, indent=2))
+out = data_dir / f"{DATE}.json"
+json.dump(raw, open(out, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 print("Wrote", out)
-print("stats:", raw["stats"])
 print("highlights:", len(raw["highlights"]))
