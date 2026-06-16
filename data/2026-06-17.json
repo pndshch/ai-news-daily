@@ -1,5 +1,5 @@
 {
-  "date": "2026-06-16",
+  "date": "2026-06-17",
   "generated_at": "2026-06-16T20:08:41Z",
   "sources": {
     "arxiv": [
@@ -17,7 +17,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17056v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17056v1",
-        "published": "2026-06-15T17:59:58Z"
+        "published": "2026-06-15T17:59:58Z",
+        "title_ja": "「Value軸」：LMは自分が正しい軌道にいるかを内部表現する",
+        "summary_ja": "Qwen3-8Bの活性化に、現在の戦略が目標達成に至る見込み（=トラジェクトリのvalue）を符号化する1本の軸を発見。この軸は高/低confidence、バックトラックの有無、正/誤コードを区別し、高value方向へ操作すると自己修正が抑制され、低value方向では探索・やり直しが誘発される。DPOがこの内部valueを高められることも示した。"
       },
       {
         "id": "2606.17055v1",
@@ -65,7 +67,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17055v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17055v1",
-        "published": "2026-06-15T17:59:55Z"
+        "published": "2026-06-15T17:59:55Z",
+        "title_ja": "T-Rex：触覚反応型の器用なマニピュレーション",
+        "summary_ja": "触覚信号にリアルタイムで反応する器用さは人間並み操作の鍵だが、既存のVLAは触覚を無視するか静的な手掛かりに留まる。多様な触覚データ不足を補い、触覚反応型の器用操作を実現する手法を提案。"
       },
       {
         "id": "2606.17054v1",
@@ -86,7 +90,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17054v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17054v1",
-        "published": "2026-06-15T17:59:36Z"
+        "published": "2026-06-15T17:59:36Z",
+        "title_ja": "Human Universal Grasping：任意物体への人間的な把持生成",
+        "summary_ja": "ロボットの汎用把持データの最も自然な源は、毎日無数の物体を掴む人間だと主張。1枚のRGB-Dから任意物体に対し多様な人間の把持姿勢を生成するflow-matchingモデルHUGを提案。"
       },
       {
         "id": "2606.17053v1",
@@ -107,7 +113,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17053v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17053v1",
-        "published": "2026-06-15T17:59:28Z"
+        "published": "2026-06-15T17:59:28Z",
+        "title_ja": "Context-Aware RL：エージェント/マルチモーダルLLMの長文脈推論を強化",
+        "summary_ja": "長く複雑な文脈の中の決定的な1行・1箇所の手掛かりをLLMが見落とす問題に対し、文脈を意識した強化学習ContextRLを提案。長期推論とマルチモーダル理解を改善する。"
       },
       {
         "id": "2606.17049v1",
@@ -125,7 +133,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17049v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17049v1",
-        "published": "2026-06-15T17:58:31Z"
+        "published": "2026-06-15T17:58:31Z",
+        "title_ja": "BRDFusion：物理と生成を融合した都市シーンの逆レンダリング",
+        "summary_ja": "撮影動画からの都市シーン逆レンダリングで、物理ベース手法のアーティファクトと生成モデルの制御性不足を両取りで克服。コンテンツ生成や自動運転シミュレーションに応用。"
       },
       {
         "id": "2606.17048v1",
@@ -148,7 +158,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17048v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17048v1",
-        "published": "2026-06-15T17:58:22Z"
+        "published": "2026-06-15T17:58:22Z",
+        "title_ja": "線形逆問題を解くための厳密な事後スコア推定",
+        "summary_ja": "拡散/フローモデルが学ぶのは無条件スコアで、逆問題を解くには事後スコアが必要というギャップに対し、厳密な事後スコア推定法を提案。"
       },
       {
         "id": "2606.17046v1",
@@ -173,7 +185,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17046v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17046v1",
-        "published": "2026-06-15T17:58:03Z"
+        "published": "2026-06-15T17:58:03Z",
+        "title_ja": "Geometric Action Model：3D幾何を踏まえたロボット方策学習",
+        "summary_ja": "既存VLA/世界モデルは主に2Dで動作するが、物体・カメラ・行動の3D相互作用を推論する幾何的な行動モデルを提案し、汎用ロボット方策の性能を高める。"
       },
       {
         "id": "2606.17043v1",
@@ -196,7 +210,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17043v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17043v1",
-        "published": "2026-06-15T17:57:14Z"
+        "published": "2026-06-15T17:57:14Z",
+        "title_ja": "疎なエピソード結果からのVLAオンラインRL微調整のための階層的アドバンテージ重み付け",
+        "summary_ja": "VLA方策のオンラインRLでは1ロールアウトが成功/失敗の二値しか返さないが、行動更新には遷移ごとの教師が要る。この疎さを階層的なアドバンテージ重み付けで補い、効率的に微調整する。"
       },
       {
         "id": "2606.17041v1",
@@ -215,7 +231,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17041v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17041v1",
-        "published": "2026-06-15T17:56:41Z"
+        "published": "2026-06-15T17:56:41Z",
+        "title_ja": "Nature系のメタ分析論文でLLMエージェントをベンチマーク",
+        "summary_ja": "文献検索・PICO選定・統計的統合からなるメタ分析は、体系的な科学的推論の検証に最適。検索-スクリーニング-統合の全工程に正解を持つベンチマークでLLMエージェントを評価。"
       },
       {
         "id": "2606.17040v1",
@@ -239,7 +257,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17040v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17040v1",
-        "published": "2026-06-15T17:56:19Z"
+        "published": "2026-06-15T17:56:19Z",
+        "title_ja": "R2RDreamer：空間汎化する2D操作方策のための3D対応データ拡張",
+        "summary_ja": "模倣学習の操作方策には物体姿勢・カメラ視点を跨ぐ多数のデモが要る。少数デモから3Dを意識したデータ拡張で空間汎化を実現する。"
       },
       {
         "id": "2606.17037v1",
@@ -255,7 +275,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17037v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17037v1",
-        "published": "2026-06-15T17:54:52Z"
+        "published": "2026-06-15T17:54:52Z",
+        "title_ja": "ニューラル表現における位相の重要性：画像分類器の内部Oppenheim-Limテスト",
+        "summary_ja": "自然画像はフーリエ位相だけで認識可能（振幅は同一性をほぼ持たない）という古典的事実が、学習済み分類器の隠れ層内部でも再現されるかを、位相の入れ替えで因果的に検証。"
       },
       {
         "id": "2606.17035v1",
@@ -273,7 +295,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17035v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17035v1",
-        "published": "2026-06-15T17:53:12Z"
+        "published": "2026-06-15T17:53:12Z",
+        "title_ja": "Your Privacy My Cloak：差分プライバシー連合学習へのバックドア攻撃",
+        "summary_ja": "差分プライバシー(DP)は連合学習のバックドア耐性を高めるとされてきたが、本研究はその前提に反論。DP-FLに潜む根本的な緊張関係を実証的に暴く。"
       },
       {
         "id": "2606.17034v1",
@@ -295,7 +319,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17034v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17034v1",
-        "published": "2026-06-15T17:53:09Z"
+        "published": "2026-06-15T17:53:09Z",
+        "title_ja": "KVEraser：効率的な局所文脈消去のためのKVキャッシュ操作学習",
+        "summary_ja": "KVキャッシュ上の事後的な文脈消去は、局所編集が後続トークンのキャッシュ全体に波及するため難しい。古い検索事実や誤ったツール観測を効率的に消すための学習的なKV操作を提案。"
       },
       {
         "id": "2606.17030v1",
@@ -346,7 +372,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17030v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17030v1",
-        "published": "2026-06-15T17:52:31Z"
+        "published": "2026-06-15T17:52:31Z",
+        "title_ja": "Qwen-RobotWorld：言語条件付き動画生成で身体性世界モデルを統一",
+        "summary_ja": "自然言語を統一的な行動インタフェースとし、現在の観測から物理的に妥当な未来映像を予測する言語条件付き動画世界モデル。ロボット操作・自動運転・屋内ナビ・人→ロボット移転を横断し、合成データ生成・方策評価・言語誘導プランニングに使える。"
       },
       {
         "id": "2606.17029v1",
@@ -365,7 +393,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17029v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17029v1",
-        "published": "2026-06-15T17:52:27Z"
+        "published": "2026-06-15T17:52:27Z",
+        "title_ja": "DeepRubric：深層リサーチエージェントを効率的にRL学習する証拠木ルーブリック監督",
+        "summary_ja": "深層リサーチエージェントのルーブリック報酬RLは、基準が情報ニーズを取りこぼすと効率が落ちる。クエリから逆向きに信頼できるクエリ-ルーブリック監督を構築するデータ生成枠組みを提案。"
       },
       {
         "id": "2606.17028v1",
@@ -381,7 +411,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17028v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17028v1",
-        "published": "2026-06-15T17:51:50Z"
+        "published": "2026-06-15T17:51:50Z",
+        "title_ja": "HAMON：長期予測のための受動光学的シーケンス混合",
+        "summary_ja": "長期時系列予測では単純な線形/周波数モデルが依然強く、Transformerの密な重ね合わせ表現が不要かもしれない。基盤レベルでこの問いに迫る。"
       },
       {
         "id": "2606.17027v1",
@@ -401,7 +433,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17027v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17027v1",
-        "published": "2026-06-15T17:51:38Z"
+        "published": "2026-06-15T17:51:38Z",
+        "title_ja": "MeshLoom：メッシュ系列の順伝播型・非剛体レジストレーション",
+        "summary_ja": "頂点変形を直接再構成する順伝播型ネットで、従来の高コストな個別最適化や狭いカテゴリ・ペア限定といった制約を超える非剛体レジストレーションを実現。"
       },
       {
         "id": "2606.17024v1",
@@ -419,7 +453,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17024v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17024v1",
-        "published": "2026-06-15T17:50:44Z"
+        "published": "2026-06-15T17:50:44Z",
+        "title_ja": "ExpRL：LLM中間学習のための探索的RL",
+        "summary_ja": "疎報酬RLの成否はベースモデルのカバレッジに依存する。分解・検証などの基礎スキルを教えるmid-trainingを探索的RLで行い、後続RLの土台を広げる。"
       },
       {
         "id": "2606.17022v1",
@@ -443,7 +479,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17022v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17022v1",
-        "published": "2026-06-15T17:50:00Z"
+        "published": "2026-06-15T17:50:00Z",
+        "title_ja": "データの幾何を学ぶ：Shape Space解析の数学的レビュー",
+        "summary_ja": "観測が豊かな幾何形状を持つデータ（生物学などの形状空間）を扱う機械学習について、形状空間解析の数学的基盤を概観するレビュー。"
       },
       {
         "id": "2606.17020v1",
@@ -466,7 +504,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17020v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17020v1",
-        "published": "2026-06-15T17:49:34Z"
+        "published": "2026-06-15T17:49:34Z",
+        "title_ja": "FusionRS：二モーダル視覚言語基盤モデル向け大規模RGB-赤外リモセンデータセット",
+        "summary_ja": "リモセンの視覚言語モデルはRGB中心で赤外情報が未活用。熱強度・物体境界・照明不変な手掛かりを含む赤外を加えた大規模RGB-赤外データセットを構築。"
       },
       {
         "id": "2606.17016v1",
@@ -497,7 +537,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17016v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17016v1",
-        "published": "2026-06-15T17:46:50Z"
+        "published": "2026-06-15T17:46:50Z",
+        "title_ja": "TokenPilot：LLMエージェント向けキャッシュ効率的な文脈管理",
+        "summary_ja": "長時間セッションで文脈が膨張し推論コストが増す問題に対し、プレフィックス不整合やキャッシュ無効化を避けつつ文脈を圧縮するキャッシュ効率的な管理法を提案。"
       },
       {
         "id": "2606.17014v1",
@@ -513,7 +555,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17014v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17014v1",
-        "published": "2026-06-15T17:46:19Z"
+        "published": "2026-06-15T17:46:19Z",
+        "title_ja": "グラフネイティブ時系列のためのフィルタ付きコンフォーマル楕円体",
+        "summary_ja": "多変量時系列の同時予測集合で、座標間依存に適応しつつ単一イベントを制御。状態空間フィルタの予測平均・共分散にsplit-conformalを適用する。"
       },
       {
         "id": "2606.17013v1",
@@ -528,7 +572,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17013v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17013v1",
-        "published": "2026-06-15T17:46:16Z"
+        "published": "2026-06-15T17:46:16Z",
+        "title_ja": "深層NNの勾配爆発・消失：残差接続の効果",
+        "summary_ja": "勾配爆発・消失を乗法的エルゴード理論で解析し、残差接続を加える効果をリアプノフ指数の観点から正確に説明。"
       },
       {
         "id": "2606.17011v1",
@@ -549,7 +595,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17011v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17011v1",
-        "published": "2026-06-15T17:45:06Z"
+        "published": "2026-06-15T17:45:06Z",
+        "title_ja": "ROVE：強化学習でヒューマノイド操作の人間介入を活用",
+        "summary_ja": "全身運動学と器用な手制御ゆえにヒューマノイドへの人間介入はシステム上難しく、収集軌道も準最適になりがち。これをRLで活かしVLA後学習に繋げる。"
       },
       {
         "id": "2606.17010v1",
@@ -568,7 +616,9 @@
         ],
         "url": "https://arxiv.org/abs/2606.17010v1",
         "pdf_url": "https://arxiv.org/pdf/2606.17010v1",
-        "published": "2026-06-15T17:44:44Z"
+        "published": "2026-06-15T17:44:44Z",
+        "title_ja": "トークンから方策へ：因果的で解釈可能な異質処置効果の同定",
+        "summary_ja": "異質処置効果(HTE)の同定は表現力と解釈性のトレードオフに陥り、未測定の駆動因があると偽のHTEを生む。因果的に妥当なHTE同定法を提案。"
       },
       {
         "id": "2606.17006v1",
@@ -1069,7 +1119,9 @@
         "comments": 285,
         "comments_url": "https://news.ycombinator.com/item?id=48546294",
         "author": "lwhsiao",
-        "created_at": "2026-06-15T20:00:57Z"
+        "created_at": "2026-06-15T20:00:57Z",
+        "title_ja": "LinkedInの求人オファーに仕込まれたバックドア",
+        "summary_ja": "暗号通貨スタートアップの採用担当（実在の美術ジャーナリストの身元を盗用）を装い、LinkedIn経由でコードレビューを依頼。npm installのprepareスクリプトで自動実行されるバックドアを、コメントアウトされたテストの壁に紛れ込ませる巧妙なサプライチェーン攻撃。"
       },
       {
         "id": "48542100",
@@ -1079,7 +1131,9 @@
         "comments": 518,
         "comments_url": "https://news.ycombinator.com/item?id=48542100",
         "author": "cloudking",
-        "created_at": "2026-06-15T14:46:53Z"
+        "created_at": "2026-06-15T14:46:53Z",
+        "title_ja": "Ask HN：日常のコーディングでClaude/GPTをローカルモデルに置き換えられた人は？",
+        "summary_ja": "ローカルLLMが日々の開発でフロンティアモデルを代替できるかを問うスレッド。コミュニティの実感（性能・コスト・プライバシーのトレードオフ）が集まり、ローカル運用の成熟度を測る定点観測になっている。"
       },
       {
         "id": "48550779",
@@ -1089,7 +1143,9 @@
         "comments": 372,
         "comments_url": "https://news.ycombinator.com/item?id=48550779",
         "author": "apitman",
-        "created_at": "2026-06-16T04:58:15Z"
+        "created_at": "2026-06-16T04:58:15Z",
+        "title_ja": "Fabrice Bellardは尊敬に値する——ほぼ間違いなく総合力で上位のプログラマ",
+        "summary_ja": "FFmpegやQEMU等を生んだ伝説的開発者Bellardへの賛辞。AI時代に『個人の卓越した工学』がなお重要だという議論を呼んだ。"
       },
       {
         "id": "48542433",
@@ -1099,7 +1155,9 @@
         "comments": 55,
         "comments_url": "https://news.ycombinator.com/item?id=48542433",
         "author": "rsgm",
-        "created_at": "2026-06-15T15:09:40Z"
+        "created_at": "2026-06-15T15:09:40Z",
+        "title_ja": "自分のホームラボAI開発プラットフォーム",
+        "summary_ja": "自宅サーバ上にAI開発環境を構築した事例。ローカルでのモデル運用・実験基盤への関心の高まりを反映。"
       },
       {
         "id": "48544637",
@@ -1109,7 +1167,9 @@
         "comments": 114,
         "comments_url": "https://news.ycombinator.com/item?id=48544637",
         "author": "Mustan",
-        "created_at": "2026-06-15T17:41:24Z"
+        "created_at": "2026-06-15T17:41:24Z",
+        "title_ja": "Claude Corps：Anthropicの全米AIフェローシップ",
+        "summary_ja": "Anthropicが1.5億ドルを投じ、社会人経験2年未満の人材を最終的に1000人、非営利団体に12か月配属しAIスキルを実装させるフェローシップ。年俸8.5万ドル、2026年10月開始。"
       },
       {
         "id": "48549918",
@@ -1119,7 +1179,9 @@
         "comments": 69,
         "comments_url": "https://news.ycombinator.com/item?id=48549918",
         "author": "ilreb",
-        "created_at": "2026-06-16T02:47:57Z"
+        "created_at": "2026-06-16T02:47:57Z",
+        "title_ja": "MicrosoftがAWSに頼る——GitHubがAI能力逼迫に直面",
+        "summary_ja": "GitHubのAIワークロード需要が逼迫し、MicrosoftがAzureだけでなく競合AWSの計算資源に頼っているという報道。自社クラウドを持つMSがライバルから借りる構図が話題に。"
       },
       {
         "id": "48538833",
@@ -1129,7 +1191,9 @@
         "comments": 64,
         "comments_url": "https://news.ycombinator.com/item?id=48538833",
         "author": "martiano",
-        "created_at": "2026-06-15T09:34:10Z"
+        "created_at": "2026-06-15T09:34:10Z",
+        "title_ja": "Show HN：AIなしでゼロから書いたC++レイトレーサ",
+        "summary_ja": "生成AIを一切使わずスクラッチで実装したレイトレーサ。AI全盛期に『手で書く』価値を示す作品として注目された。"
       },
       {
         "id": "48558766",
@@ -1139,7 +1203,9 @@
         "comments": 135,
         "comments_url": "https://news.ycombinator.com/item?id=48558766",
         "author": "forks",
-        "created_at": "2026-06-16T17:30:30Z"
+        "created_at": "2026-06-16T17:30:30Z",
+        "title_ja": "Claude：多数のモデルでエラー増加（障害）",
+        "summary_ja": "Anthropicのステータスページに掲載された障害。複数モデルでエラー率が上昇し、フロンティアLLMへの依存が増す中での可用性リスクを改めて意識させた。"
       },
       {
         "id": "48543392",
@@ -1149,7 +1215,9 @@
         "comments": 211,
         "comments_url": "https://news.ycombinator.com/item?id=48543392",
         "author": "nicoburns",
-        "created_at": "2026-06-15T16:11:02Z"
+        "created_at": "2026-06-15T16:11:02Z",
+        "title_ja": "RustとC/C++でメモリ安全性CVEはどう違うか",
+        "summary_ja": "Rustと C/C++のメモリ安全性関連CVEの差異を分析。セキュアな言語選択の議論を喚起。"
       },
       {
         "id": "48550569",
@@ -1159,7 +1227,9 @@
         "comments": 24,
         "comments_url": "https://news.ycombinator.com/item?id=48550569",
         "author": "california-og",
-        "created_at": "2026-06-16T04:25:57Z"
+        "created_at": "2026-06-16T04:25:57Z",
+        "title_ja": "Show HN：Garden of Flowers——ASCIIアート以前の絵画的タイポグラフィのアーカイブ",
+        "summary_ja": "ASCIIアート以前の絵画的タイポグラフィを集めたアーカイブ。計算機文化史の資料として人気。"
       },
       {
         "id": "48555838",
@@ -1169,7 +1239,9 @@
         "comments": 35,
         "comments_url": "https://news.ycombinator.com/item?id=48555838",
         "author": "parksb",
-        "created_at": "2026-06-16T14:26:26Z"
+        "created_at": "2026-06-16T14:26:26Z",
+        "title_ja": "だが yak shaving（前準備の脱線）は楽しい",
+        "summary_ja": "本題に辿り着く前の周辺作業（yak shaving）の楽しさを論じたエッセイ。開発者の共感を集めた。"
       },
       {
         "id": "48541014",
@@ -1179,7 +1251,9 @@
         "comments": 285,
         "comments_url": "https://news.ycombinator.com/item?id=48541014",
         "author": "smashini",
-        "created_at": "2026-06-15T13:31:09Z"
+        "created_at": "2026-06-15T13:31:09Z",
+        "title_ja": "欧州は自前の計算資源だけでフロンティアAIを訓練できるか",
+        "summary_ja": "欧州が域内で所有する計算資源だけでフロンティアモデルを訓練できるかを検討するプロジェクト(euromesh)。AI主権と計算インフラの地政学という論点。"
       },
       {
         "id": "48556785",
@@ -1189,7 +1263,9 @@
         "comments": 18,
         "comments_url": "https://news.ycombinator.com/item?id=48556785",
         "author": "amarant",
-        "created_at": "2026-06-16T15:27:56Z"
+        "created_at": "2026-06-16T15:27:56Z",
+        "title_ja": "Fableのban、本当はジェイルブレイクが理由ではなかった？",
+        "summary_ja": "米政府によるAnthropic Fable 5/Mythos 5の輸出規制は、ジェイルブレイクという技術的理由は口実で、実態は政治的・報復的だったとTechCrunchが報道。Katie Moussourisも『輸出規制の対象になるべきではない』と指摘。"
       },
       {
         "id": "48546306",
@@ -1199,7 +1275,9 @@
         "comments": 93,
         "comments_url": "https://news.ycombinator.com/item?id=48546306",
         "author": "tartoran",
-        "created_at": "2026-06-15T20:02:02Z"
+        "created_at": "2026-06-15T20:02:02Z",
+        "title_ja": "米空軍のB-52爆撃機が離陸後に墜落（エドワーズ空軍基地）",
+        "summary_ja": "離陸直後にB-52が墜落したとの速報。AIとの直接の関係は薄いがHN上位に。"
       },
       {
         "id": "48543245",
@@ -1209,7 +1287,9 @@
         "comments": 35,
         "comments_url": "https://news.ycombinator.com/item?id=48543245",
         "author": "bwm",
-        "created_at": "2026-06-15T16:01:43Z"
+        "created_at": "2026-06-15T16:01:43Z",
+        "title_ja": "Show HN：machine0——CLIから制御する永続NixOS VM",
+        "summary_ja": "CLIから操作できる永続的なNixOS VMツール。再現可能な開発・エージェント実行環境への関心を反映。"
       },
       {
         "id": "48558147",
@@ -1219,7 +1299,9 @@
         "comments": 53,
         "comments_url": "https://news.ycombinator.com/item?id=48558147",
         "author": "dzonga",
-        "created_at": "2026-06-16T16:49:46Z"
+        "created_at": "2026-06-16T16:49:46Z",
+        "title_ja": "JWTの使用をやめよう",
+        "summary_ja": "JWTをセッション管理に使うことの落とし穴を論じ、よりシンプルな代替を勧める記事。"
       },
       {
         "id": "48556163",
@@ -1229,7 +1311,9 @@
         "comments": 39,
         "comments_url": "https://news.ycombinator.com/item?id=48556163",
         "author": "EDM115",
-        "created_at": "2026-06-16T14:50:10Z"
+        "created_at": "2026-06-16T14:50:10Z",
+        "title_ja": "SubQ 1.1 Small（技術レポート）",
+        "summary_ja": "新興のSubQによる小型モデル1.1 Smallの技術レポート。小型・効率モデル競争の一端。"
       },
       {
         "id": "48556644",
@@ -1239,7 +1323,9 @@
         "comments": 82,
         "comments_url": "https://news.ycombinator.com/item?id=48556644",
         "author": "speckx",
-        "created_at": "2026-06-16T15:20:05Z"
+        "created_at": "2026-06-16T15:20:05Z",
+        "title_ja": "After AI Takes Everything（AIが全てを奪った後で）",
+        "summary_ja": "AIが多くの仕事を担う未来における人間の意味・生き方を考察するエッセイ。"
       },
       {
         "id": "48554814",
@@ -1249,7 +1335,9 @@
         "comments": 10,
         "comments_url": "https://news.ycombinator.com/item?id=48554814",
         "author": "ilreb",
-        "created_at": "2026-06-16T13:15:15Z"
+        "created_at": "2026-06-16T13:15:15Z",
+        "title_ja": "Qwen-Robot Suite：物理世界知能のための基盤モデル群",
+        "summary_ja": "Qwenが公開した身体性AI向け基盤モデル群。言語条件付き世界モデルや操作方策を含み、ロボティクスの基盤モデル化を推し進める。"
       },
       {
         "id": "48544823",
@@ -1259,7 +1347,9 @@
         "comments": 55,
         "comments_url": "https://news.ycombinator.com/item?id=48544823",
         "author": "andrewbr",
-        "created_at": "2026-06-15T17:56:00Z"
+        "created_at": "2026-06-15T17:56:00Z",
+        "title_ja": "Show HN：獣医から起業——AIによる芝生診断",
+        "summary_ja": "獣医出身の創業者が作った、芝生の状態をAIで診断するサービス。ニッチ領域へのAI応用例。"
       }
     ],
     "reddit": [],
@@ -1272,7 +1362,9 @@
         "language": "TypeScript",
         "stars": 123914,
         "stars_today": 1196,
-        "forks": 6685
+        "forks": 6685,
+        "title_ja": "iptv-org/iptv：世界中の公開IPTVチャンネル集",
+        "summary_ja": "世界各国の公開IPTVチャンネルを集約したリポジトリ。AIとは直接無関係だが定番の人気プロジェクト。"
       },
       {
         "name": "teslamate",
@@ -1282,7 +1374,9 @@
         "language": "Elixir",
         "stars": 8383,
         "stars_today": 214,
-        "forks": 955
+        "forks": 955,
+        "title_ja": "TeslaMate：自前ホスティングのTeslaデータロガー",
+        "summary_ja": "Tesla車のデータを自宅サーバに記録・可視化するセルフホスト型ロガー。"
       },
       {
         "name": "zvec",
@@ -1292,7 +1386,9 @@
         "language": "C++",
         "stars": 10390,
         "stars_today": 188,
-        "forks": 604
+        "forks": 604,
+        "title_ja": "軽量・超高速なインプロセス・ベクトルデータベース",
+        "summary_ja": "プロセス内で動く軽量・高速なベクトルDB。RAGや埋め込み検索の組み込み用途で注目。"
       }
     ],
     "blogs": [
@@ -1301,102 +1397,231 @@
         "url": "https://openai.com/index/deployment-simulation",
         "source": "OpenAI",
         "summary": "OpenAI introduces Deployment Simulation, a method to predict AI model behavior before deployment using real conversation data to improve safety and evaluation accuracy.",
-        "published": "2026-06-16T00:00:00Z"
+        "published": "2026-06-16T00:00:00Z",
+        "title_ja": "デプロイをシミュレートしてリリース前にモデル挙動を予測",
+        "summary_ja": "OpenAIが、実デプロイを模擬することでリリース前にモデルの振る舞いを予測する手法を紹介。問題挙動を事前に検出する狙い。"
       },
       {
         "title": "We’re strengthening our presence in Alabama through new investments and community support.",
         "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/alabama-investment-june-2026/",
         "source": "Google DeepMind",
         "summary": "Google has announced a $1.5 billion investment for 2026 and 2027 to expand its data center campus in Jackson County, Alabama. Operating since 2019 on a repurposed former…",
-        "published": "2026-06-15T15:00:00Z"
+        "published": "2026-06-15T15:00:00Z",
+        "title_ja": "Google DeepMind：アラバマ州での投資・地域支援を強化",
+        "summary_ja": "DeepMindがアラバマ州への投資と地域貢献を拡大。AI企業の地方インフラ・雇用投資の一例。"
       },
       {
         "title": "Introducing the OpenAI Partner Network",
         "url": "https://openai.com/index/introducing-openai-partner-network",
         "source": "OpenAI",
         "summary": "OpenAI launches the Partner Network, investing $150M to help global partners accelerate enterprise AI adoption, deployment, and transformation.",
-        "published": "2026-06-14T17:00:00Z"
+        "published": "2026-06-14T17:00:00Z",
+        "title_ja": "OpenAI Partner Networkを発表",
+        "summary_ja": "OpenAIが導入・実装支援のためのパートナーネットワークを発表。エンタープライズ展開を後押し。"
       },
       {
         "title": "olmo-eval: An evaluation workbench for the model development loop",
         "url": "https://huggingface.co/blog/allenai/olmo-eval",
         "source": "Hugging Face",
         "summary": "",
-        "published": "2026-06-12T15:56:10Z"
+        "published": "2026-06-12T15:56:10Z",
+        "title_ja": "olmo-eval：モデル開発ループ向け評価ワークベンチ",
+        "summary_ja": "Hugging Faceが、モデル開発の反復に使える評価ワークベンチolmo-evalを公開。"
       },
       {
         "title": "New OpenAI Academy courses for the next era of work",
         "url": "https://openai.com/index/academy-courses-applying-ai-at-work",
         "source": "OpenAI",
         "summary": "OpenAI introduces three Academy courses that help people build practical AI skills, create repeatable workflows, and apply agents in everyday work.",
-        "published": "2026-06-12T10:00:00Z"
+        "published": "2026-06-12T10:00:00Z",
+        "title_ja": "OpenAI Academy：次世代の働き方に向けた新講座",
+        "summary_ja": "OpenAIが、AI時代の働き方に向けた新たな学習講座を提供開始。"
       },
       {
         "title": "How Preply combines AI and human tutors to personalize learning",
         "url": "https://openai.com/index/preply",
         "source": "OpenAI",
         "summary": "Preply uses OpenAI to launch AI-generated lesson summaries, providing personalised feedback and language learning exercises.",
-        "published": "2026-06-12T00:00:00Z"
+        "published": "2026-06-12T00:00:00Z",
+        "title_ja": "Preply：AIと人間チューターを組み合わせ学習を個別化",
+        "summary_ja": "語学学習PreplyがAIと人間講師を併用してパーソナライズを実現した事例。"
       },
       {
         "title": "Our new community investments in Virginia support local jobs and expand energy affordability.",
         "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/virginia-community-investments/",
         "source": "Google DeepMind",
         "summary": "We’re helping build the state’s next-generation workforce and investing in energy programs.",
-        "published": "2026-06-11T20:00:00Z"
+        "published": "2026-06-11T20:00:00Z",
+        "title_ja": "Google DeepMind：バージニア州への地域投資で雇用とエネルギーを支援",
+        "summary_ja": "DeepMindがバージニア州で雇用創出とエネルギー手頃化を支援する地域投資を発表。"
       },
       {
         "title": "OpenAI to acquire Ona",
         "url": "https://openai.com/index/openai-to-acquire-ona",
         "source": "OpenAI",
         "summary": "OpenAI plans to acquire Ona to expand Codex with secure, persistent cloud environments, enabling long-running AI agents across enterprise workflows.",
-        "published": "2026-06-11T00:00:00Z"
+        "published": "2026-06-11T00:00:00Z",
+        "title_ja": "OpenAIがOnaを買収",
+        "summary_ja": "OpenAIが開発者向けエージェント企業Onaを買収。コーディングエージェント領域への布石。"
       },
       {
         "title": "How an astrophysicist uses Codex to help simulate black holes",
         "url": "https://openai.com/index/using-codex-to-simulate-black-holes",
         "source": "OpenAI",
         "summary": "Discover how astrophysicist Chi-kwan Chan uses Codex to build black hole simulations, helping scientists study extreme physics and test Einstein’s theory of general relativity.",
-        "published": "2026-06-11T00:00:00Z"
+        "published": "2026-06-11T00:00:00Z",
+        "title_ja": "天体物理学者がCodexでブラックホールのシミュレーションを支援",
+        "summary_ja": "研究者がOpenAI Codexを使ってブラックホールのシミュレーション作業を効率化した事例。"
       },
       {
         "title": "BBVA puts AI at the core of banking with OpenAI",
         "url": "https://openai.com/index/bbva",
         "source": "OpenAI",
         "summary": "Learn how BBVA scaled ChatGPT Enterprise to 100,000 employees and partnered with OpenAI to accelerate AI-powered banking transformation worldwide.",
-        "published": "2026-06-11T00:00:00Z"
+        "published": "2026-06-11T00:00:00Z",
+        "title_ja": "BBVA：OpenAIで銀行業務の中核にAIを据える",
+        "summary_ja": "スペインの銀行BBVAがOpenAIを業務の中核に据えた導入事例。"
       },
       {
         "title": "Supporting Europe’s work in ensuring a trustworthy AI ecosystem",
         "url": "https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem",
         "source": "OpenAI",
         "summary": "OpenAI supports the EU Code of Practice on AI content transparency, advancing provenance standards and tools to help people understand AI-generated content.",
-        "published": "2026-06-11T00:00:00Z"
+        "published": "2026-06-11T00:00:00Z",
+        "title_ja": "OpenAI：信頼できるAIエコシステムに向け欧州の取り組みを支援",
+        "summary_ja": "OpenAIが欧州の信頼性あるAIエコシステム構築を支援すると表明。"
       },
       {
         "title": "Profiling in PyTorch (Part 2): From nn.Linear to a Fused MLP",
         "url": "https://huggingface.co/blog/torch-mlp-fusion",
         "source": "Hugging Face",
         "summary": "",
-        "published": "2026-06-11T00:00:00Z"
+        "published": "2026-06-11T00:00:00Z",
+        "title_ja": "PyTorchプロファイリング(Part2)：nn.LinearからFused MLPへ",
+        "summary_ja": "Hugging FaceによるPyTorch性能チューニング解説。nn.LinearをFused MLPに最適化する実践。"
       },
       {
         "title": "Access OpenAI models and Codex through your Oracle cloud commitment",
         "url": "https://openai.com/index/openai-on-oracle-cloud",
         "source": "OpenAI",
         "summary": "Access OpenAI models and Codex through Oracle Cloud, using existing commitments to build and deploy AI with enterprise security and governance.",
-        "published": "2026-06-10T20:00:00Z"
+        "published": "2026-06-10T20:00:00Z",
+        "title_ja": "OracleクラウドからOpenAIモデルとCodexを利用可能に",
+        "summary_ja": "Oracleクラウドの利用枠でOpenAIモデルとCodexにアクセスできるように。マルチクラウド展開。"
       },
       {
         "title": "PRC-linked influence operations are targeting AI debates in the US",
         "url": "https://openai.com/index/prc-linked-influence-operations-ai-debates",
         "source": "OpenAI",
         "summary": "A new report from OpenAI details PRC-linked influence operations using AI to target U.S. tech debates, data center narratives, tariffs, and false claims  about ChatGPT.",
-        "published": "2026-06-10T12:00:00Z"
+        "published": "2026-06-10T12:00:00Z",
+        "title_ja": "中国関連の影響工作が米国のAI論争を標的に",
+        "summary_ja": "OpenAIが、PRC（中国）関連の影響工作が米国内のAI政策論争を標的にしていると報告。"
       }
     ]
   },
-  "highlights": [],
+  "highlights": [
+    {
+      "source": "TechCrunch / HN",
+      "title": "The US government's Anthropic models ban was never about an AI jailbreak",
+      "title_ja": "米政府のAnthropic禁輸、本当はジェイルブレイクが理由ではなかった",
+      "url": "https://techcrunch.com/2026/06/15/the-us-governments-anthropic-models-ban-was-never-about-an-ai-jailbreak/",
+      "hot_take_ja": "「セキュリティガードレールの不備」は口実で、実態は政治的報復——という見立てが補強されてきた。コードを『レビューして』と『直して』で挙動が変わる程度のことが輸出規制の根拠になるなら、規制は技術ではなく感情で動いている。AI企業が政権との関係次第で潰される前例になりかねない。",
+      "detail_ja": "6/14にWSJが報じたAnthropic Fable 5 / Mythos 5の米政府による輸出規制・運用停止について、TechCrunchが「技術的理由は薄い」とする続報を出した。発端とされた『ガードレール回避』は、セキュリティ研究者によればFable 5に『コードのセキュリティ問題をレビューして』と頼むのと『このコードを直して』と頼むのとで応答が変わる、という程度の挙動差に過ぎなかったという。著名なセキュリティ研究者Katie Moussourisは、この挙動は『輸出規制を発動させるようなものでは決してない』とし、さらに『論文に書かれた挙動は本質的に修正不可能で、無理に直せばモデルの防御能力をむしろ削ぐだけだ』と指摘した。Axiosは、規制の真因はAnthropicと政権の『人間関係・性格の不一致』にあり、Amazon CEOのAndy Jassyの関与も取り沙汰されると報じている。記事は、これが『米国のAI企業は干渉なしには運営できない』というシグナルになり、政権が個人的・政治的な好みで勝者を選んでいるとの疑念を生む、と警告する。技術的根拠の乏しい規制が前例化すれば、フロンティアAIの開発・公開が政治リスクに直接さらされることになる。",
+      "detail_en": "Following the WSJ report (June 14) that the US government forced Anthropic to suspend its Fable 5 / Mythos 5 models via an export directive, TechCrunch published a follow-up arguing the technical rationale was thin. The supposed 'guardrail bypass' amounted, per security researchers, to Fable 5 responding differently when asked to 'review this code for security issues' versus 'fix this code.' Prominent security researcher Katie Moussouris said this behavior 'should never have triggered an export control,' adding that 'the behavior described in the paper cannot meaningfully be fixed, and any attempt would only weaken the model for defense.' Axios reported the real driver was 'personality differences' between Anthropic and the Trump administration, with possible involvement from Amazon CEO Andy Jassy, on top of an already fractious relationship. The piece warns this signals that 'AI companies in the United States can't be trusted to operate without interference' and fuels suspicion that officials are 'picking favorites based on personal and political factors.' If export controls with such weak technical grounding become precedent, frontier AI development and release are exposed directly to political risk.",
+      "key_points_ja": [
+        "『ガードレール回避』はレビュー/修正で応答が変わる程度の挙動差",
+        "Moussouris：輸出規制を発動させるものでは決してない",
+        "論文の挙動は本質的に修正不能、直せば防御力が落ちる",
+        "Axios：真因は政権との人間関係・性格不一致",
+        "Amazon CEO Andy Jassyの関与が取り沙汰される",
+        "政治的好みでAI企業の勝者を選ぶ前例化への懸念"
+      ],
+      "key_points_en": [
+        "'Bypass' was just review-vs-fix response difference",
+        "Moussouris: should never trigger an export control",
+        "Paper's behavior is unfixable; fixing weakens defense",
+        "Axios: real cause was personality clash with admin",
+        "Possible involvement of Amazon CEO Andy Jassy",
+        "Fear of precedent: politics picking AI winners"
+      ]
+    },
+    {
+      "source": "Anthropic",
+      "title": "Claude Corps",
+      "title_ja": "Claude Corps：1.5億ドル投じる全米AIフェローシップ",
+      "url": "https://www.anthropic.com/news/claude-corps",
+      "hot_take_ja": "Anthropicが1.5億ドルを投じ、若手1000人を非営利に送り込んでAIスキルを実装させる。『AIの恩恵を経済移行期にどう分配するか』を、寄付ではなく人材配置という形でやろうとしている点が新しい。Teach For America のAI版という設計だ。",
+      "detail_ja": "AnthropicがClaude Corpsという全米フェローシップ制度を発表した。社会人経験2年未満の若手を中心に最終的に1000人のフェローを、初年度で少なくとも400の非営利団体に12か月のフルタイムで配属し、現場でAIスキルを実装させる。開始は2026年10月、年俸は8.5万ドルに福利厚生・メンターシップ・潤沢なClaudeアクセスが付く。応募要件は18歳以上・米国就労資格・必要なら転居可で、学歴・専攻は不問。仕組みとしては非営利のCodePathが雇用主(employer of record)兼研修提供者、Social Financeが効果測定・評価とスケール基盤を担い、Anthropicが資金提供と戦略を担う三者構成だ。受け入れ団体は教育・食料支援・退役軍人支援・海洋保全・人材育成など多分野にわたる。総額1.5億ドルのコミットメントで、単発の支援に留まらず『経済移行期にAIの便益を分配する再現可能なモデル』を作ることを掲げている点が特徴。AI普及が雇用に与える影響への不安が高まる中、企業がスキル移転と社会実装を同時に狙う設計として注目される。",
+      "detail_en": "Anthropic announced Claude Corps, a national fellowship that will place up to 1,000 fellows—mostly early-career people with under two years of full-time experience—into at least 400 nonprofits in the first 12 months, as full-time 12-month roles applying AI skills on the ground. Fellowships begin October 2026 with an $85,000 salary plus benefits, mentorship, and extensive Claude access. Eligibility is broad: 18+, authorized to work in the US, willing to relocate, with no required education or major. The structure is tripartite: nonprofit CodePath acts as employer of record and trainer, Social Finance handles measurement and scaling infrastructure, and Anthropic funds and directs strategy. Host nonprofits span education, food security, veteran support, marine conservation, and workforce development. Backed by a $150 million commitment, the program explicitly aims to build a 'replicable model for distributing AI benefits during economic transition,' rather than a one-off grant. As anxiety grows over AI's labor-market impact, it stands out as a corporate attempt to pair skills transfer with real-world deployment.",
+      "key_points_ja": [
+        "最終的に1000人のフェローを非営利に配属",
+        "初年度で最低400団体、12か月フルタイム",
+        "年俸8.5万ドル+福利厚生・Claudeアクセス、2026年10月開始",
+        "総額1.5億ドルのコミットメント",
+        "CodePath=雇用主/研修、Social Finance=測定、Anthropic=資金",
+        "経済移行期のAI便益分配の再現可能モデルを標榜"
+      ],
+      "key_points_en": [
+        "Up to 1,000 fellows placed in nonprofits",
+        "400+ host orgs in year one, 12-month full-time",
+        "$85k salary + benefits + Claude access, starts Oct 2026",
+        "$150M total commitment",
+        "CodePath employs/trains, Social Finance measures, Anthropic funds",
+        "Aims at a replicable AI-benefit distribution model"
+      ]
+    },
+    {
+      "source": "arXiv",
+      "title": "The Value Axis: Language Models Encode Whether They're on the Right Track",
+      "title_ja": "「Value軸」：LMは自分が正しい軌道にいるかを内部で表現している",
+      "url": "https://arxiv.org/abs/2606.17056v1",
+      "hot_take_ja": "LMの内部には『今の自分の戦略は上手くいきそうか』を表す1本の軸が存在する——しかもその軸を押すだけで、自己修正を消したり逆に探索・やり直しを誘発できる。reasoningモデルの『粘り』や『諦め』が、たった1次元の操作でコントロールできるという話で、解釈可能性と制御の両面で示唆が大きい。",
+      "detail_ja": "言語モデルが、自分の現在のトラジェクトリの『価値（=今の戦略が目標達成に至る見込み）』を内部で追跡しているかを調べた研究。著者らは合成のin-context強化学習データを使い、Qwen3-8Bの活性化空間に1本の『value軸』を構成した。この軸に沿った活性化は、(1)言語化された自信の高低、(2)バックトラック（やり直し）の有無、(3)正しいコードと壊れたコードを区別できた。さらに因果的な操作実験として、高value方向に活性化をステアリングすると自己修正が抑制され説明も簡素になり、逆に低value方向へsteerするとバックトラックや探索が誘発された。つまりモデルの『粘り強さ／諦め』のような挙動が、単一方向の内部表現で制御できることを示している。加えて、DPO（直接選好最適化）でこの内部valueを引き上げられることも確認した。reasoning系モデルが過剰に自己修正して冗長になったり、逆に早々に諦めたりする挙動を、内部表現レベルで理解・調整できる可能性を開く点が重要だ。一方で、こうした軸は『正しさ』ではなく『成功の見込みについての自己評価』であり、過信を強める方向にも操作できるため、安全性の観点では諸刃の剣でもある。",
+      "detail_en": "This work asks whether language models internally track the 'value' of their current trajectory—the likelihood their ongoing strategy reaches its goal. Using synthetic in-context reinforcement-learning data, the authors construct a single 'value axis' in Qwen3-8B's activation space. Activations along this axis distinguish (1) high vs. low verbalized confidence, (2) rollouts with vs. without backtracking, and (3) correct vs. corrupted code. Crucially, causal steering shows the axis is functional: pushing toward high value suppresses self-correction and shortens explanations, while pushing toward low value induces backtracking and exploration. In other words, behaviors like 'persistence' vs. 'giving up' can be controlled via a single internal direction. They further show that direct preference optimization (DPO) can raise this internal value. The result opens a path to understanding and tuning—at the representation level—why reasoning models over-correct and become verbose, or quit too early. The caveat: this axis encodes a self-assessment of success likelihood, not ground-truth correctness, and can be steered toward overconfidence—making it a double-edged tool for safety.",
+      "key_points_ja": [
+        "Qwen3-8Bに『今の戦略の見込み』を表すvalue軸を発見",
+        "自信の高低・やり直し有無・正誤コードを区別",
+        "高value方向に操作→自己修正を抑制・説明を簡素化",
+        "低value方向に操作→バックトラック・探索を誘発",
+        "DPOで内部valueを引き上げ可能",
+        "正しさではなく自己評価なので過信操作のリスクも"
+      ],
+      "key_points_en": [
+        "Found a 'value axis' in Qwen3-8B for trajectory prospects",
+        "Separates confidence, backtracking, correct vs. corrupt code",
+        "Steer high → suppresses self-correction, shorter output",
+        "Steer low → induces backtracking and exploration",
+        "DPO can raise the internal value",
+        "Encodes self-assessment, not truth — overconfidence risk"
+      ]
+    },
+    {
+      "source": "arXiv / Qwen",
+      "title": "Qwen-RobotWorld: Unifying Embodied World Modeling through Language-Conditioned Video Generation",
+      "title_ja": "Qwen-RobotWorld：言語条件付き動画生成で身体性の世界モデルを統一",
+      "url": "https://arxiv.org/abs/2606.17030v1",
+      "hot_take_ja": "『自然言語＝行動インタフェース』で、ロボット操作も自動運転も屋内ナビも1つの動画世界モデルに統一してしまう。未来の映像を予測できれば、合成データ生成・方策評価・行動プランニングが全部その上で回る——LLMの次はこの『行動の世界モデル』が基盤になる、というQwenの賭けが見える。",
+      "detail_ja": "Qwen（Alibaba）が、身体性AI向けの言語条件付き動画世界モデルQwen-RobotWorldを発表した。自然言語を統一的な行動インタフェースとして、現在の観測から物理的に妥当な『未来の視覚的トラジェクトリ（映像）』を予測する。特徴は、ロボット操作・自動運転・屋内ナビ・人間からロボットへの転移という複数ドメインを単一の定式化で扱う点だ。これにより3つの応用が開ける——(1)方策学習を補強する合成データ生成、(2)方策を評価するスケーラブルな仮想環境、(3)下流のロボット制御に与える言語誘導のプランニング信号。技術的には、60層規模のDouble-Stream MMDiTにMLLM（マルチモーダルLLM）の行動エンコーディングを組み合わせる設計が核とされる。同日にHNで話題になった『Qwen-Robot Suite』は、こうした世界モデルや操作方策を含む基盤モデル群の総称で、ロボティクスをLLM同様に『基盤モデル化』しようという動きの一環だ。実機データ収集が高コストなロボティクスにおいて、映像予測モデルを『シミュレータ兼データ生成器兼プランナー』として使い回す設計は、スケール則をロボットにも持ち込む現実的な経路として注目される。",
+      "detail_en": "Qwen (Alibaba) introduced Qwen-RobotWorld, a language-conditioned video world model for embodied intelligence. Using natural language as a unified action interface, it predicts physically grounded future visual trajectories (video) from current observations. Its distinguishing feature is handling multiple domains—robotic manipulation, autonomous driving, indoor navigation, and human-to-robot transfer—within a single formulation. This enables three applications: (1) synthetic data generation to augment policy training, (2) scalable virtual environments for policy evaluation, and (3) language-guided planning signals for downstream robot control. Technically, the core is a 60-layer Double-Stream MMDiT combined with MLLM action encoding. The 'Qwen-Robot Suite' that trended on HN the same day is the umbrella for these foundation models—world model plus manipulation policies—part of a broader push to give robotics the same 'foundation model' treatment as LLMs. In robotics, where real-world data collection is expensive, reusing a video-prediction model as simulator, data generator, and planner is a pragmatic route to bringing scaling laws to robots.",
+      "key_points_ja": [
+        "自然言語を統一の行動インタフェースにした動画世界モデル",
+        "観測から物理的に妥当な未来映像を予測",
+        "操作・自動運転・屋内ナビ・人→ロボット転移を統一",
+        "合成データ生成/方策評価/言語誘導プランニングに活用",
+        "60層Double-Stream MMDiT + MLLM行動エンコーディング",
+        "ロボティクスの『基盤モデル化』を進める一手"
+      ],
+      "key_points_en": [
+        "Video world model with language as unified action interface",
+        "Predicts physically grounded future video from observations",
+        "Unifies manipulation, driving, indoor nav, human-to-robot",
+        "Powers synthetic data, policy eval, and planning signals",
+        "Core: 60-layer Double-Stream MMDiT + MLLM action encoding",
+        "Pushes 'foundation model' treatment into robotics"
+      ]
+    }
+  ],
   "stats": {
     "arxiv_count": 50,
     "hn_count": 20,
